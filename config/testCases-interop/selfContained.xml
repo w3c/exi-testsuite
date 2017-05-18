@@ -1,0 +1,11 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Self-contained subtree interoperability tests">
+
+    <param name="groupId" value="${groupId} | selfContained"/>
+
+    <xi:include href="builtInGrammar/builtInSC.xml"/>
+    <xi:include href="schemaInformedGrammar/undeclaredProductions/sc.xml"/>
+
+</testCaseGroup>

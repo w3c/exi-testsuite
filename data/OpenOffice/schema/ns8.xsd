@@ -1,0 +1,805 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ns2="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ns3="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns4="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns5="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:ns6="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ns7="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:ns8="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns9="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xmlns:ns10="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns11="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns12="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns13="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns14="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns15="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:ns16="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:elements="http://purl.org/dc/elements/1.1/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="elements.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/xforms" schemaLocation="xforms.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" schemaLocation="ns9.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" schemaLocation="ns5.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:config:1.0" schemaLocation="ns2.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" schemaLocation="ns14.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" schemaLocation="ns7.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" schemaLocation="ns3.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:form:1.0" schemaLocation="ns4.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" schemaLocation="ns16.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0" schemaLocation="ns13.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" schemaLocation="ns10.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:script:1.0" schemaLocation="ns6.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" schemaLocation="ns11.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" schemaLocation="ns12.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:table:1.0" schemaLocation="ns15.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" schemaLocation="ns1.xsd"/>
+  <xs:element name="font-face">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns12:font-face-src"/>
+        <xs:element minOccurs="0" ref="ns12:definition-src"/>
+      </xs:sequence>
+      <xs:attribute ref="ns12:font-family"/>
+      <xs:attribute ref="ns12:font-style"/>
+      <xs:attribute ref="ns12:font-variant"/>
+      <xs:attribute ref="ns12:font-weight"/>
+      <xs:attribute ref="ns12:font-stretch"/>
+      <xs:attribute ref="ns12:font-size"/>
+      <xs:attribute ref="ns12:unicode-range"/>
+      <xs:attribute ref="ns12:units-per-em"/>
+      <xs:attribute ref="ns12:panose-1"/>
+      <xs:attribute ref="ns12:stemv"/>
+      <xs:attribute ref="ns12:stemh"/>
+      <xs:attribute ref="ns12:slope"/>
+      <xs:attribute ref="ns12:cap-height"/>
+      <xs:attribute ref="ns12:x-height"/>
+      <xs:attribute ref="ns12:accent-height"/>
+      <xs:attribute ref="ns12:ascent"/>
+      <xs:attribute ref="ns12:descent"/>
+      <xs:attribute ref="ns12:widths"/>
+      <xs:attribute ref="ns12:bbox"/>
+      <xs:attribute ref="ns12:ideographic"/>
+      <xs:attribute ref="ns12:alphabetic"/>
+      <xs:attribute ref="ns12:mathematical"/>
+      <xs:attribute ref="ns12:hanging"/>
+      <xs:attribute ref="ns12:v-ideographic"/>
+      <xs:attribute ref="ns12:v-alphabetic"/>
+      <xs:attribute ref="ns12:v-mathematical"/>
+      <xs:attribute ref="ns12:v-hanging"/>
+      <xs:attribute ref="ns12:underline-position"/>
+      <xs:attribute ref="ns12:underline-thickness"/>
+      <xs:attribute ref="ns12:strikethrough-position"/>
+      <xs:attribute ref="ns12:strikethrough-thickness"/>
+      <xs:attribute ref="ns12:overline-position"/>
+      <xs:attribute ref="ns12:overline-thickness"/>
+      <xs:attribute name="name" use="required" form="qualified" type="xs:string"/>
+      <xs:attribute name="font-adornments" form="qualified" type="xs:string"/>
+      <xs:attribute name="font-family-generic" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="roman"/>
+            <xs:enumeration value="swiss"/>
+            <xs:enumeration value="modern"/>
+            <xs:enumeration value="decorative"/>
+            <xs:enumeration value="script"/>
+            <xs:enumeration value="system"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="font-pitch" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="fixed"/>
+            <xs:enumeration value="variable"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="font-charset" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z][A-Za-z0-9._\-]*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:section-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-column-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-row-properties"/>
+        <xs:element minOccurs="0" ref="ns8:ruby-properties"/>
+        <xs:element minOccurs="0" ref="ns8:drawing-page-properties"/>
+        <xs:element minOccurs="0" ref="ns8:chart-properties"/>
+        <xs:element minOccurs="0" ref="ns8:graphic-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-cell-properties"/>
+        <xs:element minOccurs="0" ref="ns8:paragraph-properties"/>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute ref="ns8:display-name"/>
+      <xs:attribute name="parent-style-name" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="next-style-name" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="list-style-name" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="master-page-name" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="auto-update" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns8:data-style-name"/>
+      <xs:attribute name="class" form="qualified" type="xs:string"/>
+      <xs:attribute name="default-outline-level" form="qualified" type="xs:positiveInteger"/>
+      <xs:attribute name="family" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="text"/>
+            <xs:enumeration value="paragraph"/>
+            <xs:enumeration value="section"/>
+            <xs:enumeration value="ruby"/>
+            <xs:enumeration value="table"/>
+            <xs:enumeration value="table-column"/>
+            <xs:enumeration value="table-row"/>
+            <xs:enumeration value="table-cell"/>
+            <xs:enumeration value="graphic"/>
+            <xs:enumeration value="presentation"/>
+            <xs:enumeration value="drawing-page"/>
+            <xs:enumeration value="chart"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="name" type="xs:NCName"/>
+  <xs:attribute name="display-name" type="xs:string"/>
+  <xs:attribute name="volatile">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="default-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:section-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-column-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-row-properties"/>
+        <xs:element minOccurs="0" ref="ns8:ruby-properties"/>
+        <xs:element minOccurs="0" ref="ns8:drawing-page-properties"/>
+        <xs:element minOccurs="0" ref="ns8:chart-properties"/>
+        <xs:element minOccurs="0" ref="ns8:graphic-properties"/>
+        <xs:element minOccurs="0" ref="ns8:table-cell-properties"/>
+        <xs:element minOccurs="0" ref="ns8:paragraph-properties"/>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+      </xs:sequence>
+      <xs:attribute name="family" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="text"/>
+            <xs:enumeration value="paragraph"/>
+            <xs:enumeration value="section"/>
+            <xs:enumeration value="ruby"/>
+            <xs:enumeration value="table"/>
+            <xs:enumeration value="table-column"/>
+            <xs:enumeration value="table-row"/>
+            <xs:enumeration value="table-cell"/>
+            <xs:enumeration value="graphic"/>
+            <xs:enumeration value="presentation"/>
+            <xs:enumeration value="drawing-page"/>
+            <xs:enumeration value="chart"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="num-prefix" type="xs:string"/>
+  <xs:attribute name="num-suffix" type="xs:string"/>
+  <xs:attribute name="num-format">
+    <xs:simpleType>
+      <xs:union>
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:union memberTypes="xs:string">
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="i"/>
+                  </xs:restriction>
+                </xs:simpleType>
+                <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                    <xs:enumeration value="I"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:union>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="a"/>
+            <xs:enumeration value="A"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="num-letter-sync">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="presentation-page-layout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns10:placeholder"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute ref="ns8:display-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="page-layout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:page-layout-properties"/>
+        <xs:element minOccurs="0" ref="ns8:header-style"/>
+        <xs:element minOccurs="0" ref="ns8:footer-style"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="page-usage" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="all"/>
+            <xs:enumeration value="left"/>
+            <xs:enumeration value="right"/>
+            <xs:enumeration value="mirrored"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="master-page">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="ns8:header"/>
+          <xs:element minOccurs="0" ref="ns8:header-left"/>
+        </xs:sequence>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="ns8:footer"/>
+          <xs:element minOccurs="0" ref="ns8:footer-left"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:forms"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:style"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns3:rect"/>
+          <xs:element ref="ns3:line"/>
+          <xs:element ref="ns3:polyline"/>
+          <xs:element ref="ns3:polygon"/>
+          <xs:element ref="ns3:regular-polygon"/>
+          <xs:element ref="ns3:path"/>
+          <xs:element ref="ns3:circle"/>
+          <xs:element ref="ns3:ellipse"/>
+          <xs:element ref="ns3:g"/>
+          <xs:element ref="ns3:page-thumbnail"/>
+          <xs:element ref="ns3:frame"/>
+          <xs:element ref="ns3:measure"/>
+          <xs:element ref="ns3:caption"/>
+          <xs:element ref="ns3:connector"/>
+          <xs:element ref="ns3:control"/>
+          <xs:element ref="ns7:scene"/>
+          <xs:element ref="ns3:custom-shape"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="ns10:notes"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute ref="ns8:display-name"/>
+      <xs:attribute ref="ns8:page-layout-name" use="required"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute name="next-style-name" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="handout-master">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns3:rect"/>
+        <xs:element ref="ns3:line"/>
+        <xs:element ref="ns3:polyline"/>
+        <xs:element ref="ns3:polygon"/>
+        <xs:element ref="ns3:regular-polygon"/>
+        <xs:element ref="ns3:path"/>
+        <xs:element ref="ns3:circle"/>
+        <xs:element ref="ns3:ellipse"/>
+        <xs:element ref="ns3:g"/>
+        <xs:element ref="ns3:page-thumbnail"/>
+        <xs:element ref="ns3:frame"/>
+        <xs:element ref="ns3:measure"/>
+        <xs:element ref="ns3:caption"/>
+        <xs:element ref="ns3:connector"/>
+        <xs:element ref="ns3:control"/>
+        <xs:element ref="ns7:scene"/>
+        <xs:element ref="ns3:custom-shape"/>
+      </xs:choice>
+      <xs:attribute ref="ns10:use-header-name"/>
+      <xs:attribute ref="ns10:use-footer-name"/>
+      <xs:attribute ref="ns10:use-date-time-name"/>
+      <xs:attribute ref="ns10:presentation-page-layout-name"/>
+      <xs:attribute ref="ns8:page-layout-name" use="required"/>
+      <xs:attribute ref="ns3:style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="section-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="table-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="table-column-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="table-row-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ruby-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="drawing-page-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="chart-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="graphic-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="table-cell-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="paragraph-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="text-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="map">
+    <xs:complexType>
+      <xs:attribute name="condition" use="required" form="qualified" type="xs:string"/>
+      <xs:attribute name="apply-style-name" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="base-cell-address" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="([$]?([^\. ']+|'[^']+'))?\.[$]?[A-Z]+[$]?[0-9]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="page-layout-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="header-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:header-footer-properties"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="footer-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:header-footer-properties"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="header">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+          <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+          <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+          <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+          <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="ns17:h"/>
+            <xs:element ref="ns17:p"/>
+            <xs:element ref="ns17:list"/>
+            <xs:element ref="ns15:table"/>
+            <xs:element ref="ns17:section"/>
+            <xs:element ref="ns17:table-of-content"/>
+            <xs:element ref="ns17:illustration-index"/>
+            <xs:element ref="ns17:table-index"/>
+            <xs:element ref="ns17:object-index"/>
+            <xs:element ref="ns17:user-index"/>
+            <xs:element ref="ns17:alphabetical-index"/>
+            <xs:element ref="ns17:bibliography"/>
+            <xs:element ref="ns17:index-title"/>
+            <xs:element ref="ns17:change"/>
+            <xs:element ref="ns17:change-start"/>
+            <xs:element ref="ns17:change-end"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns8:region-left"/>
+          <xs:element minOccurs="0" ref="ns8:region-center"/>
+          <xs:element minOccurs="0" ref="ns8:region-right"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="display" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="header-left">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+          <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+          <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+          <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+          <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="ns17:h"/>
+            <xs:element ref="ns17:p"/>
+            <xs:element ref="ns17:list"/>
+            <xs:element ref="ns15:table"/>
+            <xs:element ref="ns17:section"/>
+            <xs:element ref="ns17:table-of-content"/>
+            <xs:element ref="ns17:illustration-index"/>
+            <xs:element ref="ns17:table-index"/>
+            <xs:element ref="ns17:object-index"/>
+            <xs:element ref="ns17:user-index"/>
+            <xs:element ref="ns17:alphabetical-index"/>
+            <xs:element ref="ns17:bibliography"/>
+            <xs:element ref="ns17:index-title"/>
+            <xs:element ref="ns17:change"/>
+            <xs:element ref="ns17:change-start"/>
+            <xs:element ref="ns17:change-end"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns8:region-left"/>
+          <xs:element minOccurs="0" ref="ns8:region-center"/>
+          <xs:element minOccurs="0" ref="ns8:region-right"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="display" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="footer">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+          <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+          <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+          <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+          <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="ns17:h"/>
+            <xs:element ref="ns17:p"/>
+            <xs:element ref="ns17:list"/>
+            <xs:element ref="ns15:table"/>
+            <xs:element ref="ns17:section"/>
+            <xs:element ref="ns17:table-of-content"/>
+            <xs:element ref="ns17:illustration-index"/>
+            <xs:element ref="ns17:table-index"/>
+            <xs:element ref="ns17:object-index"/>
+            <xs:element ref="ns17:user-index"/>
+            <xs:element ref="ns17:alphabetical-index"/>
+            <xs:element ref="ns17:bibliography"/>
+            <xs:element ref="ns17:index-title"/>
+            <xs:element ref="ns17:change"/>
+            <xs:element ref="ns17:change-start"/>
+            <xs:element ref="ns17:change-end"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns8:region-left"/>
+          <xs:element minOccurs="0" ref="ns8:region-center"/>
+          <xs:element minOccurs="0" ref="ns8:region-right"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="display" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="footer-left">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+          <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+          <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+          <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+          <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="ns17:h"/>
+            <xs:element ref="ns17:p"/>
+            <xs:element ref="ns17:list"/>
+            <xs:element ref="ns15:table"/>
+            <xs:element ref="ns17:section"/>
+            <xs:element ref="ns17:table-of-content"/>
+            <xs:element ref="ns17:illustration-index"/>
+            <xs:element ref="ns17:table-index"/>
+            <xs:element ref="ns17:object-index"/>
+            <xs:element ref="ns17:user-index"/>
+            <xs:element ref="ns17:alphabetical-index"/>
+            <xs:element ref="ns17:bibliography"/>
+            <xs:element ref="ns17:index-title"/>
+            <xs:element ref="ns17:change"/>
+            <xs:element ref="ns17:change-start"/>
+            <xs:element ref="ns17:change-end"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="ns8:region-left"/>
+          <xs:element minOccurs="0" ref="ns8:region-center"/>
+          <xs:element minOccurs="0" ref="ns8:region-right"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="display" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="rel-width">
+    <xs:simpleType>
+      <xs:union>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="scale"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="scale-min"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="rel-height">
+    <xs:simpleType>
+      <xs:union>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="scale"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="scale-min"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="page-layout-name">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:NCName">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:length value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="data-style-name">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:NCName">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:length value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="list-level-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="header-footer-properties">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="region-left">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns17:p"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="region-center">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns17:p"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="region-right">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns17:p"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="legend-expansion">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="wide"/>
+        <xs:enumeration value="high"/>
+        <xs:enumeration value="balanced"/>
+        <xs:enumeration value="custom"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="legend-expansion-aspect-ratio" type="xs:double"/>
+  <xs:attribute name="leader-char">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:length value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="type">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="right"/>
+        <xs:enumeration value="left"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="position">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+</xs:schema>

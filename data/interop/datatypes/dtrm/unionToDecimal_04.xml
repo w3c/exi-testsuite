@@ -1,0 +1,6 @@
+<!-- =================================================================== -->
+<!-- "12345" should be encoded using exi:integer regardless of a DTRM    -->
+<!-- entry pegged at its member type (i.e. xsd:int).                     -->
+<!-- =================================================================== -->
+<foo:A xmlns:foo="urn:foo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:type="foo:unionType">12345</foo:A>

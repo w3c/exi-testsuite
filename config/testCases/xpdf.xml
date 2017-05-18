@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+    <param xmlns="http://www.sun.com/japex/testSuite" name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XPDF/autoschema.xsd"/>
+
+    <testCase name="XPDF/XML1.1.xpdf">
+	<param name="japex.inputFile" value="${testsDir}/XPDF/XML1.1.xpdf"/>
+    </testCase>
+<!--
+    <testCase name="XPDF/css2.xpdf">
+	<param name="japex.inputFile" value="${testsDir}/XPDF/css2.xpdf"/>
+    </testCase>
+-->
+</testCaseGroup>

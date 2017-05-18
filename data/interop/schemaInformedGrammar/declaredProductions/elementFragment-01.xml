@@ -1,0 +1,14 @@
+<!-- =================================================================== -->
+<!-- Tests AT(qname) and AT(*) event types, and the typed encodings of   -->
+<!-- attributed values. The values of AT(foo:c) and AT(foo:d) should be  -->
+<!-- represented as strings because not all definitions of each are not  -->
+<!-- identical.                                                          -->
+<!-- =================================================================== -->
+<foo:C xmlns:foo="urn:foo" xmlns:goo="urn:goo" xmlns:aoo="urn:aoo" 
+  none="Welcome to the world of element fragment grammar!"
+  goo:a="2010-04-27"
+  aoo:b="2010-04-28"
+  aoo:c="12:34:57"
+  foo:c="2010-04-29"
+  goo:c="12:34:56"
+  foo:d="12:34:58" />

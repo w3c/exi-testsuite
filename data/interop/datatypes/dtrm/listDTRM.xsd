@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo">
+
+<xsd:simpleType name="listTypeDerived">
+  <xsd:restriction base="foo:listType">
+    <xsd:length value="4"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="listType">
+  <xsd:list itemType="xsd:int"/>
+</xsd:simpleType>
+
+<xsd:element name="A" type="xsd:anySimpleType"/>
+
+</xsd:schema>

@@ -1,0 +1,7 @@
+<!-- =================================================================== -->
+<!-- Member types of union types can be used as the value of xsi:type.   -->
+<!-- xsd:int is one of the member types of type foo:unionedEnum.         -->
+<!-- =================================================================== -->
+<foo:unionedEnum xmlns:foo='urn:foo' xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  xsi:type='xsd:int'>12345</foo:unionedEnum>

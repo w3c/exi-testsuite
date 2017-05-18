@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="root" >
+        <xs:complexType>
+            <!-- Built-in Type: Unsigned Integer -->
+            <xs:sequence>
+                <!-- Big Integers -->
+                <xs:element name="nonNegativeInteger"  type="xs:nonNegativeInteger" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="nonNegativeIntegerA"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:minInclusive value="0" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <!-- Long Integers -->
+                <xs:element name="unsignedLong"  type="xs:unsignedLong" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="unsignedLongA"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:unsignedLong">
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="unsignedLongB"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:long">
+                            <xs:minExclusive value="45"></xs:minExclusive>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="positiveInteger"  type="xs:positiveInteger" minOccurs="0" maxOccurs="unbounded" />
+                <!-- Int Integers -->
+                <xs:element name="unsignedInt"  type="xs:unsignedInt" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="unsignedIntA"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:unsignedInt">
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="unsignedIntB"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:int">
+                            <xs:minExclusive value="94"></xs:minExclusive>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="unsignedShort"  type="xs:unsignedShort" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="unsignedShortA"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:unsignedShort">
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="unsignedShortB"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:short">
+                            <xs:minInclusive value="9"></xs:minInclusive>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

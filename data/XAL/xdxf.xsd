@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--
+  EXTENDED DESCRIPTION EXCHANGE FORMAT (XDXF)
+  -       Document Type Definition
+  -
+  -  Version   : 1.2.0
+  -  Author    : Christopher K. Allen, Paul C. Chu
+  -  Modified  : June, 2002
+  -
+-->
+<!-- ################################################################### -->
+<!-- XDXF Edit Context -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="sources">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="optics_source"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="optics_extra"/>
+        <xs:element ref="timing_source"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="tablegroup_source"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="optics_source">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="url" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="timing_source">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="url" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="optics_extra">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="url" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tablegroup_source">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:NMTOKEN"/>
+      <xs:attribute name="url" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="table">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="schema"/>
+        <xs:element maxOccurs="unbounded" ref="record"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="recordClass" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="schema">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="attribute"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tablegroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="table"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attribute">
+    <xs:complexType>
+      <xs:attribute name="isPrimaryKey" type="xs:NMTOKEN"/>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="type" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:attribute name="alphaX" type="xs:NMTOKEN"/>
+      <xs:attribute name="alphaY" type="xs:NMTOKEN"/>
+      <xs:attribute name="alphaZ" type="xs:NMTOKEN"/>
+      <xs:attribute name="beamCharge" type="xs:NMTOKEN"/>
+      <xs:attribute name="beamCurrent" type="xs:NMTOKEN"/>
+      <xs:attribute name="betaX" type="xs:NMTOKEN"/>
+      <xs:attribute name="betaY" type="xs:NMTOKEN"/>
+      <xs:attribute name="betaZ" type="xs:NMTOKEN"/>
+      <xs:attribute name="eX" type="xs:NMTOKEN"/>
+      <xs:attribute name="eY" type="xs:NMTOKEN"/>
+      <xs:attribute name="eZ" type="xs:NMTOKEN"/>
+      <xs:attribute name="envelopeID" type="xs:NMTOKEN"/>
+      <xs:attribute name="particleCharge" type="xs:NMTOKEN"/>
+      <xs:attribute name="particleID" type="xs:NMTOKEN"/>
+      <xs:attribute name="particleKineticEnergy"/>
+      <xs:attribute name="particleRestEnergy"/>
+      <xs:attribute name="position" type="xs:NMTOKEN"/>
+      <xs:attribute name="x" type="xs:NMTOKEN"/>
+      <xs:attribute name="xp" type="xs:NMTOKEN"/>
+      <xs:attribute name="y" type="xs:NMTOKEN"/>
+      <xs:attribute name="yp" type="xs:NMTOKEN"/>
+      <xs:attribute name="z" type="xs:NMTOKEN"/>
+      <xs:attribute name="zp" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ################################################################### -->
+  <!-- XDXF Attribute Library -->
+  <xs:element name="attributes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="align"/>
+        <xs:element ref="magnet"/>
+        <xs:element ref="rfgap"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="align">
+    <xs:complexType>
+      <xs:attribute name="pitch" type="xs:NMTOKEN"/>
+      <xs:attribute name="roll" type="xs:NMTOKEN"/>
+      <xs:attribute name="x" type="xs:NMTOKEN"/>
+      <xs:attribute name="y" type="xs:NMTOKEN"/>
+      <xs:attribute name="yaw" type="xs:NMTOKEN"/>
+      <xs:attribute name="z" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="aperture">
+    <xs:complexType>
+      <xs:attribute name="shape"/>
+      <xs:attribute name="x" type="xs:NMTOKEN"/>
+      <xs:attribute name="y" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="displacement">
+    <xs:complexType>
+      <xs:attribute name="x" type="xs:NMTOKEN"/>
+      <xs:attribute name="y" type="xs:NMTOKEN"/>
+      <xs:attribute name="z" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="magnet">
+    <xs:complexType>
+      <xs:attribute name="dfltMagFld" type="xs:NMTOKEN"/>
+      <xs:attribute name="len" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="polarity" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rfgap">
+    <xs:complexType>
+      <xs:attribute name="TTF" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="ampFactor" type="xs:NMTOKEN"/>
+      <xs:attribute name="amp" type="xs:NMTOKEN"/>
+      <xs:attribute name="freq" type="xs:NMTOKEN"/>
+      <xs:attribute name="length" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="phaseFactor" type="xs:NMTOKEN"/>
+      <xs:attribute name="phase" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rotation">
+    <xs:complexType>
+      <xs:attribute name="phi" type="xs:NMTOKEN"/>
+      <xs:attribute name="theta" type="xs:NMTOKEN"/>
+      <xs:attribute name="psi" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="twiss">
+    <xs:complexType>
+      <xs:attribute name="ax"/>
+      <xs:attribute name="ay"/>
+      <xs:attribute name="az"/>
+      <xs:attribute name="bx"/>
+      <xs:attribute name="by"/>
+      <xs:attribute name="bz"/>
+      <xs:attribute name="etpx"/>
+      <xs:attribute name="etpy"/>
+      <xs:attribute name="etx"/>
+      <xs:attribute name="ety"/>
+      <xs:attribute name="mux"/>
+      <xs:attribute name="muy"/>
+      <xs:attribute name="x"/>
+      <xs:attribute name="y"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ################################################################### -->
+  <!-- Device Signals -->
+  <xs:element name="channel">
+    <xs:complexType>
+      <xs:attribute name="handle" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="settable">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="false"/>
+            <xs:enumeration value="true"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="signal" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="channelsuite">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="channel"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ################################################################### -->
+  <!-- Timing Signals -->
+  <xs:element name="timing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="channelsuite"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- ################################################################### -->
+  <!-- XDXF Data Structure -->
+  <xs:element name="xdxf">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="sequence"/>
+      </xs:sequence>
+      <xs:attribute name="date" use="required"/>
+      <xs:attribute name="system" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="ver" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="comment">
+    <xs:complexType mixed="true">
+      <xs:attribute name="author"/>
+      <xs:attribute name="date"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sequence">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="channelsuite"/>
+        <xs:element maxOccurs="unbounded" ref="node"/>
+        <xs:element ref="sequence"/>
+      </xs:choice>
+      <xs:attribute name="id" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="len" type="xs:NMTOKEN"/>
+      <xs:attribute name="pos" type="xs:NMTOKEN"/>
+      <xs:attribute name="type" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="node">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="attributes"/>
+        <xs:element minOccurs="0" ref="channelsuite"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:ID"/>
+      <xs:attribute name="len" type="xs:NMTOKEN"/>
+      <xs:attribute name="pos" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="BCM"/>
+            <xs:enumeration value="Bnch"/>
+            <xs:enumeration value="BPM"/>
+            <xs:enumeration value="DCH"/>
+            <xs:enumeration value="DCV"/>
+            <xs:enumeration value="QH"/>
+            <xs:enumeration value="QV"/>
+            <xs:enumeration value="PMQH"/>
+            <xs:enumeration value="PMQV"/>
+            <xs:enumeration value="RG"/>
+            <xs:enumeration value="WS"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

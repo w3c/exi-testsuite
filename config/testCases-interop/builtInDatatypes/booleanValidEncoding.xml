@@ -1,0 +1,37 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid boolean encoding">
+
+    <param name="groupId" value="${groupId} | booleanValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/boolean/boolean.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/boolean"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingBoolean"/>
+
+    <testCase name="boolean.valid-00">
+        <param name="description"  value="'1' boolean element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/boolean-valid-00.xml" />
+    </testCase>
+    <testCase name="boolean.valid-01">
+        <param name="description"  value="'0' boolean element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/boolean-valid-01.xml" />
+    </testCase>
+    <testCase name="boolean.valid-02">
+        <param name="description"  value="true boolean element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/boolean-valid-02.xml" />
+    </testCase>
+    <testCase name="boolean.valid-03">
+        <param name="description"  value="false boolean value with '1' boolean attribute value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/boolean-valid-03.xml" />
+    </testCase>
+    <testCase name="boolean.valid-04">
+        <param name="description"  value="'1' boolean element value with pattern facet"/>
+        <param name="japex.inputFile" value="${test.docFolder}/boolean-valid-04.xml" />
+    </testCase>
+    <testCase name="boolean.valid-05">
+        <param name="description"  value="'true' boolean element value with pattern facet"/>
+        <param name="japex.inputFile" value="${test.docFolder}/boolean-valid-05.xml" />
+    </testCase>
+
+</testCaseGroup>

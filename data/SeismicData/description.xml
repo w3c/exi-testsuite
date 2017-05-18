@@ -1,0 +1,58 @@
+<doc>
+  <div3 id="seismic-example">
+    <head>Example data</head>
+    <pre>
+seis.xml:
+&lt;?xml version="1.0"?&gt;
+&lt;seisdata&gt;
+&lt;head&gt;
+&lt;name&gt;line 101&lt;/name&gt;
+&lt;area&gt;midland&lt;/area&gt;
+&lt;ntrace&gt;1000&lt;/ntrace&gt;
+&lt;nsamp&gt;1501&lt;/nsamp&gt;
+&lt;precision&gt;4&lt;/precision&gt;
+&lt;zstart&gt;0.0&lt;/zstart&gt;
+&lt;zinc&gt;4.0&lt;/zinc&gt;
+&lt;num_xyzs_fields&gt;4&lt;/num_xyzs_fields&gt;
+&lt;xyzs_field_names&gt;xcoord,ycoord,elevation,common depth point&lt;/xyzs_field_names&gt;
+&lt;xyzs_field_precisions&gt;8,8,4,4&lt;/xyzs_field_precisions&gt;
+&lt;/head&gt;
+&lt;xcrd&gt;
+123456.712346 123556.712346 123656.712346 123756.712346 123856.712346 ... [ 1000 floating point numbers ] &lt;/xcrd&gt;
+&lt;ycrd&gt;
+1234567.812346 1234667.812346 1234767.812346 1234867.812346 ... [ 1000 floating point numbers ] &lt;/ycrd&gt;
+...
+    </pre>
+  </div3>
+  <div3 id="seismic-source">
+    <head>ChevronTexaco</head>
+    <p> </p>
+  </div3>
+  <div3 id="seismic-industries">
+    <head>Industries</head>
+    <p>Energy industry</p>
+  </div3>
+  <div3 id="seismic-disc">
+    <head>Discussion</head>
+    <p>This is a synthetic seismic dataset.  It simulates a single 2D line after processing.  (Field
+    data have very different data structure because of the highly redundant nature of the
+    acquisition).  A 3D dataset might be composed of several hundred such lines, but for most
+    purposes it is very likely that a single line is the unit of data that a Web service would be
+    called on to deliver.  That is, if one wanted to pass a full 3D dataset one would probably do it
+    by repeated transmission of data like this.  There is a small amount of noise added to these
+    data, which otherwise represent a very simple earth model.  The data start out with header
+    information which specifies things like trace number, what location the trace corresponds to,
+    and so on.  It then has 1000*1501 numbers which are the traces themselves.</p>
+
+    <p>Here are a few of the many differences between this synthetic dataset and real seismic data.</p>
+    <ol>
+<li>The large signals on these traces are much more coherent from trace to trace than  real data.</li>
+<li>Real data have a lot more events that are not flat and are otherwise very complex.</li>
+<li>Noise in real data is not really white.</li>
+<li>Real data would have more information in the headers.  If you're interested, the industry
+standard for headers is documented at http://w3.uwyo.edu/~seismic/sia/doc/segy_header.html.</li>
+<li>The numbers in the location data are much more regular and repetitive than would be the case in
+real data.</li>
+    </ol>
+  </div3>
+</doc>

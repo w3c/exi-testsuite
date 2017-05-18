@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="boundedInteger">
+        <xs:simpleType>
+            <xs:restriction base="xs:integer">
+                <xs:minInclusive value="1" />
+                <xs:maxInclusive value="5" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="testInteger" type="xs:integer" />
+    <xs:element name="name">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="Charles M Schulz" />
+                <xs:enumeration value="Peppermint Patty" />
+                <xs:enumeration value="Snoopy" />
+                <xs:enumeration value="Schroeder" />
+                <xs:enumeration value="Lucy" />
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="qualification" type="xs:string" />
+    <xs:element name="born" type="xs:date" />
+    <xs:element name="dead" type="xs:date" />
+    <xs:element name="isbn" type="xs:string" />
+    <xs:attribute name="id" type="xs:ID" />
+    <xs:attribute name="available" type="xs:boolean" />
+    <xs:attribute name="lang" type="xs:language" />
+    <xs:element name="title">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute ref="lang" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="library">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="book" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="author">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name" />
+                <xs:element ref="born" />
+                <xs:element ref="dead" minOccurs="0" />
+            </xs:sequence>
+            <xs:attribute ref="id" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="book">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="isbn" />
+                <xs:element ref="title" />
+                <xs:element ref="author" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element ref="character" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute ref="id" />
+            <xs:attribute ref="available" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="character">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name" />
+                <xs:element ref="born" />
+                <xs:element ref="qualification" />
+                <xs:element ref="boundedInteger" minOccurs="0" />
+                <xs:element ref="testInteger" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute ref="id" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

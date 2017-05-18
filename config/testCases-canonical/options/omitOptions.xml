@@ -1,0 +1,22 @@
+<!-- This testcases are intended to check omitOptionsDocument for canonical EXI
+		https://www.w3.org/TR/exi-c14n/#canonicalOptions
+ -->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="use UTC time">
+    		
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/options"/>
+    	
+    <testCase name="omitOptions.true">
+    	<param name="org.w3c.exi.ttf.includeOptions" value="true" />
+        <param name="description"  value="omit options"/>
+        <param name="japex.inputFile" value="${test.docFolder}/omitOptions.xml" />
+    </testCase>
+    
+    <testCase name="omitOptions.false">
+    	<param name="org.w3c.exi.ttf.includeOptions" value="false" />
+        <param name="description"  value="do not omit options"/>
+        <param name="japex.inputFile" value="${test.docFolder}/omitOptions.xml" />
+    </testCase>	
+    			
+</testCaseGroup>

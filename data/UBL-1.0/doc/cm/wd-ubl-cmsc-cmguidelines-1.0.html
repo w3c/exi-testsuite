@@ -1,0 +1,564 @@
+<html><head><META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Guidelines For The Customization of UBL v1.0 Schemas</title><link href="oasis-wd.css" rel="stylesheet" type="text/css"><meta content="DocBook XSL Stylesheets V1.60.1" name="generator"><meta name="description" content="This document presents guidelines for performing a compatible
+      customization of UBL schemas together with suggestions for how to
+      proceed when a compatible customization is not possible."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><p class="logo"><a href="http://www.oasis-open.org/"><img border="0" alt="OASIS" src="../../art/oasis-logo.gif"></a></p><div><h1 class="title"><a name="N10001"></a>Guidelines For The Customization of UBL v1.0 Schemas</h1></div><div><h2>Working Draft&nbsp;1.0,&nbsp;04/22/04</h2></div><div><dl><dt><span class="docid-heading">Document identifier:</span></dt><dd><p>wd-ubl-cmsc-cmguidelines-1.0</p></dd></dl></div><div><dl><dt><span class="editor-heading">Editor:</span></dt><dd><p><span class="firstname">Eduardo</span> <span class="surname">Gutentag</span>, <i class="replaceable"><tt>Sun Microsystems, Inc.</tt></i>&nbsp;<tt class="email">&lt;<a href="mailto:eduardo.gutentag@sun.com">eduardo.gutentag@sun.com</a>&gt;</tt></p></dd></dl><dl><dt><span class="author-heading">Authors:</span></dt><dd><p><span class="firstname">Matthew</span> <span class="surname">Gertner</span>&nbsp;<tt class="email">&lt;<a href="mailto:matthew@acepoint.cz">matthew@acepoint.cz</a>&gt;</tt><br><span class="firstname">Eduardo</span> <span class="surname">Gutentag</span>, <i class="replaceable"><tt>Sun Microsystems, Inc.</tt></i>&nbsp;<tt class="email">&lt;<a href="mailto:eduardo.gutentag@sun.com">eduardo.gutentag@sun.com</a>&gt;</tt><br><span class="firstname">Arofan</span> <span class="surname">Gregory</span>, <i class="replaceable"><tt>Aeon LLC </tt></i>&nbsp;<tt class="email">&lt;<a href="mailto:agregory@aeon-llc.com">agregory@aeon-llc.com</a>&gt;</tt></p></dd></dl><dl><dt><span class="contrib-heading">Contributors:</span></dt><dd><p><span class="firstname">Eve</span> <span class="surname">Maler</span>, <span class="emphasis"><em>Sun Microsystems, Inc.</em></span><br><span class="firstname">Dan</span> <span class="surname">Vint</span>, <span class="emphasis"><em>ACORD</em></span><br><span class="firstname">Bill</span> <span class="surname">Burcham</span>, <span class="emphasis"><em>Sterling Commerce</em></span><br><span class="firstname">Sylvia</span> <span class="surname">Webb</span>, <span class="emphasis"><em>GEFEG</em></span></p></dd></dl></div><div><dl><dt><a name="N10072"></a><span class="abstract-heading">Abstract:</span></dt><dd><p>This document presents guidelines for performing a compatible
+      customization of UBL schemas together with suggestions for how to
+      proceed when a compatible customization is not possible.</p></dd></dl></div><div><dl><dt><a name="N10076"></a><span class="status-heading">Status:</span></dt><dd><p>This document represents version 1.0 of the Guidelines. As such,
+      it is not likely to change until a new version is published.</p><p>If you are on the <tt class="email">&lt;<a href="mailto:ubl@lists.oasis-open.org">ubl@lists.oasis-open.org</a>&gt;</tt> list for
+      committee members, send comments there. If you are not on that list,
+      subscribe to the <tt class="email">&lt;<a href="mailto:ubl-comment@lists.oasis-open.org">ubl-comment@lists.oasis-open.org</a>&gt;</tt> list
+      and send comments there. To subscribe, send an email message to
+      <tt class="email">&lt;<a href="mailto:ubl-comment-request@lists.oasis-open.org">ubl-comment-request@lists.oasis-open.org</a>&gt;</tt> with the word
+      "<span class="quote"><tt class="literal">subscribe</tt></span>" as the body of the message.</p></dd></dl></div><div><p class="copyright">Copyright &copy; 2003, 2004 OASIS Open, Inc. All Rights Reserved.</p></div><hr></div><div class="toc"><h2>Table of Contents</h2><dl><dt>1. <a href="#s.introduction">Introduction</a></dt><dd><dl><dt>1.1. <a href="#goals">Goals of this document</a></dt><dt>1.2. <a href="#N100FE">Limitations of this document</a></dt></dl></dd><dt>2. <a href="#background">Background</a></dt><dd><dl><dt>2.1. <a href="#N10113">The UBL Schema</a></dt><dt>2.2. <a href="#N10118">Customization of UBL Schemas</a></dt><dt>2.3. <a href="#custofcust">Customization of customization</a></dt></dl></dd><dt>3. <a href="#compatibility">Compatible UBL Customization</a></dt><dd><dl><dt>3.1. <a href="#N1015E">Use of XSD Derivation</a></dt><dt>3.2. <a href="#N10192">Some observations on extensions and restrictions</a></dt><dt>3.3. <a href="#context">Documenting the Customization</a></dt><dt>3.4. <a href="#namespaces">Use of namespaces</a></dt></dl></dd><dt>4. <a href="#N10276">Non-Compatible UBL Customization</a></dt><dd><dl><dt>4.1. <a href="#N10280">Use of Ur-Types</a></dt><dt>4.2. <a href="#N102C8">Building New Types Using Core Components</a></dt></dl></dd><dt>5. <a href="#UseofTypeLib">Customization of Codelists</a></dt><dt>6. <a href="#N102E5">Use of the UBL Type Library in Customization</a></dt><dd><dl><dt>6.1. <a href="#N102EA">The Structure of the UBL Type Library</a></dt><dt>6.2. <a href="#N10300">Importing UBL Schema Modules</a></dt><dt>6.3. <a href="#N10307">Selecting Modules to Import</a></dt><dt>6.4. <a href="#N10322">Creating New Document Types with the UBL Type Library</a></dt></dl></dd><dt>7. <a href="#N1032D">Future Directions</a></dt></dl><h3>Appendixes</h3><dl><dt>A. <a href="#a.notices">Notices</a></dt><dt>B. <a href="#a.ipr">Intellectual Property Rights</a></dt><dt><a href="#bibl">References</a></dt></dl></div><hr><div class="section" lang="en"><div class="titlepage"><div><h2 class="title" style="clear: both"><a name="s.introduction"></a>1.&nbsp;Introduction</h2></div></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>It is highly recommended that readers of the current document
+      first consult [<a href="#ebCCDOC">ebCCDOC</a>]
+      before proceeding, in order to understand some of the thinking behind
+      the concepts expressed below, as that is where they were first published
+      by the authors of this document.</p></div><p>UBL 1.0 contains document type definitions informed by the broad
+    experience of members of the UBL Technical Committee, which includes both
+    business and XML experts, and subsequent changes are therefore expected to
+    be few and far between.</p><p>However, one of the most important lessons learned from previous
+    standards is that no business library is sufficient for all purposes.
+    Requirements differ significantly amongst companies, industries,
+    countries, etc., and a customization mechanism is therefore needed in many
+    cases before the document types can be used in real-world applications. A
+    primary motivation for moving from the relatively inflexible EDI formats
+    to a more robust XML approach is the possibility of creating formal
+    mechanisms for performing this customization while retaining maximum
+    interoperability and validation.</p><p>It is an UBL expectation that:</p><div class="orderedlist"><ol type="1"><li><p>Customization will indeed happen,</p></li><li><p>It will be done by national and industry groups and smaller user
+        communities,</p></li><li><p>These changes will be driven by real world needs, and</p></li><li><p>These needs will be expressed as context drivers.</p></li></ol></div><p>EDI dealt with the customization issue through a subsetting
+    mechanism that took a standard (the UN/EDIFACT standard, the ANSI X12
+    standard, etc.) [<a href="#EDIFACT">EDIFACT</a>,
+    <a href="#X12">X12</a>] and subsetted it through
+    industry Implementation Guides (<span class="acronym">IG</span>), which were then
+    subsetted into trading partner <span class="acronym">IG</span>s, which were then
+    subsetted into departamental <span class="acronym">IG</span>s. UBL proposes dealing
+    with this through schema derivation.</p><p>Thus UBL starts as generic as possible, with a set of schemas that
+    supply all that is likely to be needed in the 80/20 or core case, which is
+    UBL's primary target. Then it allows both subsetting and extension
+    according to the needs of user communities, industries, nations, etc.,
+    according to what is permitted in the derivation mechanism it has chosen,
+    namely [<a href="#XSD">XSD</a>].</p><div class="figure"><a name="N100C7"></a><p class="title"><b>Figure&nbsp;1.&nbsp;Customization Flow</b></p><div class="mediaobject" align="center"><table cellpadding="0" cellspacing="0" summary="manufactured viewport for HTML img" border="0" width="96"><tr><td align="center"><img src="customizing-circles.jpg" align="middle" alt="Customization Flow"></td></tr></table></div></div><p>These customizations are based on the eight context drivers
+    identified by ebXML (see <a href="#context" title="3.3.&nbsp;Documenting the Customization">below</a>  ). Any given schema component always
+    occupies a location in this eight-space, even if not a single one has been
+    identified (that is, if a given context driver has not been narrowed, it
+    means that it is true for all its possible contextual values). For
+    instance, UBL has an Address type that may have to be modified if the
+    Geopolitical region in which it will be used is Thailand. But as long as
+    this narrowing down of the Geopolitical context has not been done, the
+    Address type applies to all possible values of it, thus occupying the
+    "any" position in this particular axis of the eight-space.</p><p>In order for interoperability and validation to be achieved, care
+    must be taken to adhere to strict guidelines when customizing UBL schemas.
+    Although the UBL TC intends to produce a customization mechanism that can
+    be applied as an automatic process in the future, this phase (known as
+    Phase II, and predicted in the UBL TC's charter [<a href="#CHARTER">CHARTER</a>]) has not been reached. Instead, Phase I,
+    the current phase, offers the guidelines included in this document.</p><p>In what follows in this document, "Customization" always
+    means "context motivated customization", or
+    "contextualization".</p><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="goals"></a>1.1.&nbsp;Goals of this document</h3></div></div><p>This document aims to describe the procedure for customizing UBL
+      schemas, with three distinct goals.</p><div class="itemizedlist"><ul type="disc"><li><p>The first goal is to ensure that UBL users can extend UBL
+          schemas in a manner that:<div class="itemizedlist"><ul type="circle"><li><p>allows for
+          their particular needs,</p></li><li><p>can be
+          exchanged with trading partners whose requirements for data content
+          are different but related, and</p></li><li><p>is
+          UBL compatible.</p></li></ul></div></p></li><li><p>The second goal is to provide some canonical escape mechanisms
+          for those whose needs extend beyond what the compatibility
+          guidelines can offer. Although the product of these escape
+          mechanisms cannot claim UBL compatibility, at least it can offer a
+          clear description of its relationship to UBL.</p></li><li><p>The third goal is to gather use-case data for the future UBL
+          context extension methodology, the automatic mechanism for creating
+          customized UBL schemas scheduled for Phase II. To achieve this goal,
+          users are strongly encouraged to provide feedback through the
+          feedback mechanism in place for the UBL TC.</p><p>The current version of this document provides general
+          guidelines for the customization of UBL schemas. As implementation
+          feedback is received and use cases become clearer, future versions
+          of this document will include more specific customization guidance.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N100FE"></a>1.2.&nbsp;Limitations of this document</h3></div></div><p>This document does not provide detailed instructions on how to
+      customize schemas.</p><p>This document does not provide instructions on how to customize
+      schemas for specific industries.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><h2 class="title" style="clear: both"><a name="background"></a>2.&nbsp;Background</h2></div></div><p>The major output of the UBL TC is the set of schemas included in UBL
+    1.0. It is assumed that in many cases users will need to customize these
+    schemas for their own use. In accordance with [<a href="#CCTS">CCTS</a>]
+    the UBL TC expects this customization to be carried out only in response
+    to contextual needs and by the application of any one of the eight
+    identified context drivers and their possible values.</p><p>It must be noted that the UBL schemas themselves are the result of a
+    theoretical customization:</p><p>Behind every UBL Schema, a hypothetical schema exists in which all
+    elements are optional and all types are abstract. This is what we call the
+    "Ur-schema". As mandated in the XSD specification, abstract types
+    cannot be used as written; they can only be used as a starting point for
+    deriving new, concrete types. Ur-types are modelled as abstract types
+    since they are designed for derivation. Whether the UBL TC actually
+    produces and publishes a copy of these Ur-schemas is irrelevant, because
+    it is possible for any one to reconstruct deterministically the
+    appropriate Ur-schema from any of the schemas produced by the UBL TC.</p><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N10113"></a>2.1.&nbsp;The UBL Schema</h3></div></div><p>The first set of derivations from the abstract Ur-types is the UBL
+      Schema Library itself, which is assumed to be usable in the majority of
+      business cases. These schemas contain additional restrictions to reduce
+      ambiguity and provide a minimum set of requirements to enable
+      interoperable trading of data by the application of one context,
+      Business Process. The UBL schema may then be used by specific industry
+      organizations to create their own customized schemas. When the UBL
+      schemas are used, conformance with UBL may be claimed.</p></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N10118"></a>2.2.&nbsp;Customization of UBL Schemas</h3></div></div><p>It is assumed that in many cases specific businesses will use
+      customized UBL schemas. These customized schemas contain derivations of
+      the UBL types, created through additional restrictions and/or extensions
+      to fit more precisely the requirements of a given class of UBL users.
+      The customized UBL Schemas may then be used by specific organizations
+      within an industry to create their own customized schemas.</p></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="custofcust"></a>2.3.&nbsp;Customization of customization</h3></div></div><p>Due to the extensiblilty of W3C Schema, this process can be
+      applied over and over to refine a set of schemas more and more
+      precisely, depending on the needs of specific data flows.</p><p>In other words, there is no theoretical limit to how many times a
+      Schema can be derived, leading to the possible equivalent of infinite
+      recursion. In order to avoid this, the Rule of Once-per-Context has been
+      developed, as presented in "<a href="#contextchains" title="3.3.1.&nbsp;Context chains">Context
+      Chains</a> below"</p></div></div><div class="section" lang="en"><div class="titlepage"><div><h2 class="title" style="clear: both"><a name="compatibility"></a>3.&nbsp;Compatible UBL Customization</h2></div></div><p>Central to the customization approach used by UBL is the notion of
+    schema derivation. This is based on object-oriented principles, the most
+    important of which are inheritance and polymorphism. The meaning of the
+    latter can be gleaned from its linguistic origin: poly, meaning
+    "many", and morph, meaning "shape". By adhering to these
+    principles, document instances with different "shapes" (that is,
+    that conform to different but related schemas) can be used
+    interchangeably.</p><p>The UBL Naming and Design Rules Subcommittee [<a href="#NDRSC">NDRSC</a>]
+    chose to use <span class="acronym"><a href="#XSD">XSD</a></span>, the
+    standard XML schema language produced by the World Wide Web Consortium [<a href="#W3C">W3C</a>] , to model document formats. One of the most
+    significant advances of XSD over previous XML document description
+    languages, such as DTDs, is that it has built-in mechanisms for handling
+    inheritance and polymorphism, which we will refer to as "XSD
+    derivation". It therefore fits well with the real-world requirements
+    for business data interchange and our goal of interoperability and
+    validation.</p><p>There are two important types of modification that XSD derivation
+    does not allow. The first can be summarized as the deletion of required
+    components (that is, the reduction of a component's cardinality from
+    x..y to 0..y). The second is the <span class="foreignphrase"><i class="foreignphrase">ad hoc</i></span>
+    location of an addition to the content model through extension. There may
+    be some cases where the user needs a different location for the addition,
+    but XSD extension only allows addition at the end of a sequence.</p><p>Thus, there are three different scenarios covering the derivation of
+    new types from existing ones:</p><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><b>Compatible UBL Customization</b></span></p><div class="itemizedlist"><ul type="circle"><li><p>An existing UBL type can be modified to fit the requirements
+            of the customization through XSD derivation. These modifications
+            can include extension (adding new information to an existing type)
+            and/or refinement (restricting the set of information allowed to a
+            subset of what is permitted by the existing type).</p></li></ul></div></li></ul></div><div class="itemizedlist"><ul type="disc"><li><p><span class="bold"><b>Non-compatible UBL Customization</b></span></p><div class="itemizedlist"><ul type="circle"><li><p>An existing UBL type could be modified to fit the
+            requirements of the customization, but the changes needed go
+            beyond those allowed by XSD derivation.</p></li><li><p>No existing UBL type is found that can be used as the basis
+            for the new type. Nevertheless, the base library of core
+            components that underlies UBL can be used to build up the new type
+            so as to ensure that interoperability is at least possible at the
+            core component level.</p></li></ul></div></li></ul></div><p>These Guidelines will deal with each of the above scenarios, but we
+    will primarily concentrate on the first, as it is the only one that can
+    produce UBL-compatible schemas.</p><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N1015E"></a>3.1.&nbsp;Use of XSD Derivation</h3></div></div><p>XSD derivation allows for type extension and restriction. These
+      are the only means by which one can customize UBL schemas and claim UBL
+      compatibility. Any other possible means, even if allowed by XSD itself,
+      is not allowed by UBL. For instance, although XSD does permit the
+      redefinition of a type, UBL has decided to reject this approach, because
+      by default <tt class="sgmltag-element">&lt;xsd:redefine&gt;</tt> does not leave any
+      traces of having been used (such as a new namespace, for instance) and
+      because of the danger of circular redefinitions.</p><p>The examples in the following sections will be based on the
+      following complex type (and note that in all cases the
+      <tt class="sgmltag-element">&lt;xsd:annotation&gt;</tt> elements have been removed
+      in order to achieve maximum legibility):</p><p><pre class="programlisting">&lt;xsd:complexType name="PartyType"&gt;
+    &lt;xsd:sequence&gt;
+      &lt;xsd:element ref="PartyIdentification"
+       minOccurs="0" maxOccurs="unbounded"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="PartyName"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Address"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="PartyTaxScheme"
+       minOccurs="0" maxOccurs="unbounded"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Contact"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Language"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+    &lt;/xsd:sequence&gt;
+  &lt;/xsd:complexType&gt;</pre></p><div class="section" lang="en"><div class="titlepage"><div><h4 class="title"><a name="N1016F"></a>3.1.1.&nbsp;Extensions</h4></div></div><p>XSD extension is used when additional information must be added
+        to an existing UBL type. For example, a company might use a special
+        identification code in relation to certain parties. This code should
+        be included in addition to the standard information used in a Party
+        description (PartyName, Address, etc.) This can be achieved by
+        creating a new type that references the existing type and adds the new
+        information:</p><pre class="programlisting">        &lt;xsd:complexType name="MyPartyType"&gt;
+            &lt;xsd:extension base="cat:PartyType"&gt;
+                &lt;xsd:element ref="MyPartyID" minOccurs="1" maxOccurs="1"/&gt;
+               &lt;/xsd:element&gt;
+            &lt;/xsd:extension&gt;
+         &lt;/xsd:complexType&gt;</pre></div><div class="section" lang="en"><div class="titlepage"><div><h4 class="title"><a name="N10177"></a>3.1.2.&nbsp;Restrictions</h4></div></div><p>XSD restriction is used when information in an existing UBL type
+        must be constrained or taken away. For instance, the UBL
+        <tt class="literal">PartyType</tt> permits the inclusion of any number of
+        Party identifiers or none. If a specific organization wishes to allow
+        exactly one identifier, this is achieved as follows (note that the
+        annotation fields are removed from the type definition to make the
+        example more readable):</p><pre class="programlisting">&lt;xsd:complexType name="MyPartyType"&gt;
+    &lt;xsd:restriction base="cat:PartyType"&gt;
+     &lt;xsd:sequence&gt;
+      &lt;xsd:element ref="PartyIdentification"
+       minOccurs="1" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="PartyName"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Address"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="PartyTaxScheme"
+       minOccurs="0" maxOccurs="unbounded"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Contact"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Language"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+    &lt;/xsd:sequence&gt;
+   &lt;/xsd:restriction&gt;
+  &lt;/xsd:complexType&gt;</pre><p>Note that the entire content model of the base type, with the
+        appropriate changes, must be repeated when performing restriction.</p><p>A very important characteristic of XSD restriction is that it
+        can only work within the limits substitutability, that is, the
+        resulting type must still be valid in terms of the original type; in
+        other words, it must be a true subset of the original such that a
+        document that validates against the original can also validate against
+        the changed one. Thus:</p><div class="itemizedlist"><ul type="disc"><li><p>you can reduce the number of repetitions of an element (that
+            is, change its cardinality from 1..100 to 1..50, for instance)</p></li><li><p>you can eliminate an optional element (that is, change its
+            cardinality from 0..3 to 0..0)</p></li><li><p>you cannot eliminate a required element or make it optional
+            (that is, change its cardinality from 1..3 to 0..3)</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N10192"></a>3.2.&nbsp;Some observations on extensions and restrictions</h3></div></div><div class="itemizedlist"><ul type="disc"><li><p>Extensions and restrictions can be applied in any order to the
+          same Type; it is recommended, however, that they be applied close to
+          each other to improve understanding of the resulting schema.</p></li><li><p>Notice that derivation can be applied only to types and not to
+          elements that use those types. This is not a problem: UBL uses
+          explicit type definitions for all elements, in fact disallowing XSD
+          use of anonymous types that define a content model directly inside
+          an element declaration.</p></li><li><p>The derived type <tt class="literal">MyPartyType</tt> can be used
+          anywhere the original <tt class="literal">PartyType</tt> is allowed. The
+          instance document should use the xsi:type attribute to indicate that
+          a derived type is being used. This does not enforce the use of the
+          new type inside a given element, however, so an <tt class="literal">Order</tt>
+          instance could still be created using the standard UBL
+          <tt class="literal">PartyType</tt>. If the user wishes to require the use
+          of the derived type, blocking the possibility of using the original
+          type in an instance, a new derived type must be created from the
+          <tt class="literal">Order</tt> type using refinement and specifying that
+          the <tt class="literal">MyPartyType</tt> must used.</p></li><li><p>UBL defines global elements for all types, and these elements,
+          rather than the types themselves, are used in aggregate element
+          declarations. The same procedure can be used for derived types, so a
+          global <tt class="literal">MyParty</tt> element could be created based on
+          the <tt class="literal">MyPartyType</tt>.</p></li><li><p>All derived types should be created in a separate namespace
+          (which might be tied to the user organization) and reference the UBL
+          namespaces as appropriate, (see <a href="#namespaces" title="3.4.&nbsp;Use of namespaces">below</a>).</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="context"></a>3.3.&nbsp;Documenting the Customization</h3></div></div><p>Every time a derivation is performed on a UBL- or UBL-derived
+      schema, the context driver and the driver value used must be documented.
+      If this is not done, then <span class="emphasis"><em>by definition</em></span> the derived
+      Schema is not UBL-compliant.</p><p>Context is expressed using a set of name/value pairs (context
+      driver, driver value), where the names are one of a limited set of
+      context drivers established by the UBL TC on the basis of [<a href="#CCTS">CCTS</a>]:</p><div class="itemizedlist"><ul type="disc"><li><p>Business process</p></li><li><p>Official constraint</p></li><li><p>Product classification</p></li><li><p>Business process role</p></li><li><p>Industry classification</p></li><li><p>Supporting role</p></li><li><p>Geopolitical</p></li><li><p>System constraint</p></li></ul></div><p>There is no pre-set list of values for each driver. Users are free
+      at this point to use whatever codification they choose, but they should
+      be consistent; therefore while not obliged to do so, communities of
+      users are strongly encouraged to always use the same values for the same
+      context (that is, those who use "U.S.A" to indicate a country in
+      the North American Continent, should not intermix it with "US"
+      or "U.S." or "USA"). And if a particular standardized
+      codification is used, it should also be identified in the documentation.
+      (Some standard sets of values are provided in the CCTS specification.)</p><p>There is no predetermined order in which context drivers are
+      applied.</p><p>More than one context driver might be applied to various types
+      within the same set of schema extensions. Therefore, documentation at
+      the root level, although desirable, is not enough. Context should be
+      included within a <tt class="sgmltag-element">&lt;Context&gt;</tt> child of the
+      element <tt class="literal"><tt class="sgmltag-element">&lt;Contextualization&gt;</tt></tt>
+      (in the UBL namespace) inside the documentation for each customized
+      type, with the name of the context driver expressed as in the list
+      above, but using the provided elements within that element. For example,
+      if a type is to be used in the French apparel industry (shoes), the
+      Context documentation would appear as follows:</p><pre class="programlisting">&lt;xsd:annotation&gt;
+    &lt;xsd:documentation&gt;
+       &lt;ccts:Contextualization&gt;
+         &lt;ccts:Context&gt;
+            &lt;ccts:Geopolitical&gt;France&lt;/ccts:Geopolitical&gt;
+            &lt;ccts:IndustryClassification&gt;Apparel&lt;/ccts:IndustryClassification&gt;
+            &lt;ccts:ProductClassification&gt;Shoes&lt;/ccts:ProductClassification&gt;
+          &lt;/Context&gt;
+        &lt;/ccts:Contextualization&gt;
+    &lt;/xsd:documentation&gt;
+&lt;xsd:annotation&gt;</pre><p>The <tt class="sgmltag-element">&lt;Context&gt;</tt> element can be repeated,
+      once for each incremental change.</p><p>If a customization is made that does not fit into any of the
+      existing context drivers, it should be described in prose inside the
+      &lt;Context&gt; element:</p><pre class="programlisting">&lt;xsd:annotation&gt;
+    &lt;xsd:documentation&gt;
+      &lt;ccts:Contextualization&gt;
+        &lt;ccts:Context&gt;Used for jobs performed on weekends to specify 
+                     additional data required by the trade union&lt;/ccts:Context&gt;
+      &lt;/ccts:Contextualization&gt;
+    &lt;/xsd:documentation&gt;
+&lt;xsd:annotation&gt;</pre><p>For each of the context drivers (<tt class="literal">Geopolitical</tt>,
+      <tt class="literal">IndustryClassification</tt>, etc.) the following
+	  characteristics should also be specified with reference to its value (a later version will provide
+      the requisite attributes for doing so):</p><div class="itemizedlist"><ul type="disc"><li><p><tt class="literal">CodeListID</tt> - string: The identification of
+          a list of codes. Can be used to identify the URL of a source that
+          defines the set of currently approved permitted values.</p></li><li><p><tt class="literal">CodeListAgencyID</tt> - string: An agency that
+          maintains one or more code lists. Defaults to the UN/EDIFACT data
+          element 3055 code list.</p></li><li><p><tt class="literal">CodeListAgencyName</tt> - string: The name of
+          the agency that maintains the code list.</p></li><li><p><tt class="literal">CodeListName</tt> - string: The name of a list
+          of codes.</p></li><li><p><tt class="literal">CodeListVersionID</tt> - string: The Version of
+          the code list. Identifies the Version of the UN/EDIFACT data element
+          3055 code list.</p></li><li><p><tt class="literal">languageID</tt> - string: The identifier of the
+          language used in the corresponding text string [<a href="#ISO639">ISO639]</a></p></li><li><p><tt class="literal">CodeListUniformResourceID</tt> - string: The
+          Uniform Resource Identifier that identifies where the code list is
+          located.</p></li><li><p><tt class="literal">CodeListSchemeUniformResourceID</tt> - string:
+          The Uniform Resource Identifier that identifies where the code list
+          scheme is located.</p></li><li><p><tt class="literal">Content</tt>: A value or set of values taken
+          from the indicated code list or classification scheme.</p></li><li><p><tt class="literal">Name</tt>: The textual equivalent of the code
+          content.</p></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><h4 class="title"><a name="contextchains"></a>3.3.1.&nbsp;Context chains</h4></div></div><p>As mentioned in "<a href="#custofcust" title="2.3.&nbsp;Customization of customization">Customization of
+        Customization</a>", there is a risk that derivations may form
+        extremely long and unmanageable chains. In order to avoid this
+        problem, the Rule of Once-per-Context was formulated: no context can
+        be applied, at a given hierarchical level of that context, more than
+        once in a chain of derivations. Or, in other words, any given context
+        driver can be specialized, but not reset. Thus, if the Geopolitical
+        context driver with a value of "USA" has been applied to a
+        type, it is possible to apply it again with a value that is a subset,
+        or that occupies a hierarchically lower level than that of the
+        original value, like California or New York, but it cannot be applied
+        with a value equal or higher in the hierarchy, like Japan. In order to
+        use that latter value, one must go up the ladder of the customization
+        chain and derive the type from the same location as that from which
+        the original was derived.</p><div class="figure"><a name="N10261"></a><p class="title"><b>Figure&nbsp;2.&nbsp;Context Chains</b></p><div class="mediaobject"><img src="context-ph-3.jpg" alt="Context Chains"></div></div></div></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="namespaces"></a>3.4.&nbsp;Use of namespaces</h3></div></div><p>Every customized Schema or Schema module must have a namespace
+      name different from the original UBL one. This may have an upward-moving
+      ripple effect (a schema that includes a schema module that now has a
+
+      different namespace name must change its own namespace name, for
+      instance). However, it should be noted that all that has to change is
+      the local part of the namespace name, not the prefix, so that XPaths in
+      existing XSLT stylesheets, for instance, would not have to be changed
+      except inasmuch as a particular element or type has changed.</p><p>Although there is no constraint as to what namespace name should
+      be used for extensions, or what method should be used for constructing
+      it, it is recommended that the method be, where appropriate, the same as
+      the method specified in [<a href="#NDR">NDR</a>].</p></div></div><div class="section" lang="en"><div class="titlepage"><div><h2 class="title" style="clear: both"><a name="N10276"></a>4.&nbsp;Non-Compatible UBL Customization</h2></div></div><p>There are two important types of customization that XSD derivation
+    does not allow. The first can be summarized as the deletion of required
+    components (that is, the reduction of a component's cardinality from
+    x..y to 0..y). The second is the <span class="emphasis"><em>ad hoc</em></span> location of
+    an addition to a content model. There may be some cases where the user
+    needs a different location for the addition than the one allowed by XSD
+    extension, which is at the end of a sequence.</p><p>Because XSD derivation does not allow these types of customization,
+    any attempts at enabling them (which in some cases simply mean rewriting
+    the schema with the desired changes as a different schema in a different,
+    non-UBL namespace) must by necessity produce results that are not UBL
+    compatible. However, in order to allow users to customize their schemas in
+    a UBL-friendly manner, the notion of an Ur-schema was invented: for each
+    UBL Schema, a theoretical Ur-schema exists in which all elements are
+    optional and all types are abstract. The use of abstract types is
+    necessary because an Ur-type can never be used as is; a derived type must
+    be created, as per the definition of abstract types in the XSD
+    specification.</p><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N10280"></a>4.1.&nbsp;Use of Ur-Types</h3></div></div><p>XSD derivation is sufficient for most cases, but as mentioned
+      above, in some instances it may be necessary to perform changes to the
+      UBL types that are not handled by standard mechanisms. In this case, the
+      UBL Ur-types should be used. An Ur-type exists for each UBL standard
+      type and differs only in that all elements in the content model are
+      optional, including elements that are required in the standard type. By
+      using the Ur-type, the user can therefore make modifications, such as
+      eliminating a required field, that would not be possible using XSD
+      derivation on the standard type.</p><p>For instance, suppose an organization would like to use the UBL
+      <tt class="literal">PartyType,</tt> but does not want to use the required ID
+      element. In this case, normal XSD refinement is used, but on the Ur-type
+      rather than the standard type:</p><pre class="programlisting">&lt;xsd:complexType name="MyPartyType"&gt;
+    &lt;xsd:restriction base="ur:PartyType"&gt;
+     &lt;xsd:sequence&gt;
+      &lt;xsd:element ref="PartyIdentification"
+       minOccurs="0" maxOccurs="0"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="PartyName"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Address"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="PartyTaxScheme"
+       minOccurs="0" maxOccurs="unbounded"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Contact"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+      &lt;xsd:element ref="Language"
+       minOccurs="0" maxOccurs="1"&gt;
+      &lt;/xsd:element&gt;
+    &lt;/xsd:sequence&gt;
+   &lt;/xsd:restriction&gt;
+  &lt;/xsd:complexType&gt;</pre><p>The new type is no longer compatible with the UBL
+      <tt class="literal">PartyType</tt>, so standard processing engines that know
+      about XSD derivation will not recognize the type relationship. However,
+      some level of interoperability is still preserved, since both UBL
+      <tt class="literal">PartyType</tt> and <tt class="literal">MyPartyType</tt> are
+      derived from the <tt class="literal">PartyType</tt> Ur-type. If this
+      additional flexibility is required, a processor can be implemented to
+      use the Ur-type rather than the UBL type. It will then be able to
+      process both the UBL type and the custom type, since they have a common
+      ancestor in the Ur-type (at the expense, of course, of an added level of
+      complexity in the implementation of the processor).</p><div class="figure"><a name="N102A0"></a><p class="title"><b>Figure&nbsp;3.&nbsp;The UR-Library and the Customization Flow</b></p><div class="mediaobject"><img src="customizing-circles-ur.jpg" alt="The UR-Library and the Customization Flow"></div></div><p>Changes to the Ur-type do not enforce changes in the enclosing
+      type, so the UBL <tt class="literal">OrderType</tt> has to be changed as well
+      if the user organization wants to ensure that only the new
+      <tt class="literal">MyPartyType</tt> is used. In fact, the new
+      <tt class="literal">OrderType</tt> will not be compatible with the UBL
+      <tt class="literal">OrderType,</tt> since <tt class="literal">MyPartyType</tt> is no
+      longer derived from UBL's PartyType. However, the new
+      <tt class="literal">OrderType</tt> can be derived from the <tt class="literal">OrderType</tt>
+      Ur-type to achieve maximum interoperability.</p><p>A schema containing both compatible and non-compatible
+      customizations is considered non-compatible.</p></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N102C8"></a>4.2.&nbsp;Building New Types Using Core Components</h3></div></div><p>Sometimes no type can be found in the UBL library or Ur-type
+      library that can be used as the basis for a new type. In this case,
+      maximum interoperability (though not compatibility) can be achieved by
+      building up the new type using types from the core component library
+      that underlies UBL. (See <a href="#UseofTypeLib" title="5.&nbsp;Customization of Codelists">below</a>)</p><p>For example, suppose a user organization needs to include a
+      specialized product description inside business documents. This
+      description includes a unique ID, a name, and the storage capacity of
+      the product expressed as an amount. The type definition would then
+      appear as follows:</p><pre class="programlisting">&lt;xsd:complexType name="ProductDescriptionType"&gt;
+        &lt;xsd:sequence&gt;
+                &lt;xsd:element name="ID" type="cct:IdentifierType"/&gt;
+                &lt;xsd:element name="Name" type="cct:NameType"/&gt;
+                &lt;xsd:element name="Capacity" type="cct:AmountType"/&gt;
+        &lt;/xsd:sequence&gt;
+&lt;/xsd:complexType&gt;</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The above example should belong to a clearly non-UBL namespace.</p></div><p>All new names defined when creating custom types from scratch
+      should also conform to the UBL Naming and Design Rules [<a href="#NDR">NDR</a>].</p></div></div><div class="section" lang="en"><div class="titlepage"><div><h2 class="title" style="clear: both"><a name="UseofTypeLib"></a>5.&nbsp;Customization of Codelists</h2></div></div><p>The guidelines presented in this document do not include the
+    customization of Codelists. It is expected that this topic will be
+    addressed in UBL 1.1.</p></div><div class="section" lang="en"><div class="titlepage"><div><h2 class="title" style="clear: both"><a name="N102E5"></a>6.&nbsp;Use of the UBL Type Library in Customization</h2></div></div><p>UBL provides a large selection of types which can be extended and
+    refined as described in the preceding sections. However, the internal
+    structure of the UBL type library needs to be understood and respected by
+    those doing customizations. UBL is based on the concept of compatible
+    reuse where possible, and there are cases where it would be possible to
+    extend different types within the library to achieve the same end. This
+    section discusses the specifics of how namespaces should be imported into
+    a customizer's namespace and the preference of types for specific
+    extension or restriction. What follows applies equally to UBL-compatible
+    and UBL-non-compatible extensions.</p><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N102EA"></a>6.1.&nbsp;The Structure of the UBL Type Library</h3></div></div><p>The UBL type library is modeled and documented as part of the
+      standard; what is provided here is a brief overview from the perspective
+      of the customizer.</p><p>Within the UBL type library is an implicit hierarchy, structured
+      according to the rules provided by the UBL Naming and Design Rules. When
+      customizing UBL document types, the top level of the hierarchy is
+      represented by a specific business document. The business document
+      schema instances are found inside the control schema modules, which
+      consist of a global element declaration and a complex type declaraion
+      (referenced by the global element declaration) for the document type.
+      Also within these control schema modules are imports of the other UBL
+      namespaces used (termed "external schema modules"), and possibly
+      includes of schema instances specific to that module (termed
+      "internal schema modules"). The control schema modules import
+      the <span class="emphasis"><em>Common Aggregate Components (CAC)</em></span> and
+      <span class="emphasis"><em>Common Basic Components (CBC)</em></span> namespaces, which
+      include global element and type declarations for all of the reusable
+      constructs within UBL. These namespace packages in turn import the
+      <span class="emphasis"><em>Specialized Datatype</em></span> and <span class="emphasis"><em>Unspecialized
+      Datatype</em></span> namespaces, which include declarations for the
+      constructs which describe the basic business uses for data-containing
+      elements. These namespaces in turn import the CCT namespace, which
+      provides the primitives from which the UBL library is built.</p><p>This hierarchy underlying the UBL library provides a
+      type-intensive environment for the customizer. The basic structure is
+      one of semantic qualification: as you move from the modeling primitives
+      (CCTs) and go up the hierarchy toward the business documents, the
+      semantics at each level become more and more completely qualified. This
+      fact provides the fundamental guidance for using these types in
+      customizations, as discussed more fully below.</p></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N10300"></a>6.2.&nbsp;Importing UBL Schema Modules</h3></div></div><p>UBL schema modules are included for use in a customization through
+      the importation of their namespaces. Before extending or refining a
+      type, you must import the namespace in which that type is found directly
+      into the customizing namespace. While inclusion may be used to express
+      internal packaging of multiple schema instances within a
+      customizer's namespace, the include mechanism should never be used
+      to reference the UBL type library.</p><p>The UBL Naming and Design Rules provides a mechanism whereby each
+      schema module made up of more than a single schema instance has a
+      "control" schema instance that performs all of the imports for
+      that namespace. Customizers should follow this same pattern, since their
+      customizations may well be further customized along the lines described
+      above. In the same vein, when a UBL document type is imported, it should
+      be the control schema module for that document type which is imported,
+      bringing in all of the doctype-specific constructs, whether in the
+      control schema instance for that namespace or one of the
+      "internal" schema instances.</p></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N10307"></a>6.3.&nbsp;Selecting Modules to Import</h3></div></div><p>In many cases, the customizer will have no choice about importing
+      or not importing a specific module: if the customizer needs to extend
+      the document-type-level complex type, there is only a single choice: the
+      control schema for the document type must be imported. Not all cases are
+      so clear, however. When creating lower-level elements, by extending the
+      types found in the <span class="emphasis"><em>CAC</em></span> and <span class="emphasis"><em>CBC</em></span>
+      namespaces (for example), it is possible to either extend a provided
+
+      type, or to build up a new one from the types available within the
+      <span class="emphasis"><em>Specialized Datatypes</em></span> and <span class="emphasis"><em>Unspecialized
+      Datatypes</em></span> namespace packages.</p><p>UBL compatible customization always involves reuse at the highest
+      possible level within the hierarchy described here. Thus, it is always
+      best to reuse an existing type from a higher-level construct than to
+      build up a new type from a lower-level one. Whenever faced with a choice
+      about how to proceed with a customization, you should always determine
+      if there is a customizable type within the <span class="emphasis"><em>CAC</em></span> or
+      <span class="emphasis"><em>CBC</em></span> before going to the Datatype namespace
+      packages. This rule further applies to the use of the datatype
+      namespaces: never go directly to the CCT namespace to create a type if
+      something is available for extension or refinement within the datatype
+      namespaces. By the same token, it is always preferable to extend a
+      complex datatype than to create something with reference to an XSD
+      primitive datatype, or a custom simple type.</p><p>It is important to bear in mind that the structure of the UBL
+      library is based around the ideas of semantic qualification and reuse.
+      You should never introduce semantic redundancy into a customized
+      document based on UBL. You should always further qualify existing
+      semantics if at all possible.</p></div><div class="section" lang="en"><div class="titlepage"><div><h3 class="title"><a name="N10322"></a>6.4.&nbsp;Creating New Document Types with the UBL Type Library</h3></div></div><p>UBL provides many useful document types for customization, but for
+      some business processes, the needed document types will not be present.
+      When creating a new document type, it is recommended that they be
+      structured as similarly as possible to existing documents, in accordance
+
+      with the rules in the UBL NDR. The basic structure can easily be seen in
+      an examination of the existing document types. What is not so obvious is
+      the approach to the use of types. This approach should be to use the
+      types provided in the <span class="emphasis"><em>CAC</em></span> and <span class="emphasis"><em>CBC</em></span>
+      primarily, and only then go to the Datatypes namespace packages.</p></div></div><div class="section" lang="en"><div class="titlepage"><div><h2 class="title" style="clear: both"><a name="N1032D"></a>7.&nbsp;Future Directions</h2></div></div><p>Phase II of Context Methodology development will include a context
+    extension method to enable automatic customization of UBL types based on
+    context. This methodology will work through a formal specification of the
+    reasons for customizing the type, i.e., the context driver and its value.
+    By expressing the context formally and specifying rules for customizing
+    types based on this context, most of the changes that need to be made to
+    UBL in order for it to fit in a given usage environment can be generated
+    by an engine rather than performed manually. In addition, significant new
+    flexibility may be gained, since rules from two complementary contexts
+    could perhaps be applied simultaneously, yielding types appropriate for,
+    say, the automobile industry and the French geopolitical entity, with the
+    appropriate documentation and context chain produced at the same time.</p><p>UBL has not yet progressed to this stage of development. For now,
+    one of the main goals of the UBL Context Methodology Subcommittee is to
+    gather as many use cases as possible to determine what types of
+    customizations are performed in the real world, and on what basis. Another
+    important goal is to ensure that types derived at this point from UBL 1.0
+    can be still used later on, intermixed with types derived automatically in
+    the future.</p></div><div class="appendix" lang="en"><h2 class="title" style="clear: both"><a name="a.notices"></a>A.&nbsp;Notices</h2><p>Copyright &copy; The Organization for the Advancement of Structured
+    Information Standards [OASIS] 2003, 2004. All Rights Reserved.</p><p>OASIS takes no position regarding the validity or scope of any
+    intellectual property or other rights that might be claimed to pertain to
+    the implementation or use of the technology described in this document or
+    the extent to which any license under such rights might or might not be
+    available; neither does it represent that it has made any effort to
+    identify any such rights. Information on OASIS's procedures with
+    respect to rights in OASIS specifications can be found at the OASIS
+    website. Copies of claims of rights made available for publication and any
+    assurances of licenses to be made available, or the result of an attempt
+    made to obtain a general license or permission for the use of such
+    proprietary rights by implementors or users of this specification, can be
+    obtained from the OASIS Executive Director.</p><p>OASIS invites any interested party to bring to its attention any
+    copyrights, patents or patent applications, or other proprietary rights
+    which may cover technology that may be required to implement this
+    specification. Please address the information to the OASIS Executive
+    Director.</p><p>This document and translations of it may be copied and furnished to
+    others, and derivative works that comment on or otherwise explain it or
+    assist in its implementation may be prepared, copied, published and
+    distributed, in whole or in part, without restriction of any kind,
+    provided that the above copyright notice and this paragraph are included
+    on all such copies and derivative works. However, this document itself may
+    not be modified in any way, such as by removing the copyright notice or
+    references to OASIS, except as needed for the purpose of developing OASIS
+    specifications, in which case the procedures for copyrights defined in the
+    OASIS Intellectual Property Rights document must be followed, or as
+    required to translate it into languages other than English.</p><p>The limited permissions granted above are perpetual and will not be
+    revoked by OASIS or its successors or assigns.</p><p>This document and the information contained herein is provided on an
+    "<span class="quote">AS IS</span>" basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE
+    INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES
+    OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.</p></div><div class="appendix" lang="en"><h2 class="title" style="clear: both"><a name="a.ipr"></a>B.&nbsp;Intellectual Property Rights</h2><p>For information on whether any patents have been disclosed that may
+    be essential to implementing this specification, and any offers of patent
+    licensing terms, please refer to the <a href="http://www.oasis-open.org/committees/ubl/ipr.php" target="_top">Intellectual
+    Property Rights</a> section of the UBL TC site.</p></div><div class="bibliography"><div class="titlepage"><div><h2 class="title"><a name="bibl"></a>References</h2></div></div><div class="bibliodiv"><div class="bibliomixed"><a name="rfc2119"></a><p class="bibliomixed">[<span class="abbrev">RFC 2119</span>] S. Bradner.
+      <span class="citetitle"><i class="citetitle"><a href="http://www.ietf.org/rfc/rfc2119.txt" target="_top">RFC 2119:
+      Key words for use in RFCs to Indicate Requirement Levels</a></i></span>.
+      IETF (Internet Engineering Task Force). 1997.</p></div><div class="bibliomixed"><a name="CHARTER"></a><p class="bibliomixed">[<span class="abbrev">CHARTER </span>] <span class="citetitle"><i class="citetitle"><a href="http://www.oasis-open.org/committees/ubl/charter.php" target="_top">Charter of
+      the UBL TC</a></i></span></p></div><div class="bibliomixed"><a name="CCTS"></a><p class="bibliomixed">[<span class="abbrev">CCTS </span>] <span class="citetitle"><i class="citetitle"><a href="http://www.untmg.org/downloads/General/approved/CEFACT-CCTS-Version-2pt01.zip" target="_top">UN/CEFACT
+      ebXML Core Components Technical Specification 2.01</a></i></span></p></div><div class="bibliomixed"><a name="ebCCDOC"></a><p class="bibliomixed">[<span class="abbrev">ebCCDOC </span>] <span class="citetitle"><i class="citetitle"><a href="http://ebxml.org/specs/ebCCDOC.pdf" target="_top">Document Assembly and Context
+      Rules v1.04 </a></i></span>ebXML Core Component Project Team, 2001.</p></div><div class="bibliomixed"><a name="EDIFACT"></a><p class="bibliomixed">[<span class="abbrev">EDIFACT </span>] <span class="citetitle"><i class="citetitle"><a href="http://www.unece.org/trade/untdid/welcome.htm" target="_top"> United Nations
+      Directories for Electronic Data Interchange for Administration, Commerce
+      and Transport</a></i></span></p></div><div class="bibliomixed"><a name="ISO639"></a><p class="bibliomixed">[<span class="abbrev">ISO639 </span>] <span class="title"><a href="http://www.iso.ch/iso/en/StandardsQueryFormHandler.StandardsQueryFormHandler?languageCode=en&keyword=&lastSearch=false&title=true&isoNumber=639&isoPartNumber=&isoDocType=ALL&ICS=&stageCode=&stageDate=&committee=ALL&subcommittee=&scope=CATALOGUE&sortOrder=ISO" target="_top">
+      ISO 639:1998, Language Codes</a></span></p></div><div class="bibliomixed"><a name="NDR"></a><p class="bibliomixed">[<span class="abbrev">NDR </span>] <span class="title">UBL 1.0 Naming and
+      Design Rules.</span></p></div><div class="bibliomixed"><a name="NDRSC"></a><p class="bibliomixed">[<span class="abbrev">NDRSC </span>] <span class="citetitle"><i class="citetitle"><a href="http://www.oasis-open.org/committees/sc_home.php?wg_abbrev=ubl-ndrsc" target="_top">UBL
+      Naming and Design Rules Subcommittee.</a></i></span></p></div><div class="bibliomixed"><a name="W3C"></a><p class="bibliomixed">[<span class="abbrev">W3C </span>] <span class="citetitle"><i class="citetitle"><a href="http://w3.org" target="_top">Worl Wide Web Consortium</a></i></span></p></div><div class="bibliomixed"><a name="X12"></a><p class="bibliomixed">[<span class="abbrev">X12 </span>] <span class="citetitle"><i class="citetitle"><a href="http://www.x12.org/x12org" target="_top">ANSI X12 Component Libraries</a></i></span></p></div><div class="bibliomixed"><a name="XSD"></a><p class="bibliomixed">[<span class="abbrev">XSD </span>] <span class="citetitle"><i class="citetitle"><a href="http://www.w3.org/TR/xmlschema-1/" target="_top">XML Schema Part 1: Structures</a>
+      and <a href="http://www.w3.org/TR/xmlschema-2/" target="_top">XML Schema Part 2:
+      Datatypes</a></i></span>. W3C Recommendations, 2 May 2001</p></div></div></div></div></body></html>

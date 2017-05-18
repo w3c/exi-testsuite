@@ -1,0 +1,26 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Simple Type">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | simpleTypeGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#simpleTypeGrammars"/>
+
+    <testCase name="schemaInformed.declared.simpleType-01">
+        <param name="testDescription"  value="Use of CH in Simple Type Grammar where CH matches a non-empty string"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/simpleType-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.simpleType-02">
+        <param name="testDescription"  value="Use of CH in Simple Type Grammar where CH matches an empty string"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/simpleType-02.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.simpleType-03">
+        <param name="testDescription"  value="Use of TypeEmpty in Simple Type Grammar"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/simpleType-03.xml" />
+    </testCase>
+
+</testCaseGroup>

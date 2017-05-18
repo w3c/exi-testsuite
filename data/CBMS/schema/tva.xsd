@@ -1,0 +1,195 @@
+<schema targetNamespace="urn:tva:metadata:2005" 
+xmlns:tva="urn:tva:metadata:2005" 
+xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:mpeg7="urn:mpeg:mpeg7:schema:2001" 
+elementFormDefault="qualified" 
+attributeFormDefault="unqualified">
+
+	<import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+	<import namespace="urn:mpeg:mpeg7:schema:2001" schemaLocation="mpeg7.xsd"/>
+
+	<complexType name="ServiceInformationNameType">
+		<simpleContent>
+			<extension base="mpeg7:TextualType">
+				<attribute name="length" type="tva:ServiceInformationNameLengthType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="ServiceInformationNameLengthType">
+		<restriction base="string">
+			<enumeration value="short"/>
+			<enumeration value="medium"/>
+			<enumeration value="long"/>
+		</restriction>
+	</simpleType>
+	<complexType name="SynopsisType">
+		<simpleContent>
+			<extension base="mpeg7:TextualType">
+				<attribute name="length" type="tva:SynopsisLengthType" use="prohibited"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="SynopsisLengthType">
+		<restriction base="string">
+			<enumeration value="short"/>
+			<enumeration value="medium"/>
+			<enumeration value="long"/>
+		</restriction>
+	</simpleType>
+	<complexType name="GenreType">
+		<complexContent>
+			<extension base="tva:ControlledTermType">
+				<attribute name="type" use="optional" default="main">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="main"/>
+							<enumeration value="secondary"/>
+							<enumeration value="other"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="KeywordType">
+		<simpleContent>
+			<extension base="mpeg7:TextualType">
+				<attribute name="type" use="optional" default="main">
+					<simpleType>
+							<restriction base="NMTOKEN">
+								<enumeration value="main"/>
+								<enumeration value="secondary"/>
+								<enumeration value="other"/>
+							</restriction>
+					</simpleType>
+				</attribute>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ControlledTermType">
+		<sequence>
+			<element name="Name" type="tva:TermNameType" minOccurs="0"/>
+			<element name="Definition" type="mpeg7:TextualType" minOccurs="0"/>
+		</sequence>
+		<attribute name="href" type="mpeg7:termReferenceType" use="required"/>
+	</complexType>
+
+	<complexType name="TermNameType">
+		<simpleContent>
+			<extension base="mpeg7:TextualType">
+				<attribute name="preferred" type="boolean" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="CaptionLanguageType" >
+		<simpleContent>
+			<extension base="language">
+				<attribute name="closed" type="boolean" use="optional" default="true"/>
+				<attribute name="supplemental" type="boolean" use="optional" default="false"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<complexType name="SignLanguageType" >
+		<simpleContent>
+			<extension base="language">
+				<attribute name="primary" type="boolean" use="optional"/>
+				<attribute name="translation" type="boolean" use="optional"/>
+				<attribute name="type" type="string" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<simpleType name="TVAIDType">
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+		</restriction>
+	</simpleType>
+	<complexType name="ClassificationSchemeTableType">
+		<sequence>
+			<element name="CSAlias" type="tva:CSAliasType" minOccurs="0" maxOccurs="unbounded" />
+			<element name="ClassificationScheme" type="tva:ClassificationSchemeType" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="CSAliasType" >
+		<complexContent>
+			<extension base="mpeg7:ClassificationSchemeAliasType">
+				<attributeGroup ref="tva:fragmentIdentification"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ClassificationSchemeType" >
+		<complexContent>
+			<extension base="mpeg7:ClassificationSchemeType">
+				<attributeGroup ref="tva:fragmentIdentification"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<attributeGroup name="fragmentIdentification">
+		<attribute name="fragmentId" type="tva:TVAIDType" use="optional"/>
+		<attribute name="fragmentVersion" type="unsignedLong" use="optional"/>
+	</attributeGroup>
+
+	<complexType name="CreditsItemType">
+		<complexContent>
+			<extension base="tva:TVAAgentType">
+				<sequence>
+					<element name="Character" type="mpeg7:PersonNameType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute name="role" type="mpeg7:termReferenceType" use="required"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="CreditsListType">
+		<sequence>
+			<element name="CreditsItem" type="tva:CreditsItemType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType name="TVAAgentType">
+		<sequence>
+			<choice minOccurs="0" maxOccurs="unbounded">
+				<element name="PersonName" type="mpeg7:PersonNameType"/>
+				<element name="PersonNameIDRef">
+					<complexType>
+						<attribute name="ref" type="tva:TVAIDRefType" use="required"/>
+					</complexType>
+				</element>
+				<element name="OrganizationName" type="mpeg7:TextualType"/>
+				<element name="OrganizationNameIDRef">
+					<complexType>
+						<attribute name="ref" type="tva:TVAIDRefType" use="required"/>
+					</complexType>
+				</element>
+			</choice>
+		</sequence>
+	</complexType>
+	<simpleType name="TVAIDRefType">
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+		</restriction>
+	</simpleType>
+	<complexType name="FlagType">
+		<attribute name="value" type="boolean" use="required"/>
+	</complexType>
+
+	<complexType name="BitRateType">
+		<simpleContent>
+			<extension base="nonNegativeInteger">
+				<attribute name="variable" type="boolean" use="optional" default="false"/>
+				<attribute name="minimum" type="unsignedLong" use="optional"/>
+				<attribute name="average" type="unsignedLong" use="optional"/>
+				<attribute name="maximum" type="unsignedLong" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	
+	<simpleType name="FrameRateType">
+		<restriction base="string">
+			<pattern value="([0-9]{1,3}(.[0-9]{1,3})?)|([0-9]{1,3}/1.001)"/>
+		</restriction>
+	</simpleType>
+</schema>

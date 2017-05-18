@@ -1,0 +1,16 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Preserve tests">
+
+    <param name="groupId" value="${groupId} | preserve"/> 
+
+    <!-- built-in document tests -->
+    <xi:include href="preserve/preserveBuiltInDocument.xml"/>
+    <!-- built-in element tests -->
+    <xi:include href="preserve/preserveBuiltInElement.xml"/>
+    <!-- schema-informed document tests -->
+    <xi:include href="preserve/preserveSchemaInformedDocument.xml"/>
+    <!-- schema-informed element tests -->
+    <xi:include href="preserve/preserveSchemaInformedElement.xml"/>
+    <!-- lexical values -->
+    <xi:include href="preserve/preserveLexicalValue.xml"/>
+</testCaseGroup>

@@ -1,0 +1,1600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by Diane M. Howard (The MITRE Corporation) -->
+<xsd:schema xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cc="http://diides.ncr.disa.mil/xmlreg/GEO" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://diides.ncr.disa.mil/xmlreg/GEO" schemaLocation="FIPS10-4CountryCodes.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<xsd:documentation>
+				****************************************************************************************** 
+				<SchemaInformation>
+					<FileName>GMTIGlobals.xsd</FileName>
+					<Purpose>Describes all Global SimpleType values used in the main schema file GMTI.xsd</Purpose>
+					<SchemaVersion>NATO Ground Moving Target Indicator Format schema. GMTI 1.0, 2002-05-01</SchemaVersion>
+					<RevisionDate>11 Sept 2006</RevisionDate>
+					<SchemaSource>Based on Stanag 4607, edition 1, version 1, Ratification draft 1</SchemaSource>
+					<DTDInfo>TBD</DTDInfo>
+					<SponsoringProgramOffice>ESC (ISR SG) - DCGS program office</SponsoringProgramOffice>
+					<OwnershipInformation>
+						<OrganizationName>The MITRE Corporation</OrganizationName>
+						<Address>202 Burlington Road</Address>
+						<Address>Bedford, Massachusetts</Address>
+						<ZipCode>01730</ZipCode>
+						<PublicReleaseStatement>Approved for Public Release; Distribution Unlimited</PublicReleaseStatement>
+						<PublicReleaseCaseNumber>03-0663</PublicReleaseCaseNumber>
+						<CopyrightsNotice> 2003 The MITRE Corporation</CopyrightsNotice>
+						<Developer>Diane M. Howard, The MITRE Corporation</Developer>
+					</OwnershipInformation>
+					<SchemaComments>
+						1.  File is secondary schema to GMTI.xsd containing all Global Simple Type values.
+						2.  SimpleType values are ordered in file:
+							If attribute contains numeric in name field, ordered smallest to largest by data range values.
+							If attribute contains alphacharacters in name field, ordered alphabetically. 
+						3.   Since XML does not recognize a FormFeed char, a simpleType definition will be derived for this to
+						      maintain the STANAG 4607's representation of FormFeed as defined in the Basic Character Set, 
+						      Appendix A.
+							Note: The FormFeed field needs to be added into the schema
+					    4.   Changes: 
+						BCSStringLength65515.Type to stringLength-65515  (GMTIGlobals.xsd)
+						complexcontent to:simpleContent                                (GMTI.xsd)
+						__32-4294967295 to:  __0-4294967295                     (GMTIGlobals.xsd)
+						set SegmentSize = 0                                                    (GMTIGlobals.xsd)
+						ExistenceMask.Type changed to:                        		 (GMTIGlobals.xsd)
+						       maxLength="64", pattern value="[0-1]*"
+                                                                                                                       9-11-2006 dhoward
+					</SchemaComments>
+				</SchemaInformation>
+				******************************************************************************************
+			</xsd:documentation>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:simpleType name="_-1000-10000">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="-1000"/>
+			<xsd:maxInclusive value="10000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_-10000-8000000">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="-10000"/>
+			<xsd:maxInclusive value="8000000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_-10000-2000000000">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="-10000"/>
+			<xsd:maxInclusive value="2000000000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_-360-359.999999916">
+		<xsd:restriction base="xsd:float">
+			<xsd:minInclusive value="-360"/>
+			<xsd:maxInclusive value="359.999999916"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_-90-89.9973">
+		<xsd:restriction base="xsd:float">
+			<xsd:minInclusive value="-90"/>
+			<xsd:maxInclusive value="89.9973"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_-90-89.999989">
+		<xsd:restriction base="xsd:float">
+			<xsd:minInclusive value="-90"/>
+			<xsd:maxInclusive value="89.999989"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_-90-89.999999958">
+		<xsd:restriction base="xsd:float">
+			<xsd:minInclusive value="-90"/>
+			<xsd:maxInclusive value="89.999999958"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_.0001-255">
+		<xsd:restriction base="xsd:float">
+			<xsd:minInclusive value=".0001"/>
+			<xsd:maxInclusive value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-1">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-2">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-23">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:maxInclusive value="23"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-45">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:maxInclusive value="45"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-59">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:maxInclusive value="59"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-99">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:maxInclusive value="99"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-100">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:maxInclusive value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-180">
+		<xsd:restriction base="xsd:float">
+			<xsd:maxInclusive value="180"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-255.9928">
+		<xsd:restriction base="xsd:float">
+			<xsd:maxInclusive value="255.9928"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-359.999999916">
+		<xsd:restriction base="xsd:float">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="359.999999916"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-359.999979">
+		<xsd:restriction base="xsd:float">
+			<xsd:maxInclusive value="359.999979"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-359.9945">
+		<xsd:restriction base="xsd:float">
+			<xsd:maxInclusive value="359.9945"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-5000">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:maxInclusive value="5000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-10000">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:maxInclusive value="10000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-20000">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:maxInclusive value="20000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-65535">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="65535"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-1000000">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:maxInclusive value="1000000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-8000000">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:maxInclusive value="8000000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-16777215">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:maxInclusive value="16777215"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-4000000000">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:maxInclusive value="4000000000"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_1-12">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="12"/>
+			<xsd:pattern value="[0-9]{1,2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_1-31">
+		<xsd:restriction base="xsd:integer">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="31"/>
+			<xsd:pattern value="[0-9]{1,2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_1-99">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="99"/>
+			<xsd:pattern value="[0]{1}"/>
+			<xsd:pattern value="[1-99]{1,2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_1-255">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_1-65535">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="1"/>
+			<xsd:maxInclusive value="65535"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_9-125">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="9"/>
+			<xsd:maxInclusive value="125"/>
+			<xsd:pattern value="[0-9]{1,3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_0-4294967295">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+		<!-- updated 8/18 dhoward from _32-4294967295 & changed minIclusive = 0 -->
+	</xsd:simpleType>
+	<xsd:simpleType name="_255">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:pattern value="[255]{1,3}"/>
+			<xsd:enumeration value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="_65535">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:pattern value="[65535]{1,5}"/>
+			<xsd:enumeration value="65535"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BlankPatternof2Spaces.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[&#x20;]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BlankPatternof10Spaces.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[&#x20;]{10}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BlankPatternof12Spaces.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[&#x20;]{12}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BCSStringLength6.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="6"/>
+			<xsd:pattern value="[A-Za-z0-9&#x20;\.,\(\)\?\-!@#$%\^&amp;\*=_\+\[\]\{\}\\&quot;';&gt;&lt;~`\|a-z\t]{1,6}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BCSStringLength10.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+			<xsd:pattern value="[A-Za-z0-9&#x20;\.,\(\)\?\-!@#$%\^&amp;\*=_\+\[\]\{\}\\&quot;';&gt;&lt;~`\|a-z\t]{1,10}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BCSStringLength12.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="12"/>
+			<xsd:pattern value="[A-Za-z0-9&#x20;\.,\(\)\?\-!@#$%\^&amp;\*=_\+\[\]\{\}\\&quot;';&gt;&lt;~`\|a-z\t]{1,12}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ClassificationLevels.Type">
+		<xsd:restriction base="xsd:integer">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<classification>TOP SECRET</classification>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<classification>SECRET</classification>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<classification>CONFIDENTIAL</classification>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<classification>RESTRICTED</classification>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<classification>UNCLASSIFIED</classification>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<classification>NO CLASSIFICATION</classification>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ClassificationSystem.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="BE"/>
+			<xsd:enumeration value="CA"/>
+			<xsd:enumeration value="DA"/>
+			<xsd:enumeration value="FR"/>
+			<xsd:enumeration value="GM"/>
+			<xsd:enumeration value="GR"/>
+			<xsd:enumeration value="IS"/>
+			<xsd:enumeration value="IT"/>
+			<xsd:enumeration value="LU"/>
+			<xsd:enumeration value="NL"/>
+			<xsd:enumeration value="NO"/>
+			<xsd:enumeration value="PO"/>
+			<xsd:enumeration value="SP"/>
+			<xsd:enumeration value="TR"/>
+			<xsd:enumeration value="GB"/>
+			<xsd:enumeration value="US"/>
+			<xsd:enumeration value="NS">
+				<xsd:annotation>
+					<xsd:documentation>NATO Security System</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExcerciseIndicatorDefinitions">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<ExcerciseIndicatorValue>Operation, Real Data</ExcerciseIndicatorValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<ExcerciseIndicatorValue>Operation, Simulated Data</ExcerciseIndicatorValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<ExcerciseIndicatorValue>Operation, Synthesized Data</ExcerciseIndicatorValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="128">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<ExcerciseIndicatorValue>Exercise, Real Data</ExcerciseIndicatorValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="129">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<ExcerciseIndicatorValue>Exercise, Simulated Data</ExcerciseIndicatorValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="130">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<ExcerciseIndicatorValue>Exercise, Synthesized Data</ExcerciseIndicatorValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExistenceMask.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="64"/>
+		 	<xsd:pattern value="[0-1]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="GeoidModelUsedDefinitions">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<GeoidModelValue>None Specified</GeoidModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<GeoidModelValue>EGM96 (Earth Gravitational Model, Version 1996)</GeoidModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<GeoidModelValue>GEO96 (Geoid Gravitational Model, Version 1996)</GeoidModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<GeoidModelValue>Flat Earth</GeoidModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="HardwareorModeStatus.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="8"/>
+			<xsd:pattern value="[0-1]{1,8}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NATOPlatformCode.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="NA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<NATOPlatformCode>NATO Platform</NATOPlatformCode>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NumberofTargetScatterers.type">
+		<xsd:restriction base="xsd:unsignedShort">
+			<xsd:minInclusive value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PlatformTypeDefinitions">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>Unidentified</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>ACS</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>ARL-M</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>ASTOR</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>CRESO</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>Global Hawk</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>HORIZON</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>E-8 (Joint STARS)</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>P-3C</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>Predator</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>RADARSAT2</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>U-2</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<PlatformTypeValue>MC2A</PlatformTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RadarModeDefinitions">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Unspecified</RadarModeValue>
+						<System>Generic</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>MTI (Moving Target Indicator)</RadarModeValue>
+						<System>Generic</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>HRR (High Range Resolution)</RadarModeValue>
+						<System>Generic</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>UHRR (Ultra High Range Resolution)</RadarModeValue>
+						<System>Generic</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>HUR (High Update Rate)</RadarModeValue>
+						<System>Generic</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>FTI</RadarModeValue>
+						<System>Generic</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Attack Control - SATC</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Attack Control - SATC</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>SATC</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Attack Planning - SATC</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Attack Planning</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="16">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Medium Resolution Sector Search</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="17">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Low Resolution Sector Search</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="18">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Wide Area Search - GRCA</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="19">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Wide Area Search - RRCA</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="20">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Attack Planning - With Tracking</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="21">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Attack Control - With Tracking</RadarModeValue>
+						<System>Joint STARS</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="31">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Wide Area MTI (WAMTI)</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="32">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Coarse Resolution Search</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="33">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Medium Resolution Search</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="34">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>High Resolution Search</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="35">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Point Imaging</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="36">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Swath MTI (SMTI)</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="37">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Repetitive Point Imaging</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="38">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Monopulse Calibration</RadarModeValue>
+						<System>ASARS-AIP</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="51">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Search</RadarModeValue>
+						<System>ASARS-2</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="52">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>EMTI Wide Frame Search</RadarModeValue>
+						<System>ASARS-2</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="53">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>EMTI Narrow Frame Search</RadarModeValue>
+						<System>ASARS-2</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="54">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>EMTI Augmented Spot</RadarModeValue>
+						<System>ASARS-2</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="55">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>EMTI Wide Area MTI (WAMTI)</RadarModeValue>
+						<System>ASARS-2</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="61">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>GMTI PPI Mode</RadarModeValue>
+						<System>TUAV</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="62">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>GMTI Expanded Mode</RadarModeValue>
+						<System>TUAV</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="63">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Narrow Sector Search (NSS)</RadarModeValue>
+						<System>ARL-M</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="64">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Single Beam Scan (SBS)</RadarModeValue>
+						<System>ARL-M</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="65">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Wide Area (WA)</RadarModeValue>
+						<System>ARL-M</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="81">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>GRCA</RadarModeValue>
+						<System>Reserved</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="82">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>RRCA</RadarModeValue>
+						<System>Reserved</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="83">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Sector Search</RadarModeValue>
+						<System>Reserved</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="84">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>HORIZON Basic</RadarModeValue>
+						<System>Horizon</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="85">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>HORIZON High Sensitivity</RadarModeValue>
+						<System>Horizon</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="86">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>HORIZON Burn Through</RadarModeValue>
+						<System>Horizon</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="87">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>CRESO Acquisition</RadarModeValue>
+						<System>CRESO</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="88">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>CRESO Count</RadarModeValue>
+						<System>CRESCO</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="91">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Spot</RadarModeValue>
+						<System>ASTOR</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="92">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Swath 1</RadarModeValue>
+						<System>ASTOR</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="93">
+				<xsd:annotation>
+					<xsd:appinfo>> 						
+					      <RadarModeValue>Swath 2</RadarModeValue>
+						<System>ASTOR</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="94">
+				<xsd:annotation>
+					<xsd:appinfo>> 						
+					      <RadarModeValue>MTI EXO</RadarModeValue>
+						<System>ASTOR</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="95">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>MTI ENDO/EXO</RadarModeValue>
+						<System>ASTOR</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="100">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RadarModeValue>Test/Status Mode</RadarModeValue>
+						<System>ASTOR</System>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RequestStatus.Type">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Request</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Approved</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Approved, with Modification</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Line of Sight</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Timeline</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Orbit</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Priority</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Area of Interest</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Illegal Request</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Function Inoperative</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<RequestStatusValue>Denied: Other</RequestStatusValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SegmentSize.Type">
+		<xsd:restriction base="xsd:unsignedInt">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+		<!-- changed minInclusive to: 0 from 5 dhoward !-->
+	</xsd:simpleType>
+	<xsd:simpleType name="SegmentType.Type">
+		<xsd:restriction base="xsd:nonNegativeInteger">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Mission Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Dwell Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>HRR Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Range-Doppler Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Job Definition Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Free Text Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Low Reflectivity Index Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Group Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Attached Target Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Test and Status Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>System-Specific Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Processing History Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Platform Location Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="101">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Job Request Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="102">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SegmentTypeValue>Job Acknowledge Segment</SegmentTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="BCSStringLength65515.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="65515"/>
+			<xsd:pattern value="[A-Za-z0-9&#x20;&#xD;&#xA;\.,\(\)\?\-!@#$%\^&amp;\*=_\+\[\]\{\}\\&quot;';&gt;&lt;~`\|a-z\t]{1,65515}"/>
+			<!-- removed &#xC; which is the form feed character.  MSXML treats the doc as not well-formed otherwise (Glenda)-->
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TwoByteFlag.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="16"/>
+			<xsd:pattern value="[0-1]{16}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SensorTypeDefinitions">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>Unidentified</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>TBD (ACS Sensor)</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>HiSAR (ARL-M)</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>ASTOR</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>CRESO</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>TBD (GH Sensor)</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>HORIZON</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>APY-3 (Joint STARS Sensor)</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>APY-6</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>Lynx</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>RADARSAT2</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>ASARS-2A</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>TESAR</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<SensorTypeValue>RTIP</SensorTypeValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.TargetClassification.Type">
+		<xsd:union memberTypes="TargetClassification.Type _9-125 _137-253"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="_137-253">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="137"/>
+			<xsd:maxInclusive value="253"/>
+			<xsd:pattern value="[0-9]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TargetClassification.Type">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>No Information, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Tracked Vehicle, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Wheeled Vehicle, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Rotary Wing Aircraft, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Fixed Wing Aircraft, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Stationary Rotator, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Maritime, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Beacon, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Amphibious, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="126">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Other, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="127">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Unknown, Live Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="128">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>No Information, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="129">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Tracked Vehicle, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="130">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Wheeled Vehicle, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="131">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Rotary Wing Aircraft, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="132">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Fixed Wing Aircraft, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="133">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Stationary Rotator, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="134">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Maritime, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="135">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Beacon, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="136">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Amphibious, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="254">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Other, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="255">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TargetClassificationValue>Unknown, Simulated Target</TargetClassificationValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Ed. note: Check pattern value as restrictive with first 5 digits -->
+	<xsd:simpleType name="TargetFilteringFlag.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="8"/>
+			<xsd:pattern value="[0]{5}[0-1]{3}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TerrainElevationModelsDefinitions">
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:enumeration value="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>None Specified</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DTED0 (Digital Terrain Elevation Data, Level 0)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DTED1 (Digital Terrain Elevation Data, Level 1)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DTED2 (Digital Terrain Elevation Data, Level 2)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DTED3 (Digital Terrain Elevation Data, Level 3)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DTED4 (Digital Terrain Elevation Data, Level 4)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DTED5 (Digital Terrain Elevation Data, Level 5)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>STRM1 (Shuttle Radar Topograph Mission, Level 1)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>STRM2 (Shuttle Radar Topograph Mission, Level 2)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DGM50 M745 (Digitales Gelandemodell 1:50 000</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>DGM250 M745 (Digitales Gelandemodell 1:250 000)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>ITHD (Interferometric Terrain Data Height)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>STHD (Stereometric Terrain Data Height)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<TerrainElevationModelValue>SEDRIS (SEDRIS Reference Model, ISO/IEC 18026)</TerrainElevationModelValue>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="union._0-45_withNoStatement.Type">
+		<xsd:union memberTypes="_0-45 _255"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union._0-100_withNoStatement.Type">
+		<xsd:union memberTypes="_0-100 _255"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union._0-5000_withNoStatement.Type">
+		<xsd:union memberTypes="_0-5000 _65535"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union._0-10000_withNoStatement.Type">
+		<xsd:union memberTypes="_0-10000 _65535"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union._0-20000_withNoStatement.Type">
+		<xsd:union memberTypes="_0-20000 _65535"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.BCSStringLength10andBlankPatternof10Spaces.Type">
+		<xsd:union memberTypes="BCSStringLength10.Type BlankPatternof10Spaces.Type"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.BCSStringLength12andBlankPatternof12Spaces.Type">
+		<xsd:union memberTypes="BCSStringLength12.Type BlankPatternof12Spaces.Type"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.ClassificationSystem.Type">
+		<xsd:union memberTypes="ClassificationSystem.Type BlankPatternof2Spaces.Type"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.ExerciseIndicator.Type">
+		<xsd:union memberTypes="ExcerciseIndicatorDefinitions xsd:unsignedByte"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.GeoidModelUsed.Type">
+		<xsd:union memberTypes="GeoidModelUsedDefinitions xsd:unsignedByte"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.NATOPlatformCode.Type">
+		<xsd:union memberTypes="NATOPlatformCode.Type cc:FIPS10-4CountryCodeType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.PlatformType.Type">
+		<xsd:union memberTypes="PlatformTypeDefinitions xsd:unsignedByte"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.RadarModes.Type">
+		<xsd:union memberTypes="RadarModeDefinitions xsd:unsignedByte"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.SensorType.Type">
+		<xsd:union memberTypes="SensorTypeDefinitions xsd:unsignedByte"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="union.TerrainElevationModels.Type">
+		<xsd:union memberTypes="TerrainElevationModelsDefinitions xsd:unsignedByte"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="VersionID.Type">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9A-Z]{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

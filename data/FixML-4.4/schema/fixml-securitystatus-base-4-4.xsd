@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 2003,20041218
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="SecurityDefinitionRequestElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecurityDefinitionRequestAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="ReqTyp" type="SecurityRequestType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="ExpirationCycle" type="ExpirationCycle_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityDefinitionRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityDefinitionRequest can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityDefinitionRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityDefinitionRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityDefinitionRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecDefReq" type="SecurityDefinitionRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SecurityDefinitionElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecurityDefinitionAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="RspID" type="SecurityResponseID_t" use="required"/>
+		<xs:attribute name="RspTyp" type="SecurityResponseType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="ExpirationCycle" type="ExpirationCycle_t" use="optional"/>
+		<xs:attribute name="RndLot" type="RoundLot_t" use="optional"/>
+		<xs:attribute name="MinTrdVol" type="MinTradeVol_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityDefinition_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityDefinition can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityDefinition" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityDefinitionElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityDefinitionAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecDef" type="SecurityDefinition_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SecurityStatusRequestElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecurityStatusRequestAttributes">
+		<xs:attribute name="StatReqID" type="SecurityStatusReqID_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="required"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityStatusRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityStatusRequest can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityStatusRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityStatusRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityStatusRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecStatReq" type="SecurityStatusRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SecurityStatusElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecurityStatusAttributes">
+		<xs:attribute name="StatReqID" type="SecurityStatusReqID_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="Unsol" type="UnsolicitedIndicator_t" use="optional"/>
+		<xs:attribute name="TrdgStat" type="SecurityTradingStatus_t" use="optional"/>
+		<xs:attribute name="FinclStat" type="FinancialStatus_t" use="optional"/>
+		<xs:attribute name="CorpActn" type="CorporateAction_t" use="optional"/>
+		<xs:attribute name="HaltRsn" type="HaltReason_t" use="optional"/>
+		<xs:attribute name="InViewOfCmn" type="InViewOfCommon_t" use="optional"/>
+		<xs:attribute name="DueToReltd" type="DueToRelated_t" use="optional"/>
+		<xs:attribute name="BuyVol" type="BuyVolume_t" use="optional"/>
+		<xs:attribute name="SellVol" type="SellVolume_t" use="optional"/>
+		<xs:attribute name="HighPx" type="HighPx_t" use="optional"/>
+		<xs:attribute name="LowPx" type="LowPx_t" use="optional"/>
+		<xs:attribute name="LastPx" type="LastPx_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="optional"/>
+		<xs:attribute name="Adjmt" type="Adjustment_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityStatus_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityStatus can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityStatus" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityStatusElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityStatusAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecStat" type="SecurityStatus_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="TradingSessionStatusRequestElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="TradingSessionStatusRequestAttributes">
+		<xs:attribute name="ReqID" type="TradSesReqID_t" use="required"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="Method" type="TradSesMethod_t" use="optional"/>
+		<xs:attribute name="Mode" type="TradSesMode_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="required"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="TradingSessionStatusRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TradingSessionStatusRequest can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TradingSessionStatusRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="TradingSessionStatusRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="TradingSessionStatusRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="TrdgSesStatReq" type="TradingSessionStatusRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="TradingSessionStatusElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="TradingSessionStatusAttributes">
+		<xs:attribute name="ReqID" type="TradSesReqID_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="required"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="Method" type="TradSesMethod_t" use="optional"/>
+		<xs:attribute name="Mode" type="TradSesMode_t" use="optional"/>
+		<xs:attribute name="Unsol" type="UnsolicitedIndicator_t" use="optional"/>
+		<xs:attribute name="Stat" type="TradSesStatus_t" use="required"/>
+		<xs:attribute name="StatRejRsn" type="TradSesStatusRejReason_t" use="optional"/>
+		<xs:attribute name="StartTm" type="TradSesStartTime_t" use="optional"/>
+		<xs:attribute name="OpenTm" type="TradSesOpenTime_t" use="optional"/>
+		<xs:attribute name="PreClsTm" type="TradSesPreCloseTime_t" use="optional"/>
+		<xs:attribute name="ClsTm" type="TradSesCloseTime_t" use="optional"/>
+		<xs:attribute name="EndTm" type="TradSesEndTime_t" use="optional"/>
+		<xs:attribute name="TotVolTrdd" type="TotalVolumeTraded_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="TradingSessionStatus_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TradingSessionStatus can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TradingSessionStatus" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="TradingSessionStatusElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="TradingSessionStatusAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="TrdgSesStat" type="TradingSessionStatus_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SecurityTypeRequestElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="SecurityTypeRequestAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="Prod" type="Product_t" use="optional"/>
+		<xs:attribute name="SecTyp" type="SecurityType_t" use="optional"/>
+		<xs:attribute name="SubTyp" type="SecuritySubType_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityTypeRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityTypeRequest can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityTypeRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityTypeRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityTypeRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecTypReq" type="SecurityTypeRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SecurityTypesElements">
+		<xs:sequence>		
+		<xs:element name="SecT" type="SecTypesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecurityTypesAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="RspID" type="SecurityResponseID_t" use="required"/>
+		<xs:attribute name="RspTyp" type="SecurityResponseType_t" use="required"/>
+		<xs:attribute name="TotNoSecTyps" type="TotNoSecurityTypes_t" use="optional"/>
+		<xs:attribute name="LastFragment" type="LastFragment_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityTypes_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityTypes can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityTypes" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityTypesElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityTypesAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecTyps" type="SecurityTypes_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SecurityListRequestElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="FinDetls" type="FinancingDetails_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecurityListRequestAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="ListReqTyp" type="SecurityListRequestType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityListRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityListRequest can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityListRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityListRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityListRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecListReq" type="SecurityListRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SecurityListElements">
+		<xs:sequence>		
+		<xs:element name="SecL" type="SecListGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecurityListAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="RspID" type="SecurityResponseID_t" use="required"/>
+		<xs:attribute name="ReqRslt" type="SecurityRequestResult_t" use="required"/>
+		<xs:attribute name="TotNoReltdSym" type="TotNoRelatedSym_t" use="optional"/>
+		<xs:attribute name="LastFragment" type="LastFragment_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SecurityList_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecurityList can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecurityList" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SecurityListElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SecurityListAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SecList" type="SecurityList_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="DerivativeSecurityListRequestElements">
+		<xs:sequence>		
+		<xs:element name="Undly" type="UnderlyingInstrument_Block_t" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="DerivativeSecurityListRequestAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="ListReqTyp" type="SecurityListRequestType_t" use="required"/>
+		<xs:attribute name="SubTyp" type="SecuritySubType_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="DerivativeSecurityListRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">DerivativeSecurityListRequest can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="DerivativeSecurityListRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="DerivativeSecurityListRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="DerivativeSecurityListRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="DerivSecListReq" type="DerivativeSecurityListRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="DerivativeSecurityListElements">
+		<xs:sequence>		
+		<xs:element name="Undly" type="UnderlyingInstrument_Block_t" minOccurs="0" />
+		<xs:element name="RelSym" type="RelSymDerivSecGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="DerivativeSecurityListAttributes">
+		<xs:attribute name="ReqID" type="SecurityReqID_t" use="required"/>
+		<xs:attribute name="RspID" type="SecurityResponseID_t" use="required"/>
+		<xs:attribute name="ReqRslt" type="SecurityRequestResult_t" use="required"/>
+		<xs:attribute name="TotNoReltdSym" type="TotNoRelatedSym_t" use="optional"/>
+		<xs:attribute name="LastFragment" type="LastFragment_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="DerivativeSecurityList_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">DerivativeSecurityList can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="DerivativeSecurityList" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="DerivativeSecurityListElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="DerivativeSecurityListAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="DerivSecList" type="DerivativeSecurityList_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="RelSymDerivSecGrpElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="RelSymDerivSecGrpAttributes">
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="ExpirationCycle" type="ExpirationCycle_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="RelSymDerivSecGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">RelSymDerivSecGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="RelSymDerivSecGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="RelSymDerivSecGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="RelSymDerivSecGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="SecListGrpElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="FinDetls" type="FinancingDetails_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Stip" type="Stipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="SecL" type="InstrmtLegSecListGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="SprdBnchmkCurve" type="SpreadOrBenchmarkCurveData_Block_t" minOccurs="0" />
+		<xs:element name="Yield" type="YieldData_Block_t" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SecListGrpAttributes">
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="RndLot" type="RoundLot_t" use="optional"/>
+		<xs:attribute name="MinTrdVol" type="MinTradeVol_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="ExpirationCycle" type="ExpirationCycle_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="SecListGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecListGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecListGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SecListGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SecListGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="SecTypesGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="SecTypesGrpAttributes">
+		<xs:attribute name="SecTyp" type="SecurityType_t" use="optional"/>
+		<xs:attribute name="SubTyp" type="SecuritySubType_t" use="optional"/>
+		<xs:attribute name="Prod" type="Product_t" use="optional"/>
+		<xs:attribute name="CFI" type="CFICode_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="SecTypesGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SecTypesGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SecTypesGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SecTypesGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SecTypesGrpAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
+

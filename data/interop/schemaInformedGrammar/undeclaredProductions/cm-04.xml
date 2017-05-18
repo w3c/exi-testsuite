@@ -1,0 +1,14 @@
+<!-- ==================================================================== -->
+<!-- Testing ur-type grammar. See:                                        -->
+<!-- https://lists.w3.org/Archives/Member/member-exi-wg/2012Sep/0021.html -->
+<!-- The grammar after the comment should not contain AT(*) productions.  -->
+<!-- ==================================================================== -->
+<foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo'
+  foo:aA='a' foo:aB='b' foo:aC='c' >
+  TEXT 1 
+<!-- Check the grammar after me. -->
+  <goo:AB> </goo:AB>
+  TEXT 2 
+  <goo:AC> </goo:AC>
+  TEXT 3 
+</foo:ANY>

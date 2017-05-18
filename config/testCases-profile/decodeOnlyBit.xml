@@ -1,0 +1,38 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile decode-only test cases (bit-aligned)">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Productions inserted before production insertion is disabled for a grammar may be used throughout the whole document">
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/builtInElement.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>  
+        <testCase name="decode-01">
+            <param name="description" value="Even if production insertion is disabled for a given grammar, the productions inserted before production insertion is disabled for that grammar may be used throughout the whole document."/>
+            <param name="reference" value="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism"/>
+            <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+			<param name="org.w3c.exi.ttf.maxBuiltinProd" value="1"/>
+            <param name="org.w3c.exi.ttf.encodedFile" 
+             value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/prodsBeforeDisabling.xml.exi-bit" />
+            <param name="japex.inputFile" 
+             value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/prodsBeforeDisabling.xml" />
+        </testCase>
+    </testCaseGroup>
+	
+	  <testCaseGroup name="xsitype-02-decodeOnly">
+	    <param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+        <param name="org.w3c.exi.ttf.maxBuiltinProd" value="2"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>
+		<param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-profile/xsiType"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xsiType-02.xml" />
+		
+		<param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+		<param name="org.w3c.exi.ttf.preserve" value=""/>
+		
+		<testCase name="xsitype-02-decodeOnly-bitPacked">
+			<param name="description" value="A bit-packed decode-only version of xsitype-02 testcase"/>
+			<param name="org.w3c.exi.ttf.encodedFile" value="${test.docFolder}/xsiType-02_bitPacked.exi" />
+		</testCase>
+
+	</testCaseGroup>
+
+</testCaseGroup>

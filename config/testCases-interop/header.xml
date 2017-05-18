@@ -1,0 +1,57 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Header interoperability tests">
+
+    <param name="groupId" value="${groupId} | header"/> 
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop"/>
+    <param name="headerDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/header"/>
+    <param name="org.w3c.exi.ttf.includeOptions" value="true" /> 
+
+    <!-- magic cookie test -->
+    <!-- include header test cases here -->
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Magic cookie encoding">
+        <param name="groupId" value="${groupId} | cookie"/> 
+        <param name="reference" value="http://www.w3.org/TR/exi/#EXICookie"/>
+        <param name="org.w3c.exi.ttf.includeCookie" value="true" />
+
+        <testCase name="cookie-01">
+            <param name="description"  value="Simple document with EXI Cookie"/>
+            <param name="japex.inputFile" value="${test.docFolder}/datatypes/string/literal-03.xml" />
+        </testCase>
+    </testCaseGroup>
+
+    <!-- options document with schemaId tests -->
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Options document with schemaId tests">
+        <param name="groupId" value="${groupId} | schemaId"/> 
+        <param name="reference" value="http://www.w3.org/TR/exi/#key-schemaIDOption"/>
+        <param name="org.w3c.exi.ttf.includeSchemaId" value="true" /> 
+        <xi:include href="schemaInformedGrammar/builtInGrammar/builtInToSchemaInformed.xml" /> 
+    </testCaseGroup>
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Options document with blockSize">
+        <param name="reference" value="http://www.w3.org/TR/exi/#key-blockSizeOption"/>
+        <param name="org.w3c.exi.ttf.compression" value="true" />
+        <xi:include href="blockSize.xml" />
+    </testCaseGroup>
+
+    <!-- options document tests-->
+    <xi:include href="preserve/preserveBuiltInDocument.xml" /> <!-- preserve -->
+    <xi:include href="schemaInformedGrammar/declaredProductions/complexType.xml" /> <!-- strict -->
+    <xi:include href="schemaInformedGrammar/declaredProductions/fragment.xml" /> <!-- preserve -->
+    <xi:include href="dtrMap.xml" />
+    <xi:include href="selfContained.xml" />
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Options document with user defined meta-data">
+        <param name="groupId" value="${groupId} | metadata"/> 
+        <testCase name="header.userDefinedMetadata-01">
+            <param name="testDescription" value="Use of user defined meta-data"/>
+            <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+            <param name="org.w3c.exi.ttf.includeOptions" value="true" />
+            <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+            <param name="japex.inputFile" value="${headerDataDir}/user-defined-metadata.noxsd.xml" />
+            <param name="org.w3c.exi.ttf.encodedFile" value="${headerDataDir}/user-defined-metadata.noxsd.xml.exi" />
+        </testCase>
+    </testCaseGroup>
+
+</testCaseGroup>

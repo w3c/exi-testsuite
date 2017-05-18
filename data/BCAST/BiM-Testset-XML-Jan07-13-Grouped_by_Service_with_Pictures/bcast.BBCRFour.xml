@@ -1,0 +1,4346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This data is strictly for non-commercial use only.  See http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html for details of the terms and conditions.-->
+<ESGMainBCAST xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <Service id="BBCRFour" type="6" version="1" ServiceProtection="0">
+      <Name>BBC Radio 4</Name>
+      <Genre>Audio only</Genre>
+      <PreviewDataIDRef usage="0">urn:bbc:prevBBCRFour</PreviewDataIDRef>
+   </Service>
+   <Access id="BBCRFour_acc" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2
+s=SDP Example
+c=IN IP4 225.224.1.6
+t=0 0 
+m=audio 4004 RTP/AVP  98 
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCRFour</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Access id="BBCRFour_acc_MBMS" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2 
+c=IN IP4 225.224.1.92 
+t=0 0 
+m=audio 4004 RTP/AVP 98 
+a=rtpmap:98 AMR/8000 
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCRFour</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <PurchaseItem id="BBCRFour_1346" version="0">
+      <ServiceIDRef>BBCRFour</ServiceIDRef>
+      <Name>BBCRFour</Name>
+   </PurchaseItem>
+   <PurchaseData id="BBCRFour_23DGE" version="0">
+      <PurchaseItemIDRef>BBCRFour_1346</PurchaseItemIDRef>
+      <PurchaseChannelIDRef>BBC_purchase</PurchaseChannelIDRef>
+      <PriceInfo>
+         <SubscriptionUnit Type="1" Value="81" Unit="3"/>
+         <UnitText>month</UnitText>
+         <Price Currency="EUR" Value="6"/>
+      </PriceInfo>
+   </PurchaseData>
+   <PreviewData id="urn:bbc:prevBBCRFour" version="3">
+      <Picture>
+         <PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAwQAAgUBBv/EADAQAAICAQIEBAQFBQAAAAAAAAEC
+AAMRBCESMUFxEyJRYQUjgZEUJEJScjIzYrHB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEB
+AQEBAQAAAAAAAAAAAAAAAAERMUH/2gAMAwEAAhEDEQA/AHbdDUK2K5UgEjBgtPpPFoVzYcnoRmEf
+WP4bBqHGQRmc0uqSuhVYNkdcQKt8PfoUP0xEr6mRirAAg49ZqjW0fuI7iI6plscspyOI/wChFCiJ
+5oaxPlfWSlcvC6lfy47zIzWpZmPQS4pCKc5OPWMYAYM2y7bntBW6hBkL5tsSjhXbPpJF2axhyOBJ
+GD1Nv9p/4mD0g/Kp2l7Tilyf2mU0ZzpklBSinmoP0mbqUCu2AB5jy+k04jqR5j/I/wDIC1Kk2bTm
+oa1769PXgZGc4z1htOvzoLXPdRqValBxcH9RHvJBn6ii5bCGbjI54l005SviYgE+spZfqmPnZh22
+lq6hZXxM+T3gVPCDu2e0kL4KKuTtJKY37RmtuxlNIMadO0JYR4bdjB6Uj8Ou8A0TvG57mM2OAjEH
+kJjX6q04w7HtAe0w+fK/ELqQVXiy46DfEQrvvLAIzcTbDM6GNSFSMKP1dWMzbiyagau7KpuYC1Xq
+I339NhB2WcNwsQ4PtHWq8TDN5jjrKB1NxVedWJ9pJ3wQM4USS6h02n2nRcQNiBMz8RZ/j9oUajFP
+EQCfaQN3XkqBxd8TPdsOVUDEHZqnfqB2gjYzczmUP6Ur4ljk7KuIOxxYxPSAqchTjrOWXEbLzmWu
+KW4D4HKaelbOnr4ueJlKCzY6zRrZlUeX7Ss0xemaHwM7cpJem1XHPf3km5UrIJ3nHduAJk49JzJ5
+mUY5mVcM5JJAKrgJvzEFzMknKAWtckR1G8uCYlU2+I0hI95mrBq28++4MkoquTkbD3khcL33cVQX
+y8/0jEWJl1wfKd5V1AxiaZVkkkgXrrd3CqpLHkIZtBqlDE0nb0IM1vhtdFWj4uNS7jLkHce0qrLX
+b8kWO32EDFrUl8Y5c4/U3h4GFYHmDz+kLqdJZk2HgDnfgB3i1SCxgpB57kdJPQ01qKSFBY+nLEkr
+dot8mxj7STWJr//Z
+</PictureData>
+         <AlternativeText>BBC Radio 4</AlternativeText>
+      </Picture>
+      <AccessIDRef>BBCRFour_accpre</AccessIDRef>
+   </PreviewData>
+   <Access id="BBCRFour_accpre" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=prev 10001 1 IN IP4 192.6.1.65
+s=preview
+i=Vorschau
+t=0 0
+a=source-filter:  IN IP4 * 192.168.1.65
+a=flute-tsi:1
+a=flute-ch:1
+m=application 4000 FLUTE/UDP 0
+c=IN IP4 225.6.7.81</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>preview Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:5047" version="2">
+      <Name>Excess Baggage</Name>
+      <Description>The adventures, frustrations and joys of travel are explored by wanderlust presenter, Sandi Toksvig</Description>
+      <Genre>Travel/Tourism</Genre>
+      <Genre>Adventure/Expeditions</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>Insightful</Genre>
+      <Genre>LEISURE/HOBBY</Genre>
+   </Content>
+   <Content id="urn:bbc:5023" version="3">
+      <Name>Weekend Woman's Hour</Name>
+      <Description>Highlights of the week's Woman's Hour programmes, presented by Martha Kearney</Description>
+      <Genre>Current affairs</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>Informative entertainment</Genre>
+      <Genre>LEISURE/HOBBY</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5031" version="5">
+      <Name>Saturday Review</Name>
+      <Description>Tom Sutcliffe and guests review the week's cultural events</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:BBCR4MirrorsWorldService" version="1">
+      <Name>As BBC World Service</Name>
+      <Description>BBC Radio 4 joins the BBC World Service for a selection of news and current affairs, arts and science programmes</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e102" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e102" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:BBCR4MirrorsWorldService</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345499800" InteractivityWindowEndTime="3345500000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:5256" version="2">
+      <Name>Poetry Please</Name>
+      <Description>Roger McGough features listeners' requests for poetry about birds, including Thomas Hardy's The Darkling Thrush and George Meredith's The Lark Ascending</Description>
+      <Genre>Literature</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:6588" version="4">
+      <Name>The Great Debates</Name>
+      <Description>Allan Little re-visits great debates of the past</Description>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:7222" version="5">
+      <Name>From Our Own Correspondent</Name>
+      <Description>Insight, colour, wit and analysis as the BBC's foreign correspondents take a closer look at the stories in their regions</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>Commentary</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:7423" version="1">
+      <Name>The Now Show</Name>
+      <Description>Comedy sketches and satirical comments from Steve Punt, Hugh Dennis and the team</Description>
+      <Genre>Satire</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>Satirical</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:7410" version="3">
+      <Name>Any Questions?</Name>
+      <Description>Jonathan Dimbleby chairs a topical discussion from Rowhedge in Essex</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>Infotainment</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Public Affairs</Genre>
+      <Genre>Political</Genre>
+      <Genre>Analytical</Genre>
+      <Genre>Insightful</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:9376" version="4">
+      <Name>Midnight News</Name>
+      <Description>The latest national and international news from BBC Radio 4</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:9410" version="5">
+      <Name>Book of the Week</Name>
+      <Description>Road Fever, by Tim Cahill</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9409" version="2">
+      <Name>Shipping Forecast</Name>
+      <Description>The latest Shipping Forecast</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:9407" version="3">
+      <Name>Radio 4 Open Up</Name>
+      <Description>Includes a News Summary, the latest Shipping and Inshore Waters forecasts, and Coastal Reports</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:9397" version="4">
+      <Name>Prayer for the Day</Name>
+      <Description>Daily prayer and reflection</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>Spiritual</Genre>
+      <Genre>Inspirational</Genre>
+      <Genre>Lecture/Speech/Presentation</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e402" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e402" version="1" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9397</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345516780" InteractivityWindowEndTime="3345516980"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9381" version="1">
+      <Name>Hidden Treasures</Name>
+      <Description>Lucinda Lambton finds some magical sights in extraordinary places</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Arts &amp; Media</Genre>
+   </Content>
+   <Content id="urn:bbc:9377" version="2">
+      <Name>News Briefing</Name>
+      <Description>The latest news from BBC Radio 4</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9378" version="3">
+      <Name>Open Country</Name>
+      <Description>From the Shetland Islands to the Channel Islands, from Ireland to East Anglia, Open Country explores Britain's rural life</Description>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>Animals/Wildlife</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>LEISURE/HOBBY</Genre>
+      <Genre>Adventure/Expeditions</Genre>
+      <Genre>Reality</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Travel/Tourism</Genre>
+   </Content>
+   <Content id="urn:bbc:9379" version="5">
+      <Name>Farming Today</Name>
+      <Description>Agricultural news and features, with Miriam O'Reilly</Description>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>Animals/Wildlife</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9380" version="1">
+      <Name>Today</Name>
+      <Description>With Edward Stourton and James Naughtie</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>Live</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:9411" version="2">
+      <Name>Home Truths</Name>
+      <Description>David Stafford takes a wry look at the foibles of family life, with Radio 4's very own dirty linen basket</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>Informative entertainment</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>Reality</Genre>
+      <Genre>Personal problems</Genre>
+      <Genre>Humour</Genre>
+      <Genre>Insightful</Genre>
+      <Genre>Heart-rending</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9383" version="4">
+      <Name>The Vernons Girls</Name>
+      <Description>Michael Angelis recalls the career of the Vernons Girls, an all-girl group from Liverpool who rose to success in the male-dominated popular music scene of the 1950s and early 60s</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+   </Content>
+   <Content id="urn:bbc:9384" version="5">
+      <Name>Talking Politics</Name>
+      <Description>Dennis Sewell and guests provide fresh insight into the ideas and issues, as well as current political events</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Political</Genre>
+   </Content>
+   <Content id="urn:bbc:9386" version="3">
+      <Name>Money Box</Name>
+      <Description>Paul Lewis with the latest news from the world of personal finance plus impartial advice for those trying to make the most of their money</Description>
+      <Genre>Economy/Market/Financial/Business</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>Finance</Genre>
+      <Genre>Economic</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:9390" version="5">
+      <Name>Any Answers?</Name>
+      <Description>Jonathan Dimbleby takes listeners' calls in response to today's edition of Any Questions? To air your views call 08700 100 444 [national rates]</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>Infotainment</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Analytical</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e684" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e684" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9390</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345546600" InteractivityWindowEndTime="3345546800"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9391" version="2">
+      <Name>The Saturday Play</Name>
+      <Description>Agatha Christie's Elephants Can Remember: A question posed by a formidable busybody sends Hercule Poirot and Ariadne Oliver on a quest to unravel the mystery of a tragedy from the past</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9393" version="3">
+      <Name>Saturday PM</Name>
+      <Description>Full coverage and analysis of the day's news</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Sports</Genre>
+      <Genre>Commentary</Genre>
+      <Genre>Analytical</Genre>
+      <Genre>Live</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:9394" version="4">
+      <Name>The Film Programme</Name>
+      <Description>Francine Stock is joined by director Peter Yates to talk about his film Bullitt starring Steve McQueen</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>CINEMA INDUSTRY ORIGINATED</Genre>
+      <Genre>FICTION</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9412" version="3">
+      <Name>Loose Ends</Name>
+      <Description>Ned Sherrin and guests with the usual eclectic mix of conversation, comedy and music</Description>
+      <Genre>Variety Show</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>Eclectic</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Insightful</Genre>
+      <Genre>Happy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9398" version="5">
+      <Name>Profile</Name>
+      <Description>Profiles of people who are currently making headlines</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9400" version="1">
+      <Name>The Archive Hour</Name>
+      <Description>Mr Munrow, His Study: The Royal Academy of Music now owns the ancient music, books and papers from the study of the late David Munrow</Description>
+      <Genre>Documentary</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Theatre</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Arts &amp; Media</Genre>
+   </Content>
+   <Content id="urn:bbc:9401" version="2">
+      <Name>Classic Serial</Name>
+      <Description>The French Lieutenant's Woman, by John Fowles</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Romantic</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Heart-rending</Genre>
+   </Content>
+   <Content id="urn:bbc:9404" version="5">
+      <Name>MasterTeam</Name>
+      <Description>Peter Snow hosts the quiz which tests the teams' general knowledge and risk-taking skills</Description>
+      <Genre>Game show</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRFour_d0e3346" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9376">
+         <Presentation_Window Presentation_Start_Time="3345494400" Presentation_End_Time="3345496200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e936" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2267181396 2747406005 IN IP4 192.168.0.119
+c=IN IP4 225.224.193.132
+m=audio 45936 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3360" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9410">
+         <Presentation_Window Presentation_Start_Time="3345496200" Presentation_End_Time="3345497280"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3374" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9409">
+         <Presentation_Window Presentation_Start_Time="3345497280" Presentation_End_Time="3345498000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3388" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345498000" Presentation_End_Time="3345514200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e960" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2070404052 2140136718 IN IP4 192.168.0.203
+c=IN IP4 225.224.147.98
+m=audio 53940 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3405" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9407">
+         <Presentation_Window Presentation_Start_Time="3345514200" Presentation_End_Time="3345514980"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3419" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9397">
+         <Presentation_Window Presentation_Start_Time="3345514980" Presentation_End_Time="3345515100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3433" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9381">
+         <Presentation_Window Presentation_Start_Time="3345515100" Presentation_End_Time="3345516000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e984" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2206756591 2625396727 IN IP4 192.168.0.198
+c=IN IP4 225.224.144.60
+m=audio 7660 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3447" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9377">
+         <Presentation_Window Presentation_Start_Time="3345516000" Presentation_End_Time="3345516600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3461" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9378">
+         <Presentation_Window Presentation_Start_Time="3345516600" Presentation_End_Time="3345518100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3475" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9379">
+         <Presentation_Window Presentation_Start_Time="3345518100" Presentation_End_Time="3345519600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1008" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2170974731 2214157104 IN IP4 192.168.0.253
+c=IN IP4 225.224.213.66
+m=audio 49162 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3489" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9380">
+         <Presentation_Window Presentation_Start_Time="3345519600" Presentation_End_Time="3345526800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3503" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9411">
+         <Presentation_Window Presentation_Start_Time="3345526800" Presentation_End_Time="3345530400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3517" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5047">
+         <Presentation_Window Presentation_Start_Time="3345530400" Presentation_End_Time="3345532200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1032" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2270538330 2348632812 IN IP4 192.168.0.121
+c=IN IP4 225.224.48.8
+m=audio 4688 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3534" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9383">
+         <Presentation_Window Presentation_Start_Time="3345532200" Presentation_End_Time="3345534000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3548" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9384">
+         <Presentation_Window Presentation_Start_Time="3345534000" Presentation_End_Time="3345535800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3562" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:7222">
+         <Presentation_Window Presentation_Start_Time="3345535800" Presentation_End_Time="3345537600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1056" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2142013549 2281921385 IN IP4 192.168.0.16
+c=IN IP4 225.224.122.38
+m=audio 17352 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3579" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9406">
+         <Presentation_Window Presentation_Start_Time="3345537600" Presentation_End_Time="3345537900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3593" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9386">
+         <Presentation_Window Presentation_Start_Time="3345537900" Presentation_End_Time="3345539400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3610" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:7423">
+         <Presentation_Window Presentation_Start_Time="3345539400" Presentation_End_Time="3345541200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1080" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2279815673 2448120116 IN IP4 192.168.0.197
+c=IN IP4 225.224.39.120
+m=audio 2064 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3627" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9388">
+         <Presentation_Window Presentation_Start_Time="3345541200" Presentation_End_Time="3345541800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3641" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:7410">
+         <Presentation_Window Presentation_Start_Time="3345541800" Presentation_End_Time="3345544800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3658" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9390">
+         <Presentation_Window Presentation_Start_Time="3345544800" Presentation_End_Time="3345546600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1104" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2371765136 2609603881 IN IP4 192.168.0.0
+c=IN IP4 225.224.88.187
+m=audio 16450 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3672" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9391">
+         <Presentation_Window Presentation_Start_Time="3345546600" Presentation_End_Time="3345552000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3686" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5023">
+         <Presentation_Window Presentation_Start_Time="3345552000" Presentation_End_Time="3345555600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3703" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9393">
+         <Presentation_Window Presentation_Start_Time="3345555600" Presentation_End_Time="3345557400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1128" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2244506835 2550201415 IN IP4 192.168.0.149
+c=IN IP4 225.224.83.144
+m=audio 40100 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3717" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9394">
+         <Presentation_Window Presentation_Start_Time="3345557400" Presentation_End_Time="3345558840"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3731" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9395">
+         <Presentation_Window Presentation_Start_Time="3345558840" Presentation_End_Time="3345559200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3745" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9396">
+         <Presentation_Window Presentation_Start_Time="3345559200" Presentation_End_Time="3345560100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1152" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2129135131 2268524169 IN IP4 192.168.0.212
+c=IN IP4 225.224.80.254
+m=audio 28128 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3759" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9412">
+         <Presentation_Window Presentation_Start_Time="3345560100" Presentation_End_Time="3345562800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3773" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9398">
+         <Presentation_Window Presentation_Start_Time="3345562800" Presentation_End_Time="3345563700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3790" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5031">
+         <Presentation_Window Presentation_Start_Time="3345563700" Presentation_End_Time="3345566400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1176" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2325531005 2389511107 IN IP4 192.168.0.162
+c=IN IP4 225.224.142.50
+m=audio 21696 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3807" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9400">
+         <Presentation_Window Presentation_Start_Time="3345566400" Presentation_End_Time="3345570000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3821" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9401">
+         <Presentation_Window Presentation_Start_Time="3345570000" Presentation_End_Time="3345573600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3835" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9402">
+         <Presentation_Window Presentation_Start_Time="3345573600" Presentation_End_Time="3345574500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1200" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2235458374 2729080200 IN IP4 192.168.0.122
+c=IN IP4 225.224.161.147
+m=audio 13672 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e3849" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:6588">
+         <Presentation_Window Presentation_Start_Time="3345574500" Presentation_End_Time="3345577200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3866" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9404">
+         <Presentation_Window Presentation_Start_Time="3345577200" Presentation_End_Time="3345579000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e3880" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5256">
+         <Presentation_Window Presentation_Start_Time="3345579000" Presentation_End_Time="3345580800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1224" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2212127685 2491561889 IN IP4 192.168.0.250
+c=IN IP4 225.224.242.194
+m=audio 30318 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:5279" version="3">
+      <Name>World Report</Name>
+      <Description>The programme that brings analysis and context to events around the world</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5280" version="5">
+      <Name>A Point of View</Name>
+      <Description>David Cannadine presents a weekly reflection on a topical issue</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e1250" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e1250" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:5280</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345614400" InteractivityWindowEndTime="3345614600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:5275" version="1">
+      <Name>The Archers Omnibus</Name>
+      <Description>A chance to catch up on the week's events in Ambridge</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5273" version="2">
+      <Name>The World this Weekend</Name>
+      <Description>A look at events around the world</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:6048" version="4">
+      <Name>Just a Minute</Name>
+      <Description>Nicholas Parsons chairs the classic panel game</Description>
+      <Genre>Satire</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Game show</Genre>
+      <Genre>Quiz/Contest</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+   </Content>
+   <Content id="urn:bbc:6067" version="5">
+      <Name>A Good Read</Name>
+      <Description>Composer and presenter of Radio 3's Private Passions Michael Berkeley, and Canadian actor Kerry Shale, join Sue MacGregor to talk about their favourite paperbacks</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:6076" version="1">
+      <Name>The Science Blacklist</Name>
+      <Description>Justin Webb investigates the growing political interference in science in the US, from editing climate change research to repressing the sale of contraceptives</Description>
+      <Genre>Sciences</Genre>
+      <Genre>Technology</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:7418" version="3">
+      <Name>A World in Your Ear</Name>
+      <Description>Rosie Goldsmith on how the world's radio stations cover religion</Description>
+   </Content>
+   <Content id="urn:bbc:7421" version="4">
+      <Name>Word of Mouth</Name>
+      <Description>Michael Rosen presents a special edition on matters equestrian, recorded at the London International Horse Show</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:276" version="4">
+      <Name>Walking Stories</Name>
+      <Description>A week of stories that celebrate some die-hard pedestrians</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:260" version="3">
+      <Name>Bells on Sunday</Name>
+      <Description>A chance to hear the peal of the bells from the church of St Mary the Virgin, Chislet in Kent</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:236" version="1">
+      <Name>Something Understood</Name>
+      <Description>One Day at a Time: Mark Tully considers the importance of appreciating the present moment, and of achieving a small goal each day</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e1457" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e1457" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:236</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345604500" InteractivityWindowEndTime="3345604700"/>
+   </InteractivityData>
+   <Content id="urn:bbc:237" version="2">
+      <Name>On Your Farm</Name>
+      <Description>Topical farming magazine</Description>
+      <Genre>Special news/edition</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Animals/Wildlife</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:239" version="5">
+      <Name>Sunday</Name>
+      <Description>Religious news from home and abroad</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:240" version="1">
+      <Name>Radio 4 Appeal</Name>
+      <Description>Sheena McDonald appeals on behalf of the Brain Research Trust</Description>
+   </Content>
+   <Content id="urn:bbc:242" version="4">
+      <Name>Sunday Worship</Name>
+      <Description>On the first Sunday of Epiphany, the Choir and congregation of St John's Catholic Cathedral in Portsmouth celebrate a Mass for the Baptism of Christ</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>Spiritual</Genre>
+      <Genre>Choral</Genre>
+      <Genre>Peaceful</Genre>
+      <Genre>Insightful</Genre>
+   </Content>
+   <Content id="urn:bbc:277" version="5">
+      <Name>Broadcasting House</Name>
+      <Description>Patrick O'Connell presents a fresh and irreverent approach to the news, discussing the top stories of the week with studio guests</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:246" version="2">
+      <Name>Desert Island Discs</Name>
+      <Description>Sue Lawley invites the actor Richard Griffiths to choose eight records to take to Radio 4's mythical desert island</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Biography/notable personalities</Genre>
+      <Genre>Insightful</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Non-religious philosophies</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:248" version="4">
+      <Name>The Food Programme</Name>
+      <Description>Professor David Wilson, former prison governor and criminologist at the University of Central England, looks at the current state of prison food</Description>
+      <Genre>Documentary</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>Informative entertainment</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>Insightful</Genre>
+      <Genre>Cookery</Genre>
+   </Content>
+   <Content id="urn:bbc:250" version="1">
+      <Name>In the Footsteps of Brad Pitt</Name>
+      <Description>Adrian Chiles discovers the fascinating work of Britain's foley artists, the unseen performers who re-create and record every on screen movement a film actor makes</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:251" version="2">
+      <Name>Gardeners' Question Time</Name>
+      <Description>Eric Robson chairs the popular horticultural forum</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>Advice</Genre>
+      <Genre>Gardening</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:252" version="3">
+      <Name>The History of Blacksmithing</Name>
+      <Description>Artist and blacksmith David Petersen explores the history behind this skilled craft</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>History</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e1721" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e1721" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:252</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345635700" InteractivityWindowEndTime="3345635900"/>
+   </InteractivityData>
+   <Content id="urn:bbc:253" version="5">
+      <Name>Classic Serial</Name>
+      <Description>The French Lieutenant's Woman, by John Fowles</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Romantic</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Heart-rending</Genre>
+   </Content>
+   <Content id="urn:bbc:254" version="1">
+      <Name>Open Book</Name>
+      <Description>Kate Mosse investigates European crime</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:255" version="2">
+      <Name>Poetry Please</Name>
+      <Description>Roger McGough features listeners' requests for haunting poetry, including Alfred Noyes' The Highwayman, Edgar Allan Poe's The Raven and Walter de la Mare's The Listeners</Description>
+      <Genre>Literature</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:278" version="1">
+      <Name>Pick of the Week</Name>
+      <Description>Sheila Dillon presents her selection of excerpts from BBC radio over the past seven days</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:261" version="3">
+      <Name>The Archers</Name>
+      <Description>Mike looks to remember the past</Description>
+      <Genre>General light drama</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:262" version="4">
+      <Name>Go4It</Name>
+      <Description>David McFetridge presents the children's magazine programme</Description>
+      <Genre>General non-fiction</Genre>
+      <Genre>Primary</Genre>
+      <Genre>Children</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:263" version="5">
+      <Name>Beyond the Iron Curtain</Name>
+      <Description>Stories from Eastern Europe: 4/5</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:268" version="2">
+      <Name>In Business</Name>
+      <Description>Nuts about Brazil: Economists predict Brazil may be one of the booming countries as changes reshape the global economy over the next 30 years</Description>
+      <Genre>Economy/Market/Financial/Business</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:269" version="3">
+      <Name>The Westminster Hour</Name>
+      <Description>Andrew Rawnsley previews the week in politics</Description>
+      <Genre>Political</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Schedule id="BBCRFour_d0e7139" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:234">
+         <Presentation_Window Presentation_Start_Time="3345580800" Presentation_End_Time="3345582600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7153" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:276">
+         <Presentation_Window Presentation_Start_Time="3345582600" Presentation_End_Time="3345583680"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7167" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:275">
+         <Presentation_Window Presentation_Start_Time="3345583680" Presentation_End_Time="3345584400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1971" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2299774169 2327621459 IN IP4 192.168.0.192
+c=IN IP4 225.224.217.98
+m=audio 43518 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7181" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345584400" Presentation_End_Time="3345600600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7198" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:273">
+         <Presentation_Window Presentation_Start_Time="3345600600" Presentation_End_Time="3345601380"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7212" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:260">
+         <Presentation_Window Presentation_Start_Time="3345601380" Presentation_End_Time="3345601500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e1995" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2273727416 2306777953 IN IP4 192.168.0.127
+c=IN IP4 225.224.68.56
+m=audio 48570 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7229" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5279">
+         <Presentation_Window Presentation_Start_Time="3345601500" Presentation_End_Time="3345602400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7246" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:235">
+         <Presentation_Window Presentation_Start_Time="3345602400" Presentation_End_Time="3345602700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7260" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:236">
+         <Presentation_Window Presentation_Start_Time="3345602700" Presentation_End_Time="3345604500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2019" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2001998901 2137649535 IN IP4 192.168.0.48
+c=IN IP4 225.224.39.245
+m=audio 26396 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7277" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:237">
+         <Presentation_Window Presentation_Start_Time="3345604500" Presentation_End_Time="3345606000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7291" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:238">
+         <Presentation_Window Presentation_Start_Time="3345606000" Presentation_End_Time="3345606600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7305" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:239">
+         <Presentation_Window Presentation_Start_Time="3345606600" Presentation_End_Time="3345609300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2043" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2095443725 2576736449 IN IP4 192.168.0.71
+c=IN IP4 225.224.167.105
+m=audio 27410 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7319" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:240">
+         <Presentation_Window Presentation_Start_Time="3345609300" Presentation_End_Time="3345609600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7336" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:241">
+         <Presentation_Window Presentation_Start_Time="3345609600" Presentation_End_Time="3345610200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7350" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:242">
+         <Presentation_Window Presentation_Start_Time="3345610200" Presentation_End_Time="3345612600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2067" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2158294677 2276641844 IN IP4 192.168.0.253
+c=IN IP4 225.224.117.146
+m=audio 4112 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7364" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5280">
+         <Presentation_Window Presentation_Start_Time="3345612600" Presentation_End_Time="3345613200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7381" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:277">
+         <Presentation_Window Presentation_Start_Time="3345613200" Presentation_End_Time="3345616800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7395" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5275">
+         <Presentation_Window Presentation_Start_Time="3345616800" Presentation_End_Time="3345621300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2091" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2256896972 2714202880 IN IP4 192.168.0.100
+c=IN IP4 225.224.52.172
+m=audio 7986 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7412" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:246">
+         <Presentation_Window Presentation_Start_Time="3345621300" Presentation_End_Time="3345624000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7426" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:272">
+         <Presentation_Window Presentation_Start_Time="3345624000" Presentation_End_Time="3345624300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7440" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:6048">
+         <Presentation_Window Presentation_Start_Time="3345624300" Presentation_End_Time="3345625800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2115" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2053009033 2179534911 IN IP4 192.168.0.184
+c=IN IP4 225.224.27.127
+m=audio 25934 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7457" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:248">
+         <Presentation_Window Presentation_Start_Time="3345625800" Presentation_End_Time="3345627600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7471" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5273">
+         <Presentation_Window Presentation_Start_Time="3345627600" Presentation_End_Time="3345629400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7488" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:250">
+         <Presentation_Window Presentation_Start_Time="3345629400" Presentation_End_Time="3345631200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2139" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2463485717 2478103636 IN IP4 192.168.0.255
+c=IN IP4 225.224.125.160
+m=audio 30102 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7502" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:251">
+         <Presentation_Window Presentation_Start_Time="3345631200" Presentation_End_Time="3345633900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7516" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:252">
+         <Presentation_Window Presentation_Start_Time="3345633900" Presentation_End_Time="3345634800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7530" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:253">
+         <Presentation_Window Presentation_Start_Time="3345634800" Presentation_End_Time="3345638400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2163" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2271636962 2370376586 IN IP4 192.168.0.22
+c=IN IP4 225.224.133.115
+m=audio 56614 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7544" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:254">
+         <Presentation_Window Presentation_Start_Time="3345638400" Presentation_End_Time="3345640200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7558" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:255">
+         <Presentation_Window Presentation_Start_Time="3345640200" Presentation_End_Time="3345642000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7572" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:6076">
+         <Presentation_Window Presentation_Start_Time="3345642000" Presentation_End_Time="3345644400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2187" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2389556884 2724578856 IN IP4 192.168.0.71
+c=IN IP4 225.224.167.70
+m=audio 41286 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7589" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9398">
+         <Presentation_Window Presentation_Start_Time="3345644400" Presentation_End_Time="3345645240"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7606" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:258">
+         <Presentation_Window Presentation_Start_Time="3345645240" Presentation_End_Time="3345645600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7620" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:259">
+         <Presentation_Window Presentation_Start_Time="3345645600" Presentation_End_Time="3345646500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2211" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2019149780 2263229369 IN IP4 192.168.0.98
+c=IN IP4 225.224.158.168
+m=audio 20058 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7634" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:278">
+         <Presentation_Window Presentation_Start_Time="3345646500" Presentation_End_Time="3345649200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7648" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:261">
+         <Presentation_Window Presentation_Start_Time="3345649200" Presentation_End_Time="3345650100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7662" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:262">
+         <Presentation_Window Presentation_Start_Time="3345650100" Presentation_End_Time="3345651900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2235" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2342910766 2515472411 IN IP4 192.168.0.37
+c=IN IP4 225.224.40.37
+m=audio 52530 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7676" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:263">
+         <Presentation_Window Presentation_Start_Time="3345651900" Presentation_End_Time="3345652800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7690" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:7418">
+         <Presentation_Window Presentation_Start_Time="3345652800" Presentation_End_Time="3345654600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7707" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:7421">
+         <Presentation_Window Presentation_Start_Time="3345654600" Presentation_End_Time="3345656400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2259" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2157974243 2523635864 IN IP4 192.168.0.244
+c=IN IP4 225.224.105.130
+m=audio 48572 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7724" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:9386">
+         <Presentation_Window Presentation_Start_Time="3345656400" Presentation_End_Time="3345657960"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7741" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:240">
+         <Presentation_Window Presentation_Start_Time="3345657960" Presentation_End_Time="3345658200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7758" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:268">
+         <Presentation_Window Presentation_Start_Time="3345658200" Presentation_End_Time="3345660000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2283" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2109985351 2365631102 IN IP4 192.168.0.50
+c=IN IP4 225.224.197.181
+m=audio 50600 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e7772" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:269">
+         <Presentation_Window Presentation_Start_Time="3345660000" Presentation_End_Time="3345663600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7786" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:6067">
+         <Presentation_Window Presentation_Start_Time="3345663600" Presentation_End_Time="3345665400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e7803" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:236">
+         <Presentation_Window Presentation_Start_Time="3345665400" Presentation_End_Time="3345667200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2307" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2450134277 2521804809 IN IP4 192.168.0.73
+c=IN IP4 225.224.139.73
+m=audio 15780 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:607" version="2">
+      <Name>A Debt to Society</Name>
+      <Description>2/2</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e2315" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e2315" version="3" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:607</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345708600" InteractivityWindowEndTime="3345708800"/>
+   </InteractivityData>
+   <Content id="urn:bbc:608" version="3">
+      <Name>Ring around the Bath</Name>
+      <Description>Stella's grown-up children refuse to leave home, and her husband doesn't seem to mind</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:638" version="1">
+      <Name>You and Yours</Name>
+      <Description>Consumer news and discussion with Winifred Robinson and John Waite</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>Special Reports</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:610" version="2">
+      <Name>The World at One</Name>
+      <Description>National and international news from BBC Radio 4</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>Live</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:613" version="1">
+      <Name>Afternoon Play</Name>
+      <Description>A Clown on God's Stage, by Judith French</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:614" version="3">
+      <Name>Money Box Live</Name>
+      <Description>Vincent Duggleby takes listeners' calls on a topical issue affecting personal finance</Description>
+      <Genre>Economy/Market/Financial/Business</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:615" version="4">
+      <Name>Afternoon Reading</Name>
+      <Description>A week of stories by Russian writer Ivan Bunin</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:616" version="5">
+      <Name>The Sleepless Society</Name>
+      <Description>Charles Leadbetter presents a series on sleep</Description>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:618" version="3">
+      <Name>Beyond Belief</Name>
+      <Description>Ernie Rea and studio guests discuss the place of faith in today's complex world, exploring the experiences, values and traditions of our lives</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:621" version="2">
+      <Name>Just a Minute</Name>
+      <Description>Nicholas Parsons chairs as guests try to speak for 60 seconds on a theme without hesitation, repetition or deviation</Description>
+      <Genre>Satire</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Game show</Genre>
+      <Genre>Quiz/Contest</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+   </Content>
+   <Content id="urn:bbc:622" version="3">
+      <Name>The Archers</Name>
+      <Description>Susan gets some bitter sweet news</Description>
+      <Genre>General light drama</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e2579" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e2579" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:622</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345737400" InteractivityWindowEndTime="3345737600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:623" version="5">
+      <Name>Front Row</Name>
+      <Description>Mark Lawson with the arts programme</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:624" version="1">
+      <Name>Cooking for Michael Collins</Name>
+      <Description>By Jane Purcell</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:639" version="2">
+      <Name>Document</Name>
+      <Description>Recruiting the Reich: Mike Thomson uncovers evidence of Britain's secret deals with senior Nazis at the end of the Second World War</Description>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:626" version="4">
+      <Name>Then-Now</Name>
+      <Description>On Wednesday, November 9 at 6</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:627" version="5">
+      <Name>The Rules of Life</Name>
+      <Description>8/8</Description>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>Animals/Wildlife</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+   </Content>
+   <Content id="urn:bbc:628" version="1">
+      <Name>Start the Week</Name>
+      <Description>Andrew Marr and guests set the cultural agenda for the week</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:629" version="3">
+      <Name>The World Tonight</Name>
+      <Description>Analysis of the day's national and international stories, including interviews with politicians and public figures, with Claire Bolderson</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:630" version="4">
+      <Name>Book at Bedtime</Name>
+      <Description>A Passage to India, by EM Forster</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:632" version="2">
+      <Name>Today in Parliament</Name>
+      <Description>A review of the day's events in Parliament, with Susan Hulme</Description>
+      <Genre>Political</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+   </Content>
+   <Schedule id="BBCRFour_d0e10034" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:607">
+         <Presentation_Window Presentation_Start_Time="3345706800" Presentation_End_Time="3345708600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10048" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:608">
+         <Presentation_Window Presentation_Start_Time="3345708600" Presentation_End_Time="3345710400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10062" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:633">
+         <Presentation_Window Presentation_Start_Time="3345710400" Presentation_End_Time="3345710700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2841" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2090988159 2409851074 IN IP4 192.168.0.235
+c=IN IP4 225.224.226.197
+m=audio 41008 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10076" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:638">
+         <Presentation_Window Presentation_Start_Time="3345710700" Presentation_End_Time="3345714000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10090" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:610">
+         <Presentation_Window Presentation_Start_Time="3345714000" Presentation_End_Time="3345715800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10104" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:611">
+         <Presentation_Window Presentation_Start_Time="3345715800" Presentation_End_Time="3345717600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2865" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2237884521 2408981322 IN IP4 192.168.0.1
+c=IN IP4 225.224.42.237
+m=audio 23136 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10118" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:612">
+         <Presentation_Window Presentation_Start_Time="3345717600" Presentation_End_Time="3345718500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10132" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:613">
+         <Presentation_Window Presentation_Start_Time="3345718500" Presentation_End_Time="3345721200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10146" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:614">
+         <Presentation_Window Presentation_Start_Time="3345721200" Presentation_End_Time="3345723000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2889" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2084564208 2271377562 IN IP4 192.168.0.138
+c=IN IP4 225.224.199.23
+m=audio 51596 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10163" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:615">
+         <Presentation_Window Presentation_Start_Time="3345723000" Presentation_End_Time="3345723900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10177" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:616">
+         <Presentation_Window Presentation_Start_Time="3345723900" Presentation_End_Time="3345724800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10191" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:617">
+         <Presentation_Window Presentation_Start_Time="3345724800" Presentation_End_Time="3345726600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2913" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2047088623 2347930908 IN IP4 192.168.0.129
+c=IN IP4 225.224.245.69
+m=audio 22082 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10205" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:618">
+         <Presentation_Window Presentation_Start_Time="3345726600" Presentation_End_Time="3345728400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10219" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:619">
+         <Presentation_Window Presentation_Start_Time="3345728400" Presentation_End_Time="3345732000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10233" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:620">
+         <Presentation_Window Presentation_Start_Time="3345732000" Presentation_End_Time="3345733800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2937" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2331161499 2412414550 IN IP4 192.168.0.145
+c=IN IP4 225.224.230.234
+m=audio 22750 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10247" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:621">
+         <Presentation_Window Presentation_Start_Time="3345733800" Presentation_End_Time="3345735600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10264" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:622">
+         <Presentation_Window Presentation_Start_Time="3345735600" Presentation_End_Time="3345736500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10278" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:623">
+         <Presentation_Window Presentation_Start_Time="3345736500" Presentation_End_Time="3345738300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2961" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2348007202 2429229736 IN IP4 192.168.0.97
+c=IN IP4 225.224.181.203
+m=audio 49812 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10295" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:624">
+         <Presentation_Window Presentation_Start_Time="3345738300" Presentation_End_Time="3345739200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10309" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:639">
+         <Presentation_Window Presentation_Start_Time="3345739200" Presentation_End_Time="3345741000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10323" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:626">
+         <Presentation_Window Presentation_Start_Time="3345741000" Presentation_End_Time="3345742800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e2985" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2174575805 2248611449 IN IP4 192.168.0.117
+c=IN IP4 225.224.194.160
+m=audio 54230 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10337" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:627">
+         <Presentation_Window Presentation_Start_Time="3345742800" Presentation_End_Time="3345744600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10351" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:628">
+         <Presentation_Window Presentation_Start_Time="3345744600" Presentation_End_Time="3345746400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10368" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:629">
+         <Presentation_Window Presentation_Start_Time="3345746400" Presentation_End_Time="3345749100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3009" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2457489013 2804077147 IN IP4 192.168.0.104
+c=IN IP4 225.224.49.73
+m=audio 28674 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e10382" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:630">
+         <Presentation_Window Presentation_Start_Time="3345749100" Presentation_End_Time="3345750000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10396" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:631">
+         <Presentation_Window Presentation_Start_Time="3345750000" Presentation_End_Time="3345751800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e10413" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:632">
+         <Presentation_Window Presentation_Start_Time="3345751800" Presentation_End_Time="3345753600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3033" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2451080322 2808334350 IN IP4 192.168.0.88
+c=IN IP4 225.224.138.77
+m=audio 38638 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:1362" version="3">
+      <Name>Book of the Week</Name>
+      <Description>Agincourt: Jane Lapotaire reads Juliet Barker's book about the battle of Agincourt and the events leading up to it</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e3041" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e3041" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:1362</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345757200" InteractivityWindowEndTime="3345757400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:1357" version="2">
+      <Name>Schools</Name>
+      <Description>3</Description>
+      <Genre>Education</Genre>
+      <Genre>School Programmes</Genre>
+      <Genre>Children</Genre>
+   </Content>
+   <Content id="urn:bbc:1331" version="1">
+      <Name>Farming Today</Name>
+      <Description>Agricultural news and features, with Anna Hill</Description>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>Animals/Wildlife</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1325" version="3">
+      <Name>Today</Name>
+      <Description>With Sarah Montague and Carolyn Quinn</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>Live</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:1326" version="4">
+      <Name>The Choice</Name>
+      <Description>Michael Buerk interviews John Hirst, who was convicted of manslaughter and spent 10 years in prison</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1327" version="5">
+      <Name>Who Killed Christianity?</Name>
+      <Description>Dr David Starkey argues that five major Christian figures distorted, even betrayed, the Christian faith as envisaged by Jesus</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1329" version="3">
+      <Name>Woman's Hour</Name>
+      <Description>With Jenni Murray</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>LEISURE/HOBBY</Genre>
+      <Genre>Human interest</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:1330" version="4">
+      <Name>Unearthing Mysteries</Name>
+      <Description>Aubrey Manning examines historical mysteries</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>History</Genre>
+   </Content>
+   <Content id="urn:bbc:1363" version="1">
+      <Name>Here is a Box, a Musical Box</Name>
+      <Description>Phill Jupitus presents a fond tribute to Camberwick Green to mark its 40th anniversary</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1332" version="3">
+      <Name>You and Yours</Name>
+      <Description>Consumer news and discussion with John Waite and Peter White</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>Special Reports</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:1334" version="1">
+      <Name>The Musical Side of the Family</Name>
+      <Description>Maria Friedman recently made her Broadway debut in Andrew Lloyd-Webber's new musical version of The Woman in White</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e3290" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e3290" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:1334</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345804000" InteractivityWindowEndTime="3345804200"/>
+   </InteractivityData>
+   <Content id="urn:bbc:1335" version="2">
+      <Name>The Archers</Name>
+      <Description>Susan gets some bitter-sweet news</Description>
+      <Genre>General light drama</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:1336" version="4">
+      <Name>Afternoon Play</Name>
+      <Description>Another Part of the Wood, by Steve Jacobi</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1337" version="5">
+      <Name>Making History</Name>
+      <Description>Sue Cook gets to the bottom of historical mysteries, local legends, family curiosities and architectural oddities</Description>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1338" version="1">
+      <Name>Afternoon Reading</Name>
+      <Description>A week of stories by Russian writer Ivan Bunin</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1339" version="3">
+      <Name>The Sleepless Society</Name>
+      <Description>Charles Leadbetter presents a series on sleep</Description>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:1340" version="4">
+      <Name>Shop Talk</Name>
+      <Description>Heather Payton and guests with conversation about the world of business, money and technology</Description>
+      <Genre>Economy/Market/Financial/Business</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Sciences</Genre>
+      <Genre>Technology</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1341" version="5">
+      <Name>A Good Read</Name>
+      <Description>Art critic and television presenter Andrew Graham-Dixon and actor Tim Bentinck, who plays David in The Archers, join Sue MacGregor to talk about the books they love</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1344" version="4">
+      <Name>It's That Jo Caulfield Again</Name>
+      <Description>Jo Caulfield turns her acerbic wit on the little things which annoy her</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1345" version="1">
+      <Name>The Archers</Name>
+      <Description>Brian drives a hard bargain</Description>
+      <Genre>General light drama</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:1346" version="2">
+      <Name>Front Row</Name>
+      <Description>With Mark Lawson, including an interview with the American writer EL Doctorow, author of Ragtime and Billy Bathgate</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e3530" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e3530" version="3" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:1346</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345824700" InteractivityWindowEndTime="3345824900"/>
+   </InteractivityData>
+   <Content id="urn:bbc:1364" version="3">
+      <Name>Cooking for Michael Collins</Name>
+      <Description>By Jane Purcell</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1348" version="5">
+      <Name>The Black Middle Classes</Name>
+      <Description>1/2</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1349" version="1">
+      <Name>In Touch</Name>
+      <Description>Peter White with news and information of particular interest to blind and partially-sighted people</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1350" version="2">
+      <Name>Case Notes</Name>
+      <Description>The Royal Marsden is a leader in developing and testing anti-cancer treatments</Description>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1353" version="1">
+      <Name>Book at Bedtime</Name>
+      <Description>A Passage to India, by EM Forster</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1354" version="3">
+      <Name>Trapped</Name>
+      <Description>Series of comedy dramas by Mark and Daniel Maier</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1355" version="4">
+      <Name>Today in Parliament</Name>
+      <Description>A review of the day's events in Parliament, with David Wilby</Description>
+      <Genre>Political</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+   </Content>
+   <Schedule id="BBCRFour_d0e13470" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1324">
+         <Presentation_Window Presentation_Start_Time="3345753600" Presentation_End_Time="3345755400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13484" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1362">
+         <Presentation_Window Presentation_Start_Time="3345755400" Presentation_End_Time="3345756480"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13498" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1361">
+         <Presentation_Window Presentation_Start_Time="3345756480" Presentation_End_Time="3345757200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3702" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2317276000 2565307616 IN IP4 192.168.0.85
+c=IN IP4 225.224.198.110
+m=audio 31198 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13512" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345757200" Presentation_End_Time="3345764400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13529" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1357">
+         <Presentation_Window Presentation_Start_Time="3345764400" Presentation_End_Time="3345771600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13546" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345771600" Presentation_End_Time="3345773400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3726" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2465438842 2718200682 IN IP4 192.168.0.98
+c=IN IP4 225.224.11.83
+m=audio 47502 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13563" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1359">
+         <Presentation_Window Presentation_Start_Time="3345773400" Presentation_End_Time="3345774180"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13577" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1347">
+         <Presentation_Window Presentation_Start_Time="3345774180" Presentation_End_Time="3345774300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13591" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1331">
+         <Presentation_Window Presentation_Start_Time="3345774300" Presentation_End_Time="3345775200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3750" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2132568359 2407653808 IN IP4 192.168.0.20
+c=IN IP4 225.224.142.190
+m=audio 24740 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13605" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1325">
+         <Presentation_Window Presentation_Start_Time="3345775200" Presentation_End_Time="3345786000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13619" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1326">
+         <Presentation_Window Presentation_Start_Time="3345786000" Presentation_End_Time="3345787800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13633" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1327">
+         <Presentation_Window Presentation_Start_Time="3345787800" Presentation_End_Time="3345788700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3774" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2163177490 2295837402 IN IP4 192.168.0.151
+c=IN IP4 225.224.251.198
+m=audio 51976 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13647" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1328">
+         <Presentation_Window Presentation_Start_Time="3345788700" Presentation_End_Time="3345789600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13664" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1329">
+         <Presentation_Window Presentation_Start_Time="3345789600" Presentation_End_Time="3345793200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13678" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1330">
+         <Presentation_Window Presentation_Start_Time="3345793200" Presentation_End_Time="3345795000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3798" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2105468750 2598678588 IN IP4 192.168.0.187
+c=IN IP4 225.224.101.226
+m=audio 61756 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13692" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1363">
+         <Presentation_Window Presentation_Start_Time="3345795000" Presentation_End_Time="3345796800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13706" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1356">
+         <Presentation_Window Presentation_Start_Time="3345796800" Presentation_End_Time="3345797100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13720" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1332">
+         <Presentation_Window Presentation_Start_Time="3345797100" Presentation_End_Time="3345800400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3822" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2358596801 2531616210 IN IP4 192.168.0.179
+c=IN IP4 225.224.76.227
+m=audio 24192 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13734" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1333">
+         <Presentation_Window Presentation_Start_Time="3345800400" Presentation_End_Time="3345802200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13748" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1334">
+         <Presentation_Window Presentation_Start_Time="3345802200" Presentation_End_Time="3345804000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13762" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1335">
+         <Presentation_Window Presentation_Start_Time="3345804000" Presentation_End_Time="3345804900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3846" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2247283935 2291229247 IN IP4 192.168.0.225
+c=IN IP4 225.224.167.197
+m=audio 57696 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13776" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1336">
+         <Presentation_Window Presentation_Start_Time="3345804900" Presentation_End_Time="3345807600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13790" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1337">
+         <Presentation_Window Presentation_Start_Time="3345807600" Presentation_End_Time="3345809400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13804" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1338">
+         <Presentation_Window Presentation_Start_Time="3345809400" Presentation_End_Time="3345810300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3870" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2127716064 2239974975 IN IP4 192.168.0.249
+c=IN IP4 225.224.149.53
+m=audio 25220 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13818" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1339">
+         <Presentation_Window Presentation_Start_Time="3345810300" Presentation_End_Time="3345811200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13832" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1340">
+         <Presentation_Window Presentation_Start_Time="3345811200" Presentation_End_Time="3345813000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13846" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1341">
+         <Presentation_Window Presentation_Start_Time="3345813000" Presentation_End_Time="3345814800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3894" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2004531860 2209228515 IN IP4 192.168.0.169
+c=IN IP4 225.224.11.124
+m=audio 58538 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13860" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1342">
+         <Presentation_Window Presentation_Start_Time="3345814800" Presentation_End_Time="3345818400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13874" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1343">
+         <Presentation_Window Presentation_Start_Time="3345818400" Presentation_End_Time="3345820200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13888" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1344">
+         <Presentation_Window Presentation_Start_Time="3345820200" Presentation_End_Time="3345822000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3918" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2225753784 2662246703 IN IP4 192.168.0.124
+c=IN IP4 225.224.38.180
+m=audio 45634 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13902" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1345">
+         <Presentation_Window Presentation_Start_Time="3345822000" Presentation_End_Time="3345822900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13919" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1346">
+         <Presentation_Window Presentation_Start_Time="3345822900" Presentation_End_Time="3345824700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13933" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1364">
+         <Presentation_Window Presentation_Start_Time="3345824700" Presentation_End_Time="3345825600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3942" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2182678222 2237594603 IN IP4 192.168.0.32
+c=IN IP4 225.224.86.103
+m=audio 11930 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13947" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1348">
+         <Presentation_Window Presentation_Start_Time="3345825600" Presentation_End_Time="3345828000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13964" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1349">
+         <Presentation_Window Presentation_Start_Time="3345828000" Presentation_End_Time="3345829200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e13981" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1350">
+         <Presentation_Window Presentation_Start_Time="3345829200" Presentation_End_Time="3345831000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3966" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2138290405 2301574706 IN IP4 192.168.0.202
+c=IN IP4 225.224.228.150
+m=audio 36748 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e13995" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1351">
+         <Presentation_Window Presentation_Start_Time="3345831000" Presentation_End_Time="3345832800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e14009" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1352">
+         <Presentation_Window Presentation_Start_Time="3345832800" Presentation_End_Time="3345835500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e14023" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1353">
+         <Presentation_Window Presentation_Start_Time="3345835500" Presentation_End_Time="3345836400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e3990" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2402130126 2447769164 IN IP4 192.168.0.48
+c=IN IP4 225.224.101.149
+m=audio 7958 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e14037" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1354">
+         <Presentation_Window Presentation_Start_Time="3345836400" Presentation_End_Time="3345838200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e14051" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1355">
+         <Presentation_Window Presentation_Start_Time="3345838200" Presentation_End_Time="3345840000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:2081" version="5">
+      <Name>Schools</Name>
+      <Description>3</Description>
+      <Genre>Education</Genre>
+      <Genre>School Programmes</Genre>
+      <Genre>Children</Genre>
+   </Content>
+   <Content id="urn:bbc:2050" version="5">
+      <Name>Today</Name>
+      <Description>With James Naughtie and Carolyn Quinn</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>Live</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:2075" version="2">
+      <Name>Midweek</Name>
+      <Description>Libby Purves and guests engage in lively and diverse conversation</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e4062" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e4062" version="3" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:2075</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345874200" InteractivityWindowEndTime="3345874400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:2054" version="1">
+      <Name>Random Edition</Name>
+      <Description>Peter Snow returns with a series that brings alive stories found in individual newspapers from history</Description>
+      <Genre>Documentary</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>History</Genre>
+      <Genre>Press</Genre>
+      <Genre>Special news/edition</Genre>
+      <Genre>Culture/tradition/anthropology/Ethnicstudies</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2055" version="2">
+      <Name>Ed Reardon's Week</Name>
+      <Description>Comedy series by Christopher Douglas and Andrew Nickolds</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2058" version="2">
+      <Name>Land Lines</Name>
+      <Description>Brett Westwood presents a series of puzzles involving links between local history and the countryside</Description>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>LEISURE/HOBBY</Genre>
+      <Genre>Travel/Tourism</Genre>
+   </Content>
+   <Content id="urn:bbc:2060" version="4">
+      <Name>Afternoon Play</Name>
+      <Description>Dinner in the Iguanadon, by Chrissie Gittins</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2062" version="1">
+      <Name>Afternoon Reading</Name>
+      <Description>A week of stories by Russian writer Ivan Bunin</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2063" version="3">
+      <Name>The Sleepless Society</Name>
+      <Description>Charles Leadbetter presents a series on sleep</Description>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:2064" version="4">
+      <Name>Thinking Allowed</Name>
+      <Description>Human behaviour, institutions and conventions are put under the microscope as Laurie Taylor leads a discussion on topical issues coming out of the academic and research world</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2068" version="4">
+      <Name>Clare in the Community</Name>
+      <Description>Series written by Harry Venning and David Ramsden, about social worker Clare Barker</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2069" version="1">
+      <Name>The Archers</Name>
+      <Description>Sid dusts off his begging bowl</Description>
+      <Genre>General light drama</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:2071" version="2">
+      <Name>Cooking for Michael Collins</Name>
+      <Description>By Jane Purcell</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e4317" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e4317" version="3" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:2071</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345912900" InteractivityWindowEndTime="3345913100"/>
+   </InteractivityData>
+   <Content id="urn:bbc:2073" version="5">
+      <Name>Movies with a Message</Name>
+      <Description>2/3</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>History</Genre>
+   </Content>
+   <Content id="urn:bbc:2074" version="1">
+      <Name>Connect</Name>
+      <Description>Technology Fights Terror: Quentin Cooper look at how different technologies are being developed that may help prevent terror attacks, such as the London and Madrid bombings, in the future</Description>
+      <Genre>Sciences</Genre>
+      <Genre>Technology</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2077" version="4">
+      <Name>Book at Bedtime</Name>
+      <Description>A Passage to India, by EM Forster</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2078" version="5">
+      <Name>The 15 Minute Musical</Name>
+      <Description>Series of brief musical comedies written by and starring Richie Webb</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2079" version="1">
+      <Name>Inner Voices</Name>
+      <Description>Character monologues by top comics</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2080" version="3">
+      <Name>Today in Parliament</Name>
+      <Description>A review of the day's events in Parliament, with Rachel Hooper</Description>
+      <Genre>Political</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+   </Content>
+   <Schedule id="BBCRFour_d0e17155" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2049">
+         <Presentation_Window Presentation_Start_Time="3345840000" Presentation_End_Time="3345841800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4455" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2125671386 2271820067 IN IP4 192.168.0.116
+c=IN IP4 225.224.131.249
+m=audio 26436 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17169" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1328">
+         <Presentation_Window Presentation_Start_Time="3345841800" Presentation_End_Time="3345842880"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17186" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2085">
+         <Presentation_Window Presentation_Start_Time="3345842880" Presentation_End_Time="3345843600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17200" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345843600" Presentation_End_Time="3345850800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4479" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2070846557 2089996337 IN IP4 192.168.0.232
+c=IN IP4 225.224.68.212
+m=audio 3558 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17217" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2081">
+         <Presentation_Window Presentation_Start_Time="3345850800" Presentation_End_Time="3345858000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17234" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345858000" Presentation_End_Time="3345859800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17251" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2083">
+         <Presentation_Window Presentation_Start_Time="3345859800" Presentation_End_Time="3345860580"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4503" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2369903564 2441131591 IN IP4 192.168.0.121
+c=IN IP4 225.224.56.49
+m=audio 53600 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17265" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2067">
+         <Presentation_Window Presentation_Start_Time="3345860580" Presentation_End_Time="3345860700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17279" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2051">
+         <Presentation_Window Presentation_Start_Time="3345860700" Presentation_End_Time="3345861600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17293" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2050">
+         <Presentation_Window Presentation_Start_Time="3345861600" Presentation_End_Time="3345872400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4527" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2107879638 2583740233 IN IP4 192.168.0.58
+c=IN IP4 225.224.186.100
+m=audio 60524 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17307" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2075">
+         <Presentation_Window Presentation_Start_Time="3345872400" Presentation_End_Time="3345875100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17324" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2052">
+         <Presentation_Window Presentation_Start_Time="3345875100" Presentation_End_Time="3345876000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17341" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2053">
+         <Presentation_Window Presentation_Start_Time="3345876000" Presentation_End_Time="3345879600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4551" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2083496093 2151855468 IN IP4 192.168.0.245
+c=IN IP4 225.224.122.238
+m=audio 7252 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17355" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2054">
+         <Presentation_Window Presentation_Start_Time="3345879600" Presentation_End_Time="3345881400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17369" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2055">
+         <Presentation_Window Presentation_Start_Time="3345881400" Presentation_End_Time="3345883200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17383" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2089">
+         <Presentation_Window Presentation_Start_Time="3345883200" Presentation_End_Time="3345883500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4575" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2402343750 2537246704 IN IP4 192.168.0.4
+c=IN IP4 225.224.35.210
+m=audio 47172 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17397" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2056">
+         <Presentation_Window Presentation_Start_Time="3345883500" Presentation_End_Time="3345886800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17411" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2057">
+         <Presentation_Window Presentation_Start_Time="3345886800" Presentation_End_Time="3345888600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17425" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2058">
+         <Presentation_Window Presentation_Start_Time="3345888600" Presentation_End_Time="3345890400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4599" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2189559936 2297775268 IN IP4 192.168.0.37
+c=IN IP4 225.224.230.228
+m=audio 64228 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17439" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:1345">
+         <Presentation_Window Presentation_Start_Time="3345890400" Presentation_End_Time="3345891300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17456" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2060">
+         <Presentation_Window Presentation_Start_Time="3345891300" Presentation_End_Time="3345894000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17470" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2061">
+         <Presentation_Window Presentation_Start_Time="3345894000" Presentation_End_Time="3345895800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4623" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2242004394 2327850341 IN IP4 192.168.0.133
+c=IN IP4 225.224.232.236
+m=audio 25598 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17484" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2062">
+         <Presentation_Window Presentation_Start_Time="3345895800" Presentation_End_Time="3345896700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17498" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2063">
+         <Presentation_Window Presentation_Start_Time="3345896700" Presentation_End_Time="3345897600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17512" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2064">
+         <Presentation_Window Presentation_Start_Time="3345897600" Presentation_End_Time="3345899400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4647" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2432556152 2540039062 IN IP4 192.168.0.35
+c=IN IP4 225.224.227.64
+m=audio 19524 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17526" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2065">
+         <Presentation_Window Presentation_Start_Time="3345899400" Presentation_End_Time="3345901200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17540" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2066">
+         <Presentation_Window Presentation_Start_Time="3345901200" Presentation_End_Time="3345904800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17554" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2088">
+         <Presentation_Window Presentation_Start_Time="3345904800" Presentation_End_Time="3345906600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4671" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2196105957 2273910522 IN IP4 192.168.0.1
+c=IN IP4 225.224.120.61
+m=audio 18592 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17568" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2068">
+         <Presentation_Window Presentation_Start_Time="3345906600" Presentation_End_Time="3345908400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17582" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2069">
+         <Presentation_Window Presentation_Start_Time="3345908400" Presentation_End_Time="3345909300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17599" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:623">
+         <Presentation_Window Presentation_Start_Time="3345909300" Presentation_End_Time="3345911100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4695" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2029205322 2443084716 IN IP4 192.168.0.92
+c=IN IP4 225.224.31.150
+m=audio 59254 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17616" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2071">
+         <Presentation_Window Presentation_Start_Time="3345911100" Presentation_End_Time="3345912000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17630" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2072">
+         <Presentation_Window Presentation_Start_Time="3345912000" Presentation_End_Time="3345914700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17644" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2073">
+         <Presentation_Window Presentation_Start_Time="3345914700" Presentation_End_Time="3345915600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4719" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2186508178 2429809569 IN IP4 192.168.0.200
+c=IN IP4 225.224.11.29
+m=audio 58144 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17658" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2074">
+         <Presentation_Window Presentation_Start_Time="3345915600" Presentation_End_Time="3345917400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17672" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2075">
+         <Presentation_Window Presentation_Start_Time="3345917400" Presentation_End_Time="3345919200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17689" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2076">
+         <Presentation_Window Presentation_Start_Time="3345919200" Presentation_End_Time="3345921900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4743" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2218612670 2311614989 IN IP4 192.168.0.56
+c=IN IP4 225.224.121.133
+m=audio 54234 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17703" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2077">
+         <Presentation_Window Presentation_Start_Time="3345921900" Presentation_End_Time="3345922800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17717" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2078">
+         <Presentation_Window Presentation_Start_Time="3345922800" Presentation_End_Time="3345923700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e17731" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2079">
+         <Presentation_Window Presentation_Start_Time="3345923700" Presentation_End_Time="3345924600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e4767" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2231857299 2535400389 IN IP4 192.168.0.93
+c=IN IP4 225.224.23.180
+m=audio 41610 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e17745" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2080">
+         <Presentation_Window Presentation_Start_Time="3345924600" Presentation_End_Time="3345926400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:2348" version="4">
+      <Name>Schools</Name>
+      <Description>3</Description>
+      <Genre>Education</Genre>
+      <Genre>School Programmes</Genre>
+      <Genre>Children</Genre>
+   </Content>
+   <Content id="urn:bbc:2306" version="5">
+      <Name>Melvyn Bragg: In Our Time</Name>
+      <Description>Melvyn Bragg and guests discuss the history of ideas</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2310" version="1">
+      <Name>With Great Pleasure</Name>
+      <Description>Writer and broadcaster Adam Hart-Davis entertains his audience with stories about his life and favourite writing</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:2311" version="3">
+      <Name>You and Yours</Name>
+      <Description>Consumer news and discussion with Liz Barclay and John Waite</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>Special Reports</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e4846" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e4846" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:2311</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345971700" InteractivityWindowEndTime="3345971900"/>
+   </InteractivityData>
+   <Content id="urn:bbc:2316" version="2">
+      <Name>Afternoon Play</Name>
+      <Description>Dear Dr Goebbels, by Neville Smith</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2361" version="4">
+      <Name>More or Less</Name>
+      <Description>Andrew Dilnot presents the series that explores numbers and their place in the world around us</Description>
+      <Genre>Sciences</Genre>
+      <Genre>Technology</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2323" version="1">
+      <Name>Afternoon Reading</Name>
+      <Description>A week of stories by Russian writer Ivan Bunin</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2325" version="3">
+      <Name>The Sleepless Society</Name>
+      <Description>Charles Leadbetter presents a series on sleep</Description>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:2329" version="5">
+      <Name>The Material World</Name>
+      <Description>Tone Deaf/Amusia: Quentin Cooper talks to neuroscientist Lauren Stewart, who is untangling the different ways in which amusics can't follow the tune</Description>
+      <Genre>Sciences</Genre>
+      <Genre>Technology</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2334" version="4">
+      <Name>Happy Families</Name>
+      <Description>Counselling Dad: Scouse comic John Bishop recreates a counselling session that enabled him to shed his status a single parent</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2335" version="1">
+      <Name>The Archers</Name>
+      <Description>Alan's thankful for friends in high places</Description>
+      <Genre>General light drama</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:2336" version="2">
+      <Name>Front Row</Name>
+      <Description>Kirsty Lang with the arts programme</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2337" version="3">
+      <Name>Cooking for Michael Collins</Name>
+      <Description>By Jane Purcell</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2338" version="5">
+      <Name>It's My Story</Name>
+      <Description>A Better Place to End My Days?: Ted Marcer, 87, is worried about the future and where he will live if he can no longer look after himself</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e5083" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e5083" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:2338</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346000200" InteractivityWindowEndTime="3346000400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:2339" version="1">
+      <Name>In Business</Name>
+      <Description>Reshaping the World: The 21st Century is going to see huge changes in the way the world's economy works</Description>
+      <Genre>Economy/Market/Financial/Business</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2340" version="2">
+      <Name>Jonathan Edwards Looks into...</Name>
+      <Description/>
+      <Genre>Sciences</Genre>
+      <Genre>Technology</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2343" version="5">
+      <Name>Book at Bedtime</Name>
+      <Description>A Passage to India, by EM Forster</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2344" version="1">
+      <Name>Radio9</Name>
+      <Description>In a world where presentation is at the wheel and content is bound and gagged in the back, Radio9 finds itself with much to say, but no idea how to say it</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRFour_d0e20793" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2304">
+         <Presentation_Window Presentation_Start_Time="3345926400" Presentation_End_Time="3345928200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20807" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2052">
+         <Presentation_Window Presentation_Start_Time="3345928200" Presentation_End_Time="3345929280"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5180" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2321380615 2510086059 IN IP4 192.168.0.236
+c=IN IP4 225.224.109.197
+m=audio 52204 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e20824" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2357">
+         <Presentation_Window Presentation_Start_Time="3345929280" Presentation_End_Time="3345930000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20838" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345930000" Presentation_End_Time="3345937200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20855" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2348">
+         <Presentation_Window Presentation_Start_Time="3345937200" Presentation_End_Time="3345944400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5204" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2098846435 2150848388 IN IP4 192.168.0.238
+c=IN IP4 225.224.192.4
+m=audio 41476 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e20869" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345944400" Presentation_End_Time="3345946200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20886" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2354">
+         <Presentation_Window Presentation_Start_Time="3345946200" Presentation_End_Time="3345946980"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20900" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2342">
+         <Presentation_Window Presentation_Start_Time="3345946980" Presentation_End_Time="3345947100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5228" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2166702270 2545806884 IN IP4 192.168.0.232
+c=IN IP4 225.224.170.221
+m=audio 6652 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e20914" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2318">
+         <Presentation_Window Presentation_Start_Time="3345947100" Presentation_End_Time="3345948000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20928" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2305">
+         <Presentation_Window Presentation_Start_Time="3345948000" Presentation_End_Time="3345958800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20942" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2306">
+         <Presentation_Window Presentation_Start_Time="3345958800" Presentation_End_Time="3345961500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5252" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2345077514 2508239745 IN IP4 192.168.0.218
+c=IN IP4 225.224.45.89
+m=audio 18756 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e20959" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2307">
+         <Presentation_Window Presentation_Start_Time="3345961500" Presentation_End_Time="3345962400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20976" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2308">
+         <Presentation_Window Presentation_Start_Time="3345962400" Presentation_End_Time="3345966000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e20990" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2309">
+         <Presentation_Window Presentation_Start_Time="3345966000" Presentation_End_Time="3345967800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5276" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2497192382 2697052001 IN IP4 192.168.0.223
+c=IN IP4 225.224.205.52
+m=audio 12280 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21007" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2310">
+         <Presentation_Window Presentation_Start_Time="3345967800" Presentation_End_Time="3345969600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21024" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2352">
+         <Presentation_Window Presentation_Start_Time="3345969600" Presentation_End_Time="3345969900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21038" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2311">
+         <Presentation_Window Presentation_Start_Time="3345969900" Presentation_End_Time="3345973200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5300" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2488082885 2611480712 IN IP4 192.168.0.121
+c=IN IP4 225.224.6.38
+m=audio 34014 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21052" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2312">
+         <Presentation_Window Presentation_Start_Time="3345973200" Presentation_End_Time="3345975000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21066" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2313">
+         <Presentation_Window Presentation_Start_Time="3345975000" Presentation_End_Time="3345976800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21080" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2069">
+         <Presentation_Window Presentation_Start_Time="3345976800" Presentation_End_Time="3345977700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5324" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2210418701 2467208862 IN IP4 192.168.0.229
+c=IN IP4 225.224.0.179
+m=audio 45088 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21097" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2316">
+         <Presentation_Window Presentation_Start_Time="3345977700" Presentation_End_Time="3345980400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21111" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2361">
+         <Presentation_Window Presentation_Start_Time="3345980400" Presentation_End_Time="3345982020"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21125" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2320">
+         <Presentation_Window Presentation_Start_Time="3345982020" Presentation_End_Time="3345982200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5348" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2284378051 2615142821 IN IP4 192.168.0.230
+c=IN IP4 225.224.253.192
+m=audio 34022 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21139" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2323">
+         <Presentation_Window Presentation_Start_Time="3345982200" Presentation_End_Time="3345983100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21153" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2325">
+         <Presentation_Window Presentation_Start_Time="3345983100" Presentation_End_Time="3345984000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21167" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2327">
+         <Presentation_Window Presentation_Start_Time="3345984000" Presentation_End_Time="3345985800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5372" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2046920776 2146530151 IN IP4 192.168.0.141
+c=IN IP4 225.224.107.187
+m=audio 29088 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21181" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2329">
+         <Presentation_Window Presentation_Start_Time="3345985800" Presentation_End_Time="3345987600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21195" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2332">
+         <Presentation_Window Presentation_Start_Time="3345987600" Presentation_End_Time="3345991200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21209" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2333">
+         <Presentation_Window Presentation_Start_Time="3345991200" Presentation_End_Time="3345993000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5396" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2353591918 2514144896 IN IP4 192.168.0.249
+c=IN IP4 225.224.194.245
+m=audio 52024 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21223" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2334">
+         <Presentation_Window Presentation_Start_Time="3345993000" Presentation_End_Time="3345994800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21237" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2335">
+         <Presentation_Window Presentation_Start_Time="3345994800" Presentation_End_Time="3345995700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21254" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2336">
+         <Presentation_Window Presentation_Start_Time="3345995700" Presentation_End_Time="3345997500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5420" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2083709716 2262268065 IN IP4 192.168.0.140
+c=IN IP4 225.224.49.152
+m=audio 59638 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21268" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2337">
+         <Presentation_Window Presentation_Start_Time="3345997500" Presentation_End_Time="3345998400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21282" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2338">
+         <Presentation_Window Presentation_Start_Time="3345998400" Presentation_End_Time="3346000200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21296" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2339">
+         <Presentation_Window Presentation_Start_Time="3346000200" Presentation_End_Time="3346002000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5444" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2131423950 2175140380 IN IP4 192.168.0.47
+c=IN IP4 225.224.41.240
+m=audio 27634 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21310" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2340">
+         <Presentation_Window Presentation_Start_Time="3346002000" Presentation_End_Time="3346003800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21324" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2306">
+         <Presentation_Window Presentation_Start_Time="3346003800" Presentation_End_Time="3346005600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21341" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2363">
+         <Presentation_Window Presentation_Start_Time="3346005600" Presentation_End_Time="3346008300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5468" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2143005371 2199142455 IN IP4 192.168.0.215
+c=IN IP4 225.224.252.54
+m=audio 5404 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e21355" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2343">
+         <Presentation_Window Presentation_Start_Time="3346008300" Presentation_End_Time="3346009200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21369" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2344">
+         <Presentation_Window Presentation_Start_Time="3346009200" Presentation_End_Time="3346011000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e21383" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2345">
+         <Presentation_Window Presentation_Start_Time="3346011000" Presentation_End_Time="3346012800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e5492" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2386230468 2740859984 IN IP4 192.168.0.182
+c=IN IP4 225.224.228.104
+m=audio 20372 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:5385" version="4">
+      <Name>Schools</Name>
+      <Description>3</Description>
+      <Genre>Education</Genre>
+      <Genre>School Programmes</Genre>
+      <Genre>Children</Genre>
+   </Content>
+   <Content id="urn:bbc:5391" version="3">
+      <Name>Farming Today</Name>
+      <Description>Agricultural news and features, with Mark Holdstock</Description>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>Animals/Wildlife</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5356" version="4">
+      <Name>Today</Name>
+      <Description>With James Naughtie and Edward Stourton</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>Live</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:5359" version="3">
+      <Name>Woman's Hour</Name>
+      <Description>With Martha Kearney</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>LEISURE/HOBBY</Genre>
+      <Genre>Human interest</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:5360" version="4">
+      <Name>Hibernia Hunting</Name>
+      <Description>It is nearly a year since fox hunting was banned in England and Wales but the season is at its height in Ireland</Description>
+      <Genre>Nature/natural sciences</Genre>
+      <Genre>Animals/Wildlife</Genre>
+      <Genre>Environment/geography</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5361" version="1">
+      <Name>Count Arthur Strong's Radio Show!</Name>
+      <Description>4/6</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e5647" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e5647" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:5361</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346056000" InteractivityWindowEndTime="3346056200"/>
+   </InteractivityData>
+   <Content id="urn:bbc:5364" version="1">
+      <Name>A World in Your Ear</Name>
+      <Description>Highlights of the best that English language radio has to offer from around the world</Description>
+   </Content>
+   <Content id="urn:bbc:5366" version="2">
+      <Name>Afternoon Play</Name>
+      <Description>From Father with Love, by Mark Burgess</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5367" version="4">
+      <Name>Veg Talk</Name>
+      <Description>Chocolate is on the menu for Greg Wallace and Charlie Hicks</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Cookery</Genre>
+   </Content>
+   <Content id="urn:bbc:5368" version="5">
+      <Name>Afternoon Reading</Name>
+      <Description>A week of stories by Russian writer Ivan Bunin</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5369" version="1">
+      <Name>The Sleepless Society</Name>
+      <Description>Charles Leadbetter presents a series on sleep</Description>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:5370" version="3">
+      <Name>Word of Mouth</Name>
+      <Description>Michael Rosen presents the programme about the way we speak</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5392" version="4">
+      <Name>The Message</Name>
+      <Description>Jenni Murray and guests engage in lively conversation about how current media trends affect our lives</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5375" version="4">
+      <Name>The Archers</Name>
+      <Description>Jolene won't accept defeat</Description>
+      <Genre>General light drama</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:5376" version="1">
+      <Name>Front Row</Name>
+      <Description>With Kirsty Lang, including a report on the Hungarian folk roots of Bartok's music for string quartet, demonstrated by the Takacs Quartet</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5377" version="2">
+      <Name>Cooking for Michael Collins</Name>
+      <Description>By Jane Purcell</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRFourint_d0e5869" InteractivityMediaDocumentPointer="BBCRFourintgrp_d0e5869" version="3" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:5377</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346085700" InteractivityWindowEndTime="3346085900"/>
+   </InteractivityData>
+   <Content id="urn:bbc:5378" version="3">
+      <Name>Any Questions?</Name>
+      <Description>Jonathan Dimbleby chairs the discussion as an audience in Tonbridge in Kent puts questions on the issues of the week to a panel of four leading figures</Description>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>Infotainment</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Public Affairs</Genre>
+      <Genre>Political</Genre>
+      <Genre>Analytical</Genre>
+      <Genre>Insightful</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+   </Content>
+   <Content id="urn:bbc:5380" version="1">
+      <Name>The Friday Play</Name>
+      <Description>Wouldn't It Be Better If He Died in the End? By Laurence Allan</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5382" version="4">
+      <Name>Book at Bedtime</Name>
+      <Description>A Passage to India, by EM Forster</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5395" version="5">
+      <Name>Copysnatchers</Name>
+      <Description>David Aaronovitch with the topical chat show in which guests from around the world observe, parody and dissect current British stories from a foreign perspective</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5384" version="1">
+      <Name>Today in Parliament</Name>
+      <Description>A review of the day's events in Parliament, with Mark D'Arcy</Description>
+      <Genre>Political</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Periodical/General</Genre>
+   </Content>
+   <Schedule id="BBCRFour_d0e24550" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5355">
+         <Presentation_Window Presentation_Start_Time="3346012800" Presentation_End_Time="3346014600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24564" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2307">
+         <Presentation_Window Presentation_Start_Time="3346014600" Presentation_End_Time="3346015680"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24581" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5389">
+         <Presentation_Window Presentation_Start_Time="3346015680" Presentation_End_Time="3346016400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6026" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2475173950 2770553588 IN IP4 192.168.0.168
+c=IN IP4 225.224.192.71
+m=audio 46942 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24595" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3346016400" Presentation_End_Time="3346023600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24612" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5385">
+         <Presentation_Window Presentation_Start_Time="3346023600" Presentation_End_Time="3346030800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24626" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:BBCR4MirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3346030800" Presentation_End_Time="3346032600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6050" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2283401489 2438858031 IN IP4 192.168.0.83
+c=IN IP4 225.224.172.140
+m=audio 22798 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24643" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5387">
+         <Presentation_Window Presentation_Start_Time="3346032600" Presentation_End_Time="3346033380"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24657" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5371">
+         <Presentation_Window Presentation_Start_Time="3346033380" Presentation_End_Time="3346033500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24671" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5391">
+         <Presentation_Window Presentation_Start_Time="3346033500" Presentation_End_Time="3346034400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6074" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2325637817 2522567748 IN IP4 192.168.0.123
+c=IN IP4 225.224.185.149
+m=audio 29916 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24685" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5356">
+         <Presentation_Window Presentation_Start_Time="3346034400" Presentation_End_Time="3346045200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24699" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5357">
+         <Presentation_Window Presentation_Start_Time="3346045200" Presentation_End_Time="3346047900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24713" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5358">
+         <Presentation_Window Presentation_Start_Time="3346047900" Presentation_End_Time="3346048800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6098" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2231964111 2325790404 IN IP4 192.168.0.101
+c=IN IP4 225.224.39.176
+m=audio 19286 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24727" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5359">
+         <Presentation_Window Presentation_Start_Time="3346048800" Presentation_End_Time="3346052400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24741" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5360">
+         <Presentation_Window Presentation_Start_Time="3346052400" Presentation_End_Time="3346054200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24755" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5361">
+         <Presentation_Window Presentation_Start_Time="3346054200" Presentation_End_Time="3346056000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6122" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2244842529 2551284789 IN IP4 192.168.0.91
+c=IN IP4 225.224.81.190
+m=audio 22928 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24769" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5393">
+         <Presentation_Window Presentation_Start_Time="3346056000" Presentation_End_Time="3346056300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24783" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5362">
+         <Presentation_Window Presentation_Start_Time="3346056300" Presentation_End_Time="3346059600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24797" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5363">
+         <Presentation_Window Presentation_Start_Time="3346059600" Presentation_End_Time="3346061400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6146" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2497863769 2498504638 IN IP4 192.168.0.169
+c=IN IP4 225.224.107.27
+m=audio 8440 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24811" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5364">
+         <Presentation_Window Presentation_Start_Time="3346061400" Presentation_End_Time="3346063200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24825" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:2335">
+         <Presentation_Window Presentation_Start_Time="3346063200" Presentation_End_Time="3346064100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24842" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5366">
+         <Presentation_Window Presentation_Start_Time="3346064100" Presentation_End_Time="3346066800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6170" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2250793457 2615402221 IN IP4 192.168.0.144
+c=IN IP4 225.224.250.7
+m=audio 21976 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24856" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5367">
+         <Presentation_Window Presentation_Start_Time="3346066800" Presentation_End_Time="3346068600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24870" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5368">
+         <Presentation_Window Presentation_Start_Time="3346068600" Presentation_End_Time="3346069500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24884" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5369">
+         <Presentation_Window Presentation_Start_Time="3346069500" Presentation_End_Time="3346070400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6194" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2318084716 2803070067 IN IP4 192.168.0.13
+c=IN IP4 225.224.116.17
+m=audio 59088 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24898" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5370">
+         <Presentation_Window Presentation_Start_Time="3346070400" Presentation_End_Time="3346072200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24912" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5392">
+         <Presentation_Window Presentation_Start_Time="3346072200" Presentation_End_Time="3346074000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24926" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5372">
+         <Presentation_Window Presentation_Start_Time="3346074000" Presentation_End_Time="3346077600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6218" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2203506469 2324676512 IN IP4 192.168.0.33
+c=IN IP4 225.224.146.131
+m=audio 39556 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24940" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5373">
+         <Presentation_Window Presentation_Start_Time="3346077600" Presentation_End_Time="3346079400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24954" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5374">
+         <Presentation_Window Presentation_Start_Time="3346079400" Presentation_End_Time="3346081200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24971" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5375">
+         <Presentation_Window Presentation_Start_Time="3346081200" Presentation_End_Time="3346082100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6242" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2000259399 2073226928 IN IP4 192.168.0.55
+c=IN IP4 225.224.102.109
+m=audio 53962 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e24985" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5376">
+         <Presentation_Window Presentation_Start_Time="3346082100" Presentation_End_Time="3346083900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e24999" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5377">
+         <Presentation_Window Presentation_Start_Time="3346083900" Presentation_End_Time="3346084800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e25013" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5378">
+         <Presentation_Window Presentation_Start_Time="3346084800" Presentation_End_Time="3346087800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6266" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2000762939 2186065673 IN IP4 192.168.0.22
+c=IN IP4 225.224.116.78
+m=audio 56352 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e25030" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5394">
+         <Presentation_Window Presentation_Start_Time="3346087800" Presentation_End_Time="3346088400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e25047" version="2" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5380">
+         <Presentation_Window Presentation_Start_Time="3346088400" Presentation_End_Time="3346092000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e25061" version="4" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5381">
+         <Presentation_Window Presentation_Start_Time="3346092000" Presentation_End_Time="3346094700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6290" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2241867065 2429290771 IN IP4 192.168.0.5
+c=IN IP4 225.224.233.219
+m=audio 22950 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFour_d0e25075" version="5" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5382">
+         <Presentation_Window Presentation_Start_Time="3346094700" Presentation_End_Time="3346095600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e25089" version="1" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5395">
+         <Presentation_Window Presentation_Start_Time="3346095600" Presentation_End_Time="3346097400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFour_d0e25103" version="3" ServiceIDRef="BBCRFour">
+      <ContentIDRef idRef="urn:bbc:5384">
+         <Presentation_Window Presentation_Start_Time="3346097400" Presentation_End_Time="3346099200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFouracc_d0e6314" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2454513549 2788375853 IN IP4 192.168.0.254
+c=IN IP4 225.224.195.0
+m=audio 49584 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+</ESGMainBCAST>

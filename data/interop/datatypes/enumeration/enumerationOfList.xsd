@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="X">
+  <xsd:simpleType>
+    <xsd:restriction>
+      <xsd:simpleType>
+        <xsd:list>
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:ID"/>
+          </xsd:simpleType>
+        </xsd:list>
+      </xsd:simpleType>
+      <xsd:enumeration value="A B C"/>
+      <xsd:enumeration value="E F G"/>
+      <xsd:enumeration value="I J K"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,22 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile interoperability tests with comments preservation">
+
+    <param name="org.w3c.exi.ttf.preserve" value="comments"/>
+    <param name="org.w3c.exi.ttf.useProfile" value="true"/>
+
+    <xi:include href="general.xml"/>
+    
+    <testCase name="gr-without-productions0">
+        <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/builtInElement.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>
+        <param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+        <param name="org.w3c.exi.ttf.maxBuiltinProd" value="1"/>
+        <param name="description"  value="Even in the case where no production will be inserted in grammar G, 
+implementations MUST behave as if grammar G is instantiated"/>
+        <param name="japex.inputFile" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/grammarInstantiationWithoutProductions.xml" />
+    </testCase>
+    
+</testCaseGroup>

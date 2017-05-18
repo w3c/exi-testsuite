@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    <param xmlns="http://www.sun.com/japex/testSuite" name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/OpenOffice/schema/ns13.xsd"/>
+    <param name="org.w3c.exi.ttf.preserve" value="pis prefixes"/>
+
+    <testCase name="OpenOffice/Exclusive XML Canonicalization Version 1.fodt">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/Exclusive XML Canonicalization Version 1.fodt"/>
+    </testCase>
+    <testCase name="OpenOffice/Extensible Markup Language (XML) 1.0.fodt">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/Extensible Markup Language (XML) 1.0.fodt"/>
+    </testCase>
+    <testCase name="OpenOffice/XML Information Set (Second Edition).fodt">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/XML Information Set (Second Edition).fodt"/>
+    </testCase>
+    <testCase name="OpenOffice/XML Schema Part 1 Structures Second Edition.fodt">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/XML Schema Part 1 Structures Second Edition.fodt"/>
+    </testCase>
+    <testCase name="OpenOffice/XML Schema Part 2 Datatypes Second Edition.fodt">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/XML Schema Part 2 Datatypes Second Edition.fodt"/>
+    </testCase>
+    <testCase name="OpenOffice/OpenDocument-v1.0-os/content.xml">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/OpenDocument-v1.0-os/content.xml"/>
+    </testCase>
+    <testCase name="OpenOffice/OpenDocument-v1.0-os/styles.xml">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/OpenDocument-v1.0-os/styles.xml"/>
+    </testCase>
+    <testCase name="OpenOffice/OpenDocument-v1.0-os/meta.xml">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/OpenDocument-v1.0-os/meta.xml"/>
+    </testCase>
+    <testCase name="OpenOffice/OpenDocument-v1.0-os/settings.xml">
+	<param name="japex.inputFile" value="${testsDir}/OpenOffice/OpenDocument-v1.0-os/settings.xml"/>
+    </testCase>
+</testCaseGroup>

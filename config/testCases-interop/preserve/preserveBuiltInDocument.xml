@@ -1,0 +1,27 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Preserve BuiltIn Document Grammar tests">
+
+    <!-- built-in document tests -->
+    <testCaseGroup name="Preserve doc tests: comments">
+        <param name="org.w3c.exi.ttf.preserve" value="comments" />
+        <xi:include href="../builtInGrammar/builtInDocument.xml"/>
+    </testCaseGroup>
+    <testCaseGroup name="Preserve doc tests: dtds">
+        <param name="org.w3c.exi.ttf.preserve" value="dtds" />
+        <xi:include href="../builtInGrammar/builtInDocument.xml"/>
+    </testCaseGroup>
+    <testCaseGroup name="Preserve doc tests: pis">
+        <param name="org.w3c.exi.ttf.preserve" value="pis" />
+        <xi:include href="../builtInGrammar/builtInDocument.xml"/>
+    </testCaseGroup>
+    <testCaseGroup name="Preserve doc tests: pis dtds">
+        <param name="org.w3c.exi.ttf.preserve" value="pis dtds" />
+        <xi:include href="../builtInGrammar/builtInDocument.xml"/>
+    </testCaseGroup>
+    <testCaseGroup name="Preserve doc tests: pis comments dtds prefixes">
+        <param name="org.w3c.exi.ttf.preserve" value="pis comments dtds prefixes" />
+        <xi:include href="../builtInGrammar/builtInDocument.xml"/>
+    </testCaseGroup>
+
+</testCaseGroup>
+

@@ -1,0 +1,20 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <testCase name="XBRL/linkbases/xii-2004-10-29-presentation.xml">
+	<param name="japex.inputFile" value="${testsDir}/XBRL/linkbases/xii-2004-10-29-presentation.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XBRL/linkbases/schema/xbrl-linkbase-2003-12-31.xsd"/>
+    </testCase>
+    <testCase name="XBRL/linkbases/xii-2004-10-29-calculation.xml">
+	<param name="japex.inputFile" value="${testsDir}/XBRL/linkbases/xii-2004-10-29-calculation.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XBRL/linkbases/schema/xbrl-linkbase-2003-12-31.xsd"/>
+    </testCase>
+    <testCase name="XBRL/linkbases/xii-2004-10-29-label.xml">
+	<param name="japex.inputFile" value="${testsDir}/XBRL/linkbases/xii-2004-10-29-label.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XBRL/linkbases/schema/xbrl-linkbase-2003-12-31.xsd"/>
+    </testCase>
+    <testCase name="XBRL/report/xii-2004-10-29.xml">
+	<param name="japex.inputFile" value="${testsDir}/XBRL/report/xii-2004-10-29.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XBRL/report/schema/xii-ext.xsd"/>
+    </testCase>
+</testCaseGroup>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <param xmlns="http://www.sun.com/japex/testSuite" name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/Ant/autoschema.xsd"/>
+
+    <testCase name="Ant/build-build.xml">
+	<param name="japex.inputFile" value="${testsDir}/Ant/build-build.xml"/>
+    </testCase>
+    <testCase name="Ant/bsf-build.xml">
+	<param name="japex.inputFile" value="${testsDir}/Ant/bsf-build.xml"/>
+    </testCase>
+    <testCase name="Ant/i18n-build.xml">
+	<param name="japex.inputFile" value="${testsDir}/Ant/i18n-build.xml"/>
+    </testCase>
+    <testCase name="Ant/build.xml">
+	<param name="japex.inputFile" value="${testsDir}/Ant/build.xml"/>
+    </testCase>
+    <testCase name="Ant/foundation-build.xml">
+	<param name="japex.inputFile" value="${testsDir}/Ant/foundation-build.xml"/>
+    </testCase>
+</testCaseGroup>

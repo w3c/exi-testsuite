@@ -1,0 +1,53 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - document">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | informedDocumentGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/document.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#informedDocGrammars"/>
+
+    <testCase name="schemaInformed.declared.document-01">
+        <param name="testDescription"  value="Use of document grammar with the element wildcard matched"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-01.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.document-02">
+        <param name="testDescription"  value="Use of document grammar with the 1st element declaration matched"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-02.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.document-03">
+        <param name="testDescription"  value="Use of document grammar with the 2nd element declaration matched"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-03.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.document-04">
+        <param name="testDescription"  value="Use of document grammar with the 3rd element declaration matched"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-04.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.document-05">
+        <param name="testDescription"  value="Use of document grammar with the 4th element declaration matched"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-05.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.document-06">
+        <param name="testDescription"  value="Use of document grammar with the 5th element declaration matched"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-06.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.document-07">
+        <param name="testDescription"  value="Use of document grammar with the 6th element declaration matched"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-07.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+</testCaseGroup>

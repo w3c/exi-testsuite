@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:simpleType name="union">
+        <xs:union memberTypes="xs:integer xs:time"/>
+    </xs:simpleType>
+
+
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="gMonthDay" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:gMonthDay">
+                            <xs:enumeration value="--01-01"/>
+                            <xs:enumeration value="--05-01"/>
+                            <xs:enumeration value="--05-08"/>
+                            <xs:enumeration value="--07-14"/>
+                            <xs:enumeration value="--08-15"/>
+                            <xs:enumeration value="--11-01"/>
+                            <xs:enumeration value="--11-11"/>
+                            <xs:enumeration value="--12-25"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="integer" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer">
+                            <xs:enumeration value="0"/>
+                            <xs:enumeration value="1"/>
+                            <xs:enumeration value="2"/>
+                            <xs:enumeration value="3"/>
+                            <xs:enumeration value="4"/>
+                            <xs:enumeration value="5"/>
+                            <xs:enumeration value="6"/>
+                            <xs:enumeration value="7"/>
+                            <xs:enumeration value="8"/>
+                            <xs:enumeration value="9"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="float" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                            <xs:enumeration value="1.0"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="QName" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:QName">
+                            <xs:enumeration value="xs:float"/>
+                            <xs:enumeration value="xs:double"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="union" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:restriction base="union">
+                            <xs:enumeration value="10"/>
+                            <xs:enumeration value="12:32:00"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+

@@ -1,0 +1,470 @@
+<schema targetNamespace="urn:mpeg:mpeg7:schema:2001" 
+xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:mpeg7="urn:mpeg:mpeg7:schema:2001" 
+elementFormDefault="qualified" 
+attributeFormDefault="unqualified">
+
+	<import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+
+	<complexType name="MediaLocatorType">
+		<sequence>
+			<choice minOccurs="0">
+				<element name="MediaUri" type="anyURI"/>
+				<element name="InlineMedia" type="mpeg7:InlineMediaType"/>
+			</choice>
+			<element name="StreamID" type="nonNegativeInteger" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="InlineMediaType">
+		<choice>
+			<element name="MediaData16" type="hexBinary"/>
+			<element name="MediaData64" type="base64Binary"/>
+		</choice>
+		<attribute name="type" type="mpeg7:mimeType" use="required"/>
+	</complexType>
+
+	<simpleType name="mimeType">
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="TextualType">
+		<simpleContent>
+			<extension base="mpeg7:TextualBaseType"/>
+		</simpleContent>
+	</complexType>
+
+<complexType name="TextualBaseType" abstract="true">
+	<simpleContent>
+		<extension base="string">
+			<attribute ref="xml:lang" use="optional"/>
+			<attribute name="phoneticTranscription" use="optional">
+				<simpleType>
+						<list itemType="mpeg7:PhoneType"/>
+				</simpleType>
+			</attribute>
+			<attribute name="phoneticAlphabet" type="mpeg7:phoneticAlphabetType" use="optional" default="sampa"/>
+		</extension>
+	</simpleContent>
+</complexType>
+
+	<simpleType name="PhoneType">
+		<restriction base="string"/>
+	</simpleType>
+
+	<simpleType name="phoneticAlphabetType">
+		<restriction base="NMTOKEN">
+			<enumeration value="sampa"/>
+			<enumeration value="ipaSymbol"/>
+			<enumeration value="ipaNumber"/>
+			<enumeration value="other"/>
+		</restriction>
+	</simpleType>
+	<complexType name="TitleMediaType">
+		<sequence>
+			<element name="TitleImage" type="mpeg7:ImageLocatorType" minOccurs="0"/>
+			<element name="TitleVideo" type="mpeg7:TemporalSegmentLocatorType" minOccurs="0"/>
+			<element name="TitleAudio" type="mpeg7:TemporalSegmentLocatorType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ImageLocatorType">
+		<complexContent>
+			<extension base="mpeg7:MediaLocatorType">
+				<choice minOccurs="0">
+					<element name="MediaTimePoint" type="mpeg7:mediaTimePointType"/>
+					<element name="MediaRelTimePoint" type="mpeg7:MediaRelTimePointType"/>
+					<element name="MediaRelIncrTimePoint" type="mpeg7:MediaRelIncrTimePointType"/>
+					<element name="BytePosition">
+						<complexType>
+							<attribute name="offset" type="nonNegativeInteger" use="required"/>
+							<attribute name="length" type="positiveInteger" use="optional"/>
+						</complexType>
+					</element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="MediaTimeType">
+		<sequence>
+			<choice>
+				<element name="MediaTimePoint" type="mpeg7:mediaTimePointType"/>
+				<element name="MediaRelTimePoint" type="mpeg7:MediaRelTimePointType"/>
+				<element name="MediaRelIncrTimePoint" type="mpeg7:MediaRelIncrTimePointType"/>
+			</choice>
+			<choice minOccurs="0">
+				<element name="MediaDuration" type="mpeg7:mediaDurationType"/>
+				<element name="MediaIncrDuration" type="mpeg7:MediaIncrDurationType"/>
+			</choice>
+		</sequence>
+	</complexType>
+
+	<simpleType name="mediaTimePointType">
+		<restriction base="mpeg7:basicTimePointType">
+			<pattern value="(\-?\d+(\-\d{2}(\-\d{2})?)?)? (T\d{2}(:\d{2}(:\d{2}(:\d+)?)?)?)?(F\d+)?"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="MediaRelTimePointType">
+		<simpleContent>
+			<extension base="mpeg7:mediaTimeOffsetType">
+				<attribute name="mediaTimeBase" type="mpeg7:xPathRefType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="mediaTimeOffsetType">
+		<restriction base="mpeg7:basicDurationType">
+			<pattern value="\-?P(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?(\d+N)?)?(\d+F)?"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="MediaRelIncrTimePointType">
+		<simpleContent>
+			<extension base="integer">
+				<attribute name="mediaTimeUnit" type="mpeg7:mediaDurationType" use="optional"/>
+				<attribute name="mediaTimeBase" type="mpeg7:xPathRefType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="mediaDurationType">
+		<restriction base="mpeg7:basicDurationType">
+			<pattern value="\-?P(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?(\d+N)?)?(\d+F)?"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="MediaIncrDurationType">
+		<simpleContent>
+			<extension base="integer">
+				<attribute name="mediaTimeUnit" type="mpeg7:mediaDurationType" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+
+	<simpleType name="basicTimePointType">
+		<restriction base="string">
+			<pattern value="\-?(\d+(\-\d{2}(\-\d{2})?)?)?(T\d{2}(:\d{2}(:\d{2}(:\d+(\.\d{2})?)?)?)?)?(F\d+)?((\-|\+)\d{2}:\d{2})?"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="basicDurationType">
+		<restriction base="string">
+			<pattern value="\-?P(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?(\d+N)?(\d{2}f)?)?(\d+F)?((\-|\+)\d{2}:\d{2}Z)?"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="xPathRefType">
+		<restriction base="mpeg7:xPathType">
+			<pattern value="/?((((child::)?((\i\c*:)?(\i\c*)(\[\d+\])?))|\.|(\.\.))/)*((((child::)?((\i\c*:)?(\i\c*)(\[\d+\])?))|\.)|((attribute::|@)((\i\c*:)?(\i\c*|\*))))"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="xPathType">
+		<restriction base="token"/>
+	</simpleType>
+	<complexType name="TemporalSegmentLocatorType">
+		<complexContent>
+			<extension base="mpeg7:MediaLocatorType">
+				<choice minOccurs="0">
+					<element name="MediaTime" type="mpeg7:MediaTimeType"/>
+					<element name="BytePosition">
+						<complexType>
+							<attribute name="offset" type="nonNegativeInteger" use="required"/>
+							<attribute name="length" type="positiveInteger" use="optional"/>
+						</complexType>
+					</element>
+				</choice>
+			</extension>
+		</complexContent>
+	</complexType>
+<complexType name="TitleType">
+	<simpleContent>
+		<extension base="mpeg7:TextualBaseType">
+			<attribute name="type" use="optional" default="main">
+				<simpleType>
+						<union>
+							<simpleType>
+								<restriction base="NMTOKEN">
+									<enumeration value="main"/>
+									<enumeration value="secondary"/>
+									<enumeration value="alternative"/>
+									<enumeration value="original"/>
+									<enumeration value="popular"/>
+									<enumeration value="opusNumber"/>
+									<enumeration value="songTitle"/>
+									<enumeration value="albumTitle"/>
+									<enumeration value="seriesTitle"/>
+									<enumeration value="episodeTitle"/>
+								</restriction>
+							</simpleType>
+							<simpleType>
+								<restriction base="mpeg7:termReferenceType"/>
+							</simpleType>
+						</union>
+					</simpleType>
+			</attribute>
+		</extension>
+	</simpleContent>
+</complexType>
+	<simpleType name="termReferenceType">
+		<union>
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<whiteSpace value="collapse"/>
+					<pattern value=":[^:]+:[^:]+"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="anyURI"/>
+			</simpleType>
+		</union>
+	</simpleType>
+	<complexType name="PersonNameType">
+		<sequence>
+			<choice maxOccurs="unbounded">
+				<element name="GivenName" type="mpeg7:NameComponentType"/>
+				<element name="FamilyName" type="mpeg7:NameComponentType" minOccurs="0"/>
+				<element name="Title" type="mpeg7:NameComponentType" minOccurs="0"/>
+				<element name="Numeration" type="string" minOccurs="0"/>
+			</choice>
+		</sequence>
+		<attribute name="dateFrom" type="mpeg7:timePointType" use="optional"/>
+		<attribute name="dateTo" type="mpeg7:timePointType" use="optional"/>
+		<attribute name="type" use="optional">
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="former"/>
+					<enumeration value="variant"/>
+					<enumeration value="main"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute ref="xml:lang" use="optional"/>
+	</complexType>
+
+	<simpleType name="timePointType">
+		<restriction base="mpeg7:basicTimePointType">
+			<pattern value="(\-?\d+(\-\d{2}(\-\d{2})?)?)?(T\d{2}(:\d{2}(:\d{2}(:\d+)?)?)?)?(F\d+)?((\-|\+)\d{2}:\d{2})?"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="NameComponentType">
+		<simpleContent>
+			<extension base="mpeg7:TextualBaseType">
+				<attribute name="initial" type="string" use="optional"/>
+				<attribute name="abbrev" type="string" use="optional"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ParentalGuidanceType">
+		<sequence>
+			<choice>
+				<element name="ParentalRating" type="mpeg7:ControlledTermUseType"/>
+				<element name="MinimumAge" type="nonNegativeInteger"/>
+			</choice>
+			<element name="Region" type="mpeg7:regionCode" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType name="ControlledTermUseType">
+		<complexContent>
+			<extension base="mpeg7:InlineTermDefinitionType">
+				<attribute name="href" type="mpeg7:termReferenceType" use="required"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="InlineTermDefinitionType" abstract="true">
+		<sequence>
+			<element name="Name" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<simpleContent>
+						<extension base="mpeg7:TextualType">
+							<attribute name="preferred" type="boolean" use="optional"/>
+						</extension>
+					</simpleContent>
+				</complexType>
+			</element>
+			<element name="Definition" type="mpeg7:TextualType" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- Term element removed -->
+		</sequence>
+	</complexType>
+	<simpleType name="regionCode">
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<pattern value="[a-zA-Z]{2}(-[a-zA-Z0-9]{1,3})?"/>
+		</restriction>
+	</simpleType>
+	<complexType name="ExtendedLanguageType">
+		<simpleContent>
+			<extension base="language">
+				<attribute name="type" use="optional" default="original">
+					<simpleType>
+						<restriction base="NMTOKEN">
+							<enumeration value="original"/>
+							<enumeration value="dubbed"/>
+							<enumeration value="background"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+				<attribute name="supplemental" type="boolean" use="optional" default="false"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="ClassificationSchemeBaseType" abstract="true">
+		<complexContent>
+			<extension base="mpeg7:DSType">
+				<sequence>
+					<element name="Import" type="mpeg7:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute name="uri" type="anyURI" use="required"/>
+				<attribute name="domain" use="optional">
+					<simpleType>
+						<list itemType="mpeg7:xPathAbsoluteSelectorType"/>
+					</simpleType>
+				</attribute>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ClassificationSchemeAliasType">
+		<complexContent>
+			<extension base="mpeg7:HeaderType">
+				<attribute name="alias" type="NMTOKEN" use="required"/>
+				<attribute name="href" type="anyURI" use="required"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<!-- Definition of ClassificationScheme DS (ISO/IEC 15938-5: 7.3.2) -->
+	<complexType name="ClassificationSchemeType">
+		<complexContent>
+			<extension base="mpeg7:ClassificationSchemeBaseType">
+				<sequence>
+					<element name="Term" type="mpeg7:TermDefinitionType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="DSType" abstract="true">
+		<complexContent>
+			<extension base="mpeg7:Mpeg7BaseType">
+				<sequence>
+					<element name="Header" type="mpeg7:HeaderType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute name="id" type="ID" use="optional"/>
+				<attributeGroup ref="mpeg7:timePropertyGrp"/>
+				<attributeGroup ref="mpeg7:mediaTimePropertyGrp"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="Mpeg7BaseType" abstract="true">
+		<complexContent>
+			<restriction base="anyType"/>
+		</complexContent>
+	</complexType>
+
+	<attributeGroup name="timePropertyGrp">
+		<attribute name="timeBase" type="mpeg7:xPathRefType" use="optional"/>
+		<attribute name="timeUnit" type="mpeg7:durationType" use="optional"/>
+	</attributeGroup>
+
+	<simpleType name="durationType">
+		<restriction base="mpeg7:basicDurationType">
+			<pattern value="\-?P(\d+D)?(T(\d+H)?(\d+M)?(\d+S)?(\d+N)?)?(\d+F)?((\-|\+)\d{2}:\d{2}Z)?"/>
+		</restriction>
+	</simpleType>
+
+	<attributeGroup name="mediaTimePropertyGrp">
+		<attribute name="mediaTimeBase" type="mpeg7:xPathRefType" use="optional"/>
+		<attribute name="mediaTimeUnit" type="mpeg7:mediaDurationType" use="optional"/>
+	</attributeGroup>
+
+	<complexType name="HeaderType" abstract="true">
+		<complexContent>
+			<extension base="mpeg7:Mpeg7BaseType">
+				<attribute name="id" type="ID" use="optional"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="xPathAbsoluteSelectorType">
+		<restriction base="mpeg7:xPathSelectorType">
+			<pattern value="(/|((//|/)(((child::)?((\i\c*:)?(\i\c*|\*)))|\.))*)(\|(/|((//|/)(((child::)?((\i\c*:)?(\i\c*|\*)))|\.))*))*"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="xPathSelectorType">
+		<restriction base="mpeg7:xPathType">
+			<pattern value="(/|((//|/)?(((child::)?((\i\c*:)?(\i\c*|\*)))|\.|\.\.)((//|/)(((child::)?((\i\c*:)?(\i\c*|\*)))|\.|\.\.))*))(\|/|((//|/)?(((child::)?((\i\c*:)?(\i\c*|\*)))|\.|\.\.)((//|/)(((child::)?((\i\c*:)?(\i\c*|\*)))|\.|\.\.))*))*"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="ReferenceType">
+		<attributeGroup ref="mpeg7:referenceGrp"/>
+	</complexType>
+
+	<attributeGroup name="referenceGrp">
+		<attribute name="idref" type="IDREF" use="optional"/>
+		<attribute name="xpath" type="mpeg7:xPathRefType" use="optional"/>
+		<attribute name="href" type="anyURI" use="optional"/>
+	</attributeGroup>
+
+	<complexType name="TermDefinitionBaseType" abstract="true">
+		<complexContent>
+			<extension base="mpeg7:DSType">
+				<sequence>
+					<element name="Name" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<simpleContent>
+								<extension base="mpeg7:TextualType">
+									<attribute name="preferred" type="boolean" use="optional"/>
+								</extension>
+							</simpleContent>
+						</complexType>
+					</element>
+					<element name="Definition" type="mpeg7:TextualType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+				<attribute name="termID" type="NMTOKEN"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="TermDefinitionType">
+		<complexContent>
+			<extension base="mpeg7:TermDefinitionBaseType">
+				<sequence>
+					<element name="Term" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="mpeg7:TermDefinitionType">
+									<attribute name="relation" type="mpeg7:termRelationQualifierType" use="optional" default="NT"/>
+								</extension>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<simpleType name="termRelationQualifierType">
+		<union>
+			<simpleType>
+				<restriction base="NMTOKEN">
+					<enumeration value="NT"/>
+					<enumeration value="BT"/>
+					<enumeration value="RT"/>
+					<enumeration value="US"/>
+					<enumeration value="UF"/>
+				</restriction>
+			</simpleType>
+			<simpleType>
+				<restriction base="mpeg7:termReferenceType"/>
+			</simpleType>
+		</union>
+	</simpleType>
+</schema>

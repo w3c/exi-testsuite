@@ -1,0 +1,149 @@
+
+EXI Framework Release Notes
+---------------------------
+
+Author: Santiago.PericasGeertsen@sun.com
+
+Introduction
+------------
+
+The EXI framework is a testing framework developed by the W3C EXI
+working group for the purpose of obtaining empirical data about format
+properties. In this release, the framework can be used to measure
+Processing Efficiency and Compactness of several XML and binary XML
+candidates.
+
+The EXI framework is built on top of another framework called Japex,
+which provides basic functionality for drawing charts, generating XML
+and HTML reports, etc. Note that neither the candidates (except for
+JAXP which is part of the Java Runtime System) nor Japex are part of
+this distribution. See Downloading Dependencies section for more
+information on how to download additional software components.
+
+The EXI framework currently includes drivers for several Java and
+C/C++ candidates submitted to the EXI WG. The Java drivers use the SAX
+API, the C/C++ drivers use either a SAX-like API or a typed API (data
+binding). The framework is defined to run even if some of these
+candidates are not available on your system. Writing a driver for a
+candidate that has not been submitted to the WG should be
+straightforward using any of the existing candidates (such as JAXP) as
+a template.
+
+To simplify the creation of new drivers, the EXI framework includes
+additional functionality on top of what is provided by Japex that
+allows the framework to be executed in memory or over the
+network. However, due to the cost associated with the JNI interface in
+Java, network support isn't available to C/C++ candidates, so these
+candidates can only be tested in memory. Drawing conclusions by
+comparing Java candidates vs. C/C++ candidates is non-trivial due to
+significant differences in APIs and the underlying platforms. For
+these reasons, we opted for separating the Japex configuration files
+to avoid producing reports that mix Java and native drivers.
+
+The Ant file included in this distribution is set up to only compile
+native candidates on a Linux system. All of our tests have been
+conducted on a 64-bit Linux machine. Libraries for other operating
+systems may be available, but instructions on how to set up these
+libraries is beyond the scope of this note.
+
+Directory structure
+-------------------
+
+ - The directory 'japex' contains the Japex distribution.
+
+ - The directory 'data' contains the test case XML documents.
+
+ - The directory 'framework' contains the framework code for measuring
+ of properties. Each candidate extends a class in this framework to
+ provide a concrete implementation.
+
+ - The directory 'candidate' contains sub-directories for each
+ candidate. The driver for each candidate can be located in these
+ directories.
+
+ - The directory 'config' contains the Japex configuration files for
+ measuring properties. The configuration files are composed of
+ configuration files for drivers and tests cases using XInclude.
+
+Downloading Dependencies
+------------------------
+
+Neither the candidates nor the base framework (Japex) on which the EXI
+framework is based are included as part of this distribution. You must
+have Ant (http://ant.apache.org) to build and run the framework. In
+addition, you must download the Japex Micro-Benchmark Framework which
+is available from (see Documents & Files),
+ 
+ https://japex.dev.java.net 
+
+We have used Japex 1.0 for all of our internal tests (Japex 1.1 should
+work also, but the output reports may be different in some cases). The
+building script is set up to unpack the Japex zip file automatically,
+so the only requirement is to download the zip file and place it in
+the 'japex' directory.
+
+The following is a list that includes information on how to obtain
+each of the candidate libraries used by this framework:
+
+ - ASN.1 BER: Available from http://www.obj-sys.com/exitest/
+
+ - ASN.1 PER: Please contact mailto:thorpe@oss.com for information on
+ how to obtain this library.
+
+ - Efficient XML: Please contact mailto:products@agiledelta.com using
+ "W3C EXI framework" in the subject line.
+
+ - ESXML: Please contact mailto:sdw@lig.net for information on how to
+ obtain this library.
+
+ - Fast Infoset 1.2.2: Available from,
+ 
+ https://fi.dev.java.net/servlets/ProjectDocumentList
+ 
+ Download and unpack the Fast Infoset zip file. Then copy the jar
+ files under 'dist' and 'lib' to 'candidates/fastinfoset/lib'.
+
+ - Libxml2: Available from http://www.obj-sys.com/exitest/
+
+ - FXDI: Please contact mailto:tkamiya@us.fujitsu.com for information
+ on how to obtain this library.
+
+ - Xebu: Please contact mailto:ashar@iki.fi for information on how
+ to obtain this library.
+
+ - Xals: Please contact mailto:tkamiya@us.fujitsu.com for information
+ on how to obtain this library.
+
+After installing a new candidate library, it is recommended to
+re-build the framework by typing 'ant clean dist'.
+
+Building
+--------
+
+JDK 5.0 is required to build the framework. 
+(Onward JDK versions, including JDK 6.0 are *not* supported as of this release
+ of the framework.)
+
+To build the framework simply type 'ant dist' in the main directory.
+
+Running
+-------
+
+JDK 5.0 or greater is required to run the framework. The Ant
+properties 'network.host' and 'network.port' can be used to control
+the execution of the network tests. By default, these properties are
+set to 'localhost' and '9753', respectively. When running the test
+over a non-loopback network, the server must be started before the
+test is initiated. This can be done by typing 'ant run-network-host'
+on the remote machine and by setting the aforementioned properties
+accordingly.
+
+Running the tests over different networks is useful to measure the
+performance based on bandwidth availability. For example, a more
+compact candidate may perform significantly better than a less compact
+candidate on a low-bandwidth network.
+
+Use 'ant -projecthelp' to get a list and a short description of the
+different targets for running the framework. As an example, to obtain
+compaction results for all candidates, type 'ant run-compaction-classes'.
+

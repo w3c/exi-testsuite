@@ -1,0 +1,1010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ns2="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ns3="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns4="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns5="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:ns6="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ns7="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:ns8="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns9="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xmlns:ns10="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns11="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns12="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns13="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns14="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns15="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:ns16="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:elements="http://purl.org/dc/elements/1.1/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="elements.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/xforms" schemaLocation="xforms.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" schemaLocation="ns9.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" schemaLocation="ns5.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:config:1.0" schemaLocation="ns2.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" schemaLocation="ns7.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" schemaLocation="ns3.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:form:1.0" schemaLocation="ns4.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" schemaLocation="ns16.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0" schemaLocation="ns13.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" schemaLocation="ns10.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:script:1.0" schemaLocation="ns6.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" schemaLocation="ns11.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:style:1.0" schemaLocation="ns8.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" schemaLocation="ns12.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:table:1.0" schemaLocation="ns15.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" schemaLocation="ns1.xsd"/>
+  <xs:element name="number-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" ref="ns14:text"/>
+        <xs:sequence minOccurs="0">
+          <xs:choice>
+            <xs:element ref="ns14:number"/>
+            <xs:element ref="ns14:scientific-number"/>
+            <xs:element ref="ns14:fraction"/>
+          </xs:choice>
+          <xs:element minOccurs="0" ref="ns14:text"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute ref="ns8:volatile"/>
+      <xs:attribute name="transliteration-format" form="qualified" type="xs:string"/>
+      <xs:attribute name="transliteration-language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="currency-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" ref="ns14:text"/>
+        <xs:choice minOccurs="0">
+          <xs:sequence>
+            <xs:element ref="ns14:number"/>
+            <xs:element minOccurs="0" ref="ns14:text"/>
+            <xs:sequence minOccurs="0">
+              <xs:element ref="ns14:currency-symbol"/>
+              <xs:element minOccurs="0" ref="ns14:text"/>
+            </xs:sequence>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:element ref="ns14:currency-symbol"/>
+            <xs:element minOccurs="0" ref="ns14:text"/>
+            <xs:sequence minOccurs="0">
+              <xs:element ref="ns14:number"/>
+              <xs:element minOccurs="0" ref="ns14:text"/>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute ref="ns8:volatile"/>
+      <xs:attribute name="transliteration-format" form="qualified" type="xs:string"/>
+      <xs:attribute name="transliteration-language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="automatic-order" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="percentage-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" ref="ns14:text"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="ns14:number"/>
+          <xs:element minOccurs="0" ref="ns14:text"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute ref="ns8:volatile"/>
+      <xs:attribute name="transliteration-format" form="qualified" type="xs:string"/>
+      <xs:attribute name="transliteration-language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" ref="ns14:text"/>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:element ref="ns14:day"/>
+            <xs:element ref="ns14:month"/>
+            <xs:element ref="ns14:year"/>
+            <xs:element ref="ns14:era"/>
+            <xs:element ref="ns14:day-of-week"/>
+            <xs:element ref="ns14:week-of-year"/>
+            <xs:element ref="ns14:quarter"/>
+            <xs:element ref="ns14:hours"/>
+            <xs:element ref="ns14:am-pm"/>
+            <xs:element ref="ns14:minutes"/>
+            <xs:element ref="ns14:seconds"/>
+          </xs:choice>
+          <xs:element minOccurs="0" ref="ns14:text"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute ref="ns8:volatile"/>
+      <xs:attribute name="transliteration-format" form="qualified" type="xs:string"/>
+      <xs:attribute name="transliteration-language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="automatic-order" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="format-source" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="fixed"/>
+            <xs:enumeration value="language"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="time-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" ref="ns14:text"/>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:choice>
+            <xs:element ref="ns14:hours"/>
+            <xs:element ref="ns14:am-pm"/>
+            <xs:element ref="ns14:minutes"/>
+            <xs:element ref="ns14:seconds"/>
+          </xs:choice>
+          <xs:element minOccurs="0" ref="ns14:text"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute name="truncate-on-overflow" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute ref="ns8:volatile"/>
+      <xs:attribute name="transliteration-format" form="qualified" type="xs:string"/>
+      <xs:attribute name="transliteration-language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="format-source" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="fixed"/>
+            <xs:enumeration value="language"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="boolean-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" ref="ns14:text"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="ns14:boolean"/>
+          <xs:element minOccurs="0" ref="ns14:text"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute ref="ns8:volatile"/>
+      <xs:attribute name="transliteration-format" form="qualified" type="xs:string"/>
+      <xs:attribute name="transliteration-language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="text-style">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns8:text-properties"/>
+        <xs:element minOccurs="0" ref="ns14:text"/>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns14:text-content"/>
+          <xs:element minOccurs="0" ref="ns14:text"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:map"/>
+      </xs:sequence>
+      <xs:attribute ref="ns8:name" use="required"/>
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute ref="ns8:volatile"/>
+      <xs:attribute name="transliteration-format" form="qualified" type="xs:string"/>
+      <xs:attribute name="transliteration-language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transliteration-style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="text" type="xs:string"/>
+  <xs:element name="number">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns14:embedded-text"/>
+      </xs:sequence>
+      <xs:attribute name="decimal-replacement" form="qualified"/>
+      <xs:attribute name="display-factor" form="qualified" type="xs:double"/>
+      <xs:attribute name="decimal-places" form="qualified" type="xs:integer"/>
+      <xs:attribute name="min-integer-digits" form="qualified" type="xs:integer"/>
+      <xs:attribute name="grouping" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="scientific-number">
+    <xs:complexType>
+      <xs:attribute name="min-exponent-digits" form="qualified" type="xs:integer"/>
+      <xs:attribute name="decimal-places" form="qualified" type="xs:integer"/>
+      <xs:attribute name="min-integer-digits" form="qualified" type="xs:integer"/>
+      <xs:attribute name="grouping" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fraction">
+    <xs:complexType>
+      <xs:attribute name="min-numerator-digits" form="qualified" type="xs:integer"/>
+      <xs:attribute name="min-denominator-digits" form="qualified" type="xs:integer"/>
+      <xs:attribute name="denominator-value" form="qualified" type="xs:integer"/>
+      <xs:attribute name="min-integer-digits" form="qualified" type="xs:integer"/>
+      <xs:attribute name="grouping" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="currency-symbol">
+    <xs:complexType mixed="true">
+      <xs:attribute name="language" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="country" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:pattern value="[A-Za-z0-9]{1,8}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="day">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="calendar" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gregorian"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gengou"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="ROC"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja_yoil"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hijri"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="jewish"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="buddhist"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="month">
+    <xs:complexType>
+      <xs:attribute name="textual" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="possessive-form" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="calendar" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gregorian"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gengou"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="ROC"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja_yoil"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hijri"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="jewish"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="buddhist"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="year">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="calendar" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gregorian"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gengou"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="ROC"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja_yoil"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hijri"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="jewish"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="buddhist"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="era">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="calendar" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gregorian"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gengou"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="ROC"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja_yoil"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hijri"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="jewish"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="buddhist"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="day-of-week">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="calendar" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gregorian"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gengou"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="ROC"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja_yoil"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hijri"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="jewish"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="buddhist"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="week-of-year">
+    <xs:complexType>
+      <xs:attribute name="calendar" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gregorian"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gengou"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="ROC"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja_yoil"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hijri"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="jewish"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="buddhist"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="quarter">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="calendar" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gregorian"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="gengou"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="ROC"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja_yoil"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hanja"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="hijri"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="jewish"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="buddhist"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hours">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="am-pm">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="minutes">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="seconds">
+    <xs:complexType>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="short"/>
+            <xs:enumeration value="long"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="decimal-places" form="qualified" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="boolean">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="text-content">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="embedded-text">
+    <xs:complexType mixed="true">
+      <xs:attribute name="position" use="required" form="qualified" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

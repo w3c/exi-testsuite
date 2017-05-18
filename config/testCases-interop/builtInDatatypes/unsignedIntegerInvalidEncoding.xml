@@ -1,0 +1,23 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid unsigned integer encoding">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/unsignedInteger/unsignedInteger.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/unsignedInteger"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingUnsignedInteger"/>
+    
+    <testCase name="unsignedInteger-invalid-00">
+        <param name="description"  value="Invalid unsigned integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/unsignedInteger-invalid-00.xml" />
+    </testCase>
+    <testCase name="unsignedInteger-invalid-01">
+        <param name="description"  value="Invalid unsigned integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/unsignedInteger-invalid-01.xml" />
+    </testCase>
+    <testCase name="unsignedInteger-invalid-02">
+        <param name="description"  value="Invalid unsigned integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/unsignedInteger-invalid-02.xml" />
+    </testCase>
+    
+</testCaseGroup>

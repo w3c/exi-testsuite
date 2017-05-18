@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- Sample for pa2006.xml                           -->
+<!DOCTYPE PharmacologicalActionSet SYSTEM  "pa2006.dtd">
+
+<!-- Root element -->
+<PharmacologicalActionSet>
+
+    <!-- First PA (PharmacologicalAction) -->
+    <PharmacologicalAction>
+       <DescriptorReferredTo>
+          <DescriptorUI>D000863</DescriptorUI>
+          <DescriptorName>
+             <String>Antacids</String>
+          </DescriptorName>
+       </DescriptorReferredTo>
+
+        <!-- The list of substances for this PA -->
+        <PharmacologicalActionSubstanceList>
+
+             <!-- Substance 1 (Descriptor) -->
+             <Substance>
+                <RecordUI>D000536</RecordUI>
+                <RecordName>
+                   <String>Aluminum Hydroxide</String>
+                </RecordName>
+             </Substance>
+
+             <!-- Substance 2 (SCR)        -->
+             <Substance>
+                  <RecordUI>C012714</RecordUI>
+                  <RecordName>
+                      <String>aluminum phosphate</String>
+                  </RecordName>
+             </Substance>
+
+             <!-- More Substances for this PA follow. -->
+
+        </PharmacologicalActionSubstanceList>
+
+    </PharmacologicalAction>
+
+    <!-- More PAs follow. -->
+
+</PharmacologicalActionSet>

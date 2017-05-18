@@ -1,0 +1,417 @@
+<?xml version="1.0" ?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:GetDay="http://xml.apache.org/xalan/xsltc/java/GetDay">
+
+<!-- search.xsl -->
+<!-- Purpose - Style sheet for searches based on input parameters -->
+<!-- Possible search criteria are: -->
+<!-- location -->
+<!-- Select entries for given state, or list of states, or region,          -->
+<!-- or town within a state within country. State(s) vs Region exclusive    -->
+<!-- If country not specificed defaults to USA. Specify country=Canada when -->
+<!-- states are really Canadian provinces.                                  -->
+<!-- US states are coded with 2-char upper-case names: AL, AK, AR ...WY etc -->
+<!-- Canadian provinces use: AB, BC, MB, NB, NF, NS, NT, ON, PE, QC, SK, YT -->
+<!-- Region codes are: NE, MW, MA, SE, W, and P.                            -->
+<!-- Multiple states can be passed on cmdline, e.g. "states=MA VT"          -->
+<!-- url-encoding: ?states=ON+QC&country=Canada                             -->
+<!-- time -->
+<!-- Default is to include entries from the current date forward.           -->
+<!-- Start and end year, month, and day can further select entries.         -->
+<!-- syear/eyear is 4digit number (e.g., 2000)                              -->
+<!-- smonth is a number from 1 to 12                                        -->
+<!-- sday is a number from 1 to 31                                          -->
+<!-- url-encoding: ?syear=2001&smonth=2&sday=12&eyear=2002&emonth=6&eday=13 -->
+<!-- distance -->
+<!-- Select entries in miles greater than gdist and and less than ldist     -->
+<!-- url-encoding: ?gdist=19&ldist=21 (would get 20 milers)                 -->
+<!-- electronic registration -->
+<!-- Select entries that have electronic registration of the type specified -->
+<!-- ereg takes a text value, such as 'smus' (the only one for now)         -->
+<!-- url-encoding: ?ereg=smus                                               -->
+<!-- categories -->
+<!-- Default is to select entries regardless of the category attribute.     -->
+<!-- One category will select only entries matching that category.          -->
+<!-- Multiple categories select entries matching on any of the categroies.  -->
+<!-- "cat1" - ultra -->
+<!-- "cat2" - trail -->
+<!-- "cat3" - athlon -->
+<!-- "cat4" - mountain -->
+<!-- "cat5" - marathon -->
+<!-- "cat6" - kids -->
+<!-- "cat7" - relay -->
+<!-- "cat8" - team -->
+<!-- "cat9" - TF for Track & Field -->
+<!-- url-encoding: ?cat4=mountain&cat8=team -->
+
+<xsl:param name="country" select="'USA'" />
+<!-- USA is default if region param not passed from cmdline-->
+<xsl:param name="region" select="'none'" />
+<xsl:param name="town" select="'any'" />
+<xsl:param name="zip" select="'any'" />
+<!-- can't have date moving forward, or expected results will change, so fix it -->
+<!--
+<xsl:param name="syear" select="GetDay:get_today_year()" />
+<xsl:param name="smonth" select="GetDay:get_today_month()" />
+<xsl:param name="sday" select="GetDay:get_today_day()" />
+-->
+
+<xsl:param name="syear" select="2001" />
+<xsl:param name="smonth" select="11" />
+<xsl:param name="sday" select="1" />
+
+
+<xsl:param name="eyear" select="3000" /> <!-- end year far in future -->
+<xsl:param name="emonth" select="1" />
+<xsl:param name="eday" select="1" />
+<xsl:param name="edyr" select="1" />
+<!-- states does double duty, param states can be passed with one or -->
+<!-- more state codes, or region can be passed -->
+<xsl:param name="states">
+    <xsl:if test="string($region) = 'NG'">CT MA ME NH RI VT</xsl:if>
+    <xsl:if test="string($region) = 'MW'">IA IL IN KS KY MI MN ND NE OH SD WI</xsl:if>
+    <xsl:if test="string($region) = 'MA'">DC DE MD NJ NY PA VA WV</xsl:if>
+    <xsl:if test="string($region) = 'SE'">FL GA NC SC</xsl:if>
+    <xsl:if test="string($region) = 'W'">AZ CO ID MT NM NV OK TX UT WY</xsl:if>
+    <xsl:if test="string($region) = 'S'">AL AR LA MO MS TN</xsl:if>
+    <xsl:if test="string($region) = 'P'">AK CA HI OR WA</xsl:if>
+    <xsl:if test="string($region) ='none'">all</xsl:if>
+</xsl:param>
+<xsl:param name="gdist" select="number(0)" /> <!-- greater than distance -->
+<xsl:param name="ldist" select="number(999)" /> <!-- less than distance -->
+<xsl:param name="name" /><!-- null by default -->
+<xsl:param name="ereg" select="'null'"/><!-- null by default -->
+<xsl:param name="cat1" select="'null'" /> <!-- ultra -->
+<xsl:param name="cat2" select="'null'" /> <!-- trail -->
+<xsl:param name="cat3" select="'null'" /> <!-- athlon -->
+<xsl:param name="cat4" select="'null'" /> <!-- mountain -->
+<xsl:param name="cat5" select="'null'" /> <!-- marathon -->
+<xsl:param name="cat6" select="'null'" /> <!-- kids -->
+<xsl:param name="cat7" select="'null'" /> <!-- relay -->
+<xsl:param name="cat8" select="'null'" /> <!-- team -->
+<xsl:param name="cat9" select="'null'" /> <!-- TF for Track & Field -->
+<xsl:variable name="mystate" select="string($states)" /> <!-- use to drop out state from ouput if only one state -->
+
+<xsl:variable name="uc" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+<xsl:variable name="lc" select="'abcdefghijklmnopqrstuvwxyz'"/>
+<!-- to do case-insensitive test="translate($name, $lc, $uc) = translate('Joe', $lc, $uc)"  -->
+
+<xsl:include href="entryout.xsl" />
+<xsl:output method="html" encoding="iso-8859-1"/>
+
+<xsl:template match="calendar" >
+<html>
+<head>
+<title>Calendar Search</title>
+</head>
+<body>
+
+<xsl:variable name="out"><!-- save all output to variable so can test for no output-->
+  <xsl:choose>
+    <xsl:when test="$cat1='null' and $cat2='null' and $cat3='null' and $cat4='null' and $cat5='null' and $cat6='null' and $cat7='null' and $cat8='null' and $cat9='null'">
+      <xsl:choose>
+        <xsl:when test="string($ereg) != 'null'"><!-- Select events with Electronic Registraton -->
+          <xsl:choose>
+            <xsl:when test="string($states) != 'all'">
+              <xsl:if test="string($town) = 'any'" >
+                <!-- use filter predicate so it return true if any of possible multiple distance children match  -->
+               <xsl:if test="number($gdist)=0 and number($ldist)=999">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and @ereg=string($ereg)]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=0 and number($ldist)=999)">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and @ereg=string($ereg) and distance[@miles &gt; $gdist and @miles &lt; $ldist]]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+              <xsl:if test="string($town) != 'any'" >
+               <xsl:if test="number($gdist)=0 and number($ldist)=999">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and town=$town and @ereg=string($ereg)]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=0 and number($ldist)=999)">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and town=$town and @ereg=string($ereg) and distance[@miles &gt; $gdist and @miles &lt; $ldist]]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+            </xsl:when>
+            <xsl:otherwise> <!-- all states -->
+              <xsl:if test="string($zip) = 'any'">
+               <xsl:if test="number($gdist)=0 and number($ldist)=999">
+                <xsl:apply-templates select="//entry[country=$country and @ereg=string($ereg)]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=0 and number($ldist)=999)">
+                <xsl:apply-templates select="//entry[country=$country and @ereg=string($ereg) and distance[@miles &gt; $gdist and @miles &lt; $ldist]]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+              <xsl:if test="string($zip) != 'any'"> <!-- select on zip code -->
+               <xsl:if test="number($gdist)=0 and number($ldist)=999">
+                <xsl:apply-templates select="//entry[country=$country  and @ereg=string($ereg) and zip=$zip ]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=0 and number($ldist)=999)">
+                <xsl:apply-templates select="//entry[country=$country  and @ereg=string($ereg) and zip=$zip and distance[@miles &gt; $gdist and @miles &lt; $ldist]]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise> <!-- electronic reg is not a criteria neither are cats -->
+          <xsl:choose>
+            <xsl:when test="string($states) != 'all'"><!-- selecting on specific states -->
+              <xsl:if test="string($town) = 'any'" >
+               <xsl:if test="number($gdist)=number(0) and number($ldist)=number(999)">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state)]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=number(0) and number($ldist)=number(999))">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and distance[@miles &gt; $gdist and @miles &lt; $ldist]]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+              <xsl:if test="string($town) != 'any'" >
+               <xsl:if test="number($gdist)=number(0) and number($ldist)=number(999)">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and town=$town ]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=number(0) and number($ldist)=number(999))">
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and town=$town and distance[@miles &gt; $gdist and @miles &lt; $ldist]]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+            </xsl:when>
+            <xsl:otherwise><!-- all states -->
+             <!-- use filter predicate so it return true if any of possible multiple distance children match  -->
+              <xsl:if test="string($zip) = 'any'">
+               <xsl:if test="number($gdist)=number(0) and number($ldist)=number(999)">
+                <xsl:apply-templates select="//entry[country=$country ]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=number(0) and number($ldist)=number(999))">
+                <xsl:apply-templates select="//entry[country=$country and distance[@miles &gt; $gdist and @miles &lt; $ldist]]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+              <xsl:if test="string($zip) != 'any'"> <!-- select on zip code -->
+               <xsl:if test="number($gdist)=number(0) and number($ldist)=number(999)">
+                <xsl:apply-templates select="//entry[country=$country and zip=$zip ]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+               <xsl:if test="not(number($gdist)=number(0) and number($ldist)=number(999))">
+                <xsl:apply-templates select="//entry[country=$country and zip=$zip and distance[@miles &gt; $gdist and @miles &lt; $ldist]]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+               </xsl:if>
+              </xsl:if>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:when>
+    <xsl:otherwise>
+<!-- some categories were non null -->
+<!-- TWA - took out condition distance[@miles &gt; $gdist and @miles &lt; $ldist] -->
+<!-- really can be mutually exclusive with cats. Because of bug in xsltc that or  -->
+<!-- conditions only work if at the end A and B and (X or Y) -->
+      <xsl:choose>
+        <xsl:when test="string($ereg) != 'null'">
+          <xsl:choose>
+            <xsl:when test="string($states) != 'all'"><!-- selecting specific states -->
+              <xsl:if test="string($town) = 'any'" >
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and @ereg=string($ereg) and (contains(@category,$cat1) or contains(@category, $cat2) or contains(@category, $cat3) or contains(@category, $cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category, $cat7) or contains(@category,$cat8) or contains(@category,$cat9))]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+              <xsl:if test="string($town) != 'any'" >
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and town=$town and @ereg=string($ereg) and (contains(@category,$cat1) or contains(@category, $cat2) or contains(@category, $cat3) or contains(@category, $cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category, $cat7) or contains(@category,$cat8) or contains(@category,$cat9))]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+            </xsl:when>
+            <xsl:otherwise><!-- all states and all towns -->
+              <xsl:if test="string($zip) = 'any'" >
+                <xsl:apply-templates select="//entry[country=$country and @ereg=string($ereg) and (contains(@category,$cat1) or contains(@category, $cat2) or contains(@category, $cat3) or contains(@category, $cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category, $cat7) or contains(@category,$cat8) or contains(@category,$cat9))]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+              <xsl:if test="string($zip) != 'any'">
+                <xsl:apply-templates select="//entry[country=$country and zip=$zip and @ereg=string($ereg) and (contains(@category,$cat1) or contains(@category, $cat2) or contains(@category, $cat3) or contains(@category, $cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category, $cat7) or contains(@category,$cat8) or contains(@category,$cat9))]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise> <!-- electronic reg is not a criteria -->
+          <xsl:choose>
+            <xsl:when test="string($states) != 'all'">
+              <xsl:if test="string($town) = 'any'" >
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and (contains(@category,$cat1) or contains(@category, $cat2) or contains(@category, $cat3) or contains(@category, $cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category, $cat7) or contains(@category,$cat8) or contains(@category,$cat9))]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+              <xsl:if test="string($town) != 'any'" >
+                <xsl:apply-templates select="//entry[country=$country and contains(string($states), state) and town=$town and (contains(@category,$cat1) or contains(@category, $cat2) or contains(@category, $cat3) or contains(@category, $cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category, $cat7) or contains(@category,$cat8) or contains(@category,$cat9))]" >
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+            </xsl:when>
+            <xsl:otherwise><!-- select all states and towns within states -->
+              <xsl:if test="string($zip) = 'any'">
+                <xsl:apply-templates select="//entry[country=$country and (contains(@category,$cat1) or contains(@category,$cat2) or contains(@category,$cat3) or contains(@category,$cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category,$cat7) or contains(@category,$cat8) or contains(@category,$cat9))]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+              <xsl:if test="string($zip) != 'any'">
+                <xsl:apply-templates select="//entry[country=$country and zip=$zip and (contains(@category,$cat1) or contains(@category,$cat2) or contains(@category,$cat3) or contains(@category,$cat4) or contains(@category,$cat5) or contains(@category,$cat6) or contains(@category,$cat7) or contains(@category,$cat8) or contains(@category,$cat9))]">
+                  <xsl:sort order="ascending" data-type="number" select="date/@year" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@month" />
+                  <xsl:sort order="ascending" data-type="number" select="date/@day" />
+                  <xsl:sort order="ascending" data-type="text" select="state" />
+                </xsl:apply-templates>
+              </xsl:if>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:variable>
+
+<xsl:variable name="empty" />
+<xsl:choose>
+  <xsl:when test="$out = $empty">
+     <h2>No entries matched your search criteria</h2>
+  </xsl:when>
+  <xsl:otherwise>
+    <xsl:copy-of select="$out" />
+  </xsl:otherwise>
+</xsl:choose>
+</body>
+</html>
+</xsl:template>
+
+<xsl:template match="entry">
+  <xsl:variable name="year" select="date/@year" />
+  <xsl:variable name="month" select="date/@month" />
+  <xsl:variable name="day" select="date/@day" />
+  <xsl:variable name="dyr" select="GetDay:get_day_year(number($year), number($month), number($day))"/>
+  <xsl:variable name="sdyr" select="GetDay:get_day_year(number($syear), number($smonth), number($sday))"/>
+  <xsl:variable name="edyr" select="GetDay:get_day_year(number($eyear), number($emonth), number($eday))"/>
+  <xsl:if test="(number($year) &gt;= number($syear)) and (number($year) &lt;= number($eyear))" >
+    <xsl:choose>
+      <xsl:when test="(number($year) &gt; number($syear)) and (number($year) &lt; number($eyear))">
+<!-- entryout template is in the included file entryout.xsl; it outputs a cal entry -->
+         <xsl:call-template name="entryout" />
+      </xsl:when>
+      <xsl:otherwise><!-- year either equals start or end year -->
+        <xsl:choose>
+          <xsl:when test="number($year) = number($syear)" >
+            <xsl:if test="number($dyr) &gt;= number($sdyr)" >
+<!-- entryout template is in the included file entryout.xsl; it outputs a calendar entry -->
+               <xsl:call-template name="entryout" />
+            </xsl:if>
+          </xsl:when>
+          <xsl:otherwise><!-- year equals end year -->
+            <xsl:if test="number($dyr) &lt; number($edyr)">
+              <xsl:call-template name="entryout" />
+            </xsl:if>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:if>
+</xsl:template>
+
+<!-- turn off the built-in template rules -->
+<xsl:template match="text()|@*"/>
+
+</xsl:stylesheet>

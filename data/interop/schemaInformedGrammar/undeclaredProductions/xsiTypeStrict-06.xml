@@ -1,0 +1,10 @@
+<!-- =================================================================== -->
+<!-- The prefix used in xsi:type value does does not resolve to a        -->
+<!-- namespace. The prefix 'none' has not been declared.                 -->
+<!-- =================================================================== -->
+<foo:B xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  xsi:type='none:none'>
+  <foo:AB/>
+  <foo:AC/>
+  <foo:AC/>
+</foo:B>

@@ -1,0 +1,7 @@
+<!-- =================================================================== -->
+<!-- xsi:type and xsi:nil='true' can occur together in default schema    -->
+<!-- mode. They must come before any other attributes in EXI streams,    -->
+<!-- and xsi:type must come before xsi:nil.                              -->
+<!-- =================================================================== -->
+<foo:nillable_B xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  foo:aA="" xsi:nil='true' xsi:type='foo:extended_B' ></foo:nillable_B>

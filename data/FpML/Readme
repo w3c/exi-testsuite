@@ -1,0 +1,50 @@
+FpML 4.0 Recommendation - Readme file
+=====================================
+
+The "xml" directory contains the following:
+
+fpml-XXX-4-0.xsd : schema files, as follows:
+
+cross-product schema files:
+fpml-main-4-0.xsd : main include driver
+fpml-doc-4-0.xsd : document and trade level definitions (previously in main)
+fpml-shared-4-0.xsd : reusable shared types 
+fpml-enum-4-0.xsd : reusable enumerations
+fpml-msg-4-0.xsd : messaging definitions
+fpml-asset-4-0.xsd : simple assets, used as underlyers (previously in eqs)
+
+product-specific schema files:
+fpml-cd-4-0.xsd : credit derivatives
+eqd - equity derivative options
+eqs - equity derivative swaps
+fx - foreign exchange
+ird - interest rate derivatives
+
+Plus, the xml directory contains subdirectories for each subset of the 
+FpML standard, namely:
+
+cd - credit derivatives
+eqd - equity derivative options
+eqs - equity derivative swaps
+fx - foreign exchange
+ird - interest rate derivatives
+msg - messaging
+
+Each subdirectory contains a number of example files.  These files are named as follows:
+YY40_exNN_long_description.xml, 
+where
+YY is the subset identifier and
+NN is an integer number.
+
+The examples have a schemaLocation attribute that references their parent 
+directory.  In other words, the FpML schema much be present in the parent 
+directory of the example file for the example file to validate using the 
+schemaLocation attribute.
+
+The schemaLocation attribute previously referenced the examples own directory, 
+and extra copies of the schema files were placed in each example directory.
+This simplified validation of the examples and helped certain tools to work
+properly, but caused some users confusion.
+
+The examples have been validated using Xerces J v 2.4.1 and MSXML v 4.0.
+

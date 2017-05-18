@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: HepRep.xsd,v 1.3 2006/09/15 22:19:26 tkamiya Exp $ -->
+<!-- Document Type Definition for the HEPREP Descriptions -->
+<!-- Modified 11-Sep-2006 J. Schneider for W3C EXI
+     Made compatible with 2001 XML Schema standard. Previous version did not fully 
+     validate any known Heprep doc instance, this version validates at least G4Data0.heprep -->
+<!-- Modified 15-Sep-2006 Takuki Kamiya for W3C EXI
+     Use "ref" attribute instead of "name" attribute to reference types
+     that are defined elsewhere in the schema. -->
+
+<xsd:schema targetNamespace="http://www.freehep.org/HepRep"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:heprep="http://www.freehep.org/HepRep"
+            elementFormDefault="qualified">
+
+    <xsd:element name="attribute" type="heprep:attribute"/>
+        <xsd:complexType name="attribute" abstract="true">
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="attdef">
+                    <xsd:complexType>
+                        <xsd:attribute name="name"  type="xsd:string" use="required"/>
+                        <xsd:attribute name="desc"  type="xsd:string"/>
+                        <xsd:attribute name="type"  type="xsd:string" use="required"/>
+                        <xsd:attribute name="extra" type="xsd:string"/>
+                    </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="attvalue">
+                <xsd:complexType>
+                <xsd:attribute name="name"  type="xsd:string" use="required"/>
+                <xsd:attribute name="value" type="xsd:string" use="required"/>
+                <xsd:attribute name="showLabel" type="xsd:string"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:choice>
+    </xsd:complexType>
+
+    <xsd:element name="point">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="heprep:attribute">
+                    <xsd:attribute name="x" type="xsd:double" use="required"/>
+                    <xsd:attribute name="y" type="xsd:double" use="required"/>
+                    <xsd:attribute name="z" type="xsd:double" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="primitive">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="heprep:attribute">
+                    <xsd:sequence>
+                        <xsd:element ref="heprep:point" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="instance">
+        <xsd:complexType>
+            <xsd:complexContent>
+	        <xsd:extension base="heprep:attribute">
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:element ref="heprep:type" />
+                        <xsd:element ref="heprep:primitive" />
+                        <xsd:element ref="heprep:point" />
+                    </xsd:choice>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="type">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="heprep:attribute">
+                    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                        <xsd:element ref="heprep:instance" />
+                        <xsd:element ref="heprep:type" />
+                        <xsd:element ref="heprep:primitive" />
+                        <xsd:element ref="heprep:point" />
+                    </xsd:choice>
+                    <xsd:attribute name="name" type="xsd:string" use="required"/>
+                    <xsd:attribute name="version" type="xsd:string"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="heprep">
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="heprep:attribute">
+                    <xsd:sequence>
+                        <xsd:element ref="heprep:type" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
+

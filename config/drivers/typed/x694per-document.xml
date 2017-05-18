@@ -1,0 +1,17 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="japex.classPath" value="${japex.home}/jdsl/jdsl.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/c/x694per/dist/candidate-x694per.jar"/>
+
+    <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.x694per.X694PERNativeDriver"/>
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="x694per"/>
+    <param name="ossx.precompiledSchemas" value="${japex.exi.ttfms.candidatesDir}/c/x694per/dist/schemas.properties"/>
+    <param name="ossx.precompiledSchemaPath" value="${japex.exi.ttfms.candidatesDir}/c/x694per/lib/${japex.osName}/${japex.osArchitecture}"/>
+
+    <driver name="X694PERDocumentTyped">
+        <param name="description" value="PER compaction in 'document' mode"/>
+        <param name="libraryPath" value="${japex.exi.ttfms.candidatesDir}/c/x694per/lib/${os.name}/${os.arch}/drivers"/>
+	<param name="libraryName" value="candidate-x694per-XML+GZIP"/>
+        <param name="org.w3c.exi.ttf.applicationClass" value="document"/>
+    </driver>
+</driverGroup>

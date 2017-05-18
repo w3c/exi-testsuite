@@ -1,0 +1,21 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - &apos;choice&apos; group">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | choiceGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#choiceGroupTerms"/>
+
+    <testCase name="schemaInformed.declared.choice-01">
+        <param name="testDescription"  value="&apos;choice&apos; instance with optional particles present"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/choice-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.choice-02">
+        <param name="testDescription"  value="&apos;choice&apos; instance with optional particles omitted"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/choice-02.xml" />
+    </testCase>
+
+</testCaseGroup>

@@ -1,0 +1,32 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Empty block tests">
+
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/emptyBlock"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.compression" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/emptyBlock.xsd" />
+    
+    <!-- blocksize test cases here -->
+    <testCase name="emptyBlock-00">
+        <param name="description"  value="Test whether candidate can decode what it encodes."/>
+        <param name="org.w3c.exi.ttf.blockSize" value="1"/>
+        <param name="japex.inputFile" value="${test.docFolder}/emptyBlock.xml" />
+    </testCase>
+    <testCase name="emptyBlock-01">
+        <param name="description"  value="Test whether candidate can decode without extra DEFLATE block."/>
+        <param name="org.w3c.exi.ttf.blockSize" value="1"/>
+        <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+        <param name="japex.inputFile" value="${test.docFolder}/emptyBlockCopy1.xml" />
+        <param name="org.w3c.exi.ttf.encodedFile" value="${test.docFolder}/emptyBlock.xml.exi"/>
+    </testCase>
+    <testCase name="emptyBlock-02">
+        <param name="description"  value="Test whether candidate can decode with extra DEFLATE block."/>
+        <param name="org.w3c.exi.ttf.blockSize" value="1"/>
+        <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+        <param name="japex.inputFile" value="${test.docFolder}/emptyBlockCopy2.xml" />
+        <param name="org.w3c.exi.ttf.encodedFile" value="${test.docFolder}/emptyBlock.xml.extraDeflate.exi"/>
+    </testCase>
+
+</testCaseGroup>

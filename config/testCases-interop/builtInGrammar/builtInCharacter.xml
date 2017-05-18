@@ -1,0 +1,37 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn Element Grammar tests">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/character"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#builtinElemGrammars"/>
+
+    <testCase name="builtin.ch-01">
+        <param name="testDescription"  value="Root tag with CH"/>
+        <param name="japex.inputFile" value="${testDocFolder}/ch-01.xml" />
+    </testCase>
+    <testCase name="builtin.ch-02">
+        <param name="testDescription"  value="Root tag with an element child and then a CH "/>
+        <param name="japex.inputFile" value="${testDocFolder}/ch-02.xml" />
+    </testCase>
+    <testCase name="builtin.ch-03">
+        <param name="testDescription"  value="Document with a CH element repeated several times "/>
+        <param name="japex.inputFile" value="${testDocFolder}/ch-03.xml" />
+    </testCase>
+    <testCase name="builtin.ch-04">
+        <param name="testDescription"  value="Document with an element with mixed content repeated several times "/>
+        <param name="japex.inputFile" value="${testDocFolder}/ch-04.xml" />
+    </testCase>
+    <testCase name="builtin.ch-05">
+        <param name="testDescription"  value="Document with an empty element repeated several times"/>
+        <param name="japex.inputFile" value="${testDocFolder}/ch-05.xml" />
+    </testCase>
+    <testCase name="builtin.ch-06">
+        <param name="testDescription"  value="Document with an element with either CH or EE repeated several times"/>
+        <param name="japex.inputFile" value="${testDocFolder}/ch-06.xml" />
+    </testCase>
+    <testCase name="builtin.ch-07">
+        <param name="testDescription"  value="Document with an element with either CH, elements or EE repeated several times"/>
+        <param name="japex.inputFile" value="${testDocFolder}/ch-07.xml" />
+    </testCase>
+</testCaseGroup>
+

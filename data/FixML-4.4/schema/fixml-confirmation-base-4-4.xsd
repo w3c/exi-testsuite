@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 20040109
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="ConfirmationElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="OrdAlloc" type="OrdAllocGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdRegTS" type="TrdRegTimestamps_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="FinDetls" type="FinancingDetails_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Yield" type="YieldData_Block_t" minOccurs="0" />
+		<xs:element name="Cpcty" type="CpctyConfGrp_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="SprdBnchmkCurve" type="SpreadOrBenchmarkCurveData_Block_t" minOccurs="0" />
+		<xs:element name="SetInstr" type="SettlInstructionsData_Block_t" minOccurs="0" />
+		<xs:element name="Comm" type="CommissionData_Block_t" minOccurs="0" />
+		<xs:element name="Stip" type="Stipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="MiscFees" type="MiscFeesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="ConfirmationAttributes">
+		<xs:attribute name="CnfmID" type="ConfirmID_t" use="required"/>
+		<xs:attribute name="CnfmRefID" type="ConfirmRefID_t" use="optional"/>
+		<xs:attribute name="CnfmReqID" type="ConfirmReqID_t" use="optional"/>
+		<xs:attribute name="CnfmTransTyp" type="ConfirmTransType_t" use="required"/>
+		<xs:attribute name="CnfmTyp" type="ConfirmType_t" use="required"/>
+		<xs:attribute name="CopyMsgInd" type="CopyMsgIndicator_t" use="optional"/>
+		<xs:attribute name="LegalCnfm" type="LegalConfirm_t" use="optional"/>
+		<xs:attribute name="CnfmStat" type="ConfirmStatus_t" use="required"/>
+		<xs:attribute name="AllocID" type="AllocID_t" use="optional"/>
+		<xs:attribute name="AllocID2" type="SecondaryAllocID_t" use="optional"/>
+		<xs:attribute name="IndAllocID" type="IndividualAllocID_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="TrdDt" type="TradeDate_t" use="required"/>
+		<xs:attribute name="Qty" type="AllocQty_t" use="required"/>
+		<xs:attribute name="QtyTyp" type="QtyType_t" use="optional"/>
+		<xs:attribute name="Side" type="Side_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="LastMkt" type="LastMkt_t" use="optional"/>
+		<xs:attribute name="Acct" type="AllocAccount_t" use="required"/>
+		<xs:attribute name="ActIDSrc" type="AllocAcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AllocAccountType_t" use="optional"/>
+		<xs:attribute name="AvgPx" type="AvgPx_t" use="required"/>
+		<xs:attribute name="AvgPxPrcsn" type="AvgPxPrecision_t" use="optional"/>
+		<xs:attribute name="PxTyp" type="PriceType_t" use="optional"/>
+		<xs:attribute name="AvgParPx" type="AvgParPx_t" use="optional"/>
+		<xs:attribute name="RptedPx" type="ReportedPx_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="ProcCode" type="ProcessCode_t" use="optional"/>
+		<xs:attribute name="GrossTrdAmt" type="GrossTradeAmt_t" use="required"/>
+		<xs:attribute name="NumDaysInt" type="NumDaysInterest_t" use="optional"/>
+		<xs:attribute name="ExDt" type="ExDate_t" use="optional"/>
+		<xs:attribute name="AcrdIntRt" type="AccruedInterestRate_t" use="optional"/>
+		<xs:attribute name="AcrdIntAmt" type="AccruedInterestAmt_t" use="optional"/>
+		<xs:attribute name="IntAtMat" type="InterestAtMaturity_t" use="optional"/>
+		<xs:attribute name="EndAcrdIntAmt" type="EndAccruedInterestAmt_t" use="optional"/>
+		<xs:attribute name="StartCsh" type="StartCash_t" use="optional"/>
+		<xs:attribute name="EndCsh" type="EndCash_t" use="optional"/>
+		<xs:attribute name="Concession" type="Concession_t" use="optional"/>
+		<xs:attribute name="TotTakedown" type="TotalTakedown_t" use="optional"/>
+		<xs:attribute name="NetMny" type="NetMoney_t" use="required"/>
+		<xs:attribute name="MatNetMny" type="MaturityNetMoney_t" use="optional"/>
+		<xs:attribute name="SettlCurrAmt" type="SettlCurrAmt_t" use="optional"/>
+		<xs:attribute name="SettlCcy" type="SettlCurrency_t" use="optional"/>
+		<xs:attribute name="SettlCurrFxRt" type="SettlCurrFxRate_t" use="optional"/>
+		<xs:attribute name="SettlCurrFxRtCalc" type="SettlCurrFxRateCalc_t" use="optional"/>
+		<xs:attribute name="SettlTyp" type="SettlType_t" use="optional"/>
+		<xs:attribute name="SettlDt" type="SettlDate_t" use="optional"/>
+		<xs:attribute name="SharedComm" type="SharedCommission_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="Confirmation_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Confirmation can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="Confirmation" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="ConfirmationElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="ConfirmationAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="Cnfm" type="Confirmation_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="Confirmation_AckElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="Confirmation_AckAttributes">
+		<xs:attribute name="CnfmID" type="ConfirmID_t" use="required"/>
+		<xs:attribute name="TrdDt" type="TradeDate_t" use="required"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="AffirmStat" type="AffirmStatus_t" use="required"/>
+		<xs:attribute name="CnfmRejRsn" type="ConfirmRejReason_t" use="optional"/>
+		<xs:attribute name="MtchStat" type="MatchStatus_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="Confirmation_Ack_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Confirmation_Ack can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="Confirmation_Ack" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="Confirmation_AckElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="Confirmation_AckAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="CnfmAck" type="Confirmation_Ack_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="ConfirmationRequestElements">
+		<xs:sequence>		
+		<xs:element name="OrdAlloc" type="OrdAllocGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="ConfirmationRequestAttributes">
+		<xs:attribute name="CnfmReqID" type="ConfirmReqID_t" use="required"/>
+		<xs:attribute name="CnfmTyp" type="ConfirmType_t" use="required"/>
+		<xs:attribute name="AllocID" type="AllocID_t" use="optional"/>
+		<xs:attribute name="AllocID2" type="SecondaryAllocID_t" use="optional"/>
+		<xs:attribute name="IndAllocID" type="IndividualAllocID_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="Acct" type="AllocAccount_t" use="optional"/>
+		<xs:attribute name="ActIDSrc" type="AllocAcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AllocAccountType_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="ConfirmationRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">ConfirmationRequest can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="ConfirmationRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="ConfirmationRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="ConfirmationRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="CnfmReq" type="ConfirmationRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+
+</xs:schema>
+

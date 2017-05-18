@@ -1,0 +1,50 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Wildcard">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | wildcardTermGrammar"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#wildcardTerms"/>
+
+    <testCase name="schemaInformed.declared.wildcard-01">
+        <param name="testDescription" 
+          value="use of ##other wildcard and specified non-default namespace wildcard"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/wildcard-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.wildcard-02">
+        <param name="testDescription" 
+          value="use of ##other wildcard and specified default namespace wildcard"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/wildcard-02.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.wildcard-03">
+        <param name="testDescription" 
+          value="use of specified non-default namespace wildcard"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/wildcard-03.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.wildcard-04">
+        <param name="testDescription" 
+          value="Use of ##any wildcard"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/wildcard-04.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.wildcard-05">
+        <param name="testDescription" 
+          value="Use of wildcards in a context with structures"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/wildcard-05.xml" />
+    </testCase>
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Additional URI partition entries from schemas">
+        <param name="groupId" value="${groupId} | initialEntries"/> 
+        <testCase name="schemaInformed.declared.wildcard-06">
+            <param name="testDescription" 
+              value="URIs in specified namespace wildcards get in uri partition of the string table"/>
+            <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/wildcard-06.xml" />
+        </testCase>
+    </testCaseGroup>
+
+</testCaseGroup>

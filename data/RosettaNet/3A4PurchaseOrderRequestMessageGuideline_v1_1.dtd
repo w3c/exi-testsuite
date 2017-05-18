@@ -1,0 +1,300 @@
+<!--
+
+   RosettaNet XML Message Guideline.
+   http://www.rosettanet.org
+   PIP 3 A4 Purchase Order Request
+   Version 1.1
+   
+   Created using Edifecs Commerce SpecBuilder. 
+   http://www.edifecs.com
+   http://www.commercedesk.com
+   Build # 16
+-->
+
+
+<!ENTITY % common-attributes "id  CDATA #IMPLIED" >
+ 
+<!ELEMENT Pip3A4PurchaseOrderRequest ( 
+          PurchaseOrder ,
+          fromRole ,
+          toRole ,
+          thisDocumentGenerationDateTime ,
+          thisDocumentIdentifier ,
+          GlobalDocumentFunctionCode ) > 
+
+<!ELEMENT PurchaseOrder ( 
+          deliverTo? ,
+          comment? ,
+          packListRequirements? ,
+          ProductLineItem+ ,
+          GlobalShipmentTermsCode ,
+          RevisionNumber ,
+          prePaymentCheckNumber? ,
+          QuoteIdentifier? ,
+          WireTransferIdentifier? ,
+          AccountDescription? ,
+          generalServicesAdministrationNumber? ,
+          secondaryBuyerPurchaseOrderIdentifier? ,
+          GlobalFinanceTermsCode ,
+          PartnerDescription+ ,
+          secondaryBuyer? ,
+          GlobalPurchaseOrderTypeCode ) > 
+
+<!ELEMENT deliverTo
+            ( PhysicalAddress ) > 
+
+<!ELEMENT PhysicalAddress ( 
+          cityName ,
+          addressLine1 ,
+          addressLine2? ,
+          addressLine3? ,
+          NationalPostalCode? ,
+          regionName ,
+          postOfficeBoxIdentifier? ,
+          GlobalLocationIdentifier? ,
+          GlobalCountryCode? ) > 
+
+<!ELEMENT GlobalLocationIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT cityName
+           ( FreeFormText ) > 
+
+<!ELEMENT FreeFormText
+           ( #PCDATA ) >
+<!ATTLIST FreeFormText
+           xml:lang CDATA #IMPLIED >
+
+<!ELEMENT addressLine1
+            ( FreeFormText ) > 
+
+<!ELEMENT addressLine2
+            ( FreeFormText ) > 
+
+<!ELEMENT addressLine3
+            ( FreeFormText ) > 
+
+<!ELEMENT GlobalCountryCode
+           ( #PCDATA ) >
+
+<!ELEMENT NationalPostalCode
+           ( #PCDATA ) >
+
+<!ELEMENT regionName
+            ( FreeFormText ) > 
+
+<!ELEMENT comment
+            ( FreeFormText ) > 
+
+<!ELEMENT packListRequirements
+            ( FreeFormText ) > 
+
+<!ELEMENT ProductLineItem ( 
+          shipFrom+ ,
+          ProductQuantity ,
+          LineNumber ,
+          productUnit ,
+          GlobalSpecialFulfillmentRequestCode? ,
+          countryOfOrigin? ,
+          requestedShipDate ,
+          contractIdentifier? ,
+          GlobalProductUnitOfMeasureCode ,
+          SpecialHandlingInstruction ,
+          requestedPrice ) > 
+
+<!ELEMENT shipFrom
+            ( GlobalLocationIdentifier ) > 
+
+<!ELEMENT ProductQuantity
+           ( #PCDATA ) >
+
+<!ELEMENT LineNumber
+           ( #PCDATA ) >
+
+<!ELEMENT productUnit
+            ( ProductPackageDescription ) > 
+
+<!ELEMENT ProductPackageDescription ( 
+          ProductDescription ) > 
+
+<!ELEMENT ProductDescription ( 
+          GlobalProductIdentifier ) > 
+
+<!ELEMENT GlobalProductIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalSpecialFulfillmentRequestCode
+           ( #PCDATA ) >
+
+<!ELEMENT countryOfOrigin
+            ( GlobalCountryCode ) > 
+
+<!ELEMENT requestedShipDate
+           ( DateStamp ) > 
+
+<!ELEMENT DateStamp
+           ( #PCDATA ) >
+
+<!ELEMENT contractIdentifier
+           ( ProprietaryDocumentIdentifier ) > 
+
+<!ELEMENT ProprietaryDocumentIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalProductUnitOfMeasureCode
+           ( #PCDATA ) >
+
+<!ELEMENT SpecialHandlingInstruction ( 
+          specialHandlingText ) > 
+
+<!ELEMENT specialHandlingText
+            ( FreeFormText ) > 
+
+<!ELEMENT requestedPrice
+            ( FinancialAmount ) > 
+
+<!ELEMENT FinancialAmount ( 
+          GlobalCurrencyCode ,
+          MonetaryAmount ) > 
+
+<!ELEMENT GlobalCurrencyCode
+           ( #PCDATA ) >
+
+<!ELEMENT MonetaryAmount
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalShipmentTermsCode
+           ( #PCDATA ) >
+
+<!ELEMENT RevisionNumber
+           ( #PCDATA ) >
+
+<!ELEMENT prePaymentCheckNumber
+           ( CheckNumber ) > 
+
+<!ELEMENT CheckNumber
+           ( #PCDATA ) >
+
+<!ELEMENT QuoteIdentifier
+            ( ProprietaryDocumentIdentifier ) > 
+
+<!ELEMENT WireTransferIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT AccountDescription ( 
+          GlobalAccountClassificationCode ,
+          billTo ,
+          accountName ,
+          ProprietaryCIDIdentifier? ,
+          expiryDate? ,
+          AccountNumber ) > 
+
+<!ELEMENT GlobalAccountClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT billTo
+            ( PartnerRoleDescription ) > 
+
+<!ELEMENT PartnerRoleDescription ( 
+          GlobalPartnerRoleClassificationCode ,
+          ContactInformation? ,
+          PartnerDescription? ) > 
+
+<!ELEMENT ContactInformation ( 
+          PhysicalAddress? ,
+          EmailAddress? ,
+          contactName? ,
+          telephoneNumber? ) > 
+
+<!ELEMENT postOfficeBoxIdentifier
+            ( FreeFormText ) > 
+
+<!ELEMENT GlobalPartnerRoleClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT accountName
+            ( FreeFormText ) > 
+
+<!ELEMENT ProprietaryCIDIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT expiryDate
+            ( DateStamp ) > 
+
+<!ELEMENT AccountNumber
+           ( #PCDATA ) >
+
+<!ELEMENT generalServicesAdministrationNumber
+            ( ProprietaryDocumentIdentifier ) > 
+
+<!ELEMENT secondaryBuyerPurchaseOrderIdentifier
+            ( ProprietaryDocumentIdentifier ) > 
+
+<!ELEMENT GlobalFinanceTermsCode
+           ( #PCDATA ) >
+
+<!ELEMENT PartnerDescription ( 
+          PhysicalAddress? ,
+          GlobalPartnerClassificationCode? ,
+          BusinessDescription? ) > 
+
+<!ELEMENT GlobalPartnerClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT BusinessDescription ( 
+          GlobalBusinessIdentifier ,
+          NationalBusinessTaxIdentifier? ,
+          businessName? ,
+          GlobalSupplyChainCode? ) > 
+
+<!ELEMENT GlobalBusinessIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT NationalBusinessTaxIdentifier ( 
+          BusinessTaxIdentifier ) > 
+
+<!ELEMENT BusinessTaxIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT businessName
+            ( FreeFormText ) > 
+
+<!ELEMENT secondaryBuyer
+            ( PartnerRoleDescription ) > 
+
+<!ELEMENT EmailAddress
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalPurchaseOrderTypeCode
+           ( #PCDATA ) >
+
+<!ELEMENT fromRole
+            ( PartnerRoleDescription ) > 
+
+<!ELEMENT contactName
+            ( FreeFormText ) > 
+
+<!ELEMENT telephoneNumber
+           ( CommunicationsNumber ) > 
+
+<!ELEMENT CommunicationsNumber
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalSupplyChainCode
+           ( #PCDATA ) >
+
+<!ELEMENT toRole
+            ( PartnerRoleDescription ) > 
+
+<!ELEMENT thisDocumentGenerationDateTime
+           ( DateTimeStamp ) > 
+
+<!ELEMENT DateTimeStamp
+           ( #PCDATA ) >
+
+<!ELEMENT thisDocumentIdentifier
+            ( ProprietaryDocumentIdentifier ) > 
+
+<!ELEMENT GlobalDocumentFunctionCode
+           ( #PCDATA ) >
+

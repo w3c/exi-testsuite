@@ -1,0 +1,573 @@
+<!--
+
+   RosettaNet XML Message Schema
+   3A1_MS_V02_00_QuoteConfirmation.dtd (20-Dec-2001 07:35) 
+   This document has been prepared by RosettaNet (http://www.rosettanet.org/)
+   from requirements gathered during the cluster/segment workshops
+   in conformance with the RosettaNet methodology.
+
+-->
+
+
+<!ENTITY % common-attributes "id  CDATA #IMPLIED" >
+
+<!ELEMENT Pip3A1QuoteConfirmation (
+           fromRole ,
+           GlobalDocumentFunctionCode ,
+           Quote ,
+           requestingDocumentDateTime ,
+           requestingDocumentIdentifier ,
+           thisDocumentGenerationDateTime ,
+           thisDocumentIdentifier ,
+           toRole ) >
+
+<!ELEMENT fromRole
+           ( PartnerRoleDescription ) >
+
+<!ELEMENT PartnerRoleDescription (
+           ContactInformation? ,
+           GlobalPartnerRoleClassificationCode ,
+           PartnerDescription? ) >
+
+<!ELEMENT ContactInformation (
+           contactName? ,
+           EmailAddress? ,
+           facsimileNumber? ,
+           telephoneNumber? ) >
+
+<!ELEMENT contactName
+           ( FreeFormText ) >
+
+<!ELEMENT FreeFormText
+           ( #PCDATA ) >
+<!ATTLIST FreeFormText
+           xml:lang CDATA #IMPLIED >
+
+<!ELEMENT EmailAddress
+           ( #PCDATA ) >
+
+<!ELEMENT facsimileNumber
+           ( CommunicationsNumber ) >
+
+<!ELEMENT CommunicationsNumber
+           ( #PCDATA ) >
+
+<!ELEMENT telephoneNumber
+           ( CommunicationsNumber ) >
+
+<!ELEMENT GlobalPartnerRoleClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT PartnerDescription (
+           BusinessDescription ,
+           GlobalPartnerClassificationCode ,
+           PhysicalLocation? ,
+           ContactInformation? ) >
+
+<!ELEMENT BusinessDescription (
+           GlobalBusinessIdentifier? ,
+           GlobalSupplyChainCode? ,
+           businessName? ,
+           PartnerBusinessIdentification* ) >
+
+<!ELEMENT GlobalBusinessIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalSupplyChainCode
+           ( #PCDATA ) >
+
+<!ELEMENT businessName
+           ( FreeFormText ) >
+
+<!ELEMENT PartnerBusinessIdentification (
+           ProprietaryBusinessIdentifier ,
+           ProprietaryDomainIdentifier ,
+           ProprietaryIdentifierAuthority? ) >
+
+<!ELEMENT ProprietaryBusinessIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT ProprietaryDomainIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT ProprietaryIdentifierAuthority
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalPartnerClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalDocumentFunctionCode
+           ( #PCDATA ) >
+
+<!ELEMENT Quote (
+           CarrierInformation? ,
+           comments? ,
+           distributedBy* ,
+           DocumentReference+ ,
+           effectiveDate? ,
+           financedBy? ,
+           freightCharges? ,
+           GlobalGovernmentPriorityRatingCode? ,
+           GlobalQuoteTypeCode ,
+           governmentContractIdentifier? ,
+           handlingCharges? ,
+           isPendingItemsExist ,
+           PriceCondition? ,
+           QuoteCustomerInformation* ,
+           QuoteLineItem+ ,
+           QuotePackage* ,
+           referQuoteTo? ,
+           requestedResponseDate? ,
+           requoteReference* ,
+           respondTo* ,
+           TaxExemptStatus? ,
+           TermsAndConditionsInformation? ,
+           totalPrice ) >
+
+<!ELEMENT CarrierInformation (
+           accountIdentifier? ,
+           GlobalCarrierCode ) >
+
+<!ELEMENT accountIdentifier
+           ( ProprietaryReferenceIdentifier ) >
+
+<!ELEMENT ProprietaryReferenceIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalCarrierCode
+           ( #PCDATA ) >
+
+<!ELEMENT comments
+           ( FreeFormText ) >
+
+<!ELEMENT distributedBy
+           ( PartnerDescription ) >
+
+<!ELEMENT PhysicalLocation (
+           GlobalLocationIdentifier? ,
+           PartnerLocationIdentification* ,
+           PhysicalAddress? ) >
+
+<!ELEMENT GlobalLocationIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT PartnerLocationIdentification (
+           ProprietaryDomainIdentifier ,
+           ProprietaryIdentifierAuthority? ,
+           ProprietaryLocationIdentifier ) >
+
+<!ELEMENT ProprietaryLocationIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT PhysicalAddress (
+           addressLine1? ,
+           addressLine2? ,
+           addressLine3? ,
+           cityName? ,
+           GlobalCountryCode? ,
+           NationalPostalCode? ,
+           postOfficeBoxIdentifier? ,
+           regionName? ) >
+
+<!ELEMENT addressLine1
+           ( FreeFormText ) >
+
+<!ELEMENT addressLine2
+           ( FreeFormText ) >
+
+<!ELEMENT addressLine3
+           ( FreeFormText ) >
+
+<!ELEMENT cityName
+           ( FreeFormText ) >
+
+<!ELEMENT GlobalCountryCode
+           ( #PCDATA ) >
+
+<!ELEMENT NationalPostalCode
+           ( #PCDATA ) >
+
+<!ELEMENT postOfficeBoxIdentifier
+           ( FreeFormText ) >
+
+<!ELEMENT regionName
+           ( FreeFormText ) >
+
+<!ELEMENT DocumentReference (
+           DateTimeStamp? ,
+           GlobalDocumentReferenceTypeCode ,
+           GlobalPartnerRoleClassificationCode? ,
+           ProprietaryDocumentIdentifier ,
+           RevisionNumber? ,
+           LineNumber? ) >
+
+<!ELEMENT DateTimeStamp
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalDocumentReferenceTypeCode
+           ( #PCDATA ) >
+
+<!ELEMENT ProprietaryDocumentIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT RevisionNumber
+           ( #PCDATA ) >
+
+<!ELEMENT effectiveDate
+           ( DatePeriod ) >
+
+<!ELEMENT DatePeriod (
+           beginDate? ,
+           endDate? ) >
+
+<!ELEMENT beginDate
+           ( DateStamp ) >
+
+<!ELEMENT DateStamp
+           ( #PCDATA ) >
+
+<!ELEMENT endDate
+           ( DateStamp ) >
+
+<!ELEMENT financedBy
+           ( PartnerDescription ) >
+
+<!ELEMENT freightCharges
+           ( FinancialAmount ) >
+
+<!ELEMENT FinancialAmount (
+           GlobalCurrencyCode ,
+           MonetaryAmount ) >
+
+<!ELEMENT GlobalCurrencyCode
+           ( #PCDATA ) >
+
+<!ELEMENT MonetaryAmount
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalGovernmentPriorityRatingCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalQuoteTypeCode
+           ( #PCDATA ) >
+
+<!ELEMENT governmentContractIdentifier
+           ( ProprietaryDocumentIdentifier ) >
+
+<!ELEMENT handlingCharges
+           ( FinancialAmount ) >
+
+<!ELEMENT isPendingItemsExist
+           ( AffirmationIndicator ) >
+
+<!ELEMENT AffirmationIndicator
+           ( #PCDATA ) >
+
+<!ELEMENT PriceCondition (
+           contractIdentifier? ,
+           generalServicesAdministrationNumber? ,
+           specialPriceCondition? ) >
+
+<!ELEMENT contractIdentifier
+           ( ProprietaryDocumentIdentifier ) >
+
+<!ELEMENT generalServicesAdministrationNumber
+           ( ProprietaryDocumentIdentifier ) >
+
+<!ELEMENT specialPriceCondition
+           ( FreeFormText ) >
+
+<!ELEMENT QuoteCustomerInformation (
+           customerProjectIdentifier? ,
+           GlobalCustomerTypeCode ,
+           GlobalQuoteStatusCode ,
+           PartnerDescription ) >
+
+<!ELEMENT customerProjectIdentifier
+           ( ProprietaryReferenceIdentifier ) >
+
+<!ELEMENT GlobalCustomerTypeCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalQuoteStatusCode
+           ( #PCDATA ) >
+
+<!ELEMENT QuoteLineItem (
+           comments? ,
+           countryOfOrigin? ,
+           designRegistrationIdentifier? ,
+           DocumentReference? ,
+           estimatedAvailableQuantity ,
+           GlobalGovernmentPriorityRatingCode? ,
+           GlobalProductTermsCode* ,
+           GlobalProductUnitOfMeasureCode ,
+           GlobalQuoteLineItemStatusCode ,
+           GlobalStockIndicatorCode? ,
+           governmentContractIdentifier? ,
+           LineNumber ,
+           OrderLeadTime? ,
+           ProductIdentification ,
+           QuoteCompetitorReference* ,
+           QuoteCustomerInformation* ,
+           QuotePackage* ,
+           requestedQuantity? ,
+           requestedShipFrom? ,
+           requestedUnitPrice* ,
+           RequoteLineStatus? ,
+           scheduledQuantity? ,
+           shipFrom? ,
+           shipTo? ,
+           StepPricing* ,
+           SubstituteProductReference* ,
+           TaxExemptStatus? ,
+           TaxSummary? ,
+           unitPrice ) >
+
+<!ELEMENT countryOfOrigin
+           ( GlobalCountryCode ) >
+
+<!ELEMENT designRegistrationIdentifier
+           ( ProprietaryReferenceIdentifier ) >
+
+<!ELEMENT LineNumber
+           ( #PCDATA ) >
+
+<!ELEMENT estimatedAvailableQuantity
+           ( QuoteQuantity ) >
+
+<!ELEMENT QuoteQuantity (
+           manufacturerMinimumPackageQuantity? ,
+           minimumOrderQuantity? ,
+           QuantityTransportationSchedule ) >
+
+<!ELEMENT manufacturerMinimumPackageQuantity
+           ( ProductQuantity ) >
+
+<!ELEMENT ProductQuantity
+           ( #PCDATA ) >
+
+<!ELEMENT minimumOrderQuantity
+           ( ProductQuantity ) >
+
+<!ELEMENT QuantityTransportationSchedule (
+           GlobalTransportEventCode? ,
+           QuantitySchedule+ ) >
+
+<!ELEMENT GlobalTransportEventCode
+           ( #PCDATA ) >
+
+<!ELEMENT QuantitySchedule (
+           DateStamp? ,
+           ProductQuantity ) >
+
+<!ELEMENT GlobalProductTermsCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalProductUnitOfMeasureCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalQuoteLineItemStatusCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalStockIndicatorCode
+           ( #PCDATA ) >
+
+<!ELEMENT OrderLeadTime (
+           GlobalLeadTimeClassificationCode? ,
+           GlobalLeadTimeCommencementCode? ,
+           TimeDuration ) >
+
+<!ELEMENT GlobalLeadTimeClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalLeadTimeCommencementCode
+           ( #PCDATA ) >
+
+<!ELEMENT TimeDuration
+           ( #PCDATA ) >
+
+<!ELEMENT ProductIdentification (
+           GlobalProductIdentifier? ,
+           PartnerProductIdentification* ) >
+
+<!ELEMENT GlobalProductIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT PartnerProductIdentification (
+           GlobalPartnerClassificationCode ,
+           ProprietaryProductIdentifier ,
+           revisionIdentifier? ) >
+
+<!ELEMENT ProprietaryProductIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT revisionIdentifier
+           ( FreeFormText ) >
+
+<!ELEMENT QuoteCompetitorReference (
+           PartnerDescription ,
+           ProductIdentification? ,
+           unitPrice? ) >
+
+<!ELEMENT unitPrice
+           ( ProductPricing ) >
+
+<!ELEMENT ProductPricing (
+           FinancialAmount ,
+           GlobalPriceTypeCode? ) >
+
+<!ELEMENT GlobalPriceTypeCode
+           ( #PCDATA ) >
+
+<!ELEMENT QuotePackage (
+           quotePackageIdentifier ,
+           quotePackagePrice? ) >
+
+<!ELEMENT quotePackageIdentifier
+           ( ProprietaryReferenceIdentifier ) >
+
+<!ELEMENT quotePackagePrice
+           ( ProductPricing ) >
+
+<!ELEMENT requestedQuantity
+           ( QuoteQuantity ) >
+
+<!ELEMENT requestedShipFrom
+           ( PartnerDescription ) >
+
+<!ELEMENT requestedUnitPrice
+           ( ProductPricing ) >
+
+<!ELEMENT RequoteLineStatus (
+           GlobalRequoteActionCode ,
+           requoteReference+ ) >
+
+<!ELEMENT GlobalRequoteActionCode
+           ( #PCDATA ) >
+
+<!ELEMENT requoteReference
+           ( DocumentReference ) >
+
+<!ELEMENT scheduledQuantity
+           ( QuoteQuantity ) >
+
+<!ELEMENT shipFrom
+           ( PartnerDescription ) >
+
+<!ELEMENT shipTo
+           ( PartnerDescription ) >
+
+<!ELEMENT StepPricing (
+           DatePeriod ,
+           ProductPricing ,
+           ProductQuantityRange ) >
+
+<!ELEMENT ProductQuantityRange (
+           maximumOrderQuantity ,
+           minimumOrderQuantity ) >
+
+<!ELEMENT maximumOrderQuantity
+           ( ProductQuantity ) >
+
+<!ELEMENT SubstituteProductReference (
+           GlobalProductSubstitutionReasonCode ,
+           ProductIdentification ) >
+
+<!ELEMENT GlobalProductSubstitutionReasonCode
+           ( #PCDATA ) >
+
+<!ELEMENT TaxExemptStatus (
+           isTaxExempt ,
+           TaxExemption? ) >
+
+<!ELEMENT isTaxExempt
+           ( AffirmationIndicator ) >
+
+<!ELEMENT TaxExemption (
+           GlobalTaxExemptionCode ,
+           taxExemptionCertificationIdentifier ) >
+
+<!ELEMENT GlobalTaxExemptionCode
+           ( #PCDATA ) >
+
+<!ELEMENT taxExemptionCertificationIdentifier
+           ( ProprietaryReferenceIdentifier ) >
+
+<!ELEMENT TaxSummary (
+           CityTax? ,
+           NationalTax? ,
+           RegionalTax? ,
+           totalAmount? ) >
+
+<!ELEMENT CityTax (
+           cityName ,
+           FinancialAmount ,
+           taxRate? ) >
+
+<!ELEMENT taxRate
+           ( PercentAmount ) >
+
+<!ELEMENT PercentAmount
+           ( #PCDATA ) >
+
+<!ELEMENT NationalTax (
+           FinancialAmount ,
+           NationalBusinessTaxIdentifier? ,
+           taxRate? ) >
+
+<!ELEMENT NationalBusinessTaxIdentifier (
+           BusinessTaxIdentifier ,
+           GlobalCountryCode ) >
+
+<!ELEMENT BusinessTaxIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT RegionalTax (
+           FinancialAmount ,
+           RegionalBusinessTaxIdentifier? ,
+           taxRate? ) >
+
+<!ELEMENT RegionalBusinessTaxIdentifier (
+           BusinessTaxIdentifier ,
+           regionName ) >
+
+<!ELEMENT totalAmount
+           ( FinancialAmount ) >
+
+<!ELEMENT referQuoteTo
+           ( PartnerDescription ) >
+
+<!ELEMENT requestedResponseDate
+           ( DatePeriod ) >
+
+<!ELEMENT respondTo
+           ( PartnerDescription ) >
+
+<!ELEMENT TermsAndConditionsInformation (
+           guaranteedPeriod? ,
+           termsAndConditions ) >
+
+<!ELEMENT guaranteedPeriod
+           ( DatePeriod ) >
+
+<!ELEMENT termsAndConditions
+           ( FreeFormText ) >
+
+<!ELEMENT totalPrice
+           ( FinancialAmount ) >
+
+<!ELEMENT requestingDocumentDateTime
+           ( DateTimeStamp ) >
+
+<!ELEMENT requestingDocumentIdentifier
+           ( ProprietaryDocumentIdentifier ) >
+
+<!ELEMENT thisDocumentGenerationDateTime
+           ( DateTimeStamp ) >
+
+<!ELEMENT thisDocumentIdentifier
+           ( ProprietaryDocumentIdentifier ) >
+
+<!ELEMENT toRole
+           ( PartnerRoleDescription ) >
+

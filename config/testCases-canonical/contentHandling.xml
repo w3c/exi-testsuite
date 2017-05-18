@@ -1,0 +1,12 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="All canonical contentHandling tests">
+
+    <param name="groupId" value="${groupId} | contentHandling"/> 
+
+    <xi:include href="contentHandling/emptyElement.xml"/>
+    <xi:include href="contentHandling/extraneousEvent.xml"/>
+    <xi:include href="contentHandling/whiteSpace.xml"/>
+    
+</testCaseGroup>

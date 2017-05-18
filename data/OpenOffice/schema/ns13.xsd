@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ns2="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ns3="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns4="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns5="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:ns6="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ns7="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:ns8="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns9="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xmlns:ns10="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns11="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns12="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns13="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns14="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns15="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:ns16="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:elements="http://purl.org/dc/elements/1.1/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="elements.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/xforms" schemaLocation="xforms.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" schemaLocation="ns9.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" schemaLocation="ns5.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:config:1.0" schemaLocation="ns2.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" schemaLocation="ns14.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" schemaLocation="ns7.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" schemaLocation="ns3.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:form:1.0" schemaLocation="ns4.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" schemaLocation="ns16.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" schemaLocation="ns10.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:script:1.0" schemaLocation="ns6.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" schemaLocation="ns11.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:style:1.0" schemaLocation="ns8.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" schemaLocation="ns12.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:table:1.0" schemaLocation="ns15.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" schemaLocation="ns1.xsd"/>
+  <xs:element name="document">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:meta"/>
+        <xs:element minOccurs="0" ref="ns13:settings"/>
+        <xs:element minOccurs="0" ref="ns13:scripts"/>
+        <xs:element minOccurs="0" ref="ns13:font-face-decls"/>
+        <xs:element minOccurs="0" ref="ns13:styles"/>
+        <xs:element minOccurs="0" ref="ns13:automatic-styles"/>
+        <xs:element minOccurs="0" ref="ns13:master-styles"/>
+        <xs:element ref="ns13:body"/>
+      </xs:sequence>
+      <xs:attribute name="mimetype" use="required" form="qualified" type="xs:string"/>
+      <xs:attribute name="version" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="document-content">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:scripts"/>
+        <xs:element minOccurs="0" ref="ns13:font-face-decls"/>
+        <xs:element minOccurs="0" ref="ns13:automatic-styles"/>
+        <xs:element ref="ns13:body"/>
+      </xs:sequence>
+      <xs:attribute name="version" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="document-styles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:font-face-decls"/>
+        <xs:element minOccurs="0" ref="ns13:styles"/>
+        <xs:element minOccurs="0" ref="ns13:automatic-styles"/>
+        <xs:element minOccurs="0" ref="ns13:master-styles"/>
+      </xs:sequence>
+      <xs:attribute name="version" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="document-meta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:meta"/>
+      </xs:sequence>
+      <xs:attribute name="version" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="document-settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:settings"/>
+      </xs:sequence>
+      <xs:attribute name="version" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meta">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ns2:config-item-set"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="scripts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns13:script"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="font-face-decls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns8:font-face"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="styles">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns8:style"/>
+        <xs:element ref="ns17:list-style"/>
+        <xs:element ref="ns14:number-style"/>
+        <xs:element ref="ns14:currency-style"/>
+        <xs:element ref="ns14:percentage-style"/>
+        <xs:element ref="ns14:date-style"/>
+        <xs:element ref="ns14:time-style"/>
+        <xs:element ref="ns14:boolean-style"/>
+        <xs:element ref="ns14:text-style"/>
+        <xs:element ref="ns8:default-style"/>
+        <xs:element ref="ns17:outline-style"/>
+        <xs:element ref="ns17:notes-configuration"/>
+        <xs:element ref="ns17:bibliography-configuration"/>
+        <xs:element ref="ns17:linenumbering-configuration"/>
+        <xs:element ref="ns3:gradient"/>
+        <xs:element ref="ns12:linearGradient"/>
+        <xs:element ref="ns12:radialGradient"/>
+        <xs:element ref="ns3:hatch"/>
+        <xs:element ref="ns3:fill-image"/>
+        <xs:element ref="ns3:marker"/>
+        <xs:element ref="ns3:stroke-dash"/>
+        <xs:element ref="ns3:opacity"/>
+        <xs:element ref="ns8:presentation-page-layout"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="automatic-styles">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns8:style"/>
+        <xs:element ref="ns17:list-style"/>
+        <xs:element ref="ns14:number-style"/>
+        <xs:element ref="ns14:currency-style"/>
+        <xs:element ref="ns14:percentage-style"/>
+        <xs:element ref="ns14:date-style"/>
+        <xs:element ref="ns14:time-style"/>
+        <xs:element ref="ns14:boolean-style"/>
+        <xs:element ref="ns14:text-style"/>
+        <xs:element ref="ns8:page-layout"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="master-styles">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns8:master-page"/>
+        <xs:element ref="ns8:handout-master"/>
+        <xs:element ref="ns3:layer-set"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="body">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="ns13:text"/>
+        <xs:element ref="ns13:drawing"/>
+        <xs:element ref="ns13:presentation"/>
+        <xs:element ref="ns13:spreadsheet"/>
+        <xs:element ref="ns13:chart"/>
+        <xs:element ref="ns13:image"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="script">
+    <xs:complexType mixed="true">
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:attribute ref="ns6:language" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="event-listeners">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns6:event-listener"/>
+        <xs:element ref="ns10:event-listener"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:forms"/>
+        <xs:element minOccurs="0" ref="ns17:tracked-changes"/>
+        <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+        <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+        <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+        <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+        <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+        <xs:element minOccurs="0" ref="ns15:calculation-settings"/>
+        <xs:element minOccurs="0" ref="ns15:content-validations"/>
+        <xs:element minOccurs="0" ref="ns15:label-ranges"/>
+        <xs:sequence maxOccurs="unbounded">
+          <xs:element minOccurs="0" ref="ns17:page-sequence"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element ref="ns17:h"/>
+            <xs:element ref="ns17:p"/>
+            <xs:element ref="ns17:list"/>
+            <xs:element ref="ns17:numbered-paragraph"/>
+            <xs:element ref="ns15:table"/>
+            <xs:element ref="ns3:a"/>
+            <xs:element ref="ns17:section"/>
+            <xs:element ref="ns17:table-of-content"/>
+            <xs:element ref="ns17:illustration-index"/>
+            <xs:element ref="ns17:table-index"/>
+            <xs:element ref="ns17:object-index"/>
+            <xs:element ref="ns17:user-index"/>
+            <xs:element ref="ns17:alphabetical-index"/>
+            <xs:element ref="ns17:bibliography"/>
+            <xs:element ref="ns3:rect"/>
+            <xs:element ref="ns3:line"/>
+            <xs:element ref="ns3:polyline"/>
+            <xs:element ref="ns3:polygon"/>
+            <xs:element ref="ns3:regular-polygon"/>
+            <xs:element ref="ns3:path"/>
+            <xs:element ref="ns3:circle"/>
+            <xs:element ref="ns3:ellipse"/>
+            <xs:element ref="ns3:g"/>
+            <xs:element ref="ns3:page-thumbnail"/>
+            <xs:element ref="ns3:frame"/>
+            <xs:element ref="ns3:measure"/>
+            <xs:element ref="ns3:caption"/>
+            <xs:element ref="ns3:connector"/>
+            <xs:element ref="ns3:control"/>
+            <xs:element ref="ns7:scene"/>
+            <xs:element ref="ns3:custom-shape"/>
+            <xs:element ref="ns17:change"/>
+            <xs:element ref="ns17:change-start"/>
+            <xs:element ref="ns17:change-end"/>
+          </xs:choice>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="ns15:named-expressions"/>
+        <xs:element minOccurs="0" ref="ns15:database-ranges"/>
+        <xs:element minOccurs="0" ref="ns15:data-pilot-tables"/>
+        <xs:element minOccurs="0" ref="ns15:consolidation"/>
+        <xs:element minOccurs="0" ref="ns15:dde-links"/>
+      </xs:sequence>
+      <xs:attribute ref="ns17:global"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="drawing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+        <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+        <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+        <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+        <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+        <xs:element minOccurs="0" ref="ns15:calculation-settings"/>
+        <xs:element minOccurs="0" ref="ns15:content-validations"/>
+        <xs:element minOccurs="0" ref="ns15:label-ranges"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:page"/>
+        <xs:element minOccurs="0" ref="ns15:named-expressions"/>
+        <xs:element minOccurs="0" ref="ns15:database-ranges"/>
+        <xs:element minOccurs="0" ref="ns15:data-pilot-tables"/>
+        <xs:element minOccurs="0" ref="ns15:consolidation"/>
+        <xs:element minOccurs="0" ref="ns15:dde-links"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="presentation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+        <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+        <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+        <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+        <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+        <xs:element minOccurs="0" ref="ns15:calculation-settings"/>
+        <xs:element minOccurs="0" ref="ns15:content-validations"/>
+        <xs:element minOccurs="0" ref="ns15:label-ranges"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns10:header-decl"/>
+          <xs:element ref="ns10:footer-decl"/>
+          <xs:element ref="ns10:date-time-decl"/>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:page"/>
+        <xs:element minOccurs="0" ref="ns10:settings"/>
+        <xs:element minOccurs="0" ref="ns15:named-expressions"/>
+        <xs:element minOccurs="0" ref="ns15:database-ranges"/>
+        <xs:element minOccurs="0" ref="ns15:data-pilot-tables"/>
+        <xs:element minOccurs="0" ref="ns15:consolidation"/>
+        <xs:element minOccurs="0" ref="ns15:dde-links"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="spreadsheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns15:tracked-changes"/>
+        <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+        <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+        <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+        <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+        <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+        <xs:element minOccurs="0" ref="ns15:calculation-settings"/>
+        <xs:element minOccurs="0" ref="ns15:content-validations"/>
+        <xs:element minOccurs="0" ref="ns15:label-ranges"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns15:table"/>
+        <xs:element minOccurs="0" ref="ns15:named-expressions"/>
+        <xs:element minOccurs="0" ref="ns15:database-ranges"/>
+        <xs:element minOccurs="0" ref="ns15:data-pilot-tables"/>
+        <xs:element minOccurs="0" ref="ns15:consolidation"/>
+        <xs:element minOccurs="0" ref="ns15:dde-links"/>
+      </xs:sequence>
+      <xs:attribute ref="ns15:structure-protected"/>
+      <xs:attribute ref="ns15:protection-key"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="chart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns17:variable-decls"/>
+        <xs:element minOccurs="0" ref="ns17:sequence-decls"/>
+        <xs:element minOccurs="0" ref="ns17:user-field-decls"/>
+        <xs:element minOccurs="0" ref="ns17:dde-connection-decls"/>
+        <xs:element minOccurs="0" ref="ns17:alphabetical-index-auto-mark-file"/>
+        <xs:element minOccurs="0" ref="ns15:calculation-settings"/>
+        <xs:element minOccurs="0" ref="ns15:content-validations"/>
+        <xs:element minOccurs="0" ref="ns15:label-ranges"/>
+        <xs:element ref="ns5:chart"/>
+        <xs:element minOccurs="0" ref="ns15:named-expressions"/>
+        <xs:element minOccurs="0" ref="ns15:database-ranges"/>
+        <xs:element minOccurs="0" ref="ns15:data-pilot-tables"/>
+        <xs:element minOccurs="0" ref="ns15:consolidation"/>
+        <xs:element minOccurs="0" ref="ns15:dde-links"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="image">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns3:frame"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="forms">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns4:form"/>
+        <xs:element ref="xforms:model"/>
+      </xs:choice>
+      <xs:attribute ref="ns4:automatic-focus"/>
+      <xs:attribute ref="ns4:apply-design-mode"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="target-frame-name">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:string">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_self"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_blank"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_parent"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_top"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="name" type="xs:string"/>
+  <xs:attribute name="server-map">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="binary-data" type="xs:base64Binary"/>
+  <xs:attribute name="target-frame">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:string">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_self"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_blank"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_parent"/>
+          </xs:restriction>
+        </xs:simpleType>
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="_top"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attributeGroup name="value-type">
+    <xs:attribute name="value-type" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="float"/>
+          <xs:enumeration value="time"/>
+          <xs:enumeration value="date"/>
+          <xs:enumeration value="percentage"/>
+          <xs:enumeration value="currency"/>
+          <xs:enumeration value="boolean"/>
+          <xs:enumeration value="string"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="value-type1">
+    <xs:attribute name="value-type" use="optional" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="float"/>
+          <xs:enumeration value="percentage"/>
+          <xs:enumeration value="currency"/>
+          <xs:enumeration value="date"/>
+          <xs:enumeration value="time"/>
+          <xs:enumeration value="boolean"/>
+          <xs:enumeration value="string"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attribute name="value" type="xs:double"/>
+  <xs:attribute name="currency" type="xs:string"/>
+  <xs:attribute name="date-value">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:date xs:dateTime"/>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="time-value" type="xs:duration"/>
+  <xs:attribute name="boolean-value">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="string-value" type="xs:string"/>
+  <xs:attribute name="dde-application" type="xs:string"/>
+  <xs:attribute name="dde-topic" type="xs:string"/>
+  <xs:attribute name="dde-item" type="xs:string"/>
+  <xs:attribute name="automatic-update">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="annotation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="elements:creator"/>
+        <xs:element minOccurs="0" ref="elements:date"/>
+        <xs:element minOccurs="0" ref="ns16:date-string"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="display" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns3:caption-point-x"/>
+      <xs:attribute ref="ns3:caption-point-y"/>
+      <xs:attribute ref="ns3:corner-radius"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attributeGroup ref="ns3:name1"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dde-source">
+    <xs:complexType>
+      <xs:attribute ref="ns13:name"/>
+      <xs:attribute name="conversion-mode" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="into-default-style-data-style"/>
+            <xs:enumeration value="into-english-number"/>
+            <xs:enumeration value="keep-text"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns13:dde-application" use="required"/>
+      <xs:attribute ref="ns13:dde-topic" use="required"/>
+      <xs:attribute ref="ns13:dde-item" use="required"/>
+      <xs:attribute ref="ns13:automatic-update"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="change-info">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="elements:creator"/>
+        <xs:element ref="elements:date"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns17:p"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="value-type2">
+    <xs:attribute name="value-type" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="float"/>
+          <xs:enumeration value="percentage"/>
+          <xs:enumeration value="currency"/>
+          <xs:enumeration value="date"/>
+          <xs:enumeration value="time"/>
+          <xs:enumeration value="boolean"/>
+          <xs:enumeration value="string"/>
+          <xs:enumeration value="void"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>

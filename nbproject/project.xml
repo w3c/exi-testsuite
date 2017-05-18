@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>ttfms</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>framework/src</label>
+                    <type>java</type>
+                    <location>framework/src</location>
+                </source-folder>
+                <source-folder>
+                    <label>candidates/xml/src</label>
+                    <type>java</type>
+                    <location>candidates/xml/src</location>
+                </source-folder>
+                <source-folder>
+                    <label>candidates/xals/src</label>
+                    <type>java</type>
+                    <location>candidates/xals/src</location>
+                </source-folder>
+                <source-folder>
+                    <label>candidates/fastinfoset/src</label>
+                    <type>java</type>
+                    <location>candidates/fastinfoset/src</location>
+                </source-folder>
+                <source-folder>
+                    <label>candidates/xsbc/src</label>
+                    <type>java</type>
+                    <location>candidates/xsbc/src</location>
+                </source-folder>
+                <source-folder>
+                    <label>candidates/xebu/src</label>
+                    <type>java</type>
+                    <location>candidates/xebu/src</location>
+                </source-folder>
+                <source-folder>
+                    <label>candidates/fxdi/src</label>
+                    <type>java</type>
+                    <location>candidates/fxdi/src</location>
+                </source-folder>
+                <source-folder>
+                    <label>candidates/efficientxml/src</label>
+                    <type>java</type>
+                    <location>candidates/efficientxml/src</location>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <target>dist</target>
+                </action>
+                <action name="clean">
+                    <target>clean</target>
+                </action>
+                <action name="run">
+                    <target>run</target>
+                </action>
+                <action name="rebuild">
+                    <target>clean</target>
+                    <target>dist</target>
+                </action>
+            </ide-actions>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>framework/src</label>
+                        <location>framework/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>candidates/xml/src</label>
+                        <location>candidates/xml/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>candidates/xals/src</label>
+                        <location>candidates/xals/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>candidates/fastinfoset/src</label>
+                        <location>candidates/fastinfoset/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>candidates/xsbc/src</label>
+                        <location>candidates/xsbc/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>candidates/xebu/src</label>
+                        <location>candidates/xebu/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>candidates/fxdi/src</label>
+                        <location>candidates/fxdi/src</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>candidates/efficientxml/src</label>
+                        <location>candidates/efficientxml/src</location>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="run"/>
+                    <ide-action name="rebuild"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
+            <compilation-unit>
+                <package-root>framework/src</package-root>
+                <classpath mode="compile">japex/lib/activation.jar:japex/lib/ant.jar:japex/lib/japex.jar:japex/lib/jaxb-api.jar:japex/lib/jaxb-impl.jar:japex/lib/jaxb-xjc.jar:japex/lib/jaxb1-impl.jar:japex/lib/jcommon-1.0.0-rc1.jar:japex/lib/jfreechart-1.0.0-rc1.jar:japex/lib/jsr173_api.jar:japex/lib/sjsxp.jar:candidates/fastinfoset/lib/FastInfoset.jar:candidates/fastinfoset/lib/FastInfosetUtilities.jar:candidates/fastinfoset/lib/relaxngDatatype.jar:candidates/fastinfoset/lib/xsom.jar:candidates/xals/lib/xals.jar:candidates/fxdi/lib/xdidecoder.jar:candidates/fxdi/lib/xmlschemac.jar:candidates/fxdi/lib/xwandschema.jar:candidates/xebu/lib/kxml2.jar:candidates/xebu/lib/xebu-exi.jar:candidates/xsbc/lib/dom4j.jar:candidates/xsbc/lib/xsbc1.4.jar:japex/jdsl/jdsl.jar</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>candidates/xml/src</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>candidates/fastinfoset/src</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>candidates/xals/src</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>candidates/xsbc/src</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>candidates/xebu/src</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>candidates/fxdi/src</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>candidates/efficientxml/src</package-root>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+        </java-data>
+    </configuration>
+</project>

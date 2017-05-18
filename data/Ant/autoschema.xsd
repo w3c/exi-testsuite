@@ -1,0 +1,13 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified">
+
+
+  <element name='project'>
+    <complexType mixed="true">
+      <sequence>
+        <any namespace='##any' minOccurs='0' maxOccurs='unbounded' processContents="lax"/>
+      </sequence>
+      <anyAttribute namespace='##any' processContents="lax"/>
+    </complexType>
+  </element>
+</schema>

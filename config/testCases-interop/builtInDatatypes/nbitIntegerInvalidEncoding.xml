@@ -1,0 +1,29 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid n-bit Integer encoding">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger/nbitInteger.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingBoundedUnsigned"/>
+
+    <testCase name="nbitInteger-invalid-00">
+        <param name="description"  value="Invalid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-invalid-00.xml" />
+    </testCase>
+    <testCase name="nbitInteger-invalid-01">
+        <param name="description"  value="Invalid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-invalid-01.xml" />
+    </testCase>
+<!-- This case requires BigInteger arithmetic, which we don't want to require for EXI
+    <testCase name="nbitInteger-invalid-02">
+        <param name="description"  value="Invalid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-invalid-02.xml" />
+    </testCase>
+-->
+    <testCase name="nbitInteger-invalid-03">
+        <param name="description"  value="Invalid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-invalid-03.xml" />
+    </testCase>
+    
+</testCaseGroup>

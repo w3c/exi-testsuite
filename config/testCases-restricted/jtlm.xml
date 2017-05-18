@@ -1,0 +1,23 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+  <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+  <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+  <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/JTLM/schemas/TLMComposite.xsd"/>
+  <testCase name="JTLM/publish100.xml">
+    <param name="japex.inputFile" value="${testsDir}/JTLM/publish100.xml"/>
+  </testCase>
+  <testCase name="JTLM/publish430.xml">
+    <param name="japex.inputFile" value="${testsDir}/JTLM/publish430.xml"/>
+  </testCase>
+  <testCase name="JTLM/publish911.xml">
+    <param name="japex.inputFile" value="${testsDir}/JTLM/publish911.xml"/>
+  </testCase>
+  <testCase name="JTLM/publish911Response.xml">
+    <param name="japex.inputFile" value="${testsDir}/JTLM/publish911Response.xml"/>
+  </testCase>
+  <testCase name="JTLM/subscriberNotificationResponse.xml">
+    <param name="japex.inputFile" value="${testsDir}/JTLM/subscriberNotificationResponse.xml"/>
+  </testCase>
+  <testCase name="JTLM/subscriberNotificationRequest.xml">
+    <param name="japex.inputFile" value="${testsDir}/JTLM/subscriberNotificationRequest.xml"/>
+  </testCase>
+</testCaseGroup>

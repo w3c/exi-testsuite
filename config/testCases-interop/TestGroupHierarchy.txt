@@ -1,0 +1,581 @@
+Tree representation of the testGroup hierarchy showing all the testGroups that 
+will be executed.  (Created by John)
+
+The relevant encoding options set by each test group are identified in square brackets. Unless specifically overridden, encoding options are inherited by descendent testGroups (children, grandchildren, etc.). Individual testCases are not shown, but if a given encoding option is set differently for individual testCases in a testGroup, the values are listed separated by a "/" character or simply represented as ="...". 
+
+
+----- testGroup hierarchy [omitting specific test cases] ---------------------------------------
+ 
+- all [strict=true]
+  - header [includeOptions=true]
+    - builtInGrammar/builtInToSchemaInformed 
+      [includeSchemaId=true; useSchemas=true; strict=false]
+    - preserve/preserveBuiltInDocument [preserve="..."]
+    - schemaInformedGrammar/declaredProductions/complexType 
+      [strict=true; useSchemas=true] 
+    - schemaInformedGrammar/declaredProductions/fragment
+      [fragments=true; useSchemas=true] 
+    - dtrMap [useSchemas=true; datatypeRepresentationMap="..."]
+    - selfContained
+      - builtInGrammar/builtInSC.xml 
+        [selfContainedQNames="..."; preserve="prefixes"/""]
+      - schemaInformedGrammar/undeclaredProductions/sc [strict=false;
+        selfContainedQNames="..."; preserve="prefixes"/""; useSchemas=true]
+    - blockSize [useSchemas=false; blockSize="..."; compression=true]
+  -bitAlign 
+    - general [strict=false]
+      - builtInGrammar [useSchemas=false]
+        - builtInGrammar/builtInCharacter [useSchemas=false]
+        - builtInGrammar/builtInElement [useSchemas=false]
+        - builtInGrammar/builtInAttribute [useSchemas=false]
+        - builtInGrammar/builtInToSchemaInformed [useSchemas=true;  strict=false]
+        - builtInGrammar/builtInXsitype [useSchemas=true/false]
+        - builtInGrammar/builtInFragment [fragments=true; useSchemas=false]
+        - builtInGrammar/builtInDocument [useSchemas=false]
+      - builtInDataTypes [useSchemas=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+          - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInvalidDatatypes
+          - builtInDatatypes/binaryInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/qnameInvalidEncoding [preserve="prefixes"/""]
+          - builtInDatatypes/integerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/nbitIntegerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerInvalidEncoding [useSchemas=true]
+      - schemaInformedGrammar [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+        - schemaInformedUndeclaredProductions
+          - schemaInformedGrammar/undeclaredProductions/attrUseUntyped
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/attrWildcard
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ch [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/cm [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ee [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/er [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/namespaceDecl
+            [useSchemas=true; strict=false; preserve="prefixes"]
+          - schemaInformedGrammar/undeclaredProductions/pi.xml
+            [useSchemas=true; strict=false; preserve="pis"]
+          - schemaInformedGrammar/undeclaredProductions/se.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilDefault
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilStrict
+            [useSchemas=true; strict=true]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeDefault.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeStrict.xml
+            [useSchemas=true; strict=true]
+      - strict [useSchemas=true; strict=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+          - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+      - preserve
+        - preserve/preserveBuiltInDocument [preserve="..."]
+        - preserve/preserveBuiltInElement [preserve="..."]
+        - preserve/preserveSchemaInformedDocument 
+          [useSchemas=true; preserve="..."]
+        - preserve/preserveSchemaInformedElement
+          [useSchemas=true; strict=false; preserve="..."]
+        - preserve/preserveLexicalValue 
+          [useSchemas=true; preserve="lexicalValues"]
+      - dtrMap [useSchemas=true; datatypeRepresentationMap on testCases]
+    - selfContained
+      - builtInGrammar/builtInSC.xml 
+        [selfContainedQNames="..."; preserve="prefixes"/""]
+      - schemaInformedGrammar/undeclaredProductions/sc [strict=false;
+        selfContainedQNames="..."; preserve="prefixes"/""; useSchemas=true]
+  - byteAlign [byteAlign=true]
+    - general [strict=false]
+      - builtInGrammar [useSchemas=false]
+        - builtInGrammar/builtInCharacter [useSchemas=false]
+        - builtInGrammar/builtInElement [useSchemas=false]
+        - builtInGrammar/builtInAttribute [useSchemas=false]
+        - builtInGrammar/builtInToSchemaInformed [useSchemas=true;  strict=false]
+        - builtInGrammar/builtInXsitype [useSchemas=true/false]
+        - builtInGrammar/builtInFragment [fragments=true; useSchemas=false]
+        - builtInGrammar/builtInDocument [useSchemas=false]
+      - builtInDataTypes [useSchemas=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+          - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInvalidDatatypes
+          - builtInDatatypes/binaryInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/qnameInvalidEncoding [preserve="prefixes"/""]
+          - builtInDatatypes/integerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/nbitIntegerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerInvalidEncoding [useSchemas=true]
+      - schemaInformedGrammar [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+        - schemaInformedUndeclaredProductions
+          - schemaInformedGrammar/undeclaredProductions/attruseUntyped
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/attrWildcard
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ch [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/cm [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ee [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/er [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/namespaceDecl
+            [useSchemas=true; strict=false; preserve="prefixes"]
+          - schemaInformedGrammar/undeclaredProductions/pi.xml
+            [useSchemas=true; strict=false; preserve="pis"]
+          - schemaInformedGrammar/undeclaredProductions/se.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilDefault
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilStrict
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeDefault.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeStrict.xml
+            [useSchemas=true; strict=true]
+      - strict [useSchemas=true; strict=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+          - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+      - preserve
+        - preserve/preserveBuiltInDocument [preserve="..."]
+        - preserve/preserveBuiltInElement [preserve="..."]
+        - preserve/preserveSchemaInformedDocument 
+          [useSchemas=true; preserve="..."]
+        - preserve/preserveSchemaInformedElement
+          [useSchemas=true; strict=false; preserve="..."]
+        - preserve/preserveLexicalValue 
+          [useSchemas=true; preserve="lexicalValues"]
+      - dtrMap [useSchemas=true; datatypeRepresentationMap on testCases]
+    - selfContained
+      - builtInGrammar/builtInSC.xml 
+        [selfContainedQNames="..."; preserve="prefixes"/""]
+      - schemaInformedGrammar/undeclaredProductions/sc [strict=false;
+        selfContainedQNames="..."; preserve="prefixes"/""; useSchemas=true]
+  - compression [compression=true]
+    - general [strict=false]
+      - builtInGrammar [useSchemas=false]
+        - builtInGrammar/builtInCharacter [useSchemas=false]
+        - builtInGrammar/builtInElement [useSchemas=false]
+        - builtInGrammar/builtInAttribute [useSchemas=false]
+        - builtInGrammar/builtInToSchemaInformed [useSchemas=true;  strict=false]
+        - builtInGrammar/builtInXsitype [useSchemas=true/false]
+        - builtInGrammar/builtInFragment [fragments=true; useSchemas=false]
+        - builtInGrammar/builtInDocument [useSchemas=false]
+      - builtInDataTypes [useSchemas=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+          - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInvalidDatatypes
+          - builtInDatatypes/binaryInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/qnameInvalidEncoding [preserve="prefixes"/""]
+          - builtInDatatypes/integerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/nbitIntegerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerInvalidEncoding [useSchemas=true]
+      - schemaInformedGrammar [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+        - schemaInformedUndeclaredProductions
+          - schemaInformedGrammar/undeclaredProductions/attruseUntyped
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/attrWildcard
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ch [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/cm [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ee [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/er [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/namespaceDecl
+            [useSchemas=true; strict=false; preserve="prefixes"]
+          - schemaInformedGrammar/undeclaredProductions/pi.xml
+            [useSchemas=true; strict=false; preserve="pis"]
+          - schemaInformedGrammar/undeclaredProductions/se.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilDefault
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilStrict
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeDefault.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeStrict.xml
+            [useSchemas=true; strict=true]
+      - strict [useSchemas=true; strict=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+          - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+      - preserve
+        - preserve/preserveBuiltInDocument [preserve="..."]
+        - preserve/preserveBuiltInElement [preserve="..."]
+        - preserve/preserveSchemaInformedDocument 
+          [useSchemas=true; preserve="..."]
+        - preserve/preserveSchemaInformedElement
+          [useSchemas=true; strict=false; preserve="..."]
+        - preserve/preserveLexicalValue 
+          [useSchemas=true; preserve="lexicalValues"]
+      - dtrMap [useSchemas=true; datatypeRepresentationMap on testCases]
+    - blockSize [useSchemas=false; blockSize="..."]
+  - preCompression [preCompression=true]
+    - general [strict=false]
+      - builtInGrammar [useSchemas=false]
+        - builtInGrammar/builtInCharacter [useSchemas=false]
+        - builtInGrammar/builtInElement [useSchemas=false]
+        - builtInGrammar/builtInAttribute [useSchemas=false]
+        - builtInGrammar/builtInToSchemaInformed [useSchemas=true;  strict=false]
+        - builtInGrammar/builtInXsitype [useSchemas=true/false]
+        - builtInGrammar/builtInFragment [fragments=true; useSchemas=false]
+        - builtInGrammar/builtInDocument [useSchemas=false]
+      - builtInDataTypes [useSchemas=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+          - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInvalidDatatypes
+          - builtInDatatypes/binaryInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/qnameInvalidEncoding [preserve="prefixes"/""]
+          - builtInDatatypes/integerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/nbitIntegerInvalidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerInvalidEncoding [useSchemas=true]
+      - schemaInformedGrammar [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+        - schemaInformedUndeclaredProductions
+          - schemaInformedGrammar/undeclaredProductions/attruseUntyped
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/attrWildcard
+            [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ch [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/cm [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/ee [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/er [useSchemas=true]
+          - schemaInformedGrammar/undeclaredProductions/namespaceDecl
+            [useSchemas=true; strict=false; preserve="prefixes"]
+          - schemaInformedGrammar/undeclaredProductions/pi.xml
+            [useSchemas=true; strict=false; preserve="pis"]
+          - schemaInformedGrammar/undeclaredProductions/se.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilDefault
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiNilStrict
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeDefault.xml
+            [useSchemas=true; strict=false]
+          - schemaInformedGrammar/undeclaredProductions/xsiTypeStrict.xml
+            [useSchemas=true; strict=true]
+      - strict [useSchemas=true; strict=true]
+        - schemaValidDatatypes [useSchemas=true]
+          - builtInDatatypes/stringEncoding
+            - literalStringEncoding [useSchemas=false]
+            - indexedStringEncoding [useSchemas=false]
+            - compactIdentifiers [preserve="prefixes"; useSchemas=true/""]
+            - boundedTables [useSchemas=false]
+   - builtInDatatypes/binaryValidEncoding [useSchemas=true]
+          - builtInDatatypes/booleanValidEncoding
+          - builtInDatatypes/dateTimeValidEncoding
+          - builtInDatatypes/decimalValidEncoding
+          - builtInDatatypes/enumerationValidEncoding
+          - builtInDatatypes/floatValidEncoding
+          - builtInDatatypes/listValidEncoding
+          - builtInDatatypes/qnameValidEncoding [preserve="prefixes"]
+          - builtInDatatypes/nbitIntegerValidEncoding [useSchemas=true]
+          - builtInDatatypes/unsignedIntegerValidEncoding [useSchemas=true]
+          - integerValidEncoding [useSchemas=true]
+          - builtInDatatypes/restrictedCharacterSetsEncoding [useSchemas=true]
+        - schemaInformedDeclaredProductions
+          - schemaInformedGrammar/declaredProductions/all [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/choice [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/complexType 
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/complexUrType
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/document [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/duplicateTerminals
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/element [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/elementFragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/elementTerm
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/eventCodeAssignment
+            [strict=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/fragment
+            [fragments=true; useSchemas=true] 
+          - schemaInformedGrammar/declaredProductions/particle [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/sequence [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/simpleType
+            [useSchemas=true]
+          - schemaInformedGrammar/declaredProductions/wildcard [useSchemas=true]
+      - preserve
+        - preserve/preserveBuiltInDocument [preserve="..."]
+        - preserve/preserveBuiltInElement [preserve="..."]
+        - preserve/preserveSchemaInformedDocument 
+          [useSchemas=true; preserve="..."]
+        - preserve/preserveSchemaInformedElement
+          [useSchemas=true; strict=false; preserve="..."]
+        - preserve/preserveLexicalValue 
+          [useSchemas=true; preserve="lexicalValues"]
+      - dtrMap [useSchemas=true; datatypeRepresentationMap on testCases]
+    - blockSize [useSchemas=false; blockSize="..."]
+

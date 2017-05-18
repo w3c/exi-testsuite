@@ -1,0 +1,61 @@
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by James Duckworth (Thermo Galactic) --><GAML version="1.00" name="V108A"><experiment name="052211"><collectdate>1997-06-12T17:49:52Z</collectdate><parameter name="fileId" label="File ID" group="Header">UNICAM UV2</parameter><parameter name="method_or_data" label="File type" group="Header">D</parameter><parameter name="identification" label="Identification" group="Header"/><parameter name="operator" label="Operator" group="Header"/><parameter name="instId" label="Intrument ID" group="Header">052211</parameter><parameter name="cntrlzed" label="Control ZED" group="Header"/><parameter name="fileVersion" label="File version" group="Header">8</parameter><parameter name="fileSaveTime" label="File save time" group="Header">13:49:52</parameter><parameter name="fileSaveDate" label="File save date" group="Header">12-Jun-1997</parameter><parameter name="methFormat" label="Method format" group="Header">1=Scan files</parameter><parameter name="cellChgOpMode" label="Cell changer operating mode" group="Header">0=OFF</parameter><parameter name="cellChgMode" label="Cell changer mode" group="Header">0=MANUAL</parameter><parameter name="currentCell" label="Current cell" group="Header">371</parameter><parameter name="sipperOpMode" label="Sipper operating mode" group="Header">0=OFF</parameter><parameter name="sipperMode" label="Sipper mode" group="Header">0=SIP</parameter><parameter name="sipperAirGap" label="Sipper air gap" group="Header">0 (cm)</parameter><parameter name="sipperSmpVol" label="Sipper sample volume" group="Header">500 (ml x 10^3)</parameter><parameter name="sipperSmpDestination" label="Sipper sample destination" group="Header">1=Return to vessel</parameter><parameter name="sipperSmpLowVolTubeFlg" label="Sipper low volume tube flag" group="Header">0=NO</parameter><parameter name="sipperCalTime" label="Sipper calibration time" group="Header">0:49:34</parameter><parameter name="sipperCalDate" label="Sipper calibration date" group="Header">05-Mar-2000</parameter><parameter name="totCalSips" label="Total sips in calibration" group="Header">1</parameter><parameter name="sipperNomVol" label="Sipper nominal volume" group="Header">1000 (ml x 10^3)</parameter><parameter name="sipperTotVol" label="Sipper total volume" group="Header">8000 (ml x 10^3)</parameter><parameter name="sipperTubCal" label="Sipper tubing calibration" group="Header">1249 (x 10^3)</parameter><parameter name="methodFormat" label="Method format" group="Result">1=Scan files</parameter><parameter name="validResults" label="Valid results" group="Result">1=TRUE</parameter><parameter name="instrumentType" label="Instrument type" group="Result">HELIOS</parameter><parameter name="instrumentId" label="Instrument ID" group="Result">052211</parameter><parameter name="instrumentSWver" label="Instrument SW version" group="Result">v1.08</parameter><parameter name="baselineTime" label="Baseline time" group="Result">13:48:00</parameter><parameter name="baselineDate" label="Baseline date" group="Result">12-Jun-1997</parameter><parameter name="baselineType" label="Baseline type" group="Result">DEFAULT</parameter><parameter name="baselineEHTtable" label="Baseline eht table" group="Result">Not valid value</parameter><parameter name="scanTime" label="Scan start time" group="Result">13:48:00</parameter><parameter name="scanDate" label="Scan start date" group="Result">12-Jun-1997</parameter><parameter name="numPoints" label="Number of data points" group="Result">201</parameter><parameter name="dataBandwidth" label="Data bandwidth" group="Method">20</parameter><parameter name="dataMode" label="Data mode" group="Method">0=ABS</parameter><parameter name="peakTableDisplay" label="Peak table display" group="Method">1=NO_PEAKS</parameter><parameter name="graphYaxisHigh" label="Graph Y-axis high" group="Method">20000 (x 10^4)</parameter><parameter name="graphYaxisLow" label="Graph Y-axis low" group="Method">0 (x 10^4)</parameter><parameter name="lampWavelenght" label="Lamp changeover wavelength" group="Method">3250 (nm x 10)</parameter><parameter name="dataInterval" label="Data interval" group="Method">10 (nm x 10)</parameter><parameter name="startWavelength" label="Start wavelength" group="Method">4000 (nm x 10)</parameter><parameter name="stopWavelength" label="Stop wavelength" group="Method">6000 (nm x 10)</parameter><parameter name="intelliscanModeSpeed" label="Intelliscan mode speed" group="Method">3=NORMAL</parameter><parameter name="standardModeSpeed" label="Standard mode speed" group="Method">12000 (nm/min x 10)</parameter><parameter name="peak1" label="Peak 1" group="Method">0 (nm x 10)</parameter><parameter name="peak2" label="Peak 2" group="Method">0 (nm x 10)</parameter><parameter name="peak3" label="Peak 3" group="Method">0 (nm x 10)</parameter><parameter name="peak4" label="Peak 4" group="Method">0 (nm x 10)</parameter><parameter name="peak5" label="Peak 5" group="Method">0 (nm x 10)</parameter><parameter name="peak6" label="Peak 6" group="Method">0 (nm x 10)</parameter><parameter name="peak7" label="Peak 7" group="Method">0 (nm x 10)</parameter><parameter name="peak8" label="Peak 8" group="Method">0 (nm x 10)</parameter><parameter name="peak9" label="Peak 9" group="Method">0 (nm x 10)</parameter><parameter name="peak10" label="Peak 10" group="Method">0 (nm x 10)</parameter><trace name="UNICAM UV2 (ABS)" technique="UVVIS"><Xdata label="nm" units="NANOMETERS" valueorder="EVEN"><values byteorder="INTEL" format="FLOAT32" numvalues="201">AADIQwCAyEMAAMlDAIDJQwAAykMAgMpDAADLQwCAy0MAAMxDAIDMQwAAzUMAgM1DAADOQwCAzkMA
+AM9DAIDPQwAA0EMAgNBDAADRQwCA0UMAANJDAIDSQwAA00MAgNNDAADUQwCA1EMAANVDAIDVQwAA
+1kMAgNZDAADXQwCA10MAANhDAIDYQwAA2UMAgNlDAADaQwCA2kMAANtDAIDbQwAA3EMAgNxDAADd
+QwCA3UMAAN5DAIDeQwAA30MAgN9DAADgQwCA4EMAAOFDAIDhQwAA4kMAgOJDAADjQwCA40MAAORD
+AIDkQwAA5UMAgOVDAADmQwCA5kMAAOdDAIDnQwAA6EMAgOhDAADpQwCA6UMAAOpDAIDqQwAA60MA
+gOtDAADsQwCA7EMAAO1DAIDtQwAA7kMAgO5DAADvQwCA70MAAPBDAIDwQwAA8UMAgPFDAADyQwCA
+8kMAAPNDAIDzQwAA9EMAgPRDAAD1QwCA9UMAAPZDAID2QwAA90MAgPdDAAD4QwCA+EMAAPlDAID5
+QwAA+kMAgPpDAAD7QwCA+0MAAPxDAID8QwAA/UMAgP1DAAD+QwCA/kMAAP9DAID/QwAAAEQAQABE
+AIAARADAAEQAAAFEAEABRACAAUQAwAFEAAACRABAAkQAgAJEAMACRAAAA0QAQANEAIADRADAA0QA
+AAREAEAERACABEQAwAREAAAFRABABUQAgAVEAMAFRAAABkQAQAZEAIAGRADABkQAAAdEAEAHRACA
+B0QAwAdEAAAIRABACEQAgAhEAMAIRAAACUQAQAlEAIAJRADACUQAAApEAEAKRACACkQAwApEAAAL
+RABAC0QAgAtEAMALRAAADEQAQAxEAIAMRADADEQAAA1EAEANRACADUQAwA1EAAAORABADkQAgA5E
+AMAORAAAD0QAQA9EAIAPRADAD0QAABBEAEAQRACAEEQAwBBEAAARRABAEUQAgBFEAMARRAAAEkQA
+QBJEAIASRADAEkQAABNEAEATRACAE0QAwBNEAAAURABAFEQAgBREAMAURAAAFUQAQBVEAIAVRADA
+FUQAABZE
+        </values><Ydata label="Absorbance" units="ABSORBANCE"><values byteorder="INTEL" format="FLOAT32" numvalues="201">mOsmPYG/KD1B+Cc9E2MmPSI6JT0pECU9ixcmPdc8KD1kqSk9QeowPYwAOj3AAU89RyRyPd4xlD24
+4qU9N3muPQhGwj07GPE9prgYPksZIz4bhA0+AV/ePcsCqj2gVZY9MdObPd/IrD05LKc9/rSQPZPV
+cz30i1Y9iUxMPUS1TD0NIlI9hFhYPYtJWz2DcWE9T0VtPXZ2iD01i5w9IrCxPddg0T0VZQQ+ludZ
+Pocfqz4l/Cs/oBuQP3ltwT9Gw6c/06huP460Ez87Otc+iAzsPucDEj+Zkx4/Hx77PlFXxT7lsrU+
+gFTYPi0NGT9fQzY/pHYjP/keBD/J4tY+HOGePpVXXz4zQyM+sCIBPtRP0j1BLrA9QdGePR2xnz3S
+OKk9ynmyPUgstj1+Sa09vZ+YPa0bez1wIVw9RAhRPULSXD04cXw9ICeOPfa3nT19PK09XfyyPTJD
+rj2dcqg9MaapPV9Crj0uJ6o9htSdPWUKkD2r9oM9KcBtPbcUUj2ArDo9O7g1PUdULj1agSo9cHIe
+PTW7GD0aWBE9WSkTPQ8MCj3Lhwc9yDsKPVs1DT1BMhM90gAXPYMYGz3Fjh89LkwiPTfBJD0NNyY9
+rXEnPWRmKD0HzSg9sjIpPR4QKT12nig96ngoPXWZKD1KXio9HJorPQ46LT0VfTA9Ixw2PadnOz3G
+oEc9kiRYPVkhdT1j9ZE9W9e1PYyIBj6Pqzs+SftqPjbSeT4Q12s+qz9MPsTqHD4i5QM+nfPjPYLm
+xz0zwr892vm/PaqAwT1WrcA92JKyPcvXoz0af5E9tpWGPaLmdz3q8Wc9SvVWPY++Pj31wyk9GMQf
+PWQmHD0ZUhk9NnoYPVk4Fz3vuhY9bn4WPeQTFj0BsBY9sdYWPTwIFz2eohY9j6oWPSCNFz05RBc9
+O/sXPWMxFz0Xjxc9TrUXPfDwFj0Xjxc9QAcXPSnWFj17exY9qfkVPeSCFj0tZRY9Z9wVPVuHFj0e
+/hU9SFgWPYGdFz0L0BU9AnoWPS72FT0KBxY9jAQWPatnFj26UBU9bqQVPfBvFT1X3RQ9Bf4UPaSN
+FD2IMxQ9
+          </values></Ydata></Xdata></trace><trace name="UNICAM UV2 (%TRANS)" technique="UVVIS"><Xdata label="nm" units="NANOMETERS" valueorder="EVEN"><values byteorder="INTEL" format="FLOAT32" numvalues="201">AADIQwCAyEMAAMlDAIDJQwAAykMAgMpDAADLQwCAy0MAAMxDAIDMQwAAzUMAgM1DAADOQwCAzkMA
+AM9DAIDPQwAA0EMAgNBDAADRQwCA0UMAANJDAIDSQwAA00MAgNNDAADUQwCA1EMAANVDAIDVQwAA
+1kMAgNZDAADXQwCA10MAANhDAIDYQwAA2UMAgNlDAADaQwCA2kMAANtDAIDbQwAA3EMAgNxDAADd
+QwCA3UMAAN5DAIDeQwAA30MAgN9DAADgQwCA4EMAAOFDAIDhQwAA4kMAgOJDAADjQwCA40MAAORD
+AIDkQwAA5UMAgOVDAADmQwCA5kMAAOdDAIDnQwAA6EMAgOhDAADpQwCA6UMAAOpDAIDqQwAA60MA
+gOtDAADsQwCA7EMAAO1DAIDtQwAA7kMAgO5DAADvQwCA70MAAPBDAIDwQwAA8UMAgPFDAADyQwCA
+8kMAAPNDAIDzQwAA9EMAgPRDAAD1QwCA9UMAAPZDAID2QwAA90MAgPdDAAD4QwCA+EMAAPlDAID5
+QwAA+kMAgPpDAAD7QwCA+0MAAPxDAID8QwAA/UMAgP1DAAD+QwCA/kMAAP9DAID/QwAAAEQAQABE
+AIAARADAAEQAAAFEAEABRACAAUQAwAFEAAACRABAAkQAgAJEAMACRAAAA0QAQANEAIADRADAA0QA
+AAREAEAERACABEQAwAREAAAFRABABUQAgAVEAMAFRAAABkQAQAZEAIAGRADABkQAAAdEAEAHRACA
+B0QAwAdEAAAIRABACEQAgAhEAMAIRAAACUQAQAlEAIAJRADACUQAAApEAEAKRACACkQAwApEAAAL
+RABAC0QAgAtEAMALRAAADEQAQAxEAIAMRADADEQAAA1EAEANRACADUQAwA1EAAAORABADkQAgA5E
+AMAORAAAD0QAQA9EAIAPRADAD0QAABBEAEAQRACAEEQAwBBEAAARRABAEUQAgBFEAMARRAAAEkQA
+QBJEAIASRADAEkQAABNEAEATRACAE0QAwBNEAAAURABAFEQAgBREAMAURAAAFUQAQBVEAIAVRADA
+FUQAABZE
+        </values><Ydata label="%Transmission" units="TRANSMISSIONPERCENT"><values byteorder="INTEL" format="FLOAT32" numvalues="201">Kxa2QkzmtUKt+rVCJSS2Qo9CtkLcRrZC4Su2QqnztUJjzrVC/xC1QtAktEJ5B7JCIoyuQgdOqUJ5
++KVCNGCkQsrBoEJug5hChN6NQtWYikI8fZFCDMKbQt0zpULj5ahCzdunQi6wpEIIu6VCUvipQqNh
+rkK1RrFC50yyQmhCskJzt7FC1RixQu3NsEKPMbBCqAavQoSNq0IWuadCZcijQs0MnkIGgZRC7Q11
+QmVIOUK9UqpBNIDvQCBBRUD6fpxAowE7QY7k00GW8hdCfl0KQm4j10GGJ8BBmEwBQtqsJEJCrTBC
+LTIXQt7xyUGASJtBJeS3QdzG80FjLhhCbcVDQo8TckLGi4pCrZiVQlvinUKDD6RCeEunQmIhp0Jl
+WaVCR6OjQoH1okJfmKRCu3aoQnirrUJ5uLBCnNOxQummsEIjiq1CdHWqQmmAp0LHmqRCQ4ujQjBq
+pEJCfqVCEUWlQldqpEIbLaVCCHunQu8YqkI8bKxCkvquQsi4sUJnE7RC+JO0Qm1UtUJSuLVCvPS2
+QniLt0IAT7hC0h64QvIQuUIFVLlC+wu5QtO8uELmHbhCI7m3Qg5Nt0KA17ZCdo+2QvNOtkKnKLZC
+cgi2QmnvtULq5LVChdq1Qg7etUKt6bVChO21QjDqtULnu7VCppu1QjRxtUIcHLVC1Im0QnYAtELq
+xLJCAR6xQiBBrkIju6lCEQWjQqbKk0KiJYNCo9JrQmYVZEI1XmtCLbJ8QnmJjELGq5RCp8iaQkK+
+n0JSNqFCPCyhQnrloEK5C6FCq56jQipapkK30alCV+qrQrP7rUIBja9CNjyxQgmqs0Ksy7VCBdK2
+QkExt0Lne7dCLZK3Qmezt0JbwLdCm8a3Qp3Rt0J8wbdCfb23Ql+4t0LewrdCDMK3Qqaqt0ItsrdC
+SJ+3Qh+0t0JyqrdCgKa3Qse6t0JyqrdCebi3Qou9t0LpxrdCU9S3QiXGt0I3ybdCWde3Qq/Ft0Ld
+07dCjMq3QvWot0Kg2LdCEMe3Qq/Ut0Lx0rdCM9O3QvXIt0LJ5bdCIt23Qo/it0K38bdCVu63QvX5
+t0JHA7hC
+          </values></Ydata></Xdata></trace></experiment></GAML>

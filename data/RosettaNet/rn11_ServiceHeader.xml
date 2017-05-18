@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ServiceHeader SYSTEM "ServiceHeaderPartMessageGuideline.dtd">
+<ServiceHeader>
+   <ProcessControl>
+      <ProcessIdentity>
+         <GlobalProcessCode>Notify of Shipping Order</GlobalProcessCode>
+         <GlobalProcessIndicatorCode>3B11</GlobalProcessIndicatorCode>
+         <initiatingPartner>
+            <GlobalBusinessIdentifier>905614639</GlobalBusinessIdentifier>
+         </initiatingPartner>
+         <InstanceIdentifier>2732751477057814764h934D46635402391656314212299</InstanceIdentifier>
+         <VersionIdentifier>R01.00</VersionIdentifier>
+      </ProcessIdentity>
+      <ServiceRoute>
+         <fromService>
+            <BusinessServiceDescription>
+               <GlobalBusinessServiceCode>Shipper Service</GlobalBusinessServiceCode>
+            </BusinessServiceDescription>
+         </fromService>
+         <toService>
+            <BusinessServiceDescription>
+               <GlobalBusinessServiceCode>Shipping Provider Service</GlobalBusinessServiceCode>
+            </BusinessServiceDescription>
+         </toService>
+      </ServiceRoute>
+      <TransactionControl>
+         <AttemptCount>1</AttemptCount>
+         <PartnerRoleRoute>
+            <fromRole>
+               <PartnerRoleDescription>
+                  <GlobalPartnerRoleClassificationCode>Shipper</GlobalPartnerRoleClassificationCode>
+               </PartnerRoleDescription>
+            </fromRole>
+            <toRole>
+               <PartnerRoleDescription>
+                  <GlobalPartnerRoleClassificationCode>Shipping Provider</GlobalPartnerRoleClassificationCode>
+               </PartnerRoleDescription>
+            </toRole>
+         </PartnerRoleRoute>
+         <TransactionIdentity>
+            <GlobalTransactionCode>Notify of Shipping Order</GlobalTransactionCode>
+            <InstanceIdentifier>0279801041094479209b751R26333999754131378649834</InstanceIdentifier>
+         </TransactionIdentity>
+         <ActionControl>
+            <ActionIdentity>
+               <GlobalBusinessActionCode>Shipping Order Notification Action</GlobalBusinessActionCode>
+               <InstanceIdentifier>4581343054553775892S912b62850305175519969605472</InstanceIdentifier>
+               <VersionIdentifier>R01.00</VersionIdentifier>
+            </ActionIdentity>
+            <GlobalDocumentFunctionCode>Request</GlobalDocumentFunctionCode>
+            <PartnerRoute>
+               <fromPartner>
+                  <PartnerDescription>
+                     <BusinessDescription>
+                        <GlobalBusinessIdentifier>927369164</GlobalBusinessIdentifier>
+                     </BusinessDescription>
+                     <GlobalPartnerClassificationCode>Manufacturer</GlobalPartnerClassificationCode>
+                  </PartnerDescription>
+               </fromPartner>
+               <toPartner>
+                  <PartnerDescription>
+                     <BusinessDescription>
+                        <GlobalBusinessIdentifier>438368628</GlobalBusinessIdentifier>
+                     </BusinessDescription>
+                     <GlobalPartnerClassificationCode>Warehouser</GlobalPartnerClassificationCode>
+                  </PartnerDescription>
+               </toPartner>
+            </PartnerRoute>
+         </ActionControl>
+      </TransactionControl>
+   </ProcessControl>
+</ServiceHeader>

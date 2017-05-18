@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<project name="xtags" default="main">
+
+  <property file="../build.properties"/>
+  <property name="classpath" value="${servlet.jar}:${dom4j.jar}:${xalanj1compat.jar}" />
+
+  <property name="checkRequirements.pre" value="checkRequirements.pre"/>
+  <property name="examples.pre" value="examples.pre"/>
+
+  <target name="checkRequirements.pre">
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${jaxp.jar}"/>
+       <param name="fail.message" value="a jar file containing the JAXP classes is required to compile the xtags taglib. please define the property jaxp.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${dom4j.jar}"/>
+       <param name="fail.message" value="a jar file containing the dom4j classes is required to compile the xtags taglib. please define the property dom4j.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${xalan.jar}"/>
+       <param name="fail.message" value="a jar file containing the xalan classes is required to compile the xtags taglib. please define the property xalan.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${xalanj1compat.jar}"/>
+       <param name="fail.message" value="a jar file containing the xalanj1compat classes is required to compile the xtags taglib. please define the property xalanj1compat.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${crimson.jar}"/>
+       <param name="fail.message" value="a jar file containing the crimson classes is required to compile the xtags taglib. please define the property crimson.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+  </target>
+
+
+  <!-- =================================================================== -->
+  <!-- copy the required jars into the examples lib dir                    -->
+  <!-- =================================================================== -->
+
+  <target name="examples.pre">
+    <!-- copy the jars required -->
+    <copy todir="${build.examples}/WEB-INF/lib" file="${dom4j.jar}"/>
+    <copy todir="${build.examples}/WEB-INF/lib" file="${xalan.jar}"/>
+    <copy todir="${build.examples}/WEB-INF/lib" file="${xalanj1compat.jar}"/>
+    <copy todir="${build.examples}/WEB-INF/lib" file="${jaxp.jar}"/>
+    <copy todir="${build.examples}/WEB-INF/lib" file="${crimson.jar}"/>
+  </target>
+
+</project>
+

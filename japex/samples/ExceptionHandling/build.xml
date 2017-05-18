@@ -1,0 +1,34 @@
+<project name="ExceptionHandling Japex Sample" default="run"  basedir=".">
+    <property environment="env"/>
+    
+    <property name="config" value="exception-config.xml"/>
+
+    <path id="class.path">
+	<pathelement location="dist/classes"/>
+        <fileset dir="${env.JAPEX_HOME}/lib/" includes="*.jar"/>
+    </path>
+    
+    <target name="clean">
+	<delete dir="dist"/>
+    </target>
+
+    <target name="prepare">
+	<mkdir dir="dist"/>
+	<mkdir dir="dist/classes"/>
+    </target>
+    
+    <target name="compile" depends="prepare" description="Compile JUnitSuite">
+        <javac srcdir="src" destdir="dist/classes" debug="on" optimize="on" deprecation="on">
+             <classpath refid="class.path"/>
+        </javac>
+    </target>
+
+    <target name="dist" depends="compile"/>
+    
+    <target name="run" depends="dist">
+        <java dir="." fork="true" classname="com.sun.japex.Japex">
+            <classpath refid="class.path"/>
+            <arg line="${config}/"/>
+        </java>
+    </target>
+</project>

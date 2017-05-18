@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:aoo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:aoo="urn:aoo"
+           elementFormDefault="qualified" attributeFormDefault="qualified">
+
+<xsd:import namespace="urn:goo" schemaLocation="elementFragment_imported_goo.xsd"/>
+
+<!-- Don't add any more attribute declarations! -->
+<xsd:attribute name="b" type="xsd:date"/><!-- event code 1 -->
+<xsd:attribute name="c" type="xsd:time"/><!-- event code 2 -->
+
+<xsd:complexType name="tB">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="B" type="aoo:tB" nillable="true"/>
+    <xsd:element name="C" type="aoo:tC" nillable="true"/>
+  </xsd:sequence>
+  <xsd:attribute name="b" type="xsd:date"/>
+</xsd:complexType>
+
+<xsd:complexType name="tC">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="C" type="aoo:tC" nillable="true"/>
+    <xsd:element name="B" type="aoo:tB" nillable="true"/>
+  </xsd:sequence>
+  <xsd:attribute name="c" type="xsd:time"/>
+</xsd:complexType>
+
+<!-- Don't add any more element declarations! -->
+<xsd:element name="B" type="aoo:tB" nillable="true"/><!-- event code 8 -->
+<xsd:element name="C" type="aoo:tC" nillable="true"/><!-- event code 9 -->
+
+</xsd:schema>

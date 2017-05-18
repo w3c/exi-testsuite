@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 20040109
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/FIXML-4-4" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- FIXML Datatypes -->
+	<xs:simpleType name="Length">
+		<xs:annotation>
+			<xs:documentation>
+		         int representing the length in bytes.  Value must be positive.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:nonNegativeInteger"/>
+	</xs:simpleType>
+	<xs:simpleType name="SeqNum">
+		<xs:annotation>
+			<xs:documentation>
+                   int representing a message sequence number.  Value must be positive.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:positiveInteger"/>
+	</xs:simpleType>
+	<xs:simpleType name="Qty">
+		<xs:annotation>
+			<xs:documentation>
+decimal capable of storing either a whole number (no decimal places) of “shares” (securities denominated in whole units) or a decimal value containing decimal places for non-share quantity asset classes (securities denominated in fractional units).
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="Price">
+		<xs:annotation>
+			<xs:documentation>
+decimal representing a price.  Note the number of decimal places may vary. For certain asset classes prices may be negative values. For example, prices for options strategies can be negative under certain market conditions. Refer to Volume 7: FIX Usage by Product for asset classes that support negative price values.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="PriceOffset">
+		<xs:annotation>
+			<xs:documentation>
+decimal representing a price offset, which can be mathematically added to a "Price".  Note the number of decimal places may vary and some fields such as LastForwardPoints may be negative.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="Amt">
+		<xs:annotation>
+			<xs:documentation>
+decimal typically representing a Price times a Qty
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="Percentage">
+		<xs:annotation>
+			<xs:documentation>
+decimal representing a percentage (e.g. .05 represents 5% and .9525 represents 95.25%).  Note the number of decimal places may vary.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal"/>
+	</xs:simpleType>
+	<xs:simpleType name="char">
+		<xs:restriction base="xs:string">
+			<xs:pattern value=".{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="data">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="MonthYear">
+		<xs:annotation>
+			<xs:documentation>
+String field representing month of a year. An optional day of the month  can be appended or an optional week code.
+Valid formats:
+YYYYMM
+YYYYMMDD
+YYYYMMWW
+YYYY = 0000-9999, MM = 01-12, DD = 01-31, WW = w1, w2, w3, w4, w5.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{4}(0|1)\d([0-3wW]\d)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UTCDateOnly">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="UTCTimeOnly">
+		<xs:restriction base="xs:time"/>
+	</xs:simpleType>
+	<xs:simpleType name="LocalMktDate">
+		<xs:restriction base="xs:date"/>
+	</xs:simpleType>
+	<xs:simpleType name="UTCTimestamp">
+		<xs:restriction base="xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="Country">
+		<xs:annotation>
+			<xs:documentation>
+string representing a country using ISO 3166 Country code (2 character) values.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="Currency">
+		<xs:annotation>
+			<xs:documentation>
+string representing a currency type using ISO 4217 Currency code (3 character) values.
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="MIC">
+		<xs:annotation>
+			<xs:documentation>
+string representing a market or exchange.- ISO 10383 Market Identifier Code (MIC)
+		        </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="Exchange">
+		<xs:restriction base="MIC"/>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Weblog">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="entry">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="host" type="xs:string" />
+							<xs:element name="referer" type="xs:string" />
+							<xs:element name="userAgent" type="xs:string" />
+							<xs:element name="dateTime" type="xs:string" />
+							<xs:element name="reqID">
+								<xs:simpleType>
+									<xs:restriction base="xs:short">
+										<xs:pattern value="[\-0123456789]{5}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="reqType" type="xs:string" />
+							<xs:element name="resource" type="xs:string" />
+							<xs:element name="protocol" type="xs:string" />
+							<xs:element name="statusCode" type="xs:unsignedShort" />
+							<xs:element name="byteCount" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

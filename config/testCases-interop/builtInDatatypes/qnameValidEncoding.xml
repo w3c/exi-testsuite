@@ -1,0 +1,20 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid qname encoding">
+
+    <param name="groupId" value="${groupId} | qnameValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/qname/qname.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/qname"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingQName"/>
+    <!-- input files are not always schema-valid -->
+    <!--param name="org.w3c.exi.ttf.schemaDeviations" value="true"/-->
+
+     <testCase name="qname.valid-00">
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes" />
+        <param name="description"  value="Simple qname values (prefixes preserved)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/qname-valid-00.xml" />
+    </testCase>
+
+</testCaseGroup>

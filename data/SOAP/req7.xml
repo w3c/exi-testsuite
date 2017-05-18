@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <SOAP-ENV:Body>
+  <ns3:echoStruct xmlns:ns3="http://soapinterop.org/">
+   <inputStruct href="#id0"/>
+  </ns3:echoStruct>
+  <multiRef id="id0" xsi:type="ns5:SOAPStruct" xmlns:ns5="http://soapinterop.org/xsd">
+   <varFloat xsi:type="xsd:float">10.3</varFloat>
+   <varInt xsi:type="xsd:int">5</varInt>
+   <varString xsi:type="xsd:string">Hello</varString>
+  </multiRef>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

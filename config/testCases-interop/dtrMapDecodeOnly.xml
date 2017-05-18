@@ -1,0 +1,22 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="DTRM decode-only test cases">
+
+    <param name="groupId" value="${groupId} | dtrMap"/> 
+
+    <param name="reference" value="http://www.w3.org/TR/exi/#datatypeRepresentationMap"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+
+    <testCase name="dtrDecode-01">
+        <param name="description" value="Preserve lexical values using the RCS of the codec specified by DTRM."/>
+        <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+        <param name="org.w3c.exi.ttf.encodedFile" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/tokenToInteger_01.exi" />
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/enumerationDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/tokenToInteger_01.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes lexicalvalues"/>
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{http://www.w3.org/2001/XMLSchema}token {http://www.w3.org/2009/exi}integer" />
+    </testCase>
+
+</testCaseGroup>

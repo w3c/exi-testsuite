@@ -1,0 +1,12 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Built-in datatype interoperability tests">
+
+    <param name="groupId" value="${groupId} | builtinDatatypes"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>    
+    
+    <xi:include href="schemaValidDatatypes.xml"/>
+    <xi:include href="schemaInvalidDatatypes.xml"/>
+
+</testCaseGroup>

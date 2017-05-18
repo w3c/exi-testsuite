@@ -1,0 +1,19 @@
+<!-- This testcases are intended to test the enumeration data types for canonical EXI. It includes major primitive data types 
+		like string, float, decimal, dataTime etc.
+		https://www.w3.org/TR/exi-c14n/#dt-enumeration
+-->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="enumeration datatype testcases">
+   
+   <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/enumeration/enumeration.xsd"/>
+   <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/enumeration"/>
+     
+    <testCase name="en_list">
+        <param name="description"  value="enumeration test with different primitive data types"/>
+        <param name="japex.inputFile" value="${test.docFolder}/en_01.xml" />
+    </testCase>
+
+</testCaseGroup>

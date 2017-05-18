@@ -1,0 +1,28 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - SC">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.sc-01">
+        <param name="testDescription"  
+          value="Tests SC event type. String table and grammars have to be saved
+                 upon SC occurrences."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/sc-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.selfContainedQNames" value="{urn:foo}ANY" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.sc-02">
+        <param name="testDescription"  
+          value="Tests SC event type with prefix preservation turned on. String
+                 table and grammars have to be saved upon SC occurrences."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/sc-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.selfContainedQNames" value="{urn:foo}ANY" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+    </testCase>
+
+</testCaseGroup>

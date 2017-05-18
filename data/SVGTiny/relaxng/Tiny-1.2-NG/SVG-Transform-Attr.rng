@@ -1,0 +1,27 @@
+
+<!-- ==============================================================
+      SVG12-RNG | Externally Available Transform attribute
+     ============================================================== -->
+
+<grammar ns='http://www.w3.org/2000/svg'
+         xml:lang='en'
+         xmlns='http://relaxng.org/ns/structure/1.0'
+         xmlns:a='http://relaxng.org/ns/compatibility/annotations/1.0'
+         xmlns:svg='http://www.w3.org/2000/svg'
+         datatypeLibrary='http://www.w3.org/2001/XMLSchema-datatypes'
+         >
+
+  <include href='datatypes.rng'/>
+
+  <define name='SVG.Transform'>
+    <optional>
+      <attribute name='svg:transform'>
+        <choice>
+          <ref name='TransformListNoRef.datatype'/>
+          <value>none</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
+</grammar>

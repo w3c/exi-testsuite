@@ -1,0 +1,29 @@
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+      <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+<!-- temporarily disable dtd preservation until more candidates can preserve them -->
+<!--  <param name="org.w3c.exi.ttf.preserve" value="dtds"/> -->
+
+      <testCase name="XAL/HEBTEntranceEnvelope.probe">
+        <param name="japex.inputFile" value="${testsDir}/XAL/HEBTEntranceEnvelope.probe"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/sample_twiss_bpm.xml">
+        <param name="japex.inputFile" value="${testsDir}/XAL/sample_twiss_bpm.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/sns.xdxf">
+        <param name="japex.inputFile" value="${testsDir}/XAL/sns.xdxf"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/xdxf.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+      </testCase>
+      <testCase name="XAL/sns_Ring.xdxf">
+        <param name="japex.inputFile" value="${testsDir}/XAL/sns_Ring.xdxf"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/xdxf.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+      </testCase>
+      <testCase name="XAL/model.params">
+        <param name="japex.inputFile" value="${testsDir}/XAL/model.params"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+</testCaseGroup>

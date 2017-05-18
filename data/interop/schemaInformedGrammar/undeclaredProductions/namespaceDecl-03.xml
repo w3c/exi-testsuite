@@ -1,0 +1,7 @@
+<!-- =================================================================== -->
+<!-- Tests NS event type. Nested elements with namespace declarations,   -->
+<!-- where two or more prefixes are assigned to the same URI.            -->
+<!-- =================================================================== -->
+<B xmlns='urn:foo' xmlns:goo='urn:goo' xmlns:foo='urn:foo'>
+  <AB xmlns:hoo='urn:hoo'/>
+</B>

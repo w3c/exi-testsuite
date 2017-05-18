@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ns2="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ns3="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns4="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns5="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:ns6="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ns7="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:ns8="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns9="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xmlns:ns10="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns11="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns12="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns13="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns14="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns15="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:ns16="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:elements="http://purl.org/dc/elements/1.1/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="elements.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/xforms" schemaLocation="xforms.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" schemaLocation="ns9.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" schemaLocation="ns5.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:config:1.0" schemaLocation="ns2.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" schemaLocation="ns14.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" schemaLocation="ns7.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" schemaLocation="ns3.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:form:1.0" schemaLocation="ns4.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" schemaLocation="ns16.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0" schemaLocation="ns13.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" schemaLocation="ns10.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:script:1.0" schemaLocation="ns6.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" schemaLocation="ns11.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:style:1.0" schemaLocation="ns8.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:table:1.0" schemaLocation="ns15.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" schemaLocation="ns1.xsd"/>
+  <xs:attribute name="font-family" type="xs:string"/>
+  <xs:attribute name="font-style">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="normal"/>
+        <xs:enumeration value="italic"/>
+        <xs:enumeration value="oblique"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="font-variant">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="normal"/>
+        <xs:enumeration value="small-caps"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="font-weight">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="normal"/>
+        <xs:enumeration value="bold"/>
+        <xs:enumeration value="100"/>
+        <xs:enumeration value="200"/>
+        <xs:enumeration value="300"/>
+        <xs:enumeration value="400"/>
+        <xs:enumeration value="500"/>
+        <xs:enumeration value="600"/>
+        <xs:enumeration value="700"/>
+        <xs:enumeration value="800"/>
+        <xs:enumeration value="900"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="font-stretch">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="normal"/>
+        <xs:enumeration value="ultra-condensed"/>
+        <xs:enumeration value="extra-condensed"/>
+        <xs:enumeration value="condensed"/>
+        <xs:enumeration value="semi-condensed"/>
+        <xs:enumeration value="semi-expanded"/>
+        <xs:enumeration value="expanded"/>
+        <xs:enumeration value="extra-expanded"/>
+        <xs:enumeration value="ultra-expanded"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="font-size">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="unicode-range"/>
+  <xs:attribute name="units-per-em" type="xs:integer"/>
+  <xs:attribute name="panose-1"/>
+  <xs:attribute name="stemv" type="xs:integer"/>
+  <xs:attribute name="stemh" type="xs:integer"/>
+  <xs:attribute name="slope" type="xs:integer"/>
+  <xs:attribute name="cap-height" type="xs:integer"/>
+  <xs:attribute name="x-height" type="xs:integer"/>
+  <xs:attribute name="accent-height" type="xs:integer"/>
+  <xs:attribute name="ascent" type="xs:integer"/>
+  <xs:attribute name="descent" type="xs:integer"/>
+  <xs:attribute name="widths"/>
+  <xs:attribute name="bbox"/>
+  <xs:attribute name="ideographic" type="xs:integer"/>
+  <xs:attribute name="alphabetic" type="xs:integer"/>
+  <xs:attribute name="mathematical" type="xs:integer"/>
+  <xs:attribute name="hanging" type="xs:integer"/>
+  <xs:attribute name="v-ideographic" type="xs:integer"/>
+  <xs:attribute name="v-alphabetic" type="xs:integer"/>
+  <xs:attribute name="v-mathematical" type="xs:integer"/>
+  <xs:attribute name="v-hanging" type="xs:integer"/>
+  <xs:attribute name="underline-position" type="xs:integer"/>
+  <xs:attribute name="underline-thickness" type="xs:integer"/>
+  <xs:attribute name="strikethrough-position" type="xs:integer"/>
+  <xs:attribute name="strikethrough-thickness" type="xs:integer"/>
+  <xs:attribute name="overline-position" type="xs:integer"/>
+  <xs:attribute name="overline-thickness" type="xs:integer"/>
+  <xs:element name="linearGradient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns12:stop"/>
+      </xs:sequence>
+      <xs:attribute name="gradientUnits" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="objectBoundingBox"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="gradientTransform" form="qualified" type="xs:string"/>
+      <xs:attribute name="spreadMethod" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="pad"/>
+            <xs:enumeration value="reflect"/>
+            <xs:enumeration value="repeat"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns3:name"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attribute name="x1" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="y1" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="x2" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="y2" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="radialGradient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns12:stop"/>
+      </xs:sequence>
+      <xs:attribute name="gradientUnits" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="objectBoundingBox"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="gradientTransform" form="qualified" type="xs:string"/>
+      <xs:attribute name="spreadMethod" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="pad"/>
+            <xs:enumeration value="reflect"/>
+            <xs:enumeration value="repeat"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns3:name"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attribute name="cx" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="cy" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="r" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fx" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fy" form="qualified">
+        <xs:simpleType>
+          <xs:union>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="width">
+    <xs:attribute name="width" use="optional" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="height">
+    <xs:attribute name="height" use="optional" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attribute name="viewBox">
+    <xs:simpleType>
+      <xs:restriction>
+        <xs:simpleType>
+          <xs:list>
+            <xs:simpleType>
+              <xs:union memberTypes="xs:integer"/>
+            </xs:simpleType>
+          </xs:list>
+        </xs:simpleType>
+        <xs:length value="4"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="d" type="xs:string"/>
+  <xs:element name="font-face-src">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="ns12:font-face-uri"/>
+        <xs:element ref="ns12:font-face-name"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="definition-src">
+    <xs:complexType>
+      <xs:attribute ref="xlink:href" use="required"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:actuate1"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stop">
+    <xs:complexType>
+      <xs:attribute name="offset" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:double">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="stop-color" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="#[0-9a-fA-F]{6}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="stop-opacity" form="qualified" type="xs:double"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="x1">
+    <xs:attribute name="x" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="y1">
+    <xs:attribute name="y" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="width1">
+    <xs:attribute name="width" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="height1">
+    <xs:attribute name="height" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="x">
+    <xs:attribute name="x" use="optional" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="y">
+    <xs:attribute name="y" use="optional" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attribute name="x1">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="y1">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="x2">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="y2">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="r">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="cx">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="cy">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="rx">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="ry">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="font-face-uri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns12:font-face-format"/>
+      </xs:sequence>
+      <xs:attribute ref="xlink:href" use="required"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:actuate1"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="font-face-name">
+    <xs:complexType>
+      <xs:attribute name="name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="desc" type="xs:string"/>
+  <xs:attribute name="path" type="xs:string"/>
+  <xs:attribute name="origin" type="xs:string"/>
+  <xs:attribute name="type">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="translate"/>
+        <xs:enumeration value="scale"/>
+        <xs:enumeration value="rotate"/>
+        <xs:enumeration value="skewX"/>
+        <xs:enumeration value="skewY"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="font-face-format">
+    <xs:complexType>
+      <xs:attribute name="string" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

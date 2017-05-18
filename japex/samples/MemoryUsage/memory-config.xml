@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="ParsingPerformance" xmlns="http://www.sun.com/japex/testSuite">
+
+    <param name="japex.classPath" value="dist/classes"/>
+    
+    <param name="japex.resultUnit" value="ms"/>
+    <param name="japex.warmupIterations" value="0"/>
+    <param name="japex.runIterations" value="40"/>
+
+    <driver name="MemoryUsage1K">
+        <param name="japex.driverClass" value="MemoryUsage1K"/>
+        <param name="description" value="Memory usage sample class"/>
+    </driver>
+
+    <driver name="MemoryUsage10K">
+        <param name="japex.driverClass" value="MemoryUsage10K"/>
+        <param name="description" value="Memory usage sample class"/>
+    </driver>
+    
+    <testCase name="test1"/>
+    <testCase name="test2"/>
+    <testCase name="test3"/>
+
+</testSuite>

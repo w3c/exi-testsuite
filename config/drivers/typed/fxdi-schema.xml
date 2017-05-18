@@ -1,0 +1,22 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite"
+             xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/fxdi/dist/candidate-fxdi.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/fxdi/lib/*.jar"/>
+
+    <xi:include href="../../../candidates/fxdi/versionParam.xml"/>
+
+    <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.fxdi.FxdiCustomDriver_${fxdi.version}"/>
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="FXDI"/>
+
+    <param name="org.w3c.exi.ttf.candidate.fxdi.logs" value="${japex.exi.ttfms.candidatesDir}/fxdi/LOG_schema_${fxdi.version}.txt"/>
+
+    <driver name="FXDISchemaCustom">
+      <param name="description" value="Fujitsu XDI through custom API"/>
+      <param name="org.w3c.exi.ttf.applicationClass" value="schema"/>
+      <param name="org.w3c.exi.ttf.candidate.fxdi.debug" value="false"/>
+    </driver>
+
+</driverGroup>
+

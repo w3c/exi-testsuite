@@ -1,0 +1,406 @@
+<?xml version="1.0"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="factbook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="record">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="country" type="xs:string" />
+              <xs:element name="introduction">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="background" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="geography">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="location" type="xs:string" />
+                    <xs:element name="geographic_coordinates" type="xs:string" />
+                    <xs:element name="map_references" type="xs:string" />
+                    <xs:element name="area">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="total" type="xs:string" />
+                          <xs:element name="land" type="xs:string" />
+                          <xs:element name="water" type="xs:string" />
+                          <xs:element name="area_comparison" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="land_boundaries" type="xs:string" />
+                    <xs:element name="border_countries" type="xs:string" />
+                    <xs:element name="coastline" type="xs:string" />
+                    <xs:element name="maritime_claims">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="note" type="xs:string" />
+                          <xs:element name="contiguous_zone" type="xs:string" />
+                          <xs:element name="continental_shelf" type="xs:string" />
+                          <xs:element name="exclusive_economic_zone" type="xs:string" />
+                          <xs:element name="territorial_sea" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="climate" type="xs:string" />
+                    <xs:element name="terrain" type="xs:string" />
+                    <xs:element name="elevation_extremes">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lowest_point" type="xs:string" />
+                          <xs:element name="highest_point" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="natural_resources" type="xs:string" />
+                    <xs:element name="land_use">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="arable_land" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="permanent_crops" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="permanent_pastures" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="forests_and_woodlands" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="other_land_uses" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="irrigated_land" type="xs:string" />
+                    <xs:element name="natural_hazards" type="xs:string" />
+                    <xs:element name="current_environment_issues" type="xs:string" />
+                    <xs:element name="international_environment_agreements">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="party_to" type="xs:string" />
+                          <xs:element name="signed_but_not_ratified" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="geography_note" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="people">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="population" type="xs:string" />
+                    <xs:element name="age_structure">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="years-0_to_14" type="xs:string" />
+                          <xs:element name="years-15_to_64" type="xs:string" />
+                          <xs:element name="years-65_and_over" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="population_growth_rate" type="xs:string" />
+                    <xs:element name="birth_rate" type="xs:string" />
+                    <xs:element name="death_rate" type="xs:string" />
+                    <xs:element name="net_migration_rate" type="xs:string" />
+                    <xs:element name="sex_ratio">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="at_birth" type="xs:string" />
+                          <xs:element name="under_15_years" type="xs:string" />
+                          <xs:element name="years-15_to_64" type="xs:string" />
+                          <xs:element name="years-65_and_over" type="xs:string" />
+                          <xs:element name="total_population" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="infant_mortality_rate" type="xs:string" />
+                    <xs:element name="life_expectancy_at_birth">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="total_population" type="xs:string" />
+                          <xs:element name="male" type="xs:string" />
+                          <xs:element name="female" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="total_fertility_rate" type="xs:string" />
+                    <xs:element name="HIV_AIDS-adult_prevalence_rate" type="xs:string" />
+                    <xs:element name="HIV_AIDS-people_living_with_HIV_AIDS" type="xs:string" />
+                    <xs:element name="HIV_AIDS-deaths" type="xs:string" />
+                    <xs:element name="nationality">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="noun" type="xs:string" />
+                          <xs:element name="adjective" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ethnic_groups" type="xs:string" />
+                    <xs:element name="religions" type="xs:string" />
+                    <xs:element name="languages" type="xs:string" />
+                    <xs:element name="literacy">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="definition" type="xs:string" />
+                          <xs:element name="total_population" type="xs:string" />
+                          <xs:element name="male" type="xs:string" />
+                          <xs:element name="female" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="government">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="country_name">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="conventional_long_form" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="conventional_short_form" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="local_long_form" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="local_short_form" type="xs:string" />
+                          <xs:element maxOccurs="unbounded" name="former_name" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" maxOccurs="unbounded" name="dependency_status" type="xs:string" />
+                    <xs:element name="government_type" type="xs:string" />
+                    <xs:element name="capital" type="xs:string" />
+                    <xs:element name="administrative_divisions" type="xs:string" />
+                    <xs:element name="independence" type="xs:string" />
+                    <xs:element name="national_holiday" type="xs:string" />
+                    <xs:element name="constitution" type="xs:string" />
+                    <xs:element name="legal_system" type="xs:string" />
+                    <xs:element name="suffrage" type="xs:string" />
+                    <xs:element name="executive_branch">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="note" type="xs:string" />
+                          <xs:element name="chief_of_state" type="xs:string" />
+                          <xs:element name="head_of_government" type="xs:string" />
+                          <xs:element name="cabinet" type="xs:string" />
+                          <xs:element minOccurs="0" name="elections" type="xs:string" />
+                          <xs:element minOccurs="0" name="election_results" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="legislative_branch">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="note" type="xs:string" />
+                          <xs:element minOccurs="0" name="elections" type="xs:string" />
+                          <xs:element minOccurs="0" name="election_results" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="judicial_branch" type="xs:string" />
+                    <xs:element name="political_parties_and_leaders" type="xs:string" />
+                    <xs:element name="political_pressure_groups_and_leaders" type="xs:string" />
+                    <xs:element name="international_organization_participation" type="xs:string" />
+                    <xs:element name="diplomatic_representation_in_the_US">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element minOccurs="0" name="chief_of_mission" type="xs:string" />
+                          <xs:element minOccurs="0" name="chancery" type="xs:string" />
+                          <xs:element minOccurs="0" name="telephone" type="xs:string" />
+                          <xs:element minOccurs="0" name="FAX" type="xs:string" />
+                          <xs:element minOccurs="0" name="consulate_general" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="diplomatic_representation_from_the_US">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element minOccurs="0" name="chief_of_mission" type="xs:string" />
+                          <xs:element minOccurs="0" name="embassy" type="xs:string" />
+                          <xs:element minOccurs="0" name="mailing_address" type="xs:string" />
+                          <xs:element minOccurs="0" name="telephone" type="xs:string" />
+                          <xs:element minOccurs="0" name="FAX" type="xs:string" />
+                          <xs:element minOccurs="0" name="consulate_general" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flag_description" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="economy">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="economy_overview" type="xs:string" />
+                    <xs:element name="GDP" type="xs:string" />
+                    <xs:element name="GDP_real_growth_rate" type="xs:string" />
+                    <xs:element name="GDP_per_capita" type="xs:string" />
+                    <xs:element name="composition_by_sector">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="agriculture" type="xs:string" />
+                          <xs:element name="industry" type="xs:string" />
+                          <xs:element name="services" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="population_below_poverty_line" type="xs:string" />
+                    <xs:element name="household_income_or_consumption_by_percentage_share">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lowest_10_percent" type="xs:string" />
+                          <xs:element name="highest_10_percent" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="inflation_rate_consumer_prices" type="xs:string" />
+                    <xs:element name="labor_force" type="xs:string" />
+                    <xs:element name="labor_force_by_occupation" type="xs:string" />
+                    <xs:element name="unemployment_rate" type="xs:string" />
+                    <xs:element name="budget">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="revenues" type="xs:string" />
+                          <xs:element name="expenditures" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="industries" type="xs:string" />
+                    <xs:element name="industrial_production_growth_rate" type="xs:string" />
+                    <xs:element name="electricity_production" type="xs:string" />
+                    <xs:element name="electricity_production_by_source">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="fossil_fuel" type="xs:string" />
+                          <xs:element name="hydro" type="xs:string" />
+                          <xs:element name="nuclear" type="xs:string" />
+                          <xs:element minOccurs="0" name="other" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="electricity_consumption" type="xs:string" />
+                    <xs:element name="electricity_exports" type="xs:string" />
+                    <xs:element name="electricity_imports" type="xs:string" />
+                    <xs:element name="agriculture_products" type="xs:string" />
+                    <xs:element name="exports" type="xs:string" />
+                    <xs:element name="export_commodities" type="xs:string" />
+                    <xs:element name="export_partners" type="xs:string" />
+                    <xs:element name="imports" type="xs:string" />
+                    <xs:element name="import_commodities" type="xs:string" />
+                    <xs:element name="import_partners" type="xs:string" />
+                    <xs:element name="external_dept" type="xs:string" />
+                    <xs:element name="external_aid_recipient" type="xs:string" />
+                    <xs:element name="currency" type="xs:string" />
+                    <xs:element name="currency_code" type="xs:string" />
+                    <xs:element name="exchange_rates" type="xs:string" />
+                    <xs:element name="fiscal_year" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="communications">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="telephones_main_lines_in_use" type="xs:string" />
+                    <xs:element name="telephones_mobile_cellular" type="xs:string" />
+                    <xs:element name="telephone_system">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="general_assessment" type="xs:string" />
+                          <xs:element name="domestic" type="xs:string" />
+                          <xs:element name="international" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="radio_broadcast_stations" type="xs:string" />
+                    <xs:element name="radios" type="xs:string" />
+                    <xs:element name="television_broadcast_stations" type="xs:string" />
+                    <xs:element name="televisions" type="xs:string" />
+                    <xs:element name="internet_country_code" type="xs:string" />
+                    <xs:element name="internet_service_providers" type="xs:string" />
+                    <xs:element name="internet_users" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="transportation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="railways">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="total" type="xs:string" />
+                          <xs:element name="standard_gauge" type="xs:string" />
+                          <xs:element name="narrow_gauge" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="highways">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="total" type="xs:string" />
+                          <xs:element name="paved" type="xs:string" />
+                          <xs:element name="unpaved" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="waterways" type="xs:string" />
+                    <xs:element name="pipelines" type="xs:string" />
+                    <xs:element name="ports_and_harbors" type="xs:string" />
+                    <xs:element name="merchant_marine">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="total" type="xs:string" />
+                          <xs:element name="ships_by_type" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="airports" type="xs:string" />
+                    <xs:element name="airports_with_paved_runways">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="total" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_over_3047_meters" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_2438__to_3047_meters" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_1524__to_2437_meters" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_914__to_1523_meters" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_under_914_meters" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="airports_with_unpaved_runways">
+                      <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="total" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_over_3047_meters" type="xs:unsignedByte" />
+                          <xs:element minOccurs="0" name="length_2438__to_3047_meters" type="xs:unsignedByte" />
+                          <xs:element minOccurs="0" name="length_1524__to_2437_meters" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_914__to_1523_meters" type="xs:string" />
+                          <xs:element minOccurs="0" name="length_under_914_meters" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="heliports" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="military">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="military_branches" type="xs:string" />
+                    <xs:element name="military_age" type="xs:string" />
+                    <xs:element name="military_availability" type="xs:string" />
+                    <xs:element name="fit_for_military_service" type="xs:string" />
+                    <xs:element name="reaching_military_age_annually" type="xs:string" />
+                    <xs:element name="military_expenditure_dollar_figure" type="xs:string" />
+                    <xs:element name="military_expenditures_percent_GDP" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="transnational_disputes">
+                <xs:complexType>
+                  <xs:sequence minOccurs="0">
+                    <xs:element name="international_disputes" type="xs:string" />
+                    <xs:element name="illicit_drugs" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

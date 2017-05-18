@@ -1,0 +1,23 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="General interoperability tests">
+
+<!--    <param name="groupId" value="${groupId} | general"/> -->
+    <!-- assume strict=false unless otherwise specified -->
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>
+
+    <xi:include href="builtInGrammar.xml"/>
+    <xi:include href="builtInDatatypes.xml"/>
+    <xi:include href="schemaInformedGrammar.xml"/>
+    <xi:include href="strict.xml"/>
+    <xi:include href="preserve.xml"/>
+    <xi:include href="dtrMap.xml"/>
+
+<!--
+	Add other test groups as available
+    <xi:include href="fragment.xml"/>
+    <xi:include href="boundedTable.xml"/>
+-->
+
+</testCaseGroup>

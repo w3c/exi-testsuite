@@ -1,0 +1,220 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Complex Type">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | complexTypeGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#complexTypeGrammars"/>
+
+    <!-- =================================================================== -->
+    <!-- Most of the test cases below are primarily designed for use with    -->
+    <!-- strict schema grammars. Please make sure to run them at least once  -->
+    <!-- with strict option turned on.                                       -->
+    <!-- <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />     -->
+    <!-- =================================================================== -->
+
+    <testCase name="schemaInformed.declared.complexType-01">
+        <param name="testDescription" 
+          value="Attribute uses with optional attributes present"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-02">
+        <param name="testDescription" 
+          value="Attribute uses with optional attributes omitted"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-02.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-03">
+        <param name="testDescription" 
+          value="Attribute uses with optional attributes and elements omitted"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-03.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-04">
+        <param name="testDescription" 
+          value="Use of TypeEmpty in Complex Type Grammar"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-04.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-05">
+        <param name="testDescription" 
+          value="Use of wildcard attribute with {namespace constraint} ##any"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-05.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-06">
+        <param name="testDescription" 
+          value="Use of wildcard attribute with {namespace constraint} being a set of namespace names"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-06.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-07">
+        <param name="testDescription" 
+          value="Use of wildcard attribute with {namespace constraint} ##other"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-07.xml" />
+    </testCase>
+
+    <!-- removed for addressing ISSUE-55 -->
+    <!-- testCase name="schemaInformed.declared.complexType-08">
+        <param name="testDescription" 
+          value="xsi:type must come before xsi:nil when they both occur."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-08.xml" />
+    </testCase -->
+
+    <!-- removed due to the resolution of ISSUE-56 -->
+    <!-- testCase name="schemaInformed.declared.complexType-09">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture a resolvable xsi:type"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-09.xml" />
+    </testCase -->
+
+    <!-- removed due to the resolution of ISSUE-56 -->
+    <!-- testCase name="schemaInformed.declared.complexType-10">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture an unresolvable xsi:type"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-10.xml" />
+    </testCase -->
+
+    <!-- removed due to the resolution of ISSUE-56 -->
+    <!-- testCase name="schemaInformed.declared.complexType-11">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture an unresolvable xsi:type where the prefix is not even bound"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-11.xml" />
+    </testCase -->
+
+    <!-- removed for addressing ISSUE-55 -->
+    <!-- testCase name="schemaInformed.declared.complexType-12">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture a valid xsi:nil with value 'true'"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-12.xml" />
+    </testCase -->
+
+    <!-- removed for addressing ISSUE-55 -->
+    <!-- testCase name="schemaInformed.declared.complexType-13">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture a valid xsi:nil with value '1'"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-13.xml" />
+    </testCase -->
+
+    <!-- removed for addressing ISSUE-55 -->
+    <!-- testCase name="schemaInformed.declared.complexType-14">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture a valid xsi:nil with value 'false'"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-14.xml" />
+    </testCase -->
+
+    <!-- removed for addressing ISSUE-55 -->
+    <!-- testCase name="schemaInformed.declared.complexType-15">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture a valid xsi:nil with value '0'"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-15.xml" />
+    </testCase -->
+
+    <testCase name="schemaInformed.declared.complexType-17">
+        <param name="testDescription" 
+          value="Use of a declared AT(*) to capture a globally-defined attribute with a valid value"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-17.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-18">
+        <param name="testDescription" 
+          value="Use of a undeclared AT(*) [untyped value] to capture a globally-defined attribute with an invalid value"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-18.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Additional URI partition entries from schemas">
+        <param name="groupId" value="${groupId} | initialEntries"/> 
+        <testCase name="schemaInformed.declared.complexType-19">
+            <param name="testDescription" 
+              value="URIs in specified namespace wildcards get in uri partition of the string table"/>
+            <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+            <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-19.xml" />
+        </testCase>
+    </testCaseGroup>
+
+    <testCase name="schemaInformed.declared.complexType-20">
+        <param name="testDescription" 
+          value="Complex type of which {content type} is a simple type"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-20.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-21">
+        <param name="testDescription" 
+          value="Complex type of which {content type} is a particle"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/particle.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-21.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-22">
+        <param name="testDescription" 
+          value="Complex type of which {content type} is empty"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-22.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-23">
+        <param name="testDescription" 
+          value="Complex type of which {content type} is a particle"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/particle.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-23.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-24">
+        <param name="testDescription" 
+          value="Use of xsi:type in a full-fledged complex type grammar"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-24.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-25">
+        <param name="testDescription" 
+          value="Use AT(goo:*) where both AT(xsi:type) and AT(xsi:nil) are available."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-25.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-26">
+        <param name="testDescription" 
+          value="Use of xsi:nil in a full-fledged complex type grammar"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-26.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-27">
+        <param name="testDescription" 
+          value="Use AT(goo:*) where there are no attribute uses available"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-27.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexType-28">
+        <param name="testDescription" 
+          value="Attribute uses that use local attributes. AT(aK) is typed as 
+                 xsd:positiveInteger, whereas AT(foo:aK) is typed as xsd:date."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexType-28.xml" />
+    </testCase>
+
+
+</testCaseGroup>

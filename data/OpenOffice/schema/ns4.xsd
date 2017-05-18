@@ -1,0 +1,1603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ns2="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ns3="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns4="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns5="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:ns6="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ns7="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:ns8="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns9="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xmlns:ns10="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns11="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns12="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns13="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns14="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns15="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:ns16="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:elements="http://purl.org/dc/elements/1.1/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="elements.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/xforms" schemaLocation="xforms.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" schemaLocation="ns9.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" schemaLocation="ns5.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:config:1.0" schemaLocation="ns2.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" schemaLocation="ns14.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" schemaLocation="ns7.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" schemaLocation="ns3.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" schemaLocation="ns16.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0" schemaLocation="ns13.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" schemaLocation="ns10.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:script:1.0" schemaLocation="ns6.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" schemaLocation="ns11.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:style:1.0" schemaLocation="ns8.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" schemaLocation="ns12.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:table:1.0" schemaLocation="ns15.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" schemaLocation="ns1.xsd"/>
+  <xs:attribute name="automatic-focus">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="apply-design-mode">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="form">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns4:text"/>
+          <xs:element ref="ns4:textarea"/>
+          <xs:element ref="ns4:formatted-text"/>
+          <xs:element ref="ns4:number"/>
+          <xs:element ref="ns4:date"/>
+          <xs:element ref="ns4:combobox"/>
+          <xs:element ref="ns4:listbox"/>
+          <xs:element ref="ns4:checkbox"/>
+          <xs:element ref="ns4:password"/>
+          <xs:element ref="ns4:file"/>
+          <xs:element ref="ns4:time"/>
+          <xs:element ref="ns4:fixed-text"/>
+          <xs:element ref="ns4:button"/>
+          <xs:element ref="ns4:image"/>
+          <xs:element ref="ns4:radio"/>
+          <xs:element ref="ns4:frame"/>
+          <xs:element ref="ns4:image-frame"/>
+          <xs:element ref="ns4:hidden"/>
+          <xs:element ref="ns4:grid"/>
+          <xs:element ref="ns4:value-range"/>
+          <xs:element ref="ns4:generic-control"/>
+          <xs:element ref="ns4:form"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="ns4:connection-resource"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:actuate1"/>
+      <xs:attribute ref="ns13:target-frame"/>
+      <xs:attribute name="method" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="get"/>
+              </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="post"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="enctype" form="qualified" type="xs:string"/>
+      <xs:attribute name="allow-deletes" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="allow-inserts" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="allow-updates" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="apply-filter" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="command-type" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="table"/>
+            <xs:enumeration value="query"/>
+            <xs:enumeration value="command"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="command" form="qualified"/>
+      <xs:attribute name="datasource" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:anyURI xs:string"/>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="master-fields" form="qualified" type="xs:string"/>
+      <xs:attribute name="detail-fields" form="qualified" type="xs:string"/>
+      <xs:attribute name="escape-processing" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="filter" form="qualified" type="xs:string"/>
+      <xs:attribute name="ignore-result" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="navigation-mode" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="current"/>
+            <xs:enumeration value="parent"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="order" form="qualified" type="xs:string"/>
+      <xs:attribute name="tab-cycle" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="records"/>
+            <xs:enumeration value="current"/>
+            <xs:enumeration value="page"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="properties">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="ns4:property"/>
+        <xs:element ref="ns4:list-property"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="textarea">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns17:p"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="formatted-text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+      <xs:attribute name="max-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="min-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="validation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="number">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="value" form="qualified" type="xs:double"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:double"/>
+      <xs:attribute name="min-value" form="qualified" type="xs:double"/>
+      <xs:attribute name="max-value" form="qualified" type="xs:double"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="value" form="qualified" type="xs:date"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:date"/>
+      <xs:attribute name="min-value" form="qualified" type="xs:date"/>
+      <xs:attribute name="max-value" form="qualified" type="xs:date"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="combobox">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns4:item"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="dropdown" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="size" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+      <xs:attribute name="list-source" form="qualified" type="xs:string"/>
+      <xs:attribute name="list-source-type" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="table"/>
+            <xs:enumeration value="query"/>
+            <xs:enumeration value="sql"/>
+            <xs:enumeration value="sql-pass-through"/>
+            <xs:enumeration value="value-list"/>
+            <xs:enumeration value="table-fields"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="auto-complete" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listbox">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns4:option"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="dropdown" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="size" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="bound-column" form="qualified" type="xs:string"/>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+      <xs:attribute name="list-source" form="qualified" type="xs:string"/>
+      <xs:attribute name="list-source-type" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="table"/>
+            <xs:enumeration value="query"/>
+            <xs:enumeration value="sql"/>
+            <xs:enumeration value="sql-pass-through"/>
+            <xs:enumeration value="value-list"/>
+            <xs:enumeration value="table-fields"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="multiple" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="xforms-list-source" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="checkbox">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+      <xs:attribute name="visual-effect" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="flat"/>
+            <xs:enumeration value="3d"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="image-position" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="end"/>
+            <xs:enumeration value="top"/>
+            <xs:enumeration value="bottom"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="image-align" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="end"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="current-state" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="unchecked"/>
+            <xs:enumeration value="checked"/>
+            <xs:enumeration value="unknown"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="is-tristate" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="state" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="unchecked"/>
+            <xs:enumeration value="checked"/>
+            <xs:enumeration value="unknown"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="password">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="echo-char" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="file">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="time">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="value" form="qualified" type="xs:time"/>
+      <xs:attribute name="current-value" form="qualified" type="xs:time"/>
+      <xs:attribute name="min-value" form="qualified" type="xs:time"/>
+      <xs:attribute name="max-value" form="qualified" type="xs:time"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="max-length" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="convert-empty-to-null" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fixed-text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="for" form="qualified" type="xs:string"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="multi-line" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="button">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="button-type" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="submit"/>
+            <xs:enumeration value="reset"/>
+            <xs:enumeration value="push"/>
+            <xs:enumeration value="url"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+      <xs:attribute name="image-data" form="qualified" type="xs:anyURI"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns13:target-frame"/>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="image-position" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="end"/>
+            <xs:enumeration value="top"/>
+            <xs:enumeration value="bottom"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="image-align" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="end"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="default-button" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="toggle" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="focus-on-click" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="xforms-submission" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="image">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="button-type" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="submit"/>
+            <xs:enumeration value="reset"/>
+            <xs:enumeration value="push"/>
+            <xs:enumeration value="url"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="image-data" form="qualified" type="xs:anyURI"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns13:target-frame"/>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="radio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="current-selected" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="selected" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+      <xs:attribute name="visual-effect" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="flat"/>
+            <xs:enumeration value="3d"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="image-position" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="end"/>
+            <xs:enumeration value="top"/>
+            <xs:enumeration value="bottom"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="image-align" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="start"/>
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="end"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="frame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="for" form="qualified" type="xs:string"/>
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="image-frame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="image-data" form="qualified" type="xs:anyURI"/>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="readonly" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="data-field" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hidden">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="grid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns4:column"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="value-range">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+      <xs:attribute name="disabled" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="printable" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tab-index" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="tab-stop" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="title" form="qualified"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+      <xs:attribute name="max-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="min-value" form="qualified" type="xs:string"/>
+      <xs:attribute name="step-size" form="qualified" type="xs:positiveInteger"/>
+      <xs:attribute name="page-step-size" form="qualified" type="xs:positiveInteger"/>
+      <xs:attribute name="delay-for-repeat" form="qualified" type="xs:duration"/>
+      <xs:attribute name="orientation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="horizontal"/>
+            <xs:enumeration value="vertical"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="generic-control">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns4:properties"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:ID"/>
+      <xs:attribute ref="xforms:bind"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="connection-resource">
+    <xs:complexType>
+      <xs:attribute ref="xlink:href" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="property">
+    <xs:complexType>
+      <xs:attribute name="property-name" use="required" form="qualified" type="xs:string"/>
+      <xs:attributeGroup ref="ns13:value-type2"/>
+      <xs:attribute ref="ns13:value"/>
+      <xs:attribute ref="ns13:currency"/>
+      <xs:attribute ref="ns13:date-value"/>
+      <xs:attribute ref="ns13:time-value"/>
+      <xs:attribute ref="ns13:boolean-value"/>
+      <xs:attribute ref="ns13:string-value"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="list-property">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="ns17:element480">
+          <xs:attribute name="property-name" use="required" form="qualified" type="xs:string"/>
+          <xs:attributeGroup ref="ns13:value-type2"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType mixed="true">
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="option">
+    <xs:complexType mixed="true">
+      <xs:attribute name="current-selected" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="selected" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+      <xs:attribute name="value" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="column">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="ns4:text"/>
+        <xs:element ref="ns4:textarea"/>
+        <xs:element ref="ns4:formatted-text"/>
+        <xs:element ref="ns4:number"/>
+        <xs:element ref="ns4:date"/>
+        <xs:element ref="ns4:combobox"/>
+        <xs:element ref="ns4:listbox"/>
+        <xs:element ref="ns4:checkbox"/>
+      </xs:choice>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="control-implementation" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="label" form="qualified" type="xs:string"/>
+      <xs:attribute name="text-style-name" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="list-value">
+    <xs:complexType>
+      <xs:attribute ref="ns13:value"/>
+      <xs:attribute ref="ns13:currency"/>
+      <xs:attribute ref="ns13:date-value"/>
+      <xs:attribute ref="ns13:time-value"/>
+      <xs:attribute ref="ns13:boolean-value"/>
+      <xs:attribute ref="ns13:string-value"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

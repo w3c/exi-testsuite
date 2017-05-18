@@ -1,0 +1,21 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Element">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | informedElementGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#elementGrammars"/>
+
+    <testCase name="schemaInformed.declared.element-01">
+        <param name="testDescription"  value="Element declaration that uses a named type as its type definition"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/element-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.element-02">
+        <param name="testDescription"  value="Element declaration that uses a anonymous type as its type definition"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/element-02.xml" />
+    </testCase>
+
+</testCaseGroup>

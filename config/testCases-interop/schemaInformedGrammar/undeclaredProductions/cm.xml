@@ -1,0 +1,42 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - CM">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.cm-01">
+        <param name="testDescription"  
+          value="Tests CM where there is no declared attributes or declared 
+                 attribute wildcard."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/cm-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="comments pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.cm-02">
+        <param name="testDescription"  
+          value="Tests CM where there is a declared attribute."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/cm-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="comments pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.cm-03">
+        <param name="testDescription"  
+          value="Tests CM where there's a declared attribute wildcard."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/cm-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="comments pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.cm-04">
+        <param name="testDescription"  
+          value="Testing undeclared productions furnished in ur-type grammar."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/cm-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="comments"/>
+    </testCase>
+
+</testCaseGroup>

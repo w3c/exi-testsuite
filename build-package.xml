@@ -1,0 +1,256 @@
+<project name="ttfms" default="dist" basedir=".">
+
+    <!-- network host and port -->
+    <property name="network.host" value="localhost"/>
+    <property name="network.port" value="9753"/>
+    
+    <condition property="compileNative">
+        <os name="Linux"/>
+    </condition>
+    
+    <property name="japex.home" value="${basedir}/japex"/>
+    
+    <!-- the following properties cannot be overridden by a TTFMS properties file -->
+    <property name="japex.exi.ttfms.testCasesDir" value="data"/>
+    <property name="japex.exi.ttfms.testCasesConfigDir" value="${basedir}/config/testCases"/>
+    <property name="japex.exi.ttfms.frameworkLibDir" value="framework/dist"/>
+    <property name="japex.exi.ttfms.candidatesDir" value="candidates"/>
+
+    <!-- load the TTFMS properties file -->
+    <property file="${ttfmsProperties}"/>
+
+    <property name="japex.reportPeakHeapUsage" value="false"/>
+    <property name="japex.numberOfThreads" value=""/>
+    <property name="japex.resultUnit" value=""/>
+    <property name="japex.reportsDirectory" value=""/>
+    <property name="japex.runsPerDriver" value=""/>
+
+    <!-- the default test cases config -->
+    <property name="testCases" value="config/testCases-restricted/all-v1.xml"/> 
+
+    <path id="run.classpath">
+        <fileset dir="${japex.home}/lib" includes="*.jar"/>
+    </path>
+    
+    <path id="run.nethost.classpath">
+        <fileset dir="framework/dist" includes="*.jar"/>
+    </path>
+    
+    <path id="lib.path" >
+        <pathelement path="${japex.exi.ttfms.candidatesDir}/c/asn1ber/dist/lib"/>
+        <pathelement path="${japex.exi.ttfms.candidatesDir}/c/libxml2/dist/lib"/>
+    </path>
+
+    <path id="framework.lib.path">
+      <pathelement path="framework/lib/faxma-xas.jar"/>
+      <pathelement path="framework/lib/faxma.jar"/>
+      <pathelement path="framework/lib/kxml2.jar"/>
+    </path>
+
+    <property name="library.path" refid="lib.path"/>
+    <property name="framework.library.path" refid="framework.lib.path"/>
+
+    <available property="japexFound" file="${basedir}/japex/japex.zip"/>
+    
+    <target name="display-error" unless="japexFound">
+        <fail>Please download Japex from https://japex.dev.java.net and install zip file in the 'japex' directory</fail>
+    </target>
+
+    <target name="unzip-japex" if="japexFound">
+        <uptodate property="unzipNotNeeded" 
+            targetfile="japex/lib/japex.jar" srcfile="japex/japex.zip"/>
+        <antcall target="unzip"/>
+    </target>
+    
+    <target name="unzip" unless="unzipNotNeeded">
+        <delete includeemptydirs="true">
+            <fileset dir="japex" excludes="CVS japex.zip"/>
+        </delete>
+        <unzip src="japex/japex.zip" dest="."/>
+        <touch file="japex/lib/japex.jar"/>
+    </target>
+    
+    <target name="check-for-japex" depends="display-error, unzip-japex"/>
+    
+    <available property="dataBuildFile" file="${basedir}/data/build.xml"/>
+    
+    <target name="prepare" depends="check-for-japex, unzip" if="dataBuildFile">
+        <ant dir="data" target="prepare"/>
+    </target>
+
+    <target name="delegate-native" if="compileNative">
+        <ant dir="candidates/c/asn1ber" target="${target}"/>        
+        <ant dir="candidates/c/libxml2" target="${target}"/>        
+        <ant dir="candidates/c/x694per" target="${target}"/>        
+        <ant dir="candidates/c/x694perfi" target="${target}"/>        
+    </target>
+    
+    <target name="delegate">
+        <ant dir="framework" target="${target}"/>
+        <antcall target="delegate-native"/>
+        <ant dir="candidates/xml" target="${target}"/>
+        <ant dir="candidates/xals" target="${target}"/>
+        <ant dir="candidates/fxdi" target="${target}"/>
+        <ant dir="candidates/xebu" target="${target}"/>
+        <ant dir="candidates/fastinfoset" target="${target}"/>
+        <ant dir="candidates/efficientxml" target="${target}"/>
+        <ant dir="candidates/esxml" target="${target}"/>
+    </target>
+
+    <target name="clean">
+        <antcall target="delegate">
+            <param name="target" value="clean"/>
+        </antcall>
+    </target>
+
+    <target name="dist" depends="prepare" description="Compile TTFMS framework">
+        <antcall target="delegate">
+            <param name="target" value="dist"/>
+        </antcall>
+    </target>
+    
+    <target name="run" depends="dist">
+        <!-- Default property values, ignored if these properties are defined -->
+        <property name="options" value=""/>
+        <property name="config" value="config/property/compaction/compaction.xml config/testCases-restricted/all-v1.xml"/>
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://${network.host}:${network.port}"/>
+	<property name="validate.diff" value="false"/>
+
+        <!-- Print config file and URI being used -->
+        <echo message="Using: "/>
+        <echo message=" options = ${options}"/>
+        <echo message=" config = ${config}"/>
+        <echo message=" URI = ${japex.exi.ttfms.dataSourceSink.URI}"/>
+        
+        <java dir="." fork="true" classname="com.sun.japex.Japex">
+            <sysproperty key="java.library.path" path="${library.path}"/>
+            <sysproperty key="japex.classPath" path="${framework.library.path}"/>
+            <jvmarg value="-Djapex.home=${japex.home}"/>
+            <jvmarg value="-Djapex.numberOfThreads=${japex.numberOfThreads}"/>
+            <jvmarg value="-Djapex.resultUnit=${japex.resultUnit}"/>
+            <jvmarg value="-Djapex.reportsDirectory=${japex.reportsDirectory}"/>
+            <jvmarg value="-Djapex.runsPerDriver=${japex.runsPerDriver}"/>
+            <jvmarg value="-Djapex.exi.ttfms.testCasesDir=${japex.exi.ttfms.testCasesDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.testCasesConfigDir=${japex.exi.ttfms.testCasesConfigDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.frameworkLibDir=${japex.exi.ttfms.frameworkLibDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.candidatesDir=${japex.exi.ttfms.candidatesDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.dataSourceSink.URI=${japex.exi.ttfms.dataSourceSink.URI}"/>
+	    <jvmarg value="-Dorg.w3c.exi.ttf.validateDiff=${validate.diff}"/>
+            <jvmarg value="-Xmx1024M"/>	    
+            <classpath refid="run.classpath"/>
+            <arg line="-silent -merge"/>
+            <arg line="${options} ${config}"/>
+        </java>
+    </target>    
+    
+    <!-- Compaction property -->
+    
+    <target name="run-compaction-classes" 
+        description="Run compaction test for each application class">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <!-- Processing efficiency: Decoding -->
+    
+    <target name="run-processing-decoding-classes-java"
+        description="Run java candidates processing decoding tests for all application classes">
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-decoding-classes-native" if="compileNative"
+        description="Run native candidates processing decoding tests for all application classes">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-decoding-classes" 
+        description="Run native and java candidates processing decoding tests for all application classes">
+        <antcall target="run-processing-decoding-classes-java"/>
+        <antcall target="run-processing-decoding-classes-native"/>
+    </target>
+
+    <!-- Processing efficiency: Encoding -->
+    
+    <target name="run-processing-encoding-classes-java"
+        description="Run java candidates processing encoding tests for all application classes">
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-encoding-classes-native" if="compileNative"
+        description="Run native candidates processing encoding tests for all application classes">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-encoding-classes" 
+        description="Run native and java candidates processing encoding tests for all application classes">
+        <antcall target="run-processing-encoding-classes-java"/>
+        <antcall target="run-processing-encoding-classes-native"/>
+    </target>
+    
+    <target name="run-network-host" depends="dist"
+        description="Run network host for echoing documents when running test over the network">
+        <java dir="." fork="true" classname="org.w3c.exi.ttf.NetworkHost">
+            <jvmarg value="-Xmx1024M"/>	    
+            <classpath refid="run.nethost.classpath"/>
+            <arg line="${network.port}"/>
+        </java>
+    </target>
+            
+</project>

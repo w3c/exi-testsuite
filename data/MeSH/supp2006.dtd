@@ -1,0 +1,31 @@
+<!-- SCR DTD file for Supplementary Concept Records. supp2006.dtd -->
+
+<!ENTITY  % DescriptorRecordSet SYSTEM "desc2006.dtd">
+%DescriptorRecordSet;
+
+<!ENTITY  % ChemicalReference "(SupplementalRecordUI, SupplementalRecordName)">
+
+<!ELEMENT SupplementalRecordSet (SupplementalRecord*)>
+<!ELEMENT SupplementalRecord (%ChemicalReference;,
+                            DateCreated,
+                            DateRevised?,
+                            ActiveMeSHYearList,
+                            Note?,
+                            Frequency?,
+                            PreviousIndexingList?,
+                            HeadingMappedToList+,
+                            IndexingInformationList*,
+                            SourceList*,
+                            RecordOriginatorsList,
+                            ConceptList) >
+
+<!ELEMENT Note (#PCDATA)>
+<!ELEMENT SourceList (Source+)>
+<!ELEMENT Source (#PCDATA)>
+<!ELEMENT Frequency (#PCDATA)>
+<!ELEMENT HeadingMappedToList (HeadingMappedTo+)>
+<!ELEMENT HeadingMappedTo (DescriptorReferredTo,QualifierReferredTo?) >
+<!ELEMENT IndexingInformationList (IndexingInformation+)>
+<!ELEMENT IndexingInformation (DescriptorReferredTo,QualifierReferredTo?)>
+<!ELEMENT SupplementalRecordUI (#PCDATA) >
+<!ELEMENT SupplementalRecordName (String) >

@@ -1,0 +1,23 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Built-in grammar interoperability tests">
+
+    <param name="groupId" value="${groupId} | builtinGrammar"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="false"/>    
+    
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Built-in Element Grammar">
+        <param name="groupId" value="${groupId} | builtinElementGrammar"/>
+        <xi:include href="builtInGrammar/builtInCharacter.xml"/>
+        <xi:include href="builtInGrammar/builtInElement.xml"/>
+        <xi:include href="builtInGrammar/builtInElementOthers.xml"/>
+        <xi:include href="builtInGrammar/builtInAttribute.xml"/>
+    </testCaseGroup>
+    <!-- moved to selfContained.xml to avoid conflict with compression -->
+    <!-- <xi:include href="builtInGrammar/builtInSC.xml"/> -->
+    <xi:include href="builtInGrammar/builtInFragment.xml"/>
+    <xi:include href="builtInGrammar/builtInDocument.xml"/>
+
+    <xi:include href="builtInGrammar/schemalessCID.xml"/>
+
+</testCaseGroup>

@@ -1,0 +1,28 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!-- recursive element a -->
+    <xsd:element name="a">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:any  namespace="##any" processContents="lax"/>
+            </xsd:choice>
+            <xsd:anyAttribute namespace="##any"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="b">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:any  namespace="##any" processContents="lax"/>
+            </xsd:choice>
+            <xsd:anyAttribute namespace="##any"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="c">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:any  namespace="##any" processContents="lax"/>
+            </xsd:choice>
+            <xsd:anyAttribute namespace="##any"/>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,16 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/JTLM/schemas/TLMComposite.xsd"/>
+    <param name="org.w3c.exi.ttf.fragments" value="true" />
+
+    <testCase name="fragments/JTLM/publish911.xml.frag">
+		<param name="japex.inputFile" value="${testsDir}/fragments/JTLM/publish911.xml.frag"/>
+    </testCase>
+    <testCase name="fragments/JTLM/publish911Response.xml.frag">
+		<param name="japex.inputFile" value="${testsDir}/fragments/JTLM/publish911Response.xml.frag"/>
+    </testCase>
+    <testCase name="fragments/JTLM/subscriberNotificationRequest.xml.frag">
+		<param name="japex.inputFile" value="${testsDir}/fragments/JTLM/subscriberNotificationRequest.xml.frag"/>
+    </testCase>
+</testCaseGroup>

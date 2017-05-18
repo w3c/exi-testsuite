@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!-- Sample for pa_substance2006.xml                                    -->
+<!DOCTYPE PharmacologicalActionSubstanceSet SYSTEM  "pa_substance2006.dtd">
+
+<!-- Root element -->
+<PharmacologicalActionSubstanceSet>
+
+   <!-- Substance 1 (Descriptor) -->
+   <Substance>
+      <RecordUI>D000536</RecordUI>
+      <RecordName>
+         <String>Aluminum Hydroxide</String>
+      </RecordName>
+
+      <!-- The list of PAs for this substance -->
+      <PharmacologicalActionList>
+
+         <!-- First PA -->
+         <PharmacologicalActionOfSubstance>
+            <DescriptorReferredTo>
+               <DescriptorUI>D000276</DescriptorUI>
+               <DescriptorName>
+                  <String>Adjuvants, Immunologic</String>
+               </DescriptorName>
+            </DescriptorReferredTo>
+         </PharmacologicalActionOfSubstance>
+
+         <!-- Second PA -->
+         <PharmacologicalActionOfSubstance>   
+            <DescriptorReferredTo>
+               <DescriptorUI>D000863</DescriptorUI>
+               <DescriptorName>
+                  <String>Antacids</String>
+               </DescriptorName>
+            </DescriptorReferredTo>
+         </PharmacologicalActionOfSubstance>
+
+      </PharmacologicalActionList>
+
+   </Substance>
+
+   <!-- Substance 2 (SCR) -->
+   <Substance>
+      <RecordUI>C012714</RecordUI>
+      <RecordName>
+         <String>aluminum phosphate</String>
+      </RecordName>
+
+      <!-- The list of PAs for this substance -->
+      <PharmacologicalActionList>
+
+         <!-- First PA -->
+         <PharmacologicalActionOfSubstance>
+            <DescriptorReferredTo>
+               <DescriptorUI>D000276</DescriptorUI>
+               <DescriptorName>
+                  <String>Adjuvants, Immunologic</String>
+               </DescriptorName>
+            </DescriptorReferredTo>
+         </PharmacologicalActionOfSubstance>
+
+
+         <!-- Second PA -->
+         <PharmacologicalActionOfSubstance>
+            <DescriptorReferredTo>
+               <DescriptorUI>D000863</DescriptorUI>
+               <DescriptorName>
+                  <String>Antacids</String>
+               </DescriptorName>
+            </DescriptorReferredTo>
+         </PharmacologicalActionOfSubstance>
+
+      </PharmacologicalActionList>
+
+   </Substance>
+
+</PharmacologicalActionSubstanceSet>
+

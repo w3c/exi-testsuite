@@ -1,0 +1,38 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile interoperability tests - headers ">
+
+    <param name="reference" value="http://www.w3.org/TR/exi-profile/#headerIntegration"/>
+    <param name="org.w3c.exi.ttf.includeOptions" value="true" />
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.useProfile" value="true"/>
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>  
+
+    <param name="org.w3c.exi.ttf.byteAlign" value="true"/>
+	<param name="org.w3c.exi.ttf.maxBuiltinGr" value="0"/>
+	<param name="org.w3c.exi.ttf.maxBuiltinProd" value="0"/>
+
+    <!-- param name="org.w3c.exi.ttf.schemaLocation" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/builtInElement.xsd"/>
+	
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars"/>
+
+
+    <testCaseGroup name="Empty p element in options metadata section"> 
+        <param name="org.w3c.exi.ttf.includeProfileValues" value="false" />
+        <testCase name="emptyp-01">
+	        <param name="description"  value="Empty p element in options metadata section - BuiltIn Element and unexpected global element"/>
+	        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-22.xml" />
+        </testCase>
+    </testCaseGroup>
+
+    <testCaseGroup name="No options section in header">
+        <testCase name="nooptions-01">
+	        <param name="description"  value="No options section in header - 1 unexpected element d"/>
+	        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-21.xml" />
+        </testCase>
+    </testCaseGroup-->    
+
+    <xi:include href="general.xml"/>
+
+</testCaseGroup>

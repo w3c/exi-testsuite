@@ -1,0 +1,22 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Preserve optiond with BuiltIn Element Grammar tests (CM, PIs, Namespaces productions)">
+
+    <testCaseGroup name="Preserve element tests: pis">
+        <param name="org.w3c.exi.ttf.preserve" value="pis" />
+        <xi:include href="../builtInGrammar/builtInElementOthers.xml"/>
+    </testCaseGroup>
+    <testCaseGroup name="Preserve element tests: prefixes">
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes" />
+        <xi:include href="../builtInGrammar/builtInElementOthers.xml"/>
+    </testCaseGroup>
+    <testCaseGroup name="Preserve element tests: pis prefixes">
+        <param name="org.w3c.exi.ttf.preserve" value="pis prefixes" />
+        <xi:include href="../builtInGrammar/builtInElementOthers.xml"/>
+    </testCaseGroup>
+    <testCaseGroup name="Preserve element tests: pis comments prefixes">
+        <param name="org.w3c.exi.ttf.preserve" value="pis comments prefixes" />
+        <xi:include href="../builtInGrammar/builtInElementOthers.xml"/>
+    </testCaseGroup>
+
+</testCaseGroup>
+

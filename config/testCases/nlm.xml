@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+      <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+      <testCase name="NLM/catplussamp2006.xml">
+        <param name="japex.inputFile" value="${testsDir}/NLM/catplussamp2006.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/NLM/nlmcatalogrecord_060101.xsd"/>
+      </testCase>
+      <testCase name="NLM/medsamp2006.xml">
+        <param name="japex.inputFile" value="${testsDir}/NLM/medsamp2006.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/NLM/autoschema.xsd"/>
+      </testCase>
+      <testCase name="NLM/sersamp2006.xml">
+        <param name="japex.inputFile" value="${testsDir}/NLM/sersamp2006.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/NLM/nlmcatalogrecord_060101.xsd"/>
+      </testCase>
+</testCaseGroup>

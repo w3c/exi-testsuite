@@ -1,0 +1,1501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<!-- The US Government's license rights for this deliverable are listed in -->
+<!-- DFARS 252.227-7013 Rights in Technical Data - Noncommercial Items -->
+<!-- (Nov 1995) (Alternate 1 June 1995) and DFARS 252.227-7014 Rights in -->
+<!-- Noncommercial Computer Software and Noncommercial Computer Software -->
+<!-- Documentation (June 1995). -->
+<!-- COMPANY  : Raytheon Company -->
+<!-- COPYRIGHT: Copyright (c) 2005 Raytheon Company -->
+<!-- UNPUBLISHED WORK -->
+<!-- ALL RIGHTS RESERVED -->
+<!-- PROJECT  : Target List Management -->
+<!-- CONTRACT : DAAB07-99-C-E003 -->
+<!-- -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by S. David Kwak (Raytheon) -->
+<!-- mtwill JBM-754, 22Mar05, changed targetNamespace, added jtlm to path -->
+<!-- mtwill JRAE-0001, 04Apr2005, remove name attribute from FaultType -->
+<!--  -->
+<xs:schema targetNamespace="http://www.firesupport.com/schema/jtlm/common" 
+           elementFormDefault="qualified" 
+	   attributeFormDefault="unqualified" 
+	   version="Draft" 
+	   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	   xmlns="http://www.firesupport.com/schema/jtlm/common">
+
+	<xs:simpleType name="SchemaVersionType">
+		<xs:annotation>
+			<xs:documentation>SchemaVersionType is used for the version attribute on the root element of all messages.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RadiusType">
+		<xs:annotation>
+			<xs:documentation>Radius units are meters, with a precision of 1.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TargetOSuffixType">
+		<xs:annotation>
+			<xs:documentation>Target BE number O-Suffix.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TargetAbcaNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				Target American, British, Canadian, and Australian armies
+				standardization number.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]{1}[A-N,Q-Z,a-n,q-z]{2}[0-9]{4}|NOTSET"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TargetBeNumberType">
+		<xs:annotation>
+			<xs:documentation>Target basic encyclopedia number.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+<!--			<xs:pattern value="[A-Za-z]{13}"/> -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TargetEnvironmentType">
+		<xs:annotation>
+			<xs:documentation>The possible tgt environments.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="LOW_CLOUDS"/>
+			<xs:enumeration value="RAIN"/>
+			<xs:enumeration value="WOODS"/>
+			<xs:enumeration value="STANDING_WATER"/>
+			<xs:enumeration value="PLOWED_FIELDS"/>
+			<xs:enumeration value="URBAN_AREAS"/>
+			<xs:enumeration value="SNOW"/>
+			<xs:enumeration value="DUST"/>
+			<xs:enumeration value="FOG"/>
+			<xs:enumeration value="HAZE"/>
+			<xs:enumeration value="METAMORPHIC_ICE"/>
+			<xs:enumeration value="ROCKS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TrackIdType">
+		<xs:annotation>
+			<xs:documentation>
+				This is used to uniquely identify a track.  This type is based on the IDType defined in the
+				PassCommon schema.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="36"/>
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SymbolType">
+		<xs:annotation>
+			<xs:documentation>
+				This type has no measurement units.
+				It is a 15 character symbol ID code for representing a graphical unit symbol.
+				See Military Standard 2525B for details.
+				The unspecified character place holder is a minus sign "-".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="15"/>
+			<xs:maxLength value="15"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TargetMidbEnemyUnitIdType">
+		<xs:annotation>
+			<xs:documentation>MIDB enemy unit id for the target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitReferenceNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				UnitReferenceNumberType has no measurement units.
+				This is defined by MIL-STD-2045-47001C paragraph 5.6.3.1 as a 24 bit binary code.
+				This is the VMF Unit Reference Number in the AFATDS Master Unit List.
+				This is a military wide number versus the AFATDS unit number below which has
+				a narrower range. There is a partial mapping from one to the other in AFATDS's
+				Master Unit List. A signed long (64 bit) integer is specified here to allow for future
+				expansion.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:simpleType name="LaserGLLDCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				Ground Laser Locater Designator PRF (Pulse Repetition Frequency) code that is manually set
+				on the laser (Ground Laser Locator Designator)..
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{0,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ChargeType">
+		<xs:annotation>
+			<xs:documentation>The charge type of a propellant.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="ONE"/>
+			<xs:enumeration value="TWO"/>
+			<xs:enumeration value="THREE"/>
+			<xs:enumeration value="FOUR"/>
+			<xs:enumeration value="FIVE"/>
+			<xs:enumeration value="SIX"/>
+			<xs:enumeration value="SEVEN"/>
+			<xs:enumeration value="EIGHT"/>
+			<xs:enumeration value="EIGHT_SUPER"/>
+			<xs:enumeration value="NINE"/>
+			<xs:enumeration value="THREE_RKT"/>
+			<xs:enumeration value="FOUR_RKT"/>
+			<xs:enumeration value="FIVE_RKT"/>
+			<xs:enumeration value="SIX_RKT"/>
+			<xs:enumeration value="SEVEN_RKT"/>
+			<xs:enumeration value="EIGHT_RKT"/>
+			<xs:enumeration value="EIGHT_SUPER_RKT"/>
+			<xs:enumeration value="NINE_RKT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitEchelonType">
+		<xs:annotation>
+			<xs:documentation>Echelon of the unit</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="RIFLE_SQUAD"/>
+			<xs:enumeration value="SECTION"/>
+			<xs:enumeration value="DETACHMENT"/>
+			<xs:enumeration value="PLATOON"/>
+			<xs:enumeration value="COMPANY"/>
+			<xs:enumeration value="BATTERY"/>
+			<xs:enumeration value="TROOP"/>
+			<xs:enumeration value="TEAM"/>
+			<xs:enumeration value="BATTALION"/>
+			<xs:enumeration value="SQUADRON"/>
+			<xs:enumeration value="TASK_FORCE"/>
+			<xs:enumeration value="GROUP"/>
+			<xs:enumeration value="REGIMENT"/>
+			<xs:enumeration value="MARINE_EXPEDITIONARY_UNIT"/>
+			<xs:enumeration value="BRIGADE"/>
+			<xs:enumeration value="DIVISION"/>
+			<xs:enumeration value="WING"/>
+			<xs:enumeration value="CORPS"/>
+			<xs:enumeration value="MARINE_EXPEDITIONARY_FORCE"/>
+			<xs:enumeration value="ARMY"/>
+			<xs:enumeration value="ARMY_GROUP"/>
+			<xs:enumeration value="FRONT"/>
+			<xs:enumeration value="MARINE_EXPEDITIONARY_BRIGADE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AngleTDirectionType">
+		<xs:annotation>
+			<xs:documentation>
+				The deflection direction of Angle_T: used if the munition type is Copperhead. The Angle_T becomes
+				important for determining deflection of the guidance laser.  It is defined as the direction the gun is
+				in relation to the observer, with the observer facing the target.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="RIGHT"/>
+			<xs:enumeration value="LEFT"/>
+			<xs:enumeration value="ONLINE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TargetNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				TargetNumberType allows two capital letters followed by four digits.
+				Actual data does not have the letters O or I currently.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CountryOfOriginType">
+		<xs:annotation>
+			<xs:documentation>Country of origin identification</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="BE"/>
+			<xs:enumeration value="CA"/>
+			<xs:enumeration value="DA"/>
+			<xs:enumeration value="FR"/>
+			<xs:enumeration value="GE"/>
+			<xs:enumeration value="GR"/>
+			<xs:enumeration value="IT"/>
+			<xs:enumeration value="NL"/>
+			<xs:enumeration value="NO"/>
+			<xs:enumeration value="PO"/>
+			<xs:enumeration value="SP"/>
+			<xs:enumeration value="TU"/>
+			<xs:enumeration value="UK"/>
+			<xs:enumeration value="US"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VolleyCountType">
+		<xs:annotation>
+			<xs:documentation>This is used to specified the number of volleys necessary to achieve a desired effect or in firing a mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LotCodeType">
+		<xs:annotation>
+			<xs:documentation>The identifier to identify the lot code.  Uppercase alpha character.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z ]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProjectileModelType">
+		<xs:annotation>
+			<xs:documentation>The model of the projectile.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="M30"/>
+			<xs:enumeration value="M48"/>
+			<xs:enumeration value="MJEK"/>
+			<xs:enumeration value="M26A1_A2"/>
+			<xs:enumeration value="MJEM"/>
+			<xs:enumeration value="MJEP"/>
+			<xs:enumeration value="MJEQ"/>
+			<xs:enumeration value="MJER"/>
+			<xs:enumeration value="MJML"/>
+			<xs:enumeration value="MJMT"/>
+			<xs:enumeration value="MJMU"/>
+			<xs:enumeration value="MJTD"/>
+			<xs:enumeration value="MJTE"/>
+			<xs:enumeration value="MJTF"/>
+			<xs:enumeration value="MJTJ"/>
+			<xs:enumeration value="MJTK"/>
+			<xs:enumeration value="MJTL"/>
+			<xs:enumeration value="MJTM"/>
+			<xs:enumeration value="MJSA"/>
+			<xs:enumeration value="M26"/>
+			<xs:enumeration value="M26_TGW"/>
+			<xs:enumeration value="M28"/>
+			<xs:enumeration value="M28A1"/>
+			<xs:enumeration value="M29"/>
+			<xs:enumeration value="M39"/>
+			<xs:enumeration value="M39A1"/>
+			<xs:enumeration value="M39A3"/>
+			<xs:enumeration value="M39E4"/>
+			<xs:enumeration value="M39E5"/>
+			<xs:enumeration value="M1DC"/>
+			<xs:enumeration value="M1NC"/>
+			<xs:enumeration value="M49A4"/>
+			<xs:enumeration value="M60_WP"/>
+			<xs:enumeration value="M60A1_WP"/>
+			<xs:enumeration value="M60A2_WP"/>
+			<xs:enumeration value="M68"/>
+			<xs:enumeration value="M83A3"/>
+			<xs:enumeration value="M84A1_HC"/>
+			<xs:enumeration value="M106_DC"/>
+			<xs:enumeration value="M106_NC"/>
+			<xs:enumeration value="M107_DC"/>
+			<xs:enumeration value="M107_NC"/>
+			<xs:enumeration value="M110_WP"/>
+			<xs:enumeration value="M110A1_WP"/>
+			<xs:enumeration value="M110A2_WP"/>
+			<xs:enumeration value="M116A1_HC"/>
+			<xs:enumeration value="M301A1"/>
+			<xs:enumeration value="M301A2"/>
+			<xs:enumeration value="M301A3"/>
+			<xs:enumeration value="M302A1"/>
+			<xs:enumeration value="M302A2"/>
+			<xs:enumeration value="M314A3"/>
+			<xs:enumeration value="M328"/>
+			<xs:enumeration value="M328A1"/>
+			<xs:enumeration value="M329A1"/>
+			<xs:enumeration value="M329A2"/>
+			<xs:enumeration value="M335A2"/>
+			<xs:enumeration value="M362A1"/>
+			<xs:enumeration value="M370"/>
+			<xs:enumeration value="M374"/>
+			<xs:enumeration value="M374A2"/>
+			<xs:enumeration value="M374A3"/>
+			<xs:enumeration value="M375"/>
+			<xs:enumeration value="M375A1"/>
+			<xs:enumeration value="M375A2"/>
+			<xs:enumeration value="M375A3"/>
+			<xs:enumeration value="M395"/>
+			<xs:enumeration value="M404"/>
+			<xs:enumeration value="M444"/>
+			<xs:enumeration value="M449A1"/>
+			<xs:enumeration value="M483A1"/>
+			<xs:enumeration value="M485A1"/>
+			<xs:enumeration value="M485A2"/>
+			<xs:enumeration value="M509A1"/>
+			<xs:enumeration value="M548"/>
+			<xs:enumeration value="M549"/>
+			<xs:enumeration value="M549A1"/>
+			<xs:enumeration value="M630"/>
+			<xs:enumeration value="M650"/>
+			<xs:enumeration value="M684"/>
+			<xs:enumeration value="M692"/>
+			<xs:enumeration value="M712"/>
+			<xs:enumeration value="M718"/>
+			<xs:enumeration value="M718A1"/>
+			<xs:enumeration value="M731"/>
+			<xs:enumeration value="M741"/>
+			<xs:enumeration value="M741A1"/>
+			<xs:enumeration value="M720"/>
+			<xs:enumeration value="M720A1"/>
+			<xs:enumeration value="M721"/>
+			<xs:enumeration value="M722"/>
+			<xs:enumeration value="M760_DC"/>
+			<xs:enumeration value="M760_NC"/>
+			<xs:enumeration value="M766"/>
+			<xs:enumeration value="M767"/>
+			<xs:enumeration value="M768"/>
+			<xs:enumeration value="M795"/>
+			<xs:enumeration value="M816"/>
+			<xs:enumeration value="M819"/>
+			<xs:enumeration value="M821"/>
+			<xs:enumeration value="M821A1"/>
+			<xs:enumeration value="M825"/>
+			<xs:enumeration value="M825A1"/>
+			<xs:enumeration value="M853A1"/>
+			<xs:enumeration value="M864"/>
+			<xs:enumeration value="M879"/>
+			<xs:enumeration value="M880"/>
+			<xs:enumeration value="M888"/>
+			<xs:enumeration value="M889"/>
+			<xs:enumeration value="M889A1"/>
+			<xs:enumeration value="M898"/>
+			<xs:enumeration value="M913"/>
+			<xs:enumeration value="M915"/>
+			<xs:enumeration value="M916"/>
+			<xs:enumeration value="M927"/>
+			<xs:enumeration value="M929"/>
+			<xs:enumeration value="M930"/>
+			<xs:enumeration value="M931"/>
+			<xs:enumeration value="M933"/>
+			<xs:enumeration value="M934"/>
+			<xs:enumeration value="M934A1"/>
+			<xs:enumeration value="M983"/>
+			<xs:enumeration value="M984"/>
+			<xs:enumeration value="M1023"/>
+			<xs:enumeration value="M1024"/>
+			<xs:enumeration value="M1025"/>
+			<xs:enumeration value="M1026"/>
+			<xs:enumeration value="M1027"/>
+			<xs:enumeration value="DM21_DC"/>
+			<xs:enumeration value="DM21_NC"/>
+			<xs:enumeration value="DM45A1HC"/>
+			<xs:enumeration value="L15A1"/>
+			<xs:enumeration value="L15A2"/>
+			<xs:enumeration value="L15A2B1"/>
+			<xs:enumeration value="M107B2_DC"/>
+			<xs:enumeration value="M107B2_NC"/>
+			<xs:enumeration value="M107BG_DC"/>
+			<xs:enumeration value="M107BG_NC"/>
+			<xs:enumeration value="M107C1_DC"/>
+			<xs:enumeration value="M107C1_NC"/>
+			<xs:enumeration value="M110C1_WP"/>
+			<xs:enumeration value="M110E2_WP"/>
+			<xs:enumeration value="M116C1HC"/>
+			<xs:enumeration value="M116C2HC"/>
+			<xs:enumeration value="M314A2E1"/>
+			<xs:enumeration value="M485E2"/>
+			<xs:enumeration value="NM28_DC"/>
+			<xs:enumeration value="NM28_NC"/>
+			<xs:enumeration value="NR109"/>
+			<xs:enumeration value="OE56_DC"/>
+			<xs:enumeration value="OE56_NC"/>
+			<xs:enumeration value="OE69_DC"/>
+			<xs:enumeration value="OE69_NC"/>
+			<xs:enumeration value="HE_PD_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HE_DLY_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HE_TIME_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HE_VT_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HE_CVT_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HE_MFF_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HF_TIME_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HF_CVT_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="HF_MFF_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="ILLUM1_TIME_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="ILLUM2_TIME_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="ILLUM3_TIME_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="WP_PD_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="WP_TIME_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="DPICM_TIME_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="ERGM_HE_MFF_NAVAL_ASSEMBLY"/>
+			<xs:enumeration value="RIM_67"/>
+			<xs:enumeration value="TAC_TOM"/>
+			<xs:enumeration value="MGEN_AIR_ROCK"/>
+			<xs:enumeration value="MGEN_AIR_CANN"/>
+			<xs:enumeration value="MGEN_AIR_FIRE_BOMB"/>
+			<xs:enumeration value="MGEN_AIR_NAPALM"/>
+			<xs:enumeration value="MGEN_AIR_FASCAM_BOMB"/>
+			<xs:enumeration value="MGEN_AIR_CRATER_BOMB"/>
+			<xs:enumeration value="MGEN_AIR_GP_BOMB"/>
+			<xs:enumeration value="MGEN_AIR_GUID_MISSILES"/>
+			<xs:enumeration value="MGEN_AIR_GUID_BOMBS"/>
+			<xs:enumeration value="MGEN_AIR_CB_APERS"/>
+			<xs:enumeration value="MGEN_AIR_CB_ATANK"/>
+			<xs:enumeration value="MGEN_AVN_ROCK"/>
+			<xs:enumeration value="MGEN_AVN_CANN"/>
+			<xs:enumeration value="MGEN_AVN_GUIDED_MISSILES"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitRangeType">
+		<xs:annotation>
+			<xs:documentation>The measured distance for a range.  Measured in Meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PropellantColorType">
+		<xs:annotation>
+			<xs:documentation>Color associated with propellant model.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="GB"/>
+			<xs:enumeration value="RB"/>
+			<xs:enumeration value="WB"/>
+			<xs:enumeration value="CANISTER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VerticalMilsType">
+		<xs:annotation>
+			<xs:documentation>VerticalMilsType units are in mils.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="-1600.0"/>
+			<xs:maxInclusive value="1600.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VisibilityType">
+		<xs:annotation>
+			<xs:documentation>
+				This type represents the estimated visibility range for the observer.  This type is measured to
+				the nearest hundreds of meters.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99900"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NabkVerticalMilsType">
+		<xs:annotation>
+			<xs:documentation>The NABK vertical mils.  Created during the trajectory calculations. Measured in Mils.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="1600.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AngleTType">
+		<xs:annotation>
+			<xs:documentation>The angle formed by the intersection of the gun-target line and the observer-target line. Measured in Mils.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="3200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EffectsLevelType">
+		<xs:annotation>
+			<xs:documentation>This type is used to specify the level of effects to be achieved during a mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="SUPPRESS"/>
+			<xs:enumeration value="NEUTRALIZE"/>
+			<xs:enumeration value="DESTROY"/>
+			<xs:enumeration value="SPECIFIED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FsSystemType">
+		<xs:annotation>
+			<xs:documentation>Fire support system type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="FA_CANNON"/>
+			<xs:enumeration value="RKT_MSL"/>
+			<xs:enumeration value="MTR"/>
+			<xs:enumeration value="AIR"/>
+			<xs:enumeration value="AVIATION"/>
+			<xs:enumeration value="NAVAL_GUN"/>
+			<xs:enumeration value="NAVAL_LAND_ATTACK_MSL"/>
+			<xs:enumeration value="NAVAL_CRUISE_MSL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GeometryNameType">
+		<xs:annotation>
+			<xs:documentation>
+				When the geometry kind is "Firefinder Priority Ati Zone", "Firefinder Priority Cff Zone",
+				"Firefinder Critical Friendly Zone" or "Firefinder Censor Zone" the geometry name must
+				have a number on the end and can't have spaces in the name. Other geometry names
+				can have leading spaces.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9 ]{1,10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FascamDensityType">
+		<xs:annotation>
+			<xs:documentation>This indicates the density of a FASCAM safety zone.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="HIGH"/>
+			<xs:enumeration value="MEDIUM"/>
+			<xs:enumeration value="LOW"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProjectileCategoryType">
+		<xs:annotation>
+			<xs:documentation>Category of the projectile</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ERGM_HE"/>
+			<xs:enumeration value="HE"/>
+			<xs:enumeration value="WP"/>
+			<xs:enumeration value="ILLUM"/>
+			<xs:enumeration value="DPICM"/>
+			<xs:enumeration value="APICM"/>
+			<xs:enumeration value="HE_RAP"/>
+			<xs:enumeration value="WP2"/>
+			<xs:enumeration value="ADAM_LONG"/>
+			<xs:enumeration value="ADAM_SHORT"/>
+			<xs:enumeration value="RAAM_LONG"/>
+			<xs:enumeration value="RAAM_SHORT"/>
+			<xs:enumeration value="COPPERHEAD"/>
+			<xs:enumeration value="CS"/>
+			<xs:enumeration value="RP"/>
+			<xs:enumeration value="SADARM"/>
+			<xs:enumeration value="SMOKE"/>
+			<xs:enumeration value="RADAM_SHORT"/>
+			<xs:enumeration value="RADAM_LONG"/>
+			<xs:enumeration value="ILLUM_IR"/>
+			<xs:enumeration value="ILLUM_VL"/>
+			<xs:enumeration value="PGMM"/>
+			<xs:enumeration value="TA_SMK"/>
+			<xs:enumeration value="TRAINING"/>
+			<xs:enumeration value="LASM"/>
+			<xs:enumeration value="TOMAHAWK"/>
+			<xs:enumeration value="MLRS_SADARM"/>
+			<xs:enumeration value="MLRS_DPICM"/>
+			<xs:enumeration value="MLRS_DPICM_GUIDED"/>
+			<xs:enumeration value="MLRS_HE_GUIDED"/>
+			<xs:enumeration value="MLRS_SMOKE"/>
+			<xs:enumeration value="ATACMS_APAM"/>
+			<xs:enumeration value="ATACMS_HE"/>
+			<xs:enumeration value="ATACMS_BAT"/>
+			<xs:enumeration value="ATACMS_BAT_P3"/>
+			<xs:enumeration value="TGW"/>
+			<xs:enumeration value="MINE"/>
+			<xs:enumeration value="PRACTICE_ROUND"/>
+			<xs:enumeration value="AIR_ROCKETS"/>
+			<xs:enumeration value="AIR_CANNONS"/>
+			<xs:enumeration value="FIRE_BOMBS"/>
+			<xs:enumeration value="NAPALM"/>
+			<xs:enumeration value="FASCAM_BOMBS"/>
+			<xs:enumeration value="CRATER_BOMBS"/>
+			<xs:enumeration value="GP_BOMBS"/>
+			<xs:enumeration value="AIR_GUIDED_MISSILES"/>
+			<xs:enumeration value="GUIDED_BOMBS"/>
+			<xs:enumeration value="ANTIPERSONNEL_CLUSTER_BOMBS"/>
+			<xs:enumeration value="ANTIARMOR_CLUSTER_BOMBS"/>
+			<xs:enumeration value="AVIATION_ROCKETS"/>
+			<xs:enumeration value="AVIATION_CANNONS"/>
+			<xs:enumeration value="AVIATION_GUIDED_MISSILES"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WeightInPoundsType">
+		<xs:annotation>
+			<xs:documentation>Describes the weight of a projectile.  Measured in pounds.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="999.9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EnemyUnitNumberType">
+		<xs:annotation>
+			<xs:documentation>This type is used by AFATDS to uniquely identify Enemy units.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="-2147483648"/>
+			<xs:maxInclusive value="-1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FuzeCategoryType">
+		<xs:annotation>
+			<xs:documentation>Category of the fuze.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="PD"/>
+			<xs:enumeration value="TIME"/>
+			<xs:enumeration value="VT"/>
+			<xs:enumeration value="DLY"/>
+			<xs:enumeration value="CP"/>
+			<xs:enumeration value="CVT"/>
+			<xs:enumeration value="MOFA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AliasIdType">
+		<xs:annotation>
+			<xs:documentation>
+				The identification (i.e. alias) used by devices to identify ammunition holding areas, storage sites, firing points,
+				hide points, reload points and rendezvous points within a unit position area.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="A1"/>
+			<xs:enumeration value="A2"/>
+			<xs:enumeration value="A3"/>
+			<xs:enumeration value="A4"/>
+			<xs:enumeration value="A5"/>
+			<xs:enumeration value="A6"/>
+			<xs:enumeration value="A7"/>
+			<xs:enumeration value="A8"/>
+			<xs:enumeration value="A9"/>
+			<xs:enumeration value="B1"/>
+			<xs:enumeration value="B2"/>
+			<xs:enumeration value="B3"/>
+			<xs:enumeration value="B4"/>
+			<xs:enumeration value="B5"/>
+			<xs:enumeration value="B6"/>
+			<xs:enumeration value="B7"/>
+			<xs:enumeration value="B8"/>
+			<xs:enumeration value="B9"/>
+			<xs:enumeration value="C1"/>
+			<xs:enumeration value="C2"/>
+			<xs:enumeration value="C3"/>
+			<xs:enumeration value="C4"/>
+			<xs:enumeration value="C5"/>
+			<xs:enumeration value="C6"/>
+			<xs:enumeration value="C7"/>
+			<xs:enumeration value="C8"/>
+			<xs:enumeration value="C9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MilsType">
+		<xs:annotation>
+			<xs:documentation>
+				MilsType units are mils.
+				This is an angle measurement with 6400 units in a full circle.
+				Maximum value is 6400  to allow the specification of
+				a full circle with left=0 and right=6400
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="6400"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PropellantModelType">
+		<xs:annotation>
+			<xs:documentation>The model of the propellant</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="M3A1"/>
+			<xs:enumeration value="M4A1"/>
+			<xs:enumeration value="M4A2"/>
+			<xs:enumeration value="M119A1"/>
+			<xs:enumeration value="M119A2"/>
+			<xs:enumeration value="M203"/>
+			<xs:enumeration value="M203A1"/>
+			<xs:enumeration value="M1"/>
+			<xs:enumeration value="M2"/>
+			<xs:enumeration value="M188"/>
+			<xs:enumeration value="M188A1"/>
+			<xs:enumeration value="M67"/>
+			<xs:enumeration value="M176"/>
+			<xs:enumeration value="M200"/>
+			<xs:enumeration value="M229"/>
+			<xs:enumeration value="M231"/>
+			<xs:enumeration value="M232"/>
+			<xs:enumeration value="DM42"/>
+			<xs:enumeration value="DM42B1"/>
+			<xs:enumeration value="DM52"/>
+			<xs:enumeration value="DM62"/>
+			<xs:enumeration value="EBO_5"/>
+			<xs:enumeration value="L2A1"/>
+			<xs:enumeration value="L8A1"/>
+			<xs:enumeration value="L10A1"/>
+			<xs:enumeration value="M3"/>
+			<xs:enumeration value="M3A1BG"/>
+			<xs:enumeration value="M3C2"/>
+			<xs:enumeration value="M4C3"/>
+			<xs:enumeration value="M4C4"/>
+			<xs:enumeration value="M119A2BG"/>
+			<xs:enumeration value="MLE56"/>
+			<xs:enumeration value="MLE69"/>
+			<xs:enumeration value="NM23"/>
+			<xs:enumeration value="NR13C1"/>
+			<xs:enumeration value="PROP1"/>
+			<xs:enumeration value="PROP2"/>
+			<xs:enumeration value="PROP3"/>
+			<xs:enumeration value="PROP4"/>
+			<xs:enumeration value="PROP5"/>
+			<xs:enumeration value="PROP6"/>
+			<xs:enumeration value="PROP7"/>
+			<xs:enumeration value="PROP8"/>
+			<xs:enumeration value="PROP9"/>
+			<xs:enumeration value="PROP10"/>
+			<xs:enumeration value="PROP11"/>
+			<xs:enumeration value="PROP12"/>
+			<xs:enumeration value="PROP13"/>
+			<xs:enumeration value="PROP14"/>
+			<xs:enumeration value="PROP15"/>
+			<xs:enumeration value="PROP16"/>
+			<xs:enumeration value="PROP17"/>
+			<xs:enumeration value="PROP18"/>
+			<xs:enumeration value="PROP19"/>
+			<xs:enumeration value="PROP20"/>
+			<xs:enumeration value="PROP21"/>
+			<xs:enumeration value="PROP22"/>
+			<xs:enumeration value="PROP23"/>
+			<xs:enumeration value="PROP24"/>
+			<xs:enumeration value="PROP25"/>
+			<xs:enumeration value="PROP26"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GeometrySymbolType">
+		<xs:annotation>
+			<xs:documentation>The type of geometry.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AIRHEAD_LINE"/>
+			<xs:enumeration value="AXIS_OF_ADVANCE"/>
+			<xs:enumeration value="BOLD_ROUTE_SEGMENT"/>
+			<xs:enumeration value="BOUNDARY_LINE"/>
+			<xs:enumeration value="BRIDGEHEAD_LINE"/>
+			<xs:enumeration value="COORDINATED_FIRE_LINE"/>
+			<xs:enumeration value="CROSSOVER_LINE"/>
+			<xs:enumeration value="DIRECTION_OF_ATTACK"/>
+			<xs:enumeration value="FIENT"/>
+			<xs:enumeration value="FINAL_COORDINATION_LINE"/>
+			<xs:enumeration value="FIRE_SUPPORT_COORDINATION_LINE"/>
+			<xs:enumeration value="FORCED_BEACHHEAD"/>
+			<xs:enumeration value="FORD_CROSSING"/>
+			<xs:enumeration value="FORTIFIED_LINE"/>
+			<xs:enumeration value="FORWARD_EDGE_OF_BATTLE_AREA"/>
+			<xs:enumeration value="FORWARD_LINE_OF_OWN_TROOPS"/>
+			<xs:enumeration value="GENERAL_LINE"/>
+			<xs:enumeration value="HOLDING_LINE"/>
+			<xs:enumeration value="LANE_CROSSING"/>
+			<xs:enumeration value="LIGHT_LINE"/>
+			<xs:enumeration value="LIMIT_OF_ADVANCE"/>
+			<xs:enumeration value="LINE_OF_CONTACT"/>
+			<xs:enumeration value="LINE_OF_DEPARTURE"/>
+			<xs:enumeration value="LINE_OF_DEPARTURE_IS_LINE_OF_CONTACT"/>
+			<xs:enumeration value="MAIN_ATTACK"/>
+			<xs:enumeration value="MAIN_SUPPLY_ROUTE"/>
+			<xs:enumeration value="MINE_FIELD_LINE"/>
+			<xs:enumeration value="MISSILE_FLIGHT_PATH"/>
+			<xs:enumeration value="OBSTACLE_LINE"/>
+			<xs:enumeration value="PHASE_LINE"/>
+			<xs:enumeration value="PROBABLE_LINE_OF_DEPLOYMENT"/>
+			<xs:enumeration value="RESTRICTIVE_FIRE_LINE"/>
+			<xs:enumeration value="ROUTE_SEGMENT"/>
+			<xs:enumeration value="SUPPORTING_ATTACK"/>
+			<xs:enumeration value="AIR_CONTROL_POINT"/>
+			<xs:enumeration value="AMBUSH_POINT"/>
+			<xs:enumeration value="BRIDGE_SITE"/>
+			<xs:enumeration value="BYPASS_DIFFICULT"/>
+			<xs:enumeration value="CHECKPOINT"/>
+			<xs:enumeration value="COMMUNICATIONS_CHECKPOINT"/>
+			<xs:enumeration value="CONTACT_POINT"/>
+			<xs:enumeration value="CONTROL_POINT"/>
+			<xs:enumeration value="COORDINATING_POINT"/>
+			<xs:enumeration value="DECON_POINT"/>
+			<xs:enumeration value="DEPARTURE_POINT"/>
+			<xs:enumeration value="FIRE_SUPPORT_STATION"/>
+			<xs:enumeration value="FIRING_POINT"/>
+			<xs:enumeration value="FORD_CROSSING_POINT"/>
+			<xs:enumeration value="GENERAL_POINT"/>
+			<xs:enumeration value="HIDE_POINT"/>
+			<xs:enumeration value="INITIAL_POINT"/>
+			<xs:enumeration value="LAUNCH_POINT"/>
+			<xs:enumeration value="LINKUP_POINT"/>
+			<xs:enumeration value="MARINE_RALLY_POINT"/>
+			<xs:enumeration value="MARINE_LINKUP_POINT"/>
+			<xs:enumeration value="OBSTACLE"/>
+			<xs:enumeration value="OVERHEAD_POINT"/>
+			<xs:enumeration value="PASSAGE_POINT"/>
+			<xs:enumeration value="PENETRATION_CONTROL_POINT"/>
+			<xs:enumeration value="POINT_OF_DEPARTURE"/>
+			<xs:enumeration value="POP_UP_POINT"/>
+			<xs:enumeration value="RALLY_POINT"/>
+			<xs:enumeration value="REDUCED_WIDTH_POINT"/>
+			<xs:enumeration value="RELEASE_POINT"/>
+			<xs:enumeration value="RELOAD_POINT"/>
+			<xs:enumeration value="RENDEZVOUS_POINT"/>
+			<xs:enumeration value="START_POINT"/>
+			<xs:enumeration value="SURVEY_CONTROL_POINT"/>
+			<xs:enumeration value="TRAFFIC_CONTROL_POINT"/>
+			<xs:enumeration value="RADAR_POINT"/>
+			<xs:enumeration value="AIR_CORRIDOR"/>
+			<xs:enumeration value="AIRSPACE_COORDINATION_AREA"/>
+			<xs:enumeration value="AMMUNITION_HOLDING_AREA"/>
+			<xs:enumeration value="AMPHIBIOUS_OBJECTIVE_AREA"/>
+			<xs:enumeration value="ASSAULT_OBJECTIVE"/>
+			<xs:enumeration value="ASSAULT_POSITION"/>
+			<xs:enumeration value="ASSEMBLY_AREA"/>
+			<xs:enumeration value="ATTACK_POSITION"/>
+			<xs:enumeration value="BATTLE_POSITION"/>
+			<xs:enumeration value="BEACH_SUPPORT_AREA"/>
+			<xs:enumeration value="BIOLOGICALLY_CONTAMINATED_AREA"/>
+			<xs:enumeration value="BRIGADE_SUPPORT_AREA"/>
+			<xs:enumeration value="CHEMICALLY_CONTAMINATED_AREA"/>
+			<xs:enumeration value="CLOSE_BATTLE_AREA"/>
+			<xs:enumeration value="COMBAT_SERVICE_SUPPORT_AREA"/>
+			<xs:enumeration value="DAMAGE_AVOIDANCE_AREA"/>
+			<xs:enumeration value="DEAD_SPACE_AREA"/>
+			<xs:enumeration value="DEEP_BATTLE_AREA"/>
+			<xs:enumeration value="DIVISION_SUPPORT_AREA"/>
+			<xs:enumeration value="DOWNRANGE_MASK"/>
+			<xs:enumeration value="DROP_ZONE"/>
+			<xs:enumeration value="ENGAGEMENT_AREA"/>
+			<xs:enumeration value="FIREFINDER_CENSOR_ZONE"/>
+			<xs:enumeration value="FIREFINDER_CRITICAL_FRIENDLY_ZONE"/>
+			<xs:enumeration value="FIREFINDER_PRIORITY_ATI_ZONE"/>
+			<xs:enumeration value="FIREFINDER_PRIORITY_CFF_ZONE"/>
+			<xs:enumeration value="FIRE_SUPPORT_AREA"/>
+			<xs:enumeration value="FORWARD_ARMING_AND_REFUELING_POINT"/>
+			<xs:enumeration value="FREE_FIRE_AREA"/>
+			<xs:enumeration value="HELICOPTER_LANE"/>
+			<xs:enumeration value="GENERAL_AREA"/>
+			<xs:enumeration value="LAID_FASCAM_SAFETY_ZONE"/>
+			<xs:enumeration value="LANDING_ZONE"/>
+			<xs:enumeration value="LANDING_ZONE_SUPPORT_AREA"/>
+			<xs:enumeration value="LIMITED_ACCESS_POSITION_AREA"/>
+			<xs:enumeration value="MINE_FIELD"/>
+			<xs:enumeration value="NO_FIRE_AREA"/>
+			<xs:enumeration value="OBSTACLE_AREA"/>
+			<xs:enumeration value="PICKUP_ZONE"/>
+			<xs:enumeration value="PLATOON_AREA_HAZARD"/>
+			<xs:enumeration value="POSITION_AREA"/>
+			<xs:enumeration value="RADIOACTIVE_AREA"/>
+			<xs:enumeration value="REAR_BATTLE_AREA"/>
+			<xs:enumeration value="RESTRICTIVE_FIRE_AREA"/>
+			<xs:enumeration value="SAFETY_FIRE_AREA"/>
+			<xs:enumeration value="SHORAD_ZONE"/>
+			<xs:enumeration value="STRONGPOINT_AREA"/>
+			<xs:enumeration value="TARGET_AREA_HAZARD"/>
+			<xs:enumeration value="TARGET_BUILDUP_AREA"/>
+			<xs:enumeration value="TARGET_GEOMETRY"/>
+			<xs:enumeration value="TARGET_VALUE_AREA_GEOMETRY"/>
+			<xs:enumeration value="TARGET_AREA_OF_INTEREST"/>
+			<xs:enumeration value="UNEXPLODED_ORDNANCE_AREA"/>
+			<xs:enumeration value="VULNERABLE_AREA"/>
+			<xs:enumeration value="ZONE_OF_RESPONSIBILITY_BOUNDARY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LatitudeType">
+		<xs:annotation>
+			<xs:documentation>Latitude in decimal degrees.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-90.0000"/>
+			<xs:maxInclusive value="90.0000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LongitudeType">
+		<xs:annotation>
+			<xs:documentation>Longitude in decimal degrees.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-180.0000"/>
+			<xs:maxInclusive value="180.0000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AltitudeType">
+		<xs:annotation>
+			<xs:documentation>Expresses altitude as measured outward from the earth as a positive quantity above mean sea level (msl) in meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="-9999"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UnitIdType">
+		<xs:annotation>
+			<xs:documentation>
+				UnitNames have no measurement units
+				UnitNames have the following parts:
+				10 characters == Division, Corps or EAC
+				7 characters == Brigade or Regiment
+				6 characters == Battalion or TF
+				5 characters == Battery or Company
+				4 characters == Platoon
+				1 character  == Section or Lower
+				Alphanumeric, 1 to 33 characters.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9 /_\-]{1,33}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RelativeIntervalType">
+		<xs:annotation>
+			<xs:documentation>Relative interval in minutes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="-9999"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BattleAreaType">
+		<xs:annotation>
+			<xs:documentation>Defines the type of battle area.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="CLOSE"/>
+			<xs:enumeration value="DEEP"/>
+			<xs:enumeration value="REAR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FuzeModelType">
+		<xs:annotation>
+			<xs:documentation>The model of the fuze.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="INTEGRAL_FUZE"/>
+			<xs:enumeration value="MK399_MOD1"/>
+			<xs:enumeration value="M78"/>
+			<xs:enumeration value="M78A1"/>
+			<xs:enumeration value="M78A1Q"/>
+			<xs:enumeration value="M513"/>
+			<xs:enumeration value="M513A1"/>
+			<xs:enumeration value="M513A2"/>
+			<xs:enumeration value="M513B1"/>
+			<xs:enumeration value="M514"/>
+			<xs:enumeration value="M514A1"/>
+			<xs:enumeration value="M514A3"/>
+			<xs:enumeration value="M514B1"/>
+			<xs:enumeration value="M548"/>
+			<xs:enumeration value="M557"/>
+			<xs:enumeration value="M564"/>
+			<xs:enumeration value="M565"/>
+			<xs:enumeration value="M572"/>
+			<xs:enumeration value="M577"/>
+			<xs:enumeration value="M577A1"/>
+			<xs:enumeration value="M582"/>
+			<xs:enumeration value="M582A1"/>
+			<xs:enumeration value="M728"/>
+			<xs:enumeration value="M732A2"/>
+			<xs:enumeration value="M739"/>
+			<xs:enumeration value="M739A1"/>
+			<xs:enumeration value="M762"/>
+			<xs:enumeration value="M762A1"/>
+			<xs:enumeration value="M767"/>
+			<xs:enumeration value="M767A1"/>
+			<xs:enumeration value="M782"/>
+			<xs:enumeration value="M732"/>
+			<xs:enumeration value="DM211"/>
+			<xs:enumeration value="DM241"/>
+			<xs:enumeration value="DM371"/>
+			<xs:enumeration value="L32A2"/>
+			<xs:enumeration value="L32A3"/>
+			<xs:enumeration value="L32A4"/>
+			<xs:enumeration value="L85A2"/>
+			<xs:enumeration value="L106A1"/>
+			<xs:enumeration value="L106A2"/>
+			<xs:enumeration value="L106A3"/>
+			<xs:enumeration value="L112A1"/>
+			<xs:enumeration value="M51A4"/>
+			<xs:enumeration value="M51A5"/>
+			<xs:enumeration value="M57"/>
+			<xs:enumeration value="M535"/>
+			<xs:enumeration value="M557A1"/>
+			<xs:enumeration value="M557C1"/>
+			<xs:enumeration value="PDM557"/>
+			<xs:enumeration value="INTEGRAL_PD"/>
+			<xs:enumeration value="INTEGRAL_TIME"/>
+			<xs:enumeration value="INTEGRAL_VT"/>
+			<xs:enumeration value="INTEGRAL_CVT"/>
+			<xs:enumeration value="INTEGRAL_DELAY"/>
+			<xs:enumeration value="INTEGRAL_MFF"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MfrFormatType">
+		<xs:annotation>
+			<xs:documentation>The format of the "Mission Fired Report"</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LONG_FORMAT"/>
+			<xs:enumeration value="SHORT_FORMAT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TimeBetweenRoundsType">
+		<xs:annotation>
+			<xs:documentation>Time to wait between rounds fired from the same launcher.  Measured in seconds.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CloudHeightType">
+		<xs:annotation>
+			<xs:documentation>This type represents the height of the clouds above the observer.  This type is measured to the nearest tens of meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9990"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PercentageType">
+		<xs:annotation>
+			<xs:documentation>
+				Level of effects (in percent) to be acheived during a mission
+				Suppress = 3%
+				Neutralize = 10%
+				Destroy = 30%
+				Specified = Any %
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MaterielCategoryType">
+		<xs:annotation>
+			<xs:documentation>The materiel or target type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ADA_HEAVY"/>
+			<xs:enumeration value="ADA_LIGHT"/>
+			<xs:enumeration value="ADA_MEDIUM"/>
+			<xs:enumeration value="ADA_MISSILE"/>
+			<xs:enumeration value="ADA_POSITION_AREA"/>
+			<xs:enumeration value="ADA_UNKNOWN"/>
+			<xs:enumeration value="AMMUNITION_DUMP"/>
+			<xs:enumeration value="CP_BATTALION"/>
+			<xs:enumeration value="CP_DIVISION"/>
+			<xs:enumeration value="CP_FORWARD"/>
+			<xs:enumeration value="CP_REGIMENT"/>
+			<xs:enumeration value="CP_SMALL"/>
+			<xs:enumeration value="CP_UNKNOWN"/>
+			<xs:enumeration value="GUIDANCE_EQUIPMENT"/>
+			<xs:enumeration value="NAVIGATIONAL_AIDS"/>
+			<xs:enumeration value="BRIDGE_FLOATING_PONTOON_FOOTBRIDGE"/>
+			<xs:enumeration value="BRIDGE_FLOATING_PONTOON_VEHICLE"/>
+			<xs:enumeration value="BRIDGE_FOOTBRIDGE_RAFT"/>
+			<xs:enumeration value="BUILDING_CONCRETE"/>
+			<xs:enumeration value="BUILDING_UNKNOWN"/>
+			<xs:enumeration value="BUILDING_MASONRY"/>
+			<xs:enumeration value="BUILDING_SPECIAL_PURPOSE"/>
+			<xs:enumeration value="BUILDING_METAL"/>
+			<xs:enumeration value="BUILDING_WOOD"/>
+			<xs:enumeration value="BUNKER"/>
+			<xs:enumeration value="PILLBOX"/>
+			<xs:enumeration value="ARTILLERY_HEAVY_SELF_PROPELLED"/>
+			<xs:enumeration value="ARTILLERY_LIGHT_SELF_PROPELLED"/>
+			<xs:enumeration value="ARTILLERY_MEDIUM_SELF_PROPELLED"/>
+			<xs:enumeration value="ARTILLERY_TOWED"/>
+			<xs:enumeration value="ARTILLERY_UNKNOWN"/>
+			<xs:enumeration value="MISSILE_HEAVY"/>
+			<xs:enumeration value="MISSILE_LIGHT"/>
+			<xs:enumeration value="MISSILE_MEDIUM"/>
+			<xs:enumeration value="MORTAR_HEAVY"/>
+			<xs:enumeration value="MORTAR_LIGHT"/>
+			<xs:enumeration value="MORTAR_MEDIUM"/>
+			<xs:enumeration value="MORTAR_VERY_HEAVY"/>
+			<xs:enumeration value="MORTAR_UNKNOWN"/>
+			<xs:enumeration value="ROCKET_MISSILE_ANTI_PERSONNEL"/>
+			<xs:enumeration value="ROCKET_MISSILE_ANTI_TANK"/>
+			<xs:enumeration value="ROCKET_MISSILE_POSITION_AREA"/>
+			<xs:enumeration value="ROCKET_MISSILE_UNKNOWN"/>
+			<xs:enumeration value="BOAT"/>
+			<xs:enumeration value="FERRY_BRIDGE"/>
+			<xs:enumeration value="HELICOPTER_ATTACK"/>
+			<xs:enumeration value="HELICOPTER_CARGO"/>
+			<xs:enumeration value="HELICOPTER_OBSERVATION"/>
+			<xs:enumeration value="VEHICLE_HEAVY_WHEEL"/>
+			<xs:enumeration value="VEHICLE_LIGHT_WHEEL"/>
+			<xs:enumeration value="VEHICLE_UTILITY"/>
+			<xs:enumeration value="AIRCRAFT"/>
+			<xs:enumeration value="DEFILE"/>
+			<xs:enumeration value="HILL"/>
+			<xs:enumeration value="LANDING_STRIP"/>
+			<xs:enumeration value="RAILROAD_SEGMENT"/>
+			<xs:enumeration value="ROAD_JUNCTION"/>
+			<xs:enumeration value="ROAD_SEGMENT"/>
+			<xs:enumeration value="TERRAIN_FEATURE"/>
+			<xs:enumeration value="BRIDGE_VEHICLE_CONCRETE"/>
+			<xs:enumeration value="BRIDGE_VEHICLE_WOOD"/>
+			<xs:enumeration value="BRIDGE_VEHICLE_STEEL"/>
+			<xs:enumeration value="BRIDGE_SITE"/>
+			<xs:enumeration value="ANTI_TANK_GUN"/>
+			<xs:enumeration value="ARMORED_PERSONNEL_CARRIER"/>
+			<xs:enumeration value="ARMORED_VEHICLE"/>
+			<xs:enumeration value="ASSEMBLY_AREA_MECHANIZED_TROOPS"/>
+			<xs:enumeration value="ASSEMBLY_AREA_TROOPS"/>
+			<xs:enumeration value="ASSEMBLY_AREA_TROOPS_AND_ARMOR"/>
+			<xs:enumeration value="ASSEMBLY_AREA_TROOPS_AND_VEHICLES"/>
+			<xs:enumeration value="ASSEMBLY_AREA_UNKNOWN"/>
+			<xs:enumeration value="INFANTRY"/>
+			<xs:enumeration value="MACHINE_GUN_HEAVY"/>
+			<xs:enumeration value="MACHINE_GUN_LIGHT"/>
+			<xs:enumeration value="OBSERVATION_POST"/>
+			<xs:enumeration value="PATROL"/>
+			<xs:enumeration value="RECOILLESS_RIFLE"/>
+			<xs:enumeration value="TANK_HEAVY"/>
+			<xs:enumeration value="TANK_LIGHT"/>
+			<xs:enumeration value="TANK_MEDIUM"/>
+			<xs:enumeration value="WORK_PARTY"/>
+			<xs:enumeration value="WEAPON_CREWSERVED"/>
+			<xs:enumeration value="CLASS_I_SUPPLY_DUMP"/>
+			<xs:enumeration value="CLASS_II_SUPPLY_DUMP"/>
+			<xs:enumeration value="SUPPLY_DUMP_UNKNOWN"/>
+			<xs:enumeration value="CHEMICAL_PRODUCTS"/>
+			<xs:enumeration value="PETROLEUM_PRODUCTS_COMPLEX"/>
+			<xs:enumeration value="LOUDSPEAKER_EQUIPMENT"/>
+			<xs:enumeration value="ELECTRONIC_WARFARE_EQUIPMENT"/>
+			<xs:enumeration value="COUNTER_BATTERY_RADAR"/>
+			<xs:enumeration value="COUNTER_MORTAR_RADAR"/>
+			<xs:enumeration value="DIRECTION_FINDING_RADAR"/>
+			<xs:enumeration value="GROUND_SURVEILLANCE_RADAR"/>
+			<xs:enumeration value="SEARCH_LIGHT"/>
+			<xs:enumeration value="RECONNAISSANCE_VEHICLE"/>
+			<xs:enumeration value="USER_1"/>
+			<xs:enumeration value="USER_2"/>
+			<xs:enumeration value="USER_3"/>
+			<xs:enumeration value="USER_4"/>
+			<xs:enumeration value="USER_5"/>
+			<xs:enumeration value="USER_6"/>
+			<xs:enumeration value="USER_7"/>
+			<xs:enumeration value="USER_8"/>
+			<xs:enumeration value="USER_9"/>
+			<xs:enumeration value="USER_10"/>
+			<xs:enumeration value="USER_11"/>
+			<xs:enumeration value="USER_12"/>
+			<xs:enumeration value="USER_13"/>
+			<xs:enumeration value="USER_14"/>
+			<xs:enumeration value="USER_15"/>
+			<xs:enumeration value="USER_16"/>
+			<xs:enumeration value="USER_17"/>
+			<xs:enumeration value="USER_18"/>
+			<xs:enumeration value="USER_19"/>
+			<xs:enumeration value="USER_20"/>
+			<xs:enumeration value="USER_21"/>
+			<xs:enumeration value="USER_22"/>
+			<xs:enumeration value="USER_23"/>
+			<xs:enumeration value="USER_24"/>
+			<xs:enumeration value="USER_25"/>
+			<xs:enumeration value="USER_26"/>
+			<xs:enumeration value="USER_27"/>
+			<xs:enumeration value="USER_28"/>
+			<xs:enumeration value="USER_29"/>
+			<xs:enumeration value="USER_30"/>
+			<xs:enumeration value="USER_31"/>
+			<xs:enumeration value="USER_32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EngagingFsSystemType">
+		<xs:annotation>
+			<xs:documentation>Engaging fire support system type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="FA_CANNON"/>
+			<xs:enumeration value="RKT_MSL"/>
+			<xs:enumeration value="MTR"/>
+			<xs:enumeration value="AIR"/>
+			<xs:enumeration value="AVIATION"/>
+			<xs:enumeration value="NAVAL_GUN"/>
+			<xs:enumeration value="NAVAL_LAND_ATTACK_MSL"/>
+			<xs:enumeration value="NAVAL_CRUISE_MSL"/>
+			<xs:enumeration value="MASS_ALL_SYSTEMS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DispersalPatternType">
+		<xs:annotation>
+			<xs:documentation>Dispersal pattern for munitions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SensorTargetLocationErrorType">
+		<xs:annotation>
+			<xs:documentation>Target location error from the sensor.  Measured to the nearest meter.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumberOfRoundsType">
+		<xs:annotation>
+			<xs:documentation>The number of round specified for a mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CaliberType">
+		<xs:annotation>
+			<xs:documentation>The caliber of the weapon.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="MM_105"/>
+			<xs:enumeration value="MM_155"/>
+			<xs:enumeration value="MM_203"/>
+			<xs:enumeration value="MM_60"/>
+			<xs:enumeration value="MM_81"/>
+			<xs:enumeration value="MM_120"/>
+			<xs:enumeration value="MLRS"/>
+			<xs:enumeration value="CALIBER_5_54"/>
+			<xs:enumeration value="CALIBER_5_62"/>
+			<xs:enumeration value="VLS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RadioCallSignType">
+		<xs:annotation>
+			<xs:documentation>Radio Call Sign</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FascamProjectileType">
+		<xs:annotation>
+			<xs:documentation>The projectile used in a FASCAM mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ADAM"/>
+			<xs:enumeration value="RAAMS"/>
+			<xs:enumeration value="ADAM_RAAMS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="URNListType">
+		<xs:sequence>
+			<xs:element name="UnitReferenceNumber" type="UnitReferenceNumberType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocationType">
+		<xs:annotation>
+			<xs:documentation>A three dimensional geographic point</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="latitude" type="LatitudeType"/>
+			<xs:element name="longitude" type="LongitudeType"/>
+			<xs:element name="altitude" type="AltitudeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LocationListType">
+		<xs:sequence>
+			<xs:element name="Location" type="LocationType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CaliberListType">
+		<xs:sequence>
+			<xs:element name="Caliber" type="CaliberType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FsSystemListType">
+		<xs:sequence>
+			<xs:element name="FsSystem" type="FsSystemType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FuzeCategoryListType">
+		<xs:sequence>
+			<xs:element name="FuzeCategory" type="FuzeCategoryType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ProjectileCategoryListType">
+		<xs:sequence>
+			<xs:element name="ProjectileCategory" type="ProjectileCategoryType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CountryOfOriginListType">
+		<xs:sequence>
+			<xs:element name="CountryOfOrigin" type="CountryOfOriginType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="AttitudeType">
+		<xs:annotation>
+			<xs:documentation>Attitude of the target in mils.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="6399"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AzimuthType">
+		<xs:annotation>
+			<xs:documentation>
+				The horizontal angular distance from a reference direction, usually
+				the nothern point of the horizon, to the point where a vertical circle through a celestial
+				body intersects the horizon, usually measured clockwise.  Measured in mils.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="6399"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CircleRadiusType">
+		<xs:annotation>
+			<xs:documentation>Radius of the target circle in meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LengthType">
+		<xs:annotation>
+			<xs:documentation>Length of the target in meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TargetWidthType">
+		<xs:annotation>
+			<xs:documentation>Width of the target in meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="PointTargetDataType">
+		<xs:annotation>
+			<xs:documentation>Area data for a point shaped target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<xs:complexType name="CircleTargetDataType">
+		<xs:annotation>
+			<xs:documentation>Area data for a circle shaped target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="radius" type="CircleRadiusType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LineTargetDataType">
+		<xs:annotation>
+			<xs:documentation>Area data for a line shaped target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="length" type="LengthType"/>
+			<xs:element name="attitude" type="AttitudeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RectangleTargetDataType">
+		<xs:annotation>
+			<xs:documentation>Area data for a rectangle shaped target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="length" type="LengthType"/>
+			<xs:element name="width" type="TargetWidthType"/>
+			<xs:element name="attitude" type="AttitudeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TargetAreaType">
+		<xs:annotation>
+			<xs:documentation>Area data for a target.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="pointData" type="PointTargetDataType"/>
+			<xs:element name="circleData" type="CircleTargetDataType"/>
+			<xs:element name="rectangleData" type="RectangleTargetDataType"/>
+			<xs:element name="lineData" type="LineTargetDataType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="EffectsDataType">
+		<xs:annotation>
+			<xs:documentation>
+				This type is used to specify the level of effects to be achieved during a mission.
+				A level of Suppress = 3%, a level of  Neutralize = 10%,  a level of Destroy = 30%,
+				and a level of Specified = any %
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="effectsLevel" type="EffectsLevelType" minOccurs="0"/>
+			<xs:element name="effectsPercentage" type="PercentageType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StatusType">
+		<xs:annotation>
+			<xs:documentation>Used to indicate the status of a request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="statusCode" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>A status code  of a request</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusMessage" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A human readable string describing the status_code.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FaultType">
+	   <xs:annotation>
+	      <xs:documentation>Used to indicate the failure of a request.
+	      </xs:documentation>
+	   </xs:annotation>
+	   <xs:sequence>
+	      <xs:element name="status" type="StatusType">
+		 <xs:annotation>
+		    <xs:documentation>Failure code and message.</xs:documentation>
+		 </xs:annotation>
+	      </xs:element>
+	      <xs:element name="errorDetails" type="xs:string" minOccurs="0">
+		 <xs:annotation>
+		    <xs:documentation>
+		      A human readable string giving details of the error.
+		    </xs:documentation>
+		 </xs:annotation>
+	      </xs:element>
+	   </xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="status" type="StatusType"/>
+	<xs:element name="fault" type="FaultType"/>
+</xs:schema>

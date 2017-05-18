@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema 
+        targetNamespace="http://www.sun.com/schema/spidermarkexpress/sm-inv" 
+        xmlns="http://www.sun.com/schema/spidermarkexpress/sm-inv" 
+        xmlns:cct="urn:oasis:names:tc:ubl:CommonLeafTypes:1.0:0.65" 
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+        xmlns:cmn="http://www.sun.com/schema/spidermarkexpress/sm-common" 
+        xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0" >
+
+        <!-- import for core spidermark express xml schema datatypes -->
+        <xsd:import namespace="urn:oasis:names:tc:ubl:CommonLeafTypes:1.0:0.65" schemaLocation="CoreComponentTypes.xsd"/>
+        <!-- import for common spidermark express xml schema datatypes -->
+        <xsd:import namespace="http://www.sun.com/schema/spidermarkexpress/sm-common" schemaLocation="sm-common.xsd"/>
+
+            <xsd:annotation>
+             <xsd:documentation xml:lang="en">
+              Spidermark Express Invoice XML Schema
+             </xsd:documentation>
+
+             <xsd:appinfo>
+                <jxb:schemaBindings>
+                    <jxb:package name="com.sun.xmltest.genjaxb"/>
+                </jxb:schemaBindings>
+             </xsd:appinfo>
+            </xsd:annotation>
+
+
+<xsd:element name="invoice" type="InvoiceType"/>
+
+<xsd:complexType name="InvoiceType">
+        <xsd:annotation>
+                <xsd:documentation>
+                        Spidermark Express Invoice
+                </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+                <xsd:element name="Header" type="InvoiceHeaderType"/>
+                <xsd:element name="LineItem" type="InvoiceLineItemType" minOccurs="1" maxOccurs="unbounded"/>
+                <xsd:element name="Summary" type="InvoiceSummaryType"/>
+        </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="InvoiceHeaderType">
+        <xsd:annotation>
+                <xsd:documentation>
+                        Header of an Invoice
+                </xsd:documentation>
+        </xsd:annotation>
+
+        <xsd:sequence>
+                <xsd:element name="IssueDateTime" type="cct:DateTimeType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        a date (and potentially time) stamp denoting when the Invoice was issued.
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="Identifier" type="cct:IdentifierType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        The Identifier element is a unique number assigned to the Invoice - not used by SUT
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="POIdentifier" type="cct:IdentifierType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        Identity of the Purchase Order related to this invoice
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="CurrencyCode" type="cct:CodeType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the default currency of the Invoice - NOT USED
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="Language" type="cmn:LanguageType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        identifies the language of the Invoice - NOT USED
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="BuyerParty" type="cmn:PartyType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        buyer party of the order - from PO.
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="SellerParty" type="cmn:PartyType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        Seller party of the order - from PO.
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="ConsigneeParty" type="cmn:PartyType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        party receiving delivery of articles - NOT USED
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="DespatchParty" type="cmn:PartyType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        Party shipping the articles - NOT USED
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="Shipment" type="cmn:ShipmentType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        provides information on the movement of the goods including carrier, equipment and
+service level instructions - randomly generated by emulator
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="PaymentMeans" type="cmn:PaymentMeansType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        information directly relating to the means of payment for the whole invoice, I.e.
+how the debt incurred is to be paid.
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="LineItemCountValue" type="cct:NumericType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the number of line items in the order - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+        </xsd:sequence>
+</xsd:complexType>
+
+
+
+<xsd:complexType name="InvoiceLineItemType">
+        <xsd:annotation>
+                <xsd:documentation>
+                        information directly relating to a line item of a transaction. It identifies the item but only
+includes details about the item that are pertinent  to one occurrence on a line item, e.g. quantity etc.
+                </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+                <xsd:element name="LineID" type="cct:IdentifierType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the identification given to a line item
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="Item" type="cmn:ItemType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        information directly relating to an item (article, product, goods item or service)
+as is necessary for specifying the item on a line item of a transaction.
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="OrderStatus" type="cct:CodeType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        identifies the shipping status of the item, i.e. shipped, back-ordered,
+out-of-stock etc. - "shipped" static value
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+
+                <xsd:element name="Pricing" type="cmn:PricingType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        information directly relating to the pricing of a line item - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="PricingVariation" type="cmn:PricingVariationType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the additional service, promotion, discounts, or charges (e.g. shipping and
+handling) for this lineitem. These may include goods and shipping charges - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="ItemTax" type="cct:AmountType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        information directly relating to the tax that is applicable to a line item - from
+PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="TotalAmount" type="cct:AmountType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the monetary amount that is the total for the line item, including any pricing
+variation (allowances, charges or discounts) and tax - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+        </xsd:sequence>
+</xsd:complexType>
+
+
+<xsd:complexType name="InvoiceSummaryType">
+        <xsd:annotation>
+                <xsd:documentation>
+                        information directly relating to the summary part of the order.
+                </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+                <xsd:element name="LineItemCountValue" type="cct:NumericType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the number of line items in the order - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="SubtotalAmount" type="cct:AmountType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the price for the entire Invoice before shipping handling and taxes - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="PricingVariation" type="cmn:PricingVariationType" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the additional service, promotion, discounts, or charges (e.g. shipping and
+handling) for the whole invoice. These may include goods and shipping charges - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="TotalTax" type="cmn:TaxType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the total tax amount for the Invoice - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="PriceAmount" type="cct:AmountType">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        the total price for the entire Invoice - from PO
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+
+                <xsd:element name="PackingSlipIdentifier" type="cct:IdentifierType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        Packing identifier - randomly generated by emulator
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+                <xsd:element name="SummaryNote" type="cmn:NoteType" minOccurs="0">
+                        <xsd:annotation>
+                                <xsd:documentation>
+                                        contains any free form text for the Invoice Summary. This element may contain notes
+or any other similar information that is not contained explicitly in the another structure. You should not assume that the
+receiving application is capable of doing more than storing and/or displaying this information - NOT USED
+                                </xsd:documentation>
+                        </xsd:annotation>
+                </xsd:element>
+        </xsd:sequence>
+</xsd:complexType>
+
+</xsd:schema>

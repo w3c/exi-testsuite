@@ -1,0 +1,28 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - AT(xsi:nil) event type in strict schema mode ">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductionsStrict"/>
+
+    <testCase name="schemaInformed.undeclared.xsiNilStrict-01">
+        <param name="testDescription"  
+          value="AT(xsi:nil) is available in strict schema mode only when the 
+                 element has been declared with its nillable property being 'true'."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilStrict-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    </testCase>
+
+    <!-- moved this test case to xsiNilDecodeOnly.xml so it runs only in bitAligned mode
+    <testCase name="schemaInformed.undeclared.xsiNilStrict-03">
+        <param name="testDescription" value="Use of xsi:nil attribute with value 'false'"/>
+        <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilStrict-03.xml" />
+        <param name="org.w3c.exi.ttf.encodedFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilStrict-03.xml.exi" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/undeclaredProductions/nillable-01.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />
+    </testCase>
+    -->
+
+</testCaseGroup>

@@ -1,0 +1,9 @@
+<!-- =================================================================== -->
+<!-- Use of xsi:nil in a full-fledged complex type grammar.              -->
+<!-- Use AT(goo:*) right after AT(xsi:nil) was used. The attribute       -->
+<!-- foo:aA matches AT(urn:goo).                                         -->
+<!-- =================================================================== -->
+<foo:I2 xmlns:foo='urn:foo' xmlns:goo='urn:goo' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  xsi:nil="true" goo:aA="" foo:aI="">
+</foo:I2>

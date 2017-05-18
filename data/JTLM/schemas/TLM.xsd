@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<!-- The US Government's license rights for this deliverable are listed in -->
+<!-- DFARS 252.227-7013 Rights in Technical Data - Noncommercial Items -->
+<!-- (Nov 1995) (Alternate 1 June 1995) and DFARS 252.227-7014 Rights in -->
+<!-- Noncommercial Computer Software and Noncommercial Computer Software -->
+<!-- Documentation (June 1995). -->
+<!-- COMPANY  : Raytheon Company -->
+<!-- COPYRIGHT: Copyright (c) 2005 Raytheon Company -->
+<!-- UNPUBLISHED WORK -->
+<!-- ALL RIGHTS RESERVED -->
+<!-- PROJECT  : Target List Management -->
+<!-- CONTRACT : DAAB07-99-C-E003 -->
+<!-- -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Sharon Blotkamp (Raytheon Company) -->
+<!-- mtwill JBM-754, 22Mar05, changed targetNamespace, added jtlm to path -->
+<!-- mtwill JRAE-0001, 27Jun05, change xs:all tag to xs:sequence around -->
+<!-- point and detail objects in CotEventType so XMLSpy will validate -->
+<!-- -->
+<!-- mtwill CO-JRAE04 - 26Apr06 - jrae06 exercise, remove pattern restrictions on URIType -->
+<!-- mtwill CO-JRAE04 - 26Apr06 - jrae06 exercise, imported Cot event schema -->
+<!-- mtwill CO-JRAE04 - 27Apr06 - jrae06 exercise, created type wrapper for new subscriptionId element -->
+<!-- mtwill CO-JRAE04 - 27Apr06 - jrae06 exercise, made subscriptionId element in -->
+<!--                             TLMSubscriberEventType into and array -->
+<!--                             There is the possibility that different subscriptions -->
+<!--                             resulted in matches for different targets -->
+<!--                             subscriptionIds[n] corresponds to targetData[n] etc. -->
+<!--  -->
+<xs:schema targetNamespace="http://www.firesupport.com/schema/jtlm" 
+           xmlns:tlm="http://www.firesupport.com/schema/jtlm" 
+           xmlns:target="http://www.firesupport.com/schema/jtlm/target" 
+           xmlns:common="http://www.firesupport.com/schema/jtlm/common" 
+           xmlns:cot="http://www.firesupport.com/schema/Cursor-On-Target" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="Draft">
+
+        <xs:import namespace="http://www.firesupport.com/schema/Cursor-On-Target" 
+                   schemaLocation="Event.xsd"/>
+
+	<xs:import namespace="http://www.firesupport.com/schema/jtlm/common" schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://www.firesupport.com/schema/jtlm/target" schemaLocation="Target.xsd"/>
+
+	<!--Simple Types-->
+	<xs:simpleType name="ActivityAttributeType">
+		<xs:annotation>
+			<xs:documentation>Activity attributes for target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ACTIVE_TARGET"/>
+			<xs:enumeration value="INACTIVE_TARGET"/>
+			<xs:enumeration value="PLANNED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!---->
+	<xs:simpleType name="AltitudeSystemType">
+		<xs:annotation>
+			<xs:documentation>An enumerated type to indicate the type of altitude contained in the altitude field:  Mean Sea Level, Height Above Ellipsoid, or Above Ground Level.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MSL"/>
+			<xs:enumeration value="HAE"/>
+			<xs:enumeration value="AGL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="PriorityAttributeType">
+		<xs:annotation>
+			<xs:documentation>Priority attributes for target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HIGH_PRIORITY_TARGET"/>
+			<xs:enumeration value="NORMAL_PRIORITY_TARGET"/>
+			<xs:enumeration value="LOW_PRIORITY_TARGET"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!---->
+	<xs:simpleType name="SystemHostType">
+		<xs:annotation>
+			<xs:documentation>Specific host identification.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<!---->
+	<xs:simpleType name="TargetCountType">
+		<xs:annotation>
+			<xs:documentation>The number of targets contained in the list.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetInfoProviderSystemType">
+		<xs:annotation>
+			<xs:documentation>The system who provided the target data to TLM.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AFATDS"/>
+			<xs:enumeration value="TBMCS"/>
+			<xs:enumeration value="GCCS-M"/>
+			<xs:enumeration value="JTT"/>
+			<xs:enumeration value="TSA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!---->
+	<xs:simpleType name="TargetRestrictionReasonType">
+		<xs:annotation>
+			<xs:documentation>Identifies any reasons for restrictions on the target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetRestrictionType">
+		<xs:annotation>
+			<xs:documentation>Identifies any restrictions on the target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetStatusType">
+		<xs:annotation>
+			<xs:documentation>Type of Target List.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Approved"/>
+			<xs:enumeration value="Validated"/>
+			<xs:enumeration value="Submitted"/>
+			<xs:enumeration value="Unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<!-- mtwill test for TLMService messages  -->
+	<xs:simpleType name="TimeCriticalityType">
+		<xs:annotation>
+			<xs:documentation>Time Criticality attributes for target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TIME_SENSITIVE_TARGET"/>
+			<xs:enumeration value="NON_TIME_SENSITIVE_TARGET"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!---->
+	<xs:simpleType name="TypeOfTargetListType">
+		<xs:annotation>
+			<xs:documentation>Type of Target List.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NO_STRIKE"/>
+			<xs:enumeration value="TIME_SENSITIVE"/>
+			<xs:enumeration value="RESTRICTED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<!--MJW- Created the regular expression for hte URIType-->
+	<xs:simpleType name="URIType">
+		<xs:annotation>
+			<xs:documentation>Unique reference in the format: http://host/sytem/targetDataPath where the host is either an IP address with port or hostname, the system is one of the support systems found in the TargetInfoProviderSystemType and the targetDataPath is the path to the location on the POR that has the data for the target passed.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+<!-- mtwill 26Apr06 - jrae06 exercise, remove pattern restrictions on URIType -->
+<!-- xs:pattern value="http://(((\d{1,3}.){3}\d{1,3}:\d{1,4})|(((\w|\d)+.)*(\w|\d)+))/(AFATDS|TBMCS|GCCS-M|JTT|TSA)/[^,:$+=?;@&amp;\[\]]"/ -->
+		</xs:restriction>
+	</xs:simpleType>
+	<!---->
+
+	<!-- mtwill 21Apr06 - added wrapper for subscription identifier string since we -->
+	<!--                - may want to add constraints to string at some point. -->
+	<xs:simpleType name="SubscriptionIdType">
+		<xs:annotation>
+		   <xs:documentation>Unique identifier for a subscription instance</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+
+	<!--Elements-->
+	<xs:element name="MissionState" type="target:MissionStateType">
+		<xs:annotation>
+			<xs:documentation>The root mission state element of the TLM Schema.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--  -->
+	<xs:element name="TargetIdentification" type="tlm:TLMTargetIdentificationType">
+		<xs:annotation>
+			<xs:documentation>The root target identification element of the TLM Schema.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--  -->
+	<!--MJW- Added for Subscriber Event Notifications-->
+	<!-- mtwill JBM-754, 22Dec04 - added target data array -->
+        <!-- GTURNER  added subscription id -->
+        <!-- mtwill 27Apr06 made subscriptionId element into and array -->
+        <!--                There is the possibility that different subscriptions -->
+        <!--                resulted in matches for different targets -->
+        <!--                subscriptionIds[n] corresponds to targetData[n] etc. -->
+	<!--  -->
+	<xs:complexType name="TLMSubscriberEventType">
+		<xs:sequence>
+			<xs:element name="tlmEvent" type="tlm:TLMEventType"/>
+
+			<!-- xs:element name="subscriptionId" type="tlm:SubscriptionIdType"/ -->
+	                <xs:element name="subscriptionIds" 
+	                            type="tlm:SubscriptionIdType" 
+			            minOccurs="0" maxOccurs="unbounded"/>
+
+	                <xs:element name="targetIds" 
+	                            type="tlm:TLMTargetIdentificationType" 
+			            minOccurs="0" maxOccurs="unbounded"/>
+
+	                <xs:element name="targetData" type="tlm:COTTargetDataType"
+	                            minOccurs="0" maxOccurs="unbounded"/>
+
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<!--MJW- Added for use in subscriber event notifications.-->
+	<xs:simpleType name="TLMEventType">
+		<xs:annotation>
+			<xs:documentation>Enumeration for subscriber event notifications.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="PUBLISH"/>
+			<xs:enumeration value="UPDATE"/>
+			<xs:enumeration value="DELETE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!---->
+	<xs:element name="TargetSummary" type="tlm:TargetSummaryDataType">
+		<xs:annotation>
+			<xs:documentation>The root target summary element of the TLM Schema.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--  -->
+	<xs:element name="TLMTarget" type="tlm:TLMTargetType">
+		<xs:annotation>
+			<xs:documentation>The root target element of the TLM Schema.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--  -->
+	<xs:element name="TLMTypeOfTarget" type="common:MaterielCategoryType">
+		<xs:annotation>
+			<xs:documentation>The root type of a target.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--  -->
+	<xs:element name="URI" type="tlm:URIType">
+		<xs:annotation>
+			<xs:documentation/>
+		</xs:annotation>
+	</xs:element>
+	<!--  -->
+	<!--Complex Types-->
+	<xs:complexType name="AreaOfInterestType">
+		<xs:annotation>
+			<xs:documentation>Use to define an area of interest for filter attributes.  Latitude and Longitude define the center of the area.  Circle or Rectangle choice data define the shape of the area.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="latitude" type="common:LatitudeType"/>
+			<xs:element name="longitude" type="common:LongitudeType"/>
+<!-- jcs : JTM client sometimes include a nilable rectangle with the circle data -->
+<!--			<xs:choice> -->
+				<xs:element name="circleData" type="common:CircleTargetDataType" minOccurs="0" nillable="true"/>
+				<xs:element name="rectangleData" type="common:RectangleTargetDataType" minOccurs="0" nillable="true"/>
+<!--			</xs:choice> -->
+		</xs:sequence>
+	</xs:complexType>
+	<!---->
+	<!--MJW- Added Target ID to the Attribute Type-->
+	<xs:complexType name="TargetAttributeType">
+		<xs:annotation>
+			<xs:documentation>Target Attributes to consider when filtering targets.     </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="globalSearch" type="xs:boolean"/>
+			<xs:element name="systemAttributes" type="tlm:TargetInfoProviderSystemType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="areaOfInterestAttributes" type="tlm:AreaOfInterestType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="targetTypeAttributes" type="common:MaterielCategoryType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="timeCriticalityAttributes" type="tlm:TimeCriticalityType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="activityAttributes" type="tlm:ActivityAttributeType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="priorityAttributes" type="tlm:PriorityAttributeType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="systemHost" type="tlm:SystemHostType" minOccurs="0" maxOccurs="10"/>
+			<xs:element name="targetId" type="tlm:TLMTargetIdentificationType" minOccurs="0" maxOccurs="10"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!---->
+	<!-- mtwill JBM-754, 22Dec04 - added PercentageType element -->
+	<!-- mtwill JBM-754, 16Feb05 - added TimeCriticalityType element -->
+	<!-- mtwill JBM-754, 16Feb05 - added ActivityAttributeType element -->
+	<!-- mtwill JBM-754, 16Feb05 - added PriorityAttributeType element -->
+	<!--MJW- Added timeAcquired to TargetBasicDataType-->
+	<xs:complexType name="TargetBasicDataType">
+		<xs:annotation>
+			<xs:documentation>This type contains basic data about the target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetLocation" type="tlm:TLMTargetLocationType"/>
+			<xs:element name="targetarea" type="common:TargetAreaType"/>
+			<xs:element name="targetType" type="common:MaterielCategoryType"/>
+			<xs:element name="targetTimeCriticality" type="tlm:TimeCriticalityType"/>
+			<xs:element name="targetActivity" type="tlm:ActivityAttributeType"/>
+			<xs:element name="targetPriority" type="tlm:PriorityAttributeType"/>
+			<xs:element name="targetStrength" type="target:TargetStrengthType"/>
+			<xs:element name="targetState" type="target:TargetDispositionType"/>
+			<xs:element name="targetDamagePercent" type="common:PercentageType"/>
+			<xs:element name="targetInfoSourceSystem" type="common:UnitReferenceNumberType"/>
+			<xs:element name="timeAcquired" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetExtendedDataType">
+		<xs:annotation>
+			<xs:documentation>This type contains information about the use of the target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="tlmTargetCategory" type="target:AirImmediatePreplannedType" minOccurs="0"/>
+			<xs:element name="tlmTargetStatus" type="tlm:TargetStatusType" minOccurs="0"/>
+			<xs:element name="targetInfoProviderSystem" type="tlm:TargetInfoProviderSystemType" minOccurs="0"/>
+			<xs:element name="noEarlierThanTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="noLaterThanTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="targetRestriction" type="tlm:TargetRestrictionType" minOccurs="0"/>
+			<xs:element name="targetRestrictionReason" type="tlm:TargetRestrictionReasonType" minOccurs="0"/>
+			<xs:element name="sensorTargetLocationError" type="common:SensorTargetLocationErrorType" minOccurs="0"/>
+			<xs:element name="reportingSensorKind" type="target:TargetReportingSensorType" minOccurs="0"/>
+			<xs:element name="targetPermanence" type="target:TargetPermanenceType" minOccurs="0"/>
+			<xs:element name="targetProtectionLevel" type="target:AirDegreeOfProtectionType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetIdentificationListType">
+		<xs:annotation>
+			<xs:documentation>List of Target Identifiers.  When this list is used as an operations response type then the 'status' element's value is used to indicate that the data  returned from the operation is valid, ie: zero(0) = pass. The 'count' element is used to indicate the length of the data.  The 'value' element is the array of data objects.   </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="status" type="common:StatusType"/>
+			<xs:element name="count" type="tlm:TargetCountType"/>
+			<xs:element name="tlmTargetIds" type="tlm:TLMTargetIdentificationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="TargetListType">
+		<xs:annotation>
+			<xs:documentation>List of Targets.  The target count contains a number that indicates how many targets are in this list.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetCount" type="tlm:TargetCountType"/>
+			<xs:element name="targetData" type="tlm:TLMTargetType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetSubscriptionType">
+		<xs:annotation>
+			<xs:documentation>Use to subscribe to list of targets by attribute.  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+                        <!-- -->
+                        <!-- GTURNER  added subscriptionId element -->
+                        <!-- mtwill 27Apr06 created type wrapper for subscriptionId element -->
+                        <!-- -->
+			<xs:element name="subscriptionId" type="tlm:SubscriptionIdType" minOccurs="0"/>
+			<xs:element name="subscriberURI" type="tlm:URIType"/>
+			<xs:element name="filterAttributes" type="tlm:TargetAttributeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!---->
+	<xs:complexType name="TargetSubscriptionListType">
+		<xs:annotation>
+			<xs:documentation>List of Target Subscriptions.
+		  </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+		  <xs:element name="subscriptionData" 
+		              type="tlm:TargetSubscriptionType" 
+			      maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	
+	<xs:complexType name="TargetSummaryDataType">
+		<xs:annotation>
+			<xs:documentation>All data about the target except for the Target Identification.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetBasicData" type="tlm:TargetBasicDataType"/>
+			<xs:element name="targetExtendedData" type="tlm:TargetExtendedDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!---->
+	<xs:complexType name="TLMTargetIdentificationType">
+		<xs:annotation>
+			<xs:documentation>This type contains identification fields to support the various methods of identifying a target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="URI" type="tlm:URIType"/>
+			<xs:element name="targetNumber" type="common:TargetNumberType" minOccurs="0"/>
+			<xs:element name="abcaNumber" type="common:TargetAbcaNumberType" minOccurs="0"/>
+			<xs:element name="beNumber" type="common:TargetBeNumberType" minOccurs="0"/>
+			<xs:element name="uicNumber" type="common:TargetMidbEnemyUnitIdType" minOccurs="0"/>
+			<xs:element name="oSuffix" type="common:TargetOSuffixType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:element name="TLMTargetList" type="tlm:TargetListType">
+		<xs:annotation>
+			<xs:documentation>The root Target List element of the TLM Schema.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<!--  -->
+	<!--MJW- Changed coordinateSystem to mapDatum in TLMTargetLocationType-->
+	<xs:complexType name="TLMTargetLocationType">
+		<xs:annotation>
+			<xs:documentation>Specifies a target location.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="latitude" type="common:LatitudeType"/>
+			<xs:element name="longitude" type="common:LongitudeType"/>
+			<xs:element name="altitude" type="common:AltitudeType"/>
+			<xs:element name="altitudeSystemType" type="tlm:AltitudeSystemType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TLMTargetType">
+		<xs:annotation>
+			<xs:documentation>The root TLM target data type.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetId" type="tlm:TLMTargetIdentificationType"/>
+			<xs:element name="targetSummaryData" type="tlm:TargetSummaryDataType"/>
+		</xs:sequence>
+	</xs:complexType>
+  <!-- GTURNER  removed CoT declarations, replaced with usage of xsd:include, used ref to global Cot event -->
+	<xs:complexType name="COTTargetDataType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="tlmTarget" type="tlm:TLMTargetType" 
+			                         minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetDataListType">
+		<xs:sequence>
+			<xs:element name="cotTargetDataList" 
+			            type="tlm:COTTargetDataType" 
+				    maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetIdStatusType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="tlmTargetId" 
+			        type="tlm:TLMTargetIdentificationType" 
+			        minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetIdStatusListType">
+		<xs:sequence>
+			<xs:element name="status" type="common:StatusType"/>
+			<xs:element name="COTTargetIdStatusList" 
+			            type="tlm:COTTargetIdStatusType" 
+			        minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetIdType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="tlmTargetId" 
+			        type="tlm:TLMTargetIdentificationType" 
+			    minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetIdListType">
+		<xs:sequence>
+			<xs:element name="cotTargetIds" 
+			            type="tlm:COTTargetIdType" 
+			        maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetAttributeType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="targetAttributes" 
+			        type="tlm:TargetAttributeType" 
+			        minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetSummaryType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="targetSummaryData" 
+			        type="tlm:TargetSummaryDataType" 
+			        minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTTargetSubscriptionType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="targetSubscription" 
+			        type="tlm:TargetSubscriptionType" 
+			        minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTStatusType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="status" type="common:StatusType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<xs:complexType name="COTSubscriberEventType">
+		<xs:sequence>
+			<!-- xs:element ref="tlm:event"/ -->
+			<xs:element name="event" type="cot:event"/>
+			<xs:element name="subscriberEvent" 
+			        type="tlm:TLMSubscriberEventType" 
+			        minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+</xs:schema>

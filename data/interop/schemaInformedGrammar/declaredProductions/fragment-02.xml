@@ -1,0 +1,12 @@
+<!-- =================================================================== -->
+<!-- Tests the production order in fragment grammars. 1st part of event  -->
+<!-- codes should take only 3 (instead of 4) bits when neither pis nor   -->
+<!-- comments are preserved.                                             -->
+<!-- =================================================================== -->
+<None xmlns='urn:foo'/><!-- SE(*) with event code 6 -->
+<foo:C xmlns:foo="urn:foo" /><!-- SE(foo:C) with event code 3 -->
+<goo:C xmlns:goo="urn:goo" /><!-- SE(goo:C) with event code 4 -->
+<foo:D xmlns:foo="urn:foo" /><!-- SE(foo:D) with event code 5 -->
+<goo:A xmlns:goo="urn:goo" /><!-- SE(goo:A) with event code 0 -->
+<aoo:B xmlns:aoo="urn:aoo" /><!-- SE(aoo:B) with event code 1 -->
+<aoo:C xmlns:aoo="urn:aoo" /><!-- SE(aoo:C) with event code 2 -->

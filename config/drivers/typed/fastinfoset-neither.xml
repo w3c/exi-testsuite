@@ -1,0 +1,15 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/fastinfoset/dist/candidate-fastinfoset.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/fastinfoset/lib/*.jar"/>
+    
+    <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.fastinfoset.FastInfosetCustomDriver"/>
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="FastInfoset"/>
+    <param name="org.w3c.exi.ttf.driver.candidate.fastinfoset.characterContentChunkSizeLimit" value="32"/>
+    <param name="org.w3c.exi.ttf.driver.candidate.fastinfoset.attributeValueSizeLimit" value="32"/>
+
+    <driver name="FastInfosetNeitherCustom">
+        <param name="description" value="Fast Infoset"/>
+        <param name="org.w3c.exi.ttf.applicationClass" value="neither"/>
+    </driver>
+</driverGroup>

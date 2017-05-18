@@ -1,0 +1,24 @@
+<?xml version='1.0' ?>
+<env:Envelope xmlns:env="http://www.w3.org/2002/06/soap-envelope"> 
+ <env:Header>
+  <m:reservation xmlns:m="http://travelcompany.example.org/reservation" 
+      env:role="http://www.w3.org/2002/06/soap-envelope/role/next"
+           env:mustUnderstand="true">
+   <m:reference>uuid:093a2da1-q345-739r-ba5d-pqff98fe8j7d</m:reference>
+   <m:dateAndTime>2001-11-29T13:35:00.000-05:00</m:dateAndTime>
+  </m:reservation>
+  <n:passenger xmlns:n="http://mycompany.example.com/employees"
+      env:role="http://www.w3.org/2002/06/soap-envelope/role/next"
+           env:mustUnderstand="true">
+   <n:name>John Q. Public</n:name>
+  </n:passenger>
+ </env:Header>
+ <env:Body>
+  <p:itinerary 
+    xmlns:p="http://travelcompany.example.org/reservation/travel">
+   <p:airportChoices>
+     JFK LGA EWR 
+   </p:airportChoices>
+  </p:itinerary>
+ </env:Body>
+</env:Envelope>

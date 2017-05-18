@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/FpML/fpml-main-4-0.xsd"/>
+
+    <testCase name="FpML/instance/cd/cd40_ex02_2003_short_asia_corp_fixreg.xml">
+	<param name="japex.inputFile" value="${testsDir}/FpML/instance/cd/cd40_ex02_2003_short_asia_corp_fixreg.xml"/>
+    </testCase>
+    <testCase name="FpML/instance/eqd/eqd40_ex02_american_call_stock_2.xml">
+	<param name="japex.inputFile" value="${testsDir}/FpML/instance/eqd/eqd40_ex02_american_call_stock_2.xml"/>
+    </testCase>
+    <testCase name="FpML/instance/eqs/eqs40_ex01_single_underlyer_execution.xml">
+	<param name="japex.inputFile" value="${testsDir}/FpML/instance/eqs/eqs40_ex01_single_underlyer_execution.xml"/>
+    </testCase>
+    <testCase name="FpML/instance/fx/fx_ex05_fx_fwd_w_ssi.xml">
+	<param name="japex.inputFile" value="${testsDir}/FpML/instance/fx/fx_ex05_fx_fwd_w_ssi.xml"/>
+    </testCase>
+    <testCase name="FpML/instance/ird/ird_ex05_long_stub_swap.xml">
+	<param name="japex.inputFile" value="${testsDir}/FpML/instance/ird/ird_ex05_long_stub_swap.xml"/>
+    </testCase>
+
+</testCaseGroup>
+

@@ -1,0 +1,2231 @@
+<!--
+#
+# X3D DTD changelog:
+#	http://www.web3d.org/x3d/content/x3d-dtd-changelog.txt
+#	http://www.web3d.org/specifications/x3d-dtd-changelog.txt
+#
+# X3D Specification DTDs:
+#	http://www.web3d.org/specifications/x3d-3.0.dtd
+#	http://www.web3d.org/specifications/x3d-3.0-InputOutputFields.dtd
+#	http://www.web3d.org/specifications/x3d-3.0-Web3dExtensionsPublic.dtd
+#	http://www.web3d.org/specifications/x3d-3.0-Web3dExtensionsPrivate.dtd
+#
+# X3D Revision DTDs:
+#	http://www.web3d.org/x3d/content/x3d-3.0.dtd
+#	http://www.web3d.org/x3d/content/x3d-3.0-InputOutputFields.dtd
+#	http://www.web3d.org/x3d/content/x3d-3.0-Web3dExtensionsPublic.dtd
+#	http://www.web3d.org/x3d/content/x3d-3.0-Web3dExtensionsPrivate.dtd
+#	http://www.web3d.org/x3d/content/x3d-3.1.dtd
+#	http://www.web3d.org/x3d/content/x3d-3.1-InputOutputFields.dtd
+#	http://www.web3d.org/x3d/content/x3d-3.1-Web3dExtensionsPublic.dtd
+#	http://www.web3d.org/x3d/content/x3d-3.1-Web3dExtensionsPrivate.dtd
+#
+# Final doctype:
+#  <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN" "http://www.web3d.org/specifications/x3d-3.0.dtd">
+#
+# Transitional doctype:
+#  <!DOCTYPE X3D PUBLIC "http://www.web3d.org/specifications/x3d-3.0.dtd" "file:///www.web3d.org/TaskGroups/x3d/translation/x3d-3.0.dtd">
+#
+# X3D editor for testing this DTD:
+#	http://www.web3d.org/x3d/content/README.X3D-Edit.html
+#
+# X3D DTD version numbering:
+#	- initial well-defined DTD                                 		0.5
+#	- all nodes available in test scene and checked in DTD     		0.6
+#	- Xeena able to present translated X3D scene using DTD     		0.7
+#	- DTD compliance exercised by NIST's VRML & XML test suites		0.8
+#	-  pre-SIGGRAPH 2002 change series    					0.8.x
+#	- post-SIGGRAPH 2002 change series    					0.9.x
+#	- matching X3D abstract specification, consolidation of parts   	3.0
+#	- possibility of several profile-customized DTDs
+#	- approval by task group, community, Web3D Consortium, ISO - Fall 2003	3.0.11
+#	- approval by ISO - Summer 2004						3.0.16
+#
+#	- possibility of several profile-customized DTDs		      	3.0.x
+#	- further errata						      	3.0.x
+#	- future specification amendments			      		3.1.x
+#
+# ===================================================================================
+#
+# X3D DTD update activity:
+#
+# known problems:  none
+#
+# 10 January 2006 grieve, brutzman
+# - changed content model for Contour2D (found in NurbsControlCurveNodes) from 
+#   [NurbsCurve|ContourPolyline2D] to [NurbsCurve2D|ContourPolyline2D]
+#
+# 3 January 2006 hudson, brutzman
+# - changed IMPORT InlineDEF to inlineDEF
+#
+# 31 December 2005 brutzman
+# - fixed MultiTexture content model
+# 
+# 29-30 December 2005 brutzman
+# - fixed various DTD/schema mismatches discovered by checking accessType definitions
+# - FloatVertexAttribute, Matrix3VertexAttribute, Matrix4VertexAttribute: 
+#   X3DVertexAttributeNode given containerField attrib, added to ComposedGeometryNodes
+# - changed HAnimDisplacer containerField to "displacers"
+# - HAnimDisplacer weight default value set to 0.0
+# - GeoElevationGrid removed set_yScale
+# - added shader nodes as Appearance children, and so had to finally relax the exhaustively enumerated
+#   & strictly ordered Appearance content model as follows:
+<!-- Complete, unordered, concisely enumerated version of Appearance by Heiko Grussbach.  Prepended either-order FillProperties/LineProperties. -->
+<!ELEMENT Appearance (IS?, (%MetadataNodes;)?,
+(  (FillProperties, LineProperties?)|(LineProperties, FillProperties)? )?,
+(  ((%MaterialNodes;), (
+			((%AllTextureNodes;),((%AllTextureTransformNodes;)|%WildcardNodes;)?) |
+			((%AllTextureTransformNodes;),((%AllTextureNodes;)|%WildcardNodes;)?) |
+			(%WildcardNodes;,((%AllTextureNodes;)|(%AllTextureTransformNodes;)|%WildcardNodes;)?) )? )
+|((%AllTextureNodes;), (
+			((%MaterialNodes;),((%AllTextureTransformNodes;)|%WildcardNodes;)?) |
+			((%AllTextureTransformNodes;),((%MaterialNodes;)|%WildcardNodes;)?) |
+			(%WildcardNodes;,((%MaterialNodes;)|(%AllTextureTransformNodes;)|%WildcardNodes;)?) )? )
+|((%AllTextureTransformNodes;), (
+			((%MaterialNodes;),((%AllTextureNodes;)|%WildcardNodes;)?) |
+			((%AllTextureNodes;),((%MaterialNodes;)|%WildcardNodes;)?) |
+			(%WildcardNodes;,((%MaterialNodes;)|(%AllTextureNodes;)|%WildcardNodes;)?) )? )
+|(%WildcardNodes;, (	
+			((%MaterialNodes;),((%AllTextureNodes;)|(%AllTextureTransformNodes;)|%WildcardNodes;)?) |
+			((%AllTextureNodes;),((%MaterialNodes;)|(%AllTextureTransformNodes;)|%WildcardNodes;)?) |
+			((%AllTextureTransformNodes;),((%MaterialNodes;)|(%AllTextureNodes;)|%WildcardNodes;)?) |
+			(%WildcardNodes;,((%MaterialNodes;)|(%AllTextureNodes;)|(%AllTextureTransformNodes;)|%WildcardNodes;)?) )? )
+)? ) >
+# - Removed unnecessary AllVRML97Nodes, AllGeoSpatialTags, AllHAnimTags definitions:
+<!ENTITY % AllVRML97Nodes " Anchor|Appearance|AudioClip|Background|BooleanFilter|BooleanSequencer|BooleanToggle|BooleanTrigger|Billboard|Box|Collision|Color|ColorInterpolator|Cone|Coordinate|CoordinateDouble|CoordinateInterpolator|Cylinder|CylinderSensor|DirectionalLight|ElevationGrid|Extrusion|FillProperties|Fog|FontStyle|Group|head|ImageTexture|IndexedFaceSet|IndexedLineSet|Inline|IntegerSequencer|IntegerTrigger|KeySensor|LineProperties|LineSet|LOD|Material|MovieTexture|MultiTextureCoordinate|NavigationInfo|Normal|NormalInterpolator|OrientationInterpolator|PixelTexture|PlaneSensor|PointLight|PointSet|PositionInterpolator|ProximitySensor|ScalarInterpolator|Scene|Script|Shape|Sound|Sphere|SphereSensor|SpotLight|StringSensor|StaticGroup|Switch|Text|TextureBackground|TextureCoordinate|TextureCoordinateGenerator|TextureTransform|TimeSensor|TimeTrigger|TouchSensor|Transform|TriangleFanSet|TriangleSet|TriangleStripSet|Viewpoint|VisibilitySensor|PositionInterpolator2D|CoordinateInterpolator2D|WorldInfo ">
+<!ENTITY % AllGeoSpatialTags " GeoCoordinate|GeoElevationGrid|GeoLocation|GeoLOD|GeoMetadata|GeoOrigin|GeoPositionInterpolator|GeoTouchSensor|GeoViewpoint ">
+<!ENTITY % AllHAnimTags " HAnimDisplacer|HAnimHumanoid|HAnimJoint|HAnimSegment|HAnimSite ">
+#
+# 27 December 2005 brutzman
+# - (v3.1 only) added Texturing3D component:  X3DTexture3DNode, Composed3DTexture,
+#    Image3DTexture, Pixel3DTexture, TextureCoordinate3D, TextureCoordinate4D,
+#    TextureMatrixTransform, TextureTransform3D
+# - renamed TextureNodes to Texture2DNodes
+# - EspduTransform removed geoCoords_changed
+#
+# 26 December 2005 brutzman
+# - (v3.1 only) removed CADFace, CADPart from CadGroupingNodes since CAD content model is more restrictive
+#   (hierarchy CADLayer/CADAssembly/CADPart/CADFace)
+# - (v3.1 only) componentNames:  added CubeMapTexturing, Texturing3D, Shaders
+# - (v3.1 only) added Shaders component:  X3DProgrammableShaderObject, 
+#   X3DShaderNode, X3DVertexAttributeNode, ComposedShader, 
+#   FloatVertexAttribute, Matrix3VertexAttribute, Matrix4VertexAttribute,
+#   PackagedShader, ProgramShader, ShaderPart, ShaderProgram
+# - (v3.1 only) Added CubeMapTexturing component:  X3DEnvironmentTextureNode, 
+#   ComposedCubeMapTexture, GeneratedCubeMapTexture, ImageCubeMapTexture
+#
+# 22 December 2005 hudson, brutzman
+# - NurbsGeometryNodes modified to include Contour2D vice ContourPolyline2D
+# - GeoTouchSensor:  added inputOutput field description 
+# - (v3.1 only) LOD:  added initializeOnly field forceTransitions 
+# - (v3.1 only) added X3dFieldTypes  SFMatrix3d MFMatrix3d SFMatrix3f MFMatrix3f SFMatrix4d MFMatrix4d SFMatrix4f MFMatrix4f SFVec4d MFVec4d SFVec4f MFVec4f
+#
+# 21 December 2005 puk, brutzman
+# - removed solid field from Circle2D since it is line-based, not polygonal
+# - added enabled field to EspduTranform, ReceiverPdu, SignalPdu, TransmitterPdu
+# - (v3.1 only) DirectionalLight default value for global remains true, 
+#   PointLight and Spotlight default value for global changed to false
+#
+# 19 December 2005 brutzman
+# - FogCoordinate default containerField value set to fogCoord
+# - FogCoordinate removed from CoordinateNodes, added to GeometricPropertyNodes,
+#   ColorCoordinateNormalTextureCoordinateContentModel  and ElevationGrid content model.
+#   FogCoordinate only allowed to follow Coordinate/Color/Normal/TextureCoordinate
+#   since any-order content model is too complex otherwise.
+# - (v3.1 only) Text node:  added outputOnly fields lineBounds and textBounds
+# - (v3.1 only) DirectionalLight, PointLight, Spotlight:  added inputOutput field global
+# - (v3.1 only) LOD node:  added outputOnly field level_changed
+# - (v3.1 only) NavigationInfo node:  added inputOutput field transitionTime, outputOnly field transitionComplete
+#
+# 18 December 2005 victor, brutzman
+# - IndexedTriangleStripSet stripCount field removed
+# - Polypoint2D points field renamed to point
+# - TransmitterPdu cryptoKeyId field renamed to cryptoKeyID
+# - EspduTransform articulationParameterIdPartAttachedArray field renamed to 
+#   articulationParameterIdPartAttachedToArray
+# - added NavigationInfo transitionType MFString, default "ANIMATE"
+# - NurbsTextureCoordinate controlPoint type changed to MFVec2f
+# - added solid field to Text, ArcClose2D, Circle2D, Disk2D, Rectangle2D, TriangleSet2D
+#
+# 16 December 2005 ecer, brutzman
+# - BooleanSequencer keyValue type changed to MFBool
+# - KeySensor keyPress, keyRelease type changed to SFString
+# - GeoElevationGrid set_height type changed to MFDouble
+# - GeoLOD range type changed to SFFloat
+# - NurbsGroupingNodes	child content model changed to 
+#   NurbsOrientationInterpolator | NurbsPositionInterpolator | NurbsSurfaceInterpolator | NurbsSet
+#
+# 4 December 2005  hudson, brutzman
+# - make X3D version required rather than optional
+# - added EspduTransform fields collisionType, detonationLocation, detonationRelativeLocation, detonationResult,
+#		eventApplicationID, eventEntityID, eventNumber, eventSiteID
+#
+# 20 November 2005 victor, brutzman
+# - EspduTransform firingRange type changed from SFInt32 to SFFloat
+# - IntegerSequencer keyValue type changed from MFFloat to MFInt32
+# - NurbsCurve2D knot, weight type changed from MFFloat to MFDouble
+# - NurbsTrimmedSurface weight type changed from MFFloat to MFDouble
+# - NurbsCurve2D controlPoint type changed from MFVec2f to MFVec2d
+# - NurbsTextureCoordinate added field controlPoint MFVec2d
+# - NurbsTextureCoordinate weight type changed from MFDouble to MFFloat
+#
+# 14 November 2005 brutzman
+# - changed CAD component name to CADGeometry, matching 3.1 specification
+# - added enumeration value for CADInterchange Profile, matching 3.1 specification
+#
+# 6 November 2005 brutzman
+# - added (%MetadataNodes;)? as allowed first child under Scene
+# - zero field definitions allowed for ProtoInterface
+# - fixed textual differences between x3d-3.0.dtd, x3d-3.1.dtd using Altova DiffDog
+#
+# 21 October 2005 brutzman
+# - added CAD profile:  X3DProductStructureChildNode, CADAssembly, CADFace, CADLayer, CADPart,
+ #  IndexedQuadSet, QuadSet
+# - Node signature for 32.4.2 CADFace missing bbox fields and X3DBoundedObject interface, bug posted
+#
+# brutzman 2 October 2005
+#	Began work on schema corrections to better validate under XMLSpy and other tools
+#	Replaced GeoSpatial default-value "quote marks" with &quot; character entities, e.g.
+#	  geoSystem	%MFString; '"GD" "WE"'
+#	  geoSystem	%MFString; '&quot;GD&quot; &quot;WE&quot;'
+#
+#	  navType		%MFString;	'"EXAMINE" "ANY"'
+#	  navType		%MFString;	'&quot;EXAMINE&quot; &quot;ANY&quot;'
+#
+# brutzman 16 September 2004
+#	Removed comments around extension DTD invocation, and verified correct
+#	x3d-3.0-Web3dExtensionsPublic.dtd and
+#	x3d-3.0-Web3dExtensionsPrivate.dtd
+# dabrowski, brutzman 16 July 2004
+#	Renamed Lineset field 'lineCount' to 'vertexCount'
+#	Added 'set_index' inputOnly field to x3d-3.0-InputOutputFields.dtd for 
+#	  nodes IndexedTriangleFanSet IndexedTriangleSet IndexedTriangleStripSet
+# brutzman 7 July 2004
+#	Corrected content model for GeoMetadata to include MFNode 'data' field,
+#	  which can only refer to other GeoSpatial nodes.  Specifically changed
+#	<!ELEMENT GeoMetadata ( (IS?), (%MetadataNodes;)? ) >
+#	  to
+#	<!ELEMENT GeoMetadata ( (IS?), (%MetadataNodes;)?, (GeoCoordinate|GeoElevationGrid|GeoLocation|GeoLOD|ProtoInstance|GeoOrigin|GeoPositionInterpolator|GeoTouchSensor|GeoViewpoint)* ) >
+# brutzman 6 June 2004
+#	allow ProtoInstance in content model for MultiTexture, MultiTextureCoordinate
+# brutzman 31 May 2004
+#	allow Sound to have zero children (as in USE nodes)
+# brutzman 29 May 2004
+#	added SFVec2d, MFVec2d to allowed types
+# brutzman 17 May 2004
+#	added ProtoInstance to Immersive content model for allowed Metadata nodes
+#	added Metadata nodes to content model for allowed ProtoNodes
+# brutzman 6 March 2004
+#	Changed default directory path to /www.web3d.org/specifications throughout
+# brutzman 29 February 2004
+#	Removed 'TaskGroups/' from default paths (mostly just documentation urls)
+#
+# ===================================================================================
+#
+# version 3.0.11, Final Committee Draft (FCD)
+#
+# brutzman 26 December 2003
+#	HAnimDisplacer added as legal child of HAnimJoint
+#	Added SFFloat weight field to HAnimDisplacer
+#	Changed LoadSensor field timeout to timeOut
+# brutzman 12 December 2003
+#	Renamed appInfo fields to appinfo, matching XML Schema spelling.
+#	  Affects ExternProtoDeclare, ProtoDeclare and field elements.
+# brutzman 8 December 2003
+#	Removed creaseAngle from *Triangle* nodes, uses defined normal behavior instead
+# brutzman 18 November 2003
+#	Added IndexedTriangleFanSet, IndexedTriangleSet, IndexedTriangleStripSet
+# brutzman 16 November 2003
+#	Added constraints on componentNames, componentLevels to match X3D specification.
+#	  Future extensibility of future component names and levels remains feasible but
+#	  (appropriately) will require an accompanying override/update of DTD and Schema
+#	  in the extended content to match anything new.
+# brutzman 15 November 2003
+#	Added LineSet
+# brutzman 13 October 2003
+#	Changed
+#	   fillStyle   (NONE|HATCHED) "NONE"
+#	to
+#	   filled   %SFBool;   "true"
+#	   hatched  %SFBool;   "true"
+# brutzman 12 October 2003
+#	Moved LatticeXVL and created Web3dExtensionComponent for future Web3D extensions.
+#	Cleaned out various DTD comments, as follows:
+#	  <!-- MultiTexture fields are MFString values, where each entry applies to each texture.
+#	       Thus the following allowed enumeration values cannot be accomplished via XML.
+#	  <!ENTITY % MultiTextureModes   			"(MODULATE|REPLACE|MODULATE2X|MODULATE4X|ADD|ADDSIGNED|ADDSIGNED2X|SUBTRACT|ADDSMOOTH|BLENDDIFFUSEALPHA|BLENDTEXTUREALPHA|BLENDFACTORALPHA|BLENDCURRENTALPHA|MODULATEALPHA_ADDCOLOR|MODULATEINVALPHA_ADDCOLOR|MODULATEINVCOLOR_ADDALPHA|OFF|SELECTARG1|SELECTARG2|DOTPRODUCT3)" >
+#	  <!ENTITY % MultiTextureSourceValues		"(PREVIOUS|DIFFUSE|SPECULAR|FACTOR)" >
+#	  <!ENTITY % MultiTextureFunctionValues		"(NONE|COMPLEMENT|ALPHAREPLICATE)" >
+#	  -->
+#	  Rejected:  consider building multiple DTDs corresponding to each profile,
+#		by creating small encapsulating DTDs that each set proper profile flags 
+#		prior to loading the main DTD.  Hazard:  avoid duplication/versionitis.
+#	  <!-- These VRML 97 specification terms relate to an object hierarchy of nodes.
+#	       For details, see VRML 97 4.6.5 Grouping and children nodes
+#	       http://www.web3D.org/technicalinfo/specifications/vrml97/part1/concepts.html#4.6.5 -->
+#	  <!-- External DTDs now integrated.  -->
+#	  <!ENTITY % SFNode "#PCDATA">	<!-- Node  - handled by tag rules -->
+#	  <!ENTITY % MFNode "#PCDATA">	<!-- Nodes - handled by tag rules -->
+# brutzman 8 October 2003
+#	HAnimHumanoid version:  changed to SFString from enumeration (1.1|2.0)
+#	Removed from HAnimHumanoid:
+#	  humanoidVersion		%SFString;	#IMPLIED
+#	  authorName			%SFString;	#IMPLIED
+#	  authorEmail			%SFString;	#IMPLIED
+#	  copyright			%SFString;	#IMPLIED
+#	  creationDate			%SFString;	#IMPLIED
+#	  usageRestrictions		%SFString;	#IMPLIED
+#	  age				%SFString;	#IMPLIED
+#	  gender			%SFString;	#IMPLIED
+#	  height			%SFString;	#IMPLIED
+#	  weight			%SFString;	#IMPLIED
+#	Removed from GeoMetadata:
+#	  <!-- GeoMetadata includes proposed itemization of specified 'summary' attributes in the X3D encoding -->
+#	  title				%SFString;	#IMPLIED
+#	  description			%SFString;	#IMPLIED
+#	  coordinateSystem 		%SFString;	#IMPLIED
+#	  horizontalDatum		%SFString;	#IMPLIED
+#	  verticalDatum			%SFString;	#IMPLIED
+#	  ellipsoid			%SFString;	#IMPLIED
+#	  extent			%SFString;	#IMPLIED
+#	  resolution			%SFString;	#IMPLIED
+#	  originator			%SFString;	#IMPLIED
+#	  copyright			%SFString;	#IMPLIED
+#	  date				%SFString;	#IMPLIED
+#	  metadataFormat		%SFString;	#IMPLIED
+#	  dataUrl			%SFString;	#IMPLIED
+#	  dataFormat			%SFString;	#IMPLIED
+#	Changed geoSystem from CDATA to %MFString;
+#	Renamed GeoTouchSensor hitGeoCoordinate_changed to hitGeoCoord_changed
+#	Moved GeoTouchSensor [in] and [out] events to x3d-3.0-InputOutputFields.dtd:
+#	  isActive, isOver, touchTime
+#	Removed GeoElevationGrid set_yScale since yScale is now [in out]
+#	Didn't add NurbsCurve solid, default value true
+#	NurbsPatchSurface: removed ccw, weight, closedSurface
+#	Added NurbsSurfaceInterpolator.  Note SFVec2f type for set_fraction value.
+#	Added NurbsTextureCoordinate.
+#	Verified NURBS nodes
+# brutzman davis 1 October 2003
+#	DIS EspduTransform/ReceiverPdu/SignalPdu/TransmitterPdu nodes - consistency changes:
+#	  attribute typos:  receiverPower -> receivedPower, cryptoSytem -> cryptoSystem
+#	  transmitFrequencyBandwidth is SFFloat
+#	EspduTransform munitionSiteID, munitionApplicationID, munitionEntityID and
+#	  fireMissionIndex changed to [in out]
+# brutzman 28 September 2003
+#	DIS EspduTransform/ReceiverPdu/SignalPdu/TransmitterPdu nodes - consistency changes:
+#  	  rtpHeaderHeard renamed to isRtpHeaderHeard
+#	  no outputOnly event values allowed: #FIXED "" vice #IMPLIED
+#	DIS EspduTransform node consistency changes:
+#	address default set to "localhost"
+#	port, multicastRelayPort default set to "0"
+#	siteID, applicationID, entityID, forceID defaults set to "0", "1", "0", "0" 
+#	  respectively
+#	entityKind, entityDomain, entityCountry, entityCategory, entitySubCategory, 
+#	  entitySpecific and entityExtra defaults set to "0"
+#	linearVelocity, linearAcceleration, munitionStartPoint, munitionEndPoint
+#	  defaults set to "0 0 0"
+#	munitionSiteID, munitionApplicationID, munitionEntityID, fireMissionIndex
+#	  changed to outputOnly events
+#	whichGeometry default set to "1"
+#	corrected various PDU-specific defaults, mostly #IMPLIED to "0"
+# brutzman 22 September 2003
+#	X3DTimeDependentNode consistency changes:
+#	Added	SFTime [out]     elapsedTime 	to AudioClip, MovieTexture, and TimeSensor
+#		SFBool [out]     isPaused     	to AudioClip, MovieTexture
+#		SFTime [in,out]  pauseTime   0	to AudioClip, MovieTexture
+#		SFTime [in,out]  resumeTime  0	to AudioClip, MovieTexture
+# brutzman 14 September 2003
+#	Changed Background, TextureBackground groundColor default from "0 0 0" to IMPLIED
+#	  (although this is questionable and has led to different browser defaults in the past)
+#	Changed CylinderSensor diskAngle default PI/2 from 0.262 to 0.26179167 to match Schema
+#	Removed excess attributes from 'component' declaration, made 'level' SFInt32 and required.
+#	  originator CDATA #IMPLIED
+#	  url CDATA #IMPLIED
+#	  version CDATA #IMPLIED
+#	Removed unneeded comments prior content model for Collision proxy:
+#	  <!-- <!ELEMENT proxy ( %GroupingNodes; | Shape | %WildcardNodes; )? > -->
+#	  <!-- <!ELEMENT Collision ( ( %ChildrenNodes; | %WildcardNodes; )*, (proxy, ( %ChildrenNodes; | %WildcardNodes; )* )? )  > -->
+#	KeySensor outputOnly fields keyPress, keyRelease changed from SFInt32 to SFString in x3d-3.0-InputOutputFields.dtd
+#	LineProperties:  added 'applied', restored irregular capitalization/spelling of linetype, linewidthScaleFactor
+#	MultiTexture:  removed obsolete fields
+#	  materialColor  %SFBool;   "false"
+#	  materialAlpha  %SFBool;   "false"
+#	  transparent    %SFBool;   "false"
+#	  noMipMap       %SFBool;   "false"
+#	NavigationInfo type:  changed default from ["WALK" "ANY"] to ["EXAMINE" "ANY"]
+# brutzman 11 August 2003
+#	Added outputOnly field geoCoords_changed %SFVec3d; #IMPLIED
+#	  to x3d-3.0-InputOutputFields.dtd to support interoperability
+#	  with GeoSpatial Profile nodes.  Tooltip: "Double precision output for
+#	  64-bit Espdu translation, usable by georeferenced nodes."
+# brutzman 10 August 2003
+#	ISO editors' meeting:  type MFString enumeration values must all be quoted
+#	  changed FontStyle justify field to default value (quoted) "BEGIN"
+#	  changed FontStyle family  field to default value (quoted) "SERIF"
+# grahn victor williams brutzman 1 August 2003
+#	changed MultiTexture field values for mode, source and function to MFString.
+#	  each internal array value corresponds to one texture in the MultiTexture.
+#	  Thus no validation of these fields as fixed enumeration values is possible.
+# brutzman 21 July 2003
+#	DIS EspduTransform deadReckoning signature changed to inputOutput SFInt32 "0"
+#	  and networkMode default value changed to "standAlone".
+# brutzman 3 July 2003
+#	Fixed content model of NURBS nodes Contour2D, NurbsCurve.
+#	  Renamed NurbsGroup as NurbsSet.
+#	  !! Need to unscramble NurbsTextureSurface and NurbsTrimmedSurface.
+# brutzman 26 June 2003
+#	Added NurbsOrientationInterpolator.  Corrected NurbsPositionInterpolator interface.
+#	  Added CoordinateDouble.  Removed CoordinateDeformer.
+# <!--
+# <!ELEMENT CoordinateDeformer (IS?, (%MetadataNodes;)?, ( %ChildrenNodes; | %WildcardNodes; | Coordinate )* ) >
+# <!ATTLIST CoordinateDeformer
+# 	uDimension	%SFInt32;	"0"
+# 	vDimension	%SFInt32;	"0"
+# 	wDimension	%SFInt32;	"0"
+# 	uKnot		%MFDouble;	#IMPLIED
+# 	vKnot		%MFDouble;	#IMPLIED
+# 	wKnot		%MFDouble;	#IMPLIED
+# 	uOrder		%SFInt32;	"2"
+# 	vOrder		%SFInt32;	"2"
+# 	wOrder		%SFInt32;	"2"
+# 	controlPoint	%MFVec3f;	#IMPLIED
+# 	weight		%MFFloat;	#IMPLIED
+# 	bboxCenter	%SFVec3f;	"0 0 0"	
+# 	bboxSize	%SFVec3f;	"-1 -1 -1"	
+# 	containerField NMTOKEN "children"
+# 	class         	CDATA		""
+# 	DEF		ID		#IMPLIED
+# 	USE		IDREF		#IMPLIED>
+# -->	
+# <!--
+#     <element tooltip="CoordinateDeformer allows free-form deformation on Coordinate nodes by using a NURBS volume&#10;input:  a Coordinate Node list where each point defines a 3D parameter (u,v,w) for evaluation&#10;output:  corresponding Cartesian value computed from NURBS control grid&#10;children typically contains IndexedFaceSet nodes USE-ing a deformed Coordinate node in outputCoords." name="CoordinateDeformer">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+# 	<attribute tooltip="[uDimension &SFInt32Label; &#34;0&#34;]&#10;Number of control points in u dimension." name="uDimension"/>
+# 	<attribute tooltip="[vDimension &SFInt32Label; &#34;0&#34;]&#10;Number of control points in v dimension." name="vDimension"/>
+# 	<attribute tooltip="[wDimension &SFInt32Label; &#34;0&#34;]&#10;Number of control points in w dimension." name="wDimension"/>
+# 	<attribute tooltip="[uKnot &MFDoubleLabel; #IMPLIED]&#10;knot vector, where size = number of control points + order of curve." editor="TextArea" name="uKnot"/>
+# 	<attribute tooltip="[vKnot &MFDoubleLabel; #IMPLIED]&#10;knot vector, where size = number of control points + order of curve." editor="TextArea" name="vKnot"/>
+# 	<attribute tooltip="[wKnot &MFDoubleLabel; #IMPLIED]&#10;knot vector, where size = number of control points + order of curve." name="wKnot"/>
+# 	<attribute tooltip="[uOrder &SFInt32Label; &#34;2&#34;]&#10;define order of surface by polynomials of degree = order-1." name="uOrder"/>
+# 	<attribute tooltip="[vOrder &SFInt32Label; &#34;2&#34;]&#10;define order of surface by polynomials of degree = order-1." name="vOrder"/>
+# 	<attribute tooltip="[wOrder &SFInt32Label; &#34;2&#34;]&#10;define order of surface by polynomials of degree = order-1." name="wOrder"/>
+# 	<attribute tooltip="[controlPoint &MFVec3fLabel; #IMPLIED]&#10;Mesh of points defining NURBS in 3 dimensions." name="controlPoint"/>
+# 	<attribute tooltip="[weight &MFFloatLabel; #IMPLIED]&#10;vector assigning weight to each control point." editor="TextArea" name="weight"/>
+# 	<attribute tooltip="[bboxCenter: initializeOnly &SFVec3fLabel; &#34;0 0 0&#34;]&#10;Bounding box center:  position offset from origin of local coordinate system." name="bboxCenter"/>
+# 	<attribute tooltip="[bboxSize: initializeOnly &SFVec3fLabel; &#34;-1 -1 -1&#34;]&#10;Bounding box size:  automatically calculated, can be specified as an optimization or constraint." name="bboxSize"/>
+# 	<attribute tooltip="[containerField: NMTOKEN &#34;children&#34;]&#10;containerField is the field-label prefix indicating relationship to parent node.&#10;  Examples:  geometry Box, children Group, proxy Shape.&#10;containerField attribute is only supported in XML encoding of X3D scenes." name="containerField"/>
+# 	<attribute tooltip="[class CDATA #IMPLIED]&#10;class is a space-separated list of classes,&#10;  reserved for use by XML stylesheets.&#10;class attribute is only supported in XML encoding of X3D scenes." name="class"/>
+#     </element>
+# -->
+#	  Cleaned out old comments:
+# <!--
+# 		DIS-Java-VRML 1.2 Document Type Definition (DTD)
+# 
+#  Description:	Define the DIS tag and attribute profile for X3D.
+# 		These X3D native nodes correspond to VRML ExternProto declarations.
+# 
+#  		Elements in this tagset are enabled by setting the 
+# 		DIS-Java-VRMLProfile entity to "INCLUDE" at the top of an 
+# 		X3D scene file, as shown in several examples.  This flag then 
+# 		triggers inclusion of the DIS-Java-VRML tags in the 
+# 		x3d-3.0.dtd tagset.
+# 
+#  Status:	Supports the following Protocol Data Units (PDUs):
+#  		- EspduTransform (Entity State, Collision, Detonation, Fire)
+#  		- Radio communications family:  ReceiverPdu, SignalPdu, Transmitter
+# 
+#  		Testing results need updating to match new node signatures.
+# 
+#  Authors:	Don Brutzman and Dave Laflam
+# 
+#  References:	http://www.web3D.org/WorkingGroups/vrtp/dis-java-vrml
+# 
+# -->
+# 
+# <!--
+# 		GeoSpatial (GeoVrml 1.0) Document Type Definition (DTD)
+# 
+#  Description:	Define the GeoSpatial tag and attribute profile for X3D.
+# 		These X3D native nodes correspond to VRML ExternProto declarations.
+# 
+#  		Elements in this tagset are enabled by setting the 
+# 		GeoSpatialProfile entity to "INCLUDE" at the top of an 
+# 		X3D scene file, as shown in several examples such as
+# 		examples/GeoSpatial/newGeoSpatialScene.xml.  This flag then 
+# 		triggers inclusion of the GeoSpatial tags in the 
+# 		x3d-compromise.dtd tagset.  Thus the GeoSpatial.dtd
+# 		demonstrates X3D extensibility for profiles.
+# 
+#  Status:	Testing results satisfactory.  Compact form also needed.
+# 
+#  Authors:	Martin Reddy and GeoVrml Working Group for GeoVrml specifications
+# 		Don Brutzman produced XML encoding for X3D
+# 
+#  Reference:	GeoVrml 1.0 Specification, http://www.geovrml.org/1.0
+# 
+#  Created:	16 May 2000
+# -->
+# <!--
+# 		Humanoid Animation (H-Anim) 2.0 Document Type Definition (DTD)
+# 
+#  Description:	Define the H-Anim tag and attribute profile for X3D.
+# 		These X3D native nodes correspond to VRML Prototype declarations.
+# 
+#  		Elements in this tagset are enabled by setting the 
+# 		H-AnimProfile entity to "INCLUDE" at the top of an 
+# 		X3D scene file, as shown in several examples such as
+# 		examples/HumanoidAnimation/NancyNativeTags.xml.  This flag then 
+# 		triggers inclusion of the HumanoidAnimation tags in the 
+# 		x3d-compact.dtd tagset.  Thus the HumanoidAnimation.dtd
+# 		demonstrates X3D extensibility for profiles.
+# 
+# 		Added bboxCenter and bboxSize to Joint and Site as part of
+# 		Schema development and SAI API normalization of node types.
+# 		Work in progress.  See ongoing 2000/2001 e-mail threads for
+# 		details.
+# 
+#  Status:	Testing results in progress.  Compromise form also needed.
+#  		JointNames need to be verified/split.
+# 
+#  Authors:	Don Brutzman produced XML encoding for X3D
+#  		Bernie Roehl and H-Anim Working Group for H-Anim specifications
+#  		Matt Beitler for syntax/semantics of upgrades from 1.1 to 2.0
+#  		James Smith provided BoxMan model for testing 2.0 nodes and prototypes
+# 
+#  References:	H-Anim 2001 Specification (Draft)
+#  		http://h-anim.org/Specifications/H-Anim2001
+#  		http://www.web3D.org/TaskGroups/x3d/translation/examples/HumanoidAnimation/JointNames.txt
+# 
+#  Address:	http://www.web3D.org/TaskGroups/x3d/translation/HumanoidAnimation2.0-compact.dtd
+# 
+#  Created:	 4 July 2000
+# -->
+# brutzman 21 June 2003
+#	Made X3D profile attribute REQUIRED.  Changed profile name MPEG4 to MPEG4Interactive.
+# brutzman 8 June 2003
+#	Moved Inline from content model GroupingNodes to SceneLeafNodes
+# brutzman 26 May 2003
+#	Added XML schema information as X3D tag attributes:
+#	xmlns:xsd			CDATA "http://www.w3.org/2001/XMLSchema-instance"
+#	xsd:noNamespaceSchemaLocation	CDATA "http://www.web3d.org/specifications/x3d-3.0.xsd"
+# brutzman 25 May 2003
+#	Added  MetadataDouble, MetadataFloat, MetadataInteger, MetadataSet, MetadataString.
+# brutzman 6 May 2003
+#	Added  AudioClip, LineProperties, FillProperties as valid ProtoNodes.
+# adams, couch, hudson, weekley, brutzman 3 March 2003
+#	Removed   NurbsPositionInterpolator 'dimension' field, nonsensical for curve.
+#	Confirmed NurbsPositionInterpolator 'keyValue' array contains control points.
+#	Added     NurbsPositionInterpolator 'key' field, necessary for X3DInterpolator.
+#	  Size corresponds as usual to 'keyValue' array, which contains control points.
+#	Renamed   NurbsPositionInterpolator 'keyWeight' field as 'weight' field,
+#	  for consistency with other NURBS.  Might get renamed back, or perhaps
+#	  renamed keyValueWeight.  Further implementation/evaluation needed.
+#	Upcoming:
+#	Will likely propose NurbsPositionInterpolator tangent_changed, or else
+#	  perhaps propose NurbsOrientationInterpolator, so that orientation works.
+#	Will likely propose removal of CoordinateDeformer as redundant.
+#	Added   NurbsSurface initializeOnly SFBool closedSurface 'false' attribute,
+#	  indicating that opposite sides of NurbsSurface are connected.
+#	  Proposed attribute, see examples such as AnimatedNurbsSurfaceHead.x3d
+#	  which allows full export capability from Maya and other tools.
+#	  Again subject to further implementation/evaluation, maybe too ambiguous.
+# hudson, williams, brutzman 2 March 2003
+#	Added file:// to transitional DTD system identifier, as follows:
+#  <!DOCTYPE X3D PUBLIC "http://www.web3d.org/specifications/x3d-3.0.dtd" "file:///www.web3d.org/TaskGroups/x3d/translation/x3d-3.0.dtd">
+#	Changed + to ISO for final external identifier, though have not yet
+#	found conclusively authoritative reference, as follows:
+#  <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN" "http://www.web3d.org/specifications/x3d-3.0.dtd">
+# hudson, couch, brutzman 17 February 2003
+#	Enforcing strict quoting rules for individual tokens in enumeration-like
+#	  MFString fields.  Example:  <NavigationInfo type='"EXAMINE" "ANY"'/>
+#	  Other affected field defaults are geoSystem and GeoViewpoint navType.
+# brutzman 25-26 January 2003
+#	Updated and verified DIS, GeoSpatial, H-Anim and NURBS nodes.
+#	Simplified content model for GeoLOD to eliminate rootNode wrapper tag.
+#	Added GeoElevationGrid set_yScale, set_height to x3d-3.0-InputOutputFields.dtd.
+#	Changed GeoElevationGrid height to MFDouble.
+#	Added GeoLocation, GeoLOD fields bboxCenter, bboxSize.
+#	Changed GeoLocation, GeoOrigin field geoCoords to SFVec3d.
+#	Changed GeoOrigin geoCoords to SFVec3d.
+#	Removed GeoTouchSensor geovalue, retained geovalue_changed.
+#	Added GeoViewpoint set_orientation, renamed speed as speedFactor, removed examine.
+#	Simplified content model for HAnimHumanoid to eliminate wrapper tags, humanoidBody.
+#	Utilize HAnimHumanoid containerField for joints/skeleton, segments, sites, skin,
+#	  skinCoord, skinNormal, and viewpoints.
+#	Removed HAnimHumanoid containerField for humanoidBody (redundant from H-Anim 1.0)
+#	  and replaced in H-Anim 2.0 by skeleton/skin.
+#	Revised several NURBS containerField values:
+#	  Contour2D         "trimmingContour" (parent TrimmedSurface),
+#	  ContourPolyline2D "children"        (parent Contour2D)
+#	  NurbsCurve        "geometry"
+#	  NurbsCurve2D      "children"        (parent Contour2D - spec erratum submitted)
+#	  NurbsSurface      "surface"         (parent TrimmedSurface, NurbsGroup)
+#		(note "surface" inconsistency with "children" for parent NurbsGroup)
+#	Simplified content model for NURBS CoordinateDeformer to eliminate wrapper tags
+#	  and utilize containerField for inputCoord, outputCoord and inputTransform.
+#	Renamed IMPORT label exportedDEF as importedDEF for semantic consistency.
+#
+#	Prior content models appear in x3d-dtd-changelog.txt for archive purposes.
+#	<!ELEMENT rootNode ( %ChildrenNodes; | %WildcardNodes; )* >
+#	(GeoOrigin, ((children, rootNode?) | (rootNode, children?))? ) |
+#	(children, ((GeoOrigin, rootNode?) | (rootNode, GeoOrigin?))? ) |
+#	(rootNode, ((children, GeoOrigin?) | (GeoOrigin, children?))? )?
+#	<!ELEMENT GeoElevationGrid
+#	   (GeoOrigin, ((color,	((normal,texCoord?) | (texCoord,normal)?)?) |
+#			(normal,((color,texCoord?) | (texCoord,color?))?) |
+#			(texCoord,((color,normal?) | (normal,color?))?) )? )
+#	 | (color, (	(GeoOrigin, ((normal,texCoord?) | (texCoord,normal)?)?) |
+#			(normal,((GeoOrigin,texCoord?) | (texCoord,GeoOrigin?))?) |
+#			(texCoord,((GeoOrigin,normal?) | (normal,GeoOrigin?))?) )? )
+#	 | (normal, (	(color,	((GeoOrigin,texCoord?) | (texCoord,GeoOrigin?))?) |
+#			(GeoOrigin,((color,texCoord?) | (texCoord,color?))?) |
+#			(texCoord,((color,GeoOrigin?) | (GeoOrigin,color?))?) )? )
+#	 | (texCoord, (	(color,	((GeoOrigin,normal?) | (normal,GeoOrigin?))?) |
+#			(GeoOrigin,((color,normal?) | (normal,color?))?) |
+#			(normal,((color,GeoOrigin?) | (GeoOrigin,color?))?) )? )?
+#	<!ELEMENT GeoLOD (IS?, (
+#		( %ChildrenNodes; | %WildcardNodes; )*,
+#			( (GeoOrigin?, ( %ChildrenNodes; | %WildcardNodes; )*, rootNode?,  ( %ChildrenNodes; | %WildcardNodes; )* )? | 
+#			  (rootNode,   ( %ChildrenNodes; | %WildcardNodes; )*, GeoOrigin?, ( %ChildrenNodes; | %WildcardNodes; )* )? )
+#	)? ) >
+#	<!ELEMENT HAnimSegment (IS?, (
+#		(children, ((coord, Displacer*) | (Displacer+, coord?))? ) |
+#		(coord, ((children, Displacer*) | (Displacer+, children?))? ) |
+#		(Displacer+, ((coord, children?) | (children, coord?))? )?
+#	) ) >
+#	<!-- humanoidBody is H-Anim 1.1, superceded by 2.0 specification
+#	<!ELEMENT humanoidBody ( %ChildrenNodes; | %WildcardNodes; )* > -->
+#	<!-- skeleton, skin defined by 2.0 specification
+#	<!ELEMENT skeleton ( %ChildrenNodes; | %WildcardNodes; )* >
+#	<!ELEMENT skin ( Shape | %WildcardNodes; )* >
+#	<!ELEMENT skinCoord ( Coordinate | %WildcardNodes; )* >
+#	<!ELEMENT skinNormal ( Normal | %WildcardNodes; )* > -->
+#	<!-- the following content model can likely be improved but it supports either 1.1 or 2.0
+#	<!ELEMENT HAnimHumanoid (IS?, 
+#		(humanoidBody? | (skeleton, (skinCoord, skinNormal?, skin)?)),
+#		(HAnimJoint | HAnimSegment | HAnimSite | Viewpoint)* ) > -->
+#	<!-- Field tags for contained NURBS nodes -->
+#	<!ELEMENT inputCoord		( Coordinate? ) >
+#	<!ELEMENT inputTransform	( Transform?  ) >
+#	<!ELEMENT outputCoord		( Coordinate? ) >
+#	<!ELEMENT CoordinateDeformer (IS?, (
+#	   (inputCoord, ((outputCoord,	((inputTransform,( %ChildrenNodes; | %WildcardNodes; )*) | (( %ChildrenNodes; | %WildcardNodes; )*,inputTransform)?)?) |
+#			(inputTransform,((outputCoord,( %ChildrenNodes; | %WildcardNodes; )*) | (( %ChildrenNodes; | %WildcardNodes; )*,outputCoord?))?) |
+#			(( %ChildrenNodes; | %WildcardNodes; )*,((outputCoord,inputTransform?) | (inputTransform,outputCoord?))?) )? )
+#	 | (outputCoord, ((inputCoord, ((inputTransform,( %ChildrenNodes; | %WildcardNodes; )*) | (( %ChildrenNodes; | %WildcardNodes; )*,inputTransform)?)?) |
+#			(inputTransform,((inputCoord,( %ChildrenNodes; | %WildcardNodes; )*) | (( %ChildrenNodes; | %WildcardNodes; )*,inputCoord?))?) |
+#			(( %ChildrenNodes; | %WildcardNodes; )*,((inputCoord,inputTransform?) | (inputTransform,inputCoord?))?) )? )
+#	 | (inputTransform, ((outputCoord,((inputCoord,( %ChildrenNodes; | %WildcardNodes; )*) | (( %ChildrenNodes; | %WildcardNodes; )*,inputCoord?))?) |
+#			(inputCoord,((outputCoord,( %ChildrenNodes; | %WildcardNodes; )*) | (( %ChildrenNodes; | %WildcardNodes; )*,outputCoord?))?) |
+#			(( %ChildrenNodes; | %WildcardNodes; )*,((outputCoord,inputCoord?) | (inputCoord,outputCoord?))?) )? )
+#	 | (( %ChildrenNodes; | %WildcardNodes; )*, (	(outputCoord,	((inputCoord,inputTransform?) | (inputTransform,inputCoord?))?) |
+#			(inputCoord,((outputCoord,inputTransform?) | (inputTransform,outputCoord?))?) |
+#			(inputTransform,((outputCoord,inputCoord?) | (inputCoord,outputCoord?))?) )? )?
+#	) )>
+#
+# williams 20 January 2003
+#	Removed GeoInline.
+# brutzman 14 January 2003
+#	Added MultiTextureTransform.
+# brutzman 13 January 2003
+#	Updated NURBS component.  knot fields for CoordinateDeformer, NurbsCurve, 
+#	  NurbsCurve2D, NurbsSurface etc. are now MFDouble vice MFFloat.
+# brutzman 12 January 2003
+#	Integrated significant changes from abstract specification into DIS component.
+# brutzman 9 January 2003
+#	Corrected case capitalization of Polyline2D, Polypoint2D
+#	NURBS Polyline2D name corrected to ContourPolyline2D
+# brutzman 2 January 2003
+#	Rename H-Anim nodes to have HAnim prefix:  HAnimDisplacer, HAnimHumanoid,
+#	  HAnimJoint, HAnimSegment, HAnimSite.
+#	Moved inputOnly/outputOnly (eventIn/eventOut) fields to optional file
+#	  x3d-3.0-InputOutputFields.dtd.
+#	  Turned off/on via parameter entity AllEventFields for use by some tools.
+#	  Retained fields have #FIXED empty-string values, so no values allowed.
+#	  Still a problem changing default AllEventFields to IGNORE vice INCLUDE.
+#	Did not change DTD default from Full profile to Immersive profile, rather kept
+#	  all new components (DIS H-Anim GeoSpatial NURBS LatticeXvl) in one file. 
+#	  Better to keep DTD unrestrictive unless author or tool directs smaller profile.
+#	Eliminated unneeded declarations:
+#	<!ENTITY % Vrml97FieldTypes	  " SFBool | MFBool | SFColor | MFColor | SFDouble | MFDouble | SFFloat | MFFloat | SFImage | MFImage | SFInt32 | MFInt32 | SFNode | MFNode | SFRotation | MFRotation | SFString | MFString | SFTime | MFTime | SFVec2f | MFVec2f | SFVec3f | MFVec3f| SFVec3d | MFVec3d " >
+#	<!ENTITY % X3dFieldTypesAlternate " Boolean | Booleans | Color | Colors | Double | Doubles | Float | Floats | Image | Images | Integer | Integers | Node | Nodes | Rotation | Rotations | String | Strings | Time | Times | Vector2Float | Vector2FloatArray | Vector3Float | Vector3FloatArray | Vector3Double | Vector3DoubleArray " >
+# brutzman 1 January 2003
+# 	Merged prior X3D DTDs into x3d-3.0.dtd:
+#	  http://www.web3D.org/TaskGroups/x3d/translation/x3d-compact.dtd
+#	  http://www.web3D.org/TaskGroups/x3d/translation/DistributedInteractiveSimulation.dtd
+#	  http://www.web3D.org/TaskGroups/x3d/translation/GeoSpatial-compact.dtd
+#	  http://www.web3D.org/TaskGroups/x3d/translation/HumanoidAnimation2.0-compact.dtd
+#	  http://www.web3D.org/TaskGroups/x3d/translation/LatticeXvl-compact.dtd
+#	  http://www.web3D.org/TaskGroups/x3d/translation/Nurbs-compact.dtd
+# 	Former draft X3D DTD name:
+#	  http://www.web3D.org/TaskGroups/x3d/translation/x3d-compact.dtd
+#	Renumber DTD to version 3.0: Transitional doctype becomes
+#  <!DOCTYPE X3D PUBLIC "http://www.web3d.org/specifications/x3d-3.0.dtd" "/www.web3d.org/specifications/x3d-3.0.dtd">
+#	Integrated X3D specification examples, some further work needed.
+# hudson, brutzman 31 December 2002
+#	Alan verified all abstract specification nodes/fields included.  Changes:
+#	Background, NavigationInfo and TouchSensor now have single DTD definition,
+#	  Interchange profile.  Some fields are optional in Interchange profile.
+#	Collision:  rename 'collide' field as enabled, also add isActive.
+#	LOD, Switch:  added bboxCenter, bboxSize.
+#	NavigationInfo type default set to 'WALK ANY'.
+#	Added ProximitySensor centerOfRotation_changed  %SFVec3f; #FIXED ""
+#	Triangle*Set:  removed convex field (they are always convex, duh).
+#	Removed TimeSensor elapsedTime.
+# brutzman, couch 31 December 2002
+#	Profile for Triangle*Set nodes set to Interchange.
+#	Remaining containerField issues: removed nodeType from ExternProtoDeclare,
+#	  default ProtoInstance containerField="children".  Then added
+#	  containerField values to all non-children ProtoInstance examples.
+# brutzman, couch 30 December 2002
+#	Restore containerField throughout.  Eliminated proxy element.
+#	Removed all Scene attributes for consistency with abstract specification.
+#	<!ATTLIST Scene
+#		DEF         ID          #IMPLIED
+#		class       CDATA       #IMPLIED>
+#	
+#		could provide simple singleton exposure of Browser class variables:
+#		browserName          %SFString;  #IMPLIED
+#		browserVersion       %SFString;  #IMPLIED
+#		currentFrameRate     %SFFloat;   #IMPLIED
+#		currentSpeed         %SFFloat;   #IMPLIED
+#		worldUrl             %MFString;  #IMPLIED
+#	
+#		deferred for reconsideration with displays in advanced SAI:
+#		boundBackground      IDREF       #IMPLIED
+#		boundFog             IDREF       #IMPLIED
+#		boundGeoViewpoint    IDREF       #IMPLIED
+#		boundNavigationInfo  IDREF       #IMPLIED
+#		boundViewpoint       IDREF       #IMPLIED
+#		dashboardVisible     %SFBool;    #IMPLIED
+#		pixelHeight          %SFInt32;   #IMPLIED
+#		pixelWidth           %SFInt32;   #IMPLIED
+#		aspectRatio          %SFInt32;   #IMPLIED
+#	
+#		not needed for exposure via Scene since only invoked from inside a Script anyway:
+#		description          %SFString;  #IMPLIED
+#		createVrmlFromString %SFString;  #IMPLIED
+#		createVrmlFromX3d    %SFString;  #IMPLIED
+#		createVrmlFromUrl    %SFString;  #IMPLIED
+#	
+#		no:
+#		evaluate             %SFBool;    #IMPLIED
+#		browserResponse      %SFString;  #IMPLIED
+#		creationTargetNode   IDREF       #IMPLIED
+#		loadUrl              %MFString;  #IMPLIED
+#		loadUrlParameter     %SFString;  #IMPLIED
+#		currentTime          %SFTime;    #IMPLIED
+#	>
+# brutzman, 29 December 2002
+#	Completed new content model for ProtoDeclare:  ProtoInterface and ProtoBody.
+#	  Content library updated, prior content no longer validates/translates.
+#	Allowed ProtoDeclare as first element of ProtoBody, prior to first node.
+# brutzman, 27 December 2002
+#	Updated MultiTexture enumeration fields:  mode, source, function.
+#	  Mapped source="" to PREVIOUS and function="" to NONE, since XML
+#	  can't use a blank field as a validatable enumeration.
+# puk, 17 November 2002
+#	TextureCoordinateGenerator:  removed 'point' field.
+#	MultiTexture has no 'type' field.
+# brutzman, spec team issue resolutions 11 November 2002
+#	Added new content model for ProtoDeclare:  ProtoInterface and ProtoBody.
+#	  Implementation/evaluation in progress.
+#	FillProperties and LineProperties added, can only occur as first
+#	  Appearance fields due to order limitations in XML 1.0 DTD.
+#	IndexedLineSet:  eliminated field lineWidth, handled by LineProperties.
+#	Profile for Triangle*Set nodes entered as Immersive.
+#	Consistent support for enabled, isActive fields in all Sensor nodes.
+#	Added description field for X3DPointingDeviceSensorNode nodes
+#	  CylinderSensor, PlaneSensor, SphereSensor, TouchSensor so that
+#	  authors can describe intended action to users.
+#	Added Geometry2D nodes:  Arc2D, ArcClose2D, Circle2D, Disk2D,
+#	  PolyLine2D and PolyPoint2D (note capitalization different than draft),
+#	  Rectangle2D, TriangleSet2D.
+# brutzman, spec team issue resolutions 10 November 2002
+#	MultiTexture, MultiTextureCoordinate, TextureCoordinateGenerator added.
+#	ColorRGBA allowed in Interchange Profile, alpha channel may be ignored.
+#	StringSensor:  removed extraneous fields from StringSensor, removed
+#	  deletionCharacter/terminationCharacter, added SFBool deletionAllowed.
+#	TimeSensor numLoops removed.
+#	TextureBackground added, field names of child texture nodes are in
+#	  alphabetic order: backTexture, bottomTexture, frontTexture,
+#	  leftTexture, rightTexture, topTexture.
+#	Restored Collision <proxy> and removed containerField throughout,
+#	  reverting work noted below 14-15 May 2002 item 6.
+#	  Restricted <proxy> content to GroupingNodes, Shape and ProtoInstance.
+#	  <!ELEMENT proxy ( %GroupingNodes; | Shape | %WildcardNodes; )? >
+# brutzman, spec team issue resolutions  9 November 2002
+#	PointSet:  eliminated field pointSize, deferred until ParticleSet work.
+# brutzman 3 November 2002
+#	Event utilities:  verified BooleanSequencer, IntegerSequencer.
+#	  Also added other event utilities BooleanFilter, BooleanToggle,
+#	  BooleanTrigger, IntegerTrigger, TimeTrigger.
+#	  Prototypes also provided for VRML97 use, see development examples.
+# brutzman 2 November 2002
+#	Added node ColorRGBA and field types SFColorRGBA, MFColorRGBA.
+#	Added nodes TriangleFanSet, TriangleSet, TriangleStripSet.
+#	Added missing attributes to X3D DTD as follows.
+#	Inline:
+#	  SFBool   [in,out] load       TRUE
+#	LoadSensor
+#	  set timeout default value to 0
+#	Shape
+#	  SFVec3f []       bboxCenter 0 0 0    (-inf,inf)
+#	  SFVec3f []       bboxSize   -1 -1 -1 (0,inf) or -1 -1 -1
+#	TimeSensor:
+#	  SFFloat [in,out] numLoops     1     [0,inf)
+#	  SFTime  [in,out] pauseTime    0     (-inf,inf)
+#	  SFTime  [in,out] resumeTime   0
+#	  SFBool  [out]    isPaused
+#	  SFTime  [out]    elapsedTime
+# couch hudson brutzman 1 November 2002
+#	Modified names of accessType inputOnly/outputOnly (eventIn/eventOut)
+#	  and attribute values as empty (FIXED "").  Prevents validation of
+#	  content, allows construction of full DTD scene graphs in DOM etc.
+#	  - inputOnly:   prepended set_
+#	  - outputOnly:  appended  _changed
+#	  Node fields not listed:
+#	  - children:  addChildren, removeChildren
+#	  Names changed, defaults cleared to #FIXED &#34;&#34;
+#	  - AudioClip		duration_changed
+#	  - Interpolators	set_fraction, value_changed
+#	  - Bindable nodes 	set_bind, bindTime, isaActive
+#	    (Had to change %SFBool% to CDATA vice true/false to allow null value)
+#	  - Collision 		collideTime
+#	  - Sensors 		isActive, outputOnly _changed events
+#	  - ElevationGrid 	set_height:  inputOnly event added
+#	  - KeySensor, StringSensor outputOnly fields
+#	  - TouchSensor added hitNormal_changed, hitPoint_changed, hitTexCoord_changed
+#	  - set_ methods added for Geometry node children
+# brutzman 1 November 2002
+#	Changed IndexedFaceSet in Interchange profile from
+#		convex          %SFBool;  #FIXED    "true"
+#	  to
+#		convex          %SFBool;  #IMPLIED
+#	  since Interchange browsers have the option to honor convex false.
+#
+# brutzman 1 November 2002
+#	Removed unneeded constructs in DTD
+# <!-- ***** X3D Extensions,  under development ***** -->
+# 
+# <![%X3dExtensions;[
+# 
+# <!-- ***** MultiTexture Extensions proposal by Rob Glidden ***** -->
+# 
+# 
+# <!-- Tool problems when invoking  XHTML DTD here for img | object | iframe | div
+# 
+# <!ENTITY img PUBLIC
+# 	"-//W3C//DTD XHTML 1.0 Frameset//EN"
+# 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+# 
+# <!ENTITY object PUBLIC
+# 	"-//W3C//DTD XHTML 1.0 Frameset//EN"
+# 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+# 
+# <!ENTITY iframe PUBLIC
+# 	"-//W3C//DTD XHTML 1.0 Frameset//EN"
+# 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+# 
+# <!ENTITY div PUBLIC
+# 	"-//W3C//DTD XHTML 1.0 Frameset//EN"
+# 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+# -->
+# 
+# <!-- Tool problems when  invoking Structured Vector Graphics (SVG) DTD for svg;
+# 	also have more recent DTDs that need to be checked...
+# 
+# <!ENTITY svg SYSTEM
+# 	"http://www.w3.org/Graphics/SVG/SVG-19991203.dtd">
+# 
+# <!ELEMENT Surface (( %MaterialNodes; | img | object | iframe | div | svg | Scene3D ), TextureTransform?) >
+# 
+# -->
+# 
+# ]]>
+# 
+# brutzman 28 October 2002
+#	Upgraded all content to verify revised IS/connect tags, 
+#	  removed both IS and USE atttributes in field tag.
+# brutzman 24 October 2002
+#	added MFImage type
+# brutzman 20 October 2002
+#	Made field accessType REQUIRED instead of IMPLIED.
+#	Removed IS attribute from fieldValue.
+#	Moved double type definitions from GeoSpatial-compact.dtd to x3d-compact.dtd
+#	  and added double types to allowed type choice list.
+#	Made Humanoid field name IMPLIED instead of REQUIRED, so that
+#	  <Humanoid USE="BoxMan"/> is legal.  Note that defining the name
+#	  attribute must be present so Humanoid can be identified at runtime.
+# brutzman 19 October 2002
+#	Renamed ColorNode to Color.
+#	Renamed type enumerations:
+#		Boolean			to	SFBool
+#		Booleans		to	MFBool
+#		Color			to	SFColor
+#		Colors			to	MFColor
+#		Double			to	SFDouble
+#		Doubles			to	MFDouble
+#		Float			to	SFFloat
+#		Floats			to	MFFloat
+#		Image			to	SFImage
+#		Integer			to	SFInt32
+#		Integers		to	MFInt32
+#		Node			to	SFNode
+#		Nodes			to	MFNode
+#		Rotation		to	SFRotation
+#		Rotations		to	MFRotation
+#		String			to	SFString
+#		Strings			to	MFString
+#		Time			to	SFTime
+#		Times			to	MFTime
+#		Vector2Float		to	SFVec2f
+#		Vector2FloatArray	to	MFVec2f
+#		Vector3Float		to	SFVec3f
+#		Vector3FloatArray	to	MFVec3f
+#		Vector3Double		to	SFVec3d
+#		Vector3DoubleArray	to	MFVec3d
+# brutzman 18 October 2002
+#	Renamed internal DTD labels for parameter-entity extension, which are used to 
+#	  switch different levels of DTD validation on/off.
+#	  	(unchanged)			InterchangeProfile
+#  **	  	(needed)			InteractiveProfile
+# 	  	BaseProfile 		to	ImmersiveProfile
+#  **	  	(needed)			FullProfile
+#	  	DISProfile		to	DISComponent
+#	  	GeoSpatialProfile	to	GeoSpatialComponent
+#	  	HAnimProfile		to	HAnimComponent
+#	  	NurbsProfile		to	NurbsComponent
+#	  	LatticeXvlProfile	to	LatticeXvlComponent
+# brutzman 17 October 2002
+#	Eliminated USE attribute on fieldValue for identifying contained content.
+#	  Utilize child nodes with single USE attribute instead.
+#	Revise enumeration values for <field> attribute accessType
+#	  from	accessType (eventIn   | eventOut   | field          | exposedField)
+#	  to  	accessType (inputOnly | outputOnly | initializeOnly | inputOutput)
+# brutzman 16 October 2002
+#	<IS> follows <field>      definitions for Script and (nested) ProtoDeclare
+#	<IS> follows <fieldValue> definitions for ProtoInstance
+#	Prepended optional single IS? tag to instantiable nodes in DIS, GeoSpatial,
+#	  H-Anim2.0, NURBS and LatticeXVL components, matching all other X3D nodes.
+# brutzman 12 October 2002
+#	eliminated tag-order ambiguity problem in HumanoidAnimation2.0-compact.dtd
+# brutzman 1 October 2002
+#	changed default value, MovieTexture loop="false" to match specification
+#
+# ========================================================================
+# DTD prior to winter 2001:
+#	http://www.web3D.org/TaskGroups/x3d/translation/x3d-compromise.dtd
+# DTD prior to 15 March 2000:
+#	http://www.web3D.org/TaskGroups/x3d/translation/x3d-draft.dtd
+# ========================================================================
+#
+# brutzman 29 September 2002
+#	IS/connect allowed as first elements of ProtoInstance, for use within a
+#		ProtoDeclare
+# brutzman 27 September 2002
+#	Eliminated Eliminated optional "quote" "marks" from FontStyle default values
+#		family      %MFString; 'SERIF'
+#		justify     %MFString; 'BEGIN'
+# brutzman, hudson 24 August 2002
+#	LoadSensor tooltips updated, and watchList nodes constrained to nodes with url:
+#	 (Anchor | AudioClip | GeoInline | ImageTexture | Inline | MovieTexture | Script | ProtoInstance)*
+# brutzman, 24 August 2002
+#	corrected names are PositionInterpolator2D, CoordinateInterpolator2D
+#	  for Vector2FloatInterpolator, Vector2FloatArrayInterpolator
+# brutzman, 14 August 2002
+#	added Vector2FloatInterpolator, Vector2FloatArrayInterpolator
+# brutzman, 4 August 2002
+#	changed class attribute to #IMPLIED rather than empty string ""
+# brutzman, 6 July 2002
+#	added BooleanSequencer, IntegerSequencer
+# x3d-specification team, 3 July 2002
+#	added StaticGroup
+#	updated versioning scheme from 0.8 to 0.8.1
+# x3d-specification team, 2 July 2002
+#	modified IS construct for use within Prototype declarations.  Example:
+#	<ColorInterpolator DEF="INTERP_COLOR" keyValue="0.0 0.0 1.0 1.0 1.0 ...">
+#	  <IS>
+#	    <connect nodeField="key" protoField="key1"/>
+#	    <connect nodeField="value_changed" protoField="SphereColor1"/>
+#	    <connect nodeField="value_changed" protoField="SphereColor2"/>
+#	    ...
+#	  </IS>
+#	</ColorInterpolator>
+#	Status:  implemented in DTD and tooltips only, also needed in X3D Schema,
+#	  conversion stylesheets and exemplar content.  Deprecated previous approach
+#	  using <field> definitions remains validatable/usable until these remaining
+#	  changes occur.
+# brutzman, 6 June 2002
+#	renamed IMPORT tag's inlineDEF to InlineDEF for consistent capitalization,
+#	renamed AS values to attribute name AS (instead of more complicated names).
+#	made IMPORT (InlineDEF, exportedDEF) and EXPORT (localDEF) REQUIRED, kept AS's optional.
+#	example use:
+#		<!-- EXPORTing Scene, filename SomeSceneThatIsEXPORTing.x3d -->
+#		<EXPORT localDEF="someNode" AS="ImportantNode"/>
+#		~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ 
+#		<!-- IMPORTingScene -->
+#		<Inline DEF="AnotherWorld" url="SomeSceneThatIsEXPORTing.x3d"/>
+#		<IMPORT InlineDEF="AnotherWorld" exportedDEF="ImportantNode" AS="SomeOtherDEFName"/>
+# hudson, couch, x3d-specification team, 5 June 2002
+#	added LoadSensor which reports whether file-based children are successfully loaded
+# x3d-specification team, 14-15 May 2002
+# 1.	component tag:  require only name and level atttributes, default level="1" integer
+#	  x3d-compact.dtd
+#		removed the following attributes:  url originator version
+#		originator  CDATA          #IMPLIED
+#		url         CDATA          #IMPLIED
+#		version     CDATA          #IMPLIED
+#	x3d-compact.profile.xml
+#		<attribute tooltip="[originator: &SFStringLabel; #IMPLIED]&#10;originator of this component (if any).&#10;Hint:  experimental." name="originator"/>
+#		<attribute tooltip="[url: &SFStringLabel; #IMPLIED]&#10;url of this component (if any).&#10;Hint:  experimental." name="url"/>
+#		<attribute tooltip="[version: &SFStringLabel; #IMPLIED]&#10;version of this component (if any).&#10;Hint:  experimental." name="version"/>
+#	x3d schema
+#		<xsd:attribute name="originator" type="String"/>
+#		<xsd:attribute name="url" type="StringsUrl"/>
+#		<xsd:attribute name="version" type="String"/>
+# 2. IMPORT/EXPORT
+#	IMPORT inlineDEF.exportedDEF AS localDEF
+#	EXPORT localDEF AS exportedDEF
+#	IMPORT/EXPORT can appear anywhere a ROUTE can appear (rather than EXPORT being a child of Inline)
+# 3. Viewpoint 'centerOfRotation' point is proposed addition relating to NavigationInfo EXAMINE mode.
+#	exposedField, default value 0 0 0, does not get affected by camera motion
+# 4. 'containerField' is the field-label prefix used in VRML encodings
+#	when this node is a child of another node.
+#	Examples:  geometry Box, children Group, proxy Group.
+#	Hint: can be overridden by author if needed.
+# 5. 'class' attribute reserved for future use by XML Cascading Style Sheets (CSS), similar to HTML.
+#	References:  
+#	http://www.w3.org/Style/CSS
+#	http://www.w3.org/TR/REC-CSS2
+#	This is an expected area of interaction with Web Accessibility Initiative (WAI).
+#	http://www.w3.org/WAI
+# 6. <proxy> tag removed in favor of containerField attributes throughout tagset
+#	<!ELEMENT Collision ( ( %ChildrenNodes; | %WildcardNodes; )*, (proxy, ( %ChildrenNodes; | %WildcardNodes; )* )? )  >
+#	becomes
+#	<!ELEMENT Collision ( ( %ChildrenNodes; | %WildcardNodes; )* )  >
+#	and following is removed:
+#	<!ELEMENT proxy ( %ChildrenNodes; | %WildcardNodes; )? >
+# 7. <USE> element no longer allowed, due to lack of type checking on
+#	node and attribute values, as well as redundant functionality.
+#	Utilize @USE attributes instead, for example <Shape USE="MyShapeNode"/>
+#		<!ELEMENT USE EMPTY >
+#		<!ATTLIST USE
+#			node         IDREF        #REQUIRED>
+#
+# brutzman, 14 May 2002
+#	removed commented/unused MultiTexture fragments, copied here for
+#	archival purposes
+# <!--
+# No followup effort has yet tried to compose the various multitexture proposals.
+# 
+# <!-- MultiTexture: - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+# 
+# <!ELEMENT Surface (( %MaterialNodes; | img | object | iframe | div | svg | Scene3D ), TextureTransform?) >
+# 
+# <!ELEMENT Surface (( %MaterialNodes; | Scene3D ), TextureTransform?) >
+# <!ATTLIST Surface
+# 	textureTransform          IDREF    #IMPLIED
+# 	mappingSurfaceCoordinates IDREF    #IMPLIED
+# 	repeatS   %SFBool;  "true"
+# 	repeatT   %SFBool;  "true"
+# 	width     %SFInt32; "0"
+# 	height    %SFInt32; "0"
+# 	DEF       ID        #IMPLIED
+# 	USE       IDREF     #IMPLIED>
+# 
+# <!ELEMENT Scene3D ((Background, Viewpoint?) | (Viewpoint, Background?))? >
+# <!ATTLIST Scene3D
+# 	Root       IDREF #REQUIRED
+# 	Viewpoint  IDREF #REQUIRED
+# 	Background IDREF #REQUIRED
+# 	RenderInfo IDREF #REQUIRED
+# 	DEF        ID    #IMPLIED
+# 	USE        IDREF #IMPLIED>
+# 
+# <!ELEMENT MultiTexture ((Material, Surface*) | (Surface+, Material?))? >
+# <!ATTLIST MultiTexture
+# 	diffuseSurface    IDREF  #IMPLIED
+# 	ambientSurface    IDREF  #IMPLIED
+# 	bumpSurface       IDREF  #IMPLIED
+# 	material          IDREF  #IMPLIED
+# 	reflectionType (USER | USERCUBIC | USERSPHERE | REFLECT | CUBIC | SPHERE) "USER"
+# 	reflectionSurfaces IDREFS #IMPLIED
+# 	maskSurface       IDREF  #IMPLIED
+# 	DEF               ID     #IMPLIED
+# 	USE               IDREF  #IMPLIED>
+# 
+# <!ELEMENT MultiTextureTree ( RenderOp ) >
+# <!ATTLIST MultiTextureTree
+# 	DEF ID       #IMPLIED
+# 	USE IDREF    #IMPLIED>   
+# 
+# -->
+# 
+# <!-- what is Vector ??
+# 
+# <!ELEMENT RenderOp ((Surface | RenderOp), (Script, Vector?, Color? )? ) >
+# 
+# <!ELEMENT RenderOp ((Surface | RenderOp), (Script, Color? )? ) >
+# <!ATTLIST RenderOp
+# 	factor %SFFloat; ".5"
+# 	type (ADD | MODULATE | MODULATE2 | LINEAR | SCRIPT) #REQUIRED
+# 	DEF    ID    #IMPLIED
+# 	USE    IDREF #IMPLIED>
+# -->
+# 
+# <!-- Curtis Beeson's alternative:  lightweight multitexture proposal
+#      http://www.web3d.org/WorkingGroups/x3d-contributors/hypermail/1999/1855.html
+# 
+# Appearance {
+#         exposedField SFMaterial diffuseMaterial
+#         exposedField SFTexture  lightMap
+#         exposedField SFTexture  diffuseMap
+#         exposedField SFTexture  envMap
+#         exposedField SFTexture  envMapMask
+#         exposedField SFTextureTransform lightMapTransform
+#         exposedField SFTextureTransform diffuseMapTransform
+#         exposedField SFTextureTransform envMapTransform
+#         exposedField SFTextureTransform envMapMaskTransform
+#         exposedField SFEnum envMapType { SPHERICAL | CUBIC }
+# }
+# -->
+# 
+# <!--
+# <!ELEMENT MultiTextureAppearance
+# 	(((%MaterialNodes;), ((%TextureNodes;) | (%TextureTransformNodes;))*) |
+# 	 (((%TextureNodes;) | (%TextureTransformNodes;))+,
+#           (%MaterialNodes;), 
+#           ((%TextureNodes;) | (%TextureTransformNodes;))*)
+# 	)? >
+# <!ATTLIST MultiTextureAppearance
+# 	diffuseMaterial         IDREF #IMPLIED
+# 	lightMap                IDREF #IMPLIED
+# 	diffuseMap              IDREF #IMPLIED
+# 	envMap                  IDREF #IMPLIED
+# 	envMapMask              IDREF #IMPLIED
+# 	lightMapTransform       IDREF #IMPLIED
+# 	diffuseMapTransform     IDREF #IMPLIED
+# 	envMapTransform         IDREF #IMPLIED
+# 	envMapMaskTransform     IDREF #IMPLIED
+# 	envMapType (SPHERICAL|CUBIC)  #IMPLIED
+# 	DEF ID      #IMPLIED
+# 	USE IDREF   #IMPLIED>
+# 
+# IndexedFaceSet {
+#   eventIn       MFInt32 set_colorIndex
+#   eventIn       MFInt32 set_coordIndex
+#   eventIn       MFInt32 set_normalIndex
+#   eventIn       MFInt32 set_texCoordIndex
+#   exposedField  SFNode  color             NULL
+#   exposedField  SFNode  coord             NULL
+#   exposedField  SFNode  normal            NULL
+#   field         SFBool  ccw               TRUE
+#   field         MFInt32 colorIndex        []        # [-1,)
+#   field         SFBool  colorPerVertex    TRUE
+#   field         SFBool  convex            TRUE
+#   field         MFInt32 coordIndex        []        # [-1,)
+#   field         SFFloat creaseAngle       0         # [0,)
+#   field         MFInt32 normalIndex       []        # [-1,)
+#   field         SFBool  normalPerVertex   TRUE
+#   field         SFBool  solid             TRUE
+# 
+#   (begin new stuff)
+#   exposedField  SFNode  lightTexCoord        NULL
+#   field         MFInt32 lightCoordIndex      []        # [-1,)
+#   exposedField  SFNode  diffuseTexCoord      NULL
+#   field         MFInt32 diffusetexCoordIndex []        # [-1,)
+#   exposedField  SFNode  envTexCoord          NULL
+#   field         MFInt32 envTexCoordIndex     []        # [-1,)
+#   exposedField  SFNode  envMaskTexCoord      NULL
+#   field         MFInt32 envMaskTexCoordIndex []        # [-1,)
+# }
+# 
+# 
+# <!ELEMENT MultiTextureIndexedFaceSet (Color?, Coordinate*, Normal?, TextureCoordinate*) >
+# <!ATTLIST MultiTextureIndexedFaceSet
+# 	ccw             %SFBool;  "true"
+# 	colorIndex      %MFInt32; #IMPLIED
+# 	colorPerVertex  %SFBool;  "true"
+# 	convex          %SFBool;  #FIXED    "true"
+# 	coordIndex      %MFInt32; #IMPLIED
+# 	creaseAngle     %SFFloat; "0"
+# 	normalIndex     %MFInt32; #IMPLIED
+# 	normalPerVertex %SFBool;  "true"
+# 	solid           %SFBool;  "true"
+# 	texCoordIndex   %MFInt32; #IMPLIED
+# 
+# 	lightTexCoord        IDREF     #IMPLIED
+# 	lightCoordIndex      %MFInt32; #IMPLIED
+# 	diffuseTexCoord      IDREF     #IMPLIED
+# 	diffusetexCoordIndex %MFInt32; #IMPLIED
+# 	envTexCoord          IDREF     #IMPLIED
+# 	envTexCoordIndex     %MFInt32; #IMPLIED
+# 	envMaskTexCoord      IDREF     #IMPLIED
+# 	envMaskTexCoordIndex %MFInt32; #IMPLIED
+# 
+# 	DEF             ID        #IMPLIED
+# 	USE             IDREF     #IMPLIED>
+# -->
+# <!--
+#     <element tooltip="Surface's content is:&#10;(Material|img|object|iframe|div|svg|Scene3D), TextureTransform?.&#10;Hint:  Surface is a proposed X3D extension." name="Surface">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+# 	<attribute tooltip="[height: &SFInt32Label; &#34;0&#34;." name="height"/>
+# 	<attribute tooltip="[width: &SFInt32Label; &#34;0&#34;." name="width"/>
+# 	<attribute tooltip="[mappingSurfaceCoordinates IDREF #IMPLIED]&#10;." name="mappingSurfaceCoordinates"/>
+# 	<attribute tooltip="[textureTransform IDREF #IMPLIED]" name="textureTransform"/>
+# 	<attribute tooltip="[repeatS (true|false) &#34;true&#34;." name="repeatS"/>
+# 	<attribute tooltip="[repeatT (true|false) &#34;true&#34;." name="repeatT"/>
+#     </element>
+#     <element tooltip="Scene3D's content is:&#10;((Background,Viewpoint?) | (Viewpoint?,Background?)).&#10;Hint:  Scene3D is a proposed X3D extension." name="Scene3D">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+# 	<attribute tooltip="[Background IDREF #REQUIRED]" name="Background"/>
+# 	<attribute tooltip="[RenderInfo IDREF #REQUIRED]" name="RenderInfo"/>
+# 	<attribute tooltip="[Root IDREF #REQUIRED]" name="Root"/>
+# 	<attribute tooltip="[Viewpoint IDREF #REQUIRED]" name="Viewpoint"/>
+#     </element>
+#     <element tooltip="MultiTexture's content is:  ((Material, Surface*) | (Surface*, Material?)).&#10;Hint:  MultiTexture is a proposed X3D extension for Appearance." name="MultiTexture">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+# 	<attribute tooltip="[material IDREF #IMPLIED]" name="material"/>
+# 	<attribute tooltip="[ambientSurface IDREF #IMPLIED]" name="ambientSurface"/>
+# 	<attribute tooltip="[bumpSurface IDREF #IMPLIED]" name="bumpSurface"/>
+# 	<attribute tooltip="[diffuseSurface IDREF #IMPLIED]" name="diffuseSurface"/>
+# 	<attribute tooltip="[maskSurface IDREF #IMPLIED]" name="maskSurface"/>
+# 	<attribute tooltip="[reflectionType (USER|USERCUBIC|USERSPHERE|REFLECT|CUBIC|SPHERE) &#34;USER&#34;." name="reflectionType"/>
+# 	<attribute tooltip="[reflectionSurfaces IDREFS #IMPLIED]" name="reflectionSurfaces"/>
+#     </element>
+#     <element tooltip="MultiTextureTree's content is:  (RenderOp).&#10;Hint:  MultiTextureTree is a proposed X3D extension for Appearance." name="MultiTextureTree">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+#     </element>
+#     <element tooltip="RenderOp's content is:&#10;((Surface|RenderOp),(Script,Vector?,&#10;Color?)?).&#10;Hint:  RenderOp is a proposed X3D extension." name="RenderOp">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+# 	<attribute tooltip="[factor: %SFFloatLabel; &#34;.5&#34;." name="factor"/>
+# 	<attribute tooltip="[type (ADD|MODULATE|MODULATE2|LINEAR|SCRIPT) #REQUIRED]" name="type"/>
+#     </element>
+#     <element tooltip="Test note:  only use MultiTextureAppearance with MultiTextureIndexedFaceSet !!&#10;MultiTextureAppearance's content is:&#10;((Material,(ImageTexture|MovieTexture|&#10;PixelTexture|TextureTransform)*)|((&#10;ImageTexture|MovieTexture|PixelTexture|&#10;TextureTransform)*,Material+)).&#10;Hint:  MultiTextureAppearance is a proposed X3D extension for Appearance." name="MultiTextureAppearance">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+# 	<attribute tooltip="[diffuseMaterial IDREF #IMPLIED]" name="diffuseMaterial"/>
+# 	<attribute tooltip="[diffuseMap IDREF #IMPLIED]" name="diffuseMap"/>
+# 	<attribute tooltip="[diffuseMapTransform IDREF #IMPLIED]" name="diffuseMapTransform"/>
+# 	<attribute tooltip="[envMapType (SPHERICAL|CUBIC) #IMPLIED]" name="envMapType"/>
+# 	<attribute tooltip="[envMap IDREF #IMPLIED]" name="envMap"/>
+# 	<attribute tooltip="[envMapTransform IDREF #IMPLIED]" name="envMapTransform"/>
+# 	<attribute tooltip="[envMapMask IDREF #IMPLIED]" name="envMapMask"/>
+# 	<attribute tooltip="[envMapMaskTransform IDREF #IMPLIED]" name="envMapMaskTransform"/>
+# 	<attribute tooltip="[lightMap IDREF #IMPLIED]" name="lightMap"/>
+# 	<attribute tooltip="[lightMapTransform IDREF #IMPLIED]" name="lightMapTransform"/>
+#     </element>
+#     <element tooltip="Test note:  only use MultiTextureIndexedFaceSet with MultiTextureAppearance !!&#10;MultiTextureIndexedFaceSet's content is:&#10;(Color?,Coordinate*,Normal?,TextureCoordinate*).&#10;Hint:  MultiTextureIndexedFaceSet is a proposed X3D extension for Geometry nodes." name="MultiTextureIndexedFaceSet">
+# 	<attribute tooltip="[DEF ID #IMPLIED]&#10;DEF defines a unique ID name for this node, referencable by other nodes.&#10;Hint:  descriptive DEF names improve clarity and help document a model." name="DEF"/>
+# 	<attribute tooltip="[USE IDREF #IMPLIED]&#10;USE means reuse an already DEF-ed node ID, ignoring _all_ other attributes and children.&#10;Hint:  USEing other geometry (instead of duplicating nodes) can improve performance.&#10;Warning:  do NOT include DEF (or any other attribute values) when using a USE attribute!" name="USE"/>
+# 	<attribute tooltip="[coordIndex: &MFInt32Label; #IMPLIED]&#10;coordIndex indices provide order in which coordinates are applied.&#10;Order starts at index 0, commas are optional between sets&#10;use -1 to separate indices for each polygon." name="coordIndex"/>
+# 	<attribute tooltip="[ccw: &SFBoolLabel; &#34;true&#34;]&#10;ccw = counterclockwise:  ordering of vertex coordinates orientation.&#10;Hint:  ccw false can reverse solid (backface culling) and normal-vector orientation." name="ccw"/>
+# 	<attribute tooltip="[convex: &SFBoolLabel; &#34;true&#34;]&#10;Whether all polygons in a shape are convex (true), or possibly convex (false)&#10;A convex polygon is planar, does not intersect itself, and has all interior angles &lt; 180 degrees.&#10;Interchange profile hint:  only convex=true IndexedFaceSets are supported." name="convex"/>
+# 	<attribute tooltip="[solid: &SFBoolLabel; &#34;true&#34;]&#10;Setting solid true means draw only one side of polygons (backface culling on),&#10;setting solid false means draw both sides of polygons (backface culling off).&#10;Warning: default value true can completely hide geometry if viewed from wrong side!" name="solid"/>
+# 	<attribute tooltip="[creaseAngle: &SFFloatLabel; &#34;0&#34;] [0..infinity)&#10;creaseAngle defines angle (in radians) for determining whether adjacent polygons&#10;  are drawn with sharp edges or smooth shading.&#10;If angle between normals of two adjacent polygons is less than creaseAngle,&#10;  smooth shading is rendered across the shared line segment.&#10;Interchange profile hint:  only 0 and &#928; radians supported." name="creaseAngle"/>
+# 	<attribute tooltip="[colorPerVertex: &SFBoolLabel; &#34;true&#34;]&#10;Whether ColorNode is applied per vertex (true) or per polygon (false)." name="colorPerVertex"/>
+# 	<attribute tooltip="[colorIndex: &MFInt32Label; #IMPLIED]&#10;coordIndex indices provide order in which colors are applied." name="colorIndex"/>
+# 	<attribute tooltip="[normalPerVertex: &SFBoolLabel; &#34;true&#34;]&#10;Whether Normal node is applied per vertex (true) or per polygon (false)." name="normalPerVertex"/>
+# 	<attribute tooltip="[normalIndex: &MFInt32Label; #IMPLIED]&#10;Interchange profile hint:  this field may be ignored." name="normalIndex"/>
+# 	<attribute tooltip="[texCoordIndex: &MFInt32Label; #IMPLIED]" name="texCoordIndex"/>
+# 	<attribute tooltip="[diffuseTexCoord IDREF #IMPLIED]" name="diffuseTexCoord"/>
+# 	<attribute tooltip="[diffusetexCoordIndex: &MFInt32Label; #IMPLIED]" name="diffusetexCoordIndex"/>
+# 	<attribute tooltip="[envMaskTexCoord IDREF #IMPLIED]" name="envMaskTexCoord"/>
+# 	<attribute tooltip="[envMaskTexCoordIndex: &MFInt32Label; #IMPLIED]" name="envMaskTexCoordIndex"/>
+# 	<attribute tooltip="[envTexCoord IDREF #IMPLIED]" name="envTexCoord"/>
+# 	<attribute tooltip="[envTexCoordIndex: &MFInt32Label; #IMPLIED]" name="envTexCoordIndex"/>
+# 	<attribute tooltip="[lightTexCoord IDREF #IMPLIED]" name="lightTexCoord"/>
+# 	<attribute tooltip="[lightCoordIndex: &MFInt32Label; #IMPLIED]" name="lightCoordIndex"/>
+#     </element>
+# -->
+# 
+# brutzman, 18 February 2002
+#	eliminated Browser attributes [evaluate browserResponse creationTargetNode] from Scene
+# brutzman, 16 February 2002
+#	renamed CoreProfile to InterchangeProfile
+#	added Extensibility to allowed profile names, work under discussion
+# jablonski, brutzman, 2 February 2002
+#	fixed LatticeXvl XvlShell attributes as Booleans/SFBool
+# brutzman, 2 February 2002
+#	removed experimental readOnly attribute from <field>
+# jablonski, brutzman, 26 January 2002
+#	fully integrated LatticeXvl XvlShell, LatticeXvl-compact.dtd and many examples
+#	  tested satisfactorily under Cortona and CosmoPlayer
+#	  requires CLASSPATH modification to run, see readme.txt in examples/LatticeXvl
+# brutzman, 22 January 2002
+#	completed attribute value validation checks in X3dToVrml97.xsl !!
+#	  fixed variety of previously undetected (!) errors throughout examples
+#	changed default filename extension, renamed all example files .xml => .x3d
+#	  propagated through all examples
+#	GeoVrml => GeoSpatial profile
+#	DIS profile => DistributedInteractiveSimulation profile
+# brutzman, 21 January 2002
+#	vrml97Hint => accessType
+#	ExternProtoDeclare nodeTypeHint => nodeType, changing allowed values from CDATA to
+#	  enumerated names matching all VRML 97 nodes and instantiable node types.
+#	local DOCTYPE DTD address:  removed file:///c: for cross-platform flexibility
+#	modified all example scenes to remove optional quotes from enumerations, so that
+#	  <NavigationInfo type="&quot;EXAMINE&quot; &quot;WALK&quot;"/>
+#	   becomes
+#	  <NavigationInfo type="EXAMINE WALK"/> etc.
+#	  Similarly for FontStyle justify/family and Fog type attributes.
+#	  This silences messages from improved X3dToVrml97.xsl enumerations validation.
+# brutzman, 4 November 2001
+#	no children allowed in Inline
+#	simplified definition for ProtoInstance
+# brutzman, 10 October 2001
+#	ProtoDeclare and ExternProtoDeclare no longer restricted to appear as first
+#	  children of Scene, but can now appear in any order among children nodes.
+# brutzman, diefenbach, puk 12 July 2001
+#	<component> tags include originator, url and version attributes - still experimental.
+# brutzman 8 July 2001
+#	<component> tags are now first children of <head>, preceding <meta> tags.
+# brutzman 4 July 2001
+#	<field>, <ProtoDeclare>, <ExternProtoDeclare> gain annotation attributes for documentation
+#		and appInfo descriptions, matching XML Schema tag structures and semantics.
+#		This allows scene authors (and extension authors) to annotate and document new
+#	  	Prototypes and their fields, in same manner as other X3D node definitions and tooltips.
+#		This is an important and valuable capability since prototypes are the primary extension
+#		mechanism for VRML/X3D.
+#		Initial implementation:  attributes (rather than tags) for documentation and appInfo.
+#		Future implementation may replace these simple attributes with documentation/appInfo
+#		element tags from XML Schema, in order to enable internationalization (i18n) and thus
+#		multiple simultaneous versions of these values in different languages.  Documentation:
+#		http://www.w3.org/TR/xmlschema-0/#CommVers
+#		http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#declare-annotation
+# dick puk, brutzman, curtis blais 3 July 2001 (specification editors meeting)
+#	Updated compact and compromise DTDs to match specification changes
+#	  ref: 	"X3D spec meeting: VRML200x/X3D profiles, components, and headers," 4 May 2001
+#		http://www.web3d.org/WorkingGroups/x3d-contributors/hypermail/2001/0438.html
+#	  <X3D> profileForContainedScene becomes profile,
+#		with valid enumeration names (Core|CoreInteractive|Base|Full).
+#	  <component> indicates needed scene functionality above the given profile.
+#		<component> tag(s) are optional first children of <X3D>, with string
+#		attributes name (required) and level (optional).  
+#		Names are not constrained enumeration values, authors can define components.
+#		Supported component names are (DIS|GeoVrml|HumanoidAnimation|Lattice|Nurbs|[other]).
+#	  <head> is revised name for <Header> to exactly match XHTML/HTML, especially
+#		since it contains no specified VRML/X3D header information
+#	  <Scene> looks OK as is
+#	  rename BaseLine Profile as Base Profile
+#	  CoreInteractive profile under consideration by Browser working group, slightly
+#		richer than strict Core Profile which corresponds to output-only devices
+#	  rename DisJavaVrml component as DIS (IEEE Distributed Interactive Simulation Protocol)
+#		and matched name of corresponding DIS.dtd, DIS-compact.dtd
+#	  <field> gains boolean attribute readOnly, for field definitions inside ProtoDeclare,
+#		ExternProtoDeclare and Script.  Implied default is readOnly false.  
+#		Native-node attributes have readOnly semantics defined in the
+#		VRML 200x Part I abstract specification.
+#	  <field> attribute vrml97hint (for enumerations eventIn, eventOut, field, exposedField)
+#		maintained for backwards compatibility, but not needed for VRML 200x and later.
+# jablonski, brutzman 1 July 2001
+#	initial integration LatticeXvl profile, work in progress
+# brutzman 1 July 2001
+#	promoting to version 0.8 since NIST conformance suite passes
+# brutzman 1 July 2001
+#	changed URL for local-system backup DTD resource from
+#		"file://localhost/C:/www.web3D.org/TaskGroups/x3d/translation/x3d-compact.dtd"
+#		        ^^^^^^^^^
+#	  to
+#		"file:///C:/www.web3D.org/TaskGroups/x3d/translation/x3d-compact.dtd"
+#	thus X3D scenes should have the following DOCTYPE:
+#  	  <!DOCTYPE X3D PUBLIC
+#	        "http://www.web3D.org/TaskGroups/x3d/translation/x3d-compact.dtd"
+#		"file:///C:/www.web3D.org/TaskGroups/x3d/translation/x3d-compact.dtd">
+#
+#	Future work is to achieve the following DOCTYPE in working systems and applications:
+#	  <!DOCTYPE X3D PUBLIC
+#	        "+//ISO//DTD X3D//EN"
+#	        "http://www.web3D.org/Specification/X3D/x3d-compact.dtd">
+# brutzman 1 July 2001
+#	shortened Document Type Declaration references for contained profiles inside DTD
+#	  to direct, local SYSTEM links for more-stable response both online and offline.
+#	  Example: <!ENTITY % GeoVrmlDTD SYSTEM "GeoVrml-compact.dtd">
+# brutzman 25 May 2001
+#	moved Switch from BaseLine to Core profile, supporting use of KeySensor
+#	  activation keys under Core profile.  KeySensor still undergoing implementation
+#	  and evaluation.
+# brutzman 17 April 2001
+#	subsetted TouchSensor fields for hitNormal, hitPoint and hitTexCoord
+#	  to be BaseLine profile.  all other TouchSensor fields are Core profile.
+# brutzman 10 April 2001
+#	updated meta tag xml:lang language attribute reference
+#	  [IETF RFC3066/BCP47] ftp://ftp.isi.edu/in-notes/bcp/bcp47.txt
+# brutzman 12 March 2001
+#	meta tag name attribute now required, since description also required
+# goldberg 6 February 2001
+#	Viewpoint 'examine' field is Rotation, not Vector3Float
+# brutzman 3 February 2001
+#	corrected missing * after SceneLeafNodes in x3d-compact.dtd to allow
+#	  multiple children under ProtoInstance, not just single children
+# couch, brutzman 1 February 2001
+#	isOver, touchTime added to Anchor to match multiple interface with
+#	  TouchSensorNodeType.  see VRML 97 specification, X3D Schema, SAI.
+#   http://www.web3D.org/technicalinfo/specifications/vrml97/part1/nodesRef.html#Anchor
+#   http://www.web3D.org/technicalinfo/specifications/vrml97/part1/concepts.html#4.6.7.3
+#   http://www.web3D.org/TaskGroups/x3d/translation/X3dSchemaDraft.xml
+#   http://www.web3D.org/TaskGroups/x3d/sai/javadoc/org/web3d/x3d/sai/Anchor.html
+# brutzman, goldberg, williams 12/26/2000
+#	Scene node exposes Browser class and has a DEF.  Added currentTime
+#	    to match experimental testing of proposed additional field for
+#	    VRML 97/200x.
+# brutzman 12/17/2000
+#	experimenting with renaming Color to ColorNode, in order to avoid
+#	    SAI API naming collision with Color field type (i.e. rgb values)
+# brutzman 11/22/2000
+#	renamed Vector2, Vector2Array, Vector3, Vector3Array to
+#	     Vector2Float, Vector2FloatArray, Vector3Float, Vector3FloatArray
+#	     avoiding name collisions with GeoVrml Vector_Double types
+# brutzman 11/19/2000
+#	added FontStyle to list of allowed Prototype nodes
+# brutzman 11/8/2000
+#	added KeySensor to Core Profile and StringSensor to Baseline Profile
+#	added Nurbs Profile
+#	renamed Vrml97 Profile to Baseline Profile
+# brutzman 10/8/2000
+#	hid never-been-tested multitexture tags by IGNORE-ing X3dExtensions
+# brutzman 8/13/2000
+#	fixed oversight, allowed USE node as one of the allowed %ProtoNodes;
+# brutzman 7/11/2000
+#	integrated extension support and translation capabilities for
+#	  GeoVrml.dtd (version 1.0) and HumanoidAnimation.dtd (version 1.1)
+#	  tested via examples subdirectories, stylesheets and X3D-Edit
+# brutzman 6/11/2000
+#	fieldValue node:  attribute 'fieldName' is now 'name' for consistency
+# brutzman 6/7/2000
+#	ProtoInstance added as a valid %ProtoNodes; entity, simply allows
+#	  ProtoInstance to be used to initialize fields of type Node/Nodes	  
+# brutzman 5/23/2000
+#	ExternProtoDeclare:  Vrml97typeHint relaxed to be any type value
+# brutzman 5/17/2000
+#	Inline edited to contain children (vice SceneNodes) in
+#	  x3d-compromise.dtd, to permit possible external access.  Same
+#	  for GeoInline.  This needs to be on our technical issues list.
+# brutzman 5/16/2000
+#	fixed example URLs at top of each DTD
+# brutzman 5/1/2000
+#	split out DTD into two versions:
+#	  x3d-compromise.dtd   official version with    field-wrapper tags
+#	  x3d-compact.dtd    unofficial version without field-wrapper tags
+#		which can be used as part of a binary specification and for
+#		autogeneration of class hierarchies that do not include fields as
+#		actual classes in the tree
+#	cleaned out following excerpts from DTD:
+#<!--	Fields:  VRML 97 Part 5, Field and event reference
+#	http://www.web3D.org/technicalinfo/specifications/vrml97/part1/
+#
+#	Notes:
+#	1.  Use of NMTOKEN/NMTOKENS precludes inclusion of commas,
+#		[brackets], (parentheses) while CDATA permits anything.
+#		Use of NMTOKENS for MF types is not yet agreed upon.
+#
+#	2.  No separate tag for multifield URLs needed if no whitespace
+#		permitted in the URLs (use percent-20 instead of 'blank' in URL)
+#-->
+#<!-- Complete, ordered version of Appearance -->
+#<!-- 
+#<!ELEMENT Appearance (
+#   ((%MaterialNodes;)|%WildcardNodes;)?,
+#   ((%TextureNodes;)|%WildcardNodes;)?,
+#   ((%TextureTransformNodes;)|%WildcardNodes;)? ) >
+#-->
+#<!-- Complete, ordered version of ElevationGrid -->
+#<!-- 
+#<!ELEMENT ElevationGrid (
+#   ((%ColorNodes;)|%WildcardNodes;)?,
+#   ((%NormalNodes;)|%WildcardNodes;)?,
+#   ((%TextureCoordinateNodes;)|%WildcardNodes;)?
+#) >
+#-->
+#<!-- Complete, ordered version of IndexedFaceSet -->
+#<!-- 
+#<!ELEMENT IndexedFaceSet (
+#   ((%ColorNodes;)|%WildcardNodes;)?,
+#   ((%CoordinateNodes;)|%WildcardNodes;)?,
+#   ((%NormalNodes;)|%WildcardNodes;)?,
+#   ((%TextureCoordinateNodes;)|%WildcardNodes;)?
+#) >
+#-->
+#
+# brutzman 4/23/2000
+#	Script node whitespace handling for contained script code:
+#	  Script now has xml:space #FIXED to 'preserve' and it's child field tag
+#	  has xml:space restored to (default | preserve) 'default' 
+#	  This forces preservation of whitespace as described in XML spec 2.10
+#	  and more closely matches XHTML 1.0.  Also note that all line-feed
+#	  combinations (#xA, #x13, #x13#xA) are mapped to #xA, the line-feed
+#	  character as described in XML spec 2.11.  This means that CDATA
+#	  sections enscapsulating script code are not required for authors to
+#	  ensure proper handling of line feeds.
+#  <field> is contained by <Script> and so must be reset back for normal
+#     whitespace handling:
+#     <!ATTLIST field
+#    	xml:space              (default | preserve) "default"
+#     etc. >
+# brutzman 4/20/2000
+#	ProtoInstance contents corrected to fieldValue plus any of allowable
+#	  fields (wrapper tags)
+# brutzman 4/17/2000
+#	fixed some core-profile switch logic
+# brutzman 4/13/2000
+#	Script node:  url attribute only contains urls; actual script code is
+#	now contained content inside CDATA sections.  This enables Script to
+#	have scripting code that include characters such as line feeds, < &
+#	etc.  This is similar to the XHTML approach.
+# brutzman 4/3/2000
+#	defaultValue element renamed initialValue
+#	any-ordered field tags allowed for IndexedFaceSet with deterministic model
+# grussbach, brutzman 2/30/2000
+#	Corrected MultiTextureAppearance nondeterminism
+# brutzman, grussbach 3/28/2000
+#	Allowed USE as a WildcardNode in Core profile
+#	Corrected some node-relationship nondeterminism
+# brutzman 3/25/2000
+#	Parameter entity <!ENTITY  % WildcardNodes  " (USE | ProtoInstance) " >
+#	  defined to allow use of both USE node and ProtoInstance node, without
+#	  further complicating node rules or breaking nondeterministic content
+#	  model
+# brutzman (editing), marrin, x3d-contributors 3/23/2000
+#	Wrapper tags enabled is default configuration
+#	Route renamed ROUTE
+#	Proxy node becomes proxy field when wrapped
+#	added USE node, allowed wherever ProtoInstance is
+#	still lots of content conversion and testing for these changes
+# brutzman 2/11/2000
+#	Contents of top-level Scene node relaxed to contain any valid child
+#	  nodes, as specified by VRML 97 specification para. 4.4.1 Root nodes.
+# brutzman 1/31/2000
+#	Added null-string parameter entity declarations under CoreProfile to
+#	  permit strict parsing.  (These must be declared because they are
+#	  referenced and checked for ]]> in otherwise-ignored Vrml97Profile
+#	  constructs.)  No impact on scene graph, fixes a core profile bug.
+# brutzman 1/30/2000
+#	Added optional "wrapper tag" nodes.
+# Context:  There are 26 contained SFNode/MFNode cases in the VRML 97 spec.
+# These map to the following SFNode/MFNode field names.  It has been proposed
+# that each of these field names also appear as tags, i.e. "wrapper tags,"
+# supplementing DTD tags that correspond to VRML scene graph nodes.  Proxy
+# is already handled as a child tag for Collision and did not require addition.
+# Wrapper tags are enabled by placing <!ENTITY % WrapperTags "INCLUDE"> in the
+# internal declaration (similar to an X3D profile setting), as shown in
+# http://www.web3d.org/TaskGroups/x3d/translation/examples/WrapperTagsExample.xml
+# http://www.web3d.org/TaskGroups/x3d/translation/examples/WrapperTagsExampleStyled.html
+# http://www.web3d.org/TaskGroups/x3d/translation/examples/examples.html#WrapperTagsExample
+#
+#    _field_           _node(s)_
+# x  appearance        Shape
+# x  children          Anchor, Billboard, Collision, Group, Transform
+# x  choice            Switch
+# x  color             ElevationGrid, IndexedFaceSet, IndexedLineSet, PointSet
+# x  coord             IndexedFaceSet, IndexedLineSet, PointSet
+# x  fontStyle         Text
+# x  geometry          Shape 
+# x  level             LOD
+# x  material          Appearance
+# x  normal            ElevationGrid, IndexedFaceSet
+# *  proxy             Collision (not needed, already handled by Proxy tag)
+# x  source            Sound
+# x  texCoord          ElevationGrid, IndexedFaceSet
+# x  texture           Appearance
+# x  textureTransform  Appearance
+# 
+# brutzman 2/8/2000
+#	Scene node (i.e. root node) relaxed to contain any valid ChildrenNodes
+#	  in accordance with VRML 97 specification paragraph 4.4.1 "Root nodes"
+# brutzman 1/22/2000
+#	Renamed PROTO-declare/EXTERNPROTO-declare/PROTO-instance to
+#	  ProtoDeclare/ExternProtoDeclare/ProtoInstance in order to
+#	  enable autogeneration of node classes from DTD/Schema
+# brutzman 1/17/2000
+#	field and defaultValue tags:  added USE attribute, as another way to
+#	  initialize Node/Nodes data (see ECMAScriptAnnexExample2.wrl, .xml)
+# brutzman 1/13/2000
+#	defaultValue's attribute 'value' relaxed to contain CDATA, matching
+#	  field's attribute 'value' datatype.  This might contain data of any
+#	  simple VRML type.
+# brutzman 1/11/2000
+#	defaultValue tag's value attribute no longer #REQUIRED since it can
+#	  contain Node or Nodes defaultValues.  'value' is #IMPLIED instead.
+#	  defaultValue candidate contents match field tag:  ( %ProtoNodes; )*
+#	  It is a type error to define the value attribute and contain content 
+#	  tags simultaneously.
+# grussbach, brutzman 1/10/2000
+#	Adjusted several definitions to avoid ambiguous content models: 
+#	  Collision, Shape, Scene3D, MultiTexture and MultiTextureAppearance.
+# brutzman 1/10/2000
+#	Added switches to turn 'children' wrapper tag back on if experimenting.
+#	  see ChildrenTagExample.xml for use.  
+# marrin, puk, meeting members, brutzman 1/8/2000
+#	Experimented with 'children' wrapper tag.  controversial.
+#	Renamed DTD as x3d-draft.dtd and modified all example content to do so.
+# marrin, brutzman 1/5/2000
+#	NavigationInfo:  type is %MFString; not enumeration.  Note that
+#	  multiple means are already available for encoding MFStrings as
+#	  XML attribute values, including these examples: 
+#	  string="a &quot; quoted &#34; string" and string='a "quoted" string'
+#	Font:  family and justify are also MFStrings, not enumeration.  Worth
+#	  considering changing justify to justifyMajor and justifyMinor,
+#	  with possible axis-alignment values (FIRST|BEGIN|MIDDLE|END)
+#	  to enable these content values to become validatable.
+# brutzman 1/3/2000
+#	Added X3dExtensions for multitexture evaluation.
+# brutzman 1/2/2000
+#	defaultValue tag allowed to contain initializing nodes for
+#	  SFNode/MFNode, identically to field tag
+# brutzman 12/30/99
+#	Minor rewriting of IndexedLineSet, PointSet, core IndexedFaceSet to
+#	  eliminate look-ahead ambiguity.  All unordered children nodes
+#	  combinations allowed.
+# brutzman 12/29/99
+#	Core profile and VRML 97 profile capabilities integrated in the DTD.
+#	  Core profile nodes and corresponding field subsetting is listed in
+#	  http://www.web3d.org/TaskGroups/x3d/specification/part1/CoreProfile.html
+#	  http://www.web3d.org/TaskGroups/x3d/meetings/retreat-27-29september1999/notes.html#CoreProfile
+#	  Example core profile scene available in CoreProfileExample.xml
+#	Added extensions lineWidth to IndexedLineSet, pointSize to PointSet,
+#	  as proposed by various contributors and discussed at 1999 retreat.
+#	Removed verbose unordered DTD formulations for Appearance,
+#	  ElevationGrid and IndexedFaceSet.  Concise unordered formulations
+#	  remain active.  Ordered formulations are possible but commented.
+#	  Exhaustive enumerations kept in changelog for reference purposes.
+<!-- Fully enumerated unordered version of Appearance -->
+<!--
+<!ELEMENT Appearance (
+	( (%MaterialNodes;)?, (%TextureNodes;)?, (%TextureTransformNodes;)? ) |
+	( (%MaterialNodes;)?, (%TextureTransformNodes;)?, (%TextureNodes;)? ) |
+	( (%TextureNodes;)?, (%MaterialNodes;)?, (%TextureTransformNodes;)? ) |
+	( (%TextureNodes;)?, (%TextureTransformNodes;)?, (%MaterialNodes;)? ) |
+	( (%TextureTransformNodes;)?, (%MaterialNodes;)?, (%TextureNodes;)? ) |
+	( (%TextureTransformNodes;)?, (%TextureNodes;)?, (%MaterialNodes;)? ) |
+
+	( (%MaterialNodes;)?, (%TextureNodes;)?, PROTO-instance? ) |
+	( (%MaterialNodes;)?, (%TextureTransformNodes;)?, PROTO-instance? ) |
+	( (%TextureNodes;)?, (%MaterialNodes;)?, PROTO-instance? ) |
+	( (%TextureNodes;)?, (%TextureTransformNodes;)?, PROTO-instance? ) |
+	( (%TextureTransformNodes;)?, (%MaterialNodes;)?, PROTO-instance? ) |
+	( (%TextureTransformNodes;)?, (%TextureNodes;)?, PROTO-instance? ) |
+
+	( (%MaterialNodes;)?, PROTO-instance?, (%TextureTransformNodes;)? ) |
+	( (%MaterialNodes;)?, PROTO-instance?, (%TextureNodes;)? ) |
+	( (%TextureNodes;)?, PROTO-instance?, (%TextureTransformNodes;)? ) |
+	( (%TextureNodes;)?, PROTO-instance?, (%MaterialNodes;)? ) |
+	( (%TextureTransformNodes;)?, PROTO-instance?, (%TextureNodes;)? ) |
+	( (%TextureTransformNodes;)?, PROTO-instance?, (%MaterialNodes;)? ) |
+
+	( PROTO-instance?, (%TextureNodes;)?, (%TextureTransformNodes;)? ) |
+	( PROTO-instance?, (%TextureTransformNodes;)?, (%TextureNodes;)? ) |
+	( PROTO-instance?, (%MaterialNodes;)?, (%TextureTransformNodes;)? ) |
+	( PROTO-instance?, (%TextureTransformNodes;)?, (%MaterialNodes;)? ) |
+	( PROTO-instance?, (%MaterialNodes;)?, (%TextureNodes;)? ) |
+	( PROTO-instance?, (%TextureNodes;)?, (%MaterialNodes;)? ) |
+
+	( (%MaterialNodes;)?, PROTO-instance?, PROTO-instance? ) |
+	( (%TextureNodes;)?, PROTO-instance?, PROTO-instance? ) |
+	( (%TextureTransformNodes;)?, PROTO-instance?, PROTO-instance? ) |
+	( PROTO-instance?, (%MaterialNodes;)?, PROTO-instance? ) |
+	( PROTO-instance?, (%TextureNodes;)?, PROTO-instance? ) |
+	( PROTO-instance?, (%TextureTransformNodes;)?, PROTO-instance? ) |
+	( PROTO-instance?, PROTO-instance?, (%MaterialNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, (%TextureNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, (%TextureTransformNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, PROTO-instance? )
+) >
+-->
+<!-- Fully enumerated unordered version of ElevationGrid -->
+<!--
+<!ELEMENT ElevationGrid (
+	( (%ColorNodes;)?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%ColorNodes;)?, (%TextureCoordinateNodes;)?, (%NormalNodes;)? ) |
+	( (%NormalNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%TextureCoordinateNodes;)?, (%ColorNodes;)?, (%NormalNodes;)? ) |
+	( (%TextureCoordinateNodes;)?, (%NormalNodes;)?, (%ColorNodes;)? ) |
+
+	( (%ColorNodes;)?, (%NormalNodes;)?, PROTO-instance? ) |
+	( (%ColorNodes;)?, (%TextureCoordinateNodes;)?, PROTO-instance? ) |
+	( (%NormalNodes;)?, (%ColorNodes;)?, PROTO-instance? ) |
+	( (%NormalNodes;)?, (%ColorNodes;)?, PROTO-instance? ) |
+	( (%TextureCoordinateNodes;)?, (%ColorNodes;)?, PROTO-instance? ) |
+	( (%TextureCoordinateNodes;)?, (%NormalNodes;)?, PROTO-instance? ) |
+
+	( (%ColorNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%ColorNodes;)?, PROTO-instance?, (%NormalNodes;)? ) |
+	( (%NormalNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%TextureCoordinateNodes;)?, PROTO-instance?, (%NormalNodes;)? ) |
+	( (%TextureCoordinateNodes;)?, PROTO-instance?, (%ColorNodes;)? ) |
+
+	( PROTO-instance?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%TextureCoordinateNodes;)?, (%NormalNodes;)? ) |
+	( PROTO-instance?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%ColorNodes;)?, (%NormalNodes;)? ) |
+	( PROTO-instance?, (%NormalNodes;)?, (%ColorNodes;)? ) |
+
+	( (%ColorNodes;)?, PROTO-instance?, PROTO-instance? ) |
+	( (%NormalNodes;)?, PROTO-instance?, PROTO-instance? ) |
+	( (%TextureCoordinateNodes;)?, PROTO-instance?, PROTO-instance? ) |
+	( PROTO-instance?, (%ColorNodes;)?, PROTO-instance? ) |
+	( PROTO-instance?, (%NormalNodes;)?, PROTO-instance? ) |
+	( PROTO-instance?, (%TextureCoordinateNodes;)?, PROTO-instance? ) |
+	( PROTO-instance?, PROTO-instance?, (%ColorNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, (%NormalNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, PROTO-instance? )
+) >
+-->
+<!-- Fully enumerated unordered version of ElevationGrid -->
+<!-- IndexedFaceSet's TextureCoordinate (or a corresponding PROTO-instance)
+     kept last to avoid further combinatoric explosion -->
+<!--
+<!ELEMENT IndexedFaceSet (
+	( (%ColorNodes;)?, (%CoordinateNodes;)?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%ColorNodes;)?, (%NormalNodes;)?, (%CoordinateNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%CoordinateNodes;)?, (%ColorNodes;)?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%CoordinateNodes;)?, (%NormalNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, (%CoordinateNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, (%CoordinateNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+
+	( (%ColorNodes;)?, (%CoordinateNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%ColorNodes;)?, (%NormalNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%CoordinateNodes;)?, (%ColorNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%CoordinateNodes;)?, (%NormalNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, (%CoordinateNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, (%CoordinateNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+
+	( (%ColorNodes;)?, PROTO-instance?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%ColorNodes;)?, PROTO-instance?, (%CoordinateNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%CoordinateNodes;)?, PROTO-instance?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%CoordinateNodes;)?, PROTO-instance?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, PROTO-instance?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, PROTO-instance?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+
+	( PROTO-instance?, (%CoordinateNodes;)?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%NormalNodes;)?, (%CoordinateNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%ColorNodes;)?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%NormalNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%CoordinateNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%CoordinateNodes;)?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+
+	( (%ColorNodes;)?, PROTO-instance?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%CoordinateNodes;)?, PROTO-instance?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( (%NormalNodes;)?, PROTO-instance?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%ColorNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%CoordinateNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, (%NormalNodes;)?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, (%ColorNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, (%CoordinateNodes;)?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, (%NormalNodes;)?, (%TextureCoordinateNodes;)? ) |
+
+	( PROTO-instance?, PROTO-instance?, PROTO-instance?, (%TextureCoordinateNodes;)? ) |
+	( PROTO-instance?, PROTO-instance?, PROTO-instance?, PROTO-instance? ) |
+	
+	( (%ColorNodes;)?, (%CoordinateNodes;)?, (%NormalNodes;)?, PROTO-instance? ) |
+	( (%ColorNodes;)?, (%NormalNodes;)?, (%CoordinateNodes;)?, PROTO-instance? ) |
+	( (%CoordinateNodes;)?, (%ColorNodes;)?, (%NormalNodes;)?, PROTO-instance? ) |
+	( (%CoordinateNodes;)?, (%NormalNodes;)?, (%ColorNodes;)?, PROTO-instance? ) |
+	( (%NormalNodes;)?, (%CoordinateNodes;)?, (%ColorNodes;)?, PROTO-instance? ) |
+	( (%NormalNodes;)?, (%CoordinateNodes;)?, (%ColorNodes;)?, PROTO-instance? )
+) >
+-->
+# brutzman, goldberg 12/28/99
+#	moved these DTD update notes into file latest-brutzman-changelog.txt
+#	  to reduce size and improve readability of current X3D DTD
+#	added Appearance to allowable PROTO-declare nodes
+#	WorldInfo allowed as top-level scene node, child node or PROTO node
+#	Made all nodes extensible via tagname corresponding to PROTO-declare,
+#	  retaining strong typing of new nodes.  User overrides a
+#	  parameter-entity declaration for each new node, as shown in
+#	  example scene SpinGroupExternalDeclaration.xml.
+#	  Extendable node types:
+#		<!ENTITY % AppearanceNodeExtensions  "" >
+#		<!ENTITY % AudioClipNodeExtensions  "" >
+#		<!ENTITY % BindableNodeExtensions  "" >
+#		<!ENTITY % ColorNodeExtensions  "" >
+#		<!ENTITY % CoordinateNodeExtensions  "" >
+#		<!ENTITY % FontStyleNodeExtensions  "" >
+#		<!ENTITY % GeometryNodeExtensions  "" >
+#		<!ENTITY % GroupingNodeExtensions  "" >
+#		<!ENTITY % InterpolatorNodeExtensions  "" > 
+#		<!ENTITY % LightNodeExtensions  "" >
+#		<!ENTITY % MaterialNodeExtensions  "" >
+#		<!ENTITY % NormalNodeExtensions  "" >
+#		<!ENTITY % ScriptNodeExtensions  "" >
+#		<!ENTITY % SensorNodeExtensions  "" > 
+#		<!ENTITY % ShapeNodeExtensions  "" >
+#		<!ENTITY % SoundNodeExtensions  "" >
+#
+#		<!-- MovieTexture must appear twice: -->
+#		<!ENTITY % MovieTextureNodeExtensions  "" >
+#		<!ENTITY % TextureNodeExtensions  "" >
+#
+#		<!ENTITY % TextureCoordinateNodeExtensions  "" >
+#		<!ENTITY % TextureTransformNodeExtensions  "" >
+#		<!ENTITY % WorldInfoNodeExtensions  "" >
+# brutzman 12/27/99
+#	corrected malformed %TextureNodes; reference in AppearanceNodes
+#	  (detected by Microsoft's IE 5.1 and xmlint)
+# grussbach, brutzman 12/26/99
+#	provided more concise, unordered, complete enumerations for
+#	  Appearance, ElevationGrid, IndexedFaceSet.  simple ordered
+#	  versions also there for testing (but commented out).  open issue
+#	  whether ordered or unordered versions of these three nodes will
+#	  be used, to be resolved as part of extensibility revamp.
+# goldberg, brutzman 12/20/99
+#	Renamed entity fieldTypes -> X3dFieldTypes, added Vrml97FieldTypes
+#	  for comparison information
+# brutzman, Heiko Grussbach 12/20/99
+#	Strictly enumerated all possible combinations of child content
+#	  containing PROTO-declare to avoid DTD ambiguity.  Modified
+#	  Appearance, ElevationGrid, IndexedFaceSet (at least most combos),
+#	  IndexedLineSet, PointSet and Shape.  This is necessary to allow
+#	  general subsitution of PROTO-instance anywhere.
+# brutzman 12/20/99
+#	defaultValue:  renamed attribute 'name' to 'fieldName' for clarity
+#	  (defaultValue resets field values inside a PROTO-instance)
+#	FontStyle:  fixed enumeration values.
+# brutzman 12/19/99
+#	Added option vrml97Hint (eventIn | eventOut | field | exposedField)
+#	  to <field> to allow precise backwards compatibility with VRML 97
+#	  field semantics, if desired.  This attribute allows translation
+#	  from VRML -> X3D -> VRML to be literal, otherwise map X3D fields
+#	  backwards to VRML 97 exposedFields.
+# brutzman, goldberg 12/19/99
+#	Only allow <field> tag to describe interface inside PROTO-declare,
+#	  EXTERNPROTO-declare and Script.  (In other words, disallow use of
+#	  eventIn, eventOut, and exposedField.)  As discussed at the X3D
+#	  retreat September 27-29 1999 and since, the "grand unified event
+#	  model" maps eventIn, eventOut and  exposedField to field tag,
+#	  while providing complete exposedField semantics (i.e. read,
+#	  write, persistent state, availability).
+# goldberg 12/18/99
+#	Made 'IS' an attribute for connecting PROTO-DECLARE fields to
+#	  provided PROTO node DEFs, instead of collecting 'IS' information
+#	  as a separate <IS> tag.  Syntax for IS targets remains
+#	  identical to VRML 97.
+# brutzman 12/17/99
+#	Removed excess PROTO-instance declaration from %ChildrenNodes.
+# brutzman 12/16/99
+#	Trying nodeTypeHint in EXTERNPROTO-declare.  This gives node type
+#	  of the first node in the EXTERNPROTO definition.  Designated an
+#	  #IMPLIED (optional) attribute, since translators might not be
+#	  be able to access and check the first node of EXTERNPROTO files.
+#	  Also helps problematic case where two EXTERNPROTOs are used as
+#	  contained content, browser can more quickly check for node-type
+#	  mismatch errors.
+# brutzman 12/12/99
+#	PROTO-declare and EXTERNPROTO-declare allowed to have zero or more
+#	  fields (rather than one or more).
+#	PROTO-instance can now appear anywhere in scene (no type checking
+#	  of nodes performed by VRML 97.  Modifications include
+#	  %GroupingNodes; and derivative definitions, Appearance, 
+#	  ElevationGrid, IndexedFaceSet, IndexedLineSet, PointSet,
+#	  Shape, Sound and Text.
+#	All combinations of node content now allowed under Appearance and
+#	  ElevationGrid.
+#	Collision Proxy nodes same as all Grouping nodes, matching VRML 97.
+# brutzman 12/11/99
+#	Added 'meta' tag to Header, following XHTML 1.0 draft recommendation
+#	  http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd
+#	  so that X3D content can include compatible metadata.
+#	  This requires further scrutiny (and hopefully reliance on the
+#	  XHTML DTD without tagset duplication here) as we explore
+#	  further interoperability and modularity with XHTML.
+# brutzman 12/9/99
+#	Relaxed all MF types from NMTOKENS to CDATA, by popular demand
+#	  (i.e. to permit use of commas in long arrays)
+# brutzman 12/8/99
+#	Field types:  using parameter entity declarations for %SFBool; etc.
+#	  to ensure consistency, correctness and clarity for all attributes.
+#	  No change in functionality, just better DTD administration.
+#	IndexedFaceSet:  allowed all 6 ordered combinations of Color, Coordinate
+#	  and Normal as long as TextureCoordinate is last.
+#	Route:  changed fromField and toField from CDATA to NMTOKEN for better
+#	  validation
+#	PROTO-instance:  corrected type of DEF to ID, USE to IDREF
+# brutzman 12/5/99
+#	FieldTypes:  added Vector2/Vector2Array, removed Vector4/Vector4Array,
+#	  renamed Int/Ints to Integer/Integers for consistency
+#	Added VisibilitySensor to BehaviorLeafNodes
+#	Made some of the parameter entity constructions more consistent
+#	  (e.g. moving parentheses around)
+# brutzman 12/4/99
+#	Allowed field tag to contain nodes, for initialization of Node/Nodes
+#	  (see VRML 97 specification paragraph 4.8.2).  Thus 'value' attribute
+#	  usage is relaxed from REQUIRED to IMPLIED, since initialization
+#	  values are either passed in as attribute strings for basic types,
+#	  or as content nodes for Node/Nodes types.
+#	Added parameter entity for GeometricPropertyNodes (Coordinate, Color,
+#	  Normal, TextureCoordinate) and made them allowable as content in
+#	  PROTO-declare and PROTO-instance
+#	  (see VRML 97 specification paragraph 4.6.3)
+# brutzman 12/2/99
+#	Reviewed full DTD, relaxed Node.field values from #REQUIRED to #IMPLIED
+#	  for Inline.url, Normal.vector and TextureCoordinate.point.
+#	  Again, this matches VRML 97 spec and permits NULL values.
+#	  Similarly updated the corresponding latest-brutzman.profile
+#	  for X3D-edit pop-up tips.
+#	Added Node, Nodes to FieldTypes for event/field types
+#	Added AppearanceNodes, GeometryNodes and nested PROTO-instance to list
+#	  of eligible content contained by PROTO-declare
+#	PROTO-declare can contain multiple nodes, to match VRML 97 specification
+# brutzman 12/1/99
+#	Coordinate's 'point' attribute and Color's 'color' attribute changed
+#	  from #REQUIRED to #IMPLIED (i.e. such values are optional, not
+#	  required) in order to match VRML 97 spec.  Another way to look at
+#	  this change:   NULL values are now permitted.
+#	Removed [square brackets] and (parentheses) from default values to
+#	  match earlier decision to remove them from numeric fields.
+# brutzman 11/27/99
+#	Produced a number of fixes in Xj3D source:  cvs and build script work
+#	Xeena able to present translated X3D scene using DTD without problems
+#	DTD unchanged, upgraded to version 0.7
+# brutzman 11/13/99
+#	Verified a number of fixes accomplished in Xj3D, DTD unchanged
+# brutzman 11/9/99
+#	Sound:  simplified definition to ( AudioClip | MovieTexture )
+#	  since no more than one (SFNode) is allowed 
+# brutzman 11/4/99
+#	Testing with updated Xj3D - thanks Rick!
+#	ROUTE changed to Route for translatability with current build,
+#	  any opinions?  ROUTE and various *PROTO* tags might be capitalized
+#	  to match VRML 97 or left single-cap only to match other tags
+#	Route:  from, to, sourceEvent, targetEvent -> fromNode, fromField,
+#	  toNode, toField.  Much clearer name suggestions from Xj3D.  Not a
+#	  problem, VRML 97 specification does not specify strict names for
+#	  these terms.
+#
+# brutzman 11/3/99
+#	Collision:  can contain at most one Proxy, in any sequence with
+#	  other ChildrenNodes.
+# brutzman 11/2/99
+#	PROTO-instance:  for overriding field defaults, now trying tag
+#	  fieldReset -> defaultValue
+#	FieldTypes naming:  Vector3s -> Vector3Array, Vector4s -> Vector4Array
+#	field, exposedField, defaultValue:  made 'value' a REQUIRED attribute
+#	eventIn value defaults to "" (just like eventOut value)
+# brutzman 11/1/99
+#	IS:  interface -> interfaceFieldName, internal -> internalFieldName
+#	CylinderSensor:  trackpoint -> trackPoint to match VRML 97 eventOut
+#	TouchSensor:  added hitTexCoord to match VRML 97 eventOut
+#	Renamed the PROTO definition tag  PROTO -> PROTO-declare, renamed
+#	  the PROTO instantiation tag PROTO-use -> PROTO-instance, renamed
+#	  EXTERNPROTO instantiation tag EXTERNPROTO -> EXTERNPROTO-declare.
+#	  Goal is clarity during development.  Note completely independent
+#	  semantics from DEF/USE, thus just trying different tag names.
+#	  PROTO-declare can contain eventIn/eventOut/field/exposedField/IS/nodes,
+#	  EXTERNPROTO-declare is url plus eventIn/eventOut/field/exposedField.
+#	  PROTO-instance can only contain reinitialized field/exposedField tags.
+#	  PROTO-instance 'type' attribute renamed 'name' to match PROTO-declare.
+#	  PROTO-instance contains fieldReset instead of field/exposedField
+#	    so that individual field types don't have to be redeclared.
+#	  Considering single unnested ID/IDREF namespace to eliminate ambiguity.
+#	  Stay tuned, this whole area related to PROTOs is still in flux.
+# brutzman 10/31/99
+#	PROTO:  added exposedField, 'type' attribute renamed 'name', added IS,
+#	  ProtoUse renamed PROTO-use
+#	initial version of EXTERNPROTO added, looks pretty simple actually
+#	<field>, <eventIn>, <eventOut>:  attribute 'id' renamed to 'name'
+#	added <exposedField>, value required for field and exposedField
+#	added IS inside PROTO, with attributes 'interface' and 'internal'
+#	Open issue:  how do we include and check for named PROTO/EXTERNPROTO nodes
+#	  when ID/IDREF limited to a single namespace
+#	Inline:  allowed to contain SceneNodes (as demonstrated by Xj3D) in order to permit
+#	  Inline'd content in the scene graph.  Note this allows storing intermediate results.
+#	Type names:  changed Bool|Bools -> Boolean|Booleans, deleted Norm|Norms,
+#	  changed Vec|Vecs -> Vector3|Vector3s|Vector4|Vector4s,
+#	  added Image, Rotation|Rotations, String|Strings, Time|Times.
+#	  Do people like these names better than SFVec3f|MFVec3f etc?
+#	Finished initial testing of all VRML 97 nodes using DTD and Xj3D/Xeena
+#	Keeping Don's testing build updated with Rick's bugfixes and CVS still a challenge
+# brutzman 10/29/99
+#	Appearances:  partially relaxed order, either Material or one of TextureNodes first
+#	Various fields, especially eventOuts:  relaxed default value constraint from FIXED
+#	  (i.e. only one valid constant value) to default value (any value OK, default
+#	  provided if none given).  This permits validly saving/reloading/validating state,
+#	  even of prior eventOut values.  Also eliminates perhaps-unnecessary warnings
+#	  if non-default values are ever used.
+#	  ** Need independent confirmation this makes sense, please!
+#	IndexedFaceSet: partially relaxed order, either Color or Coordinate first
+#	  (as long as they precede Normal?, TextureCoordinate?)
+# brutzman 10/20/99
+#	WorldInfo:  added to &SceneLeafNodes; since valid as a child node.  appropriate
+#	  to also kept it as one of &SceneNodes; since no apparent repetition collision.
+#	%BindableNodes; added to &ChildrenNodes;
+#	Alphabetized %BehaviorLeafNodes;
+#	Switch:  changed from ( %ChildrenNodes; )* to %Children; to match other
+#	  grouping nodes (no semantic change)
+#	Better alphabetized order of various ParameterEntities
+# brutzman 10/19/99
+#	Switch:  changed content from &GroupNodes; to %ChildrenNodes;
+#	  (but now note %ChildrenNodes; doesn't match "children nodes" in
+#	  "VRML 97 4.6.5 Grouping and children nodes")
+# sonstein 10/18/99
+#	fix PROTO's capitalization of (eventIn | eventOut | field)+
+# 	remove 'byteCodes' from %BehaviorLeafNodes
+# brutzman 10/18/99
+#	IndexedFaceSet, IndexedLineSet:  allowed zero or one Coordinate node
+#	  (instead of mandatory one) since coord NULL is legal
+#	IndexedLineSet:  allowed Color, Coordinate in either order
+#	Interpolators:  fraction and value fields consistently initialized
+#	Pointset:  corrected definition, added DEF/USE
+#	Switch:  changed content from Group to %GroupNodes; 
+#	Switch:  allow multiple group nodes under 'choice'
+# brutzman 10/17/99
+#	Are special conversion rules needed to handle embedded blanks in URL fields?
+#	NavigationInfo's type attribute too restrictive using ( ANY | ... ) selections,
+#	  needs to support zero-to-several of at least the following navigation types:
+#	  "ANY", "WALK", "EXAMINE", "FLY", and "NONE"
+#	  so relaxed attribute constraint to NMTOKENS #IMPLIED (default value implied)
+#	  and translations should not include [ brackets around type values ]
+#	Added consistent bind, bindTime, isBound events to Background, Fog, NavigationInfo
+#	  and Viewpoint (the bindable nodes).  Note VRML 97 spec inconsistent about these.
+#	  Default binding values false, since browser/user decides.
+# brutzman 10/16/99
+#	Changed DEF/USE back to ID/IDREF, translation issues posted on list
+#	  http://www.web3d.org/WorkingGroups/x3d-contributors/hypermail/1999/1713.html
+#	  http://www.web3d.org/WorkingGroups/x3d-contributors/hypermail/1999/1719.html
+#	Added examine field to Viewpoint (at least temporarily while being discussed)
+#	  http://www.web3d.org/WorkingGroups/x3d-contributors/hypermail/1999/1720.html
+#	Auvo's redefined Shape permits arbitrary order for Appearance & GeometryNodes
+# brutzman 10/14/99
+#	Need to look at defaults for all eventIns & eventOuts
+#	looking at using NMTOKEN instead of ID/IDREF for DEF/USE values -
+#	  permits name repetition (like VRML 97), still enforces legal name strings
+# brutzman 10/13/99
+#	Added IndexedLineSet
+#	Renamed Normal's normal field to vector to match VRML 97
+#	Renamed TextureCoordinate's texCoord field to point to match VRML 97
+#	PointSet:  changed order to ( ColorSet?, CoordinateSet) to match VRML 97
+#	changed various interpolator eventIn fraction fields to #FIXED
+#	to do:  ensure all events added, with attribute default #FIXED.  defaults?
+#	added Script - check user-defined tags eventIn, field, eventOut
+#	decapitalized eventIn, field, eventOut to match VRML 97
+#	problem:  when USEing another node, the DEF'ed name is erroneously duplicated
+#	Sound:  added MovieTexture as possible source
+# brutzman 10/12/99
+#	Updated lots of cosmetic spacing
+#	Added colorPerVertex to IndexedFaceSet
+# brutzman 10/11/99
+#	Added PixelTexture to TextureNodes, created PixelTexture element
+#	modified Shape to take only zero or one of GeometryNodes
+#	alphabetized GeometryNodes to match VRML 97 spec
+# brutzman 10/9/99
+#	decided to enter attributes for field/exposedField/eventIn/eventOut 's in VRML
+#	Background:  added bottomUrl, groundColor value "(0 0 0)", bindTime, isBound
+#	added optional Header tag & kept Scene tag based on Auvo's suggestions
+#	removed encoding attribute from X3D & Scene tags, since it's in xml 1.0 header
+#	  X3D node is at top of tree.
+#	  Three definitions are possible without/without/optional Scene tag:
+#		<!ELEMENT X3D ( Scene ) >
+#		<!ELEMENT X3D ( %SceneNodes; ) >
+#		<!ELEMENT X3D ( ( %SceneNodes; ) | Scene ) >
+#	  Best:  single optional Header tag (similar to HTML's HEAD) and 
+#	  single required Scene tag together:
+#		<!ELEMENT X3D    ( Header? , Scene ) >
+#		<!ELEMENT Header ( #PCDATA ) >
+# brutzman 10/8/99
+#	added bboxCenter, bboxCenter to Anchor, Billboard, Collision, Group,
+#	  Inline, Transform
+#	reordered fields and eliminated some .0's to match VRML 97 specification
+#	Need to add <Proxy /> under Collision,
+#	  added ProxyNodes parameter entity (since can't use Collision under proxy)
+#	  split up Children into ChildrenNodes and Children to help Proxy definitions
+#	  need to verify it works and nests...
+#	Changed content particle repetition operator (from + to *) for
+#	  parameter entity & Children, thus permitting absence of child nodes
+#	Alphabetized nodes
+#	Added X3D node (e.g. HTML spec), apparently can eliminate Scene now
+#	Changed Anchor URL from REQUIRED to IMPLIED since VRML 97 permits empty URL
+#	Changed TRUE to true, FALSE to false, matching DOM and Xj3D
+# v0.2.5
+# rmgold 8/03/99
+#	set bindables bind to default TRUE since that works properly now
+# rmgold 7/23/99
+#	moved Coordinate,Normal,Color,TextureCoordinate data
+#	   from PCDATA to an attribute CDATA
+#	moved Index to CDATA attribute of IndexedFaceSet
+# rmgold 7/19/99
+#	reverted Text 
+# rmgold 7/16/99
+#	collapsed Geometry tag
+# rmgold 6/30/99                cleaned up Proto section
+# rmgold 5/25/99
+#	comment the html generator and add link to parser, more comment cleaning
+# brutzman 5/24/99
+#	DTD naming convention:  latest.dtd & latest.html, older versions dated
+# rmgold 5/24/99
+#	followed more ENTITY defs
+# brutzman, glidden 5/21/99	defined parameter entities for GroupNodes and BindableNodes 
+#	(used by Scene and Proto), named dtd, capitalized DEF and USE,
+#	renamed Proto, ProtoDef, Route to PROTO, PROTObody and ROUTE;
+#	changed PROTO "type" to "name"
+#	expect that PROTOs really need to be internal entities (i.e. DTD fragments)
+#	    in x3dfile.xml scenes, need to scrub VRML primitive type enumerations
+# rmgold 5/20/99
+#	added ENTITY DEFs for Children, FieldTypes
+#	renamed ProtoInstance to X3D (0.2.3)
+# rmgold 5/13/99
+#	reintroduced Proto, there is a minimally non validating
+#	way to do this
+# rmgold 5/12/99
+#	removed Interface def, removed Proto there is no clean 
+#	way to do this
+# rmgold 5/12/99
+#	moved around Proto, new ProtoDef, DEF/USE ( 0.2.1 )
+#	fixed CoordinateSet and cousins to use PCDATA
+#	fixed ByteCode to use Interface for consistency
+#	with Proto
+#	fixed missing Bool | Bools field types
+# rmgold 5/11/99 
+#	fixed various vrml abuse ( Geometries directly in Group for example )
+#	renamed root node to "scene" ( 0.1.2 )
+# 	added Proto and Interface def'ns
+# brutzman 5/10/99
+#	fixed lots of syntax abuse - now xeena will parse no problem ( 0.1.1 )
+# rmgold 5/6/99 
+#	fixed axisOfRotation field in Billboard 
+#	fixed group types in toplevel scene
+#	fixed Index attlist
+# rmgold 5/5/99 
+#	completed most nodes ( version 0.1 )
+-->
+
+<!-- Original design notes follow -->
+
+<!-- for the purposes of mapping the VRML97 specification pretty much
+Open questions:
+
+#
+# - should everything be capitalized? this was the vrml tradition, and the     
+#   style for class types. but tags have a different tradition, that is, 
+#   multiworded tags will have to be "_"'d since they are case insensitive.
+
+# - Note the nonvalidation with DEF and USE. Implementors will have to 
+#   ensure that an Element that use's does not have other Attributes.
+#   Also, moving USE into a node attribute broke the REQUIRED specification
+#   for sensor/interpolator names, but not a big problem.
+
+# - This raises an interesting propsosal in itself, yet another way to 
+#   prototype and define. It needs to be decided whether an element
+#   that has a USE IDREF can override some or any of the original def'd 
+#   attributes. This kinda breaks the idea of shared references, but,
+#   for some of us this idea is broken anyway. ( see comment somewhere about
+#   multithreaded traversers ).
+#   This provides a simple way to subclass and derive. Otherwise,
+#   it is up to the implementor to make certain that an Element that
+#   contains a USE Attribute contain no other. 
+
+-->
+
+
+<!-- CDATA field types fall into the following ( ed. lets remove [] and ()? )
+     type	example
+     Bool	"true"
+     Bools	"[ true false ...  true ]"
+     Vec	"(a b c)"
+     Float	"x.0"
+     Floats	[ a.x b.y ... z.z ]
+     Color	"(r g b)" where r,g,b 0.0=>x=>1.0
+     Colors
+     Norm	"(i j k)" where sqrt(i*i + j*j + k*k) == 1.0
+     Norms
+     Int	"I"
+     Vecs	"[ a b c, d e f, ... , g h i ]
+     Ints	"[ A B C ... D ]"
+     Rotation
+     Rotations
+
+See sample parser generator written using JavaCC at:
+http://www.web3D.org/TaskGroups/x3d/sun/X3DFieldParser.html
+
+-->
+<!-- other conventions that popped up
+
+     The simple rule was followed for most cases that vrml sf/mf nodes map
+     to element's sub elements, and fields mapped to attlists. This may 
+     conflict with vrml97 sense of fields names for nodes, but those can
+     additionally be supplied.
+     
+     strictly eventOut's are mapped to FIXED attributes which may update 
+     at runtime
+     
+     Script fields need Event entities
+     
+     A ROUTE Element
+     
+-->
+
+<!-- merged as attribute in the <field> tag
+<!ELEMENT IS    EMPTY >
+<!ATTLIST IS
+	interfaceFieldName   NMTOKEN  #REQUIRED
+	 internalFieldName   NMTOKEN  #REQUIRED>
+-->
+
+<!-- "grand unified event model" maps eventIn, eventOut, exposedField
+     to field tag, with complete exposedField semantics
+<!ELEMENT eventIn EMPTY >
+<!ATTLIST eventIn
+	name  NMTOKEN          #REQUIRED
+	type  ( %X3dFieldTypes; ) #REQUIRED
+	value CDATA            "">
+
+<!ELEMENT eventOut EMPTY >
+<!ATTLIST eventOut
+	type  ( %X3dFieldTypes; ) #REQUIRED
+	name  NMTOKEN          #REQUIRED
+	value CDATA            "">
+
+<!ELEMENT exposedField    EMPTY >
+<!ATTLIST exposedField
+	type  ( %X3dFieldTypes; ) #REQUIRED
+	name  NMTOKEN          #REQUIRED
+	value CDATA            #REQUIRED>
+-->
+
+<!-- Main problem with Proto is that the original intent
+#        was to be able to create vrml "tags" on the fly, but
+#        not sure this is part of XML.  As a good compromise the
+#        following can do something very similar:  name of PROTO
+#        goes in the name field.
+-->
+
+<!--
+#    Here PCDATA contains the utf8 for the fieldName + "=" + fieldValue pairs
+
+<!ELEMENT PROTO-use (#PCDATA)>
+<!ATTLIST PROTO-use
+     DEF  NMTOKEN  #IMPLIED
+     USE  NMTOKEN  #IMPLIED
+     type NMTOKEN  #REQUIRED>
+#-->
+
+<!-- Example PROTO Usage 
+# <PROTO type="myBox">
+#    <field id="mySize" type="vec">
+#    <Box size="mySize">
+# </PROTO>
+# 
+# then somewhere else in a document
+#
+# < PROTO-use type="myBox" DEF="aTwoThreeTenBox" >mySize="2 3 10"</PROTO-use>
+# 
+# and thereafter
+# 
+# < PROTOUse USE="aTwoThreeTenBox"/>
+#
+# Note use of something more validating than CDATA for
+# field values will break IS maps, and the ID in Fields is fairly
+# meaningless. This is however more desirable than a PROTO Processing Instruction.
+-->
+<!-- pretty html generated with code2html.pl 0.6.2 by ppalfrad@cosy.sbg.ac.at -->
+
+

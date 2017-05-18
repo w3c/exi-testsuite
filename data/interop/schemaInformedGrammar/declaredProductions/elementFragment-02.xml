@@ -1,0 +1,32 @@
+<!-- =================================================================== -->
+<!-- Tests SE(qname), SE(*) and CH event types. The elements in          -->
+<!-- namespace urn:aoo and urn:goo use their specific grammars, while    -->
+<!-- the elements in namespace urn:foo use the element fragment grammar. -->
+<!-- =================================================================== -->
+<foo:C xmlns:foo="urn:foo" xmlns:goo="urn:goo" xmlns:aoo="urn:aoo" 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  none="Welcome to the world of element fragment grammar!">
+  <None z="zzz" /><!-- built-in grammar -->
+  <goo:A goo:a="2010-04-27"><!-- goo:A grammar -->
+    <goo:A />
+    <goo:C />
+  </goo:A>
+  1<!-- CH [untyped value] -->
+  <aoo:B xsi:nil="true" aoo:b="2010-04-28"/><!-- aoo:B grammar -->
+  2<!-- CH [untyped value] -->
+  <aoo:C xsi:nil="true" aoo:c="12:34:57"/><!-- aoo:C grammar -->
+  3<!-- CH [untyped value] -->
+  <foo:C><!-- element fragment grammar -->
+    <goo:C />
+  </foo:C>
+  4<!-- CH [untyped value] -->
+  <goo:C goo:c="12:34:56"><!-- goo:C grammar -->
+    <goo:C />
+    <goo:A />
+  </goo:C>
+  5<!-- CH [untyped value] -->
+  <foo:D><!-- element fragment grammar -->
+    <goo:A />
+  </foo:D>
+  <None z="zzz" /><!-- built-in grammar with attribute z already added -->
+</foo:C>

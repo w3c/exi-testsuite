@@ -1,0 +1,26 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <testCase name="SOAP/spec12a.xml">
+	<param name="japex.inputFile" value="${testsDir}/SOAP/spec12a.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/SOAP/schemas/soap-envelope2.xsd"/>
+    </testCase>
+    <testCase name="SOAP/req1.xml">
+	<param name="japex.inputFile" value="${testsDir}/SOAP/req1.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/SOAP/schemas/soap-envelope1.xsd"/>
+    </testCase>
+    <testCase name="SOAP/req10.xml">
+	<param name="japex.inputFile" value="${testsDir}/SOAP/req10.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/SOAP/schemas/soap-envelope1.xsd"/>
+    </testCase>
+    <testCase name="SOAP/req11.xml">
+	<param name="japex.inputFile" value="${testsDir}/SOAP/req11.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/SOAP/schemas/soap-envelope1.xsd"/>
+    </testCase>
+    <testCase name="SOAP/req12.xml">
+	<param name="japex.inputFile" value="${testsDir}/SOAP/req12.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/SOAP/schemas/soap-envelope1.xsd"/>
+    </testCase>
+
+</testCaseGroup>
+

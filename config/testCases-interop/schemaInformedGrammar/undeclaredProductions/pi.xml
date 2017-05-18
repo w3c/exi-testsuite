@@ -1,0 +1,34 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - PI">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.pi-01">
+        <param name="testDescription"  
+          value="Tests PI where there is no declared attributes or declared
+                 attribute wildcard."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/pi-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.pi-02">
+        <param name="testDescription"  
+          value="Tests PI where there is a declared attribute."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/pi-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.pi-03">
+        <param name="testDescription"  
+          value="Tests PI where there's a declared attribute wildcard."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/pi-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+    </testCase>
+
+</testCaseGroup>

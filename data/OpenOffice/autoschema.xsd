@@ -1,0 +1,14 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+        elementFormDefault="qualified">
+
+
+  <element name='document'>
+    <complexType mixed="true">
+      <sequence>
+        <any namespace='##any' minOccurs='0' maxOccurs='unbounded' processContents="lax"/>
+      </sequence>
+      <anyAttribute namespace='##any' processContents="lax"/>
+    </complexType>
+  </element>
+</schema>

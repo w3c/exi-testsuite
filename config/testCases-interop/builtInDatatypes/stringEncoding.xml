@@ -1,0 +1,12 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="CH and AT string value encoding">
+
+    <param name="groupId" value="${groupId} | stringTable"/> 
+
+    <xi:include href="literalStringEncoding.xml"/>
+    <xi:include href="indexedStringEncoding.xml"/>
+    <xi:include href="boundedTables.xml"/>
+    <!--xi:include href="compactIdentifiers.xml"/-->
+    <!--xi:include href="restrictedCharacterSetEncoding.xml"/-->
+    
+</testCaseGroup>

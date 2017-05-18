@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+  <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+  <param xmlns="http://www.sun.com/japex/testSuite" name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/SVGTiny/autoschema.xsd"/>
+
+<!-- temporarily disable dtd preservation until more candidates can preserve them -->
+<!--  <param name="org.w3c.exi.ttf.preserve" value="dtds pis"/> -->
+  <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+
+  <testCase name="SVGTiny/animals/architetto_francesco_ro_01.svg">
+    <param name="japex.inputFile" value="${testsDir}/SVGTiny/animals/architetto_francesco_ro_01.svg"/>
+  </testCase>
+
+  <testCase name="SVGTiny/animals/birds/duck_yellow_ii_kurt_cagl_.svg">
+    <param name="japex.inputFile" value="${testsDir}/SVGTiny/animals/birds/duck_yellow_ii_kurt_cagl_.svg"/>
+  </testCase>
+
+  <testCase name="SVGTiny/animals/birds/penguin/tux_didier_fabert_01.svg">
+    <param name="japex.inputFile" value="${testsDir}/SVGTiny/animals/birds/penguin/tux_didier_fabert_01.svg"/>
+  </testCase>
+
+  <testCase name="SVGTiny/animals/dinosaurs/dinosauro_architetto_fra_01.svg">
+    <param name="japex.inputFile" value="${testsDir}/SVGTiny/animals/dinosaurs/dinosauro_architetto_fra_01.svg"/>
+  </testCase>
+
+  <testCase name="SVGTiny/animals/fantasy/mermaid_kurt_cagle_.svg">
+    <param name="japex.inputFile" value="${testsDir}/SVGTiny/animals/fantasy/mermaid_kurt_cagle_.svg"/>
+  </testCase>
+
+</testCaseGroup>

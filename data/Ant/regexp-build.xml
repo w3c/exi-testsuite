@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<project name="regexp" default="main">
+
+  <property file="../build.properties"/>
+  <property name="classpath" value="${servlet.jar}:${jakarta-oro2.jar}"/>
+
+  <property name="checkRequirements.pre" value="checkRequirements.pre"/>
+  <property name="examples.pre" value="examples.pre"/>
+
+  <target name="checkRequirements.pre">
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${jakarta-oro2.jar}"/>
+       <param name="fail.message" value="a jar file containing the jakarta-oro-2 classes is required to compile the regexp taglib. please define the property jakarta-oro2.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+  </target>
+
+  <target name="examples.pre">
+    <copy file="${jakarta-oro2.jar}"
+          todir="${build.examples}/WEB-INF/lib"/>
+  </target>
+
+</project>

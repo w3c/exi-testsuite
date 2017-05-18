@@ -1,0 +1,2039 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This data is strictly for non-commercial use only.  See http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html for details of the terms and conditions.-->
+<ESGMainBCAST xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <Service id="BBCThree" type="1" version="1" ServiceProtection="0">
+      <Name>BBC Three</Name>
+      <Genre>Audio and video</Genre>
+      <PreviewDataIDRef usage="0">urn:bbc:prevBBCThree</PreviewDataIDRef>
+   </Service>
+   <Access id="BBCThree_acc" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2
+s=SDP Example
+c=IN IP4 225.224.1.24
+t=0 0 
+m=video 4002 RTP/AVP  96 
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 4004 RTP/AVP  98 
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCThree</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Access id="BBCThree_acc_MBMS" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2 
+c=IN IP4 225.224.1.87 
+t=0 0 
+m=video 4002 RTP/AVP 96 
+a=rtpmap:96 H264/90000 
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA== 
+m=audio 4004 RTP/AVP 98 
+a=rtpmap:98 AMR/8000 
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCThree</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <PurchaseItem id="BBCThree_1346" version="0">
+      <ServiceIDRef>BBCThree</ServiceIDRef>
+      <Name>BBCThree</Name>
+   </PurchaseItem>
+   <PurchaseData id="BBCThree_23DGE" version="0">
+      <PurchaseItemIDRef>BBCThree_1346</PurchaseItemIDRef>
+      <PurchaseChannelIDRef>BBC_purchase</PurchaseChannelIDRef>
+      <PriceInfo>
+         <SubscriptionUnit Type="1" Value="54" Unit="3"/>
+         <UnitText>month</UnitText>
+         <Price Currency="EUR" Value="24"/>
+      </PriceInfo>
+   </PurchaseData>
+   <PreviewData id="urn:bbc:prevBBCThree" version="3">
+      <Picture>
+         <PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAwQAAgUBBv/EADAQAAICAQIEBAQFBQAAAAAAAAEC
+AAMRBCESMUFxEyJRYQUjgZEUJEJScjIzYrHB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEB
+AQEBAQAAAAAAAAAAAAAAAAERMUH/2gAMAwEAAhEDEQA/AHbdDUK2K5UgEjBgtPpPFoVzYcnoRmEf
+WP4bBqHGQRmc0uqSuhVYNkdcQKt8PfoUP0xEr6mRirAAg49ZqjW0fuI7iI6plscspyOI/wChFCiJ
+5oaxPlfWSlcvC6lfy47zIzWpZmPQS4pCKc5OPWMYAYM2y7bntBW6hBkL5tsSjhXbPpJF2axhyOBJ
+GD1Nv9p/4mD0g/Kp2l7Tilyf2mU0ZzpklBSinmoP0mbqUCu2AB5jy+k04jqR5j/I/wDIC1Kk2bTm
+oa1769PXgZGc4z1htOvzoLXPdRqValBxcH9RHvJBn6ii5bCGbjI54l005SviYgE+spZfqmPnZh22
+lq6hZXxM+T3gVPCDu2e0kL4KKuTtJKY37RmtuxlNIMadO0JYR4bdjB6Uj8Ou8A0TvG57mM2OAjEH
+kJjX6q04w7HtAe0w+fK/ELqQVXiy46DfEQrvvLAIzcTbDM6GNSFSMKP1dWMzbiyagau7KpuYC1Xq
+I339NhB2WcNwsQ4PtHWq8TDN5jjrKB1NxVedWJ9pJ3wQM4USS6h02n2nRcQNiBMz8RZ/j9oUajFP
+EQCfaQN3XkqBxd8TPdsOVUDEHZqnfqB2gjYzczmUP6Ur4ljk7KuIOxxYxPSAqchTjrOWXEbLzmWu
+KW4D4HKaelbOnr4ueJlKCzY6zRrZlUeX7Ss0xemaHwM7cpJem1XHPf3km5UrIJ3nHduAJk49JzJ5
+mUY5mVcM5JJAKrgJvzEFzMknKAWtckR1G8uCYlU2+I0hI95mrBq28++4MkoquTkbD3khcL33cVQX
+y8/0jEWJl1wfKd5V1AxiaZVkkkgXrrd3CqpLHkIZtBqlDE0nb0IM1vhtdFWj4uNS7jLkHce0qrLX
+b8kWO32EDFrUl8Y5c4/U3h4GFYHmDz+kLqdJZk2HgDnfgB3i1SCxgpB57kdJPQ01qKSFBY+nLEkr
+dot8mxj7STWJr//Z
+</PictureData>
+         <AlternativeText>BBC Three</AlternativeText>
+      </Picture>
+      <AccessIDRef>BBCThree_accpre</AccessIDRef>
+   </PreviewData>
+   <Access id="BBCThree_accpre" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=prev 10001 1 IN IP4 192.24.1.65
+s=preview
+i=Vorschau
+t=0 0
+a=source-filter:  IN IP4 * 192.168.1.65
+a=flute-tsi:1
+a=flute-ch:1
+m=application 4000 FLUTE/UDP 0
+c=IN IP4 225.6.7.54</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>preview Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:OffAirBBCThree" version="2">
+      <Name>This Is BBC THREE</Name>
+      <Description>BBC THREE: Refreshing TV for the digital age</Description>
+   </Content>
+   <Content id="urn:bbc:9277" version="3">
+      <Name>Welcome to BBC THREE</Name>
+      <Description>BBC THREE</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9270" version="5">
+      <Name>Little Britain</Name>
+      <Description>Series 3, Episode 3</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Satire</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Standup comedian(s)</Genre>
+      <Genre>Satirical</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Alternative</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Humour</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9269" version="1">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCThreeint_d0e81" InteractivityMediaDocumentPointer="BBCThreeintgrp_d0e81" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9269</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345762300" InteractivityWindowEndTime="3345762500"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9274" version="2">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9265" version="4">
+      <Name>The Ferocious Mr Fix It</Name>
+      <Description>Are there monsters working in your office? Using secret cameras, our troubleshooter spies on troublemakers</Description>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:9273" version="5">
+      <Name>Wedding Stories</Name>
+      <Description>David and Zophia want a fairytale wedding, Jane and Alaa are getting married the Shirley Valentine way and young sweethearts Vicky and Steve have rollercoaster ride to the altar</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9264" version="1">
+      <Name>Who Rules the Roost?</Name>
+      <Description>Kam and Ambika Pindoria take it in turns to look after their two children when the youngest returns from hospital having recovered from severe heart and respiratory problems</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9288" version="3">
+      <Name>Welcome to BBC THREE</Name>
+      <Description>Experience the fresh new generation of British digital TV with BBC THREE</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9282" version="4">
+      <Name>Spendaholics</Name>
+      <Description>35 year old Kate Philip is £26,000 in debt, divorced and gaining weight</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:3670" version="5">
+      <Name>EastEnders</Name>
+      <Description>Phil's tangled web begins to catch up with him</Description>
+      <Genre>Gritty</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>GENERAL AUDIENCE</Genre>
+      <Genre>Soap</Genre>
+      <Genre>Contemporary drama</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Gutsy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+   </Content>
+   <Content id="urn:bbc:9289" version="2">
+      <Name>Trauma</Name>
+      <Description>Consultant Gareth Davies treats a man who's been stabbed just outside the entrance to A&amp;E</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9286" version="3">
+      <Name>Honey, We're Killing the Kids Revisited</Name>
+      <Description>Six months ago in Essex the Swain family turned their lives upside down as they tried to radically transform their unhealthy lifestyle</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:9279" version="4">
+      <Name>Tittybangbang</Name>
+      <Description>Episode 1</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCThreeint_d0e355" InteractivityMediaDocumentPointer="BBCThreeintgrp_d0e355" version="1" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9279</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345832800" InteractivityWindowEndTime="3345833000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9287" version="1">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9281" version="2">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9278" version="3">
+      <Name>THREE's Outtakes</Name>
+      <Description>A hilarious compendium of mishaps and howlers from the filming of BBC THREE programmes</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCThree_d0e2034" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9265">
+         <Presentation_Window Presentation_Start_Time="3345753600" Presentation_End_Time="3345756900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e491" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2033157348 2090805053 IN IP4 192.168.0.226
+c=IN IP4 225.224.108.246
+m=video 20516 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 20518 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e2048" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9273">
+         <Presentation_Window Presentation_Start_Time="3345756900" Presentation_End_Time="3345760500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2065" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9269">
+         <Presentation_Window Presentation_Start_Time="3345760500" Presentation_End_Time="3345762300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2082" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9274">
+         <Presentation_Window Presentation_Start_Time="3345762300" Presentation_End_Time="3345764100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e515" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2335830688 2370315551 IN IP4 192.168.0.210
+c=IN IP4 225.224.235.131
+m=video 46128 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 46130 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e2099" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9264">
+         <Presentation_Window Presentation_Start_Time="3345764100" Presentation_End_Time="3345767700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2113" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9288">
+         <Presentation_Window Presentation_Start_Time="3345767700" Presentation_End_Time="3345773400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2130" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345773400" Presentation_End_Time="3345773520"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e539" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2382904052 2638244628 IN IP4 192.168.0.127
+c=IN IP4 225.224.91.94
+m=video 59932 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 59934 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e2147" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345773520" Presentation_End_Time="3345796800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2164" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345796800" Presentation_End_Time="3345821880"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2181" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9277">
+         <Presentation_Window Presentation_Start_Time="3345821880" Presentation_End_Time="3345822000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e563" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2468887329 2499099731 IN IP4 192.168.0.21
+c=IN IP4 225.224.151.146
+m=video 59094 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 59096 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e2198" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9282">
+         <Presentation_Window Presentation_Start_Time="3345822000" Presentation_End_Time="3345825600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2215" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9289">
+         <Presentation_Window Presentation_Start_Time="3345825600" Presentation_End_Time="3345827400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2229" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9286">
+         <Presentation_Window Presentation_Start_Time="3345827400" Presentation_End_Time="3345829200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e587" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2120254516 2238128661 IN IP4 192.168.0.175
+c=IN IP4 225.224.69.123
+m=video 9026 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 9028 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e2243" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9270">
+         <Presentation_Window Presentation_Start_Time="3345829200" Presentation_End_Time="3345831000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2260" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9279">
+         <Presentation_Window Presentation_Start_Time="3345831000" Presentation_End_Time="3345832800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2274" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:3670">
+         <Presentation_Window Presentation_Start_Time="3345832800" Presentation_End_Time="3345834600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e611" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2177490234 2553817748 IN IP4 192.168.0.16
+c=IN IP4 225.224.208.105
+m=video 55820 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 55822 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e2291" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9287">
+         <Presentation_Window Presentation_Start_Time="3345834600" Presentation_End_Time="3345836400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2308" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9281">
+         <Presentation_Window Presentation_Start_Time="3345836400" Presentation_End_Time="3345838200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e2325" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9278">
+         <Presentation_Window Presentation_Start_Time="3345838200" Presentation_End_Time="3345840000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e635" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2470199584 2744873045 IN IP4 192.168.0.88
+c=IN IP4 225.224.245.253
+m=video 11206 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 11208 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:9290" version="1">
+      <Name>Trauma Uncut</Name>
+      <Description>Dr Michael Smith is in the Trauma car on a night shift at the Royal London Hospital</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9283" version="3">
+      <Name>Trauma Uncut</Name>
+      <Description>The night shift in A&amp;E at the Royal London Hospital sees the staff treat patients ranging from people who have been hit by cars to a young woman with a shoe crisis</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9280" version="4">
+      <Name>Desperate Midwives</Name>
+      <Description>Midwife Liz looks after a couple who conceived with IVF, but the birth doesn't go to plan</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:9302" version="5">
+      <Name>Spendaholics</Name>
+      <Description>21-year-old student Caroline has the buying habits of a 30-year-old professional</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:9308" version="2">
+      <Name>Trauma</Name>
+      <Description>Consultant Gareth Davies takes the helicopter to a window cleaner who's fallen off his ladder, and Senior Sister Toni Lynch cares for a motorbike accident victim</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9311" version="3">
+      <Name>Honey, We're Killing the Kids Revisited</Name>
+      <Description>Six months ago the Jackson family from Leeds were filmed for three weeks as they attempted to make radical changes to their unhealthy lifestyle</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:9313" version="4">
+      <Name>LA Confidential</Name>
+      <Description>Crime thriller starring Guy Pearce and Russell Crowe as two cops forced to work together to crack a complex multi-murder case</Description>
+      <Genre>CINEMA INDUSTRY ORIGINATED</Genre>
+      <Genre>FICTION</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+   </Content>
+   <InteractivityData id="BBCThreeint_d0e757" InteractivityMediaDocumentPointer="BBCThreeintgrp_d0e757" version="1" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9313</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345917400" InteractivityWindowEndTime="3345917600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9301" version="1">
+      <Name>The Ferocious Mr Fix It</Name>
+      <Description>Monsters working in your office? Using secret cameras, troubleshooter Alasdair Jeffrey spies on troublemakers</Description>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Schedule id="BBCThree_d0e3701" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9294">
+         <Presentation_Window Presentation_Start_Time="3345840000" Presentation_End_Time="3345841800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3718" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9290">
+         <Presentation_Window Presentation_Start_Time="3345841800" Presentation_End_Time="3345843600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3735" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9283">
+         <Presentation_Window Presentation_Start_Time="3345843600" Presentation_End_Time="3345845400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e809" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2370864868 2655288696 IN IP4 192.168.0.91
+c=IN IP4 225.224.180.118
+m=video 29130 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 29132 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e3752" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9287">
+         <Presentation_Window Presentation_Start_Time="3345845400" Presentation_End_Time="3345847200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3769" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9281">
+         <Presentation_Window Presentation_Start_Time="3345847200" Presentation_End_Time="3345848700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3786" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9282">
+         <Presentation_Window Presentation_Start_Time="3345848700" Presentation_End_Time="3345852300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e833" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2123184204 2461013793 IN IP4 192.168.0.53
+c=IN IP4 225.224.136.36
+m=video 64676 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 64678 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e3803" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9280">
+         <Presentation_Window Presentation_Start_Time="3345852300" Presentation_End_Time="3345854100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3817" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9288">
+         <Presentation_Window Presentation_Start_Time="3345854100" Presentation_End_Time="3345859800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3834" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345859800" Presentation_End_Time="3345859920"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e857" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2287200927 2488906859 IN IP4 192.168.0.206
+c=IN IP4 225.224.164.89
+m=video 64704 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 64706 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e3851" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345859920" Presentation_End_Time="3345883200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3868" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345883200" Presentation_End_Time="3345908280"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3885" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9277">
+         <Presentation_Window Presentation_Start_Time="3345908280" Presentation_End_Time="3345908400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e881" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2487884521 2568954467 IN IP4 192.168.0.33
+c=IN IP4 225.224.106.50
+m=video 53200 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 53202 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e3902" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9302">
+         <Presentation_Window Presentation_Start_Time="3345908400" Presentation_End_Time="3345912000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3919" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9308">
+         <Presentation_Window Presentation_Start_Time="3345912000" Presentation_End_Time="3345913800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3933" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9311">
+         <Presentation_Window Presentation_Start_Time="3345913800" Presentation_End_Time="3345915600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e905" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2459991455 2809799194 IN IP4 192.168.0.166
+c=IN IP4 225.224.181.240
+m=video 6908 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 6910 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e3947" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9313">
+         <Presentation_Window Presentation_Start_Time="3345915600" Presentation_End_Time="3345923400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3961" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9294">
+         <Presentation_Window Presentation_Start_Time="3345923400" Presentation_End_Time="3345925200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e3978" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9301">
+         <Presentation_Window Presentation_Start_Time="3345925200" Presentation_End_Time="3345928800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e929" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2210693359 2529479980 IN IP4 192.168.0.51
+c=IN IP4 225.224.229.20
+m=video 60518 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 60520 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:9300" version="4">
+      <Name>My Childhood</Name>
+      <Description>Former TV Presenter John Leslie journeys back to his formative years with the help of Consultant Psychiatrist Linda Treliving</Description>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:9303" version="5">
+      <Name>The Body of... Adolf Hitler</Name>
+      <Description>Myths abound about the Nazi leader, not least regarding his physical aspect</Description>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+   </Content>
+   <Content id="urn:bbc:9305" version="1">
+      <Name>Desperate Midwives</Name>
+      <Description>Gospel-singing midwife Tina looks after a mum who she thinks is too posh to push, and Craig reveals what it's like to be one of the only male midwives in the country</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:9321" version="3">
+      <Name>Spendaholics</Name>
+      <Description>Landscape gardener Tim's champagne lifestyle has left him £40,000 in debt</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:3796" version="4">
+      <Name>EastEnders</Name>
+      <Description>Phil fears for his family as Johnny threatens revenge</Description>
+      <Genre>Gritty</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>GENERAL AUDIENCE</Genre>
+      <Genre>Soap</Genre>
+      <Genre>Contemporary drama</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Gutsy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+   </Content>
+   <Content id="urn:bbc:9328" version="5">
+      <Name>Trauma</Name>
+      <Description>The trauma team rescue a builder who has been crushed by a mechanical digger and a boy who has had a road accident</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9324" version="2">
+      <Name>Honey, We're Killing the Kids Revisited</Name>
+      <Description>Six months ago The Reynolds Family from Blackpool took part in a three-week experiment designed to completely alter their unhealthy lifestyle</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:9315" version="3">
+      <Name>I Love Being Anorexic</Name>
+      <Description>This film reveals the intimate and shocking relationship between two young women and the anorexia that torments them</Description>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:9327" version="4">
+      <Name>Mischief</Name>
+      <Description>2/6</Description>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <InteractivityData id="BBCThreeint_d0e1108" InteractivityMediaDocumentPointer="BBCThreeintgrp_d0e1108" version="1" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9327</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346009200" InteractivityWindowEndTime="3346009400"/>
+   </InteractivityData>
+   <Schedule id="BBCThree_d0e4996" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9300">
+         <Presentation_Window Presentation_Start_Time="3345928800" Presentation_End_Time="3345932100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5010" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9303">
+         <Presentation_Window Presentation_Start_Time="3345932100" Presentation_End_Time="3345935700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5024" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9302">
+         <Presentation_Window Presentation_Start_Time="3345935700" Presentation_End_Time="3345939000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1136" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2036743164 2242553710 IN IP4 192.168.0.2
+c=IN IP4 225.224.25.122
+m=video 63258 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 63260 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e5041" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9305">
+         <Presentation_Window Presentation_Start_Time="3345939000" Presentation_End_Time="3345940800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5055" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9288">
+         <Presentation_Window Presentation_Start_Time="3345940800" Presentation_End_Time="3345946200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5072" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345946200" Presentation_End_Time="3345946320"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1160" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2196228027 2478515624 IN IP4 192.168.0.221
+c=IN IP4 225.224.169.51
+m=video 14356 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 14358 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e5089" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345946320" Presentation_End_Time="3345969600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5106" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3345969600" Presentation_End_Time="3345994680"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5123" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9277">
+         <Presentation_Window Presentation_Start_Time="3345994680" Presentation_End_Time="3345994800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1184" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2309738159 2657470702 IN IP4 192.168.0.48
+c=IN IP4 225.224.23.18
+m=video 1512 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 1514 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e5140" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9321">
+         <Presentation_Window Presentation_Start_Time="3345994800" Presentation_End_Time="3345998400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5154" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9328">
+         <Presentation_Window Presentation_Start_Time="3345998400" Presentation_End_Time="3346000200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5168" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9324">
+         <Presentation_Window Presentation_Start_Time="3346000200" Presentation_End_Time="3346002000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1208" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2113067626 2152862547 IN IP4 192.168.0.197
+c=IN IP4 225.224.26.228
+m=video 42084 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 42086 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e5182" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9315">
+         <Presentation_Window Presentation_Start_Time="3346002000" Presentation_End_Time="3346005600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5199" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:3796">
+         <Presentation_Window Presentation_Start_Time="3346005600" Presentation_End_Time="3346007400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e5216" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9327">
+         <Presentation_Window Presentation_Start_Time="3346007400" Presentation_End_Time="3346011000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1232" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2067977905 2404022216 IN IP4 192.168.0.193
+c=IN IP4 225.224.170.52
+m=video 1372 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 1374 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e5233" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9273">
+         <Presentation_Window Presentation_Start_Time="3346011000" Presentation_End_Time="3346014300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:9318" version="3">
+      <Name>Desperate Midwives</Name>
+      <Description>A speedy delivery takes Liz by surprise, while Michelle has to look after a mum who wants to get plastered at a belly-casting party</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:9338" version="4">
+      <Name>Spendaholics</Name>
+      <Description>Record Company PA Rudo spends money like she is one of the celebrity artists</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:9345" version="5">
+      <Name>Trauma</Name>
+      <Description>Dr Neil Ballard takes the emergency helicopter to a building site where a man has been pinned down by a crane that has fallen on top of him</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5100" version="2">
+      <Name>EastEnders</Name>
+      <Description/>
+      <Genre>Gritty</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>GENERAL AUDIENCE</Genre>
+      <Genre>Soap</Genre>
+      <Genre>Contemporary drama</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Gutsy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+   </Content>
+   <Content id="urn:bbc:9344" version="3">
+      <Name>Honey, We're Killing the Kids Revisited</Name>
+      <Description>Six months ago, the Allcocks were persuaded that their lifestyle must change for the sake of their kids' health</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Fitness / Keep-fit</Genre>
+      <Genre>Personal health</Genre>
+   </Content>
+   <Content id="urn:bbc:9340" version="4">
+      <Name>Would You Buy a House with a Stranger?</Name>
+      <Description>Professional violinist Jono Hill, 31, is so desperate to become a home owner and move out of the family home that he is considering buying with one of three complete strangers</Description>
+      <Genre>Do-it-yourself</Genre>
+      <Genre>Life/ House Keeping/Lifestyle</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:9341" version="1">
+      <Name>Paparazzi</Name>
+      <Description>The paps go on the hunt for A-list celebs from Barbados to the Bahamas</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9347" version="2">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCThree_d0e6572" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9290">
+         <Presentation_Window Presentation_Start_Time="3346014300" Presentation_End_Time="3346016100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6589" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9283">
+         <Presentation_Window Presentation_Start_Time="3346016100" Presentation_End_Time="3346017900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1467" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2119293212 2376724242 IN IP4 192.168.0.147
+c=IN IP4 225.224.195.113
+m=video 7976 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 7978 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e6606" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9315">
+         <Presentation_Window Presentation_Start_Time="3346017900" Presentation_End_Time="3346021200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6623" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9327">
+         <Presentation_Window Presentation_Start_Time="3346021200" Presentation_End_Time="3346024800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6640" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9318">
+         <Presentation_Window Presentation_Start_Time="3346024800" Presentation_End_Time="3346026600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1491" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2129882812 2183059691 IN IP4 192.168.0.229
+c=IN IP4 225.224.92.132
+m=video 46824 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 46826 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e6654" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9288">
+         <Presentation_Window Presentation_Start_Time="3346026600" Presentation_End_Time="3346032600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6671" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346032600" Presentation_End_Time="3346032720"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6688" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346032720" Presentation_End_Time="3346056000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1515" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2292114257 2639953612 IN IP4 192.168.0.113
+c=IN IP4 225.224.196.49
+m=video 62126 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 62128 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e6705" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346056000" Presentation_End_Time="3346081080"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6722" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9277">
+         <Presentation_Window Presentation_Start_Time="3346081080" Presentation_End_Time="3346081200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6739" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9338">
+         <Presentation_Window Presentation_Start_Time="3346081200" Presentation_End_Time="3346084800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1539" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2165939331 2338897705 IN IP4 192.168.0.242
+c=IN IP4 225.224.121.157
+m=video 25102 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 25104 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e6753" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9345">
+         <Presentation_Window Presentation_Start_Time="3346084800" Presentation_End_Time="3346086600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6767" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9344">
+         <Presentation_Window Presentation_Start_Time="3346086600" Presentation_End_Time="3346088400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6781" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9340">
+         <Presentation_Window Presentation_Start_Time="3346088400" Presentation_End_Time="3346092000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1563" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2495986938 2799331664 IN IP4 192.168.0.101
+c=IN IP4 225.224.142.172
+m=video 30960 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 30962 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e6798" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:5100">
+         <Presentation_Window Presentation_Start_Time="3346092000" Presentation_End_Time="3346093800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6815" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9341">
+         <Presentation_Window Presentation_Start_Time="3346093800" Presentation_End_Time="3346097100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e6832" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9294">
+         <Presentation_Window Presentation_Start_Time="3346097100" Presentation_End_Time="3346098900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1587" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2170806884 2352630614 IN IP4 192.168.0.172
+c=IN IP4 225.224.51.2
+m=video 42266 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 42268 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e6849" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9347">
+         <Presentation_Window Presentation_Start_Time="3346098900" Presentation_End_Time="3346100700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:9343" version="5">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2562" version="3">
+      <Name>THREE's Outtakes</Name>
+      <Description>A bitesized offering of outtakes from BBC THREE's Two Pints Of Lager and a Packet Of Crisps, The Smoking Room and Nighty Night</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCThreeint_d0e1653" InteractivityMediaDocumentPointer="BBCThreeintgrp_d0e1653" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:2562</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346169400" InteractivityWindowEndTime="3346169600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:2553" version="4">
+      <Name>Spendaholics Saved My Life</Name>
+      <Description>The show that deals with people whose spending is out of control, revisits seven of the spenders from the last two series</Description>
+      <Genre>Consumer advice</Genre>
+      <Genre>Advice</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:2552" version="5">
+      <Name>The Story Of I Will Survive</Name>
+      <Description>With interviews with Gloria Gaynor, the song's writer, record executives and the musicians who played on it, this is the story of the disco classic</Description>
+      <Genre>Classic/dance/pop-rock</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2565" version="2">
+      <Name>Lake Placid</Name>
+      <Description>What's under the water in that lake deep in the Maine woods? Is it responsible for the severely mutilated body found near the shore</Description>
+      <Genre>CINEMA INDUSTRY ORIGINATED</Genre>
+      <Genre>FICTION</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+   </Content>
+   <Content id="urn:bbc:2569" version="3">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2556" version="4">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2564" version="1">
+      <Name>Grass</Name>
+      <Description>More adventures on the witness relocation prgramme with Billy Bleach</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCThree_d0e8365" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9343">
+         <Presentation_Window Presentation_Start_Time="3346100700" Presentation_End_Time="3346102500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8379" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9327">
+         <Presentation_Window Presentation_Start_Time="3346102500" Presentation_End_Time="3346105800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1857" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2173553466 2434188841 IN IP4 192.168.0.86
+c=IN IP4 225.224.209.62
+m=video 55384 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 55386 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e8396" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9341">
+         <Presentation_Window Presentation_Start_Time="3346105800" Presentation_End_Time="3346109400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8413" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9336">
+         <Presentation_Window Presentation_Start_Time="3346109400" Presentation_End_Time="3346113000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8427" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9288">
+         <Presentation_Window Presentation_Start_Time="3346113000" Presentation_End_Time="3346119000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1881" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2194274902 2317840575 IN IP4 192.168.0.38
+c=IN IP4 225.224.199.13
+m=video 49418 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 49420 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e8444" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346119000" Presentation_End_Time="3346119120"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8461" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346119120" Presentation_End_Time="3346142400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8478" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346142400" Presentation_End_Time="3346167480"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1905" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2293838500 2387512206 IN IP4 192.168.0.212
+c=IN IP4 225.224.231.47
+m=video 50562 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 50564 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e8495" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9277">
+         <Presentation_Window Presentation_Start_Time="3346167480" Presentation_End_Time="3346167600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8512" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2562">
+         <Presentation_Window Presentation_Start_Time="3346167600" Presentation_End_Time="3346168200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8526" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2553">
+         <Presentation_Window Presentation_Start_Time="3346168200" Presentation_End_Time="3346171800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1929" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2190246582 2679977416 IN IP4 192.168.0.207
+c=IN IP4 225.224.69.248
+m=video 17538 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 17540 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e8540" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2552">
+         <Presentation_Window Presentation_Start_Time="3346171800" Presentation_End_Time="3346175400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8554" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2565">
+         <Presentation_Window Presentation_Start_Time="3346175400" Presentation_End_Time="3346179900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8568" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9294">
+         <Presentation_Window Presentation_Start_Time="3346179900" Presentation_End_Time="3346181700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1953" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2441986083 2523864745 IN IP4 192.168.0.125
+c=IN IP4 225.224.153.192
+m=video 9312 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 9314 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e8585" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2569">
+         <Presentation_Window Presentation_Start_Time="3346181700" Presentation_End_Time="3346183500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8599" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2556">
+         <Presentation_Window Presentation_Start_Time="3346183500" Presentation_End_Time="3346185300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e8616" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2564">
+         <Presentation_Window Presentation_Start_Time="3346185300" Presentation_End_Time="3346187100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e1977" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2093383789 2520614623 IN IP4 192.168.0.145
+c=IN IP4 225.224.16.199
+m=video 10950 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 10952 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:2647" version="3">
+      <Name>The Story of Pulp's Common People</Name>
+      <Description>How the Sheffield popsters' classic came to be</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2641" version="4">
+      <Name>Wedding Stories</Name>
+      <Description>Joining three couples on their journey to say "I Do", with all the love, laughter, rows and romance along the way</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2643" version="5">
+      <Name>My Childhood</Name>
+      <Description>Kym Marsh journeys back to her childhood to uncover the root of her problems with the help of consultant psychiatrist Dr Barry Connell</Description>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:2652" version="2">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCThreeint_d0e2033" InteractivityMediaDocumentPointer="BBCThreeintgrp_d0e2033" version="3" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:2652</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346270200" InteractivityWindowEndTime="3346270400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:2645" version="3">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCThree_d0e10165" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9327">
+         <Presentation_Window Presentation_Start_Time="3346187100" Presentation_End_Time="3346190400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10182" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9315">
+         <Presentation_Window Presentation_Start_Time="3346190400" Presentation_End_Time="3346194000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10199" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9340">
+         <Presentation_Window Presentation_Start_Time="3346194000" Presentation_End_Time="3346197300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2149" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2285095214 2735412596 IN IP4 192.168.0.28
+c=IN IP4 225.224.153.31
+m=video 3134 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 3136 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e10216" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2568">
+         <Presentation_Window Presentation_Start_Time="3346197300" Presentation_End_Time="3346199100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10230" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2556">
+         <Presentation_Window Presentation_Start_Time="3346199100" Presentation_End_Time="3346200900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10247" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9288">
+         <Presentation_Window Presentation_Start_Time="3346200900" Presentation_End_Time="3346205400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2173" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2482620239 2668014526 IN IP4 192.168.0.130
+c=IN IP4 225.224.163.69
+m=video 53396 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 53398 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e10264" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346205400" Presentation_End_Time="3346205520"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10281" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346205520" Presentation_End_Time="3346228800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10298" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346228800" Presentation_End_Time="3346253880"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2197" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2398269653 2727172851 IN IP4 192.168.0.71
+c=IN IP4 225.224.136.190
+m=video 46852 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 46854 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e10315" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9277">
+         <Presentation_Window Presentation_Start_Time="3346253880" Presentation_End_Time="3346254000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10332" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9340">
+         <Presentation_Window Presentation_Start_Time="3346254000" Presentation_End_Time="3346257600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10349" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2647">
+         <Presentation_Window Presentation_Start_Time="3346257600" Presentation_End_Time="3346261200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2221" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2440948486 2914932250 IN IP4 192.168.0.31
+c=IN IP4 225.224.201.205
+m=video 32754 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 32756 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e10366" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2641">
+         <Presentation_Window Presentation_Start_Time="3346261200" Presentation_End_Time="3346264800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10383" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2643">
+         <Presentation_Window Presentation_Start_Time="3346264800" Presentation_End_Time="3346268400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e10400" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2652">
+         <Presentation_Window Presentation_Start_Time="3346268400" Presentation_End_Time="3346270200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2245" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2185455322 2612838744 IN IP4 192.168.0.180
+c=IN IP4 225.224.218.250
+m=video 24884 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 24886 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e10414" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2645">
+         <Presentation_Window Presentation_Start_Time="3346270200" Presentation_End_Time="3346272000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:2640" version="5">
+      <Name>Forty Years of ****</Name>
+      <Description>BBC THREE takes a look back at 40 years of swearing on TV, from the first use of the f-word by theatre critic Kenneth Tynan in 1965 through to the language present on TV today</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:7229" version="4">
+      <Name>EastEnders</Name>
+      <Description>Ruby returns from hospital but Juley struggles to stay away</Description>
+      <Genre>Gritty</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>GENERAL AUDIENCE</Genre>
+      <Genre>Soap</Genre>
+      <Genre>Contemporary drama</Genre>
+      <Genre>Gripping</Genre>
+      <Genre>Gutsy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Soap Opera</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+   </Content>
+   <Content id="urn:bbc:2660" version="5">
+      <Name>Little Angels</Name>
+      <Description>Lisa and Stephen Payne only have one child, but five-year-old Marcus is wreaking havoc with their lives</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2654" version="2">
+      <Name>The Ferocious Mr Fixit</Name>
+      <Description>Aquamania: All hell breaks loose in a million-pound pet shop when Alasdair Jeffrey catches them breaking all the rules</Description>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:2661" version="3">
+      <Name>Little Britain</Name>
+      <Description>Series 3, Episode 4</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Satire</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Standup comedian(s)</Genre>
+      <Genre>Satirical</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Alternative</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Humour</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2666" version="4">
+      <Name>Tittybangbang</Name>
+      <Description>Episode 1</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2659" version="1">
+      <Name>Two Pints of Lager and...</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Silly</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Fun</Genre>
+      <Genre>Crazy</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Humour</Genre>
+      <Genre>age 16-17</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCThree_d0e11737" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2647">
+         <Presentation_Window Presentation_Start_Time="3346272000" Presentation_End_Time="3346275300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11754" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2641">
+         <Presentation_Window Presentation_Start_Time="3346275300" Presentation_End_Time="3346278900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2478" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2470870971 2625244139 IN IP4 192.168.0.134
+c=IN IP4 225.224.202.25
+m=video 50370 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 50372 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e11771" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2643">
+         <Presentation_Window Presentation_Start_Time="3346278900" Presentation_End_Time="3346282200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11788" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2640">
+         <Presentation_Window Presentation_Start_Time="3346282200" Presentation_End_Time="3346285800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11802" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9288">
+         <Presentation_Window Presentation_Start_Time="3346285800" Presentation_End_Time="3346291800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2502" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2379440307 2852432250 IN IP4 192.168.0.250
+c=IN IP4 225.224.120.159
+m=video 37160 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 37162 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e11819" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346291800" Presentation_End_Time="3346291920"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11836" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346291920" Presentation_End_Time="3346315200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11853" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:OffAirBBCThree">
+         <Presentation_Window Presentation_Start_Time="3346315200" Presentation_End_Time="3346340280"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2526" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2074935913 2510391235 IN IP4 192.168.0.171
+c=IN IP4 225.224.182.204
+m=video 53032 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 53034 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e11870" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:9277">
+         <Presentation_Window Presentation_Start_Time="3346340280" Presentation_End_Time="3346340400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11887" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2655">
+         <Presentation_Window Presentation_Start_Time="3346340400" Presentation_End_Time="3346344000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11901" version="5" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2667">
+         <Presentation_Window Presentation_Start_Time="3346344000" Presentation_End_Time="3346345800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2550" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2355178833 2562911987 IN IP4 192.168.0.240
+c=IN IP4 225.224.115.41
+m=video 18618 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 18620 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e11915" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2660">
+         <Presentation_Window Presentation_Start_Time="3346345800" Presentation_End_Time="3346347600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11929" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2654">
+         <Presentation_Window Presentation_Start_Time="3346347600" Presentation_End_Time="3346351200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11943" version="4" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:7229">
+         <Presentation_Window Presentation_Start_Time="3346351200" Presentation_End_Time="3346353000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2574" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2360656738 2857086181 IN IP4 192.168.0.247
+c=IN IP4 225.224.85.241
+m=video 49536 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 49538 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCThree_d0e11960" version="1" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2661">
+         <Presentation_Window Presentation_Start_Time="3346353000" Presentation_End_Time="3346354800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11974" version="2" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2666">
+         <Presentation_Window Presentation_Start_Time="3346354800" Presentation_End_Time="3346356600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCThree_d0e11991" version="3" ServiceIDRef="BBCThree">
+      <ContentIDRef idRef="urn:bbc:2659">
+         <Presentation_Window Presentation_Start_Time="3346356600" Presentation_End_Time="3346358400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCThreeacc_d0e2598" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2241165161 2733230590 IN IP4 192.168.0.115
+c=IN IP4 225.224.162.77
+m=video 14378 RTP/AVP 96
+a=rtpmap:96 H264/90000
+a=fmtp:96 profile-level-id=42A01E; packetization-mode=1; sprop-parameter-sets=Z0IACpZTBYmI,aMljiA==
+m=audio 14380 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+</ESGMainBCAST>

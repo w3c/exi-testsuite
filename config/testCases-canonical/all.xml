@@ -1,0 +1,15 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="All canonical interoperability tests">
+
+    <param name="groupId" value="${groupId} | all"/> 
+
+    <xi:include href="header.xml"/>
+    <xi:include href="preserve.xml"/>
+    <xi:include href="streamOrder.xml"/>
+    <xi:include href="eventSelection.xml"/>
+    <xi:include href="contentHandling.xml"/>
+    <xi:include href="datatypes.xml"/>
+    
+</testCaseGroup>

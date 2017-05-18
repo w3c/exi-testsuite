@@ -1,0 +1,65 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn Element Grammar tests">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/preserve/document"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#builtinDocGrammars"/>
+
+    <testCase name="builtin.doc-01">
+        <param name="testDescription"  value="Root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-01.xml" />
+    </testCase>
+    <testCase name="builtin.doc-02">
+        <param name="testDescription"  value="CM before root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-02.xml" />
+    </testCase>
+    <testCase name="builtin.doc-03">
+        <param name="testDescription"  value="PI before root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-03.xml" />
+    </testCase>
+    <testCase name="builtin.doc-04">
+        <param name="testDescription"  value="PI+CM before root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-04.xml" />
+    </testCase>
+    <testCase name="builtin.doc-05">
+        <param name="testDescription"  value="CM+PI before root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-05.xml" />
+    </testCase>
+    <testCase name="builtin.doc-06">
+        <param name="testDescription"  value="CM after root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-06.xml" />
+    </testCase>
+    <testCase name="builtin.doc-07">
+        <param name="testDescription"  value="PI after root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-07.xml" />
+    </testCase>
+    <testCase name="builtin.doc-08">
+        <param name="testDescription"  value="PI+CM after root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-08.xml" />
+    </testCase>
+    <testCase name="builtin.doc-09">
+        <param name="testDescription"  value="CM+PI after root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-09.xml" />
+    </testCase>
+    <testCase name="builtin.doc-10">
+        <param name="testDescription"  value="Inline DTD"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-10.xml" />
+    </testCase>
+    <testCase name="builtin.doc-11">
+        <param name="testDescription"  value="DTD with SYSTEM"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-11.xml" />
+    </testCase>
+    <testCase name="builtin.doc-12">
+        <param name="testDescription"  value="Inline DTD with SYSTEM"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-12.xml" />
+    </testCase>
+    <testCase name="builtin.doc-13">
+        <param name="testDescription"  value="HTML DTD declaration"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-13.xml" />
+    </testCase>
+    <testCase name="builtin.doc-14">
+        <param name="testDescription"  value="Mix of CM, PI and DTD"/>
+        <param name="japex.inputFile" value="${testDocFolder}/doc-14.xml" />
+    </testCase>
+</testCaseGroup>
+

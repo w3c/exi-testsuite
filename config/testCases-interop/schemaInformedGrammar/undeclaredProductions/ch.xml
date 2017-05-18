@@ -1,0 +1,38 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - CH [untyped value]">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.ch-01">
+        <param name="testDescription"  
+          value="Use of CH [untyped value] event at the start of an element"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/ch-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.ch-02">
+        <param name="testDescription" 
+          value="Use of CH [untyped value] event before any element-content starts"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/ch-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.ch-03">
+        <param name="testDescription" 
+          value="Use of CH [untyped value] event before any declared element-content starts"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/ch-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.ch-04">
+        <param name="testDescription"  
+          value="Use of CH [untyped value] event in element-content-only context"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/ch-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+</testCaseGroup>
+

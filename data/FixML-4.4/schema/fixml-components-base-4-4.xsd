@@ -1,0 +1,1872 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 20040109
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<!--
+    BaseHeaderElements has been augmented by W3C EXI WG for the sole purpose of
+    making some of the example documents valid with regards to the schema.
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-fields-impl-4-4.xsd"/>
+	<!-- Base Header used by both the message and the batch headers -->
+	<xs:group name="BaseHeaderElements">
+		<xs:sequence>
+			<xs:element name="Hop" type="Hop_t" minOccurs="0" maxOccurs="unbounded"/>
+			<!-- NOTE: Sndr, Tgt, OnBhlfOf, DlvrTo are added by W3C EXI WG for instance validity. -->
+			<xs:element name="Sndr" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="ID" type="xs:ID"/>
+					<xs:attribute name="Sub" type="xs:string"/>
+					<xs:attribute name="Loc" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Tgt" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="ID" type="xs:ID"/>
+					<xs:attribute name="Sub" type="xs:string"/>
+					<xs:attribute name="Loc" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OnBhlfOf" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="ID" type="xs:ID"/>
+					<xs:attribute name="Sub" type="xs:string"/>
+					<xs:attribute name="Loc" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DlvrTo" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="ID" type="xs:ID"/>
+					<xs:attribute name="Sub" type="xs:string"/>
+					<xs:attribute name="Loc" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="BaseHeaderAttributes">
+		<xs:attribute name="SID" type="SenderCompID_t" use="optional"/>
+		<xs:attribute name="TID" type="TargetCompID_t" use="optional"/>
+		<xs:attribute name="OBID" type="OnBehalfOfCompID_t" use="optional"/>
+		<xs:attribute name="D2ID" type="DeliverToCompID_t" use="optional"/>
+		<xs:attribute name="SSub" type="SenderSubID_t" use="optional"/>
+		<xs:attribute name="SLoc" type="SenderLocationID_t" use="optional"/>
+		<xs:attribute name="TSub" type="TargetSubID_t" use="optional"/>
+		<xs:attribute name="TLoc" type="TargetLocationID_t" use="optional"/>
+		<xs:attribute name="OBSub" type="OnBehalfOfSubID_t" use="optional"/>
+		<xs:attribute name="OBLoc" type="OnBehalfOfLocationID_t" use="optional"/>
+		<xs:attribute name="D2Sub" type="DeliverToSubID_t" use="optional"/>
+		<xs:attribute name="D2Loc" type="DeliverToLocationID_t" use="optional"/>
+		<xs:attribute name="PosDup" type="PossDupFlag_t" use="optional"/>
+		<xs:attribute name="PosRsnd" type="PossResend_t" use="optional"/>
+		<xs:attribute name="Snt" type="SendingTime_t" use="optional"/>
+		<xs:attribute name="OrigSnt" type="OrigSendingTime_t" use="optional"/>
+		<xs:attribute name="MsgEncd" type="MessageEncoding_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="BaseHeader_t">
+		<xs:sequence>
+			<xs:group ref="BaseHeaderElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="BaseHeaderAttributes"/>
+	</xs:complexType>
+	<!-- Message Header -->
+	<xs:attributeGroup name="MessageHeaderAttributes">
+		<xs:attribute name="SeqNum" type="MsgSeqNum_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="MessageHeader_t">
+		<xs:complexContent>
+			<xs:extension base="BaseHeader_t">
+				<xs:attributeGroup ref="MessageHeaderAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- BatchHeader -->
+	<xs:group name="BatchHeaderElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="BatchHeaderAttributes"/>
+	<xs:complexType name="BatchHeader_t">
+		<xs:complexContent>
+			<xs:extension base="BaseHeader_t">
+				<xs:sequence>
+					<xs:group ref="BatchHeaderElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="BatchHeaderAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- Message -->
+	<xs:complexType name="Abstract_message_t">
+		<xs:sequence>
+			<xs:element name="Hdr" type="MessageHeader_t" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Message" type="Abstract_message_t" abstract="true"/>
+	<!-- Batch -->
+	<xs:group name="BatchElements">
+		<xs:sequence>
+			<xs:element name="Hdr" type="BatchHeader_t" minOccurs="0"/>
+			<xs:element ref="Message" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="BatchAttributes">
+		<xs:attribute name="ID" type="xs:ID" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="Batch_t">
+		<xs:sequence>
+			<xs:group ref="BatchElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="BatchAttributes"/>
+	</xs:complexType>
+	<!-- FIXML Root Element Declaration -->
+	<xs:attributeGroup name="FixmlAttributes">
+		<xs:attribute name="v" type="xs:string" fixed="4.4"/>
+		<xs:attribute name="r" type="xs:string" fixed="20030618"/>
+		<xs:attribute name="s" type="xs:string" fixed="20040109"/>
+	</xs:attributeGroup>
+	<xs:element name="FIXML">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="Message"/>
+				<xs:element name="Batch" type="Batch_t" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attributeGroup ref="FixmlAttributes"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="BusinessMessageRejectElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="BusinessMessageRejectAttributes">
+		<xs:attribute name="RefSeqNum" type="RefSeqNum_t" use="optional"/>
+		<xs:attribute name="RefMsgTyp" type="RefMsgType_t" use="required"/>
+		<xs:attribute name="BizRejRefID" type="BusinessRejectRefID_t" use="optional"/>
+		<xs:attribute name="BizRejRsn" type="BusinessRejectReason_t" use="required"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="BusinessMessageReject_message_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">BusinessMessageReject can be found in Volume1 of the specification
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="BusinessMessageReject" ComponentType="Message"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="BusinessMessageRejectElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="BusinessMessageRejectAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="BizMsgRej" type="BusinessMessageReject_message_t" substitutionGroup="Message" final="#all"/>
+	<xs:group name="NetworkCounterpartySystemStatusRequestElements">
+		<xs:sequence>
+			<xs:element name="CIDReq" type="CompIDReqGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="NetworkCounterpartySystemStatusRequestAttributes">
+		<xs:attribute name="NtwkReqTyp" type="NetworkRequestType_t" use="required"/>
+		<xs:attribute name="NtwkReqID" type="NetworkRequestID_t" use="required"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NetworkCounterpartySystemStatusRequest_message_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NetworkCounterpartySystemStatusRequest can be found in Volume1 of the specification
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NetworkCounterpartySystemStatusRequest" ComponentType="Message"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="NetworkCounterpartySystemStatusRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="NetworkCounterpartySystemStatusRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="NtwkSysStatReq" type="NetworkCounterpartySystemStatusRequest_message_t" substitutionGroup="Message" final="#all"/>
+	<xs:group name="NetworkCounterpartySystemStatusResponseElements">
+		<xs:sequence>
+			<xs:element name="CIDStat" type="CompIDStatGrp_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="NetworkCounterpartySystemStatusResponseAttributes">
+		<xs:attribute name="NtwkStatRspTyp" type="NetworkStatusResponseType_t" use="required"/>
+		<xs:attribute name="NtwkReqID" type="NetworkRequestID_t" use="optional"/>
+		<xs:attribute name="NtwkRspID" type="NetworkResponseID_t" use="required"/>
+		<xs:attribute name="LastNtwkRspID" type="LastNetworkResponseID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NetworkCounterpartySystemStatusResponse_message_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NetworkCounterpartySystemStatusResponse can be found in Volume1 of the specification
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NetworkCounterpartySystemStatusResponse" ComponentType="Message"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="NetworkCounterpartySystemStatusResponseElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="NetworkCounterpartySystemStatusResponseAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="NtwkSysStatRsp" type="NetworkCounterpartySystemStatusResponse_message_t" substitutionGroup="Message" final="#all"/>
+	<xs:group name="UserRequestElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="UserRequestAttributes">
+		<xs:attribute name="UserReqID" type="UserRequestID_t" use="required"/>
+		<xs:attribute name="UserReqTyp" type="UserRequestType_t" use="required"/>
+		<xs:attribute name="Username" type="Username_t" use="required"/>
+		<xs:attribute name="Password" type="Password_t" use="optional"/>
+		<xs:attribute name="NewPassword" type="NewPassword_t" use="optional"/>
+		<xs:attribute name="RawDataLength" type="RawDataLength_t" use="optional"/>
+		<xs:attribute name="RawData" type="RawData_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="UserRequest_message_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">UserRequest can be found in Volume1 of the specification
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="UserRequest" ComponentType="Message"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="UserRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="UserRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="UserReq" type="UserRequest_message_t" substitutionGroup="Message" final="#all"/>
+	<xs:group name="UserResponseElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="UserResponseAttributes">
+		<xs:attribute name="UserReqID" type="UserRequestID_t" use="required"/>
+		<xs:attribute name="Username" type="Username_t" use="required"/>
+		<xs:attribute name="UserStat" type="UserStatus_t" use="optional"/>
+		<xs:attribute name="UserStatText" type="UserStatusText_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="UserResponse_message_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">UserResponse can be found in Volume1 of the specification
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="UserResponse" ComponentType="Message"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="UserResponseElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="UserResponseAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="UserRsp" type="UserResponse_message_t" substitutionGroup="Message" final="#all"/>
+	<xs:group name="CommissionDataElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="CommissionDataAttributes">
+		<xs:attribute name="Comm" type="Commission_t" use="optional"/>
+		<xs:attribute name="CommTyp" type="CommType_t" use="optional"/>
+		<xs:attribute name="Ccy" type="CommCurrency_t" use="optional"/>
+		<xs:attribute name="FundRenewWaiv" type="FundRenewWaiv_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="CommissionData_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">CommissionData is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="CommissionData" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="CommissionDataElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="CommissionDataAttributes"/>
+	</xs:complexType>
+	<xs:group name="DiscretionInstructionsElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="DiscretionInstructionsAttributes">
+		<xs:attribute name="DsctnInst" type="DiscretionInst_t" use="optional"/>
+		<xs:attribute name="OfstValu" type="DiscretionOffsetValue_t" use="optional"/>
+		<xs:attribute name="MoveTyp" type="DiscretionMoveType_t" use="optional"/>
+		<xs:attribute name="OfstTyp" type="DiscretionOffsetType_t" use="optional"/>
+		<xs:attribute name="LimitTyp" type="DiscretionLimitType_t" use="optional"/>
+		<xs:attribute name="RndDir" type="DiscretionRoundDirection_t" use="optional"/>
+		<xs:attribute name="Scope" type="DiscretionScope_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="DiscretionInstructions_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">DiscretionInstructions is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="DiscretionInstructions" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="DiscretionInstructionsElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="DiscretionInstructionsAttributes"/>
+	</xs:complexType>
+	<xs:group name="FinancingDetailsElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="FinancingDetailsAttributes">
+		<xs:attribute name="AgmtDesc" type="AgreementDesc_t" use="optional"/>
+		<xs:attribute name="AgmtID" type="AgreementID_t" use="optional"/>
+		<xs:attribute name="AgmtDt" type="AgreementDate_t" use="optional"/>
+		<xs:attribute name="AgmtCcy" type="AgreementCurrency_t" use="optional"/>
+		<xs:attribute name="TrmTyp" type="TerminationType_t" use="optional"/>
+		<xs:attribute name="StartDt" type="StartDate_t" use="optional"/>
+		<xs:attribute name="EndDt" type="EndDate_t" use="optional"/>
+		<xs:attribute name="DlvryTyp" type="DeliveryType_t" use="optional"/>
+		<xs:attribute name="MgnRatio" type="MarginRatio_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="FinancingDetails_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">FinancingDetails is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="FinancingDetails" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="FinancingDetailsElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="FinancingDetailsAttributes"/>
+	</xs:complexType>
+	<xs:group name="InstrumentElements">
+		<xs:sequence>
+			<xs:element name="AID" type="SecAltIDGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Evnt" type="EvntGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrumentAttributes">
+		<xs:attribute name="Sym" type="Symbol_t" use="optional"/>
+		<xs:attribute name="Sfx" type="SymbolSfx_t" use="optional"/>
+		<xs:attribute name="ID" type="SecurityID_t" use="optional"/>
+		<xs:attribute name="Src" type="SecurityIDSource_t" use="optional"/>
+		<xs:attribute name="Prod" type="Product_t" use="optional"/>
+		<xs:attribute name="CFI" type="CFICode_t" use="optional"/>
+		<xs:attribute name="SecTyp" type="SecurityType_t" use="optional"/>
+		<xs:attribute name="SubTyp" type="SecuritySubType_t" use="optional"/>
+		<xs:attribute name="MMY" type="MaturityMonthYear_t" use="optional"/>
+		<xs:attribute name="MatDt" type="MaturityDate_t" use="optional"/>
+		<xs:attribute name="CpnPmt" type="CouponPaymentDate_t" use="optional"/>
+		<xs:attribute name="Issued" type="IssueDate_t" use="optional"/>
+		<xs:attribute name="RepoCollSecTyp" type="RepoCollateralSecurityType_t" use="optional"/>
+		<xs:attribute name="RepoTrm" type="RepurchaseTerm_t" use="optional"/>
+		<xs:attribute name="RepoRt" type="RepurchaseRate_t" use="optional"/>
+		<xs:attribute name="Fctr" type="Factor_t" use="optional"/>
+		<xs:attribute name="CrdRtg" type="CreditRating_t" use="optional"/>
+		<xs:attribute name="Rgstry" type="InstrRegistry_t" use="optional"/>
+		<xs:attribute name="IssuCtry" type="CountryOfIssue_t" use="optional"/>
+		<xs:attribute name="StPrv" type="StateOrProvinceOfIssue_t" use="optional"/>
+		<xs:attribute name="Lcl" type="LocaleOfIssue_t" use="optional"/>
+		<xs:attribute name="Redeem" type="RedemptionDate_t" use="optional"/>
+		<xs:attribute name="Strk" type="StrikePrice_t" use="optional"/>
+		<xs:attribute name="StrkCcy" type="StrikeCurrency_t" use="optional"/>
+		<xs:attribute name="OptAt" type="OptAttribute_t" use="optional"/>
+		<xs:attribute name="Mult" type="ContractMultiplier_t" use="optional"/>
+		<xs:attribute name="CpnRt" type="CouponRate_t" use="optional"/>
+		<xs:attribute name="Exch" type="SecurityExchange_t" use="optional"/>
+		<xs:attribute name="Issr" type="Issuer_t" use="optional"/>
+		<xs:attribute name="EncIssrLen" type="EncodedIssuerLen_t" use="optional"/>
+		<xs:attribute name="EncIssr" type="EncodedIssuer_t" use="optional"/>
+		<xs:attribute name="Desc" type="SecurityDesc_t" use="optional"/>
+		<xs:attribute name="EncSecDescLen" type="EncodedSecurityDescLen_t" use="optional"/>
+		<xs:attribute name="EncSecDesc" type="EncodedSecurityDesc_t" use="optional"/>
+		<xs:attribute name="Pool" type="Pool_t" use="optional"/>
+		<xs:attribute name="CSetMo" type="ContractSettlMonth_t" use="optional"/>
+		<xs:attribute name="CPPgm" type="CPProgram_t" use="optional"/>
+		<xs:attribute name="CPRegT" type="CPRegType_t" use="optional"/>
+		<xs:attribute name="Dated" type="DatedDate_t" use="optional"/>
+		<xs:attribute name="IntAcrl" type="InterestAccrualDate_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="Instrument_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Instrument is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="Instrument" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrumentElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrumentAttributes"/>
+	</xs:complexType>
+	<xs:group name="InstrumentExtensionElements">
+		<xs:sequence>
+			<xs:element name="Attrb" type="AttrbGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrumentExtensionAttributes">
+		<xs:attribute name="DlvryForm" type="DeliveryForm_t" use="optional"/>
+		<xs:attribute name="PctAtRisk" type="PctAtRisk_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="InstrumentExtension_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrumentExtension is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrumentExtension" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrumentExtensionElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrumentExtensionAttributes"/>
+	</xs:complexType>
+	<xs:group name="InstrumentLegElements">
+		<xs:sequence>
+			<xs:element name="LegAID" type="LegSecAltIDGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrumentLegAttributes">
+		<xs:attribute name="Sym" type="LegSymbol_t" use="optional"/>
+		<xs:attribute name="Sfx" type="LegSymbolSfx_t" use="optional"/>
+		<xs:attribute name="ID" type="LegSecurityID_t" use="optional"/>
+		<xs:attribute name="Src" type="LegSecurityIDSource_t" use="optional"/>
+		<xs:attribute name="Prod" type="LegProduct_t" use="optional"/>
+		<xs:attribute name="CFI" type="LegCFICode_t" use="optional"/>
+		<xs:attribute name="SecTyp" type="LegSecurityType_t" use="optional"/>
+		<xs:attribute name="SecSubTyp" type="LegSecuritySubType_t" use="optional"/>
+		<xs:attribute name="MMY" type="LegMaturityMonthYear_t" use="optional"/>
+		<xs:attribute name="Mat" type="LegMaturityDate_t" use="optional"/>
+		<xs:attribute name="CpnPmt" type="LegCouponPaymentDate_t" use="optional"/>
+		<xs:attribute name="Issued" type="LegIssueDate_t" use="optional"/>
+		<xs:attribute name="RepoCollSecTyp" type="LegRepoCollateralSecurityType_t" use="optional"/>
+		<xs:attribute name="RepoTrm" type="LegRepurchaseTerm_t" use="optional"/>
+		<xs:attribute name="RepoRt" type="LegRepurchaseRate_t" use="optional"/>
+		<xs:attribute name="Fctr" type="LegFactor_t" use="optional"/>
+		<xs:attribute name="CrdRtg" type="LegCreditRating_t" use="optional"/>
+		<xs:attribute name="Rgstry" type="LegInstrRegistry_t" use="optional"/>
+		<xs:attribute name="Ctry" type="LegCountryOfIssue_t" use="optional"/>
+		<xs:attribute name="StOrProvnc" type="LegStateOrProvinceOfIssue_t" use="optional"/>
+		<xs:attribute name="Lcl" type="LegLocaleOfIssue_t" use="optional"/>
+		<xs:attribute name="Redeem" type="LegRedemptionDate_t" use="optional"/>
+		<xs:attribute name="Strk" type="LegStrikePrice_t" use="optional"/>
+		<xs:attribute name="StrkCcy" type="LegStrikeCurrency_t" use="optional"/>
+		<xs:attribute name="OptA" type="LegOptAttribute_t" use="optional"/>
+		<xs:attribute name="Cmult" type="LegContractMultiplier_t" use="optional"/>
+		<xs:attribute name="CpnRt" type="LegCouponRate_t" use="optional"/>
+		<xs:attribute name="Exch" type="LegSecurityExchange_t" use="optional"/>
+		<xs:attribute name="Issr" type="LegIssuer_t" use="optional"/>
+		<xs:attribute name="EncLegIssrLen" type="EncodedLegIssuerLen_t" use="optional"/>
+		<xs:attribute name="EncLegIssr" type="EncodedLegIssuer_t" use="optional"/>
+		<xs:attribute name="Desc" type="LegSecurityDesc_t" use="optional"/>
+		<xs:attribute name="EncLegSecDescLen" type="EncodedLegSecurityDescLen_t" use="optional"/>
+		<xs:attribute name="EncLegSecDesc" type="EncodedLegSecurityDesc_t" use="optional"/>
+		<xs:attribute name="RatioQty" type="LegRatioQty_t" use="optional"/>
+		<xs:attribute name="Side" type="LegSide_t" use="optional"/>
+		<xs:attribute name="Ccy" type="LegCurrency_t" use="optional"/>
+		<xs:attribute name="Pool" type="LegPool_t" use="optional"/>
+		<xs:attribute name="Dated" type="LegDatedDate_t" use="optional"/>
+		<xs:attribute name="CSetMo" type="LegContractSettlMonth_t" use="optional"/>
+		<xs:attribute name="IntAcrl" type="LegInterestAccrualDate_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="InstrumentLeg_Block_t">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrumentLeg is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrumentLeg" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrumentLegElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrumentLegAttributes"/>
+	</xs:complexType>
+	<xs:group name="LegBenchmarkCurveDataElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="LegBenchmarkCurveDataAttributes">
+		<xs:attribute name="Ccy" type="LegBenchmarkCurveCurrency_t" use="optional"/>
+		<xs:attribute name="Name" type="LegBenchmarkCurveName_t" use="optional"/>
+		<xs:attribute name="Point" type="LegBenchmarkCurvePoint_t" use="optional"/>
+		<xs:attribute name="Px" type="LegBenchmarkPrice_t" use="optional"/>
+		<xs:attribute name="PxTyp" type="LegBenchmarkPriceType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="LegBenchmarkCurveData_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">LegBenchmarkCurveData is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="LegBenchmarkCurveData" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="LegBenchmarkCurveDataElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="LegBenchmarkCurveDataAttributes"/>
+	</xs:complexType>
+	<xs:group name="OrderQtyDataElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="OrderQtyDataAttributes">
+		<xs:attribute name="Qty" type="OrderQty_t" use="optional"/>
+		<xs:attribute name="Cash" type="CashOrderQty_t" use="optional"/>
+		<xs:attribute name="Pct" type="OrderPercent_t" use="optional"/>
+		<xs:attribute name="RndDir" type="RoundingDirection_t" use="optional"/>
+		<xs:attribute name="RndMod" type="RoundingModulus_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="OrderQtyData_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">OrderQtyData is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="OrderQtyData" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="OrderQtyDataElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="OrderQtyDataAttributes"/>
+	</xs:complexType>
+	<xs:group name="PegInstructionsElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="PegInstructionsAttributes">
+		<xs:attribute name="OfstVal" type="PegOffsetValue_t" use="optional"/>
+		<xs:attribute name="MoveTyp" type="PegMoveType_t" use="optional"/>
+		<xs:attribute name="OfstTyp" type="PegOffsetType_t" use="optional"/>
+		<xs:attribute name="LmtTyp" type="PegLimitType_t" use="optional"/>
+		<xs:attribute name="RndDir" type="PegRoundDirection_t" use="optional"/>
+		<xs:attribute name="Scope" type="PegScope_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="PegInstructions_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">PegInstructions is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="PegInstructions" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PegInstructionsElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PegInstructionsAttributes"/>
+	</xs:complexType>
+	<xs:group name="SettlInstructionsDataElements">
+		<xs:sequence>
+			<xs:element name="DlvInst" type="DlvyInstGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SettlInstructionsDataAttributes">
+		<xs:attribute name="DlvryTyp" type="SettlDeliveryType_t" use="optional"/>
+		<xs:attribute name="StandInstDbTyp" type="StandInstDbType_t" use="optional"/>
+		<xs:attribute name="StandInstDbName" type="StandInstDbName_t" use="optional"/>
+		<xs:attribute name="StandInstDbID" type="StandInstDbID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="SettlInstructionsData_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">SettlInstructionsData is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="SettlInstructionsData" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SettlInstructionsDataElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SettlInstructionsDataAttributes"/>
+	</xs:complexType>
+	<xs:group name="SpreadOrBenchmarkCurveDataElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="SpreadOrBenchmarkCurveDataAttributes">
+		<xs:attribute name="Spread" type="Spread_t" use="optional"/>
+		<xs:attribute name="Ccy" type="BenchmarkCurveCurrency_t" use="optional"/>
+		<xs:attribute name="Name" type="BenchmarkCurveName_t" use="optional"/>
+		<xs:attribute name="Point" type="BenchmarkCurvePoint_t" use="optional"/>
+		<xs:attribute name="Px" type="BenchmarkPrice_t" use="optional"/>
+		<xs:attribute name="PxTyp" type="BenchmarkPriceType_t" use="optional"/>
+		<xs:attribute name="SecID" type="BenchmarkSecurityID_t" use="optional"/>
+		<xs:attribute name="SecIDSrc" type="BenchmarkSecurityIDSource_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="SpreadOrBenchmarkCurveData_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">SpreadOrBenchmarkCurveData is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="SpreadOrBenchmarkCurveData" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SpreadOrBenchmarkCurveDataElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SpreadOrBenchmarkCurveDataAttributes"/>
+	</xs:complexType>
+	<xs:group name="UnderlyingInstrumentElements">
+		<xs:sequence>
+			<xs:element name="UndAID" type="UndSecAltIDGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Stip" type="UnderlyingStipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="UnderlyingInstrumentAttributes">
+		<xs:attribute name="Sym" type="UnderlyingSymbol_t" use="optional"/>
+		<xs:attribute name="Sfx" type="UnderlyingSymbolSfx_t" use="optional"/>
+		<xs:attribute name="ID" type="UnderlyingSecurityID_t" use="optional"/>
+		<xs:attribute name="Src" type="UnderlyingSecurityIDSource_t" use="optional"/>
+		<xs:attribute name="Prod" type="UnderlyingProduct_t" use="optional"/>
+		<xs:attribute name="CFI" type="UnderlyingCFICode_t" use="optional"/>
+		<xs:attribute name="Typ" type="UnderlyingSecurityType_t" use="optional"/>
+		<xs:attribute name="SubTyp" type="UnderlyingSecuritySubType_t" use="optional"/>
+		<xs:attribute name="MMY" type="UnderlyingMaturityMonthYear_t" use="optional"/>
+		<xs:attribute name="Mat" type="UnderlyingMaturityDate_t" use="optional"/>
+		<xs:attribute name="CpnPmt" type="UnderlyingCouponPaymentDate_t" use="optional"/>
+		<xs:attribute name="Issued" type="UnderlyingIssueDate_t" use="optional"/>
+		<xs:attribute name="RepoCollSecTyp" type="UnderlyingRepoCollateralSecurityType_t" use="optional"/>
+		<xs:attribute name="RepoTrm" type="UnderlyingRepurchaseTerm_t" use="optional"/>
+		<xs:attribute name="RepoRt" type="UnderlyingRepurchaseRate_t" use="optional"/>
+		<xs:attribute name="Fctr" type="UnderlyingFactor_t" use="optional"/>
+		<xs:attribute name="CrdRtg" type="UnderlyingCreditRating_t" use="optional"/>
+		<xs:attribute name="Rgstry" type="UnderlyingInstrRegistry_t" use="optional"/>
+		<xs:attribute name="Ctry" type="UnderlyingCountryOfIssue_t" use="optional"/>
+		<xs:attribute name="StOrProvnc" type="UnderlyingStateOrProvinceOfIssue_t" use="optional"/>
+		<xs:attribute name="Lcl" type="UnderlyingLocaleOfIssue_t" use="optional"/>
+		<xs:attribute name="Redeem" type="UnderlyingRedemptionDate_t" use="optional"/>
+		<xs:attribute name="StrkPx" type="UnderlyingStrikePrice_t" use="optional"/>
+		<xs:attribute name="StrkCcy" type="UnderlyingStrikeCurrency_t" use="optional"/>
+		<xs:attribute name="OptA" type="UnderlyingOptAttribute_t" use="optional"/>
+		<xs:attribute name="Mult" type="UnderlyingContractMultiplier_t" use="optional"/>
+		<xs:attribute name="CpnRt" type="UnderlyingCouponRate_t" use="optional"/>
+		<xs:attribute name="Exch" type="UnderlyingSecurityExchange_t" use="optional"/>
+		<xs:attribute name="Issr" type="UnderlyingIssuer_t" use="optional"/>
+		<xs:attribute name="EncUndIssrLen" type="EncodedUnderlyingIssuerLen_t" use="optional"/>
+		<xs:attribute name="EncUndIssr" type="EncodedUnderlyingIssuer_t" use="optional"/>
+		<xs:attribute name="Desc" type="UnderlyingSecurityDesc_t" use="optional"/>
+		<xs:attribute name="EncUndSecDescLen" type="EncodedUnderlyingSecurityDescLen_t" use="optional"/>
+		<xs:attribute name="EncUndSecDesc" type="EncodedUnderlyingSecurityDesc_t" use="optional"/>
+		<xs:attribute name="CPPgm" type="UnderlyingCPProgram_t" use="optional"/>
+		<xs:attribute name="CPRegTyp" type="UnderlyingCPRegType_t" use="optional"/>
+		<xs:attribute name="Ccy" type="UnderlyingCurrency_t" use="optional"/>
+		<xs:attribute name="Qty" type="UnderlyingQty_t" use="optional"/>
+		<xs:attribute name="Px" type="UnderlyingPx_t" use="optional"/>
+		<xs:attribute name="DirtPx" type="UnderlyingDirtyPrice_t" use="optional"/>
+		<xs:attribute name="EndPx" type="UnderlyingEndPrice_t" use="optional"/>
+		<xs:attribute name="StartVal" type="UnderlyingStartValue_t" use="optional"/>
+		<xs:attribute name="CurVal" type="UnderlyingCurrentValue_t" use="optional"/>
+		<xs:attribute name="EndVal" type="UnderlyingEndValue_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="UnderlyingInstrument_Block_t" >
+		<xs:annotation>
+			<xs:documentation xml:lang="en">UnderlyingInstrument is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="UnderlyingInstrument" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="UnderlyingInstrumentElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="UnderlyingInstrumentAttributes"/>
+	</xs:complexType>
+	<xs:group name="YieldDataElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="YieldDataAttributes">
+		<xs:attribute name="Typ" type="YieldType_t" use="optional"/>
+		<xs:attribute name="Yld" type="Yield_t" use="optional"/>
+		<xs:attribute name="CalcDt" type="YieldCalcDate_t" use="optional"/>
+		<xs:attribute name="RedDt" type="YieldRedemptionDate_t" use="optional"/>
+		<xs:attribute name="RedPx" type="YieldRedemptionPrice_t" use="optional"/>
+		<xs:attribute name="RedPxTyp" type="YieldRedemptionPriceType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="YieldData_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">YieldData is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="YieldData" ComponentType="Block"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="YieldDataElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="YieldDataAttributes"/>
+	</xs:complexType>
+	<xs:group name="LegStipulationsElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="LegStipulationsAttributes">
+		<xs:attribute name="StipTyp" type="LegStipulationType_t" use="optional"/>
+		<xs:attribute name="StipVal" type="LegStipulationValue_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="LegStipulations_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">LegStipulations is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="LegStipulations" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="LegStipulationsElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="LegStipulationsAttributes"/>
+	</xs:complexType>
+	<xs:group name="NestedPartiesElements">
+		<xs:sequence>
+			<xs:element name="Sub" type="NstdPtysSubGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="NestedPartiesAttributes">
+		<xs:attribute name="ID" type="NestedPartyID_t" use="optional"/>
+		<xs:attribute name="Src" type="NestedPartyIDSource_t" use="optional"/>
+		<xs:attribute name="R" type="NestedPartyRole_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NestedParties_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NestedParties is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NestedParties" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="NestedPartiesElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="NestedPartiesAttributes"/>
+	</xs:complexType>
+	<xs:group name="PartiesElements">
+		<xs:sequence>
+			<xs:element name="Sub" type="PtysSubGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PartiesAttributes">
+		<xs:attribute name="ID" type="PartyID_t" use="optional"/>
+		<xs:attribute name="Src" type="PartyIDSource_t" use="optional"/>
+		<xs:attribute name="R" type="PartyRole_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="Parties_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Parties is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="Parties" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PartiesElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PartiesAttributes"/>
+	</xs:complexType>
+	<xs:group name="PositionAmountDataElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="PositionAmountDataAttributes">
+		<xs:attribute name="Typ" type="PosAmtType_t" use="optional"/>
+		<xs:attribute name="Amt" type="PosAmt_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="PositionAmountData_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">PositionAmountData is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="PositionAmountData" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PositionAmountDataElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PositionAmountDataAttributes"/>
+	</xs:complexType>
+	<xs:group name="PositionQtyElements">
+		<xs:sequence>
+			<xs:element name="Pty" type="NestedParties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PositionQtyAttributes">
+		<xs:attribute name="Typ" type="PosType_t" use="optional"/>
+		<xs:attribute name="Long" type="LongQty_t" use="optional"/>
+		<xs:attribute name="Short" type="ShortQty_t" use="optional"/>
+		<xs:attribute name="Stat" type="PosQtyStatus_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="PositionQty_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">PositionQty is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="PositionQty" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PositionQtyElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PositionQtyAttributes"/>
+	</xs:complexType>
+	<xs:group name="SettlPartiesElements">
+		<xs:sequence>
+			<xs:element name="Sub" type="SettlPtysSubGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SettlPartiesAttributes">
+		<xs:attribute name="ID" type="SettlPartyID_t" use="optional"/>
+		<xs:attribute name="Src" type="SettlPartyIDSource_t" use="optional"/>
+		<xs:attribute name="R" type="SettlPartyRole_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="SettlParties_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">SettlParties is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="SettlParties" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SettlPartiesElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SettlPartiesAttributes"/>
+	</xs:complexType>
+	<xs:group name="StipulationsElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="StipulationsAttributes">
+		<xs:attribute name="Typ" type="StipulationType_t" use="optional"/>
+		<xs:attribute name="Val" type="StipulationValue_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="Stipulations_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Stipulations is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="Stipulations" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="StipulationsElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="StipulationsAttributes"/>
+	</xs:complexType>
+	<xs:group name="TrdRegTimestampsElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="TrdRegTimestampsAttributes">
+		<xs:attribute name="TS" type="TrdRegTimestamp_t" use="optional"/>
+		<xs:attribute name="Typ" type="TrdRegTimestampType_t" use="optional"/>
+		<xs:attribute name="Src" type="TrdRegTimestampOrigin_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="TrdRegTimestamps_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">TrdRegTimestamps is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="TrdRegTimestamps" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TrdRegTimestampsElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TrdRegTimestampsAttributes"/>
+	</xs:complexType>
+	<xs:group name="UnderlyingStipulationsElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="UnderlyingStipulationsAttributes">
+		<xs:attribute name="Typ" type="UnderlyingStipType_t" use="optional"/>
+		<xs:attribute name="Val" type="UnderlyingStipValue_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="UnderlyingStipulations_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">UnderlyingStipulations is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="UnderlyingStipulations" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="UnderlyingStipulationsElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="UnderlyingStipulationsAttributes"/>
+	</xs:complexType>
+	<xs:group name="NestedParties2Elements">
+		<xs:sequence>
+			<xs:element name="Sub" type="NstdPtys2SubGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="NestedParties2Attributes">
+		<xs:attribute name="ID" type="Nested2PartyID_t" use="optional"/>
+		<xs:attribute name="Src" type="Nested2PartyIDSource_t" use="optional"/>
+		<xs:attribute name="R" type="Nested2PartyRole_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NestedParties2_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NestedParties2 is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NestedParties2" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="NestedParties2Elements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="NestedParties2Attributes"/>
+	</xs:complexType>
+	<xs:group name="NestedParties3Elements">
+		<xs:sequence>
+			<xs:element name="Sub" type="NstdPtys3SubGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="NestedParties3Attributes">
+		<xs:attribute name="ID" type="Nested3PartyID_t" use="optional"/>
+		<xs:attribute name="Src" type="Nested3PartyIDSource_t" use="optional"/>
+		<xs:attribute name="R" type="Nested3PartyRole_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NestedParties3_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NestedParties3 is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NestedParties3" ComponentType="BlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="NestedParties3Elements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="NestedParties3Attributes"/>
+	</xs:complexType>
+	<xs:group name="ClrInstGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="ClrInstGrpAttributes">
+		<xs:attribute name="ClrngInstrctn" type="ClearingInstruction_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="ClrInstGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">ClrInstGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="ClrInstGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="ClrInstGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ClrInstGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="CompIDReqGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="CompIDReqGrpAttributes">
+		<xs:attribute name="RefCompID" type="RefCompID_t" use="optional"/>
+		<xs:attribute name="RefSubID" type="RefSubID_t" use="optional"/>
+		<xs:attribute name="LctnID" type="LocationID_t" use="optional"/>
+		<xs:attribute name="DeskID" type="DeskID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="CompIDReqGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">CompIDReqGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="CompIDReqGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="CompIDReqGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="CompIDReqGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="CompIDStatGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="CompIDStatGrpAttributes">
+		<xs:attribute name="RefCompID" type="RefCompID_t" use="optional"/>
+		<xs:attribute name="RefSubID" type="RefSubID_t" use="optional"/>
+		<xs:attribute name="LctnID" type="LocationID_t" use="optional"/>
+		<xs:attribute name="DeskID" type="DeskID_t" use="optional"/>
+		<xs:attribute name="StatValu" type="StatusValue_t" use="optional"/>
+		<xs:attribute name="StatText" type="StatusText_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="CompIDStatGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">CompIDStatGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="CompIDStatGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="CompIDStatGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="CompIDStatGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="ContAmtGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="ContAmtGrpAttributes">
+		<xs:attribute name="ContAmtTyp" type="ContAmtType_t" use="optional"/>
+		<xs:attribute name="ContAmtValu" type="ContAmtValue_t" use="optional"/>
+		<xs:attribute name="ContAmtCurr" type="ContAmtCurr_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="ContAmtGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">ContAmtGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="ContAmtGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="ContAmtGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ContAmtGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="ContraGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="ContraGrpAttributes">
+		<xs:attribute name="CntraBrkr" type="ContraBroker_t" use="optional"/>
+		<xs:attribute name="CntraTrdr" type="ContraTrader_t" use="optional"/>
+		<xs:attribute name="CntraTrdQty" type="ContraTradeQty_t" use="optional"/>
+		<xs:attribute name="CntraTrdTm" type="ContraTradeTime_t" use="optional"/>
+		<xs:attribute name="CntraLegRefID" type="ContraLegRefID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="ContraGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">ContraGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="ContraGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="ContraGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ContraGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="CpctyConfGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="CpctyConfGrpAttributes">
+		<xs:attribute name="Cpcty" type="OrderCapacity_t" use="required"/>
+		<xs:attribute name="Rstctions" type="OrderRestrictions_t" use="optional"/>
+		<xs:attribute name="CpctyQty" type="OrderCapacityQty_t" use="required"/>
+	</xs:attributeGroup>
+	<xs:complexType name="CpctyConfGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">CpctyConfGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="CpctyConfGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="CpctyConfGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="CpctyConfGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="ExecsGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="ExecsGrpAttributes">
+		<xs:attribute name="ExecID" type="ExecID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="ExecsGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">ExecsGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="ExecsGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="ExecsGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ExecsGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="InstrmtGrpElements">
+		<xs:sequence>
+			<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrmtGrpAttributes"/>
+	<xs:complexType name="InstrmtGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrmtGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrmtGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrmtGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrmtGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="InstrmtLegExecGrpElements">
+		<xs:sequence>
+			<xs:element name="Leg" type="InstrumentLeg_Block_t" minOccurs="0"/>
+			<xs:element name="Stip" type="LegStipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Pty" type="NestedParties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrmtLegExecGrpAttributes">
+		<xs:attribute name="Qty" type="LegQty_t" use="optional"/>
+		<xs:attribute name="SwapTyp" type="LegSwapType_t" use="optional"/>
+		<xs:attribute name="PosEfct" type="LegPositionEffect_t" use="optional"/>
+		<xs:attribute name="Cover" type="LegCoveredOrUncovered_t" use="optional"/>
+		<xs:attribute name="RefID" type="LegRefID_t" use="optional"/>
+		<xs:attribute name="Px" type="LegPrice_t" use="optional"/>
+		<xs:attribute name="SettlTyp" type="LegSettlType_t" use="optional"/>
+		<xs:attribute name="SettlDt" type="LegSettlDate_t" use="optional"/>
+		<xs:attribute name="LastPx" type="LegLastPx_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="InstrmtLegExecGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrmtLegExecGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrmtLegExecGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrmtLegExecGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrmtLegExecGrpAttributes"/>
+	</xs:complexType>
+	
+	<xs:group name="InstrmtLegGrpElements">
+		<xs:sequence>
+			<!-- xs:element name="Leg" type="InstrumentLeg_Block_t" minOccurs="0"/ -->
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrmtLegGrpAttributes"/>
+	<xs:complexType name="InstrmtLegGrp_Block_t"  final="#all">
+
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrmtLegGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrmtLegGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+	     <xs:complexContent>
+			<xs:extension base="InstrumentLeg_Block_t">
+			<xs:sequence>
+				<xs:group ref="InstrmtLegGrpElements"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="InstrmtLegGrpAttributes"/>
+			</xs:extension>
+	      </xs:complexContent>
+
+	</xs:complexType>
+	
+	<xs:group name="InstrmtLegIOIGrpElements">
+		<xs:sequence>
+			<xs:element name="Leg" type="InstrumentLeg_Block_t" minOccurs="0"/>
+			<xs:element name="Stip" type="LegStipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrmtLegIOIGrpAttributes">
+		<xs:attribute name="IOIQty" type="LegIOIQty_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="InstrmtLegIOIGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrmtLegIOIGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrmtLegIOIGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrmtLegIOIGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrmtLegIOIGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="InstrmtLegSecListGrpElements">
+		<xs:sequence>
+			<xs:element name="Leg" type="InstrumentLeg_Block_t" minOccurs="0"/>
+			<xs:element name="Stip" type="LegStipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="BnchmkCurve" type="LegBenchmarkCurveData_Block_t" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrmtLegSecListGrpAttributes">
+		<xs:attribute name="SwapTyp" type="LegSwapType_t" use="optional"/>
+		<xs:attribute name="SettlTyp" type="LegSettlType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="InstrmtLegSecListGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrmtLegSecListGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrmtLegSecListGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrmtLegSecListGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrmtLegSecListGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="InstrmtMDReqGrpElements">
+		<xs:sequence>
+			<xs:element name="Instrmt" type="Instrument_Block_t"/>
+			<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="InstrmtMDReqGrpAttributes"/>
+	<xs:complexType name="InstrmtMDReqGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">InstrmtMDReqGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="InstrmtMDReqGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="InstrmtMDReqGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="InstrmtMDReqGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="LinesOfTextGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="LinesOfTextGrpAttributes">
+		<xs:attribute name="Txt" type="Text_t" use="required"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="LinesOfTextGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">LinesOfTextGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="LinesOfTextGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="LinesOfTextGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="LinesOfTextGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="MiscFeesGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="MiscFeesGrpAttributes">
+		<xs:attribute name="Amt" type="MiscFeeAmt_t" use="optional"/>
+		<xs:attribute name="Curr" type="MiscFeeCurr_t" use="optional"/>
+		<xs:attribute name="Typ" type="MiscFeeType_t" use="optional"/>
+		<xs:attribute name="Basis" type="MiscFeeBasis_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="MiscFeesGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">MiscFeesGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="MiscFeesGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="MiscFeesGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="MiscFeesGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="OrdAllocGrpElements">
+		<xs:sequence>
+			<xs:element name="Pty" type="NestedParties2_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="OrdAllocGrpAttributes">
+		<xs:attribute name="ClOrdID" type="ClOrdID_t" use="optional"/>
+		<xs:attribute name="OrdID" type="OrderID_t" use="optional"/>
+		<xs:attribute name="OrdID2" type="SecondaryOrderID_t" use="optional"/>
+		<xs:attribute name="ClOrdID2" type="SecondaryClOrdID_t" use="optional"/>
+		<xs:attribute name="ListID" type="ListID_t" use="optional"/>
+		<xs:attribute name="Qty" type="OrderQty_t" use="optional"/>
+		<xs:attribute name="AvgPx" type="OrderAvgPx_t" use="optional"/>
+		<xs:attribute name="BkngQty" type="OrderBookingQty_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="OrdAllocGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">OrdAllocGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="OrdAllocGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="OrdAllocGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="OrdAllocGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="PreAllocGrpElements">
+		<xs:sequence>
+			<xs:element name="Pty" type="NestedParties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PreAllocGrpAttributes">
+		<xs:attribute name="Acct" type="AllocAccount_t" use="optional"/>
+		<xs:attribute name="ActIDSrc" type="AllocAcctIDSource_t" use="optional"/>
+		<xs:attribute name="AllocSettlCcy" type="AllocSettlCurrency_t" use="optional"/>
+		<xs:attribute name="IndAllocID" type="IndividualAllocID_t" use="optional"/>
+		<xs:attribute name="Qty" type="AllocQty_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="PreAllocGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">PreAllocGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="PreAllocGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PreAllocGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PreAllocGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="PreAllocMlegGrpElements">
+		<xs:sequence>
+			<xs:element name="Pty" type="NestedParties3_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PreAllocMlegGrpAttributes">
+		<xs:attribute name="Acct" type="AllocAccount_t" use="optional"/>
+		<xs:attribute name="ActIDSrc" type="AllocAcctIDSource_t" use="optional"/>
+		<xs:attribute name="AllocSettlCcy" type="AllocSettlCurrency_t" use="optional"/>
+		<xs:attribute name="IndAllocID" type="IndividualAllocID_t" use="optional"/>
+		<xs:attribute name="Qty" type="AllocQty_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="PreAllocMlegGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">PreAllocMlegGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="PreAllocMlegGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PreAllocMlegGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PreAllocMlegGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="RoutingGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="RoutingGrpAttributes">
+		<xs:attribute name="RtgTyp" type="RoutingType_t" use="optional"/>
+		<xs:attribute name="RtgID" type="RoutingID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="RoutingGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">RoutingGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="RoutingGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="RoutingGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="RoutingGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="TrdAllocGrpElements">
+		<xs:sequence>
+			<xs:element name="Pty" type="NestedParties2_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="TrdAllocGrpAttributes">
+		<xs:attribute name="Acct" type="AllocAccount_t" use="optional"/>
+		<xs:attribute name="ActIDSrc" type="AllocAcctIDSource_t" use="optional"/>
+		<xs:attribute name="AllocSettlCcy" type="AllocSettlCurrency_t" use="optional"/>
+		<xs:attribute name="IndAllocID" type="IndividualAllocID_t" use="optional"/>
+		<xs:attribute name="Qty" type="AllocQty_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="TrdAllocGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">TrdAllocGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="TrdAllocGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TrdAllocGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TrdAllocGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="TrdCollGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="TrdCollGrpAttributes">
+		<xs:attribute name="RptID" type="TradeReportID_t" use="optional"/>
+		<xs:attribute name="TrdRptID2" type="SecondaryTradeReportID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="TrdCollGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">TrdCollGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="TrdCollGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TrdCollGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TrdCollGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="TrdgSesGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="TrdgSesGrpAttributes">
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="TrdgSesGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">TrdgSesGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="TrdgSesGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TrdgSesGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TrdgSesGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="UndInstrmtGrpElements">
+		<xs:sequence>
+			<!--xs:element name="" name="Undly" type="UnderlyingInstrument_Block_t" minOccurs="0"/ -->
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="UndInstrmtGrpAttributes"/>
+	
+	<xs:complexType name="UndInstrmtGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">UndInstrmtGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="UndInstrmtGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexContent>
+		<xs:extension base="UnderlyingInstrument_Block_t">
+		      <xs:sequence>
+		          <xs:group ref="UndInstrmtGrpElements"/>
+		      </xs:sequence>
+		      <xs:attributeGroup ref="UndInstrmtGrpAttributes"/>
+		</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:group name="EvntGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="EvntGrpAttributes">
+		<xs:attribute name="EventTyp" type="EventType_t" use="optional"/>
+		<xs:attribute name="Dt" type="EventDate_t" use="optional"/>
+		<xs:attribute name="Px" type="EventPx_t" use="optional"/>
+		<xs:attribute name="Txt" type="EventText_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="EvntGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">EvntGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="EvntGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="EvntGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="EvntGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="SecAltIDGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="SecAltIDGrpAttributes">
+		<xs:attribute name="AltID" type="SecurityAltID_t" use="optional"/>
+		<xs:attribute name="AltIDSrc" type="SecurityAltIDSource_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="SecAltIDGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">SecAltIDGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="SecAltIDGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SecAltIDGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SecAltIDGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="LegSecAltIDGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="LegSecAltIDGrpAttributes">
+		<xs:attribute name="SecAltID" type="LegSecurityAltID_t" use="optional"/>
+		<xs:attribute name="SecAltIDSrc" type="LegSecurityAltIDSource_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="LegSecAltIDGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">LegSecAltIDGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="LegSecAltIDGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="LegSecAltIDGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="LegSecAltIDGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="UndSecAltIDGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="UndSecAltIDGrpAttributes">
+		<xs:attribute name="AltID" type="UnderlyingSecurityAltID_t" use="optional"/>
+		<xs:attribute name="AltIDSrc" type="UnderlyingSecurityAltIDSource_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="UndSecAltIDGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">UndSecAltIDGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="UndSecAltIDGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="UndSecAltIDGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="UndSecAltIDGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="AttrbGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="AttrbGrpAttributes">
+		<xs:attribute name="Typ" type="InstrAttribType_t" use="optional"/>
+		<xs:attribute name="Val" type="InstrAttribValue_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="AttrbGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">AttrbGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="AttrbGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="AttrbGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="AttrbGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="DlvyInstGrpElements">
+		<xs:sequence>
+			<xs:element name="Pty" type="SettlParties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="DlvyInstGrpAttributes">
+		<xs:attribute name="InstSrc" type="SettlInstSource_t" use="optional"/>
+		<xs:attribute name="InstTyp" type="DlvyInstType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="DlvyInstGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">DlvyInstGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="DlvyInstGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="DlvyInstGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="DlvyInstGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="SettlPtysSubGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="SettlPtysSubGrpAttributes">
+		<xs:attribute name="ID" type="SettlPartySubID_t" use="optional"/>
+		<xs:attribute name="Typ" type="SettlPartySubIDType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="SettlPtysSubGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">SettlPtysSubGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="SettlPtysSubGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SettlPtysSubGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SettlPtysSubGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="PtysSubGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="PtysSubGrpAttributes">
+		<xs:attribute name="ID" type="PartySubID_t" use="optional"/>
+		<xs:attribute name="Typ" type="PartySubIDType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="PtysSubGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">PtysSubGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="PtysSubGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PtysSubGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PtysSubGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="NstdPtysSubGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="NstdPtysSubGrpAttributes">
+		<xs:attribute name="ID" type="NestedPartySubID_t" use="optional"/>
+		<xs:attribute name="Typ" type="NestedPartySubIDType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NstdPtysSubGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NstdPtysSubGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NstdPtysSubGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="NstdPtysSubGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="NstdPtysSubGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="NstdPtys2SubGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="NstdPtys2SubGrpAttributes">
+		<xs:attribute name="ID" type="Nested2PartySubID_t" use="optional"/>
+		<xs:attribute name="Typ" type="Nested2PartySubIDType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NstdPtys2SubGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NstdPtys2SubGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NstdPtys2SubGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="NstdPtys2SubGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="NstdPtys2SubGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="NstdPtys3SubGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="NstdPtys3SubGrpAttributes">
+		<xs:attribute name="ID" type="Nested3PartySubID_t" use="optional"/>
+		<xs:attribute name="Typ" type="Nested3PartySubIDType_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="NstdPtys3SubGrp_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">NstdPtys3SubGrp is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="NstdPtys3SubGrp" ComponentType="ImplicitBlockRepeating"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="NstdPtys3SubGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="NstdPtys3SubGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="SenderElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="SenderAttributes">
+		<xs:attribute name="SndID" type="SenderCompID_t" use="required"/>
+		<xs:attribute name="SSub" type="SenderSubID_t" use="optional"/>
+		<xs:attribute name="SLoc" type="SenderLocationID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="Sender_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Sender is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="Sender" ComponentType="ImplicitBlock"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SenderElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SenderAttributes"/>
+	</xs:complexType>
+	<xs:group name="TargetElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="TargetAttributes">
+		<xs:attribute name="TID" type="TargetCompID_t" use="required"/>
+		<xs:attribute name="TSub" type="TargetSubID_t" use="optional"/>
+		<xs:attribute name="TLoc" type="TargetLocationID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="Target_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Target is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="Target" ComponentType="ImplicitBlock"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TargetElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TargetAttributes"/>
+	</xs:complexType>
+	<xs:group name="OnBehalfOfElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="OnBehalfOfAttributes">
+		<xs:attribute name="OBID" type="OnBehalfOfCompID_t" use="optional"/>
+		<xs:attribute name="OBSub" type="OnBehalfOfSubID_t" use="optional"/>
+		<xs:attribute name="OBLoc" type="OnBehalfOfLocationID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="OnBehalfOf_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">OnBehalfOf is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="OnBehalfOf" ComponentType="ImplicitBlock"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="OnBehalfOfElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="OnBehalfOfAttributes"/>
+	</xs:complexType>
+	<xs:group name="DeliverToElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="DeliverToAttributes">
+		<xs:attribute name="D2ID" type="DeliverToCompID_t" use="optional"/>
+		<xs:attribute name="D2Sub" type="DeliverToSubID_t" use="optional"/>
+		<xs:attribute name="D2Loc" type="DeliverToLocationID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="DeliverTo_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">DeliverTo is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="DeliverTo" ComponentType="ImplicitBlock"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="DeliverToElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="DeliverToAttributes"/>
+	</xs:complexType>
+	<xs:group name="HopElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="HopAttributes">
+		<xs:attribute name="ID" type="HopCompID_t" use="optional"/>
+		<xs:attribute name="Snt" type="HopSendingTime_t" use="optional"/>
+		<xs:attribute name="Ref" type="HopRefID_t" use="optional"/>
+	</xs:attributeGroup>
+	<xs:complexType name="Hop_Block_t" final="#all">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Hop is a component
+		</xs:documentation>
+			<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+				<xs:Xref Protocol="FIX" name="Hop" ComponentType="ImplicitBlock"/>
+				<xs:Xref Protocol="ISO_15022_XML"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="HopElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="HopAttributes"/>
+	</xs:complexType>
+</xs:schema>

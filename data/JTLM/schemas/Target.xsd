@@ -1,0 +1,3790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<!-- The US Government's license rights for this deliverable are listed in -->
+<!-- DFARS 252.227-7013 Rights in Technical Data - Noncommercial Items -->
+<!-- (Nov 1995) (Alternate 1 June 1995) and DFARS 252.227-7014 Rights in -->
+<!-- Noncommercial Computer Software and Noncommercial Computer Software -->
+<!-- Documentation (June 1995). -->
+<!-- COMPANY  : Raytheon Company -->
+<!-- COPYRIGHT: Copyright (c) 2005 Raytheon Company -->
+<!-- UNPUBLISHED WORK -->
+<!-- ALL RIGHTS RESERVED -->
+<!-- PROJECT  : Target List Management -->
+<!-- CONTRACT : DAAB07-99-C-E003 -->
+<!-- -->
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Anna Kinne (Raytheon) -->
+<!-- mtwill JBM-754, 22Mar05, changed targetNamespace, added jtlm to path -->
+<!--  -->
+<xs:schema targetNamespace="http://www.firesupport.com/schema/jtlm/target" 
+           elementFormDefault="qualified" 
+	   attributeFormDefault="unqualified" 
+	   version="Draft" 
+	   xmlns="http://www.firesupport.com/schema/jtlm/target" 
+	   xmlns:common="http://www.firesupport.com/schema/jtlm/common" 
+	   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="http://www.firesupport.com/schema/jtlm/common" 
+	           schemaLocation="Common.xsd"/>
+
+	<!-- Enumeration Type Definitions -->
+	<xs:simpleType name="AirAlertStatusType">
+		<xs:annotation>
+			<xs:documentation>
+				The readiness status expressed as an indication of the time specified or
+				implied for an aircraft to be airborne after the launch order is received or the time required for
+				a missile unit to assume battle stations
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ALERT_TIME_STATUS_MINUTES"/>
+			<xs:enumeration value="ALERT_TIME_STATUS_HOURS"/>
+			<xs:enumeration value="ALERT_TIME_STATUS"/>
+			<xs:enumeration value="RUNWAY_ALERT"/>
+			<xs:enumeration value="BATTLE_STATIONS"/>
+			<xs:enumeration value="RED"/>
+			<xs:enumeration value="YELLOW"/>
+			<xs:enumeration value="WHITE"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirControlKindType">
+		<xs:annotation>
+			<xs:documentation>
+				The code for the type of agency that exercises some degree of control over
+				an aircraft mission.  This list of values includes values which can be requested in an air mission
+				request and those which will be returned in an air tasking order (ATO).
+				Valid for Request (AIRSUPREQ) only:  Final_Control_Agency, Inflight_Report_Monitor,
+				Initial_Control_Agency, Mission_Coordinator,  Operational_Control_Agency,  Air_Support_Radar_Team,
+				Helicopter_Coordinator_Airborne
+				Valid for both Request (AIRSUPREQ) and Mission (ATO): Tactical_Air_Coordinator_Airborne,
+				Helicopter_Support_Team, Other
+				Valid for Mission (ATO) only:  Air_Support_Operations_Center,   Airborne_Assault_Support_Center,
+				Airborne_Assault_Support_Center,  Airborne_Command_Control_Communications,  Airborne_Direct_Air_Controller,
+				Airborne_Forward_Air_Controller,  Airborne_Warning_And_Control_System,  Combat_Control_Team,
+				Control_Reporting_Center,  Control_Reporting_Element,  Control_Reporting_Post,  Direct_Air_Support_Center,
+				Forward_Air_Control_Post,  Forward_Air_Controller,  Ground_Control_Intercept,  Initial_Terminal_Guidance_Team,
+				Marine_Air_Traffic_Control_Detachment,Marine_Air_Traffic_Control_Mobile_Team, Marine_Early_Warning_Control_Site,
+				Marine_Tactical_Air_Command_Center, Marine_Tactical_Air_Direction_Center, Marine_Tactical_Air_Operations_Center,
+				Tactical_Air_Control_Party
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="FINAL_CONTROL_AGENCY"/>
+			<xs:enumeration value="INFLIGHT_REPORT_MONITOR"/>
+			<xs:enumeration value="INITIAL_CONTROL_AGENCY"/>
+			<xs:enumeration value="MISSION_COORDINATOR"/>
+			<xs:enumeration value="OPERATIONAL_CONTROL_AGENCY"/>
+			<xs:enumeration value="AIR_SUPPORT_RADAR_TEAM"/>
+			<xs:enumeration value="HELICOPTER_COORDINATOR_AIRBORNE"/>
+			<xs:enumeration value="TACTICAL_AIR_COORDINATOR_AIRBORNE"/>
+			<xs:enumeration value="HELICOPTER_SUPPORT_TEAM"/>
+			<xs:enumeration value="AIR_SUPPORT_OPERATIONS_CENTER"/>
+			<xs:enumeration value="AIRBORNE_ASSAULT_SUPPORT_CENTER"/>
+			<xs:enumeration value="AIRBORNE_COMMAND_CONTROL_COMMUNICATIONS"/>
+			<xs:enumeration value="AIRBORNE_DIRECT_AIR_CONTROLLER"/>
+			<xs:enumeration value="AIRBORNE_FORWARD_AIR_CONTROLLER"/>
+			<xs:enumeration value="AIRBORNE_WARNING_AND_CONTROL_SYSTEM"/>
+			<xs:enumeration value="COMBAT_CONTROL_TEAM"/>
+			<xs:enumeration value="CONTROL_REPORTING_CENTER"/>
+			<xs:enumeration value="CONTROL_REPORTING_ELEMENT"/>
+			<xs:enumeration value="CONTROL_REPORTING_POST"/>
+			<xs:enumeration value="DIRECT_AIR_SUPPORT_CENTER"/>
+			<xs:enumeration value="FORWARD_AIR_CONTROL_POST"/>
+			<xs:enumeration value="FORWARD_AIR_CONTROLLER"/>
+			<xs:enumeration value="GROUND_CONTROL_INTERCEPT"/>
+			<xs:enumeration value="INITIAL_TERMINAL_GUIDANCE_TEAM"/>
+			<xs:enumeration value="MARINE_AIR_TRAFFIC_CONTROL_DETACHMENT"/>
+			<xs:enumeration value="MARINE_AIR_TRAFFIC_CONTROL_MOBILE_TEAM"/>
+			<xs:enumeration value="MARINE_EARLY_WARNING_CONTROL_SITE"/>
+			<xs:enumeration value="MARINE_TACTICAL_AIR_COMMAND_CENTER"/>
+			<xs:enumeration value="MARINE_TACTICAL_AIR_DIRECTION_CENTER"/>
+			<xs:enumeration value="MARINE_TACTICAL_AIR_OPERATIONS_CENTER"/>
+			<xs:enumeration value="TACTICAL_AIR_CONTROL_PARTY"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AircraftExternalInternalIndicatorType">
+		<xs:annotation>
+			<xs:documentation>The indicator for placement of cargo within or outside an aircraft.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="EXTERNAL_LOAD"/>
+			<xs:enumeration value="INTERNAL_LOAD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirDegreeOfProtectionType">
+		<xs:annotation>
+			<xs:documentation>
+				The degree of protection provided for personnel and/or weapons-associated
+				facilities, against attacks by aircraft, artillery, or missiles,  in terms of their immediate environment.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="DISPERSED_PARKING"/>
+			<xs:enumeration value="HARDENED_HANGARETTE"/>
+			<xs:enumeration value="HARDSTANDS"/>
+			<xs:enumeration value="NONE"/>
+			<xs:enumeration value="OPEN_REVETMENT"/>
+			<xs:enumeration value="UNDERGROUND_HANGAR"/>
+			<xs:enumeration value="ALL_PRONE"/>
+			<xs:enumeration value="DUG_IN"/>
+			<xs:enumeration value="HALF_PRONE_HALF_STANDING"/>
+			<xs:enumeration value="OPEN"/>
+			<xs:enumeration value="PRONE_DUG_IN_AFTER_FIRST_ATTACK"/>
+			<xs:enumeration value="PRONE_OVERHEAD_COVER_AFTER_FIRST_ATTACK"/>
+			<xs:enumeration value="OVERHEAD_COVER"/>
+			<xs:enumeration value="STANDING"/>
+			<xs:enumeration value="LIGHT_COVER"/>
+			<xs:enumeration value="MEDIUM_COVER"/>
+			<xs:enumeration value="HEAVY_COVER"/>
+			<xs:enumeration value="ABOVEGROUND"/>
+			<xs:enumeration value="BUNKER"/>
+			<xs:enumeration value="COVERED"/>
+			<xs:enumeration value="OPEN_EXPOSED"/>
+			<xs:enumeration value="REVETTED"/>
+			<xs:enumeration value="SEMI_BURIED"/>
+			<xs:enumeration value="STRUCTURED_BLASTWALL"/>
+			<xs:enumeration value="UNDERGROUND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirImmediatePreplannedType">
+		<xs:annotation>
+			<xs:documentation>The indicator for whether an air mission is Immediate or Preplanned.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="IMMEDIATE"/>
+			<xs:enumeration value="PREPLANNED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionClassType">
+		<xs:annotation>
+			<xs:documentation>The type of mission such as Close Air Support, Medical Evacuation, etc.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="MEDICAL_EVACUATION"/>
+			<xs:enumeration value="RECONNAISSANCE"/>
+			<xs:enumeration value="ELECTRONIC_WARFARE"/>
+			<xs:enumeration value="ASSAULT_SUPPORT"/>
+			<xs:enumeration value="AIRDROP"/>
+			<xs:enumeration value="AIR_INTERDICTION"/>
+			<xs:enumeration value="CLOSE_AIR_SUPPORT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionStateType">
+		<xs:annotation>
+			<xs:documentation>The state of the air mission assigned to an air request.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="EXECUTE"/>
+			<xs:enumeration value="DIVERT"/>
+			<xs:enumeration value="LAUNCHED"/>
+			<xs:enumeration value="COMPLETED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionStatusType">
+		<xs:annotation>
+			<xs:documentation>
+				The current status of the air mission indicating that it is unknown,
+				aborted, or completed.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ABORTED"/>
+			<xs:enumeration value="COMPLETE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionVerificationStatusType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether a mission has been verified, denied, or requested.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="REQUESTED"/>
+			<xs:enumeration value="VERIFIED"/>
+			<xs:enumeration value="DENIED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirPullOutDirectionType">
+		<xs:annotation>
+			<xs:documentation>Direction an aircraft is to turn while pulling out from a target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="LEFT"/>
+			<xs:enumeration value="RIGHT"/>
+			<xs:enumeration value="STRAIGHT_AHEAD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirRequestPriorityType">
+		<xs:annotation>
+			<xs:documentation>
+				The code for the priority or the relative importance of a preplanned,
+				immediate, or reconnaissance mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="PRIORITY_1"/>
+			<xs:enumeration value="PRIORITY_2"/>
+			<xs:enumeration value="PRIORITY_3"/>
+			<xs:enumeration value="PRIORITY_4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirRequestStatusType">
+		<xs:annotation>
+			<xs:documentation>
+				The current status of the air request indicating that it is confirmed, denied,
+				created, etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="CREATED"/>
+			<xs:enumeration value="REQUESTED"/>
+			<xs:enumeration value="CONFIRMED"/>
+			<xs:enumeration value="DENIED"/>
+			<xs:enumeration value="REDIRECTED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AngleOfFireType">
+		<xs:annotation>
+			<xs:documentation>The trajectory for artillery or naval gunfire.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="HIGH"/>
+			<xs:enumeration value="LOW"/>
+			<xs:enumeration value="MRSI"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CannotObserveActionType">
+		<xs:annotation>
+			<xs:documentation>
+				The action to be taken when a fire mission is not observable.  For a
+				mission that cannot be observed.  This will allow the mission to be ended and the target
+				recorded as a target if desired.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="EOM"/>
+			<xs:enumeration value="RAT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CargoSizeUnitType">
+		<xs:annotation>
+			<xs:documentation>Unit of measure used for the cargo type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="CUBIC_INCHES"/>
+			<xs:enumeration value="CUBIC_FEET"/>
+			<xs:enumeration value="CUBIC_YARDS"/>
+			<xs:enumeration value="CUBIC_CENTIMETERS"/>
+			<xs:enumeration value="CUBIC_METERS"/>
+			<xs:enumeration value="BARREL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CargoWeightUnitType">
+		<xs:annotation>
+			<xs:documentation>Unit of measure used for the cargo weight.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="KILOGRAMS"/>
+			<xs:enumeration value="POUNDS"/>
+			<xs:enumeration value="LONG_TONS"/>
+			<xs:enumeration value="METRIC_TONS"/>
+			<xs:enumeration value="TONS"/>
+			<xs:enumeration value="KILOTONS"/>
+			<xs:enumeration value="MEGATONS"/>
+			<xs:enumeration value="SHORT_TONS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CloudCoverKindType">
+		<xs:annotation>
+			<xs:documentation>Describes the generic cloud coverage in a specific area.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="SCATTERED_CLOUDS"/>
+			<xs:enumeration value="BROKEN_CLOUDS"/>
+			<xs:enumeration value="OVERCAST"/>
+			<xs:enumeration value="CLEAR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CoverageExtentModeType">
+		<xs:annotation>
+			<xs:documentation>Defines the extent of coverage used in air missions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="COMPLETE_COVERAGE_MONO_MODE"/>
+			<xs:enumeration value="COMPLETE_COVERAGE_PARTIAL_STEREO_MODE"/>
+			<xs:enumeration value="COMPLETE_COVERAGE_STEREO_MODE"/>
+			<xs:enumeration value="PARTIAL_COVERAGE_MONO_MODE"/>
+			<xs:enumeration value="PARTIAL_COVERAGE_PARTIAL_STEREO_MODE"/>
+			<xs:enumeration value="PARTIAL_COVERAGE_STEREO_MODE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CoverageTypeCodeType">
+		<xs:annotation>
+			<xs:documentation>Defines the type of coverage used in air missions.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="NO_DATA"/>
+			<xs:enumeration value="AFLOAT"/>
+			<xs:enumeration value="AREA_COVER"/>
+			<xs:enumeration value="AREA_SEARCH"/>
+			<xs:enumeration value="BEST_POSSIBLE"/>
+			<xs:enumeration value="PINPOINT"/>
+			<xs:enumeration value="ROUTE_RECONNAISSANCE"/>
+			<xs:enumeration value="SPECIFIC_SEARCH"/>
+			<xs:enumeration value="STRIP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DecimalMultiplierType">
+		<xs:annotation>
+			<xs:documentation>
+				The multiplier for decimal values.  A value of X1 indicates the valus is not
+				mulitpied.  A value of K indicates the value is in thousands.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="X1"/>
+			<xs:enumeration value="K"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DistributionOfFireIndicatorType">
+		<xs:annotation>
+			<xs:documentation>The pattern of bursts (sheaf) in the target area.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="PARALLEL"/>
+			<xs:enumeration value="OPEN"/>
+			<xs:enumeration value="CONVERGE"/>
+			<xs:enumeration value="SPECIAL"/>
+			<xs:enumeration value="BCS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DistributionOfFireIndicatorForMlrsHeGuidedType">
+		<xs:annotation>
+			<xs:documentation>The pattern of bursts (sheaf) in the target area.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="POINT"/>
+			<xs:enumeration value="OPEN"/>
+			<xs:enumeration value="CLOSED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiIntelligenceTaskCodeType">
+		<xs:annotation>
+			<xs:documentation>The code for the intelligence task to be performed on the reconnaissance mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="DETECTION"/>
+			<xs:enumeration value="GENERAL_IDENTIFICATION"/>
+			<xs:enumeration value="PRECISE_IDENTIFICATION"/>
+			<xs:enumeration value="DESCRIPTION"/>
+			<xs:enumeration value="ANALYSIS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="EcmTechniqueType">
+		<xs:annotation>
+			<xs:documentation>
+				Describes the electronic countermeasures employed against
+				communication and non-communication electronics.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NO_DATA"/>
+			<xs:enumeration value="CRYPTO_INTRUSION"/>
+			<xs:enumeration value="DECEPTIVE_JAMMING"/>
+			<xs:enumeration value="NUISANCE_INTRUSION"/>
+			<xs:enumeration value="PLAN_MSG_INTRUSION"/>
+			<xs:enumeration value="TARGET_SPOOFING"/>
+			<xs:enumeration value="GULL"/>
+			<xs:enumeration value="INVERSE_MODULATION"/>
+			<xs:enumeration value="RANGE_GATE_PULL_OFF"/>
+			<xs:enumeration value="SCAN_RATE_MODULATION"/>
+			<xs:enumeration value="MANIPULATIVE_COMSEC"/>
+			<xs:enumeration value="ELECTRONIC_COVER"/>
+			<xs:enumeration value="FALSE_PEAKS"/>
+			<xs:enumeration value="FALSE_TRAFFIC"/>
+			<xs:enumeration value="PADDING"/>
+			<xs:enumeration value="ROUTING"/>
+			<xs:enumeration value="UNIT_SIMULATION"/>
+			<xs:enumeration value="FALSE_ACTIVITY"/>
+			<xs:enumeration value="BLANKET"/>
+			<xs:enumeration value="BURST"/>
+			<xs:enumeration value="CORRIDOR"/>
+			<xs:enumeration value="SP_CHAFF"/>
+			<xs:enumeration value="TARGET_DILUTION"/>
+			<xs:enumeration value="BARRAGE_JAMMING"/>
+			<xs:enumeration value="MULTI_FALSE_TARGETS"/>
+			<xs:enumeration value="COMM_NOISE_JAMMING"/>
+			<xs:enumeration value="CORNER_REFLECTORS"/>
+			<xs:enumeration value="REPEATER_JAMMING"/>
+			<xs:enumeration value="SELF_PROTECTION"/>
+			<xs:enumeration value="SPOT_JAMMING"/>
+			<xs:enumeration value="SWEEP_JAMMING"/>
+			<xs:enumeration value="SWEEP_LOCKON_JAMMING"/>
+			<xs:enumeration value="TRANSPONDER_JAMMING"/>
+			<xs:enumeration value="SONIC_DECPT_AMPHIB"/>
+			<xs:enumeration value="SONIC_CONCEAL_FORCES"/>
+			<xs:enumeration value="SONIC_RIVERINE"/>
+			<xs:enumeration value="SIM_TAC_MOVEMENT"/>
+			<xs:enumeration value="SIM_FORCES"/>
+			<xs:enumeration value="ACOUSTIC_SIM_SUBSURF"/>
+			<xs:enumeration value="SONIC_DECPT_PILL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ElectromagneticPulseUnitType">
+		<xs:annotation>
+			<xs:documentation>Unit of measure for the electromagnetic pulse rate.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="PULSES_PER_SECOND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="EmitterKindType">
+		<xs:annotation>
+			<xs:documentation>The type of electronic emitter.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="COMMUNICATIONS"/>
+			<xs:enumeration value="GCI_COMMUNICATIONS"/>
+			<xs:enumeration value="GCI_RADAR"/>
+			<xs:enumeration value="IFF"/>
+			<xs:enumeration value="NAVAIDS"/>
+			<xs:enumeration value="RADAR"/>
+			<xs:enumeration value="SAM"/>
+			<xs:enumeration value="AAA"/>
+			<xs:enumeration value="AIRBORNE"/>
+			<xs:enumeration value="INTERCEPT"/>
+			<xs:enumeration value="AIRBORNE_NAVIGATION"/>
+			<xs:enumeration value="NAV_BOMB_RADARS"/>
+			<xs:enumeration value="AIRBORNE_SURVEILLANCE"/>
+			<xs:enumeration value="NONE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="EnemyActionType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether any enemy action has been spotted.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="NO_ENEMY_ACTION_EVIDENT"/>
+			<xs:enumeration value="ENEMY_ACTION_IN_PROXIMITY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="FireStatusType">
+		<xs:annotation>
+			<xs:documentation>
+				The range of requests made by an observer to signify the status of his
+				current active mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="DESIGNATE"/>
+			<xs:enumeration value="SPLASH"/>
+			<xs:enumeration value="SHOTS"/>
+			<xs:enumeration value="ROUNDS_COMPLETE"/>
+			<xs:enumeration value="READY"/>
+			<xs:enumeration value="WILCO"/>
+			<xs:enumeration value="ADVANCE_READY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="FrequencyKindType">
+		<xs:annotation>
+			<xs:documentation>The type of frequency used for air mission processing.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NO_DATA"/>
+			<xs:enumeration value="COMMS"/>
+			<xs:enumeration value="GCICOMMS"/>
+			<xs:enumeration value="GCIRDR"/>
+			<xs:enumeration value="IFF"/>
+			<xs:enumeration value="NAV"/>
+			<xs:enumeration value="RDR"/>
+			<xs:enumeration value="SAM"/>
+			<xs:enumeration value="AAA"/>
+			<xs:enumeration value="ABN"/>
+			<xs:enumeration value="INT"/>
+			<xs:enumeration value="ABNNAV"/>
+			<xs:enumeration value="NAVBOM"/>
+			<xs:enumeration value="ABNSURV"/>
+			<xs:enumeration value="NONE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="FrequencyUnitType">
+		<xs:annotation>
+			<xs:documentation>The unit of measurement for the frequency.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="HZ"/>
+			<xs:enumeration value="KHZ"/>
+			<xs:enumeration value="MHZ"/>
+			<xs:enumeration value="GHZ"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="HoistRequiredIndicatorType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether a hoist is required for cargo.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="YES"/>
+			<xs:enumeration value="NO"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ImageryKindType">
+		<xs:annotation>
+			<xs:documentation>Defines the imagery type used for air mission processing.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="BEST_POSSIBLE"/>
+			<xs:enumeration value="ELECTRO_OPTICAL"/>
+			<xs:enumeration value="FORWARD_LOOKING_INFRARED"/>
+			<xs:enumeration value="FRAME_PHOTO_MISSION"/>
+			<xs:enumeration value="HIGH_RESOLUTION_RADAR"/>
+			<xs:enumeration value="INFRARED"/>
+			<xs:enumeration value="OPTICAL"/>
+			<xs:enumeration value="RADAR"/>
+			<xs:enumeration value="SIDE_LOOKING_RADAR"/>
+			<xs:enumeration value="THERMAL_INFRARED"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ImageryQualifierType">
+		<xs:annotation>
+			<xs:documentation>
+				Additional descriptor of the type of imagery used for air mission
+				processing.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="BLACK_AND_WHITE"/>
+			<xs:enumeration value="BLACK_AND_WHITE_ENHANCED"/>
+			<xs:enumeration value="BLACK_AND_WHITE_STEREO_MATE"/>
+			<xs:enumeration value="NATURAL_COLOR"/>
+			<xs:enumeration value="NATURAL_COLOR_ENHANCED"/>
+			<xs:enumeration value="NATURAL_COLOR_STEREO_MATE"/>
+			<xs:enumeration value="GREEN_RECORD"/>
+			<xs:enumeration value="GREEN_RECORD_ENHANCED"/>
+			<xs:enumeration value="GREEN_RECORD_STEREO_MATE"/>
+			<xs:enumeration value="COLOR_NEAR_INFRARED"/>
+			<xs:enumeration value="COLOR_NEAR_INFRARED_ENHANCED"/>
+			<xs:enumeration value="COLOR_NEAR_INFRARED_STEREO_MATE"/>
+			<xs:enumeration value="RED_RECORD"/>
+			<xs:enumeration value="RED_RECORD_ENHANCED"/>
+			<xs:enumeration value="RED_RECORD_STEREO_MATE"/>
+			<xs:enumeration value="THERMAL_INFRARED"/>
+			<xs:enumeration value="THERMAL_INFRARED_ENHANCED"/>
+			<xs:enumeration value="THERMAL_INFRARED_STEREO_MATE"/>
+			<xs:enumeration value="RADAR"/>
+			<xs:enumeration value="RADAR_ENHANCED"/>
+			<xs:enumeration value="RADAR_STEREO_MATE"/>
+			<xs:enumeration value="NONSTANDARD"/>
+			<xs:enumeration value="NONSTANDARD_ENHANCED"/>
+			<xs:enumeration value="NONSTANDARD_STEREO_MATE"/>
+			<xs:enumeration value="VIDEO_DISPLAY"/>
+			<xs:enumeration value="VIDEO_DISPLAY_ENHANCED"/>
+			<xs:enumeration value="VIDEO_DISPLAY_STEREO_MATE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="LaserObservationType">
+		<xs:annotation>
+			<xs:documentation>
+				Indicates the laser target's position during the adjustment
+				of artillery fire.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="TARGET_OK"/>
+			<xs:enumeration value="BURST_OK"/>
+			<xs:enumeration value="TARGET_NOT_OBSERVED"/>
+			<xs:enumeration value="TARGET_LOST"/>
+			<xs:enumeration value="LOST_BURST"/>
+			<xs:enumeration value="IGNORE_ROUND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="LinearUnitType">
+		<xs:annotation>
+			<xs:documentation>The unit of measurement used for linear fields.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="INCHES"/>
+			<xs:enumeration value="FEET"/>
+			<xs:enumeration value="HUNDREDS_OF_FEET"/>
+			<xs:enumeration value="YARDS"/>
+			<xs:enumeration value="STATUTE_MILES"/>
+			<xs:enumeration value="NAUTICAL_MILES"/>
+			<xs:enumeration value="MILLIMETER"/>
+			<xs:enumeration value="CENTIMETER"/>
+			<xs:enumeration value="METER"/>
+			<xs:enumeration value="KILOMETER"/>
+			<xs:enumeration value="KILOFEET"/>
+			<xs:enumeration value="HECTOMETERS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ListKindType">
+		<xs:annotation>
+			<xs:documentation>The kind of list.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="TARGET_LIST"/>
+			<xs:enumeration value="AIR_SUPPORT_LIST"/>
+			<xs:enumeration value="FIRE_PLAN"/>
+			<xs:enumeration value="GROUP"/>
+			<xs:enumeration value="SERIES"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MarkingColorType">
+		<xs:annotation>
+			<xs:documentation>Color used to mark a friendly position for an airdrop.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="BLACK"/>
+			<xs:enumeration value="BLUE"/>
+			<xs:enumeration value="BROWN"/>
+			<xs:enumeration value="GREY"/>
+			<xs:enumeration value="GREEN"/>
+			<xs:enumeration value="ORANGE"/>
+			<xs:enumeration value="PURPLE"/>
+			<xs:enumeration value="RED"/>
+			<xs:enumeration value="SILVER"/>
+			<xs:enumeration value="TAN"/>
+			<xs:enumeration value="WHITE"/>
+			<xs:enumeration value="YELLOW"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MethodOfAttackAdjustType">
+		<xs:annotation>
+			<xs:documentation>
+				The type of adjustment (for adjust fire
+				missions), area or precision (destruction) adjustment
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AREA"/>
+			<xs:enumeration value="DESTRUCTION"/>
+			<xs:enumeration value="UNSPECIFIED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MethodOfControlType">
+		<xs:annotation>
+			<xs:documentation>
+				The method used by an observer to control the time of
+				delivery of fire.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="DO_NOT_LOAD"/>
+			<xs:enumeration value="WHEN_READY"/>
+			<xs:enumeration value="AT_MY_COMMAND"/>
+			<xs:enumeration value="BY_SHELL_AT_MY_COMMAND"/>
+			<xs:enumeration value="ON_CALL"/>
+			<xs:enumeration value="TIME_ON_TARGET"/>
+			<xs:enumeration value="CEASE_LOADING"/>
+			<xs:enumeration value="CHECK_FIRING"/>
+			<xs:enumeration value="CONTINUOUS_FIRE"/>
+			<xs:enumeration value="REPEAT"/>
+			<xs:enumeration value="CANCEL_AT_MY_COMMAND"/>
+			<xs:enumeration value="WARNING_ORDER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MethodOfFireType">
+		<xs:annotation>
+			<xs:documentation>
+				Indicates the lateral or range distribution of fires necessary
+				to ensure that rounds are distributed adequately to cover the target.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ONE_GUN"/>
+			<xs:enumeration value="TWO_GUNS"/>
+			<xs:enumeration value="TWO_GUN_LATERAL_SPREAD"/>
+			<xs:enumeration value="TWO_GUN_RANGE_SPREAD"/>
+			<xs:enumeration value="FOUR_GUN_RANGE_AND_LATERAL_SPREAD"/>
+			<xs:enumeration value="PLATOON_RIGHT"/>
+			<xs:enumeration value="PLATOON_LEFT"/>
+			<xs:enumeration value="PLATOON_CENTER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MethodOfMarkingType">
+		<xs:annotation>
+			<xs:documentation>Method used to mark a friendly position for an airdrop.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="FLARES"/>
+			<xs:enumeration value="PANELS"/>
+			<xs:enumeration value="SMOKE"/>
+			<xs:enumeration value="STROBE_LIGHTS"/>
+			<xs:enumeration value="VEHICLE_LIGHTS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissionDetailNotificationType">
+		<xs:annotation>
+			<xs:documentation>Mission details data.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="MISSION_LIST_INFO"/>
+			<xs:enumeration value="MISSION_DESCRIPTION"/>
+			<xs:enumeration value="CONTROL_DATA"/>
+			<xs:enumeration value="MORE_MISSION_DATA"/>
+			<xs:enumeration value="MOTION_DATA"/>
+			<xs:enumeration value="REQUESTED_EFFECTS"/>
+			<xs:enumeration value="REQUESTED_WEAPONS"/>
+			<xs:enumeration value="WEATHER_DATA"/>
+			<xs:enumeration value="STATUS_REPORT"/>
+			<xs:enumeration value="ATTACKING_UNITS"/>
+			<xs:enumeration value="END_OF_MISSION_DATA"/>
+			<xs:enumeration value="AIR_SUPPORT_REQUEST"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissileKindType">
+		<xs:annotation>
+			<xs:documentation>
+				The abbreviated code to indicate the type of
+				missile.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ATACM"/>
+			<xs:enumeration value="TLAM_CRUISE"/>
+			<xs:enumeration value="CALCM"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissionKindType">
+		<xs:annotation>
+			<xs:documentation>The kind of fire mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="NORMAL"/>
+			<xs:enumeration value="IMMEDIATE_SUPPRESSION"/>
+			<xs:enumeration value="IMMEDIATE_SMOKE"/>
+			<xs:enumeration value="ADJUST_FIRE"/>
+			<xs:enumeration value="FIRE_FOR_EFFECT"/>
+			<xs:enumeration value="ASSIGN"/>
+			<xs:enumeration value="CONTINUOUS_ILLUM"/>
+			<xs:enumeration value="COORDINATED_ILLUM"/>
+			<xs:enumeration value="PRECISION_REGISTRATION"/>
+			<xs:enumeration value="PRECISION_QUICK_AND_TIME_REGISTRATION"/>
+			<xs:enumeration value="HB_REGISTRATION"/>
+			<xs:enumeration value="MPI_REGISTRATION"/>
+			<xs:enumeration value="RADAR_HB_REGISTRATION"/>
+			<xs:enumeration value="RADAR_MPI_REGISTRATION"/>
+			<xs:enumeration value="LASER_REGISTRATION"/>
+			<xs:enumeration value="QUICK_SMOKE_ADJUST"/>
+			<xs:enumeration value="QUICK_SMOKE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissionLocationKindType">
+		<xs:annotation>
+			<xs:documentation>
+				The type of locaton being used such as Initial Point,
+				Holding Point,Naval Ship Coordinates, etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="CAP_POINT"/>
+			<xs:enumeration value="CENTER"/>
+			<xs:enumeration value="COMMENCE_SEARCH_POINT"/>
+			<xs:enumeration value="DATUM"/>
+			<xs:enumeration value="HOLDING_POINT"/>
+			<xs:enumeration value="INITIAL_POINT"/>
+			<xs:enumeration value="ORBIT_COORDINATES"/>
+			<xs:enumeration value="REFUELING_ANCHOR"/>
+			<xs:enumeration value="SEARCH_AREA"/>
+			<xs:enumeration value="STRIP_COORDINATES"/>
+			<xs:enumeration value="RENDEZVOUS_POINT"/>
+			<xs:enumeration value="SURVIVOR_PICKUP_POINT"/>
+			<xs:enumeration value="TARGET_AREA_COORDINATES"/>
+			<xs:enumeration value="TARGET_POINTS"/>
+			<xs:enumeration value="END_POINT"/>
+			<xs:enumeration value="NAVAL_SHIP_COORDINATES"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissionPrecedenceType">
+		<xs:annotation>
+			<xs:documentation>The precedence of a mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="PRIORITY"/>
+			<xs:enumeration value="IMMEDIATE"/>
+			<xs:enumeration value="PLANNED"/>
+			<xs:enumeration value="AS_ACQUIRED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissionStateType">
+		<xs:annotation>
+			<xs:documentation>The state of a mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ACTIVE"/>
+			<xs:enumeration value="INACTIVE"/>
+			<xs:enumeration value="ON_CALL"/>
+			<xs:enumeration value="PLANNED"/>
+			<xs:enumeration value="ASL"/>
+			<xs:enumeration value="ATF"/>
+			<xs:enumeration value="CURRENT_NAMED"/>
+			<xs:enumeration value="SUSPECT"/>
+			<xs:enumeration value="INDICATOR"/>
+			<xs:enumeration value="SUSPECT_PARENT"/>
+			<xs:enumeration value="FIRE_PLAN"/>
+			<xs:enumeration value="TRACKED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissionStatusType">
+		<xs:annotation>
+			<xs:documentation>The status of a fire mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ON_CALL_UNASSIGNED"/>
+			<xs:enumeration value="IN_PROCESS"/>
+			<xs:enumeration value="ON_CALL_ASSIGNED"/>
+			<xs:enumeration value="FR_SENT"/>
+			<xs:enumeration value="READY_SENT"/>
+			<xs:enumeration value="OTF_SENT"/>
+			<xs:enumeration value="FO_SENT"/>
+			<xs:enumeration value="DENIED"/>
+			<xs:enumeration value="COORDINATION_PENDING"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MultiplierType">
+		<xs:annotation>
+			<xs:documentation>
+				A multiplier for quantities.  A value of
+				X1 indicates the valus is not mulitpied.  A value of K indicates the value is in thousands.
+				A value of M indicates the value is in millions.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="X1"/>
+			<xs:enumeration value="K"/>
+			<xs:enumeration value="M"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MunitionsSourceType">
+		<xs:annotation>
+			<xs:documentation>
+				This is the source of the specified munitions which can be
+				specified via an observer, FS System Task, cannon special mission munition table,
+				mortar special mission munition table, cannon attack methods table, rocket/missile
+				attack methods table, mortar attack methods table, naval gun fire attack methods
+				table, naval land attack missile attack methods table, naval cruise missile attack methods
+				table, air attack methods table, aviation attack methods table, or mission characteristics.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="OBSERVER"/>
+			<xs:enumeration value="FS_SYSTEM_TASKS"/>
+			<xs:enumeration value="CANNON_SMMT"/>
+			<xs:enumeration value="MTR_SMMT"/>
+			<xs:enumeration value="CANNON_AMT"/>
+			<xs:enumeration value="RKTMSL_AMT"/>
+			<xs:enumeration value="MTR_AMT"/>
+			<xs:enumeration value="NGF_AMT"/>
+			<xs:enumeration value="NAV_LAM_AMT"/>
+			<xs:enumeration value="NAV_CRUISE_AMT"/>
+			<xs:enumeration value="AIR_AMT"/>
+			<xs:enumeration value="AVIATION_AMT"/>
+			<xs:enumeration value="CHARACTERISTICS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="PassengerCargoCategoryType">
+		<xs:annotation>
+			<xs:documentation>Describes the type of passenger or cargo.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="AMBULATORY"/>
+			<xs:enumeration value="BOX"/>
+			<xs:enumeration value="CIVILIAN"/>
+			<xs:enumeration value="COMBAT_TROOP"/>
+			<xs:enumeration value="CONTAINER"/>
+			<xs:enumeration value="EVACUEES_FRIENDLY"/>
+			<xs:enumeration value="LITTER"/>
+			<xs:enumeration value="MEDICAL_TEAM"/>
+			<xs:enumeration value="PALLET"/>
+			<xs:enumeration value="PARATROOP"/>
+			<xs:enumeration value="PASSENGER_GENERAL"/>
+			<xs:enumeration value="PRISONER_OF_WAR"/>
+			<xs:enumeration value="VEHICLE"/>
+			<xs:enumeration value="VIP"/>
+			<xs:enumeration value="WEAPON"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ProductCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				The code for the media of transmission and quality of the
+				photographic product.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="DUPLICATE_POSITIVE"/>
+			<xs:enumeration value="MOSAIC"/>
+			<xs:enumeration value="NEGATIVE"/>
+			<xs:enumeration value="PLOT"/>
+			<xs:enumeration value="PRINT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ReasonForDenialType">
+		<xs:annotation>
+			<xs:documentation>The reason a fire mission was denied.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="COORDINATION_FAILURE"/>
+			<xs:enumeration value="FAILED_TSS"/>
+			<xs:enumeration value="FAILED_DUP"/>
+			<xs:enumeration value="EXCLUDED_TGT"/>
+			<xs:enumeration value="ROUTE_IEW"/>
+			<xs:enumeration value="NO_CAPABLE_FS_SYSTEM"/>
+			<xs:enumeration value="NO_CAPABLE_FA_SYSTEM"/>
+			<xs:enumeration value="NO_CAPABLE_UNITS"/>
+			<xs:enumeration value="MUNITIONS_UNSUPPORTABLE"/>
+			<xs:enumeration value="OPERATOR_DENIED"/>
+			<xs:enumeration value="TOT_UNSUPPORTABLE"/>
+			<xs:enumeration value="TARGET_NOT_ESTABLISHED"/>
+			<xs:enumeration value="UNIT_SCHEDULE_FULL"/>
+			<xs:enumeration value="MISSION_EXCEEDED_TIME_CONSTRAINTS"/>
+			<xs:enumeration value="INSUFFICIENT_MISSION_DATA"/>
+			<xs:enumeration value="INSUFFICIENT_GUIDANCE_DATA"/>
+			<xs:enumeration value="INSUFFICIENT_UNIT_DATA"/>
+			<xs:enumeration value="NO_AVAILABLE_UNITS"/>
+			<xs:enumeration value="NO_CAPABLE_ATTACK_OPTIONS"/>
+			<xs:enumeration value="NOT_SUITABLE_FOR_LMM"/>
+			<xs:enumeration value="INSUFFICIENT_ROCKETS"/>
+			<xs:enumeration value="WARHEAD_TYPE_NOT_LOADED"/>
+			<xs:enumeration value="NO_FIRE_ZONE_VIOLATION"/>
+			<xs:enumeration value="MASK_VIOLATION"/>
+			<xs:enumeration value="NO_SOLUTION"/>
+			<xs:enumeration value="MISSION_CANCELLED_MANUALLY"/>
+			<xs:enumeration value="UNABLE_TO_AIM"/>
+			<xs:enumeration value="UNABLE_TO_FIRE"/>
+			<xs:enumeration value="AMMO_FAULT"/>
+			<xs:enumeration value="TIME_CONSTRAINT_VIOLATION"/>
+			<xs:enumeration value="FILE_FULL"/>
+			<xs:enumeration value="DATA_CONTENTION"/>
+			<xs:enumeration value="PRIORITY_VIOLATION"/>
+			<xs:enumeration value="ACTION_VIOLATION"/>
+			<xs:enumeration value="MANUAL_FIRE"/>
+			<xs:enumeration value="ROCKETS_ARMED"/>
+			<xs:enumeration value="SAFETY_FIRE_AREA_VIOLATION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RecceReportKindType">
+		<xs:annotation>
+			<xs:documentation>The type of reconnaissance described in the data.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="RECCE_EXPLOITATION_REPORT"/>
+			<xs:enumeration value="RECCE_FOLLOWING_REPORT"/>
+			<xs:enumeration value="RECCE_NICKNAME_REPORT"/>
+			<xs:enumeration value="RECCE_SCHEDULING_REPORT"/>
+			<xs:enumeration value="RECCE_TRACK_REPORT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RecceTargetCategoryPurposeType">
+		<xs:annotation>
+			<xs:documentation>
+				The coded statement of purpose of a
+				reconnaissance air request.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ATTACK_PLANNING_WEAPON_RECOMMENDATION"/>
+			<xs:enumeration value="CHANGE_DETECTION_SURVEILLANCE"/>
+			<xs:enumeration value="DAMAGE_ASSESSMENT"/>
+			<xs:enumeration value="NEW_TARGET"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RecceTargetCategoryType">
+		<xs:annotation>
+			<xs:documentation>The type of target reported in the reconnaissance data.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="AIRFIELD"/>
+			<xs:enumeration value="MISSILE_SYSTEMS"/>
+			<xs:enumeration value="ELECTRONIC_INSTALLATIONS"/>
+			<xs:enumeration value="BARRACKS_CAMPS_HEADQUARTERS"/>
+			<xs:enumeration value="STORAGE_AND_REPAIR_FACILITIES"/>
+			<xs:enumeration value="MILITARY_ACTIVITY"/>
+			<xs:enumeration value="RIVER_CROSSINGS_FERRIES"/>
+			<xs:enumeration value="SHIPPING"/>
+			<xs:enumeration value="ROUTE_RECONNAISSANCE"/>
+			<xs:enumeration value="TERRAIN_RECONNAISSANCE"/>
+			<xs:enumeration value="COSTAL_STRIP"/>
+			<xs:enumeration value="BRIDGES"/>
+			<xs:enumeration value="WATER_CONTROL_FACILITIES"/>
+			<xs:enumeration value="PORTS_HARBORS"/>
+			<xs:enumeration value="RAIL_FACILITIES"/>
+			<xs:enumeration value="INDUSTRIAL_INSTALLATIONS"/>
+			<xs:enumeration value="ELECTRIC_POWER_INSTALLATIONS"/>
+			<xs:enumeration value="CITY_RECONNAISSANCE"/>
+			<xs:enumeration value="ROAD_INTERSECTION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RecceTargetCodeTargetCategoryType">
+		<xs:annotation>
+			<xs:documentation>Code describing the type of reconnaissance target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="AIRFIELDS"/>
+			<xs:enumeration value="ARMOR_ARTILLERY_TROOPS_VEHICLES"/>
+			<xs:enumeration value="BRIDGES"/>
+			<xs:enumeration value="DEFENSIVE_POSITIONS"/>
+			<xs:enumeration value="ELECTRONIC_SITES"/>
+			<xs:enumeration value="HARBOR_PORT_FACILITIES"/>
+			<xs:enumeration value="INDUSTRIAL_SITES"/>
+			<xs:enumeration value="LINES_OF_COMMUNICATION"/>
+			<xs:enumeration value="MILITARY_INSTALLATION_STORAGE_AREA"/>
+			<xs:enumeration value="MISSILE_SITE"/>
+			<xs:enumeration value="POWER_PRODUCTION_FACILITY"/>
+			<xs:enumeration value="RAILROAD_YARD"/>
+			<xs:enumeration value="SHIPS"/>
+			<xs:enumeration value="OTHER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RecommendationOptionType">
+		<xs:annotation>
+			<xs:documentation>
+				The possible actions that may result from a
+				recommended attack option.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DENY"/>
+			<xs:enumeration value="SEND"/>
+			<xs:enumeration value="COORDINATE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RequestedEchelonType">
+		<xs:annotation>
+			<xs:documentation>
+				The user request size of the fire unit to be considered for
+				a fire mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="SECTION"/>
+			<xs:enumeration value="PLATOON"/>
+			<xs:enumeration value="BATTERY"/>
+			<xs:enumeration value="BATTALION"/>
+			<xs:enumeration value="DIVARTY"/>
+			<xs:enumeration value="ALL_AVAILABLE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ResultDesiredType">
+		<xs:annotation>
+			<xs:documentation>The result desired from an air mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="BURN"/>
+			<xs:enumeration value="DESTRUCTION"/>
+			<xs:enumeration value="FLAK_SUPPRESSION"/>
+			<xs:enumeration value="HARASSMENT"/>
+			<xs:enumeration value="ILLUMINATION"/>
+			<xs:enumeration value="INTERDICTION"/>
+			<xs:enumeration value="NEUTRALIZATION"/>
+			<xs:enumeration value="NO_EFFECT"/>
+			<xs:enumeration value="RECOVER"/>
+			<xs:enumeration value="SEARCH_FOR"/>
+			<xs:enumeration value="SMOKE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RuleAnalysisResultsType">
+		<xs:annotation>
+			<xs:documentation>
+				The intervention criteria for the action
+				computed as a result of Attack Analysis processing.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="FR"/>
+			<xs:enumeration value="FO"/>
+			<xs:enumeration value="OTF"/>
+			<xs:enumeration value="DENY"/>
+			<xs:enumeration value="INFO_COPY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SingleDaggerRequiredType">
+		<xs:annotation>
+			<xs:documentation>
+				Indicator of single dagger equipment for cargo requiring
+				special handling.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="YES"/>
+			<xs:enumeration value="NO"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SmokeScreenKindType">
+		<xs:annotation>
+			<xs:documentation>Indicates whether the smoke screen is visible or infrared.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="NEAR_INFRARED"/>
+			<xs:enumeration value="VISIBLE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SmokeWindDirectionType">
+		<xs:annotation>
+			<xs:documentation>
+				Indicates the directional effects of the wind in relation to the
+				maneuver unit azimuth to the target.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="HEAD"/>
+			<xs:enumeration value="TAIL"/>
+			<xs:enumeration value="LEFT_CROSS"/>
+			<xs:enumeration value="RIGHT_CROSS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SubscriptionType">
+		<xs:annotation>
+			<xs:documentation>Target subscription data.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ALL"/>
+			<xs:enumeration value="TARGET_SUMMARY"/>
+			<xs:enumeration value="TARGET_DETAILS"/>
+			<xs:enumeration value="MISSION_SUMMARY"/>
+			<xs:enumeration value="MISSION_DETAILS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetActivityType">
+		<xs:annotation>
+			<xs:documentation>The activity of a target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="MOVING"/>
+			<xs:enumeration value="STATIONARY"/>
+			<xs:enumeration value="DUGIN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetAirDefensesIntensityType">
+		<xs:annotation>
+			<xs:documentation>
+				An estimate or subjective evaluation of the relative intensity
+				of hostile surface-to-air fire that could be or has been encountered.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="NONE"/>
+			<xs:enumeration value="LIGHT"/>
+			<xs:enumeration value="MEDIUM"/>
+			<xs:enumeration value="HEAVY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetAtfPriorityType">
+		<xs:annotation>
+			<xs:documentation>
+				The priority associated with an ATF (Amphibious
+				Task Force) target.  ATF target priority indicates the following:
+				Priority I = Targets capable of preventing the execution of the plan of action of the ATF or
+				its elements.
+				Priority II = Targets capable of immediate serious interference with the plan of action of the
+				ATF or its elements.
+				Priority III = Targets capable of ultimate serious interference with the plan of action of the
+				ATF or its elements.
+				Priority IV = Targets capable of limited interference with the plan of action of the ATF or
+				its elements.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="II"/>
+			<xs:enumeration value="III"/>
+			<xs:enumeration value="IV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetCountermeasuresType">
+		<xs:annotation>
+			<xs:documentation>
+				The possible countermeasures that the
+				enemy may use to disguise its situation
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="DECOY"/>
+			<xs:enumeration value="HOT_SPOTS"/>
+			<xs:enumeration value="FOLIAGE"/>
+			<xs:enumeration value="CORNER_REFLECTORS"/>
+			<xs:enumeration value="CHAFF"/>
+			<xs:enumeration value="FIRES"/>
+			<xs:enumeration value="EXPLOSIONS"/>
+			<xs:enumeration value="RUSES"/>
+			<xs:enumeration value="ROPE"/>
+			<xs:enumeration value="SMOKE"/>
+			<xs:enumeration value="RAM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetDegreeOfProtectionType">
+		<xs:annotation>
+			<xs:documentation>
+				Indicates the vulnerability or hazard to personnel or material to conventional or
+				nuclear attack by aircraft, artillery, missiles or mortars in terms of their immediate environment.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="STANDING_AND_PRONE"/>
+			<xs:enumeration value="PRONE"/>
+			<xs:enumeration value="DUG_IN_AND_PRONE"/>
+			<xs:enumeration value="COVERED_AND_PRONE"/>
+			<xs:enumeration value="DUG_IN"/>
+			<xs:enumeration value="COVERED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetDetailNotificationType">
+		<xs:annotation>
+			<xs:documentation>Target details data.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TARGET_DESCRIPTION"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetDispositionType">
+		<xs:annotation>
+			<xs:documentation>
+				The disposition of the target at the end of
+				the mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="NEUTRALIZED"/>
+			<xs:enumeration value="BURNING"/>
+			<xs:enumeration value="DESTROYED"/>
+			<xs:enumeration value="NO_EFFECTS"/>
+			<xs:enumeration value="NEUTRALIZED_BURNING"/>
+			<xs:enumeration value="SUPPRESSED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetElementType">
+		<xs:annotation>
+			<xs:documentation>The possible target elements.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ALLOCATED"/>
+			<xs:enumeration value="BTR_60_70_80"/>
+			<xs:enumeration value="BIG_FRED_ON_MLTB"/>
+			<xs:enumeration value="BRDM_2_AND_VARIATIONS"/>
+			<xs:enumeration value="SMALL_FRED_ON_BMP"/>
+			<xs:enumeration value="T64_T72_T80"/>
+			<xs:enumeration value="BMP"/>
+			<xs:enumeration value="BMD"/>
+			<xs:enumeration value="PSNR_1_BUZZ_STAND"/>
+			<xs:enumeration value="MTLB_AND_VARIATIONS"/>
+			<xs:enumeration value="T54_55_ARV"/>
+			<xs:enumeration value="MORTAR_82MM"/>
+			<xs:enumeration value="ZSU_23"/>
+			<xs:enumeration value="AUTO_MORTAR_82MM"/>
+			<xs:enumeration value="ZSU_23_4_WITH_RADAR"/>
+			<xs:enumeration value="TWD_MORTAR_120MM"/>
+			<xs:enumeration value="AAA_2_60_57MM"/>
+			<xs:enumeration value="COMB_GUN_120MM"/>
+			<xs:enumeration value="SA_9_SA_13"/>
+			<xs:enumeration value="TWD_HOWITZER_122MM"/>
+			<xs:enumeration value="SA_8_SA_8B"/>
+			<xs:enumeration value="SP_HOW_122MM"/>
+			<xs:enumeration value="SA_6_SA_11"/>
+			<xs:enumeration value="SP_HOW_152MM"/>
+			<xs:enumeration value="SA_4_SA_12"/>
+			<xs:enumeration value="TWD_GUN_152MM"/>
+			<xs:enumeration value="SP_GUN_152MM"/>
+			<xs:enumeration value="SP_GUN_203MM"/>
+			<xs:enumeration value="SP_MORTAR_240MM"/>
+			<xs:enumeration value="STRAIGHT_FLUSH_SA6"/>
+			<xs:enumeration value="AT_GUN_100MM"/>
+			<xs:enumeration value="PAT_HAND_SA_4"/>
+			<xs:enumeration value="MRL_122MM"/>
+			<xs:enumeration value="BILLBOARD_SA_12"/>
+			<xs:enumeration value="LONG_TRACK_TGT_ACQ"/>
+			<xs:enumeration value="FLAT_FACE"/>
+			<xs:enumeration value="MRL_220MM"/>
+			<xs:enumeration value="THIN_SKIN"/>
+			<xs:enumeration value="FROG_7"/>
+			<xs:enumeration value="SS_21"/>
+			<xs:enumeration value="FIRE_CAN"/>
+			<xs:enumeration value="SCUD"/>
+			<xs:enumeration value="SPOON_REST_TGT_ACQ"/>
+			<xs:enumeration value="SS_23"/>
+			<xs:enumeration value="DIM_MINE_DETECT_TRK_MTD"/>
+			<xs:enumeration value="HIND_E_MI_24"/>
+			<xs:enumeration value="UR67_MINE_CLR_BTR_50_PK"/>
+			<xs:enumeration value="HIP_MI_8_17"/>
+			<xs:enumeration value="MTU_TNK_LCHR_BRIDGE"/>
+			<xs:enumeration value="HALO_MI_26"/>
+			<xs:enumeration value="TMM_TNK_LCHR_BRIDGE"/>
+			<xs:enumeration value="HOUND_MI_4"/>
+			<xs:enumeration value="MDK_2M_BTM_DITCHER_EXCAVATOR"/>
+			<xs:enumeration value="IMR_ARMORED_ENG_TRACTOR"/>
+			<xs:enumeration value="BAT_M_ARMORED_DOZER"/>
+			<xs:enumeration value="PTS_M_TRACKED_AMPHIBIAN"/>
+			<xs:enumeration value="ZIL_157"/>
+			<xs:enumeration value="PMP_PONTOON_BRIDGE_SET"/>
+			<xs:enumeration value="KRAZ_214"/>
+			<xs:enumeration value="BMZ_TRACKED_MINELAYER"/>
+			<xs:enumeration value="URAL_375"/>
+			<xs:enumeration value="GAZ_66"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetFormationType">
+		<xs:annotation>
+			<xs:documentation>The formation of a target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="ON_ROAD"/>
+			<xs:enumeration value="OFF_ROAD"/>
+			<xs:enumeration value="DISPERSED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetReportingSensorType">
+		<xs:annotation>
+			<xs:documentation>The type of target acquisition agency that provided the target information.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="FORWARD_OBSERVER_WITH_LASER"/>
+			<xs:enumeration value="FORWARD_OBSERVER_WITHOUT_LASER"/>
+			<xs:enumeration value="OBSERVER_NOT_ARTILLERY"/>
+			<xs:enumeration value="RECON_PATROL"/>
+			<xs:enumeration value="TARGET_BASE"/>
+			<xs:enumeration value="AIRBORNE_SENSOR"/>
+			<xs:enumeration value="SOUND_RANGING"/>
+			<xs:enumeration value="FLASH_RANGING"/>
+			<xs:enumeration value="COUNTER_MORTAR_RADAR"/>
+			<xs:enumeration value="COUNTER_BATTERY_RADAR"/>
+			<xs:enumeration value="PHOTO_INTERPRETATION"/>
+			<xs:enumeration value="POW"/>
+			<xs:enumeration value="GROUND_SURVEILLANCE_RADAR"/>
+			<xs:enumeration value="SIDE_LOOKING_AIRBORNE_RADAR"/>
+			<xs:enumeration value="AIRBORNE_INFRARED"/>
+			<xs:enumeration value="TACTICAL_AIR"/>
+			<xs:enumeration value="COMMUNICATIONS_INTELLIGENCE"/>
+			<xs:enumeration value="ELECTRONIC_INTELLIGENCE"/>
+			<xs:enumeration value="REMOTELY_PILOTED_VEHICLE"/>
+			<xs:enumeration value="HUMAN_INTEL"/>
+			<xs:enumeration value="ARMY_GROUND_STATION_MODULE"/>
+			<xs:enumeration value="SHELL_REPORT"/>
+			<xs:enumeration value="SIGNAL_INTELLIGENCE"/>
+			<xs:enumeration value="USUALLY_RELIABLE_SOURCE"/>
+			<xs:enumeration value="SENSOR"/>
+			<xs:enumeration value="INTELLIGENCE_REPORT"/>
+			<xs:enumeration value="COUNTERFIRE_PROCESSING"/>
+			<xs:enumeration value="FLASH_TO_BANG"/>
+			<xs:enumeration value="TARGETING_CELL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetSourceReliabilityType">
+		<xs:annotation>
+			<xs:documentation>
+				The general appraisal of the source of the target information
+				in graded terms to indicate the extent to which it has been proven it can be counted
+				on or trusted to do as expected.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="COMPLETELY_RELIABLE"/>
+			<xs:enumeration value="USUALLY_RELIABLE"/>
+			<xs:enumeration value="FAIRLY_RELIABLE"/>
+			<xs:enumeration value="NOT_USUALLY_RELIABLE"/>
+			<xs:enumeration value="UNRELIABLE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetStatusAtfCodeType">
+		<xs:annotation>
+			<xs:documentation>The status of an ATF target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="PERCENT_DAMAGED"/>
+			<xs:enumeration value="DESTROYED"/>
+			<xs:enumeration value="CANCELLED"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetVegetationType">
+		<xs:annotation>
+			<xs:documentation>Indicates the type of vegetation in the target area.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="BARE"/>
+			<xs:enumeration value="SHRUB"/>
+			<xs:enumeration value="WOODS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetLocationSourceType">
+		<xs:annotation>
+			<xs:documentation>How an initial target location was determined.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="SINGLE_AZIMUTH_REPORT"/>
+			<xs:enumeration value="CONSTITUENT_AZIMUTH_REPORT"/>
+			<xs:enumeration value="SINGLE_COORDINATE_REPORT"/>
+			<xs:enumeration value="CONSTITUENT_COORDINATE_REPORT"/>
+			<xs:enumeration value="SOLUTION_COORDINATE_REPORT"/>
+			<xs:enumeration value="SHELL_REPORT"/>
+			<xs:enumeration value="MISSION_FIRED_REPORT_SINGLE"/>
+			<xs:enumeration value="MISSION_FIRED_REPORT_CONSTITUENT"/>
+			<xs:enumeration value="MISSION_FIRED_REPORT_SOLUTION"/>
+			<xs:enumeration value="MOVING_TARGET"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- String Type Definitions -->
+	<xs:simpleType name="AircraftCallsignType">
+		<xs:annotation>
+			<xs:documentation>
+				The call sign assigned to one or more
+				specific aircraft.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AircraftCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				The coded representation of the type and model
+				number of an aircraft.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirEmitterNameType">
+		<xs:annotation>
+			<xs:documentation>
+				The assigned name of a particular emitter,
+				operation or station.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionCommentsType">
+		<xs:annotation>
+			<xs:documentation>
+				The air mission comments. In particular this type will be used to
+				contain comments associated with a denied air mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="300"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionNumberType">
+		<xs:annotation>
+			<xs:documentation>Approved air mission number.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9 /_\-]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionResultsType">
+		<xs:annotation>
+			<xs:documentation>
+				The results of an air mission that has been
+				completed.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="60"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirMissionSubclassCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				The code for the type of air mission being
+				requested or tasked.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirOrdnanceCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				The code for the ordnance/weapon type designed to
+				be fired from an airborne carrier at an airborne target.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirPackageIdType">
+		<xs:annotation>
+			<xs:documentation>
+				The alphanumeric identifier that joins two or more elements of
+				composite force package.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirRequestPrecedenceType">
+		<xs:annotation>
+			<xs:documentation>Air request precedence.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirRequestRankType">
+		<xs:annotation>
+			<xs:documentation>Air request rank.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirSupportRequestNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				8 characters: 2 alpha/numeric, 3 alpha, 3 numeric i.e. "01AMZ159"
+				The first 2 numbers correlate to either:
+				the ASL's ATO day code (2 alpha/numeric) or
+				the requested air mission type ('01' to '07')
+				Air Interdiction = '01'
+				Close Air Support = '02'
+				Assault Support = '03'
+				Electronic Warfare = '04'
+				Reconnaissance = '05'
+				Airlift / Airdrop = '06'
+				Medical Evacuation = '07'
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{2}[A-Z]{3}[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CallsignType">
+		<xs:annotation>
+			<xs:documentation>Callsign.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CargoClassificationType">
+		<xs:annotation>
+			<xs:documentation>
+				The security classification of special cargo which therefore
+				requires special handling or preparation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ConfigurationCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				The code that indicates the ordnance mix carried on
+				mission aircraft.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,38}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DesiredEffectsType">
+		<xs:annotation>
+			<xs:documentation>
+				The desired effects of the air mission per
+				the requesting unit.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiAimpointSuffixType">
+		<xs:annotation>
+			<xs:documentation>
+				A two character suffix for a basic
+				encyclopedia number.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiComponentIdentifierType">
+		<xs:annotation>
+			<xs:documentation>
+				The identifier or number assigned to a target by a
+				component.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiDescriptionType">
+		<xs:annotation>
+			<xs:documentation>
+				The plain language description of the desired mean point of
+				impact (dmpi).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiTargetFacilityNameType">
+		<xs:annotation>
+			<xs:documentation>The target/facility name.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiTargetIdentifierType">
+		<xs:annotation>
+			<xs:documentation>The unique identifier of a target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiTargetKindType">
+		<xs:annotation>
+			<xs:documentation>The alphabetic code representing the target type.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DmpiTargetPriorityType">
+		<xs:annotation>
+			<xs:documentation>The code for the priority assigned to a target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DropZoneNameType">
+		<xs:annotation>
+			<xs:documentation>The drop zone name.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,15}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="EssentialElementsOfInfoType">
+		<xs:annotation>
+			<xs:documentation>
+				The specific essential elements of information (EEI) associated
+				with individual reconnaissance target categories considered to be of continuing tactical value.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,10}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="GuidanceFrequencyDesignatorType">
+		<xs:annotation>
+			<xs:documentation>
+				The frequency used for in-flight/terminal guidance of precision
+				munitions.  The designators are assigned by operations orders, handbooks, etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="HazardousCargoDesignatorType">
+		<xs:annotation>
+			<xs:documentation>
+				The appropriate reference number that
+				indicates the type of hazard associated with this cargo and acknowledges that the
+				appropriate precautions have been taken.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="IffSifCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				The specific identification friend or foe/selective identification feature (iff/sif)
+				for an aircraft.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="LandingZoneNameType">
+		<xs:annotation>
+			<xs:documentation>The landing zone name.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,15}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="ListNameType">
+		<xs:annotation>
+			<xs:documentation>List name.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9 /_\-]{1,30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RadioRadarFunctionCodeType">
+		<xs:annotation>
+			<xs:documentation>The code for the primary function of a radio/radar site.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RationaleForTargetType">
+		<xs:annotation>
+			<xs:documentation>
+				The rationale for requesting the air mission against a
+				target as per the requesting unit.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RecceInfoAddresseeType">
+		<xs:annotation>
+			<xs:documentation>Recce info addressee.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,24}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SupportEquipmentRequiredType">
+		<xs:annotation>
+			<xs:documentation>
+				The type of support equipment required to onload or offload cargo
+				from an aircraft.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,20}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<!--  -->
+	<xs:simpleType name="TargetAirDefensesCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				The code for the ordnance/weapon type designed
+				to be fired from the surface to operate against an airborne target above the surface.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetAtfClassificationType">
+		<xs:annotation>
+			<xs:documentation>
+				The classification associated with an ATF target.
+				Target Classifications indicate the following:
+				Class A= Installations that threaten ships, aircraft, minesweeping, and underwater
+				demolition operations.
+				Class B = Installations that threaten assault forces in the ship-to-shore movement and
+				assault of the beach.
+				Class C = Installations that threaten or oppose landing force operations after landing or
+				affect the ability of the enemy to continue resistance.
+				Class D = Installations that will not be attacked on prior to D-Day.
+				Class E = Installations that must not be destroyed (unless specifically ordered by the
+				commander amphibious task force) because of their potential future use by friendly
+				forces or because of humanitarian reasons.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-E]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetMidbFacilityNameType">
+		<xs:annotation>
+			<xs:documentation>MIDB facility name for the target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9]{0,54}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TextType">
+		<xs:annotation>
+			<xs:documentation>Free text.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="200"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Integer Type Definitions -->
+	<xs:simpleType name="AirAlertStatusHoursOrMinutesType">
+		<xs:annotation>
+			<xs:documentation>The air alert status, hours or minutes.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="AirRunInHeadingType">
+		<xs:annotation>
+			<xs:documentation>Air run in heading .</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="359"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="CountOfSortiesType">
+		<xs:annotation>
+			<xs:documentation>The count of sorties requested in an air mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DirectionType">
+		<xs:annotation>
+			<xs:documentation>The direction (in mils) of target motion.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="6400"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DropZoneLengthType">
+		<xs:annotation>
+			<xs:documentation>Drop zone length in meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="DropZoneWidthType">
+		<xs:annotation>
+			<xs:documentation>Drop zone width in meters.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="HeightOfBurstType">
+		<xs:annotation>
+			<xs:documentation>
+				Height (in meters) of burst of a round measured from
+				above the altitude of the target to the desired height of the bursting round.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="IntervalBetweenRoundsType">
+		<xs:annotation>
+			<xs:documentation>The time interval in seconds between rounds when firing.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="LaserCorrelationCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				A code that ensures correlation between
+				target designation system and weapon delivery system.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissileQuantityType">
+		<xs:annotation>
+			<xs:documentation>The number of missile involved in an air mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="MissionNumberType">
+		<xs:annotation>
+			<xs:documentation>Identifier to uniquely identify a mission on a given workstation.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="NumberOfAircraftType">
+		<xs:annotation>
+			<xs:documentation>
+				The number of aircraft participating in a particular air
+				mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="NumberOfCasualtiesType">
+		<xs:annotation>
+			<xs:documentation>The number of casualties related to a mission.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="NumberOfTargetElementsType">
+		<xs:annotation>
+			<xs:documentation>The possible number of target elements.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="PrintScaleType">
+		<xs:annotation>
+			<xs:documentation>
+				The print scale for a reconnaissance air mission. Print scale is
+				the denominator of the ratio between the distance on a photograph (numerator) and the corresponding
+				distance on a print (denominator), with the numerator fixed as 1.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="1000000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="QuantityType">
+		<xs:annotation>
+			<xs:documentation>Quantity.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RecceMaxDaysPriorType">
+		<xs:annotation>
+			<xs:documentation>
+				The number of days prior to the current day that
+				reconnaissance data is acceptable.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="RequestedMunitionCountType">
+		<xs:annotation>
+			<xs:documentation>Requested munition count (rounds or volleys).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SmokeScreenDurationType">
+		<xs:annotation>
+			<xs:documentation>The length of time in minutes to maintain a smoke screen.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="15"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SmokeScreenLengthType">
+		<xs:annotation>
+			<xs:documentation>Designates the relative linear length in meters of a smoke screen.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="1500"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SpecialSheafSpacingType">
+		<xs:annotation>
+			<xs:documentation>Distance in meters between centers of burst.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="SpeedType">
+		<xs:annotation>
+			<xs:documentation>
+				The speed of a target.  The units of this
+				type is Kilometers per Hour.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetAtfPartNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				The part number associated with an ATF target.
+				Part Numbers indicate the following:
+				1 = Targets designated for destruction during supporting or pre-assault operations.
+				2 = Targets designated for neutralization during supporting or pre-assault operations.
+				3 = Targets designated for harassment during supporting or pre-assault operations.
+				4 = Targets designated for destruction by the ATF.
+				5 = Targets designated for neutralization by the ATF.
+				6 = Targets designated for harassment by the ATF.
+				7 = Restricted targets to be attacked only on order of the Commander, ATF (CATF)
+				or the Commander, Landing Force (CLF).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetItemType">
+		<xs:annotation>
+			<xs:documentation>
+				The items of reconnaissance target categories. For
+				further U.S. implementation guidance, see repository of USMTF program items document,
+				item 257 and additions.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetMidbCategoryNumberType">
+		<xs:annotation>
+			<xs:documentation>MIDB category number for the target.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:long">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetPermanenceType">
+		<xs:annotation>
+			<xs:documentation>
+				Type defines the duration in minutes that a target is expected to remain
+				at its reported location.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="TargetStrengthType">
+		<xs:annotation>
+			<xs:documentation>The possible values of target strength.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:short">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Float Type Definitions -->
+	<xs:simpleType name="DecimalQuantityType">
+		<xs:annotation>
+			<xs:documentation>Decimal Quantity.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="9999.9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="FrequencyInMegahertzType">
+		<xs:annotation>
+			<xs:documentation>Frequency in megahertz.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="99999999.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="FrequencyType">
+		<xs:annotation>
+			<xs:documentation>
+				The frequency to be used for data collection or
+				to be jammed.  Units of measurement for this frequency are defined in FrequencyUnitType.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="99999999.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="LinearSizeType">
+		<xs:annotation>
+			<xs:documentation>
+				The linear size for use in Cargo measurements.  The units
+				for this type are defined by LinearUnitType
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="99999.9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="NabkMilsType">
+		<xs:annotation>
+			<xs:documentation>NATO Ballistic Kernal (NABK) Mils.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:double">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="6400.0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<xs:simpleType name="NabkTimeType">
+		<xs:annotation>
+			<xs:documentation>NATO Ballistic Kernal (NABK) Time in seconds.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:float">
+			<xs:minInclusive value="0.0"/>
+			<xs:maxInclusive value="999.9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Complex Type Definitions -->
+	<xs:complexType name="TargetKeyType">
+		<xs:annotation>
+			<xs:documentation>A key to uniquely identify a target.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetnumber" type="common:TargetNumberType"/>
+			<xs:element name="creationTime" type="xs:dateTime"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionIdType">
+		<xs:annotation>
+			<xs:documentation>Key to uniquely identify a mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetKey" type="TargetKeyType"/>
+			<xs:element name="creatingURN" type="common:UnitReferenceNumberType"/>
+			<xs:element name="missionNumber" type="MissionNumberType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AccumulationInfoType">
+		<xs:annotation>
+			<xs:documentation>Accumulation info</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="accumulated" type="xs:boolean"/>
+			<xs:element name="timeAccumulated" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionListInfoType">
+		<xs:annotation>
+			<xs:documentation>Data describing a mission's state and list name</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionState" type="MissionStateType"/>
+			<xs:element name="listKind" type="ListKindType"/>
+			<xs:element name="listName" type="ListNameType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MotionVectorType">
+		<xs:annotation>
+			<xs:documentation>Motion vector data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="direction" type="DirectionType" minOccurs="0"/>
+			<xs:element name="speed" type="SpeedType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="EnemyUnitDataType">
+		<xs:annotation>
+			<xs:documentation>The enemy unit data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="enemyUnitNumber" type="common:EnemyUnitNumberType"/>
+			<xs:element name="enemyUnitId" type="common:UnitIdType"/>
+			<xs:element name="midbEnemyUnitId" type="common:TargetMidbEnemyUnitIdType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MIDBFacilityDataType">
+		<xs:annotation>
+			<xs:documentation>The enemy Facility data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="midbFacilityName" type="TargetMidbFacilityNameType"/>
+			<xs:element name="midbCategoryNumber" type="TargetMidbCategoryNumberType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetLinkDataType">
+		<xs:annotation>
+			<xs:documentation>Data describing a target's link to other entities.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="enemyUnitData" type="EnemyUnitDataType"/>
+			<xs:element name="midbFacilityData" type="MIDBFacilityDataType"/>
+			<xs:element name="trackId" type="common:TrackIdType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetElementsType">
+		<xs:annotation>
+			<xs:documentation>Target elements.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetElement" type="TargetElementType"/>
+			<xs:element name="numberOfTargetElements" type="NumberOfTargetElementsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MethodOfAttackType">
+		<xs:annotation>
+			<xs:documentation>Method by which the target will be attacked.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="methodOfAdjustment" type="MethodOfAttackAdjustType" minOccurs="0"/>
+			<xs:element name="markRequested" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="dangerCloseIndicated" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="useGunnersQuadrantIndicated" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionRecommendationType">
+		<xs:annotation>
+			<xs:documentation>Mission recommendation data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="option" type="RecommendationOptionType"/>
+			<xs:element name="optionString" type="TextType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicMunitionsRecordType">
+		<xs:annotation>
+			<xs:documentation>The basic munitions record.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="munitionCategory" type="common:ProjectileCategoryType" minOccurs="0"/>
+			<xs:element name="munitionCount" type="RequestedMunitionCountType" minOccurs="0"/>
+			<xs:element name="fuzeCategory" type="common:FuzeCategoryType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicMunitionsDataType">
+		<xs:annotation>
+			<xs:documentation>The basic munitions associated with a normal mission per phase.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="adjustMunitions" type="BasicMunitionsRecordType" minOccurs="0"/>
+			<xs:element name="ffe1Munitions" type="BasicMunitionsRecordType" minOccurs="0"/>
+			<xs:element name="ffe2Munitions" type="BasicMunitionsRecordType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="RoundsOrVolleysType">
+		<xs:annotation>
+			<xs:documentation>The number of rounds or volleys.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="numberOfRounds" type="common:NumberOfRoundsType"/>
+			<xs:element name="numberOfVolleys" type="common:VolleyCountType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MunitionsRecordType">
+		<xs:annotation>
+			<xs:documentation>The munitions record.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="munitionCategory" type="common:ProjectileCategoryType" minOccurs="0"/>
+			<xs:element name="munitionModel" type="common:ProjectileModelType" minOccurs="0"/>
+			<xs:element name="munitionWeight" type="common:WeightInPoundsType" minOccurs="0"/>
+			<xs:element name="munitionLotCode" type="common:LotCodeType" minOccurs="0"/>
+			<xs:element name="munitionCountryCode" type="common:CountryOfOriginType" minOccurs="0"/>
+			<xs:element name="munitionSource" type="MunitionsSourceType" minOccurs="0"/>
+			<xs:element name="munitionCount" type="RoundsOrVolleysType" minOccurs="0"/>
+			<xs:element name="fuzeCategory" type="common:FuzeCategoryType" minOccurs="0"/>
+			<xs:element name="fuzeModel" type="common:FuzeModelType" minOccurs="0"/>
+			<xs:element name="fuzeLotCode" type="common:LotCodeType" minOccurs="0"/>
+			<xs:element name="fuzeCountryCode" type="common:CountryOfOriginType" minOccurs="0"/>
+			<xs:element name="propellantModel" type="common:PropellantModelType" minOccurs="0"/>
+			<xs:element name="propellantCharge" type="common:ChargeType" minOccurs="0"/>
+			<xs:element name="propellantLotCode" type="common:LotCodeType" minOccurs="0"/>
+			<xs:element name="propellantCountryCode" type="common:CountryOfOriginType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MunitionsDataType">
+		<xs:annotation>
+			<xs:documentation>The munitions associated with a normal mission per phase.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="adjustMunitions" type="MunitionsRecordType" minOccurs="0"/>
+			<xs:element name="ffe1Munitions" type="MunitionsRecordType" minOccurs="0"/>
+			<xs:element name="ffe2Munitions" type="MunitionsRecordType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="QuantityWithMultiplierType">
+		<xs:annotation>
+			<xs:documentation>Quantity with multiplier</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="quantity" type="QuantityType"/>
+			<xs:element name="multiplier" type="MultiplierType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DecimalQuantityWithMultiplierType">
+		<xs:annotation>
+			<xs:documentation>Decimal quantity with multiplier</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="size" type="DecimalQuantityType"/>
+			<xs:element name="decimalMultiplier" type="DecimalMultiplierType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AircraftInformationType">
+		<xs:annotation>
+			<xs:documentation>
+				The aircraft information for an aircraft flying an
+				air mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="numberOfAircraft" type="NumberOfAircraftType" minOccurs="0"/>
+			<xs:element name="countOfSorties" type="CountOfSortiesType" minOccurs="0"/>
+			<xs:element name="aircraftCallsign" type="AircraftCallsignType" minOccurs="0"/>
+			<xs:element name="aircraftCode" type="AircraftCodeType" minOccurs="0"/>
+			<xs:element name="primaryConfigurationCode" type="ConfigurationCodeType" minOccurs="0"/>
+			<xs:element name="secondaryConfigurationCode" type="ConfigurationCodeType" minOccurs="0"/>
+			<xs:element name="iffSifCode" type="IffSifCodeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DmpiInformationType">
+		<xs:annotation>
+			<xs:documentation>The Desired Mean Point of Impact (DMPI) information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="DmpiDescriptionType" minOccurs="0"/>
+			<xs:element name="dmpiTargetPriority" type="DmpiTargetPriorityType" minOccurs="0"/>
+			<xs:element name="location" type="common:LocationType" minOccurs="0"/>
+			<xs:element name="positionTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="intelligenceTaskCode" type="DmpiIntelligenceTaskCodeType" minOccurs="0"/>
+			<xs:element name="targetFacilityName" type="DmpiTargetFacilityNameType" minOccurs="0"/>
+			<xs:element name="targetIdentifier" type="DmpiTargetIdentifierType" minOccurs="0"/>
+			<xs:element name="targetKind" type="DmpiTargetKindType" minOccurs="0"/>
+			<xs:element name="componentIdentifier" type="DmpiComponentIdentifierType" minOccurs="0"/>
+			<xs:element name="aimpointSuffixList" type="DmpiAimpointSuffixType" minOccurs="0" maxOccurs="20"/>
+			<xs:element name="timeOnTarget" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="noEarlierThan" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="noLaterThan" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="missileKind" type="MissileKindType" minOccurs="0"/>
+			<xs:element name="missileQuantity" type="MissileQuantityType" minOccurs="0"/>
+			<xs:element name="guidedLaserCode" type="LaserCorrelationCodeType" minOccurs="0"/>
+			<xs:element name="guidedFrequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+			<xs:element name="guidedFrequencyDesignator" type="GuidanceFrequencyDesignatorType" minOccurs="0"/>
+			<xs:element name="guidedCallsign" type="CallsignType" minOccurs="0"/>
+			<xs:element name="primaryFrequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+			<xs:element name="secondaryFrequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="FriendlyUnitsType">
+		<xs:annotation>
+			<xs:documentation>The friendly units data for use in air missions.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="location" type="common:LocationType"/>
+			<xs:element name="methodOfMarkingPositions" type="MethodOfMarkingType" minOccurs="0"/>
+			<xs:element name="positionMarkingColor" type="MarkingColorType" minOccurs="0"/>
+			<xs:element name="lastKnownTime" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="LandingZoneIdType">
+		<xs:annotation>
+			<xs:documentation>The landing zone id.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="landingZoneName" type="LandingZoneNameType"/>
+			<xs:element name="callsign" type="CallsignType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="LandingZoneType">
+		<xs:annotation>
+			<xs:documentation>
+				The landing zone data for use in Airdop, Assault Support, and
+				Medical Evacuation air missions.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="location" type="common:LocationType"/>
+			<xs:element name="landingZoneId" type="LandingZoneIdType"/>
+			<xs:element name="methodOfMarkingLandingZone" type="MethodOfMarkingType" minOccurs="0"/>
+			<xs:element name="markingColor" type="MarkingColorType" minOccurs="0"/>
+			<xs:element name="enemyAction" type="EnemyActionType" minOccurs="0"/>
+			<xs:element name="lastKnownTimeOfEnemyAction" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="primaryFrequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+			<xs:element name="secondaryFrequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="CommonPassengerCargoInformationType">
+		<xs:annotation>
+			<xs:documentation>Common passenger cargo information</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="passengerCargoCategory" type="PassengerCargoCategoryType"/>
+			<xs:element name="onLoadLocation" type="common:LocationType"/>
+			<xs:element name="offLoadLocation" type="common:LocationType"/>
+			<xs:element name="onLoadTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="offLoadTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="quantityWithMultiplier" type="QuantityWithMultiplierType" minOccurs="0"/>
+			<xs:element name="hoistRequired" type="HoistRequiredIndicatorType" minOccurs="0"/>
+			<xs:element name="supportEquipmentRequired" type="SupportEquipmentRequiredType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedCargoDescriptionType">
+		<xs:annotation>
+			<xs:documentation>Detailed cargo description</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="classification" type="CargoClassificationType" minOccurs="0"/>
+			<xs:element name="weight" type="QuantityWithMultiplierType" minOccurs="0"/>
+			<xs:element name="weightUnit" type="CargoWeightUnitType" minOccurs="0"/>
+			<xs:element name="sizeWithMultiplier" type="DecimalQuantityWithMultiplierType" minOccurs="0"/>
+			<xs:element name="sizeUnit" type="CargoSizeUnitType" minOccurs="0"/>
+			<xs:element name="width" type="LinearSizeType" minOccurs="0"/>
+			<xs:element name="widthUnit" type="LinearUnitType" minOccurs="0"/>
+			<xs:element name="length" type="LinearSizeType" minOccurs="0"/>
+			<xs:element name="lengthUnit" type="LinearUnitType" minOccurs="0"/>
+			<xs:element name="height" type="LinearSizeType" minOccurs="0"/>
+			<xs:element name="heightUnit" type="LinearUnitType" minOccurs="0"/>
+			<xs:element name="aircraftExternalInternalIndicator" type="AircraftExternalInternalIndicatorType" minOccurs="0"/>
+			<xs:element name="hazardousCargoDesignator" type="HazardousCargoDesignatorType" minOccurs="0"/>
+			<xs:element name="singleDaggerRequired" type="SingleDaggerRequiredType" minOccurs="0"/>
+			<xs:element name="netExplosiveWeight" type="QuantityWithMultiplierType" minOccurs="0"/>
+			<xs:element name="netExplosiveWeightUnit" type="CargoWeightUnitType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="PassengerCargoDescriptionType">
+		<xs:annotation>
+			<xs:documentation>Passenger cargo description</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="passengerCargo" type="CommonPassengerCargoInformationType"/>
+			<xs:element name="detailedCargo" type="DetailedCargoDescriptionType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DropZoneType">
+		<xs:annotation>
+			<xs:documentation>The drop zone data for a Airdrop air mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="location" type="common:LocationType"/>
+			<xs:element name="runInHeading" type="AirRunInHeadingType" minOccurs="0"/>
+			<xs:element name="distanceToLeadingEdge" type="common:LengthType" minOccurs="0"/>
+			<xs:element name="dropZoneLength" type="DropZoneLengthType" minOccurs="0"/>
+			<xs:element name="dropZoneWidth" type="DropZoneWidthType" minOccurs="0"/>
+			<xs:element name="methodOfMarking" type="MethodOfMarkingType" minOccurs="0"/>
+			<xs:element name="markingColor" type="MarkingColorType" minOccurs="0"/>
+			<xs:element name="dropZoneName" type="DropZoneNameType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="GuidedType">
+		<xs:annotation>
+			<xs:documentation>The laser guided weapons information</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="laserCode" type="LaserCorrelationCodeType" minOccurs="0"/>
+			<xs:element name="frequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+			<xs:element name="frequencyDesignator" type="GuidanceFrequencyDesignatorType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="EmitterIdType">
+		<xs:annotation>
+			<xs:documentation>The electronic warfare emitter id.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="emitter" type="EmitterKindType"/>
+			<xs:element name="emitterName" type="AirEmitterNameType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="RecceRequestInfoType">
+		<xs:annotation>
+			<xs:documentation>
+				The request information for a Reconnaissance Air
+				Mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetPurpose" type="RecceTargetCategoryPurposeType" minOccurs="0"/>
+			<xs:element name="targetCategory" type="RecceTargetCategoryType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="RecceTargetInfoType">
+		<xs:annotation>
+			<xs:documentation>
+				The target information for a Reconnaissance Air
+				Mission.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetCode" type="RecceTargetCodeTargetCategoryType" minOccurs="0"/>
+			<xs:element name="essentialElementsOfInfo" type="EssentialElementsOfInfoType" minOccurs="0"/>
+			<xs:element name="targetItem" type="TargetItemType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="RecceRequestOrTargetInfoType">
+		<xs:annotation>
+			<xs:documentation>The reconnaissance request or target info.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="recceRequestInfo" type="RecceRequestInfoType"/>
+			<xs:element name="recceTargetInfo" type="RecceTargetInfoType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicTargetDescriptionDataType">
+		<xs:annotation>
+			<xs:documentation>Basic target description data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="materielCategory" type="common:MaterielCategoryType"/>
+			<xs:element name="location" type="common:LocationType"/>
+			<xs:element name="area" type="common:TargetAreaType"/>
+			<xs:element name="abcaNumber" type="common:TargetAbcaNumberType" minOccurs="0"/>
+			<xs:element name="beNumber" type="common:TargetBeNumberType" minOccurs="0"/>
+			<xs:element name="oSuffix" type="common:TargetOSuffixType" minOccurs="0"/>
+			<xs:element name="vegetation" type="TargetVegetationType" minOccurs="0"/>
+			<xs:element name="environmentArray" type="common:TargetEnvironmentType" minOccurs="0" maxOccurs="3"/>
+			<xs:element name="reportingSensorKind" type="TargetReportingSensorType" minOccurs="0"/>
+			<xs:element name="locationSource" type="TargetLocationSourceType" minOccurs="0"/>
+			<xs:element name="sourceReliability" type="TargetSourceReliabilityType" minOccurs="0"/>
+			<xs:element name="sensorTargetLocationError" type="common:SensorTargetLocationErrorType" minOccurs="0"/>
+			<xs:element name="activity" type="TargetActivityType" minOccurs="0"/>
+			<xs:element name="permanence" type="TargetPermanenceType" minOccurs="0"/>
+			<xs:element name="classification" type="TargetAtfClassificationType" minOccurs="0"/>
+			<xs:element name="atfPriority" type="TargetAtfPriorityType" minOccurs="0"/>
+			<xs:element name="formation" type="TargetFormationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedTargetDescriptionDataType">
+		<xs:annotation>
+			<xs:documentation>Detailed target description data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="checkFire" type="xs:boolean"/>
+			<xs:element name="ceaseLoad" type="xs:boolean"/>
+			<xs:element name="targetLink" type="TargetLinkDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetDescriptionDataType">
+		<xs:annotation>
+			<xs:documentation>Target description data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="basic" type="BasicTargetDescriptionDataType"/>
+			<xs:element name="detailed" type="DetailedTargetDescriptionDataType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetDescriptionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Target description summary.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="materielCategory" type="common:MaterielCategoryType"/>
+			<xs:element name="location" type="common:LocationType"/>
+			<xs:element name="area" type="common:TargetAreaType"/>
+			<xs:element name="abcaNumber" type="common:TargetAbcaNumberType" minOccurs="0"/>
+			<xs:element name="beNumber" type="common:TargetBeNumberType" minOccurs="0"/>
+			<xs:element name="oSuffix" type="common:TargetOSuffixType" minOccurs="0"/>
+			<xs:element name="reportingSensorKind" type="TargetReportingSensorType" minOccurs="0"/>
+			<xs:element name="locationSource" type="TargetLocationSourceType" minOccurs="0"/>
+			<xs:element name="checkFire" type="xs:boolean"/>
+			<xs:element name="ceaseLoad" type="xs:boolean"/>
+			<xs:element name="targetLink" type="TargetLinkDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirTargetDescriptionDataType">
+		<xs:annotation>
+			<xs:documentation>The air target description data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rationaleForTarget" type="RationaleForTargetType" minOccurs="0"/>
+			<xs:element name="targetAirDefensesCode" type="TargetAirDefensesCodeType" minOccurs="0"/>
+			<xs:element name="targetAirDefensesIntensity" type="TargetAirDefensesIntensityType" minOccurs="0"/>
+			<xs:element name="airDegreeOfProtection" type="AirDegreeOfProtectionType" minOccurs="0"/>
+			<xs:element name="desiredEffects" type="DesiredEffectsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicMissionDescriptionDataType">
+		<xs:annotation>
+			<xs:documentation>Basic mission description data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="originatorURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="timeAcquired" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="targetStrength" type="TargetStrengthType" minOccurs="0"/>
+			<xs:element name="targetDegreeOfProtection" type="TargetDegreeOfProtectionType" minOccurs="0"/>
+			<xs:element name="targetElementsArray" type="TargetElementsType" minOccurs="0" maxOccurs="3"/>
+			<xs:element name="targetCountermeasuresArray" type="TargetCountermeasuresType" minOccurs="0" maxOccurs="3"/>
+			<xs:element name="targetAtfListPartNumber" type="TargetAtfPartNumberType" minOccurs="0"/>
+			<xs:element name="targetAtfStatusCode" type="TargetStatusAtfCodeType" minOccurs="0"/>
+			<xs:element name="targetAtfStatusPercentage" type="common:PercentageType" minOccurs="0"/>
+			<xs:element name="predictedEnemyPointOfImpact" type="common:LocationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedMissionDescriptionDataType">
+		<xs:annotation>
+			<xs:documentation>Detailed mission description data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionValue" type="common:PercentageType" minOccurs="0"/>
+			<xs:element name="missionPrecedence" type="MissionPrecedenceType" minOccurs="0"/>
+			<xs:element name="callForFireTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="targetCheckFired" type="xs:boolean"/>
+			<xs:element name="targetCeaseLoaded" type="xs:boolean"/>
+			<xs:element name="checkFiredByFirePlan" type="xs:boolean"/>
+			<xs:element name="ceaseLoadedByFirePlan" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionDescriptionDataType">
+		<xs:annotation>
+			<xs:documentation>Mission description data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="basic" type="BasicMissionDescriptionDataType" minOccurs="0"/>
+			<xs:element name="detailed" type="DetailedMissionDescriptionDataType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionDescriptionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Mission description summary</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="originatorURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="timeAcquired" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="targetStrength" type="TargetStrengthType" minOccurs="0"/>
+			<xs:element name="predictedEnemyPointOfImpact" type="common:LocationType" minOccurs="0"/>
+			<xs:element name="callForFireTime" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicControlUnitType">
+		<xs:annotation>
+			<xs:documentation>Basic control unit data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="observerURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedControlUnitType">
+		<xs:annotation>
+			<xs:documentation>Detailed control unit data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="destinationURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="observer2URN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="controllingURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="plannedFiringPoint" type="common:LocationType" minOccurs="0"/>
+			<xs:element name="plannedFiringURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="plannedRocketMissileURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="plannedFiringPointId" type="common:AliasIdType" minOccurs="0"/>
+			<xs:element name="plannedNextPoint" type="common:GeometrySymbolType" minOccurs="0"/>
+			<xs:element name="plannedNextPointId" type="common:AliasIdType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicControlMissionType">
+		<xs:annotation>
+			<xs:documentation>Basic control mission data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionKind" type="MissionKindType" minOccurs="0"/>
+			<xs:element name="comments" type="TextType" minOccurs="0"/>
+			<xs:element name="desiredFascamDensity" type="common:FascamDensityType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedControlMissionType">
+		<xs:annotation>
+			<xs:documentation>Detailed control mission data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="hasChildren" type="xs:boolean"/>
+			<xs:element name="parentMissionId" type="MissionIdType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicControlMethodOfEngagementType">
+		<xs:annotation>
+			<xs:documentation>Basic control method of engagement data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="methodOfControl" type="MethodOfControlType" minOccurs="0"/>
+			<xs:element name="methodOfAttack" type="MethodOfAttackType" minOccurs="0"/>
+			<xs:element name="angleOfFire" type="AngleOfFireType" minOccurs="0"/>
+			<xs:element name="dispersalPattern" type="common:DispersalPatternType" minOccurs="0"/>
+			<xs:element name="distributionOfFire" type="DistributionOfFireIndicatorType" minOccurs="0"/>
+			<xs:element name="mlrsHeGuidedDistributionOfFire" type="DistributionOfFireIndicatorForMlrsHeGuidedType" minOccurs="0"/>
+			<xs:element name="specialSheafSpacing" type="SpecialSheafSpacingType" minOccurs="0"/>
+			<xs:element name="methodOfFire" type="MethodOfFireType" minOccurs="0"/>
+			<xs:element name="heightOfBurst" type="HeightOfBurstType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicControlTimesType">
+		<xs:annotation>
+			<xs:documentation>Basic control times data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="timeOnTarget" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="noLaterThan" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="noEarlierThan" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedControlTimesType">
+		<xs:annotation>
+			<xs:documentation>Detailed control times data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="operationalUntil" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicControlIntervalType">
+		<xs:annotation>
+			<xs:documentation>Basic control interval data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="intervalBetweenAdjustRounds" type="IntervalBetweenRoundsType" minOccurs="0"/>
+			<xs:element name="intervalBetweenIllumRounds" type="IntervalBetweenRoundsType" minOccurs="0"/>
+			<xs:element name="intervalBetweenCopperheadRounds" type="IntervalBetweenRoundsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedControlIntervalType">
+		<xs:annotation>
+			<xs:documentation>Detailed control interval data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="intervalBetweenIllumEffectsRounds" type="IntervalBetweenRoundsType" minOccurs="0"/>
+			<xs:element name="intervalBetweenContinuousRounds" type="IntervalBetweenRoundsType" minOccurs="0"/>
+			<xs:element name="intervalBetweenRocketsMissilesRounds" type="IntervalBetweenRoundsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicControlDataType">
+		<xs:annotation>
+			<xs:documentation>Basic control data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="controlUnit" type="BasicControlUnitType" minOccurs="0"/>
+			<xs:element name="controlMission" type="BasicControlMissionType" minOccurs="0"/>
+			<xs:element name="methodOfEngagement" type="BasicControlMethodOfEngagementType" minOccurs="0"/>
+			<xs:element name="controlTimes" type="BasicControlTimesType" minOccurs="0"/>
+			<xs:element name="controlInterval" type="BasicControlIntervalType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedControlDataType">
+		<xs:annotation>
+			<xs:documentation>Detailed control data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="controlUnit" type="DetailedControlUnitType" minOccurs="0"/>
+			<xs:element name="controlMission" type="DetailedControlMissionType" minOccurs="0"/>
+			<xs:element name="controlTimes" type="DetailedControlTimesType" minOccurs="0"/>
+			<xs:element name="controlInterval" type="DetailedControlIntervalType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="ControlDataType">
+		<xs:annotation>
+			<xs:documentation>Control data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="basic" type="BasicControlDataType" minOccurs="0"/>
+			<xs:element name="detailed" type="DetailedControlDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="ControlSummaryType">
+		<xs:annotation>
+			<xs:documentation>Control data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionKind" type="MissionKindType" minOccurs="0"/>
+			<xs:element name="methodOfControl" type="MethodOfControlType" minOccurs="0"/>
+			<xs:element name="observerURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="timeOnTarget" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="noLaterThan" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="noEarlierThan" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="comments" type="TextType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicRequestedWeaponsDataType">
+		<xs:annotation>
+			<xs:documentation>Basic requested weapons data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="munitions" type="BasicMunitionsDataType" minOccurs="0"/>
+			<xs:element name="engagingFsSystem" type="common:EngagingFsSystemType" minOccurs="0"/>
+			<xs:element name="fireUnitSize" type="RequestedEchelonType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="RequestedWeaponsDataType">
+		<xs:annotation>
+			<xs:documentation>Requested weapons data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="munitions" type="MunitionsDataType" minOccurs="0"/>
+			<xs:element name="engagingFsSystem" type="common:EngagingFsSystemType" minOccurs="0"/>
+			<xs:element name="fireUnitSize" type="RequestedEchelonType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicObserverSpecialRequestDataType">
+		<xs:annotation>
+			<xs:documentation>Basic mission observer special request data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="timeOfFlightRequested" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="splashRequested" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="cannotObserveIndicated" type="xs:boolean" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedObserverSpecialRequestDataType">
+		<xs:annotation>
+			<xs:documentation>Detailed mission observer special request data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="cannotObserveAction" type="CannotObserveActionType" minOccurs="0"/>
+			<xs:element name="laserObservation" type="LaserObservationType" minOccurs="0"/>
+			<xs:element name="adjustFPFMission" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="ObserverSpecialRequestDataType">
+		<xs:annotation>
+			<xs:documentation>Mission observer special request data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="basic" type="BasicObserverSpecialRequestDataType" minOccurs="0"/>
+			<xs:element name="detailed" type="DetailedObserverSpecialRequestDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MoreMissionDataType">
+		<xs:annotation>
+			<xs:documentation>More mission data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="observerSpecialRequest" type="ObserverSpecialRequestDataType" minOccurs="0"/>
+			<xs:element name="missionRecommendation" type="MissionRecommendationType" minOccurs="0"/>
+			<xs:element name="analysisResults" type="RuleAnalysisResultsType" minOccurs="0"/>
+			<xs:element name="reasonForDenial" type="ReasonForDenialType" minOccurs="0"/>
+			<xs:element name="fireStatusSummary" type="FireStatusType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicMotionDataType">
+		<xs:annotation>
+			<xs:documentation>Basic motion data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="movementVector" type="MotionVectorType" minOccurs="0"/>
+			<xs:element name="movementTime" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MotionDataType">
+		<xs:annotation>
+			<xs:documentation>Motion data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="movementLocation" type="common:LocationType" minOccurs="0"/>
+			<xs:element name="movementTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="initialContact" type="xs:boolean"/>
+			<xs:element name="movementVector" type="MotionVectorType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="QuickSmokeInformationType">
+		<xs:annotation>
+			<xs:documentation>Weather quick smoke information</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="maneuverTargetWindDirection" type="SmokeWindDirectionType" minOccurs="0"/>
+			<xs:element name="maneuverTargetAzimuth" type="DirectionType" minOccurs="0"/>
+			<xs:element name="smokeScreenLength" type="SmokeScreenLengthType" minOccurs="0"/>
+			<xs:element name="durationOfSmoke" type="SmokeScreenDurationType" minOccurs="0"/>
+			<xs:element name="cloudCover" type="CloudCoverKindType" minOccurs="0"/>
+			<xs:element name="typeOfSmokeScreen" type="SmokeScreenKindType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="WeatherDataType">
+		<xs:annotation>
+			<xs:documentation>Weather data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="quickSmokeInformation" type="QuickSmokeInformationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionStatusReportType">
+		<xs:annotation>
+			<xs:documentation>Mission status report</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionStatus" type="MissionStatusType" minOccurs="0"/>
+			<xs:element name="eomPresent" type="xs:boolean"/>
+			<xs:element name="checkFireReceived" type="xs:boolean"/>
+			<xs:element name="ceaseLoadReceived" type="xs:boolean"/>
+			<xs:element name="checkFireCeaseLoadByFirePlanReceived" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedMissionRequestType">
+		<xs:annotation>
+			<xs:documentation>Detailed data describing a mission request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionDescriptionData" type="MissionDescriptionDataType" minOccurs="0"/>
+			<xs:element name="controlData" type="ControlDataType" minOccurs="0"/>
+			<xs:element name="moreMissionData" type="MoreMissionDataType" minOccurs="0"/>
+			<xs:element name="motionData" type="MotionDataType" minOccurs="0"/>
+			<xs:element name="requestedEffectsData" type="common:EffectsDataType" minOccurs="0"/>
+			<xs:element name="requestedWeaponsData" type="RequestedWeaponsDataType" minOccurs="0"/>
+			<xs:element name="weatherData" type="WeatherDataType" minOccurs="0"/>
+			<xs:element name="statusReportData" type="MissionStatusReportType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionRequestSummaryType">
+		<xs:annotation>
+			<xs:documentation>Summary of a mission request.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionDescriptionInfo" type="MissionDescriptionSummaryType" minOccurs="0"/>
+			<xs:element name="controlInfo" type="ControlSummaryType" minOccurs="0"/>
+			<xs:element name="statusReportInfo" type="MissionStatusReportType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AttackingUnitDataType">
+		<xs:annotation>
+			<xs:documentation>Attacking unit data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="attackingURN" type="common:UnitReferenceNumberType"/>
+			<xs:element name="attackingUnitLocation" type="common:LocationType"/>
+			<xs:element name="fsSystem" type="common:FsSystemType"/>
+			<xs:element name="munitions" type="MunitionsDataType" minOccurs="0"/>
+			<xs:element name="gunTargetLineAzimuth" type="common:AzimuthType" minOccurs="0"/>
+			<xs:element name="gunTargetLineOffset" type="common:AngleTType" minOccurs="0"/>
+			<xs:element name="aimAzimuth" type="NabkMilsType" minOccurs="0"/>
+			<xs:element name="aimElevation" type="common:NabkVerticalMilsType" minOccurs="0"/>
+			<xs:element name="fuzeSettingTime" type="NabkTimeType" minOccurs="0"/>
+			<xs:element name="timeFirstMunitionFired" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AttackingUnitSummaryType">
+		<xs:annotation>
+			<xs:documentation>Attacking unit summary</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="attackingURN" type="common:UnitReferenceNumberType"/>
+			<xs:element name="attackingUnitLocation" type="common:LocationType"/>
+			<xs:element name="fsSystem" type="common:FsSystemType"/>
+			<xs:element name="munitions" type="BasicMunitionsDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AttackingUnitListType">
+		<xs:annotation>
+			<xs:documentation>Attacking unit list</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="attackingUnit" type="AttackingUnitDataType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AttackingUnitSummaryListType">
+		<xs:annotation>
+			<xs:documentation>Attacking unit summary list</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="attackingUnit" type="AttackingUnitSummaryType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicEndOfMissionDataType">
+		<xs:annotation>
+			<xs:documentation>Basic end of mission data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetDisposition" type="TargetDispositionType" minOccurs="0"/>
+			<xs:element name="numberOfCasualties" type="NumberOfCasualtiesType" minOccurs="0"/>
+			<xs:element name="reportedTargetLocation" type="common:LocationType" minOccurs="0"/>
+			<xs:element name="recordAsTargetFlag" type="xs:boolean"/>
+			<xs:element name="deleteMission" type="xs:boolean"/>
+			<xs:element name="eomComments" type="TextType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedEndOfMissionDataType">
+		<xs:annotation>
+			<xs:documentation>Detailed end of mission data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionEndTime" type="xs:dateTime"/>
+			<xs:element name="reportedMunitions" type="MunitionsDataType" minOccurs="0"/>
+			<xs:element name="reportedEffects" type="common:EffectsDataType" minOccurs="0"/>
+			<xs:element name="targetDamageAssessmentRequired" type="xs:boolean"/>
+			<xs:element name="targetDamageAssessmentRequestedFromURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+			<xs:element name="targetDamageAssessmentReportingURN" type="common:UnitReferenceNumberType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="EndOfMissionDataType">
+		<xs:annotation>
+			<xs:documentation>End of mission data</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="basic" type="BasicEndOfMissionDataType" minOccurs="0"/>
+			<xs:element name="detailed" type="DetailedEndOfMissionDataType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="EndOfMissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>End of mission summary</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionEndTime" type="xs:dateTime"/>
+			<xs:element name="targetDisposition" type="TargetDispositionType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="SurfaceMissionType">
+		<xs:annotation>
+			<xs:documentation>Data describing a surface mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="detailedMissionRequest" type="DetailedMissionRequestType" minOccurs="0"/>
+			<xs:element name="attackingUnitList" type="AttackingUnitListType" minOccurs="0"/>
+			<xs:element name="endOfMissionData" type="EndOfMissionDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="SurfaceMissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Summary data describing a surface mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionRequestInfo" type="MissionRequestSummaryType" minOccurs="0"/>
+			<xs:element name="attackingUnitList" type="AttackingUnitSummaryListType" minOccurs="0"/>
+			<xs:element name="endOfMissionInfo" type="EndOfMissionSummaryType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirRequestInfoType">
+		<xs:annotation>
+			<xs:documentation>
+				Air request information.
+				The start time and stop time of the request must fall between
+				the start time and end time of the air support list that contains the request.
+				The start and stop times must be in intervals of 60 seconds (to the nearest minute).
+				In other words, startTime modulo 60 = 0 and stopTime modulo 60 = 0.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="asrNumber" type="AirSupportRequestNumberType"/>
+			<xs:element name="airRequestStatus" type="AirRequestStatusType"/>
+			<xs:element name="airMissionKind" type="AirImmediatePreplannedType"/>
+			<xs:element name="totIndicator" type="xs:boolean"/>
+			<xs:element name="requestTime" type="xs:dateTime"/>
+			<xs:element name="requestingURN" type="common:UnitReferenceNumberType"/>
+			<xs:element name="airMissionState" type="AirMissionStateType" minOccurs="0"/>
+			<xs:element name="airRequestPriority" type="AirRequestPriorityType" minOccurs="0"/>
+			<xs:element name="airRequestPrecedence" type="AirRequestPrecedenceType" minOccurs="0"/>
+			<xs:element name="airRequestRank" type="AirRequestRankType" minOccurs="0"/>
+			<xs:element name="airMissionVerificationStatus1" type="AirMissionVerificationStatusType" minOccurs="0"/>
+			<xs:element name="airMissionVerificationStatus2" type="AirMissionVerificationStatusType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="CommonAirMissionInfoType">
+		<xs:annotation>
+			<xs:documentation>
+				Common air mission info.
+				The start and stop times must be in intervals of 60 seconds (to the nearest minute).
+				In other words, startTime modulo 60 = 0 and stopTime modulo 60 = 0.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="startTime" type="xs:dateTime"/>
+			<xs:element name="stopTime" type="xs:dateTime"/>
+			<xs:element name="missionLocation" type="common:LocationType"/>
+			<xs:element name="missionLocationKind" type="MissionLocationKindType" minOccurs="0"/>
+			<xs:element name="airMissionSubclassCode" type="AirMissionSubclassCodeType" minOccurs="0"/>
+			<xs:element name="airMissionStatus" type="AirMissionStatusType" minOccurs="0"/>
+			<xs:element name="alertStatus" type="AirAlertStatusType" minOccurs="0"/>
+			<xs:element name="alertStatusTime" type="AirAlertStatusHoursOrMinutesType" minOccurs="0"/>
+			<xs:element name="ingressHeading" type="AirRunInHeadingType" minOccurs="0"/>
+			<xs:element name="egressDirection" type="AirPullOutDirectionType" minOccurs="0"/>
+			<xs:element name="ordnanceCode" type="AirOrdnanceCodeType" minOccurs="0"/>
+			<xs:element name="resultDesired" type="ResultDesiredType" minOccurs="0"/>
+			<xs:element name="controlKind" type="AirControlKindType" minOccurs="0"/>
+			<xs:element name="controlCallsign" type="CallsignType" minOccurs="0"/>
+			<xs:element name="controlPrimaryFrequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+			<xs:element name="controlSecondaryFrequency" type="FrequencyInMegahertzType" minOccurs="0"/>
+			<xs:element name="controlReportInPoint" type="common:LocationType" minOccurs="0"/>
+			<xs:element name="packageId" type="AirPackageIdType" minOccurs="0"/>
+			<xs:element name="missionResults" type="AirMissionResultsType" minOccurs="0"/>
+			<xs:element name="airMissionComments" type="AirMissionCommentsType" minOccurs="0"/>
+			<xs:element name="aircraftData" type="AircraftInformationType" minOccurs="0" maxOccurs="99"/>
+			<xs:element name="dmpiData" type="DmpiInformationType" minOccurs="0" maxOccurs="99"/>
+			<xs:element name="friendlyUnits" type="FriendlyUnitsType" minOccurs="0" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="CommonAirMissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>
+				Common air mission summary.
+				The start and stop times must be in intervals of 60 seconds (to the nearest minute).
+				In other words, startTime modulo 60 = 0 and stopTime modulo 60 = 0.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="startTime" type="xs:dateTime"/>
+			<xs:element name="stopTime" type="xs:dateTime"/>
+			<xs:element name="missionLocation" type="common:LocationType"/>
+			<xs:element name="airMissionSubclassCode" type="AirMissionSubclassCodeType" minOccurs="0"/>
+			<xs:element name="airMissionStatus" type="AirMissionStatusType" minOccurs="0"/>
+			<xs:element name="airMissionComments" type="AirMissionCommentsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirdropType">
+		<xs:annotation>
+			<xs:documentation>The data for a Airdrop Air Mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="landingZones" type="LandingZoneType" minOccurs="0" maxOccurs="99"/>
+			<xs:element name="passengerCargoDescription" type="PassengerCargoDescriptionType" minOccurs="0" maxOccurs="99"/>
+			<xs:element name="dropZones" type="DropZoneType" minOccurs="0" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirdropSummaryType">
+		<xs:annotation>
+			<xs:documentation>The summary for a Airdrop Air Mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AssaultSupportType">
+		<xs:annotation>
+			<xs:documentation>The data for a Assault Support Air Mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="landingZones" type="LandingZoneType" minOccurs="0" maxOccurs="99"/>
+			<xs:element name="passengerCargoDescription" type="PassengerCargoDescriptionType" minOccurs="0" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AssaultSupportSummaryType">
+		<xs:annotation>
+			<xs:documentation>The summary for a Assault Support Air Mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MedicalEvacuationType">
+		<xs:annotation>
+			<xs:documentation>The data for a Medical Evacuation (MEDEVAC) Air Mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="landingZones" type="LandingZoneType" minOccurs="0" maxOccurs="99"/>
+			<xs:element name="passengerCargoDescription" type="PassengerCargoDescriptionType" minOccurs="0" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MedicalEvacuationSummaryType">
+		<xs:annotation>
+			<xs:documentation>The summary for a Medical Evacuation (MEDEVAC) Air Mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirInterdictionType">
+		<xs:annotation>
+			<xs:documentation>The data for a Air Interdiction (AI) Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airTargetDescriptionData" type="AirTargetDescriptionDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirInterdictionSummaryType">
+		<xs:annotation>
+			<xs:documentation>The summary for an Air Interdiction (AI) Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rationaleForTarget" type="RationaleForTargetType" minOccurs="0"/>
+			<xs:element name="desiredEffects" type="DesiredEffectsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="CloseAirSupportType">
+		<xs:annotation>
+			<xs:documentation>The data for a Close Air Support (CAS) Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airTargetDescriptionData" type="AirTargetDescriptionDataType" minOccurs="0"/>
+			<xs:element name="guided" type="GuidedType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="CloseAirSupportSummaryType">
+		<xs:annotation>
+			<xs:documentation>The summary for a Close Air Support (CAS) Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="rationaleForTarget" type="RationaleForTargetType" minOccurs="0"/>
+			<xs:element name="desiredEffects" type="DesiredEffectsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="ElectronicWarfareType">
+		<xs:annotation>
+			<xs:documentation>The data for a Electronic Warfare Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="emitterId" type="EmitterIdType" minOccurs="0"/>
+			<xs:element name="radioRadarFunctionCode" type="RadioRadarFunctionCodeType" minOccurs="0"/>
+			<xs:element name="lowerFrequency" type="FrequencyType" minOccurs="0"/>
+			<xs:element name="lowerFrequencyUnit" type="FrequencyUnitType" minOccurs="0"/>
+			<xs:element name="upperFrequency" type="FrequencyType" minOccurs="0"/>
+			<xs:element name="upperFrequencyUnit" type="FrequencyUnitType" minOccurs="0"/>
+			<xs:element name="ecmTechnique" type="EcmTechniqueType" minOccurs="0"/>
+			<xs:element name="protectedFrequencyOfEmission" type="FrequencyType" minOccurs="0"/>
+			<xs:element name="protectedFrequencyOfEmissionUnit" type="ElectromagneticPulseUnitType" minOccurs="0"/>
+			<xs:element name="protectedFrequencyOfEcm" type="FrequencyType" minOccurs="0"/>
+			<xs:element name="protectedFrequencyOfEcmUnit" type="FrequencyUnitType" minOccurs="0"/>
+			<xs:element name="protectedFrequency" type="EmitterKindType" minOccurs="0"/>
+			<xs:element name="frequencyKind" type="FrequencyKindType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="ElectronicWarfareSummaryType">
+		<xs:annotation>
+			<xs:documentation>The summary for a Electronic Warfare Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="ReconnaissanceType">
+		<xs:annotation>
+			<xs:documentation>The data for a Reconnaissance Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="imageryKind" type="ImageryKindType" minOccurs="0"/>
+			<xs:element name="imageryQualifier" type="ImageryQualifierType" minOccurs="0"/>
+			<xs:element name="coverageExtentMode" type="CoverageExtentModeType" minOccurs="0"/>
+			<xs:element name="coverageTypeCode" type="CoverageTypeCodeType" minOccurs="0"/>
+			<xs:element name="infoAddressee" type="RecceInfoAddresseeType" minOccurs="0"/>
+			<xs:element name="reportKind" type="RecceReportKindType" minOccurs="0"/>
+			<xs:element name="numberOfProducts" type="QuantityWithMultiplierType" minOccurs="0"/>
+			<xs:element name="productCode" type="ProductCodeType" minOccurs="0"/>
+			<xs:element name="latestTimeInformationRequired" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="printScale" type="PrintScaleType" minOccurs="0"/>
+			<xs:element name="maxDaysPrior" type="RecceMaxDaysPriorType" minOccurs="0"/>
+			<xs:element name="requestOrTargetInfo" type="RecceRequestOrTargetInfoType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="ReconnaissanceSummaryType">
+		<xs:annotation>
+			<xs:documentation>The summary for a Reconnaissance Air Mission.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedAirMissionInfoType">
+		<xs:annotation>
+			<xs:documentation>Detailed air mission information.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="airInterdiction" type="AirInterdictionType"/>
+			<xs:element name="closeAirSupport" type="CloseAirSupportType"/>
+			<xs:element name="airdrop" type="AirdropType"/>
+			<xs:element name="assaultSupport" type="AssaultSupportType"/>
+			<xs:element name="medicalEvacuation" type="MedicalEvacuationType"/>
+			<xs:element name="electronicWarfare" type="ElectronicWarfareType"/>
+			<xs:element name="reconnaissance" type="ReconnaissanceType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="DetailedAirMissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Detailed air mission summary.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="airInterdiction" type="AirInterdictionSummaryType"/>
+			<xs:element name="closeAirSupport" type="CloseAirSupportSummaryType"/>
+			<xs:element name="airdrop" type="AirdropSummaryType"/>
+			<xs:element name="assaultSupport" type="AssaultSupportSummaryType"/>
+			<xs:element name="medicalEvacuation" type="MedicalEvacuationSummaryType"/>
+			<xs:element name="electronicWarfare" type="ElectronicWarfareSummaryType"/>
+			<xs:element name="reconnaissance" type="ReconnaissanceSummaryType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirMissionInfoType">
+		<xs:annotation>
+			<xs:documentation>Air mission info</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airMissionNumber" type="AirMissionNumberType"/>
+			<xs:element name="commonAirData" type="CommonAirMissionInfoType" minOccurs="0"/>
+			<xs:element name="detailedAirData" type="DetailedAirMissionInfoType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirMissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Air mission summary</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airMissionNumber" type="AirMissionNumberType"/>
+			<xs:element name="commonAirInfo" type="CommonAirMissionSummaryType" minOccurs="0"/>
+			<xs:element name="detailedAirInfo" type="DetailedAirMissionSummaryType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirSupportRequestType">
+		<xs:annotation>
+			<xs:documentation>Data describing an Air Support Request</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airRequestInfo" type="AirRequestInfoType" minOccurs="0"/>
+			<xs:element name="requestedAirMission" type="AirMissionInfoType" minOccurs="0"/>
+			<xs:element name="approvedAirMissionList" type="AirMissionInfoType" minOccurs="0" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirSupportRequestSummaryType">
+		<xs:annotation>
+			<xs:documentation>Summary data describing an Air Support Request</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airRequestInfo" type="AirRequestInfoType" minOccurs="0"/>
+			<xs:element name="requestedAirMission" type="AirMissionSummaryType" minOccurs="0"/>
+			<xs:element name="approvedAirMissionList" type="AirMissionSummaryType" minOccurs="0" maxOccurs="99"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirSupportMissionType">
+		<xs:annotation>
+			<xs:documentation>Data describing an air support mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airSupportRequest" type="AirSupportRequestType" minOccurs="0"/>
+			<xs:element name="transitionedCFFASRData" type="DetailedMissionRequestType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="AirSupportMissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Summary data describing an air support mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="airSupportRequestInfo" type="AirSupportRequestSummaryType" minOccurs="0"/>
+			<xs:element name="transitionedCFFASRInfo" type="MissionRequestSummaryType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="KindOfMissionType">
+		<xs:annotation>
+			<xs:documentation>Data describing a type of mission</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="surfaceMission" type="SurfaceMissionType"/>
+			<xs:element name="airSupportMission" type="AirSupportMissionType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="KindOfMissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Summary data describing a type of mission</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="surfaceMission" type="SurfaceMissionSummaryType"/>
+			<xs:element name="airSupportMission" type="AirSupportMissionSummaryType"/>
+		</xs:choice>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionType">
+		<xs:annotation>
+			<xs:documentation>Data describing a mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionId" type="MissionIdType"/>
+			<xs:element name="accumulationInfo" type="AccumulationInfoType"/>
+			<xs:element name="listInfo" type="MissionListInfoType" minOccurs="0"/>
+			<xs:element name="kindOfMission" type="KindOfMissionType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionSummaryType">
+		<xs:annotation>
+			<xs:documentation>Summary data describing a mission</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionId" type="MissionIdType"/>
+			<xs:element name="accumulationInfo" type="AccumulationInfoType"/>
+			<xs:element name="listInfo" type="MissionListInfoType" minOccurs="0"/>
+			<xs:element name="kindOfMission" type="KindOfMissionSummaryType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionSummaryListType">
+		<xs:annotation>
+			<xs:documentation>A list of mission summaries.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="missionSummary" type="MissionSummaryType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetType">
+		<xs:annotation>
+			<xs:documentation>Data describing a target</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetKey" type="TargetKeyType"/>
+			<xs:element name="accumulationInfo" type="AccumulationInfoType"/>
+			<xs:element name="targetDescriptionData" type="TargetDescriptionDataType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetSummaryType">
+		<xs:annotation>
+			<xs:documentation>Summary data describing a target</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetKey" type="TargetKeyType"/>
+			<xs:element name="accumulationInfo" type="AccumulationInfoType"/>
+			<xs:element name="targetDescriptionInfo" type="TargetDescriptionSummaryType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="TargetSummaryListType">
+		<xs:annotation>
+			<xs:documentation>A list of target summaries.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="targetSummary" type="TargetSummaryType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicTargetInformationType">
+		<xs:sequence>
+			<xs:element name="targetDescriptionData" type="BasicTargetDescriptionDataType"/>
+			<xs:element name="missionDescriptionData" type="BasicMissionDescriptionDataType" minOccurs="0"/>
+			<xs:element name="motionData" type="BasicMotionDataType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="BasicMissionInformationType">
+		<xs:sequence>
+			<xs:element name="controlData" type="BasicControlDataType" minOccurs="0"/>
+			<xs:element name="requestedEffects" type="common:EffectsDataType" minOccurs="0"/>
+			<xs:element name="requestedWeapons" type="BasicRequestedWeaponsDataType" minOccurs="0"/>
+			<xs:element name="observerSpecialRequestData" type="BasicObserverSpecialRequestDataType" minOccurs="0"/>
+			<xs:element name="quickSmokeInformation" type="QuickSmokeInformationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="MissionRequestType">
+		<xs:sequence>
+			<xs:element name="basicTargetInformation" type="BasicTargetInformationType"/>
+			<xs:element name="basicMissionInformation" type="BasicMissionInformationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="SubscriptionListType">
+		<xs:annotation>
+			<xs:documentation>A list of target and mission subscription data.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="subscription" type="SubscriptionType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

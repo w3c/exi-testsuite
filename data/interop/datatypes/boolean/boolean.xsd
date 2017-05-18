@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="root" >
+        <xs:complexType>
+            <!-- Built-in Type: boolean-->
+            <xs:sequence>
+                <xs:element name="boolean"  type="xs:boolean" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="booleanp"  minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:boolean">
+                            <xs:pattern value="true"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="boolean" type="xs:boolean" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

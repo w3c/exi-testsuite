@@ -1,0 +1,42 @@
+<!-- =================================================================== -->
+<!-- Tests SC event type with prefix preservation turned on. String      -->
+<!-- table and grammars have to be saved upon SC occurrences.            -->
+<!-- =================================================================== -->
+<foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo' xmlns:goo2='urn:goo' xsi:type='foo:anyType' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  foo:aB='qcmzkkmr' foo:aA='qcmzkkmr'>
+  <goo:none none="">
+    <goo:none>none</goo:none>
+  </goo:none>
+  <foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo' xsi:type='foo:anyType' 
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+    foo:aB='qcmzkkmr' foo:aA='qcmzkkmr'>
+    <goo:none none="">
+      <goo:none>none</goo:none>
+      <goo:none>none2</goo:none>
+    </goo:none>
+    <foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo' xsi:type='foo:anyType' 
+      xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+      foo:aB='qcmzkkmr' foo:aA='qcmzkkmr'/>
+    <foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo' xsi:type='foo:anyType' 
+      xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+      foo:aB='qcmzkkmr' foo:aA='qcmzkkmr'/>
+  </foo:ANY>
+  <foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo' xsi:type='foo:anyType' 
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+    foo:aB='qcmzkkmr' foo:aA='qcmzkkmr'>
+    <goo:none none="">
+      <goo:none>none</goo:none>
+      <goo:none>none2</goo:none>
+    </goo:none>
+    <foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo' xsi:type='foo:anyType' 
+      xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+      foo:aB='qcmzkkmr' foo:aA='qcmzkkmr'/>
+    <foo:ANY xmlns:foo='urn:foo' xmlns:goo='urn:goo' xsi:type='foo:anyType' 
+      xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+      foo:aB='qcmzkkmr' foo:aA='qcmzkkmr'/>
+  </foo:ANY>
+  <goo2:none none="">
+    <goo2:none>none</goo2:none>
+  </goo2:none>
+</foo:ANY>

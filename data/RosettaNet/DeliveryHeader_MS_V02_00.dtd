@@ -1,0 +1,66 @@
+<!--
+
+   RosettaNet XML Message Schema
+   DeliveryHeader_MS_V02_00.dtd (11-Jul-2001)
+
+-->
+
+
+<!ENTITY % common-attributes "id  CDATA #IMPLIED" >
+
+<!ELEMENT DeliveryHeader ( 
+          isSecureTransportRequired ,
+          messageDateTime ,
+          messageReceiverIdentification ,
+          messageSenderIdentification ,
+          messageTrackingID ) > 
+
+<!ATTLIST DeliveryHeader xmlns CDATA #FIXED
+          "http://www.rosettanet.org/RNIF/V02.00" >
+
+<!ELEMENT isSecureTransportRequired
+           ( AffirmationIndicator ) > 
+
+<!ELEMENT AffirmationIndicator
+           ( #PCDATA ) >
+
+<!ELEMENT messageDateTime
+           ( DateTimeStamp ) > 
+
+<!ELEMENT DateTimeStamp
+           ( #PCDATA ) >
+
+<!ELEMENT messageReceiverIdentification
+            ( PartnerIdentification ) > 
+
+<!ELEMENT PartnerIdentification ( 
+          domain? ,
+          GlobalBusinessIdentifier ,
+          locationID? ) > 
+
+<!ELEMENT domain
+           ( FreeFormText ) > 
+
+<!ELEMENT FreeFormText
+           ( #PCDATA ) >
+<!ATTLIST FreeFormText
+           xml:lang CDATA #IMPLIED >
+
+<!ELEMENT GlobalBusinessIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT locationID
+            ( Value ) > 
+
+<!ELEMENT messageSenderIdentification
+            ( PartnerIdentification ) > 
+
+<!ELEMENT messageTrackingID
+           ( InstanceIdentifier ) > 
+
+<!ELEMENT InstanceIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT Value
+           ( #PCDATA ) >
+

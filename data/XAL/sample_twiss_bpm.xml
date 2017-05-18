@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE tablegroup SYSTEM "xdxf.dtd">
+<tablegroup>
+
+<table name="twiss">
+	<schema>
+		<attribute name="alpha" type="java.lang.Double"/>
+		<attribute name="beta" type="java.lang.Double"/>
+		<attribute name="nodeId" type="java.lang.String" isPrimaryKey="true"/>
+	</schema>
+	<record alpha="1.1" beta="5.1" nodeId="MEBT_Diag:BPM04"/>
+	<record alpha="2.7" beta="13.2" nodeId="MEBT_Diag:BPM06"/>
+	<record alpha="-5.1" beta="20.8" nodeId="MEBT_Diag:BPM08"/>
+	<record alpha="1.1" beta="10.2" nodeId="MEBT_Diag:BPM10"/>
+</table>
+
+
+<table name="bpmdata">
+	<schema>
+		<attribute name="xAvg" type="java.lang.Double"/>
+		<attribute name="yAvg" type="java.lang.Double"/>
+		<attribute name="nodeId" type="java.lang.String" isPrimaryKey="true"/>
+	</schema>
+	<record xAvg="1.1" yAvg="5.1" nodeId="MEBT_Diag:BPM01"/>
+	<record xAvg="2.7" yAvg="13.2" nodeId="MEBT_Diag:BPM06"/>
+	<record xAvg="-5.1" yAvg="20.8" nodeId="MEBT_Diag:BPM08"/>
+</table>
+
+</tablegroup>

@@ -1,0 +1,18 @@
+<!-- =================================================================== -->
+<!-- Tests undeclared attribute uses (i.e. AT(qname) [untyped value])    -->
+<!-- =================================================================== -->
+<foo:M2 xmlns:foo='urn:foo'>
+  <!-- valid values -->
+  <A foo:aK="2010-01-01" foo:aL="12345" foo:aM="QUJDREVGR0hJSg==" foo:aN="1 2 3" />
+  <!-- invalid values -->
+  <A foo:aK="201x-0x-xx" foo:aL="1234x" foo:aM="=A==" foo:aN="1 2 x" />
+  <A foo:aL="1234x" foo:aM="=A==" foo:aN="1 2 x" />
+  <A foo:aM="=A==" foo:aN="1 2 x" />
+  <A foo:aN="1 2 x" />
+  <A/>
+  <A foo:aK="201x-0x-xx" foo:aM="=A==" foo:aN="1 2 x" />
+  <A foo:aK="201x-0x-xx" foo:aN="1 2 x" />
+  <A foo:aK="201x-0x-xx" />
+  <A foo:aK="201x-0x-xx" foo:aL="1234x" foo:aN="1 2 x" />
+  <A foo:aK="201x-0x-xx" foo:aL="1234x" />
+</foo:M2>

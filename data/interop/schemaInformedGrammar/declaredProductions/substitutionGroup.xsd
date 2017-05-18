@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<xsd:schema targetNamespace="urn:goo"
+  xmlns:aoo="urn:aoo" xmlns:foo="urn:foo" xmlns:goo="urn:goo"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:import namespace="urn:foo" schemaLocation="substitutionGroup_foo.xsd"/>
+<xsd:import namespace="urn:aoo" schemaLocation="substitutionGroup_aoo.xsd"/>
+
+<xsd:element name="A" type="goo:tA" substitutionGroup="foo:C" />
+<xsd:element name="C" type="goo:tC" substitutionGroup="foo:C" />
+
+<xsd:complexType name="tA">
+  <xsd:complexContent>
+    <xsd:extension base="aoo:tC" />
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="tC">
+  <xsd:complexContent>
+    <xsd:extension base="goo:tA" />
+  </xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>

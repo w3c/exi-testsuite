@@ -1,0 +1,11 @@
+<!-- =================================================================== -->
+<!-- Tests ElementFragmentTypeEmpty grammar. The attributes in namespace -->
+<!-- urn:aoo use their specific datatype representation, while the       -->
+<!-- attributes in namespace urn:foo use string representation.          -->
+<!-- =================================================================== -->
+<foo:C xmlns:foo="urn:foo" xmlns:goo="urn:goo" xmlns:aoo="urn:aoo" 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  none="Welcome to the world of element fragment grammar!"
+  xsi:nil="true"
+  aoo:b="2010-04-28"
+  foo:d="12:34:58" />

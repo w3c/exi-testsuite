@@ -1,0 +1,10 @@
+<!-- =================================================================== -->
+<!-- Use of AT(xsi:type) event type in strict schema mode. Switching     -->
+<!-- from complex type to another complex type. The attribute foo:aA is  -->
+<!-- permitted to appear in type foo:extended_B but not in the original  -->
+<!-- type foo:B.                                                         -->
+<!-- =================================================================== -->
+<foo:B xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  xsi:type='foo:extended_B' foo:aA="" >
+  <foo:AB/><foo:AC/><foo:AD/>
+</foo:B>

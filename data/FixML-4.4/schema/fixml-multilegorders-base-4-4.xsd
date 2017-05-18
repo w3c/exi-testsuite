@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 20040109
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="NewOrderMultilegElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="PreAllocMleg" type="PreAllocMlegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdSes" type="TrdgSesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Ord" type="LegOrdGrp_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="OrdQty" type="OrderQtyData_Block_t" />
+		<xs:element name="Comm" type="CommissionData_Block_t" minOccurs="0" />
+		<xs:element name="PegInstr" type="PegInstructions_Block_t" minOccurs="0" />
+		<xs:element name="DiscInstr" type="DiscretionInstructions_Block_t" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="NewOrderMultilegAttributes">
+		<xs:attribute name="ClOrdID" type="ClOrdID_t" use="required"/>
+		<xs:attribute name="ClOrdID2" type="SecondaryClOrdID_t" use="optional"/>
+		<xs:attribute name="ClOrdLinkID" type="ClOrdLinkID_t" use="optional"/>
+		<xs:attribute name="OrignDt" type="TradeOriginationDate_t" use="optional"/>
+		<xs:attribute name="TrdDt" type="TradeDate_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="optional"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="optional"/>
+		<xs:attribute name="DayBkngInst" type="DayBookingInst_t" use="optional"/>
+		<xs:attribute name="BkngUnit" type="BookingUnit_t" use="optional"/>
+		<xs:attribute name="PreallocMeth" type="PreallocMethod_t" use="optional"/>
+		<xs:attribute name="AllocID" type="AllocID_t" use="optional"/>
+		<xs:attribute name="SettlTyp" type="SettlType_t" use="optional"/>
+		<xs:attribute name="SettlDt" type="SettlDate_t" use="optional"/>
+		<xs:attribute name="CshMgn" type="CashMargin_t" use="optional"/>
+		<xs:attribute name="ClrFeeInd" type="ClearingFeeIndicator_t" use="optional"/>
+		<xs:attribute name="HandlInst" type="HandlInst_t" use="optional"/>
+		<xs:attribute name="ExecInst" type="ExecInst_t" use="optional"/>
+		<xs:attribute name="MinQty" type="MinQty_t" use="optional"/>
+		<xs:attribute name="MaxFloor" type="MaxFloor_t" use="optional"/>
+		<xs:attribute name="ExDest" type="ExDestination_t" use="optional"/>
+		<xs:attribute name="ProcCode" type="ProcessCode_t" use="optional"/>
+		<xs:attribute name="Side" type="Side_t" use="required"/>
+		<xs:attribute name="PrevClsPx" type="PrevClosePx_t" use="optional"/>
+		<xs:attribute name="LocReqd" type="LocateReqd_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="QtyTyp" type="QtyType_t" use="optional"/>
+		<xs:attribute name="OrdTyp" type="OrdType_t" use="required"/>
+		<xs:attribute name="PxTyp" type="PriceType_t" use="optional"/>
+		<xs:attribute name="Px" type="Price_t" use="optional"/>
+		<xs:attribute name="StopPx" type="StopPx_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="ComplianceID" type="ComplianceID_t" use="optional"/>
+		<xs:attribute name="SolFlag" type="SolicitedFlag_t" use="optional"/>
+		<xs:attribute name="IOIID" type="IOIID_t" use="optional"/>
+		<xs:attribute name="QID" type="QuoteID_t" use="optional"/>
+		<xs:attribute name="TmInForce" type="TimeInForce_t" use="optional"/>
+		<xs:attribute name="EfctvTm" type="EffectiveTime_t" use="optional"/>
+		<xs:attribute name="ExpireDt" type="ExpireDate_t" use="optional"/>
+		<xs:attribute name="ExpireTm" type="ExpireTime_t" use="optional"/>
+		<xs:attribute name="GTBkngInst" type="GTBookingInst_t" use="optional"/>
+		<xs:attribute name="Cpcty" type="OrderCapacity_t" use="optional"/>
+		<xs:attribute name="Rstctions" type="OrderRestrictions_t" use="optional"/>
+		<xs:attribute name="CustCpcty" type="CustOrderCapacity_t" use="optional"/>
+		<xs:attribute name="ForexReq" type="ForexReq_t" use="optional"/>
+		<xs:attribute name="SettlCcy" type="SettlCurrency_t" use="optional"/>
+		<xs:attribute name="BkngTyp" type="BookingType_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="PosEfct" type="PositionEffect_t" use="optional"/>
+		<xs:attribute name="Covered" type="CoveredOrUncovered_t" use="optional"/>
+		<xs:attribute name="MaxShow" type="MaxShow_t" use="optional"/>
+		<xs:attribute name="TgtStrategy" type="TargetStrategy_t" use="optional"/>
+		<xs:attribute name="TgtStrategyParameters" type="TargetStrategyParameters_t" use="optional"/>
+		<xs:attribute name="ParticipationRt" type="ParticipationRate_t" use="optional"/>
+		<xs:attribute name="CxllationRights" type="CancellationRights_t" use="optional"/>
+		<xs:attribute name="MnyLaunderingStat" type="MoneyLaunderingStatus_t" use="optional"/>
+		<xs:attribute name="RegistID" type="RegistID_t" use="optional"/>
+		<xs:attribute name="Designation" type="Designation_t" use="optional"/>
+		<xs:attribute name="MLEGRptTypReq" type="MultiLegRptTypeReq_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="NewOrderMultileg_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">NewOrderMultileg can be found in Volume4 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="NewOrderMultileg" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="NewOrderMultilegElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="NewOrderMultilegAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="NewOrdMleg" type="NewOrderMultileg_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="MultilegOrderCancelReplaceElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="PreAllocMleg" type="PreAllocMlegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdSes" type="TrdgSesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Ord" type="LegOrdGrp_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="OrdQty" type="OrderQtyData_Block_t" />
+		<xs:element name="Comm" type="CommissionData_Block_t" minOccurs="0" />
+		<xs:element name="PegInstr" type="PegInstructions_Block_t" minOccurs="0" />
+		<xs:element name="DiscInstr" type="DiscretionInstructions_Block_t" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="MultilegOrderCancelReplaceAttributes">
+		<xs:attribute name="OrdID" type="OrderID_t" use="optional"/>
+		<xs:attribute name="OrigClOrdID" type="OrigClOrdID_t" use="required"/>
+		<xs:attribute name="ClOrdID" type="ClOrdID_t" use="required"/>
+		<xs:attribute name="ClOrdID2" type="SecondaryClOrdID_t" use="optional"/>
+		<xs:attribute name="ClOrdLinkID" type="ClOrdLinkID_t" use="optional"/>
+		<xs:attribute name="OrigOrdModTm" type="OrigOrdModTime_t" use="optional"/>
+		<xs:attribute name="OrignDt" type="TradeOriginationDate_t" use="optional"/>
+		<xs:attribute name="TrdDt" type="TradeDate_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="optional"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="optional"/>
+		<xs:attribute name="DayBkngInst" type="DayBookingInst_t" use="optional"/>
+		<xs:attribute name="BkngUnit" type="BookingUnit_t" use="optional"/>
+		<xs:attribute name="PreallocMeth" type="PreallocMethod_t" use="optional"/>
+		<xs:attribute name="AllocID" type="AllocID_t" use="optional"/>
+		<xs:attribute name="SettlTyp" type="SettlType_t" use="optional"/>
+		<xs:attribute name="SettlDt" type="SettlDate_t" use="optional"/>
+		<xs:attribute name="CshMgn" type="CashMargin_t" use="optional"/>
+		<xs:attribute name="ClrFeeInd" type="ClearingFeeIndicator_t" use="optional"/>
+		<xs:attribute name="HandlInst" type="HandlInst_t" use="optional"/>
+		<xs:attribute name="ExecInst" type="ExecInst_t" use="optional"/>
+		<xs:attribute name="MinQty" type="MinQty_t" use="optional"/>
+		<xs:attribute name="MaxFloor" type="MaxFloor_t" use="optional"/>
+		<xs:attribute name="ExDest" type="ExDestination_t" use="optional"/>
+		<xs:attribute name="ProcCode" type="ProcessCode_t" use="optional"/>
+		<xs:attribute name="Side" type="Side_t" use="required"/>
+		<xs:attribute name="PrevClsPx" type="PrevClosePx_t" use="optional"/>
+		<xs:attribute name="LocReqd" type="LocateReqd_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="QtyTyp" type="QtyType_t" use="optional"/>
+		<xs:attribute name="OrdTyp" type="OrdType_t" use="required"/>
+		<xs:attribute name="PxTyp" type="PriceType_t" use="optional"/>
+		<xs:attribute name="Px" type="Price_t" use="optional"/>
+		<xs:attribute name="StopPx" type="StopPx_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="ComplianceID" type="ComplianceID_t" use="optional"/>
+		<xs:attribute name="SolFlag" type="SolicitedFlag_t" use="optional"/>
+		<xs:attribute name="IOIID" type="IOIID_t" use="optional"/>
+		<xs:attribute name="QID" type="QuoteID_t" use="optional"/>
+		<xs:attribute name="TmInForce" type="TimeInForce_t" use="optional"/>
+		<xs:attribute name="EfctvTm" type="EffectiveTime_t" use="optional"/>
+		<xs:attribute name="ExpireDt" type="ExpireDate_t" use="optional"/>
+		<xs:attribute name="ExpireTm" type="ExpireTime_t" use="optional"/>
+		<xs:attribute name="GTBkngInst" type="GTBookingInst_t" use="optional"/>
+		<xs:attribute name="Cpcty" type="OrderCapacity_t" use="optional"/>
+		<xs:attribute name="Rstctions" type="OrderRestrictions_t" use="optional"/>
+		<xs:attribute name="CustCpcty" type="CustOrderCapacity_t" use="optional"/>
+		<xs:attribute name="ForexReq" type="ForexReq_t" use="optional"/>
+		<xs:attribute name="SettlCcy" type="SettlCurrency_t" use="optional"/>
+		<xs:attribute name="BkngTyp" type="BookingType_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="PosEfct" type="PositionEffect_t" use="optional"/>
+		<xs:attribute name="Covered" type="CoveredOrUncovered_t" use="optional"/>
+		<xs:attribute name="MaxShow" type="MaxShow_t" use="optional"/>
+		<xs:attribute name="TgtStrategy" type="TargetStrategy_t" use="optional"/>
+		<xs:attribute name="TgtStrategyParameters" type="TargetStrategyParameters_t" use="optional"/>
+		<xs:attribute name="ParticipationRt" type="ParticipationRate_t" use="optional"/>
+		<xs:attribute name="CxllationRights" type="CancellationRights_t" use="optional"/>
+		<xs:attribute name="MnyLaunderingStat" type="MoneyLaunderingStatus_t" use="optional"/>
+		<xs:attribute name="RegistID" type="RegistID_t" use="optional"/>
+		<xs:attribute name="Designation" type="Designation_t" use="optional"/>
+		<xs:attribute name="MLEGRptTypReq" type="MultiLegRptTypeReq_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="MultilegOrderCancelReplace_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MultilegOrderCancelReplace can be found in Volume4 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MultilegOrderCancelReplace" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="MultilegOrderCancelReplaceElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="MultilegOrderCancelReplaceAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="MlegOrdCxlRplc" type="MultilegOrderCancelReplace_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="LegOrdGrpElements">
+		<xs:sequence>		
+		<xs:element name="Leg" type="InstrumentLeg_Block_t" minOccurs="0" />
+		<xs:element name="Stip" type="LegStipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="PreAll" type="LegPreAllocGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Pty" type="NestedParties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="LegOrdGrpAttributes">
+		<xs:attribute name="Qty" type="LegQty_t" use="optional"/>
+		<xs:attribute name="SwapTyp" type="LegSwapType_t" use="optional"/>
+		<xs:attribute name="PosEfct" type="LegPositionEffect_t" use="optional"/>
+		<xs:attribute name="Cover" type="LegCoveredOrUncovered_t" use="optional"/>
+		<xs:attribute name="RefID" type="LegRefID_t" use="optional"/>
+		<xs:attribute name="Px" type="LegPrice_t" use="optional"/>
+		<xs:attribute name="SettlTyp" type="LegSettlType_t" use="optional"/>
+		<xs:attribute name="SettlDt" type="LegSettlDate_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="LegOrdGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">LegOrdGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="LegOrdGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="LegOrdGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="LegOrdGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="LegPreAllocGrpElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="NestedParties2_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="LegPreAllocGrpAttributes">
+		<xs:attribute name="AllocAcct" type="LegAllocAccount_t" use="optional"/>
+		<xs:attribute name="IndAllocID" type="LegIndividualAllocID_t" use="optional"/>
+		<xs:attribute name="AllocQty" type="LegAllocQty_t" use="optional"/>
+		<xs:attribute name="AllocAcctIDSrc" type="LegAllocAcctIDSource_t" use="optional"/>
+		<xs:attribute name="SettlCcy" type="LegSettlCurrency_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="LegPreAllocGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">LegPreAllocGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="LegPreAllocGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="LegPreAllocGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="LegPreAllocGrpAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
+

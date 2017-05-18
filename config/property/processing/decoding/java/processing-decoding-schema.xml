@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="Processing-decoding-SAX:Schema"
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <param name="japex.warmupTime" value="5"/>
+    <param name="japex.runTime" value="15"/>
+    <param name="japex.resultUnit" value="tps"/>
+
+    <param name="org.w3c.exi.ttf.measurementProperty" value="decode"/>
+    <param name="japex.reportsDirectory" value="reports/property/processing/decoding/java/schema"/>
+
+    <param name="org.w3c.exi.ttf.dataSourceSink.URI" value="${japex.exi.ttfms.dataSourceSink.URI}"/>
+
+    <param name="org.w3c.exi.ttf.recordDecodedEvents" value="no"/>
+
+    <xi:include href="drivers-schema.xml"/>
+</testSuite>

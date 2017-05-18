@@ -1,0 +1,46 @@
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by James Duckworth (Thermo Galactic) --><GAML version="1.00" name="QUININE"><experiment name="Em scan"><collectdate>1992-08-13T18:43:10Z</collectdate><parameter name="Format" label="Data record format" group="Header">4</parameter><parameter name="Axes" label="# of X-axis in this data record" group="Header">1</parameter><parameter name="Comment" label="Data record comment" group="Header">NULL</parameter><trace name="Flourence" technique="FLUOR"><parameter name="ZaxisTypeID" label="Z-axis type" group="ZAxis">3</parameter><parameter name="ZaxisType" label="Z-axis type" group="ZAxis">Excitation Monochromator</parameter><parameter name="ZaxisUnits" label="Z-axis units" group="ZAxis">Nanometers (nm)</parameter><parameter name="ZaxisLL" label="Z-axis lower limit" group="ZAxis">351.000000</parameter><parameter name="ZaxisUL" label="Z-axis lower limit" group="ZAxis">351.000000</parameter><parameter name="LabelZ" label="Z-axis Label" group="ZAxis">Excitation (nm)</parameter><parameter name="PlotInfo" label="Z-axis plotting annotation" group="ZAxis">NULL</parameter><coordinates label="Excitation (nm)" units="NANOMETERS" valueorder="EVEN"><values byteorder="INTEL" format="FLOAT32" numvalues="1">AICvQw==
+        </values></coordinates><Xdata label="Emission (nm)" units="NANOMETERS" valueorder="EVEN"><values byteorder="INTEL" format="FLOAT32" numvalues="301">AIC7QwAAvEMAgLxDAAC9QwCAvUMAAL5DAIC+QwAAv0MAgL9DAADAQwCAwEMAAMFDAIDBQwAAwkMA
+gMJDAADDQwCAw0MAAMRDAIDEQwAAxUMAgMVDAADGQwCAxkMAAMdDAIDHQwAAyEMAgMhDAADJQwCA
+yUMAAMpDAIDKQwAAy0MAgMtDAADMQwCAzEMAAM1DAIDNQwAAzkMAgM5DAADPQwCAz0MAANBDAIDQ
+QwAA0UMAgNFDAADSQwCA0kMAANNDAIDTQwAA1EMAgNRDAADVQwCA1UMAANZDAIDWQwAA10MAgNdD
+AADYQwCA2EMAANlDAIDZQwAA2kMAgNpDAADbQwCA20MAANxDAIDcQwAA3UMAgN1DAADeQwCA3kMA
+AN9DAIDfQwAA4EMAgOBDAADhQwCA4UMAAOJDAIDiQwAA40MAgONDAADkQwCA5EMAAOVDAIDlQwAA
+5kMAgOZDAADnQwCA50MAAOhDAIDoQwAA6UMAgOlDAADqQwCA6kMAAOtDAIDrQwAA7EMAgOxDAADt
+QwCA7UMAAO5DAIDuQwAA70MAgO9DAADwQwCA8EMAAPFDAIDxQwAA8kMAgPJDAADzQwCA80MAAPRD
+AID0QwAA9UMAgPVDAAD2QwCA9kMAAPdDAID3QwAA+EMAgPhDAAD5QwCA+UMAAPpDAID6QwAA+0MA
+gPtDAAD8QwCA/EMAAP1DAID9QwAA/kMAgP5DAAD/QwCA/0MAAABEAEAARACAAEQAwABEAAABRABA
+AUQAgAFEAMABRAAAAkQAQAJEAIACRADAAkQAAANEAEADRACAA0QAwANEAAAERABABEQAgAREAMAE
+RAAABUQAQAVEAIAFRADABUQAAAZEAEAGRACABkQAwAZEAAAHRABAB0QAgAdEAMAHRAAACEQAQAhE
+AIAIRADACEQAAAlEAEAJRACACUQAwAlEAAAKRABACkQAgApEAMAKRAAAC0QAQAtEAIALRADAC0QA
+AAxEAEAMRACADEQAwAxEAAANRABADUQAgA1EAMANRAAADkQAQA5EAIAORADADkQAAA9EAEAPRACA
+D0QAwA9EAAAQRABAEEQAgBBEAMAQRAAAEUQAQBFEAIARRADAEUQAABJEAEASRACAEkQAwBJEAAAT
+RABAE0QAgBNEAMATRAAAFEQAQBREAIAURADAFEQAABVEAEAVRACAFUQAwBVEAAAWRABAFkQAgBZE
+AMAWRAAAF0QAQBdEAIAXRADAF0QAABhEAEAYRACAGEQAwBhEAAAZRABAGUQAgBlEAMAZRAAAGkQA
+QBpEAIAaRADAGkQAABtEAEAbRACAG0QAwBtEAAAcRABAHEQAgBxEAMAcRAAAHUQAQB1EAIAdRADA
+HUQAAB5EAEAeRACAHkQAwB5EAAAfRABAH0QAgB9EAMAfRAAAIEQAQCBEAIAgRADAIEQAACFEAEAh
+RACAIUQAwCFEAAAiRABAIkQAgCJEAMAiRAAAI0QAQCNEAIAjRADAI0QAACREAEAkRACAJEQAwCRE
+AAAlRABAJUQAgCVEAMAlRAAAJkQAQCZEAIAmRADAJkQAACdEAEAnRACAJ0QAwCdEAAAoRABAKEQA
+gChEAMAoRA==
+        </values><Ydata label="Fluorescence" units="UNKNOWN"><parameter name="PlotInfo" label="Y-axis plotting annotation" group="YAxis">NULL</parameter><parameter name="Corrected" label="Data corrected flag" group="MANIPULATION">0</parameter><parameter name="Derivative" label="Degree of derivation" group="MANIPULATION">0</parameter><parameter name="Norm" label="Normalized flag" group="MANIPULATION">0</parameter><parameter name="Offset" label="Offset from the original data" group="MANIPULATION">0.000000</parameter><parameter name="Scale" label="Scale from the original data" group="MANIPULATION">1.000000</parameter><parameter name="Smooth" label="# of smoothing passes done" group="MANIPULATION">0</parameter><parameter name="SmoothType" label="Smoothing type" group="MANIPULATION">1.000000</parameter><values byteorder="INTEL" format="FLOAT32" numvalues="301">bVSRPsDCrD5Jb84+mwL6PkViFz+nmDY/mpVZP5eZgD/aG5k/GeqzPy6v0z8oC/Y/QPUOQMLbJUCt
+fT9A6WteQFN4gEAdBZNA5PeoQKwawEAAk9hAJzHyQG/cBUEmORNB5rUgQcs7LUGucjtBvg5JQffE
+V0HaEWhB7Bp4Qe0khUEO4Y5BIUGYQSNwokE9W6xBOZe2QeKAwUE20stBLnXWQcLH4UGFeOtBszP3
+QSCGAEIJrAVC1wcLQuH2D0KWHxVCvUkaQpV3HkKKhCNCWaAnQi35K0LFMzBCzTA0QgTCN0LcwTtC
+/Fo+QoeDQkI82ERCEpZHQpMnSkLoZ0xCf1FOQnTAUEJGmFFCYtpTQhFnVEICrlVCgXZWQlAJV0LE
+FVdCsM5XQtjIVkKwbldC3U1WQnLTVULDO1VCMAxUQjn7UkKbE1JCnOdPQt90T0KSnkxCm25LQlgn
+SUIHFEdCQdxEQjonQ0IT9j9C5m8+QtVNO0IeyjhC2hc2QoCpM0KBgzBC8GEuQp2fKkIZwShC+O8k
+QtlnIkIJZR9CxKgcQo52GULeBhdCx1ETQmYxEUK1sg1C2P8KQnYjCEIFYQVCvjcCQtzj/0EZJPlB
+UW31Qdgb70ExT+tBG7DmQTBq4kGTnt1BqaDYQYZ30UE5cstBwvjCQUviu0H2dbNBjkarQSEwokF7
+RppBTA2SQatyi0HGmIRByTt/QckCd0GJtm9BZr9oQbsuZEEg+l1B+N5ZQd0IVEEgBFBBpOdKQUFQ
+RkFYbEFBfCI9QdCpN0HRlDNBsDAuQaW7KUFZ8CRBh1ogQTF2G0E4RRdB2T4SQWkCD0GmvglBHe8F
+QYbdAUGIH/xApUnzQL737EDoFORAqBjeQKzv1UD5ds9ALwbIQPsFwkBb27tAX5W1QAf3rkB9TKpA
+hJGjQGCVnkCrwJhABymUQLyHjkDeXIpAoQiFQOrcgEAQ0XdAA/twQMgVaEBAMWBAc2pYQJe7UUD+
+j0hAJWJDQNxeO0BD9jRAsR4vQHWxKECoEiJAVkMdQM45F0DBChJAJ6kMQGcgCEBsnwJAWAH9P/cd
+9D9op+s/B2niPw8r3D9ZHtI/urbKPygrxD+IOr4/Jii2Py0SsD9Nbak/4BakPyc3nT+aCJg/JumR
+P0e8jT+UQIg/ZFeDP2ndfD9nq3U/L8NrP/cbYz8q21o/KHxTP1DvSz/uW0U/YFk8Pw0vOD+g0i8/
+BZkqP1/dIz9fcR0/770XP1IXEz/DKg0/qmoIP5zIAz+O5P0+EZDzPlNK6T4ou+I+7QPbPseJ0j5f
+O8s+byDDPuxIvT5nUbQ+hD6vPqVypz5BIaI+UU+aPq6IlT58TY8+/OCKPjSnhD5rxH4+gTt1Podz
+bD6wbmQ+wRNYPjVDTz5K10w+t6VEPjVeOj4+jTA+ZR0uPpuTKD7M9x8+JrQXProEFD506A0+dMsJ
+Ps4JAj77bv89hADvPeAt5z0Gk9o9T+3aPZYJyj3Y38U9Tsi9PXTOuT3DZ7E9RpyoPcOkoD2Nrpg9
+4meUPVhqjD05KYw9KviDPZBmdj0C8nY90FZvPeA8Xz1TflY94zdJPS+zQj0dD0Q9ECc8PQtVND1u
+3yM9vfUbPQ==
+          </values></Ydata></Xdata></trace></experiment></GAML>

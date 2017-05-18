@@ -1,0 +1,27 @@
+<!--  this testcases are intended to check header options for canonical EXI
+		https://www.w3.org/TR/exi-c14n/#canonicalHeader
+ -->
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Header interoperability tests">
+    
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude" 
+    				name="Blocksize canonical interoperability tests">
+    	<param name="groupId" value="${groupId} | schemaId"/>
+    	<xi:include href="header/blockSize.xml" /> 
+    </testCaseGroup>
+    
+    <!-- schema informed with includeSchemaId and without  includeSchemaId parameter-->
+	<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Options document with schemaId tests">
+	        <param name="groupId" value="${groupId} | schemaId"/> 
+	        <param name="org.w3c.exi.ttf.includeSchemaId" value="true" /> 
+	        <xi:include href="header/schemaInformed.xml" /> 
+	    </testCaseGroup>
+	    
+	    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="Options document with schemaId tests">
+	        <param name="groupId" value="${groupId} | schemaId"/> 
+	        <param name="org.w3c.exi.ttf.includeSchemaId" value="false" /> 
+	        <xi:include href="header/schemaInformed.xml" /> 
+	    </testCaseGroup>
+</testCaseGroup>

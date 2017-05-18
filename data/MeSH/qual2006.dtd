@@ -1,0 +1,24 @@
+<!-- QUAL DTD files for qualifiers qual2006.dtd -->
+
+<!ENTITY  % DescriptorRecordSet SYSTEM "desc2006.dtd">
+%DescriptorRecordSet;
+
+<!ELEMENT QualifierRecordSet (QualifierRecord*)>
+<!ELEMENT QualifierRecord (%QualifierReference;,
+                            DateCreated,
+                            DateRevised?,
+                            DateEstablished?,
+                            ActiveMeSHYearList,
+                            Annotation?,
+                            HistoryNote?,
+                            OnlineNote?,
+                            TreeNumberList?,
+                            TreeNodeAllowedList?,
+                            RecordOriginatorsList,
+                            ConceptList) >
+
+ <!ATTLIST QualifierRecord QualifierType CDATA '1'>
+
+ <!ELEMENT TreeNodeAllowedList (TreeNodeAllowed)+>
+ <!ELEMENT TreeNodeAllowed (#PCDATA)>
+

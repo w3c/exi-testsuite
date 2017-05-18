@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 20040109
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="IOIElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="FinDetls" type="FinancingDetails_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="OrdQty" type="OrderQtyData_Block_t" minOccurs="0" />
+		<xs:element name="Stip" type="Stipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="IOI" type="InstrmtLegIOIGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Qual" type="IOIQualGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Rtg" type="RoutingGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="SprdBnchmkCurve" type="SpreadOrBenchmarkCurveData_Block_t" minOccurs="0" />
+		<xs:element name="Yield" type="YieldData_Block_t" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="IOIAttributes">
+		<xs:attribute name="ID" type="IOIID_t" use="required"/>
+		<xs:attribute name="TransTyp" type="IOITransType_t" use="required"/>
+		<xs:attribute name="RefID" type="IOIRefID_t" use="optional"/>
+		<xs:attribute name="Side" type="Side_t" use="required"/>
+		<xs:attribute name="QtyTyp" type="QtyType_t" use="optional"/>
+		<xs:attribute name="Qty" type="IOIQty_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="PxTyp" type="PriceType_t" use="optional"/>
+		<xs:attribute name="Px" type="Price_t" use="optional"/>
+		<xs:attribute name="ValidUntilTm" type="ValidUntilTime_t" use="optional"/>
+		<xs:attribute name="QltyInd" type="IOIQltyInd_t" use="optional"/>
+		<xs:attribute name="NatFlag" type="IOINaturalFlag_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="optional"/>
+		<xs:attribute name="URL" type="URLLink_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="IOI_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">IOI can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="IOI" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="IOIElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="IOIAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="IOI" type="IOI_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="AdvertisementElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="AdvertisementAttributes">
+		<xs:attribute name="AdvId" type="AdvId_t" use="required"/>
+		<xs:attribute name="AdvTransTyp" type="AdvTransType_t" use="required"/>
+		<xs:attribute name="AdvRefID" type="AdvRefID_t" use="optional"/>
+		<xs:attribute name="AdvSide" type="AdvSide_t" use="required"/>
+		<xs:attribute name="Qty" type="Quantity_t" use="required"/>
+		<xs:attribute name="QtyTyp" type="QtyType_t" use="optional"/>
+		<xs:attribute name="Px" type="Price_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="TrdDt" type="TradeDate_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="URL" type="URLLink_t" use="optional"/>
+		<xs:attribute name="LastMkt" type="LastMkt_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="Advertisement_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Advertisement can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="Advertisement" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="AdvertisementElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="AdvertisementAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="Adv" type="Advertisement_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="IOIQualGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="IOIQualGrpAttributes">
+		<xs:attribute name="Qual" type="IOIQualifier_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="IOIQualGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">IOIQualGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="IOIQualGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="IOIQualGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="IOIQualGrpAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
+

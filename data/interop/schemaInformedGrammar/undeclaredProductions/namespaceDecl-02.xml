@@ -1,0 +1,6 @@
+<!-- =================================================================== -->
+<!-- Tests NS event type. Nested elements with namespace declarations.   -->
+<!-- =================================================================== -->
+<H xmlns='urn:foo' xmlns:goo1='urn:goo' xmlns:goo2='urn:goo' goo1:aA='abc' >
+  <goo2:AB xmlns='urn:goo' xmlns:goo2='urn:goo' xmlns:foo='urn:foo'/>
+</H>

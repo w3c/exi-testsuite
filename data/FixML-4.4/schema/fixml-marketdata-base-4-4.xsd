@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 20040109
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="MarketDataRequestElements">
+		<xs:sequence>		
+		<xs:element name="Req" type="MDReqGrp_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="InstReq" type="InstrmtMDReqGrp_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="TrdSes" type="TrdgSesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="MarketDataRequestAttributes">
+		<xs:attribute name="ReqID" type="MDReqID_t" use="required"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="required"/>
+		<xs:attribute name="MktDepth" type="MarketDepth_t" use="required"/>
+		<xs:attribute name="UpdtTyp" type="MDUpdateType_t" use="optional"/>
+		<xs:attribute name="AggBook" type="AggregatedBook_t" use="optional"/>
+		<xs:attribute name="OpenClsSettlFlag" type="OpenCloseSettlFlag_t" use="optional"/>
+		<xs:attribute name="Scope" type="Scope_t" use="optional"/>
+		<xs:attribute name="ImplctDel" type="MDImplicitDelete_t" use="optional"/>
+		<xs:attribute name="ApplQuActn" type="ApplQueueAction_t" use="optional"/>
+		<xs:attribute name="ApplQuMax" type="ApplQueueMax_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="MarketDataRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MarketDataRequest can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MarketDataRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="MarketDataRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="MarketDataRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="MktDataReq" type="MarketDataRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="MarketDataSnapshotFullRefreshElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Full" type="MDFullGrp_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="MarketDataSnapshotFullRefreshAttributes">
+		<xs:attribute name="ReqID" type="MDReqID_t" use="optional"/>
+		<xs:attribute name="FinclStat" type="FinancialStatus_t" use="optional"/>
+		<xs:attribute name="CorpActn" type="CorporateAction_t" use="optional"/>
+		<xs:attribute name="NetChgPrevDay" type="NetChgPrevDay_t" use="optional"/>
+		<xs:attribute name="ApplQuDepth" type="ApplQueueDepth_t" use="optional"/>
+		<xs:attribute name="ApplQuResolution" type="ApplQueueResolution_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="MarketDataSnapshotFullRefresh_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MarketDataSnapshotFullRefresh can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MarketDataSnapshotFullRefresh" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="MarketDataSnapshotFullRefreshElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="MarketDataSnapshotFullRefreshAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="MktDataFull" type="MarketDataSnapshotFullRefresh_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="MarketDataIncrementalRefreshElements">
+		<xs:sequence>		
+		<xs:element name="Inc" type="MDIncGrp_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="MarketDataIncrementalRefreshAttributes">
+		<xs:attribute name="ReqID" type="MDReqID_t" use="optional"/>
+		<xs:attribute name="ApplQuDepth" type="ApplQueueDepth_t" use="optional"/>
+		<xs:attribute name="ApplQuResolution" type="ApplQueueResolution_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="MarketDataIncrementalRefresh_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MarketDataIncrementalRefresh can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MarketDataIncrementalRefresh" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="MarketDataIncrementalRefreshElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="MarketDataIncrementalRefreshAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="MktDataInc" type="MarketDataIncrementalRefresh_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="MarketDataRequestRejectElements">
+		<xs:sequence>		
+		<xs:element name="Rjct" type="MDRjctGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="MarketDataRequestRejectAttributes">
+		<xs:attribute name="ReqID" type="MDReqID_t" use="required"/>
+		<xs:attribute name="ReqRejResn" type="MDReqRejReason_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="MarketDataRequestReject_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MarketDataRequestReject can be found in Volume3 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MarketDataRequestReject" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="MarketDataRequestRejectElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="MarketDataRequestRejectAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="MktDataReqRej" type="MarketDataRequestReject_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="MDFullGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="MDFullGrpAttributes">
+		<xs:attribute name="Typ" type="MDEntryType_t" use="required"/>
+		<xs:attribute name="Px" type="MDEntryPx_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="Sz" type="MDEntrySize_t" use="optional"/>
+		<xs:attribute name="Dt" type="MDEntryDate_t" use="optional"/>
+		<xs:attribute name="Tm" type="MDEntryTime_t" use="optional"/>
+		<xs:attribute name="TickDirctn" type="TickDirection_t" use="optional"/>
+		<xs:attribute name="Mkt" type="MDMkt_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="QCond" type="QuoteCondition_t" use="optional"/>
+		<xs:attribute name="TrdCond" type="TradeCondition_t" use="optional"/>
+		<xs:attribute name="Orig" type="MDEntryOriginator_t" use="optional"/>
+		<xs:attribute name="LctnID" type="LocationID_t" use="optional"/>
+		<xs:attribute name="DeskID" type="DeskID_t" use="optional"/>
+		<xs:attribute name="OpenClsSettlFlag" type="OpenCloseSettlFlag_t" use="optional"/>
+		<xs:attribute name="TmInForce" type="TimeInForce_t" use="optional"/>
+		<xs:attribute name="ExpireDt" type="ExpireDate_t" use="optional"/>
+		<xs:attribute name="ExpireTm" type="ExpireTime_t" use="optional"/>
+		<xs:attribute name="MinQty" type="MinQty_t" use="optional"/>
+		<xs:attribute name="ExecInst" type="ExecInst_t" use="optional"/>
+		<xs:attribute name="SellerDays" type="SellerDays_t" use="optional"/>
+		<xs:attribute name="OrdID" type="OrderID_t" use="optional"/>
+		<xs:attribute name="EntryID" type="QuoteEntryID_t" use="optional"/>
+		<xs:attribute name="Buyer" type="MDEntryBuyer_t" use="optional"/>
+		<xs:attribute name="Seller" type="MDEntrySeller_t" use="optional"/>
+		<xs:attribute name="NumOfOrds" type="NumberOfOrders_t" use="optional"/>
+		<xs:attribute name="PosNo" type="MDEntryPositionNo_t" use="optional"/>
+		<xs:attribute name="Scope" type="Scope_t" use="optional"/>
+		<xs:attribute name="PxDelta" type="PriceDelta_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="MDFullGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MDFullGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MDFullGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="MDFullGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="MDFullGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="MDIncGrpElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="MDIncGrpAttributes">
+		<xs:attribute name="UpdtAct" type="MDUpdateAction_t" use="required"/>
+		<xs:attribute name="DelRsn" type="DeleteReason_t" use="optional"/>
+		<xs:attribute name="Typ" type="MDEntryType_t" use="optional"/>
+		<xs:attribute name="ID" type="MDEntryID_t" use="optional"/>
+		<xs:attribute name="RefID" type="MDEntryRefID_t" use="optional"/>
+		<xs:attribute name="FinclStat" type="FinancialStatus_t" use="optional"/>
+		<xs:attribute name="CorpActn" type="CorporateAction_t" use="optional"/>
+		<xs:attribute name="Px" type="MDEntryPx_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="Sz" type="MDEntrySize_t" use="optional"/>
+		<xs:attribute name="Dt" type="MDEntryDate_t" use="optional"/>
+		<xs:attribute name="Tm" type="MDEntryTime_t" use="optional"/>
+		<xs:attribute name="TickDirctn" type="TickDirection_t" use="optional"/>
+		<xs:attribute name="Mkt" type="MDMkt_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="QCond" type="QuoteCondition_t" use="optional"/>
+		<xs:attribute name="TrdCond" type="TradeCondition_t" use="optional"/>
+		<xs:attribute name="Orig" type="MDEntryOriginator_t" use="optional"/>
+		<xs:attribute name="LctnID" type="LocationID_t" use="optional"/>
+		<xs:attribute name="DeskID" type="DeskID_t" use="optional"/>
+		<xs:attribute name="OpenClsSettlFlag" type="OpenCloseSettlFlag_t" use="optional"/>
+		<xs:attribute name="TmInForce" type="TimeInForce_t" use="optional"/>
+		<xs:attribute name="ExpireDt" type="ExpireDate_t" use="optional"/>
+		<xs:attribute name="ExpireTm" type="ExpireTime_t" use="optional"/>
+		<xs:attribute name="MinQty" type="MinQty_t" use="optional"/>
+		<xs:attribute name="ExecInst" type="ExecInst_t" use="optional"/>
+		<xs:attribute name="SellerDays" type="SellerDays_t" use="optional"/>
+		<xs:attribute name="OrdID" type="OrderID_t" use="optional"/>
+		<xs:attribute name="EntryID" type="QuoteEntryID_t" use="optional"/>
+		<xs:attribute name="Buyer" type="MDEntryBuyer_t" use="optional"/>
+		<xs:attribute name="Seller" type="MDEntrySeller_t" use="optional"/>
+		<xs:attribute name="NumOfOrds" type="NumberOfOrders_t" use="optional"/>
+		<xs:attribute name="PosNo" type="MDEntryPositionNo_t" use="optional"/>
+		<xs:attribute name="Scope" type="Scope_t" use="optional"/>
+		<xs:attribute name="PxDelta" type="PriceDelta_t" use="optional"/>
+		<xs:attribute name="NetChgPrevDay" type="NetChgPrevDay_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="MDIncGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MDIncGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MDIncGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="MDIncGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="MDIncGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="MDReqGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="MDReqGrpAttributes">
+		<xs:attribute name="Typ" type="MDEntryType_t" use="required"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="MDReqGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MDReqGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MDReqGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="MDReqGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="MDReqGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="MDRjctGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="MDRjctGrpAttributes">
+		<xs:attribute name="AltMDSrcID" type="AltMDSourceID_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="MDRjctGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">MDRjctGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="MDRjctGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="MDRjctGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="MDRjctGrpAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
+

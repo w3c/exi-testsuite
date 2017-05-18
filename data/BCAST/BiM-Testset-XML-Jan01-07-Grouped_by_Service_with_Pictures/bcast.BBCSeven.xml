@@ -1,0 +1,3793 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This data is strictly for non-commercial use only.  See http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html for details of the terms and conditions.-->
+<ESGMainBCAST xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <Service id="BBCSeven" type="6" version="1" ServiceProtection="0">
+      <Name>BBC Seven Digital</Name>
+      <Genre>Audio only</Genre>
+      <PreviewDataIDRef usage="0">urn:bbc:prevBBCSeven</PreviewDataIDRef>
+   </Service>
+   <Access id="BBCSeven_acc" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2
+s=SDP Example
+c=IN IP4 225.224.1.193
+t=0 0 
+m=audio 4004 RTP/AVP  98 
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCSeven</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Access id="BBCSeven_acc_MBMS" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2 
+c=IN IP4 225.224.1.222 
+t=0 0 
+m=audio 4004 RTP/AVP 98 
+a=rtpmap:98 AMR/8000 
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCSeven</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <PurchaseItem id="BBCSeven_1346" version="0">
+      <ServiceIDRef>BBCSeven</ServiceIDRef>
+      <Name>BBCSeven</Name>
+   </PurchaseItem>
+   <PurchaseData id="BBCSeven_23DGE" version="0">
+      <PurchaseItemIDRef>BBCSeven_1346</PurchaseItemIDRef>
+      <PurchaseChannelIDRef>BBC_purchase</PurchaseChannelIDRef>
+      <PriceInfo>
+         <SubscriptionUnit Type="1" Value="233" Unit="3"/>
+         <UnitText>month</UnitText>
+         <Price Currency="EUR" Value="193"/>
+      </PriceInfo>
+   </PurchaseData>
+   <PreviewData id="urn:bbc:prevBBCSeven" version="3">
+      <Picture>
+         <PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAwQAAgUBBv/EADAQAAICAQIEBAQFBQAAAAAAAAEC
+AAMRBCESMUFxEyJRYQUjgZEUJEJScjIzYrHB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEB
+AQEBAQAAAAAAAAAAAAAAAAERMUH/2gAMAwEAAhEDEQA/AHbdDUK2K5UgEjBgtPpPFoVzYcnoRmEf
+WP4bBqHGQRmc0uqSuhVYNkdcQKt8PfoUP0xEr6mRirAAg49ZqjW0fuI7iI6plscspyOI/wChFCiJ
+5oaxPlfWSlcvC6lfy47zIzWpZmPQS4pCKc5OPWMYAYM2y7bntBW6hBkL5tsSjhXbPpJF2axhyOBJ
+GD1Nv9p/4mD0g/Kp2l7Tilyf2mU0ZzpklBSinmoP0mbqUCu2AB5jy+k04jqR5j/I/wDIC1Kk2bTm
+oa1769PXgZGc4z1htOvzoLXPdRqValBxcH9RHvJBn6ii5bCGbjI54l005SviYgE+spZfqmPnZh22
+lq6hZXxM+T3gVPCDu2e0kL4KKuTtJKY37RmtuxlNIMadO0JYR4bdjB6Uj8Ou8A0TvG57mM2OAjEH
+kJjX6q04w7HtAe0w+fK/ELqQVXiy46DfEQrvvLAIzcTbDM6GNSFSMKP1dWMzbiyagau7KpuYC1Xq
+I339NhB2WcNwsQ4PtHWq8TDN5jjrKB1NxVedWJ9pJ3wQM4USS6h02n2nRcQNiBMz8RZ/j9oUajFP
+EQCfaQN3XkqBxd8TPdsOVUDEHZqnfqB2gjYzczmUP6Ur4ljk7KuIOxxYxPSAqchTjrOWXEbLzmWu
+KW4D4HKaelbOnr4ueJlKCzY6zRrZlUeX7Ss0xemaHwM7cpJem1XHPf3km5UrIJ3nHduAJk49JzJ5
+mUY5mVcM5JJAKrgJvzEFzMknKAWtckR1G8uCYlU2+I0hI95mrBq28++4MkoquTkbD3khcL33cVQX
+y8/0jEWJl1wfKd5V1AxiaZVkkkgXrrd3CqpLHkIZtBqlDE0nb0IM1vhtdFWj4uNS7jLkHce0qrLX
+b8kWO32EDFrUl8Y5c4/U3h4GFYHmDz+kLqdJZk2HgDnfgB3i1SCxgpB57kdJPQ01qKSFBY+nLEkr
+dot8mxj7STWJr//Z
+</PictureData>
+         <AlternativeText>BBC Seven Digital</AlternativeText>
+      </Picture>
+      <AccessIDRef>BBCSeven_accpre</AccessIDRef>
+   </PreviewData>
+   <Access id="BBCSeven_accpre" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=prev 10001 1 IN IP4 192.193.1.65
+s=preview
+i=Vorschau
+t=0 0
+a=source-filter:  IN IP4 * 192.168.1.65
+a=flute-tsi:1
+a=flute-ch:1
+m=application 4000 FLUTE/UDP 0
+c=IN IP4 225.6.7.233</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>preview Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:8500" version="2">
+      <Name>The Adventures of Sherlock Holmes</Name>
+      <Description>The Blue Carbuncle: How does Holmes solve a case when the only clues are a Christmas goose and a hat? Starring Clive Merrison and Michael Williams</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8491" version="3">
+      <Name>Alan Bennett's The Last of the Sun</Name>
+      <Description>Alan Bennett introduces Dame Thora Hird's last role for radio - the monologue which he wrote especially for her to perform</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8492" version="5">
+      <Name>Peter Coke and the Paul Temple Affair</Name>
+      <Description>Michaela Saunders talks to the voice of radio's most dashing detective, over fifty years after he took up the role</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8502" version="1">
+      <Name>The Goon Show</Name>
+      <Description>Lurgi Strikes Britain: This week the Goons use brass instruments to cure Britain from a devastating lurgi</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e57" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e57" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8502</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3344995800" InteractivityWindowEndTime="3344996000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8493" version="2">
+      <Name>The Goon Show</Name>
+      <Description>The Last Tram from Clapham: It was thought that all the trams had been melted down but there appears to be one still running</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8480" version="4">
+      <Name>Hancock's Half Hour</Name>
+      <Description>The Blackboard Jungle: A newly rediscovered episode sees Hancock as a young schoolmaster in a school full of juvenile delinquents</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:8508" version="5">
+      <Name>Hancock's Half Hour</Name>
+      <Description>The New Secretary: Hancock decides to hire a secretary - but his plans are thwarted by the arrival of the menacing Grizelda Pugh</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:8484" version="1">
+      <Name>Vongole</Name>
+      <Description>Comedy starring Bill Nighy as Professor Swann, whose favourite pastime is seducing students over spaghetti vongole</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8489" version="3">
+      <Name>Red Star Belgrade</Name>
+      <Description>In a Nazi prison camp, the survivors of the Belgrade football team form a new team to play a match against the Prison Guards</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:8486" version="4">
+      <Name>Mad, Bad</Name>
+      <Description>Is competition safer than collaboration? A bleakly comic tale of a literary triangle starring Bill Nighy and Anna Massey</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:8488" version="5">
+      <Name>Mark Twain Stories</Name>
+      <Description>A Ghost Story: Frasier/Cheers star Kelsey Grammer reads this classic tale from the pen of Mark Twain, about a reluctant and mournful ghost</Description>
+      <Genre>Science fiction</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+   </Content>
+   <Content id="urn:bbc:8482" version="2">
+      <Name>Fear on Four</Name>
+      <Description>The Horn: Three strangers are trapped in a snowstorm on a remote stretch of motorway</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Science fiction</Genre>
+   </Content>
+   <Content id="urn:bbc:8495" version="3">
+      <Name>Seventh Dimension</Name>
+      <Description/>
+      <Genre>Science fiction</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+   </Content>
+   <Content id="urn:bbc:8561" version="4">
+      <Name>The Little Toe Radio Show</Name>
+      <Description>Kevin Duala introduces the stories Septimouse Supermouse, The Nutcracker and the Mouse King and Jeremy Brown of the Secret Service</Description>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>age 4-7</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e269" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e269" version="1" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8561</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345003000" InteractivityWindowEndTime="3345003200"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8566" version="1">
+      <Name>Wartime Stories of Mollie Panter-Downes</Name>
+      <Description>Omnibus: Sylvestra Le Touzel recounts the poignant experiences of women who remained in Britain during the Second World War</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8560" version="2">
+      <Name>Phone Tag</Name>
+      <Description>A transatlantic love affair is played out on the telephone as calls are missed, messages left and confusion reigns</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8574" version="3">
+      <Name>Without the Option</Name>
+      <Description>Will Bertie Wooster be able to avoid the amorous attentions of Heloise Pringle? Will Jeeves save the day? Episode 2 of 2</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8556" version="5">
+      <Name>Tess of the D'Urbervilles</Name>
+      <Description>Hardy's most fatalistic, yet favourite, novel in which Tess is wronged by two men and driven to murder</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8565" version="1">
+      <Name>Ed Doolan Interviews...</Name>
+      <Description>Ken Dodd: Ed Doolan talks to Ken Dodd about hit records, Shakespeare, good manners, comedy today and teeth</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:8562" version="2">
+      <Name>Beyond Our Ken</Name>
+      <Description>Kenneth is given the freedom of the city of Gigglesway, the Las Vegas of the North</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8563" version="4">
+      <Name>The Clitheroe Kid</Name>
+      <Description>As Advertised on the Telly: Jimmy has another adventure</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8564" version="5">
+      <Name>Don Quixote</Name>
+      <Description>Written in 1605, this Spanish classic is about the adventures of an intrepid knight and his humble squire, Sancho Panza</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8557" version="1">
+      <Name>The Wordsmiths at Gorsemere</Name>
+      <Description>26th September 1799: De Quinine causes chaos at the Wordsmiths' house and Sir Walter Spott pops in for a visit</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8576" version="3">
+      <Name>The Big Toe Radio Show</Name>
+      <Description>More guests, quizzes and great stories</Description>
+      <Genre>AMUSEMENT</Genre>
+      <Genre>MUSIC</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Children</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e452" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e452" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8576</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345035400" InteractivityWindowEndTime="3345035600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8567" version="4">
+      <Name>The Twilight Zone</Name>
+      <Description>The Man in the Bottle: What if a genie granted your heart's desire? Is the hidden price more than anyone can pay? Starring Ed Begley, Jr</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Science fiction</Genre>
+   </Content>
+   <Content id="urn:bbc:8558" version="5">
+      <Name>Temple of the Winds</Name>
+      <Description>Nigel Anthony reads the sixth part of James Follett's sci-fi novel</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Science fiction</Genre>
+   </Content>
+   <Schedule id="BBCSeven_d0e1321" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8488">
+         <Presentation_Window Presentation_Start_Time="3344976000" Presentation_End_Time="3344976900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e515" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2466934204 2873825073 IN IP4 192.168.0.113
+c=IN IP4 225.224.28.211
+m=audio 57278 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1338" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8482">
+         <Presentation_Window Presentation_Start_Time="3344976900" Presentation_End_Time="3344978700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1355" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8495">
+         <Presentation_Window Presentation_Start_Time="3344978700" Presentation_End_Time="3344979600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1372" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8484">
+         <Presentation_Window Presentation_Start_Time="3344979600" Presentation_End_Time="3344981400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e539" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2308410644 2672042846 IN IP4 192.168.0.221
+c=IN IP4 225.224.52.230
+m=audio 15322 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1389" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8489">
+         <Presentation_Window Presentation_Start_Time="3344981400" Presentation_End_Time="3344985000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1406" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8486">
+         <Presentation_Window Presentation_Start_Time="3344985000" Presentation_End_Time="3344986800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1423" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8500">
+         <Presentation_Window Presentation_Start_Time="3344986800" Presentation_End_Time="3344989500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e563" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2452392578 2850921630 IN IP4 192.168.0.42
+c=IN IP4 225.224.223.0
+m=audio 22102 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1440" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8491">
+         <Presentation_Window Presentation_Start_Time="3344989500" Presentation_End_Time="3344992200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1457" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8492">
+         <Presentation_Window Presentation_Start_Time="3344992200" Presentation_End_Time="3344994000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1474" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8502">
+         <Presentation_Window Presentation_Start_Time="3344994000" Presentation_End_Time="3344995800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e587" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2145660400 2532440185 IN IP4 192.168.0.20
+c=IN IP4 225.224.213.68
+m=audio 16232 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1491" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8493">
+         <Presentation_Window Presentation_Start_Time="3344995800" Presentation_End_Time="3344997600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1508" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8480">
+         <Presentation_Window Presentation_Start_Time="3344997600" Presentation_End_Time="3344999400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1525" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8508">
+         <Presentation_Window Presentation_Start_Time="3344999400" Presentation_End_Time="3345001200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e611" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2462112426 2631896971 IN IP4 192.168.0.95
+c=IN IP4 225.224.210.43
+m=audio 33800 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1542" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8561">
+         <Presentation_Window Presentation_Start_Time="3345001200" Presentation_End_Time="3345004800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1559" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8566">
+         <Presentation_Window Presentation_Start_Time="3345004800" Presentation_End_Time="3345008400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1573" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8560">
+         <Presentation_Window Presentation_Start_Time="3345008400" Presentation_End_Time="3345010200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e635" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2196334838 2357849120 IN IP4 192.168.0.118
+c=IN IP4 225.224.208.65
+m=audio 32910 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1590" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8574">
+         <Presentation_Window Presentation_Start_Time="3345010200" Presentation_End_Time="3345012000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1607" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8556">
+         <Presentation_Window Presentation_Start_Time="3345012000" Presentation_End_Time="3345015600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1624" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8565">
+         <Presentation_Window Presentation_Start_Time="3345015600" Presentation_End_Time="3345019200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e659" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2208160400 2325653075 IN IP4 192.168.0.253
+c=IN IP4 225.224.202.144
+m=audio 6102 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1641" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8562">
+         <Presentation_Window Presentation_Start_Time="3345019200" Presentation_End_Time="3345021000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1658" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8563">
+         <Presentation_Window Presentation_Start_Time="3345021000" Presentation_End_Time="3345022800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1675" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8564">
+         <Presentation_Window Presentation_Start_Time="3345022800" Presentation_End_Time="3345028200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e683" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2223449707 2649337768 IN IP4 192.168.0.236
+c=IN IP4 225.224.233.157
+m=audio 9368 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1692" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8557">
+         <Presentation_Window Presentation_Start_Time="3345028200" Presentation_End_Time="3345030000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1709" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8561">
+         <Presentation_Window Presentation_Start_Time="3345030000" Presentation_End_Time="3345033600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1726" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8576">
+         <Presentation_Window Presentation_Start_Time="3345033600" Presentation_End_Time="3345040800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e707" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2167572021 2233642577 IN IP4 192.168.0.10
+c=IN IP4 225.224.82.66
+m=audio 15148 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1743" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8567">
+         <Presentation_Window Presentation_Start_Time="3345040800" Presentation_End_Time="3345043200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1760" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8558">
+         <Presentation_Window Presentation_Start_Time="3345043200" Presentation_End_Time="3345044400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1777" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8556">
+         <Presentation_Window Presentation_Start_Time="3345044400" Presentation_End_Time="3345048000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e731" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2077911376 2548599242 IN IP4 192.168.0.41
+c=IN IP4 225.224.57.0
+m=audio 54246 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1794" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8565">
+         <Presentation_Window Presentation_Start_Time="3345048000" Presentation_End_Time="3345051600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1811" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8562">
+         <Presentation_Window Presentation_Start_Time="3345051600" Presentation_End_Time="3345053400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1828" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8563">
+         <Presentation_Window Presentation_Start_Time="3345053400" Presentation_End_Time="3345055200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e755" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2072189331 2308029174 IN IP4 192.168.0.51
+c=IN IP4 225.224.216.255
+m=audio 4334 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e1845" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8564">
+         <Presentation_Window Presentation_Start_Time="3345055200" Presentation_End_Time="3345060600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e1862" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8557">
+         <Presentation_Window Presentation_Start_Time="3345060600" Presentation_End_Time="3345062400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:8555" version="4">
+      <Name>Wartime Stories of Mollie Panter-Downes</Name>
+      <Description>Sylvestra Le Touzel recounts the poignant experiences of women who remained in Britain during the Second World War</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8627" version="5">
+      <Name>The Little Toe Radio Show</Name>
+      <Description>Kevin Duala has a Wiggly Park tale, then The Lighthouse Keeper's Catastrophe, The Incredible Adventures of the Wild Waste Paper and Mark Twain's The Prince and the Pauper</Description>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>age 4-7</Genre>
+   </Content>
+   <Content id="urn:bbc:8632" version="2">
+      <Name>The Goon Show</Name>
+      <Description>The Greenslade Story: Hear the amazing story of the rise and fall of BBC announcer Wallace Greenslade in all its glory</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8633" version="3">
+      <Name>Masala FM</Name>
+      <Description>First in a new series set in East London's premier Asian community Radio Station</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8634" version="4">
+      <Name>Taken at the Flood</Name>
+      <Description>A deadly air raid in London, odd goings-on in Nigeria, a rich widow and a grasping family</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8635" version="1">
+      <Name>Have His Carcase</Name>
+      <Description>Lord Peter Sets a Trap: All of Wimsey's clues seem to centre on a battered old razor</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8636" version="2">
+      <Name>Children's Hour</Name>
+      <Description>Once Upon a Time: Includes Big Pond: The Unhappy Dragon and The Fishing Bear from 1954 and Toytown Plays: The Conversion of Mr Growser from 1951</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8637" version="3">
+      <Name>This Sceptred Isle</Name>
+      <Description>Dickens and Poverty: In 1860 the London Docks froze over - the effect on the poor was devastating</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e902" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e902" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8637</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345103800" InteractivityWindowEndTime="3345104000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8673" version="5">
+      <Name>Westway</Name>
+      <Description>There's gossip amongst the regulars at the Health Centre</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8638" version="1">
+      <Name>Are You Looking at Me, Jimmy?</Name>
+      <Description>Arnold Brown reads from his semi-autobiographical novel</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8644" version="2">
+      <Name>Whisky Galore</Name>
+      <Description>Fifty thousand bottles of whisky lie on board the stricken SS Cabinet Minister and not a dram can be salvaged on the Sabbath</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8641" version="4">
+      <Name>I'm Sorry I Haven't a Clue</Name>
+      <Description>Sandi Toksvig joins the regulars in Bournemouth</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8630" version="5">
+      <Name>Paupers and Pig Killers</Name>
+      <Description>Travel Broadens the Seat: An account of life in a Somerset parsonage in the early 19th century</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8647" version="1">
+      <Name>Cold Comfort Farm</Name>
+      <Description>A Curse: Graceless, Feckless, Aimless and Pointless are cattle who feature in Stella Gibbons' humorous classic novel set on a farm</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8649" version="3">
+      <Name>King Street Junior</Name>
+      <Description>With Love: Mr Sims is very unhappy, so is Mrs Rudd, though for a quite different reason</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8651" version="4">
+      <Name>I'm Sorry I'll Read That Again</Name>
+      <Description>Featuring 'The Spy With My Cold', 'Cabaret At The Café Au Lait' and 'The Curse Of The Flying Wombat'</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8626" version="5">
+      <Name>The Big Toe Radio Show</Name>
+      <Description>More stories, competitions and quizzes</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8628" version="2">
+      <Name>Perelandra</Name>
+      <Description>Ransom swims to the other shore and discovers that the Green Lady is none other than Perelandra herself</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e1082" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e1082" version="3" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8628</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345129000" InteractivityWindowEndTime="3345129200"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8664" version="4">
+      <Name>The Mark Steel Lecture</Name>
+      <Description>Che Guevara: Comedian Mark Steel lectures humorously about historical figures that have shaped their era</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8666" version="1">
+      <Name>Giles Wemmbley-Hogg Goes Off</Name>
+      <Description>Sudan: A naive son of Budleigh Salterton, Giles Wemmbley-Hogg goes fishing in the Sudan</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8668" version="2">
+      <Name>Hudson and Pepperdine Show</Name>
+      <Description>Last in the series of the sketch-cum-variety show</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCSeven_d0e3310" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8567">
+         <Presentation_Window Presentation_Start_Time="3345062400" Presentation_End_Time="3345064800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1154" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2303924560 2564620971 IN IP4 192.168.0.76
+c=IN IP4 225.224.32.137
+m=audio 2214 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3327" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8558">
+         <Presentation_Window Presentation_Start_Time="3345064800" Presentation_End_Time="3345066000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3344" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8555">
+         <Presentation_Window Presentation_Start_Time="3345066000" Presentation_End_Time="3345070500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3358" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8560">
+         <Presentation_Window Presentation_Start_Time="3345070500" Presentation_End_Time="3345071400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1178" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2375762939 2654708861 IN IP4 192.168.0.252
+c=IN IP4 225.224.21.99
+m=audio 59768 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3375" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8574">
+         <Presentation_Window Presentation_Start_Time="3345071400" Presentation_End_Time="3345073200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3392" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8565">
+         <Presentation_Window Presentation_Start_Time="3345073200" Presentation_End_Time="3345076800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3409" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8562">
+         <Presentation_Window Presentation_Start_Time="3345076800" Presentation_End_Time="3345078600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1202" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2370407104 2548431395 IN IP4 192.168.0.207
+c=IN IP4 225.224.99.202
+m=audio 48998 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3426" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8563">
+         <Presentation_Window Presentation_Start_Time="3345078600" Presentation_End_Time="3345080400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3443" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8564">
+         <Presentation_Window Presentation_Start_Time="3345080400" Presentation_End_Time="3345085800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3460" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8557">
+         <Presentation_Window Presentation_Start_Time="3345085800" Presentation_End_Time="3345087600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1226" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2058151245 2362533569 IN IP4 192.168.0.240
+c=IN IP4 225.224.64.173
+m=audio 62356 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3477" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8627">
+         <Presentation_Window Presentation_Start_Time="3345087600" Presentation_End_Time="3345091200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3494" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8632">
+         <Presentation_Window Presentation_Start_Time="3345091200" Presentation_End_Time="3345093000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3511" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8633">
+         <Presentation_Window Presentation_Start_Time="3345093000" Presentation_End_Time="3345094800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1250" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2012664794 2447082518 IN IP4 192.168.0.107
+c=IN IP4 225.224.94.170
+m=audio 2020 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3528" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8634">
+         <Presentation_Window Presentation_Start_Time="3345094800" Presentation_End_Time="3345096600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3545" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8635">
+         <Presentation_Window Presentation_Start_Time="3345096600" Presentation_End_Time="3345098400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3562" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8636">
+         <Presentation_Window Presentation_Start_Time="3345098400" Presentation_End_Time="3345102000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1274" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2375747680 2439956664 IN IP4 192.168.0.238
+c=IN IP4 225.224.38.208
+m=audio 50518 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3576" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8637">
+         <Presentation_Window Presentation_Start_Time="3345102000" Presentation_End_Time="3345102900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3590" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8673">
+         <Presentation_Window Presentation_Start_Time="3345102900" Presentation_End_Time="3345103800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3604" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8638">
+         <Presentation_Window Presentation_Start_Time="3345103800" Presentation_End_Time="3345104700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1298" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2418914794 2868331908 IN IP4 192.168.0.53
+c=IN IP4 225.224.137.18
+m=audio 32682 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3621" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8644">
+         <Presentation_Window Presentation_Start_Time="3345104700" Presentation_End_Time="3345105600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3638" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8632">
+         <Presentation_Window Presentation_Start_Time="3345105600" Presentation_End_Time="3345107400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3655" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8641">
+         <Presentation_Window Presentation_Start_Time="3345107400" Presentation_End_Time="3345109200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1322" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2417572021 2640396117 IN IP4 192.168.0.226
+c=IN IP4 225.224.195.7
+m=audio 35518 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3672" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8630">
+         <Presentation_Window Presentation_Start_Time="3345109200" Presentation_End_Time="3345111900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3689" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8647">
+         <Presentation_Window Presentation_Start_Time="3345111900" Presentation_End_Time="3345112800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3706" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8649">
+         <Presentation_Window Presentation_Start_Time="3345112800" Presentation_End_Time="3345114600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1346" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2245788574 2486877441 IN IP4 192.168.0.162
+c=IN IP4 225.224.76.249
+m=audio 24258 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3723" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8651">
+         <Presentation_Window Presentation_Start_Time="3345114600" Presentation_End_Time="3345116400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3740" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8627">
+         <Presentation_Window Presentation_Start_Time="3345116400" Presentation_End_Time="3345120000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3757" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8626">
+         <Presentation_Window Presentation_Start_Time="3345120000" Presentation_End_Time="3345127200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1370" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2076339721 2457366942 IN IP4 192.168.0.4
+c=IN IP4 225.224.116.174
+m=audio 27426 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3774" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8628">
+         <Presentation_Window Presentation_Start_Time="3345127200" Presentation_End_Time="3345129000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3791" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8638">
+         <Presentation_Window Presentation_Start_Time="3345129000" Presentation_End_Time="3345129900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3808" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8644">
+         <Presentation_Window Presentation_Start_Time="3345129900" Presentation_End_Time="3345130800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1394" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2197463989 2323913573 IN IP4 192.168.0.184
+c=IN IP4 225.224.79.175
+m=audio 17418 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3825" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8632">
+         <Presentation_Window Presentation_Start_Time="3345130800" Presentation_End_Time="3345132600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3842" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8641">
+         <Presentation_Window Presentation_Start_Time="3345132600" Presentation_End_Time="3345134400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3859" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8634">
+         <Presentation_Window Presentation_Start_Time="3345134400" Presentation_End_Time="3345136200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1418" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2294113159 2571060180 IN IP4 192.168.0.3
+c=IN IP4 225.224.83.128
+m=audio 37704 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3876" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8635">
+         <Presentation_Window Presentation_Start_Time="3345136200" Presentation_End_Time="3345138000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3893" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8669">
+         <Presentation_Window Presentation_Start_Time="3345138000" Presentation_End_Time="3345141600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3910" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8633">
+         <Presentation_Window Presentation_Start_Time="3345141600" Presentation_End_Time="3345143400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1442" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2152435302 2430709838 IN IP4 192.168.0.21
+c=IN IP4 225.224.73.235
+m=audio 63380 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e3927" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8664">
+         <Presentation_Window Presentation_Start_Time="3345143400" Presentation_End_Time="3345145200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3944" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8666">
+         <Presentation_Window Presentation_Start_Time="3345145200" Presentation_End_Time="3345147000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e3961" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8668">
+         <Presentation_Window Presentation_Start_Time="3345147000" Presentation_End_Time="3345148800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1466" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2191558837 2526992796 IN IP4 192.168.0.28
+c=IN IP4 225.224.216.20
+m=audio 48428 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:8707" version="2">
+      <Name>The Little Toe Radio Show</Name>
+      <Description>Kirsten O'Brien has a tale from Wiggly Park, then the tales The Lighthouse Keeper's Cat, The BFG, The Incredible Adventures of Professor Branestawm and The Prince and the Pauper</Description>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>age 4-7</Genre>
+   </Content>
+   <Content id="urn:bbc:8689" version="3">
+      <Name>Hancock's Half Hour</Name>
+      <Description>The Bequest: Hancock inherits a fortune if he finds himself a wife</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8695" version="5">
+      <Name>The Attractive Young Rabbi</Name>
+      <Description>The TV Stars: Rival Rabbis clamour to be the first on TV</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8691" version="1">
+      <Name>Taken at the Flood</Name>
+      <Description>Kathie asks Poirot to find an apparently dead man and a stranger appears in the village</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8683" version="2">
+      <Name>Have His Carcase</Name>
+      <Description>A Dutiful Son: Various and sundry suspects and relatives turn up</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8682" version="4">
+      <Name>Children's Hour</Name>
+      <Description>Once Upon a Time: Sandy Chalmers presents more highlights from the BBC institution, including Big Pond, A Story of Bran the Cat and Toytown Plays</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8685" version="5">
+      <Name>This Sceptred Isle</Name>
+      <Description>The Rise of Bismarck and the Death of Palmerston: Bismarck takes charge, the Birth of 'Realpolitik', the Schleswig-Holstein dispute and the end of an era at Westminster</Description>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e1579" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e1579" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8685</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345190200" InteractivityWindowEndTime="3345190400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8678" version="1">
+      <Name>Westway</Name>
+      <Description>More goings on at Westway Health Centre</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8679" version="3">
+      <Name>Are You Looking at Me, Jimmy?</Name>
+      <Description>Arnold spots a mysterious veiled woman at his Uncle Harry's funeral, while Rabbi Freedman delivers his address on stilts</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:8696" version="4">
+      <Name>Whisky Galore</Name>
+      <Description>A whisky drought blights the Hebridean islands</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8684" version="5">
+      <Name>The News Quiz</Name>
+      <Description>Alan Coren and Andy Hamilton are just two of the panellists slugging it out in a mighty news battle</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Game show</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+   </Content>
+   <Content id="urn:bbc:8708" version="2">
+      <Name>Paupers and Pig Killers</Name>
+      <Description>The Year of the Cuckoo: Life is transformed at Overstowey Parsonage when Robert agrees to give up booze</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8680" version="3">
+      <Name>Cold Comfort Farm</Name>
+      <Description>The Cousins: Flora has arrived at Cold Comfort Farm where she meets a sullen Cousin Judith</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8693" version="4">
+      <Name>The Men from the Ministry</Name>
+      <Description/>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8687" version="1">
+      <Name>Steptoe and Son</Name>
+      <Description>Full House: When Harold gets fleeced by card sharks, Albert comes to the rescue</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Sitcom</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Heart-warming</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Irreverent</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8703" version="2">
+      <Name>Prelandra</Name>
+      <Description>The Green Lady tells Ransom of Maleldil's decree; she cannot stay the night on the mountainous island known as the fixed land</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Science fiction</Genre>
+   </Content>
+   <Content id="urn:bbc:8681" version="3">
+      <Name>Children's Hour: Once Upon a Time</Name>
+      <Description>Sandy Chalmers presents more highlights from the long running BBC institution, including Big Pond, A Story of Bran the Cat and Toytown Plays</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e1791" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e1791" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8681</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345226200" InteractivityWindowEndTime="3345226400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8694" version="5">
+      <Name>Half Sketch</Name>
+      <Description>Topical sketch show madness with the Northern Irish comedians</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8686" version="1">
+      <Name>The Cheese Shop Presents...</Name>
+      <Description>The Butter Factor: Showcasing the comedy team of six young writers with revue-based character and sketch comedy</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8701" version="2">
+      <Name>Old Harry's Game</Name>
+      <Description>Another Country: The professor is writing the definitive history of the world with access to the characters who made it</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCSeven_d0e5654" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8628">
+         <Presentation_Window Presentation_Start_Time="3345148800" Presentation_End_Time="3345150600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5671" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8638">
+         <Presentation_Window Presentation_Start_Time="3345150600" Presentation_End_Time="3345151500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5688" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8644">
+         <Presentation_Window Presentation_Start_Time="3345151500" Presentation_End_Time="3345152400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1879" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2072738647 2507980346 IN IP4 192.168.0.9
+c=IN IP4 225.224.132.148
+m=audio 2680 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e5705" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8634">
+         <Presentation_Window Presentation_Start_Time="3345152400" Presentation_End_Time="3345154200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5722" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8635">
+         <Presentation_Window Presentation_Start_Time="3345154200" Presentation_End_Time="3345156000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5739" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8669">
+         <Presentation_Window Presentation_Start_Time="3345156000" Presentation_End_Time="3345159600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1903" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2440429687 2928604125 IN IP4 192.168.0.135
+c=IN IP4 225.224.97.175
+m=audio 34098 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e5756" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8633">
+         <Presentation_Window Presentation_Start_Time="3345159600" Presentation_End_Time="3345161400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5773" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8664">
+         <Presentation_Window Presentation_Start_Time="3345161400" Presentation_End_Time="3345163200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5790" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8666">
+         <Presentation_Window Presentation_Start_Time="3345163200" Presentation_End_Time="3345165000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1927" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2179611206 2491882324 IN IP4 192.168.0.134
+c=IN IP4 225.224.0.183
+m=audio 39568 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e5807" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8668">
+         <Presentation_Window Presentation_Start_Time="3345165000" Presentation_End_Time="3345166800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5824" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8630">
+         <Presentation_Window Presentation_Start_Time="3345166800" Presentation_End_Time="3345169500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5841" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8647">
+         <Presentation_Window Presentation_Start_Time="3345169500" Presentation_End_Time="3345170400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1951" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2488677978 2924728393 IN IP4 192.168.0.77
+c=IN IP4 225.224.167.60
+m=audio 26124 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e5858" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8649">
+         <Presentation_Window Presentation_Start_Time="3345170400" Presentation_End_Time="3345172200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5875" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8651">
+         <Presentation_Window Presentation_Start_Time="3345172200" Presentation_End_Time="3345174000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5892" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8707">
+         <Presentation_Window Presentation_Start_Time="3345174000" Presentation_End_Time="3345177600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1975" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2130233764 2138198851 IN IP4 192.168.0.8
+c=IN IP4 225.224.136.167
+m=audio 6038 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e5909" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8689">
+         <Presentation_Window Presentation_Start_Time="3345177600" Presentation_End_Time="3345179400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5926" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8695">
+         <Presentation_Window Presentation_Start_Time="3345179400" Presentation_End_Time="3345181200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5943" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8691">
+         <Presentation_Window Presentation_Start_Time="3345181200" Presentation_End_Time="3345183000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e1999" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2497344970 2773071288 IN IP4 192.168.0.221
+c=IN IP4 225.224.199.147
+m=audio 49906 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e5960" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8683">
+         <Presentation_Window Presentation_Start_Time="3345183000" Presentation_End_Time="3345184800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5977" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8682">
+         <Presentation_Window Presentation_Start_Time="3345184800" Presentation_End_Time="3345188400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e5991" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8685">
+         <Presentation_Window Presentation_Start_Time="3345188400" Presentation_End_Time="3345189300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2023" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2179718017 2635620116 IN IP4 192.168.0.68
+c=IN IP4 225.224.149.190
+m=audio 41474 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6005" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8678">
+         <Presentation_Window Presentation_Start_Time="3345189300" Presentation_End_Time="3345190200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6019" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8679">
+         <Presentation_Window Presentation_Start_Time="3345190200" Presentation_End_Time="3345191100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6036" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8696">
+         <Presentation_Window Presentation_Start_Time="3345191100" Presentation_End_Time="3345192000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2047" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2098846435 2261367797 IN IP4 192.168.0.120
+c=IN IP4 225.224.241.208
+m=audio 52534 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6053" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8689">
+         <Presentation_Window Presentation_Start_Time="3345192000" Presentation_End_Time="3345193800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6070" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8684">
+         <Presentation_Window Presentation_Start_Time="3345193800" Presentation_End_Time="3345195600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6087" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8708">
+         <Presentation_Window Presentation_Start_Time="3345195600" Presentation_End_Time="3345198300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2071" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2062927246 2279800414 IN IP4 192.168.0.195
+c=IN IP4 225.224.76.183
+m=audio 5920 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6104" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8680">
+         <Presentation_Window Presentation_Start_Time="3345198300" Presentation_End_Time="3345199200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6121" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8693">
+         <Presentation_Window Presentation_Start_Time="3345199200" Presentation_End_Time="3345201000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6138" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8687">
+         <Presentation_Window Presentation_Start_Time="3345201000" Presentation_End_Time="3345202800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2095" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2335800170 2766937254 IN IP4 192.168.0.215
+c=IN IP4 225.224.82.238
+m=audio 35138 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6155" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8707">
+         <Presentation_Window Presentation_Start_Time="3345202800" Presentation_End_Time="3345206400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6172" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8626">
+         <Presentation_Window Presentation_Start_Time="3345206400" Presentation_End_Time="3345213600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6189" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8703">
+         <Presentation_Window Presentation_Start_Time="3345213600" Presentation_End_Time="3345215400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2119" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2080352783 2239059448 IN IP4 192.168.0.53
+c=IN IP4 225.224.127.19
+m=audio 32980 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6206" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8679">
+         <Presentation_Window Presentation_Start_Time="3345215400" Presentation_End_Time="3345216300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6223" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8696">
+         <Presentation_Window Presentation_Start_Time="3345216300" Presentation_End_Time="3345217200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6240" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8689">
+         <Presentation_Window Presentation_Start_Time="3345217200" Presentation_End_Time="3345219000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2143" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2390060424 2736434935 IN IP4 192.168.0.4
+c=IN IP4 225.224.91.91
+m=audio 59840 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6257" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8684">
+         <Presentation_Window Presentation_Start_Time="3345219000" Presentation_End_Time="3345220800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6274" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8691">
+         <Presentation_Window Presentation_Start_Time="3345220800" Presentation_End_Time="3345222600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6291" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8683">
+         <Presentation_Window Presentation_Start_Time="3345222600" Presentation_End_Time="3345224400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2167" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2122451782 2443206786 IN IP4 192.168.0.153
+c=IN IP4 225.224.247.147
+m=audio 52348 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6308" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8681">
+         <Presentation_Window Presentation_Start_Time="3345224400" Presentation_End_Time="3345228000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6322" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8695">
+         <Presentation_Window Presentation_Start_Time="3345228000" Presentation_End_Time="3345229800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6339" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8694">
+         <Presentation_Window Presentation_Start_Time="3345229800" Presentation_End_Time="3345231600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2191" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2461029052 2866516112 IN IP4 192.168.0.243
+c=IN IP4 225.224.239.198
+m=audio 25340 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e6356" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8686">
+         <Presentation_Window Presentation_Start_Time="3345231600" Presentation_End_Time="3345233400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e6373" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8701">
+         <Presentation_Window Presentation_Start_Time="3345233400" Presentation_End_Time="3345235200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:8736" version="3">
+      <Name>Round the Horne</Name>
+      <Description>The Knights of Camelot: The Knights of the Round Table take a funny turn, while Julian and Sandy take a gander at Mr Horne's wardrobe</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8732" version="5">
+      <Name>Dead Ringers</Name>
+      <Description>Dumbledore and Gandalf feel the satirical bite of the team, in this show from January 2003</Description>
+      <Genre>Satire</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Humour</Genre>
+      <Genre>Standup comedian(s)</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+   </Content>
+   <Content id="urn:bbc:8739" version="1">
+      <Name>Taken at the Flood</Name>
+      <Description>Following Arden's death, Poirot gets involved</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8729" version="2">
+      <Name>Have His Carcase</Name>
+      <Description>The Snake in the Grass: Lord Wimsey exchanges harsh words with Harriet, and a dinner date leads to a shocking revelation</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8749" version="4">
+      <Name>Children's Hour</Name>
+      <Description>Once Upon a Time: Sandy Chalmers with more highlights from the BBC favourite, including The Big Pond: Fizzle in Trouble and Toytown Plays: A Sea Voyage</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8743" version="5">
+      <Name>This Sceptred Isle</Name>
+      <Description>1867 - Disraeli and Electoral Reform: The tortuous road to Electoral Reform results in Parliamentary upheaval - something Victoria had tried hard to prevent</Description>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:8730" version="1">
+      <Name>Westway</Name>
+      <Description>Westway Health Centre is a hive of activity</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e2329" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e2329" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8730</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345277500" InteractivityWindowEndTime="3345277700"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8741" version="3">
+      <Name>Are You Looking at Me, Jimmy?</Name>
+      <Description>Arnold discovers his Uncle left something really valuable</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:8752" version="4">
+      <Name>Whisky Galore</Name>
+      <Description>The fortifying properties of a dram are put to the test when George faces up to his dragon of a mother</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8738" version="5">
+      <Name>Wireless Wise</Name>
+      <Description>David Hatch quizzes Helen Lederer, Graham Seed, Margaret Howard and Simon Fanshawe</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Game show</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+   </Content>
+   <Content id="urn:bbc:8753" version="2">
+      <Name>Black Velvet</Name>
+      <Description/>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8744" version="3">
+      <Name>Cold Comfort Farm</Name>
+      <Description>Something Nasty in the Woodshed: Flora continues her attempts to bring changes to the farm</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8733" version="4">
+      <Name>Brothers in Law</Name>
+      <Description>1471: Sally and Joy both attempt to get Roger some work</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8762" version="1">
+      <Name>Four Joneses and a Jenkins</Name>
+      <Description>December - Sauce for the Goose: It's goose-feathering night and Megan is determined to save Goodrem the Goose from a plucking</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8734" version="2">
+      <Name>Perelandra</Name>
+      <Description>Ransom sees Dr Weston approach from the crashed spaceship, and races to meet him before he can talk to the Green Lady</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8737" version="5">
+      <Name>Children's Hour</Name>
+      <Description>Once Upon a Time: Sandy Chalmers showcases more highlights from the BBC favourite, including The Big Pond: Fizzle in Trouble and Toytown Plays: A Sea Voyage</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8747" version="1">
+      <Name>Lenin of the Rovers</Name>
+      <Description>Ghosts and Ghoolies: Ricky decides to write for a tabloid newspaper, and ends up learning a few painful lessons about life and Gloria Hunniford</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e2520" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e2520" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8747</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345318000" InteractivityWindowEndTime="3345318200"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8765" version="2">
+      <Name>The Million Pound Radio Show</Name>
+      <Description>Andy Hamilton and Nick Revell join Harry Enfield for radio fun</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8745" version="4">
+      <Name>4 at the Store</Name>
+      <Description>Simon Bligh hosts a half-hour of stand-up comedy from the Comedy Store in 2002 with Alan Carr, Richard Morton and Gina Yashere</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCSeven_d0e8173" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8703">
+         <Presentation_Window Presentation_Start_Time="3345235200" Presentation_End_Time="3345237000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2574" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2116851806 2126556395 IN IP4 192.168.0.14
+c=IN IP4 225.224.245.33
+m=audio 47944 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8190" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8679">
+         <Presentation_Window Presentation_Start_Time="3345237000" Presentation_End_Time="3345237900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8207" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8696">
+         <Presentation_Window Presentation_Start_Time="3345237900" Presentation_End_Time="3345238800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8224" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8691">
+         <Presentation_Window Presentation_Start_Time="3345238800" Presentation_End_Time="3345240600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2598" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2402770996 2767120361 IN IP4 192.168.0.178
+c=IN IP4 225.224.156.213
+m=audio 33132 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8241" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8683">
+         <Presentation_Window Presentation_Start_Time="3345240600" Presentation_End_Time="3345242400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8258" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8719">
+         <Presentation_Window Presentation_Start_Time="3345242400" Presentation_End_Time="3345246000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8272" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8695">
+         <Presentation_Window Presentation_Start_Time="3345246000" Presentation_End_Time="3345247800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2622" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2132766723 2556655883 IN IP4 192.168.0.116
+c=IN IP4 225.224.39.66
+m=audio 33700 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8289" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8694">
+         <Presentation_Window Presentation_Start_Time="3345247800" Presentation_End_Time="3345249600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8306" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8686">
+         <Presentation_Window Presentation_Start_Time="3345249600" Presentation_End_Time="3345251400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8323" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8701">
+         <Presentation_Window Presentation_Start_Time="3345251400" Presentation_End_Time="3345253200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2646" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2479415893 2888336181 IN IP4 192.168.0.195
+c=IN IP4 225.224.115.2
+m=audio 22340 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8340" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8708">
+         <Presentation_Window Presentation_Start_Time="3345253200" Presentation_End_Time="3345255900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8357" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8680">
+         <Presentation_Window Presentation_Start_Time="3345255900" Presentation_End_Time="3345256800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8374" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8693">
+         <Presentation_Window Presentation_Start_Time="3345256800" Presentation_End_Time="3345258600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2670" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2127090454 2479705810 IN IP4 192.168.0.152
+c=IN IP4 225.224.5.112
+m=audio 40952 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8391" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8687">
+         <Presentation_Window Presentation_Start_Time="3345258600" Presentation_End_Time="3345260400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8408" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8731">
+         <Presentation_Window Presentation_Start_Time="3345260400" Presentation_End_Time="3345264000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8425" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8736">
+         <Presentation_Window Presentation_Start_Time="3345264000" Presentation_End_Time="3345265800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2694" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2347885131 2492172240 IN IP4 192.168.0.146
+c=IN IP4 225.224.149.85
+m=audio 7170 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8442" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8732">
+         <Presentation_Window Presentation_Start_Time="3345265800" Presentation_End_Time="3345267600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8459" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8739">
+         <Presentation_Window Presentation_Start_Time="3345267600" Presentation_End_Time="3345269400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8476" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8729">
+         <Presentation_Window Presentation_Start_Time="3345269400" Presentation_End_Time="3345271200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2718" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2066314697 2313919067 IN IP4 192.168.0.42
+c=IN IP4 225.224.214.91
+m=audio 59460 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8493" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8749">
+         <Presentation_Window Presentation_Start_Time="3345271200" Presentation_End_Time="3345274800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8507" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8743">
+         <Presentation_Window Presentation_Start_Time="3345274800" Presentation_End_Time="3345275700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8521" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8730">
+         <Presentation_Window Presentation_Start_Time="3345275700" Presentation_End_Time="3345276600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2742" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2127777099 2450561522 IN IP4 192.168.0.111
+c=IN IP4 225.224.12.45
+m=audio 43010 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8535" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8741">
+         <Presentation_Window Presentation_Start_Time="3345276600" Presentation_End_Time="3345277500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8552" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8752">
+         <Presentation_Window Presentation_Start_Time="3345277500" Presentation_End_Time="3345278400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8569" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8736">
+         <Presentation_Window Presentation_Start_Time="3345278400" Presentation_End_Time="3345280200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2766" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2408996582 2622543334 IN IP4 192.168.0.40
+c=IN IP4 225.224.70.145
+m=audio 34066 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8586" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8738">
+         <Presentation_Window Presentation_Start_Time="3345280200" Presentation_End_Time="3345282000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8603" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8753">
+         <Presentation_Window Presentation_Start_Time="3345282000" Presentation_End_Time="3345284700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8620" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8744">
+         <Presentation_Window Presentation_Start_Time="3345284700" Presentation_End_Time="3345285600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2790" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2167312622 2650756835 IN IP4 192.168.0.31
+c=IN IP4 225.224.14.222
+m=audio 39128 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8637" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8733">
+         <Presentation_Window Presentation_Start_Time="3345285600" Presentation_End_Time="3345287400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8654" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8762">
+         <Presentation_Window Presentation_Start_Time="3345287400" Presentation_End_Time="3345289200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8671" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8731">
+         <Presentation_Window Presentation_Start_Time="3345289200" Presentation_End_Time="3345292800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2814" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2182739257 2396926879 IN IP4 192.168.0.0
+c=IN IP4 225.224.220.121
+m=audio 50956 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8688" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8626">
+         <Presentation_Window Presentation_Start_Time="3345292800" Presentation_End_Time="3345300000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8705" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8734">
+         <Presentation_Window Presentation_Start_Time="3345300000" Presentation_End_Time="3345301800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8722" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8741">
+         <Presentation_Window Presentation_Start_Time="3345301800" Presentation_End_Time="3345302700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2838" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2365142822 2789398193 IN IP4 192.168.0.97
+c=IN IP4 225.224.66.79
+m=audio 16014 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8739" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8752">
+         <Presentation_Window Presentation_Start_Time="3345302700" Presentation_End_Time="3345303600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8756" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8736">
+         <Presentation_Window Presentation_Start_Time="3345303600" Presentation_End_Time="3345305400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8773" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8738">
+         <Presentation_Window Presentation_Start_Time="3345305400" Presentation_End_Time="3345307200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2862" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2140457153 2181808471 IN IP4 192.168.0.37
+c=IN IP4 225.224.42.32
+m=audio 47572 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8790" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8739">
+         <Presentation_Window Presentation_Start_Time="3345307200" Presentation_End_Time="3345309000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8807" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8755">
+         <Presentation_Window Presentation_Start_Time="3345309000" Presentation_End_Time="3345310800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8821" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8737">
+         <Presentation_Window Presentation_Start_Time="3345310800" Presentation_End_Time="3345314400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2886" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2157058715 2336486815 IN IP4 192.168.0.115
+c=IN IP4 225.224.17.80
+m=audio 29342 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8838" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8732">
+         <Presentation_Window Presentation_Start_Time="3345314400" Presentation_End_Time="3345316200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8855" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8747">
+         <Presentation_Window Presentation_Start_Time="3345316200" Presentation_End_Time="3345318000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e8872" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8765">
+         <Presentation_Window Presentation_Start_Time="3345318000" Presentation_End_Time="3345319800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e2910" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2229995727 2573394774 IN IP4 192.168.0.64
+c=IN IP4 225.224.18.211
+m=audio 12120 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e8889" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8745">
+         <Presentation_Window Presentation_Start_Time="3345319800" Presentation_End_Time="3345321600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:9343" version="1">
+      <Name>The Little Toe Radio Show</Name>
+      <Description>Kirsten O'Brien has tales from Wiggly Park, The BFG and the Incredible Adventures of Professor Branestawm</Description>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>age 4-7</Genre>
+      <Genre>FICTION</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>Children</Genre>
+   </Content>
+   <Content id="urn:bbc:9353" version="2">
+      <Name>Dad's Army</Name>
+      <Description>Mum's Army: When Captain Mainwaring opens the ranks of his Home Guard platoon to the ladies, the problems are not purely physical</Description>
+      <Genre>Sitcom</Genre>
+      <Genre>Pure entertainment</Genre>
+      <Genre>Fictional portrayal of life</Genre>
+      <Genre>War</Genre>
+      <Genre>Wacky</Genre>
+      <Genre>Humorous</Genre>
+      <Genre>Satirical</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9341" version="3">
+      <Name>Parsons and Naylor's Pull Out Section</Name>
+      <Description>Andy Parsons and Henry Naylor perform daft sketches and sharp-edged stand-up about the week's news</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9339" version="5">
+      <Name>Taken at the Flood</Name>
+      <Description>Was Enoch Arden really Robert Underhay? Why won't Rosaleen talk about her first husband? What's Frances up to? Poirot delves</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9363" version="1">
+      <Name>Have His Carcase</Name>
+      <Description>Too Perfect an Alibi: Could Lord Wimsey have failed? Desperation sets in as he fails to confirm his theories</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9337" version="4">
+      <Name>This Sceptred Isle</Name>
+      <Description>Disraeli and the Origin of Two Nations: Disraeli - 'the conjuror' - is Prime Minister</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9344" version="5">
+      <Name>Westway</Name>
+      <Description>More exploits with the staff and patients from the Health Centre</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9338" version="1">
+      <Name>Are You Looking at Me, Jimmy?</Name>
+      <Description>Knocked down by a friend's Rolls-Royce, Arnold recuperates in Glasgow's leading private healthcare establishment - the Inhumana</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e3085" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e3085" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9338</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345364800" InteractivityWindowEndTime="3345365000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9351" version="3">
+      <Name>Whisky Galore</Name>
+      <Description>The Excise man arrives, and the prospect of prison beckons</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9362" version="4">
+      <Name>Just a Minute</Name>
+      <Description>60 seconds without hesitation, repetition or deviation for Paul Merton, Clement Freud, Derek Nimmo and Peter Jones</Description>
+      <Genre>Satire</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Game show</Genre>
+      <Genre>Quiz/Contest</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+   </Content>
+   <Content id="urn:bbc:9367" version="5">
+      <Name>Apple Blossom Afternoon</Name>
+      <Description/>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9340" version="2">
+      <Name>Cold Comfort Farm</Name>
+      <Description>Elfine Transformed: Flora plans to transform Elfine and takes her up to London</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9342" version="3">
+      <Name>A Look Back at the Nineties</Name>
+      <Description>1996: Brian Perkins and Co review 1996 from the vantage point of, er, 1993</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9354" version="4">
+      <Name>The Navy Lark</Name>
+      <Description>Strike Up the Band: Number One discovers the hidden Unit Comfort Fund accounts and throws a draft dance - more trouble for Pertwee</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9365" version="1">
+      <Name>The Big Toe Radio Show</Name>
+      <Description>More stories, music and quizzes</Description>
+      <Genre>AMUSEMENT</Genre>
+      <Genre>MUSIC</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Children</Genre>
+   </Content>
+   <Content id="urn:bbc:9336" version="2">
+      <Name>Perelandra</Name>
+      <Description>During their conversation, Weston suffers from a kind of fit, but in the morning Ransom finds his body has disappeared</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Science fiction</Genre>
+   </Content>
+   <Content id="urn:bbc:9357" version="3">
+      <Name>Kenny Everett's Radio Days</Name>
+      <Description>Kenny Everett was one of the UK's most creative DJs</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9345" version="5">
+      <Name>In One Ear</Name>
+      <Description>The 1985 Sony Award winning sketch show series, originally broadcast live</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e3285" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e3285" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9345</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345406200" InteractivityWindowEndTime="3345406400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9347" version="1">
+      <Name>Comic to Comic</Name>
+      <Description>Chris Green: Character comic Chris Green talks about his creation Tina C, the US Country chanteuse; his influences and his Olivier award</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCSeven_d0e10628" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8734">
+         <Presentation_Window Presentation_Start_Time="3345321600" Presentation_End_Time="3345323400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10645" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8741">
+         <Presentation_Window Presentation_Start_Time="3345323400" Presentation_End_Time="3345324300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3329" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2027114868 2450531005 IN IP4 192.168.0.8
+c=IN IP4 225.224.174.241
+m=audio 38550 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e10662" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8752">
+         <Presentation_Window Presentation_Start_Time="3345324300" Presentation_End_Time="3345325200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10679" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8739">
+         <Presentation_Window Presentation_Start_Time="3345325200" Presentation_End_Time="3345327000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10696" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8729">
+         <Presentation_Window Presentation_Start_Time="3345327000" Presentation_End_Time="3345328800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3353" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2361694335 2621917723 IN IP4 192.168.0.192
+c=IN IP4 225.224.241.238
+m=audio 6734 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e10713" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8737">
+         <Presentation_Window Presentation_Start_Time="3345328800" Presentation_End_Time="3345332400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10730" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8732">
+         <Presentation_Window Presentation_Start_Time="3345332400" Presentation_End_Time="3345334200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10747" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8747">
+         <Presentation_Window Presentation_Start_Time="3345334200" Presentation_End_Time="3345336000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3377" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2152694702 2626174926 IN IP4 192.168.0.159
+c=IN IP4 225.224.226.117
+m=audio 30060 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e10764" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8765">
+         <Presentation_Window Presentation_Start_Time="3345336000" Presentation_End_Time="3345337800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10781" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8745">
+         <Presentation_Window Presentation_Start_Time="3345337800" Presentation_End_Time="3345339600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10798" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8753">
+         <Presentation_Window Presentation_Start_Time="3345339600" Presentation_End_Time="3345342300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3401" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2208068847 2669525145 IN IP4 192.168.0.1
+c=IN IP4 225.224.20.244
+m=audio 20236 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e10815" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8744">
+         <Presentation_Window Presentation_Start_Time="3345342300" Presentation_End_Time="3345343200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10832" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8733">
+         <Presentation_Window Presentation_Start_Time="3345343200" Presentation_End_Time="3345345000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10849" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8762">
+         <Presentation_Window Presentation_Start_Time="3345345000" Presentation_End_Time="3345346800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3425" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2042556762 2355438231 IN IP4 192.168.0.195
+c=IN IP4 225.224.58.58
+m=audio 33106 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e10866" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9343">
+         <Presentation_Window Presentation_Start_Time="3345346800" Presentation_End_Time="3345350400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10883" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9353">
+         <Presentation_Window Presentation_Start_Time="3345350400" Presentation_End_Time="3345352200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10900" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9341">
+         <Presentation_Window Presentation_Start_Time="3345352200" Presentation_End_Time="3345354000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3449" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2020233154 2155242919 IN IP4 192.168.0.189
+c=IN IP4 225.224.63.71
+m=audio 8542 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e10917" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9339">
+         <Presentation_Window Presentation_Start_Time="3345354000" Presentation_End_Time="3345355800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10934" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9363">
+         <Presentation_Window Presentation_Start_Time="3345355800" Presentation_End_Time="3345357600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10951" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9346">
+         <Presentation_Window Presentation_Start_Time="3345357600" Presentation_End_Time="3345361200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3473" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2277496337 2583862303 IN IP4 192.168.0.32
+c=IN IP4 225.224.160.48
+m=audio 18200 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e10968" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9337">
+         <Presentation_Window Presentation_Start_Time="3345361200" Presentation_End_Time="3345362100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10982" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9344">
+         <Presentation_Window Presentation_Start_Time="3345362100" Presentation_End_Time="3345363000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e10996" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9338">
+         <Presentation_Window Presentation_Start_Time="3345363000" Presentation_End_Time="3345363900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3497" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2195144653 2417678832 IN IP4 192.168.0.2
+c=IN IP4 225.224.169.147
+m=audio 64690 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e11013" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9351">
+         <Presentation_Window Presentation_Start_Time="3345363900" Presentation_End_Time="3345364800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11030" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9353">
+         <Presentation_Window Presentation_Start_Time="3345364800" Presentation_End_Time="3345366600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11047" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9362">
+         <Presentation_Window Presentation_Start_Time="3345366600" Presentation_End_Time="3345368400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3521" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2212982177 2242904662 IN IP4 192.168.0.230
+c=IN IP4 225.224.19.46
+m=audio 20214 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e11064" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9367">
+         <Presentation_Window Presentation_Start_Time="3345368400" Presentation_End_Time="3345371100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11081" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9340">
+         <Presentation_Window Presentation_Start_Time="3345371100" Presentation_End_Time="3345372000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11098" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9342">
+         <Presentation_Window Presentation_Start_Time="3345372000" Presentation_End_Time="3345373800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3545" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2078308105 2527252196 IN IP4 192.168.0.100
+c=IN IP4 225.224.73.87
+m=audio 52468 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e11115" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9354">
+         <Presentation_Window Presentation_Start_Time="3345373800" Presentation_End_Time="3345375600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11132" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9343">
+         <Presentation_Window Presentation_Start_Time="3345375600" Presentation_End_Time="3345379200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11149" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9365">
+         <Presentation_Window Presentation_Start_Time="3345379200" Presentation_End_Time="3345386400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3569" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2252929687 2639663695 IN IP4 192.168.0.121
+c=IN IP4 225.224.121.206
+m=audio 28092 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e11166" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9336">
+         <Presentation_Window Presentation_Start_Time="3345386400" Presentation_End_Time="3345388200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11183" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9338">
+         <Presentation_Window Presentation_Start_Time="3345388200" Presentation_End_Time="3345389100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11200" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9351">
+         <Presentation_Window Presentation_Start_Time="3345389100" Presentation_End_Time="3345390000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3593" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2236221313 2678939818 IN IP4 192.168.0.167
+c=IN IP4 225.224.190.134
+m=audio 53716 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e11217" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9353">
+         <Presentation_Window Presentation_Start_Time="3345390000" Presentation_End_Time="3345391800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11234" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9362">
+         <Presentation_Window Presentation_Start_Time="3345391800" Presentation_End_Time="3345393600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11251" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9339">
+         <Presentation_Window Presentation_Start_Time="3345393600" Presentation_End_Time="3345395400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3617" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2054336547 2485382079 IN IP4 192.168.0.224
+c=IN IP4 225.224.51.14
+m=audio 47188 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e11268" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9363">
+         <Presentation_Window Presentation_Start_Time="3345395400" Presentation_End_Time="3345397200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11285" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9346">
+         <Presentation_Window Presentation_Start_Time="3345397200" Presentation_End_Time="3345400800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11302" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9341">
+         <Presentation_Window Presentation_Start_Time="3345400800" Presentation_End_Time="3345402600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3641" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2182785034 2676651000 IN IP4 192.168.0.144
+c=IN IP4 225.224.176.183
+m=audio 3202 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e11319" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9357">
+         <Presentation_Window Presentation_Start_Time="3345402600" Presentation_End_Time="3345404400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11336" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9345">
+         <Presentation_Window Presentation_Start_Time="3345404400" Presentation_End_Time="3345406200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e11353" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9347">
+         <Presentation_Window Presentation_Start_Time="3345406200" Presentation_End_Time="3345408000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e3665" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2271713256 2343704222 IN IP4 192.168.0.233
+c=IN IP4 225.224.138.115
+m=audio 4226 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:9410" version="2">
+      <Name>The Little Toe Radio Show</Name>
+      <Description>More from Wiggly Park, plus The Lighthouse Keeper's Breakfast, The BFG, The Incredible Adventures of Professor Branestawm and The Prince and the Pauper</Description>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>age 4-7</Genre>
+   </Content>
+   <Content id="urn:bbc:9389" version="3">
+      <Name>Take It From Here</Name>
+      <Description>Jimmy announces that he is to take up a post as the principal of the BBC Research College</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9384" version="5">
+      <Name>People Like Us</Name>
+      <Description>The Ski Courier: Another eye opening report from hapless reporter Roy Mallard as he gets to grips with what it's really like to be a ski rep</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9395" version="1">
+      <Name>Taken at the Flood</Name>
+      <Description>It's time for Poirot to reveal all - but not before another victim falls prey to the murderous machinations of the killer</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9383" version="2">
+      <Name>Have His Carcase</Name>
+      <Description>All a Question of Time: Make or break time for Lord Wimsey</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9382" version="4">
+      <Name>Children's Hour</Name>
+      <Description>Once Upon a Time: Sandy Chalmers hosts the last in a series showcasing gems from the BBC institution</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9392" version="5">
+      <Name>This Sceptred Isle</Name>
+      <Description>The Irish Church and Constitutional Crisis: Disraeli's time in office is swiftly cut short by the question of the 'Irish Church'</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>History</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9414" version="1">
+      <Name>Short Stories by John Mortimer</Name>
+      <Description>Rumpole and the Widow Twankey: A short story by English novelist John Mortimer, best known as the creator of Rumpole of the Bailey</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9380" version="3">
+      <Name>Are You Looking at Me, Jimmy?</Name>
+      <Description>Arnold Brown concludes his semi-autobiographical novel</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e3820" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e3820" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9380</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345451200" InteractivityWindowEndTime="3345451400"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9400" version="4">
+      <Name>May and June</Name>
+      <Description>When May loses the handsome Walter to her sister, the seeds are sown for forty years of resentment</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9387" version="5">
+      <Name>My Music</Name>
+      <Description>A December 1993 edition of the popular music quiz</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9393" version="2">
+      <Name>The Sorcerer's Apprentice</Name>
+      <Description>Peter is young, eager to please and impatient</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9397" version="3">
+      <Name>Cold Comfort Farm</Name>
+      <Description>Flora Triumphs: Flora receives a visit from two men, one of whom is looking for a new Gary Cooper</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9379" version="4">
+      <Name>Shelley</Name>
+      <Description>Owner Occupiers: Shelley tries to get a mortgage but the bank aren't impressed by his employment record</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9385" version="1">
+      <Name>The Christopher Marlowe Mysteries</Name>
+      <Description>The Murky Mystery of Murder at St Mark's: Marlowe finds himself in the Groves of Academe involved in a series of bizarre murders</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9388" version="2">
+      <Name>Perelandra</Name>
+      <Description>Ransom finds Weston mutilating the island's creatures, and realises that he is a bridge for the 'Bent One' to enter Perelandra</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Science fiction</Genre>
+   </Content>
+   <Content id="urn:bbc:9381" version="5">
+      <Name>Graham Norton's Big Apple</Name>
+      <Description>Money: The Irish comic looks at Money and Consumerism with the help of real estate expert Barbara Corcoran and designer Patricia Field</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9402" version="1">
+      <Name>New Comedy Awards 2005</Name>
+      <Description>Final: Dara O'Briain hosts the grand final of the BBC New Comedy Awards 2005, featuring the six best new acts on the UK comedy circuit</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCSeven_d0e12939" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9336">
+         <Presentation_Window Presentation_Start_Time="3345408000" Presentation_End_Time="3345409800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e12956" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9338">
+         <Presentation_Window Presentation_Start_Time="3345409800" Presentation_End_Time="3345410700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e12973" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9351">
+         <Presentation_Window Presentation_Start_Time="3345410700" Presentation_End_Time="3345411600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4016" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2294372558 2540893554 IN IP4 192.168.0.29
+c=IN IP4 225.224.14.223
+m=audio 53158 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e12990" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9339">
+         <Presentation_Window Presentation_Start_Time="3345411600" Presentation_End_Time="3345413400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13007" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9363">
+         <Presentation_Window Presentation_Start_Time="3345413400" Presentation_End_Time="3345415200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13024" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9346">
+         <Presentation_Window Presentation_Start_Time="3345415200" Presentation_End_Time="3345418800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4040" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2201232910 2280364990 IN IP4 192.168.0.131
+c=IN IP4 225.224.136.214
+m=audio 28884 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13041" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9341">
+         <Presentation_Window Presentation_Start_Time="3345418800" Presentation_End_Time="3345420600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13058" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9357">
+         <Presentation_Window Presentation_Start_Time="3345420600" Presentation_End_Time="3345422400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13075" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9345">
+         <Presentation_Window Presentation_Start_Time="3345422400" Presentation_End_Time="3345424200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4064" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2397583007 2770523070 IN IP4 192.168.0.220
+c=IN IP4 225.224.236.12
+m=audio 41418 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13092" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9347">
+         <Presentation_Window Presentation_Start_Time="3345424200" Presentation_End_Time="3345426000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13109" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9367">
+         <Presentation_Window Presentation_Start_Time="3345426000" Presentation_End_Time="3345428700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13126" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9340">
+         <Presentation_Window Presentation_Start_Time="3345428700" Presentation_End_Time="3345429600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4088" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2433364868 2495010375 IN IP4 192.168.0.63
+c=IN IP4 225.224.89.170
+m=audio 14010 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13143" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9342">
+         <Presentation_Window Presentation_Start_Time="3345429600" Presentation_End_Time="3345431400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13160" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9354">
+         <Presentation_Window Presentation_Start_Time="3345431400" Presentation_End_Time="3345433200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13177" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9410">
+         <Presentation_Window Presentation_Start_Time="3345433200" Presentation_End_Time="3345436800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4112" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2264358520 2290191649 IN IP4 192.168.0.148
+c=IN IP4 225.224.102.27
+m=audio 53202 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13194" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9389">
+         <Presentation_Window Presentation_Start_Time="3345436800" Presentation_End_Time="3345438600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13211" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9384">
+         <Presentation_Window Presentation_Start_Time="3345438600" Presentation_End_Time="3345440400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13228" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9395">
+         <Presentation_Window Presentation_Start_Time="3345440400" Presentation_End_Time="3345442200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4136" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2373855590 2716857909 IN IP4 192.168.0.108
+c=IN IP4 225.224.198.220
+m=audio 12448 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13245" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9383">
+         <Presentation_Window Presentation_Start_Time="3345442200" Presentation_End_Time="3345444000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13262" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9382">
+         <Presentation_Window Presentation_Start_Time="3345444000" Presentation_End_Time="3345447600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13276" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9392">
+         <Presentation_Window Presentation_Start_Time="3345447600" Presentation_End_Time="3345448500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4160" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2498580932 2614471434 IN IP4 192.168.0.248
+c=IN IP4 225.224.100.213
+m=audio 2510 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13290" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9414">
+         <Presentation_Window Presentation_Start_Time="3345448500" Presentation_End_Time="3345449400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13304" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9380">
+         <Presentation_Window Presentation_Start_Time="3345449400" Presentation_End_Time="3345450300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13321" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9400">
+         <Presentation_Window Presentation_Start_Time="3345450300" Presentation_End_Time="3345451200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4184" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2242233276 2645355224 IN IP4 192.168.0.213
+c=IN IP4 225.224.238.21
+m=audio 52514 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13338" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9389">
+         <Presentation_Window Presentation_Start_Time="3345451200" Presentation_End_Time="3345453000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13355" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9387">
+         <Presentation_Window Presentation_Start_Time="3345453000" Presentation_End_Time="3345454800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13372" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9393">
+         <Presentation_Window Presentation_Start_Time="3345454800" Presentation_End_Time="3345457500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4208" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2048797607 2260208129 IN IP4 192.168.0.162
+c=IN IP4 225.224.133.129
+m=audio 31142 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13389" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9397">
+         <Presentation_Window Presentation_Start_Time="3345457500" Presentation_End_Time="3345458400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13406" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9379">
+         <Presentation_Window Presentation_Start_Time="3345458400" Presentation_End_Time="3345460200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13423" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9385">
+         <Presentation_Window Presentation_Start_Time="3345460200" Presentation_End_Time="3345462000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4232" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2407150268 2716751098 IN IP4 192.168.0.136
+c=IN IP4 225.224.201.143
+m=audio 34066 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13440" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9410">
+         <Presentation_Window Presentation_Start_Time="3345462000" Presentation_End_Time="3345465600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13457" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9365">
+         <Presentation_Window Presentation_Start_Time="3345465600" Presentation_End_Time="3345472800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13474" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9388">
+         <Presentation_Window Presentation_Start_Time="3345472800" Presentation_End_Time="3345474600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4256" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2331085205 2437881469 IN IP4 192.168.0.14
+c=IN IP4 225.224.32.77
+m=audio 35354 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13491" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9380">
+         <Presentation_Window Presentation_Start_Time="3345474600" Presentation_End_Time="3345475500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13508" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9400">
+         <Presentation_Window Presentation_Start_Time="3345475500" Presentation_End_Time="3345476400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13525" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9389">
+         <Presentation_Window Presentation_Start_Time="3345476400" Presentation_End_Time="3345478200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4280" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2168075561 2478317260 IN IP4 192.168.0.167
+c=IN IP4 225.224.145.57
+m=audio 15224 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13542" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9387">
+         <Presentation_Window Presentation_Start_Time="3345478200" Presentation_End_Time="3345480000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13559" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9395">
+         <Presentation_Window Presentation_Start_Time="3345480000" Presentation_End_Time="3345481800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13576" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9383">
+         <Presentation_Window Presentation_Start_Time="3345481800" Presentation_End_Time="3345483600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4304" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2196884155 2553817748 IN IP4 192.168.0.192
+c=IN IP4 225.224.160.148
+m=audio 54120 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13593" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9413">
+         <Presentation_Window Presentation_Start_Time="3345483600" Presentation_End_Time="3345487200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13607" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9384">
+         <Presentation_Window Presentation_Start_Time="3345487200" Presentation_End_Time="3345489000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e13624" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9381">
+         <Presentation_Window Presentation_Start_Time="3345489000" Presentation_End_Time="3345490800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4328" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2342666625 2351196288 IN IP4 192.168.0.189
+c=IN IP4 225.224.170.88
+m=audio 15708 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e13641" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9402">
+         <Presentation_Window Presentation_Start_Time="3345490800" Presentation_End_Time="3345494400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:9424" version="1">
+      <Name>The Little Toe Radio Show</Name>
+      <Description>Jez Edwards has the stories The Tale of Mrs Tittlemouse, Septimouse Supermouse, The Nutcracker and the Mouse King and Jeremy Brown and the Secret Service</Description>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>age 4-7</Genre>
+   </Content>
+   <InteractivityData id="BBCSevenint_d0e4344" InteractivityMediaDocumentPointer="BBCSevenintgrp_d0e4344" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9424</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345521400" InteractivityWindowEndTime="3345521600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9432" version="2">
+      <Name>Westway Omnibus</Name>
+      <Description>Catch up with all the latest events at the Health Centre</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9428" version="3">
+      <Name>The One Ronnie</Name>
+      <Description>A Tribute to Ronnie Barker: BBC7 takes an affectionate look at the career of comedy legend Ronnie Barker</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9425" version="5">
+      <Name>Garrison Keillor's Radio Show</Name>
+      <Description>The American funny man presents a mixture of comedy and music from Fitzgerald Theatre in St Paul, Minnesota</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:9437" version="1">
+      <Name>Charley's Aunt</Name>
+      <Description>Classic farce with the millionairess from Brazil ('where the nuts come from'), young love and female impersonation</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9423" version="2">
+      <Name>Chekhov Comedies</Name>
+      <Description>Romance with a Double Bass: A double bass player heads to a villa to play music at a princess's engagement party</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:9429" version="4">
+      <Name>Smelling of Roses</Name>
+      <Description>Positive Thinking: Simon Brett's comedy follows the trials of Rosie Burns and her event management company</Description>
+      <Genre>Comedy</Genre>
+      <Genre>Comedy</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+   </Content>
+   <Content id="urn:bbc:9422" version="5">
+      <Name>Ghost Stories For Christmas</Name>
+      <Description>The Legend of Sleepy Hollow: Martin Jarvis reads from Washington Irving's supernatural classic</Description>
+      <Genre>Science fiction</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>General light drama</Genre>
+   </Content>
+   <Content id="urn:bbc:9427" version="1">
+      <Name>Doctor Who</Name>
+      <Description>The Chimes of Midnight: Can the TARDIS provide refuge from the ticking of the clock? Paul McGann and India Fisher star</Description>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Spooky</Genre>
+      <Genre>General light drama</Genre>
+      <Genre>Exciting</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>Science fiction</Genre>
+   </Content>
+   <Schedule id="BBCSeven_d0e14844" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9388">
+         <Presentation_Window Presentation_Start_Time="3345494400" Presentation_End_Time="3345496200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e14861" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9380">
+         <Presentation_Window Presentation_Start_Time="3345496200" Presentation_End_Time="3345497100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4541" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2229705810 2553955077 IN IP4 192.168.0.93
+c=IN IP4 225.224.28.117
+m=audio 21046 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e14878" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9400">
+         <Presentation_Window Presentation_Start_Time="3345497100" Presentation_End_Time="3345498000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e14895" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9395">
+         <Presentation_Window Presentation_Start_Time="3345498000" Presentation_End_Time="3345499800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e14912" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9383">
+         <Presentation_Window Presentation_Start_Time="3345499800" Presentation_End_Time="3345501600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4565" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2269104003 2563049315 IN IP4 192.168.0.135
+c=IN IP4 225.224.34.111
+m=audio 30790 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e14929" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9390">
+         <Presentation_Window Presentation_Start_Time="3345501600" Presentation_End_Time="3345505200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e14943" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9384">
+         <Presentation_Window Presentation_Start_Time="3345505200" Presentation_End_Time="3345507000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e14960" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9381">
+         <Presentation_Window Presentation_Start_Time="3345507000" Presentation_End_Time="3345508800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4589" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2105499267 2140869140 IN IP4 192.168.0.232
+c=IN IP4 225.224.133.174
+m=audio 37882 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e14977" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9406">
+         <Presentation_Window Presentation_Start_Time="3345508800" Presentation_End_Time="3345512400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e14991" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9393">
+         <Presentation_Window Presentation_Start_Time="3345512400" Presentation_End_Time="3345515100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15008" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9397">
+         <Presentation_Window Presentation_Start_Time="3345515100" Presentation_End_Time="3345516000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4613" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2082885742 2532058715 IN IP4 192.168.0.176
+c=IN IP4 225.224.96.148
+m=audio 21888 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e15025" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9379">
+         <Presentation_Window Presentation_Start_Time="3345516000" Presentation_End_Time="3345517800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15042" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9385">
+         <Presentation_Window Presentation_Start_Time="3345517800" Presentation_End_Time="3345519600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15059" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9424">
+         <Presentation_Window Presentation_Start_Time="3345519600" Presentation_End_Time="3345523200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4637" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2000762939 2394897460 IN IP4 192.168.0.220
+c=IN IP4 225.224.58.59
+m=audio 55670 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e15076" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9432">
+         <Presentation_Window Presentation_Start_Time="3345523200" Presentation_End_Time="3345526800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15093" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9428">
+         <Presentation_Window Presentation_Start_Time="3345526800" Presentation_End_Time="3345537600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15107" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9425">
+         <Presentation_Window Presentation_Start_Time="3345537600" Presentation_End_Time="3345541200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4661" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2377471923 2483215331 IN IP4 192.168.0.117
+c=IN IP4 225.224.22.244
+m=audio 1774 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e15124" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9437">
+         <Presentation_Window Presentation_Start_Time="3345541200" Presentation_End_Time="3345545700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15141" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9423">
+         <Presentation_Window Presentation_Start_Time="3345545700" Presentation_End_Time="3345546600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15158" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9429">
+         <Presentation_Window Presentation_Start_Time="3345546600" Presentation_End_Time="3345548400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4685" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2282928466 2330963133 IN IP4 192.168.0.86
+c=IN IP4 225.224.95.176
+m=audio 57524 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e15175" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9424">
+         <Presentation_Window Presentation_Start_Time="3345548400" Presentation_End_Time="3345552000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15192" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:8576">
+         <Presentation_Window Presentation_Start_Time="3345552000" Presentation_End_Time="3345559200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15209" version="1" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9422">
+         <Presentation_Window Presentation_Start_Time="3345559200" Presentation_End_Time="3345561000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4709" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2107971191 2578338622 IN IP4 192.168.0.170
+c=IN IP4 225.224.19.186
+m=audio 44410 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e15226" version="3" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9427">
+         <Presentation_Window Presentation_Start_Time="3345561000" Presentation_End_Time="3345562800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15243" version="4" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9432">
+         <Presentation_Window Presentation_Start_Time="3345562800" Presentation_End_Time="3345566400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCSeven_d0e15260" version="5" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9426">
+         <Presentation_Window Presentation_Start_Time="3345566400" Presentation_End_Time="3345577200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCSevenacc_d0e4733" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2467300415 2922103881 IN IP4 192.168.0.19
+c=IN IP4 225.224.212.189
+m=audio 13024 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCSeven_d0e15277" version="2" ServiceIDRef="BBCSeven">
+      <ContentIDRef idRef="urn:bbc:9425">
+         <Presentation_Window Presentation_Start_Time="3345577200" Presentation_End_Time="3345580800"/>
+      </ContentIDRef>
+   </Schedule>
+</ESGMainBCAST>

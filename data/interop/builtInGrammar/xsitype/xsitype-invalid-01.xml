@@ -1,0 +1,11 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:test="http://www.example.org/test" >
+
+    <value xsi:type="xs:list"> true </value>
+    <value xsi:type="boolean"> true </value>
+    <value xsi:type="test:simple"> 1.0 </value>
+    <value xsi:type="test:complex" attr="val">
+        <subvalue> test </subvalue>
+    </value>
+</root>

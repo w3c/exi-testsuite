@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        targetNamespace="http://www.xbrl.org/us/fr/ids/xii/2004-10-29"
+        xmlns:xii="http://www.xbrl.org/us/fr/ids/xii/2004-10-29"
+        elementFormDefault="qualified"   attributeFormDefault="unqualified">
+
+<include schemaLocation="xii-2004-10-29.xsd"/>
+
+<import namespace="http://www.xbrl.org/taxonomy/us/fr/gaap/ci/us-gaap-ci-2004-08-15" schemaLocation="us-gaap-ci-2004-08-15.xsd"/>
+<import namespace="http://www.xbrl.org/us/fr/rpt/ar/2004-08-15" schemaLocation="usfr-ar-2004-08-15.xsd"/>
+
+<element name="Audited">
+  <complexType/>
+</element>
+
+</schema>

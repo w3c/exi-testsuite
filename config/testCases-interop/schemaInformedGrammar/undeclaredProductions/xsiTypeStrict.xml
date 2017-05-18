@@ -1,0 +1,59 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - AT(xsi:type) event type in strict schema mode ">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductionsStrict"/>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeStrict-01">
+        <param name="testDescription"  
+          value="Switching from complex type to another complex type."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeStrict-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeStrict-02">
+        <param name="testDescription"  
+          value="Switching from simple type to a complex type."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeStrict-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeStrict-03">
+        <param name="testDescription"  
+          value="Member types of union types can be used as the value of xsi:type."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeStrict-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/undeclaredProductions/union.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeStrict-04">
+        <param name="testDescription"  
+          value="The event type AT(xsi:type) is available for union types in strict 
+                 schema mode, even when all the member types are anonymous."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeStrict-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/undeclaredProductions/union.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeStrict-05">
+        <param name="testDescription"  
+          value="The type specified by xsi:type is not available."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeStrict-05.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeStrict-06">
+        <param name="testDescription"  
+          value="The prefix used in xsi:type value does does not resolve to a namespace."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeStrict-06.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeStrict-07">
+        <param name="testDescription" 
+          value="xsi:type must come before 'xsi:kil' in EXI streams."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeStrict-07.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    </testCase>
+
+</testCaseGroup>

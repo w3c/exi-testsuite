@@ -1,0 +1,26 @@
+<!-- This testcases are intended to check dateTime option for canonical EXI
+		https://www.w3.org/TR/exi-c14n/#canonicalOptions
+ -->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="use UTC time">
+   
+   <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/options/dateTime.xsd"/>
+   <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/options"/>
+     
+    
+    <testCase name="dateTime.true">
+    	<param name="org.w3c.exi.ttf.utcTime" value="true" />
+        <param name="description"  value="UTC time option true"/>
+        <param name="japex.inputFile" value="${test.docFolder}/utcTime.xml" />
+    </testCase>
+    
+    <testCase name="dateTime.false">
+    	<param name="org.w3c.exi.ttf.utcTime" value="false" />
+        <param name="description"  value="UTC time option false"/>
+        <param name="japex.inputFile" value="${test.docFolder}/utcTime.xml" />
+    </testCase>
+    
+</testCaseGroup>

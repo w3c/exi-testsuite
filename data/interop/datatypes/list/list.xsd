@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:simpleType name="gMonthDay">
+        <xs:restriction base="xs:gMonthDay">
+            <xs:enumeration value="--01-01"/>
+            <xs:enumeration value="--05-01"/>
+            <xs:enumeration value="--05-08"/>
+            <xs:enumeration value="--07-14"/>
+            <xs:enumeration value="--08-15"/>
+            <xs:enumeration value="--11-01"/>
+            <xs:enumeration value="--11-11"/>
+            <xs:enumeration value="--12-25"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="base64BinaryList" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:list itemType="xs:base64Binary"/>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="byteList" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:list itemType="xs:byte"/>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="floatList" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:list itemType="xs:float"/>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="enumerationList" minOccurs="0" maxOccurs="unbounded">
+                    <xs:simpleType>
+                        <xs:list itemType="gMonthDay"/>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="tokens" minOccurs="0" maxOccurs="unbounded" type="xs:NMTOKENS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+

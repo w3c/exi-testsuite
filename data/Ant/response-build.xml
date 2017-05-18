@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!-- Your main ant build declaration -->
+
+<project name="response" default="main">
+
+  <property name="checkRequirements.pre" value="checkRequirements.pre"/>
+  <property name="examples.pre" value="examples.pre"/>
+
+  <target name="checkRequirements.pre">
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${dist.dir}/request/request.jar"/>
+       <param name="fail.message" value="The response tag library examples use the request tag library, please make sure the request tag library distribution has been built"/>
+    </antcall>
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${dist.dir}/request/request.tld"/>
+       <param name="fail.message" value="The response tag library examples use the request tag library, please make sure the request tag library distribution has been built"/>
+    </antcall>
+  </target>
+
+  <target name="examples.pre">
+    <copy file="${dist.dir}/request/request.jar"
+          toFile="${build.examples}/WEB-INF/lib/request.jar"/>
+    <copy file="${dist.dir}/request/request.tld"
+          toFile="${build.examples}/WEB-INF/request.tld"/>
+  </target>
+
+</project>

@@ -1,0 +1,38 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile decode-only test cases">
+
+    <param name="groupId" value="${groupId} | profile"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+        name="Profile streams' use of AT(xsi:type) in built-in element grammars">
+        <param name="org.w3c.exi.ttf.schemaLocation" value=""/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <testCase name="profileDecode-01">
+            <param name="description" value="Built-in element grammars add AT(xsi:type) production at most once."/>
+            <param name="reference" value="http://www.w3.org/TR/exi/#builtinElemGrammars"/>
+            <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+            <param name="org.w3c.exi.ttf.encodedFile" 
+             value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/xsitype/xsitype-profile-00.exi" />
+            <param name="japex.inputFile" 
+             value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/xsitype/xsitype-profile-00.xml" />
+        </testCase>
+    </testCaseGroup>
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+        name="Profile streams' use of AT(xsi:type) in built-in element grammars">
+        <param name="org.w3c.exi.ttf.schemaLocation" value=""/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <testCase name="profileDecode-02">
+            <param name="description" value="Built-in element grammars add AT(xsi:type) production at most once."/>
+            <param name="reference" value="http://www.w3.org/TR/exi/#builtinElemGrammars"/>
+            <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+            <param name="org.w3c.exi.ttf.encodedFile" 
+             value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/xsitype/xsitype-profile-01.exi" />
+            <param name="japex.inputFile" 
+             value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/xsitype/xsitype-profile-01.xml" />
+        </testCase>
+    </testCaseGroup>
+
+</testCaseGroup>

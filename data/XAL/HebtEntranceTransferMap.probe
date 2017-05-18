@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE probe SYSTEM "xal.mod.probe.dtd">
+<probe type="gov.sns.xal.model.probe.TransferMapProbe" id="par1" author="C.K. Allen" >
+    <comment author="jdg" 
+             date="1/13/2004"
+             text="XAL model probe transfer map at HEBT entrance"
+             />
+    <algorithm type="TransferMapTracker">
+		<tracker update="1" debug="false"/>
+    		<options  useSpacecharge="false"/>
+    </algorithm>
+    <state type="gov.sns.xal.model.probe.traj.TransferMapState"> 
+        <location s="0.0" W="1000.e6" elem=""/>
+        <species q="-1." Er="939.3014e+6"/>
+        <beam I="0.038" Q="4.7205e-11"/>
+        <transfer>
+            <deg1 values="{ 
+                { 1.0 0.0 0.0 0.0 0.0 0.0 0.0 }
+                { 0.0 1.0 0.0 0.0 0.0 0.0 0.0 }
+                { 0.0 0.0 1.0 0.0 0.0 0.0 0.0 }
+                { 0.0 0.0 0.0 1.0 0.0 0.0 0.0 }
+                { 0.0 0.0 0.0 0.0 1.0 0.0 0.0 }
+                { 0.0 0.0 0.0 0.0 0.0 1.0 0.0 }
+                { 0.0 0.0 0.0 0.0 0.0 0.0 1.0 } }"/>
+       </transfer>
+    </state>
+
+</probe>

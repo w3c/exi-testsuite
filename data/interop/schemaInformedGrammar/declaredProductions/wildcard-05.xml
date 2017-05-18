@@ -1,0 +1,8 @@
+<foo:H4 xmlns:foo='urn:foo' xmlns:goo='urn:goo' xmlns:hoo='urn:hoo' xmlns:ioo='urn:ioo'>
+  <foo:AB/> <!-- xsd:any namespace="##local ##targetNamespace" minOccurs="0" maxOccurs="2"/ -->
+  <AB/> <!-- same as above  -->
+  <hoo:AC/> <!-- xsd:element ref="hoo:AC" minOccurs="0"/ -->
+  <goo:AB/> <!-- xsd:any namespace="urn:goo" minOccurs="0" / -->
+  <hoo:AB/> <!-- xsd:element ref="hoo:AB" minOccurs="0"/ -->
+  <ioo:AB/> <!-- xsd:any namespace="urn:ioo" minOccurs="0" / -->
+</foo:H4>

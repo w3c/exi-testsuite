@@ -1,0 +1,33 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Eliminating Duplicate Terminal Symbols">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | duplicateTerminals"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#eliminatingSymbols"/>
+
+    <!-- =================================================================== -->
+    <!-- Most of the test cases below are primarily designed for use with    -->
+    <!-- strict schema grammars. Please make sure to run them at least once  -->
+    <!-- with strict option turned on.                                       -->
+    <!-- <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />     -->
+    <!-- =================================================================== -->
+
+    <testCase name="schemaInformed.declared.duplicateTerminals-01">
+        <param name="testDescription" 
+          value="Tests the ability to eliminate duplicate terminal symbols. 
+                 Inner loop is stateful."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/duplicateTerminals-01.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/duplicateTerminals-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.duplicateTerminals-02">
+        <param name="testDescription" 
+          value="Tests the ability to eliminate duplicate terminal symbols. 
+                 Outer loop is stateful."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/duplicateTerminals-02.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/duplicateTerminals-02.xml" />
+    </testCase>
+
+</testCaseGroup>

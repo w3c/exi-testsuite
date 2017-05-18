@@ -1,0 +1,1758 @@
+<xsd:schema xmlns="http://diides.ncr.disa.mil/xmlreg/GEO" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://diides.ncr.disa.mil/xmlreg/GEO" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1995-04_CN6" xml:lang="EN">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<xsd:documentation>
+				<SchemaInformation>
+					<FileName>FIPS10-4CountryCodes.xsd</FileName>
+					<SponsoringProgramOffice>Under Review</SponsoringProgramOffice>
+					<OwnershipInformation>
+						<OrganizationName>The MITRE Corporation</OrganizationName>
+						<Address>202 Burlington Road</Address>
+						<Address>Bedford, Massachusetts</Address>
+						<ZipCode>0l730</ZipCode>
+						<PublicReleaseStatement>Approved for Public Release; Distribution Unlimited</PublicReleaseStatement>
+						<PublicReleaseCaseNumber>03-0661</PublicReleaseCaseNumber>
+						<CopyrightsNotice> 2003 The MITRE Corporation</CopyrightsNotice>
+						<Developer>Glenda Hayes, The MITRE Corporation</Developer>
+					</OwnershipInformation>
+				</SchemaInformation>
+			</xsd:documentation>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:simpleType name="FIPS10-4CountryCodeType">
+		<xsd:annotation>
+			<xsd:documentation source="V:1995-04_CN6">Data structure and valid values necessary to manage information about geopolitical entities designated as countries, dependencies, and areas of special sovereignty as described in FIPS 10-4. Authoritative source for FIPS 10-4 is The United States Board on Geographic Names, http://www.nima.mil/gns/html/index.html , http://www.nima.mil/gns/html/fips_10_digraphs.html.  The values in this simpleType are current as of April 1995, Change Notice 6.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="2"/>
+			<xsd:enumeration value="AF">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>AFGHANISTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>ISLAMIC STATE OF AFGHANISTAN</FIPSCountryOfficialName>
+						<dc:title>AFGHANISTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AL">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ALBANIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ALBANIA</FIPSCountryOfficialName>
+						<dc:title>ALBANIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ALGERIA</FIPSCountryName>
+						<FIPSCountryOfficialName>PEOPLE'S DEMOCRATIC REPUBLIC OF ALGERIA</FIPSCountryOfficialName>
+						<dc:title>ALGERIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ANDORRA</FIPSCountryName>
+						<FIPSCountryOfficialName>PRINCIPALITY OF ANDORRA</FIPSCountryOfficialName>
+						<dc:title>ANDORRA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ANGOLA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ANGOLA</FIPSCountryOfficialName>
+						<dc:title>ANGOLA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AC">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ANTIGUA AND BARBUDA</FIPSCountryName>
+						<FIPSCountryOfficialName>ANTIGUA AND BARBUDA</FIPSCountryOfficialName>
+						<dc:title>ANTIGUA AND BARBUDA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ARGENTINA</FIPSCountryName>
+						<FIPSCountryOfficialName>ARGENTINE REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>ARGENTINA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ARMENIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ARMENIA</FIPSCountryOfficialName>
+						<dc:title>ARMENIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>AUSTRALIA</FIPSCountryName>
+						<FIPSCountryOfficialName>COMMONWEALTH OF AUSTRALIA</FIPSCountryOfficialName>
+						<dc:title>AUSTRALIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>AUSTRIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF AUSTRIA</FIPSCountryOfficialName>
+						<dc:title>AUSTRIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AJ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>AZERBAIJAN</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF AZERBAIJAN</FIPSCountryOfficialName>
+						<dc:title>AZERBAIJAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BF">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>THE BAHAMAS</FIPSCountryName>
+						<FIPSCountryOfficialName>COMMONWEALTH OF THE BAHAMAS</FIPSCountryOfficialName>
+						<dc:title>THE BAHAMAS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BAHRAIN</FIPSCountryName>
+						<FIPSCountryOfficialName>STATE OF BAHRAIN</FIPSCountryOfficialName>
+						<dc:title>BAHRAIN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BANGLADESH</FIPSCountryName>
+						<FIPSCountryOfficialName>PEOPLE'S REPUBLIC OF BANGLADESH</FIPSCountryOfficialName>
+						<dc:title>BANGLADESH</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BB">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BARBADOS</FIPSCountryName>
+						<FIPSCountryOfficialName>BARBADOS</FIPSCountryOfficialName>
+						<dc:title>BARBADOS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BELARUS</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF BELARUS</FIPSCountryOfficialName>
+						<dc:title>BELARUS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BELGIUM</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF BELGIUM</FIPSCountryOfficialName>
+						<dc:title>BELGIUM</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BH">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BELIZE</FIPSCountryName>
+						<FIPSCountryOfficialName>BELIZE</FIPSCountryOfficialName>
+						<dc:title>BELIZE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BENIN</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF BENIN</FIPSCountryOfficialName>
+						<dc:title>BENIN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BT">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BHUTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF BHUTAN</FIPSCountryOfficialName>
+						<dc:title>BHUTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BL">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BOLIVIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF BOLIVIA</FIPSCountryOfficialName>
+						<dc:title>BOLIVIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BK">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BOSNIA AND HERZEGOVINA</FIPSCountryName>
+						<FIPSCountryOfficialName>BOSNIA AND HERZEGOVINA</FIPSCountryOfficialName>
+						<dc:title>BOSNIA AND HERZEGOVINA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BC">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BOTSWANA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF BOTSWANA</FIPSCountryOfficialName>
+						<dc:title>BOTSWANA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BRAZIL</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERATIVE REPUBLIC OF BRAZIL</FIPSCountryOfficialName>
+						<dc:title>BRAZIL</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BX">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BRUNEI</FIPSCountryName>
+						<FIPSCountryOfficialName>NEGARA BRUNEI DARUSSALAM</FIPSCountryOfficialName>
+						<dc:title>BRUNEI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BULGARIA</FIPSCountryName>
+						<FIPSCountryOfficialName>BULGARIA</FIPSCountryOfficialName>
+						<dc:title>BULGARIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UV">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BURKINA FASO</FIPSCountryName>
+						<FIPSCountryOfficialName>BURKINA FASO</FIPSCountryOfficialName>
+						<dc:title>BURKINA FASO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BURMA</FIPSCountryName>
+						<FIPSCountryOfficialName>UNION OF BURMA</FIPSCountryOfficialName>
+						<dc:title>BURMA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BY">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>BURUNDI</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF BURUNDI</FIPSCountryOfficialName>
+						<dc:title>BURUNDI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CB">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CAMBODIA</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF CAMBODIA</FIPSCountryOfficialName>
+						<dc:title>CAMBODIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CAMEROON</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF CAMEROON</FIPSCountryOfficialName>
+						<dc:title>CAMEROON</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CANADA</FIPSCountryName>
+						<FIPSCountryOfficialName>CANADA</FIPSCountryOfficialName>
+						<dc:title>CANADA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CV">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CAPE VERDE</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF CAPE VERDE</FIPSCountryOfficialName>
+						<dc:title>CAPE VERDE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CT">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CENTRAL AFRICAN REPUBLIC</FIPSCountryName>
+						<FIPSCountryOfficialName>CENTRAL AFRICAN REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>CENTRAL AFRICAN REPUBLIC</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CD">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CHAD</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF CHAD</FIPSCountryOfficialName>
+						<dc:title>CHAD</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CHILE</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF CHILE</FIPSCountryOfficialName>
+						<dc:title>CHILE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CH">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CHINA</FIPSCountryName>
+						<FIPSCountryOfficialName>PEOPLE'S REPUBLIC OF CHINA</FIPSCountryOfficialName>
+						<dc:title>CHINA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>COLOMBIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF COLOMBIA</FIPSCountryOfficialName>
+						<dc:title>COLOMBIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>COMOROS</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERAL ISLAMIC REPUBLIC OF THE COMOROS</FIPSCountryOfficialName>
+						<dc:title>COMOROS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CF">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CONGO (Brazzaville)</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF THE CONGO</FIPSCountryOfficialName>
+						<dc:title>CONGO (Brazzaville)</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CONGO (Kinshasa)</FIPSCountryName>
+						<FIPSCountryOfficialName>DEMOCRATIC REPUBLIC OF THE CONGO</FIPSCountryOfficialName>
+						<dc:title>CONGO (Kinshasa)</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>COSTA RICA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF COSTA RICA</FIPSCountryOfficialName>
+						<dc:title>COSTA RICA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IV">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>COTE D'IVOIRE</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF COTE D'IVOIRE</FIPSCountryOfficialName>
+						<dc:title>COTE D'IVOIRE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CROATIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF CROATIA</FIPSCountryOfficialName>
+						<dc:title>CROATIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CUBA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF CUBA</FIPSCountryOfficialName>
+						<dc:title>CUBA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CY">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CYPRUS</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF CYPRUS</FIPSCountryOfficialName>
+						<dc:title>CYPRUS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>CZECH REPUBLIC</FIPSCountryName>
+						<FIPSCountryOfficialName>CZECH REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>CZECH REPUBLIC</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>DENMARK</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF DENMARK</FIPSCountryOfficialName>
+						<dc:title>DENMARK</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DJ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>DJIBOUTI</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF DJIBOUTI</FIPSCountryOfficialName>
+						<dc:title>DJIBOUTI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>DOMINICA</FIPSCountryName>
+						<FIPSCountryOfficialName>COMMONWEALTH OF DOMINICA</FIPSCountryOfficialName>
+						<dc:title>DOMINICA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>DOMINICAN REPUBLIC</FIPSCountryName>
+						<FIPSCountryOfficialName>DOMINICAN REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>DOMINICAN REPUBLIC</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EC">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ECUADOR</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ECUADOR</FIPSCountryOfficialName>
+						<dc:title>ECUADOR</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>EGYPT</FIPSCountryName>
+						<FIPSCountryOfficialName>ARAB REPUBLIC OF EGYPT</FIPSCountryOfficialName>
+						<dc:title>EGYPT</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ES">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>EL SALVADOR</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF EL SALVADOR</FIPSCountryOfficialName>
+						<dc:title>EL SALVADOR</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EK">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>EQUATORIAL GUINEA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF EQUATORIAL GUINEA</FIPSCountryOfficialName>
+						<dc:title>EQUATORIAL GUINEA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ER">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ERITREA</FIPSCountryName>
+						<FIPSCountryOfficialName>STATE OF ERITREA</FIPSCountryOfficialName>
+						<dc:title>ERITREA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ESTONIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ESTONIA</FIPSCountryOfficialName>
+						<dc:title>ESTONIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ET">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ETHIOPIA</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERAL DEMOCRATIC REPUBLIC OF ETHIOPIA</FIPSCountryOfficialName>
+						<dc:title>ETHIOPIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FJ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>FIJI</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF THE FIJI ISLANDS</FIPSCountryOfficialName>
+						<dc:title>FIJI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>FINLAND</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF FINLAND</FIPSCountryOfficialName>
+						<dc:title>FINLAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>FRANCE</FIPSCountryName>
+						<FIPSCountryOfficialName>FRENCH REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>FRANCE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GB">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GABON</FIPSCountryName>
+						<FIPSCountryOfficialName>GABONESE REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>GABON</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>THE GAMBIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF THE GAMBIA</FIPSCountryOfficialName>
+						<dc:title>THE GAMBIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GEORGIA</FIPSCountryName>
+						<FIPSCountryOfficialName>GEORGIA</FIPSCountryOfficialName>
+						<dc:title>GEORGIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GERMANY</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERAL REPUBLIC OF GERMANY</FIPSCountryOfficialName>
+						<dc:title>GERMANY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GH">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GHANA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF GHANA</FIPSCountryOfficialName>
+						<dc:title>GHANA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GREECE</FIPSCountryName>
+						<FIPSCountryOfficialName>HELLENIC REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>GREECE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GJ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GRENADA</FIPSCountryName>
+						<FIPSCountryOfficialName>GRENADA</FIPSCountryOfficialName>
+						<dc:title>GRENADA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GT">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GUATEMALA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF GUATEMALA</FIPSCountryOfficialName>
+						<dc:title>GUATEMALA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GV">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GUINEA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF GUINEA</FIPSCountryOfficialName>
+						<dc:title>GUINEA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GUINEA-BISSAU</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF GUINEA-BISSAU</FIPSCountryOfficialName>
+						<dc:title>GUINEA-BISSAU</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GY">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>GUYANA</FIPSCountryName>
+						<FIPSCountryOfficialName>CO-OPERATIVE REPUBLIC OF GUYANA</FIPSCountryOfficialName>
+						<dc:title>GUYANA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>HAITI</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF HAITI</FIPSCountryOfficialName>
+						<dc:title>HAITI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>HONDURAS</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF HONDURAS</FIPSCountryOfficialName>
+						<dc:title>HONDURAS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>HUNGARY</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF HUNGARY</FIPSCountryOfficialName>
+						<dc:title>HUNGARY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IC">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ICELAND</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ICELAND</FIPSCountryOfficialName>
+						<dc:title>ICELAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>INDIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF INDIA</FIPSCountryOfficialName>
+						<dc:title>INDIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ID">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>INDONESIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF INDONESIA</FIPSCountryOfficialName>
+						<dc:title>INDONESIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>IRAN</FIPSCountryName>
+						<FIPSCountryOfficialName>ISLAMIC REPUBLIC OF IRAN</FIPSCountryOfficialName>
+						<dc:title>IRAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>IRAQ</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF IRAQ</FIPSCountryOfficialName>
+						<dc:title>IRAQ</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>IRELAND</FIPSCountryName>
+						<FIPSCountryOfficialName>IRELAND</FIPSCountryOfficialName>
+						<dc:title>IRELAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ISRAEL</FIPSCountryName>
+						<FIPSCountryOfficialName>STATE OF ISRAEL</FIPSCountryOfficialName>
+						<dc:title>ISRAEL</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IT">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ITALY</FIPSCountryName>
+						<FIPSCountryOfficialName>ITALIAN REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>ITALY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>JAMAICA</FIPSCountryName>
+						<FIPSCountryOfficialName>JAMAICA</FIPSCountryOfficialName>
+						<dc:title>JAMAICA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>JAPAN</FIPSCountryName>
+						<FIPSCountryOfficialName>JAPAN</FIPSCountryOfficialName>
+						<dc:title>JAPAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>JORDAN</FIPSCountryName>
+						<FIPSCountryOfficialName>HASHEMITE KINGDOM OF JORDAN</FIPSCountryOfficialName>
+						<dc:title>JORDAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>KAZAKHSTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF KAZAKHSTAN</FIPSCountryOfficialName>
+						<dc:title>KAZAKHSTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>KENYA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF KENYA</FIPSCountryOfficialName>
+						<dc:title>KENYA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>KIRIBATI</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF KIRIBATI</FIPSCountryOfficialName>
+						<dc:title>KIRIBATI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NORTH KOREA</FIPSCountryName>
+						<FIPSCountryOfficialName>DEMOCRATIC PEOPLE'S REPUBLIC OF KOREA</FIPSCountryOfficialName>
+						<dc:title>NORTH KOREA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SOUTH KOREA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF KOREA</FIPSCountryOfficialName>
+						<dc:title>SOUTH KOREA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>KUWAIT</FIPSCountryName>
+						<FIPSCountryOfficialName>STATE OF KUWAIT</FIPSCountryOfficialName>
+						<dc:title>KUWAIT</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>KYRGYZSTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>KYRGYZ REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>KYRGYZSTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LAOS</FIPSCountryName>
+						<FIPSCountryOfficialName>LAO PEOPLE'S DEMOCRATIC REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>LAOS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LATVIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF LATVIA</FIPSCountryOfficialName>
+						<dc:title>LATVIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LEBANON</FIPSCountryName>
+						<FIPSCountryOfficialName>LEBANESE REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>LEBANON</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LT">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LESOTHO</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF LESOTHO</FIPSCountryOfficialName>
+						<dc:title>LESOTHO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LIBERIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF LIBERIA</FIPSCountryOfficialName>
+						<dc:title>LIBERIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LY">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LIBYA</FIPSCountryName>
+						<FIPSCountryOfficialName>GREAT SOCIALIST PEOPLE'S LIBYAN ARAB JAMAHIRIYA</FIPSCountryOfficialName>
+						<dc:title>LIBYA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LIECHTENSTEIN</FIPSCountryName>
+						<FIPSCountryOfficialName>PRINCIPALITY OF LIECHTENSTEIN</FIPSCountryOfficialName>
+						<dc:title>LIECHTENSTEIN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LH">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LITHUANIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF LITHUANIA</FIPSCountryOfficialName>
+						<dc:title>LITHUANIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>LUXEMBOURG</FIPSCountryName>
+						<FIPSCountryOfficialName>GRAND DUCHY OF LUXEMBOURG</FIPSCountryOfficialName>
+						<dc:title>LUXEMBOURG</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MK">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>THE FORMER YUGOSLAV REPUBLIC OF MACEDONIA</FIPSCountryName>
+						<FIPSCountryOfficialName>THE FORMER YUGOSLAV REPUBLIC OF MACEDONIA</FIPSCountryOfficialName>
+						<dc:title>THE FORMER YUGOSLAV REPUBLIC OF MACEDONIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MADAGASCAR</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MADAGASCAR</FIPSCountryOfficialName>
+						<dc:title>MADAGASCAR</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MALAWI</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MALAWI</FIPSCountryOfficialName>
+						<dc:title>MALAWI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MY">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MALAYSIA</FIPSCountryName>
+						<FIPSCountryOfficialName>MALAYSIA</FIPSCountryOfficialName>
+						<dc:title>MALAYSIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MV">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MALDIVES</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MALDIVES</FIPSCountryOfficialName>
+						<dc:title>MALDIVES</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ML">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MALI</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MALI</FIPSCountryOfficialName>
+						<dc:title>MALI</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MT">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MALTA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MALTA</FIPSCountryOfficialName>
+						<dc:title>MALTA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MARSHALL ISLANDS</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF THE MARSHALL ISLANDS</FIPSCountryOfficialName>
+						<dc:title>MARSHALL ISLANDS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MAURITANIA</FIPSCountryName>
+						<FIPSCountryOfficialName>ISLAMIC REPUBLIC OF MAURITANIA</FIPSCountryOfficialName>
+						<dc:title>MAURITANIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MAURITIUS</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MAURITIUS</FIPSCountryOfficialName>
+						<dc:title>MAURITIUS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MX">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MEXICO</FIPSCountryName>
+						<FIPSCountryOfficialName>UNITED MEXICAN STATES</FIPSCountryOfficialName>
+						<dc:title>MEXICO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>FEDERATED STATES OF MICRONESIA</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERATED STATES OF MICRONESIA</FIPSCountryOfficialName>
+						<dc:title>FEDERATED STATES OF MICRONESIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MD">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MOLDOVA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MOLDOVA</FIPSCountryOfficialName>
+						<dc:title>MOLDOVA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MONACO</FIPSCountryName>
+						<FIPSCountryOfficialName>PRINCIPALITY OF MONACO</FIPSCountryOfficialName>
+						<dc:title>MONACO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MONGOLIA</FIPSCountryName>
+						<FIPSCountryOfficialName>MONGOLIA</FIPSCountryOfficialName>
+						<dc:title>MONGOLIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MOROCCO</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF MOROCCO</FIPSCountryOfficialName>
+						<dc:title>MOROCCO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>MOZAMBIQUE</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF MOZAMBIQUE</FIPSCountryOfficialName>
+						<dc:title>MOZAMBIQUE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NAMIBIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF NAMIBIA</FIPSCountryOfficialName>
+						<dc:title>NAMIBIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NR">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NAURU</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF NAURU</FIPSCountryOfficialName>
+						<dc:title>NAURU</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NEPAL</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF NEPAL</FIPSCountryOfficialName>
+						<dc:title>NEPAL</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NL">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NETHERLANDS</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF THE NETHERLANDS</FIPSCountryOfficialName>
+						<dc:title>NETHERLANDS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NEW ZEALAND</FIPSCountryName>
+						<FIPSCountryOfficialName>NEW ZEALAND</FIPSCountryOfficialName>
+						<dc:title>NEW ZEALAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NICARAGUA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF NICARAGUA</FIPSCountryOfficialName>
+						<dc:title>NICARAGUA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NIGER</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF NIGER</FIPSCountryOfficialName>
+						<dc:title>NIGER</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NIGERIA</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERAL REPUBLIC OF NIGERIA</FIPSCountryOfficialName>
+						<dc:title>NIGERIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>NORWAY</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF NORWAY</FIPSCountryOfficialName>
+						<dc:title>NORWAY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>OMAN</FIPSCountryName>
+						<FIPSCountryOfficialName>SULTANATE OF OMAN</FIPSCountryOfficialName>
+						<dc:title>OMAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PK">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PAKISTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>ISLAMIC REPUBLIC OF PAKISTAN</FIPSCountryOfficialName>
+						<dc:title>PAKISTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PALAU</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF PALAU</FIPSCountryOfficialName>
+						<dc:title>PALAU</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PANAMA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF PANAMA</FIPSCountryOfficialName>
+						<dc:title>PANAMA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PAPUA NEW GUINEA</FIPSCountryName>
+						<FIPSCountryOfficialName>INDEPENDENT STATE OF PAPUA NEW GUINEA</FIPSCountryOfficialName>
+						<dc:title>PAPUA NEW GUINEA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PARAGUAY</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF PARAGUAY</FIPSCountryOfficialName>
+						<dc:title>PARAGUAY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PERU</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF PERU</FIPSCountryOfficialName>
+						<dc:title>PERU</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PHILIPPINES</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF THE PHILIPPINES</FIPSCountryOfficialName>
+						<dc:title>PHILIPPINES</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PL">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>POLAND</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF POLAND</FIPSCountryOfficialName>
+						<dc:title>POLAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>PORTUGAL</FIPSCountryName>
+						<FIPSCountryOfficialName>PORTUGUESE REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>PORTUGAL</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="QA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>QATAR</FIPSCountryName>
+						<FIPSCountryOfficialName>STATE OF QATAR</FIPSCountryOfficialName>
+						<dc:title>QATAR</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>RUMANIA</FIPSCountryName>
+						<FIPSCountryOfficialName>RUMANIA</FIPSCountryOfficialName>
+						<dc:title>RUMANIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>RUSSIA</FIPSCountryName>
+						<FIPSCountryOfficialName>RUSSIAN FEDERATION</FIPSCountryOfficialName>
+						<dc:title>RUSSIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RW">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>RWANDA</FIPSCountryName>
+						<FIPSCountryOfficialName>RWANDESE REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>RWANDA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SC">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SAINT KITTS AND NEVIS</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERATION OF SAINT KITTS AND NEVIS</FIPSCountryOfficialName>
+						<dc:title>SAINT KITTS AND NEVIS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ST">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SAINT LUCIA</FIPSCountryName>
+						<FIPSCountryOfficialName>SAINT LUCIA</FIPSCountryOfficialName>
+						<dc:title>SAINT LUCIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VC">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SAINT VINCENT AND THE GRENADINES</FIPSCountryName>
+						<FIPSCountryOfficialName>SAINT VINCENT AND THE GRENADINES</FIPSCountryOfficialName>
+						<dc:title>SAINT VINCENT AND THE GRENADINES</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SAMOA</FIPSCountryName>
+						<FIPSCountryOfficialName>INDEPENDENT STATE OF SAMOA</FIPSCountryOfficialName>
+						<dc:title>SAMOA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SAN MARINO</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SAN MARINO</FIPSCountryOfficialName>
+						<dc:title>SAN MARINO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SAO TOME AND PRINCIPE</FIPSCountryName>
+						<FIPSCountryOfficialName>DEMOCRATIC REPUBLIC OF SAO TOME AND PRINCIPE</FIPSCountryOfficialName>
+						<dc:title>SAO TOME AND PRINCIPE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SAUDI ARABIA</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF SAUDI ARABIA</FIPSCountryOfficialName>
+						<dc:title>SAUDI ARABIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SENEGAL</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SENEGAL</FIPSCountryOfficialName>
+						<dc:title>SENEGAL</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SEYCHELLES</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SEYCHELLES</FIPSCountryOfficialName>
+						<dc:title>SEYCHELLES</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SL">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SIERRA LEONE</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SIERRA LEONE</FIPSCountryOfficialName>
+						<dc:title>SIERRA LEONE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SINGAPORE</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SINGAPORE</FIPSCountryOfficialName>
+						<dc:title>SINGAPORE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SLOVAKIA</FIPSCountryName>
+						<FIPSCountryOfficialName>SLOVAK REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>SLOVAKIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SLOVENIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SLOVENIA</FIPSCountryOfficialName>
+						<dc:title>SLOVENIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SOLOMON ISLANDS</FIPSCountryName>
+						<FIPSCountryOfficialName>SOLOMON ISLANDS</FIPSCountryOfficialName>
+						<dc:title>SOLOMON ISLANDS</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SOMALIA</FIPSCountryName>
+						<FIPSCountryOfficialName>SOMALIA</FIPSCountryOfficialName>
+						<dc:title>SOMALIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SF">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SOUTH AFRICA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SOUTH AFRICA</FIPSCountryOfficialName>
+						<dc:title>SOUTH AFRICA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SPAIN</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF SPAIN</FIPSCountryOfficialName>
+						<dc:title>SPAIN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SRI LANKA</FIPSCountryName>
+						<FIPSCountryOfficialName>DEMOCRATIC SOCIALIST REPUBLIC OF SRI LANKA</FIPSCountryOfficialName>
+						<dc:title>SRI LANKA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SUDAN</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF THE SUDAN</FIPSCountryOfficialName>
+						<dc:title>SUDAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SURINAME</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF SURINAME</FIPSCountryOfficialName>
+						<dc:title>SURINAME</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SWAZILAND</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF SWAZILAND</FIPSCountryOfficialName>
+						<dc:title>SWAZILAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SW">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SWEDEN</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF SWEDEN</FIPSCountryOfficialName>
+						<dc:title>SWEDEN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SWITZERLAND</FIPSCountryName>
+						<FIPSCountryOfficialName>SWISS CONFEDERATION</FIPSCountryOfficialName>
+						<dc:title>SWITZERLAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SY">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>SYRIA</FIPSCountryName>
+						<FIPSCountryOfficialName>SYRIAN ARAB REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>SYRIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TAJIKISTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF TAJIKISTAN</FIPSCountryOfficialName>
+						<dc:title>TAJIKISTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TANZANIA</FIPSCountryName>
+						<FIPSCountryOfficialName>UNITED REPUBLIC OF TANZANIA</FIPSCountryOfficialName>
+						<dc:title>TANZANIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TH">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>THAILAND</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF THAILAND</FIPSCountryOfficialName>
+						<dc:title>THAILAND</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TO">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TOGO</FIPSCountryName>
+						<FIPSCountryOfficialName>TOGOLESE REPUBLIC</FIPSCountryOfficialName>
+						<dc:title>TOGO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TN">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TONGA</FIPSCountryName>
+						<FIPSCountryOfficialName>KINGDOM OF TONGA</FIPSCountryOfficialName>
+						<dc:title>TONGA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TD">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TRINIDAD AND TOBAGO</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF TRINIDAD AND TOBAGO</FIPSCountryOfficialName>
+						<dc:title>TRINIDAD AND TOBAGO</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TS">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TUNISIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF TUNISIA</FIPSCountryOfficialName>
+						<dc:title>TUNISIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TU">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TURKEY</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF TURKEY</FIPSCountryOfficialName>
+						<dc:title>TURKEY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TX">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TURKMENISTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>TURKMENISTAN</FIPSCountryOfficialName>
+						<dc:title>TURKMENISTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TV">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>TUVALU</FIPSCountryName>
+						<FIPSCountryOfficialName>TUVALU</FIPSCountryOfficialName>
+						<dc:title>TUVALU</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UG">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>UGANDA</FIPSCountryName>
+						<FIPSCountryOfficialName>UGANDA</FIPSCountryOfficialName>
+						<dc:title>UGANDA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UP">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>UKRAINE</FIPSCountryName>
+						<FIPSCountryOfficialName>UKRAINE</FIPSCountryOfficialName>
+						<dc:title>UKRAINE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>UNITED ARAB EMIRATES</FIPSCountryName>
+						<FIPSCountryOfficialName>UNITED ARAB EMIRATES</FIPSCountryOfficialName>
+						<dc:title>UNITED ARAB EMIRATES</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UK">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>UNITED KINGDOM</FIPSCountryName>
+						<FIPSCountryOfficialName>UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND</FIPSCountryOfficialName>
+						<dc:title>UNITED KINGDOM</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="US">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>UNITED STATES</FIPSCountryName>
+						<FIPSCountryOfficialName>UNITED STATES OF AMERICA</FIPSCountryOfficialName>
+						<dc:title>UNITED STATES</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UY">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>URUGUAY</FIPSCountryName>
+						<FIPSCountryOfficialName>ORIENTAL REPUBLIC OF URUGUAY</FIPSCountryOfficialName>
+						<dc:title>URUGUAY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UZ">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>UZBEKISTAN</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF UZBEKISTAN</FIPSCountryOfficialName>
+						<dc:title>UZBEKISTAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NH">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>VANUATU</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF VANUATU</FIPSCountryOfficialName>
+						<dc:title>VANUATU</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VT">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>VATICAN CITY</FIPSCountryName>
+						<FIPSCountryOfficialName>STATE OF THE VATICAN CITY</FIPSCountryOfficialName>
+						<dc:title>VATICAN CITY</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VE">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>VENEZUELA</FIPSCountryName>
+						<FIPSCountryOfficialName>BOLIVARIAN REPUBLIC OF VENEZUELA</FIPSCountryOfficialName>
+						<dc:title>VENEZUELA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>VIETNAM</FIPSCountryName>
+						<FIPSCountryOfficialName>SOCIALIST REPUBLIC OF VIETNAM</FIPSCountryOfficialName>
+						<dc:title>VIETNAM</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="YM">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>YEMEN</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF YEMEN</FIPSCountryOfficialName>
+						<dc:title>YEMEN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="YI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>YUGOSLAVIA</FIPSCountryName>
+						<FIPSCountryOfficialName>FEDERAL REPUBLIC OF YUGOSLAVIA</FIPSCountryOfficialName>
+						<dc:title>YUGOSLAVIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ZA">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ZAMBIA</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ZAMBIA</FIPSCountryOfficialName>
+						<dc:title>ZAMBIA</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ZI">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>ZIMBABWE</FIPSCountryName>
+						<FIPSCountryOfficialName>REPUBLIC OF ZIMBABWE</FIPSCountryOfficialName>
+						<dc:title>ZIMBABWE</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TW">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<FIPSCountryName>OTHER: TAIWAN</FIPSCountryName>
+						<FIPSCountryOfficialName>OTHER: TAIWAN</FIPSCountryOfficialName>
+						<dc:title>OTHER: TAIWAN</dc:title>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

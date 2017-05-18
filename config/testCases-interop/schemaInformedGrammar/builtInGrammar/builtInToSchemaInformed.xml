@@ -1,0 +1,18 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn Element Grammar tests">
+
+    <param name="groupId" value="${groupId} | builtinElementGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/element"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#builtinElemGrammars"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${testDocFolder}/incomplete.xsd"/>
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+
+    <testCase name="builtin.toSchemaInformed-00">
+        <param name="testDescription"  value="Built-in root tag with a schema-informed child element"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-02.xml" />
+    </testCase>
+
+</testCaseGroup>
+

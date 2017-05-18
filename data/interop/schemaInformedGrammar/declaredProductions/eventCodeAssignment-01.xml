@@ -1,0 +1,31 @@
+<!-- =================================================================== -->
+<!-- Tests the assignment of event codes.                                -->
+<!-- =================================================================== -->
+<foo:ANY xmlns:foo="urn:foo" xmlns:goo="urn:goo" xmlns:hoo="urn:hoo">
+  <foo:Q foo:aK="2010-05-03" /><!-- AT(aK) -->
+  <foo:Q foo:aL="123" /><!-- AT(aL) -->
+  <foo:Q hoo:aA="" /><!-- AT(hoo:*) -->
+  <foo:Q goo:aB="" /><!-- AT(goo:*) -->
+  <foo:Q none="" /><!-- AT("":*) -->
+  <foo:Q foo:aM="QUJDREVGR0hJSg==" /><!-- AT(foo:*) -->
+  <foo:Q>
+    <foo:Qc /><!-- SE(foo:Qc) -->
+  </foo:Q>
+  <foo:Q>
+    <goo:AB>a</goo:AB><!-- SE(*) -->
+  </foo:Q>
+  <foo:Q>
+    <foo:Qb /><!-- SE(foo:Qb) -->
+  </foo:Q>
+  <foo:Q>
+    <foo:Qz /><!-- SE(foo:Qz) -->
+  </foo:Q>
+  <foo:Q>
+    <AB>b</AB><!-- SE("":*) -->
+  </foo:Q>
+  <foo:Q>
+    <foo:Qa /><!-- SE(foo:Qa) -->
+  </foo:Q>
+  <foo:Q /><!-- EE -->
+  <foo:Q>c</foo:Q><!-- CH -->
+</foo:ANY>

@@ -1,0 +1,23 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-valid datatype interoperability tests">
+
+    <param name="groupId" value="${groupId} | validDatatype"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+
+    <xi:include href="builtInDatatypes/stringEncoding.xml"/>
+    <xi:include href="builtInDatatypes/binaryValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/booleanValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/dateTimeValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/decimalValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/enumerationValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/floatValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/listValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/qnameValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/nbitIntegerValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/unsignedIntegerValidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/integerValidEncoding.xml"/>
+    <!-- Note: some restricted char sets values might note be valid according to XML schema but an EXI processor should be able to encode it -->
+    <xi:include href="builtInDatatypes/restrictedCharacterSetsEncoding.xml"/>
+
+</testCaseGroup>

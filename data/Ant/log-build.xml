@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<project name="log" default="main">
+
+  <property file="../build.properties"/>
+  <property name="classpath" value="${servlet.jar}:${log4j-core.jar}" />
+
+  <property name="checkRequirements.pre" value="checkRequirements.pre"/>
+  <property name="examples.pre" value="examples.pre"/>
+
+  <target name="checkRequirements.pre">
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${log4j-core.jar}"/>
+       <param name="fail.message" value="a jar file containing the log4j classes is required to compile the log taglib. please define the property log4j-core.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+  </target>
+
+
+  <!-- =================================================================== -->
+  <!-- copy the required jars into the examples lib dir                    -->
+  <!-- =================================================================== -->
+
+  <target name="examples.pre">
+    <!-- copy a default log4j config file -->
+    <copy todir="${build.examples}/WEB-INF/classes">
+      <fileset dir="${examples.src}/conf" includes="*.properties"/>
+    </copy>
+    <!-- copy the jars required -->
+    <copy todir="${build.examples}/WEB-INF/lib" file="${log4j-core.jar}"/>
+  </target>
+
+</project>
+

@@ -1,0 +1,13 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile interoperability tests in Bit-align mode">
+
+    <param name="org.w3c.exi.ttf.useProfile" value="true"/>
+    <param name="org.w3c.exi.ttf.byteAlign" value="false"/>
+
+    <xi:include href="general.xml"/>
+	
+	<xi:include href="decodeOnlyBit.xml"/>
+
+</testCaseGroup>

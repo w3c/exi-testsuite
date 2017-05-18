@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE probe SYSTEM "xal.mod.probe.dtd">
+<probe type="gov.sns.xal.model.probe.EnvelopeProbe" id="par1" author="jdg" >
+    <comment author="jdg" 
+             date="2/25/2004"
+             text="XAL model probe representing rms envelope state at Ring 1 entrance"
+             />
+    <algorithm type="EnvelopeTracker">
+		<tracker update="1" debug="false"/>
+    		<options  useSpacecharge="false"/>
+    </algorithm>
+    <state type="gov.sns.xal.model.probe.traj.EnvelopeProbeState"> 
+        <location s="0.0" W="1000.e6" elem=""/>
+        <species q="1." Er="938.27e+6"/>
+        <beam I="10." Q="4.e-5"/>
+        <envelope 
+            alphaX="0.1" betaX="10." emitX="2.4e-4"
+            alphaY="0.1" betaY="10." emitY="2.4e-4"
+            alphaZ="1." betaZ="1." emitZ="0.5"/>
+    </state>
+
+</probe>

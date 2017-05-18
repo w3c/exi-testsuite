@@ -1,0 +1,14 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+  <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+  <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/CBMS/schema/dvb_ipdc_esg.xsd"/>
+  <param name="org.w3c.exi.ttf.fragments" value="true" />
+  <testCase name="fragments/CBMS/Combined.BBCAsian.frag">
+    <param name="japex.inputFile" value="${testsDir}/fragments/CBMS/Combined.BBCAsian.frag"/>
+  </testCase>
+  <testCase name="fragments/CBMS/Combined.BBCBBC.frag">
+    <param name="japex.inputFile" value="${testsDir}/fragments/CBMS/Combined.BBCBBC.frag"/>
+  </testCase>
+  <testCase name="fragments/CBMS/Combined.ServiceInformation.frag">
+    <param name="japex.inputFile" value="${testsDir}/fragments/CBMS/Combined.ServiceInformation.frag"/>
+  </testCase>
+</testCaseGroup>

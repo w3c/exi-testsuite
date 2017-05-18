@@ -1,0 +1,95 @@
+<!--
+	The testcases are intended to test the decimal data type for canonical EXI.
+	https://www.w3.org/TR/exi-c14n/#dt-float
+-->
+
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="float datatype testcases">
+
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/float/float.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/float"/>
+    <param name="reference" value="https://www.w3.org/TR/exi-c14n/#dt-float"/>
+
+    <testCase name="valid-00">
+        <param name="description"  value="Simple positive float values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-00.xml" />
+    </testCase>
+	
+	<testCase name="valid-01">
+        <param name="description"  value="Positive float values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-01.xml" />
+    </testCase>
+	
+	<testCase name="valid-02">
+        <param name="description"  value="Positive zero float values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-02.xml" />
+    </testCase>
+	
+	<testCase name="valid-03">
+        <param name="description"  value="Negative zero float values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-03.xml" />
+    </testCase>
+	
+	<testCase name="valid-04">
+        <param name="description"  value="If the mantissa is 0 and the exponent value is not -(2^14) the exponent MUST be 0."/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-04.xml" />
+    </testCase>
+	
+    <testCase name="valid-05">
+        <param name="description"  value="INF float value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-05.xml" />
+    </testCase>
+    <testCase name="valid-06">
+        <param name="description"  value="-INF float value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-06.xml" />
+    </testCase>
+    <testCase name="valid-07">
+        <param name="description"  value="NaN float value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-07.xml" />
+    </testCase>
+	
+	<testCase name="valid-08">
+        <param name="description"  value="If the mantissa is not 0, mantissas MUST have no trailing zeros."/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-08.xml" />
+    </testCase>
+	
+    <testCase name="valid-09">
+        <param name="description"  value="Simple positive double value Ex1"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-09.xml" />
+    </testCase>
+    <testCase name="valid-10">
+        <param name="description"  value="Simple positive double value Ex2"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-10.xml" />
+    </testCase>	
+    <testCase name="valid-11">
+        <param name="description"  value="Simple positive double value Ex3"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-11.xml" />
+    </testCase>
+    <testCase name="valid-12">
+        <param name="description"  value="Simple positive double value Ex4"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-12.xml" />
+    </testCase>	
+	
+    <testCase name="valid-13">
+        <param name="description"  value="Float values with negative mantissa and exponent"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-13.xml" />
+    </testCase>
+    <testCase name="valid-14">
+        <param name="description"  value="Double values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-14.xml" />
+    </testCase>
+    <testCase name="valid-15">
+        <param name="description"  value="Float values with big exponents"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-15.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>
+    </testCase>
+    <testCase name="valid-16">
+        <param name="description"  value="Float values with big mantissas"/>
+        <param name="japex.inputFile" value="${test.docFolder}/valid-16.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>
+    </testCase>
+
+</testCaseGroup>

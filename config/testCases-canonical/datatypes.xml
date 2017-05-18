@@ -1,0 +1,18 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="All canonical datatype tests">
+
+    <param name="groupId" value="${groupId} | datatypes"/> 
+
+    <xi:include href="datatypes/enumeration.xml"/>
+	
+	<xi:include href="datatypes/decimal.xml"/>
+	
+	<xi:include href="datatypes/float.xml"/>
+
+	<xi:include href="datatypes/dateTime.xml"/>
+
+	<xi:include href="datatypes/restrictedCharacterSets.xml"/>
+    
+</testCaseGroup>

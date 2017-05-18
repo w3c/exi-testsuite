@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE xdxf SYSTEM "xdxf.dtd">
+<xdxf system="sns" ver="1.1.2" date="Fri Nov 01 16:40:22 EST 2002">
+  <sequence id="LEBT" len="0.3">
+    <node type="CVG" id="LEBT_Vac:CVG_5" pos="0.1" len="0">
+       <channelsuite>
+          <channel handle="P" signal="LEBT_Vac:CVG_5:P"  settable="false"/>
+          <channel handle="V" signal="LEBT_Vac:CVG_5:V"  settable="false"/>
+          <channel handle="Sts" signal="LEBT_Vac:CVG_5:Sts"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="LEBT_Vac:IG_5" pos="0.2" len="0">
+       <channelsuite>
+          <channel handle="P" signal="LEBT_Vac:IG_5:P"  settable="false"/>
+          <channel handle="Sts" signal="LEBT_Vac:IG_5:Sts"  settable="false"/>
+          <channel handle="Raw" signal="LEBT_Vac:IG_5:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+  </sequence>
+  <sequence id="RFQ" len="3.76">
+    <attributes>
+       <sequence predecessors="LEBT"/>
+    </attributes>
+    <node type="IG" id="RFQ_Vac:IG_1" pos="0.5" len="0">
+       <channelsuite>
+          <channel handle="P" signal="RFQ_Vac:IG_1:P"  settable="false"/>
+          <channel handle="Sts" signal="RFQ_Vac:IG_1:Sts"  settable="false"/>
+          <channel handle="Raw" signal="RFQ_Vac:IG_1:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="CVG" id="RFQ_Vac:CVG_6" pos="1" len="0">
+       <channelsuite>
+          <channel handle="P" signal="RFQ_Vac:CVG_6:P"  settable="false"/>
+          <channel handle="V" signal="RFQ_Vac:CVG_6:V"  settable="false"/>
+          <channel handle="Sts" signal="RFQ_Vac:CVG_6:Sts"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="RFQ_Vac:IG_2" pos="2" len="0">
+       <channelsuite>
+          <channel handle="P" signal="RFQ_Vac:IG_2:P"  settable="false"/>
+          <channel handle="Sts" signal="RFQ_Vac:IG_2:Sts"  settable="false"/>
+          <channel handle="Raw" signal="RFQ_Vac:IG_2:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="RFQ_Vac:IG_3" pos="2.5" len="0">
+       <channelsuite>
+          <channel handle="P" signal="RFQ_Vac:IG_3:P"  settable="false"/>
+          <channel handle="Sts" signal="RFQ_Vac:IG_3:Sts"  settable="false"/>
+          <channel handle="Raw" signal="RFQ_Vac:IG_3:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="RFQ_Vac:IG_4" pos="3" len="0">
+       <channelsuite>
+          <channel handle="P" signal="RFQ_Vac:IG_4:P"  settable="false"/>
+          <channel handle="Sts" signal="RFQ_Vac:IG_4:Sts"  settable="false"/>
+          <channel handle="Raw" signal="RFQ_Vac:IG_4:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+  </sequence>
+  <sequence id="MEBT" len="3.64">
+    <attributes>
+       <sequence predecessors="RFQ"/>
+    </attributes>
+    <node type="IG" id="MEBT_Vac:IG_1" pos="0.535" len="0">
+       <channelsuite>
+          <channel handle="P" signal="MEBT_Vac:IG_1:P"  settable="false"/>
+          <channel handle="Sts" signal="MEBT_Vac:IG_1:Sts"  settable="false"/>
+          <channel handle="Raw" signal="MEBT_Vac:IG_1:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="MEBT_Vac:IG_3" pos="1.295" len="0">
+       <channelsuite>
+          <channel handle="P" signal="MEBT_Vac:IG_3:P"  settable="false"/>
+          <channel handle="Sts" signal="MEBT_Vac:IG_3:Sts"  settable="false"/>
+          <channel handle="Raw" signal="MEBT_Vac:IG_3:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="CVG" id="MEBT_Vac:CVG_4" pos="1.8" len="0">
+       <channelsuite>
+          <channel handle="P" signal="MEBT_Vac:CVG_4:P"  settable="false"/>
+          <channel handle="V" signal="MEBT_Vac:CVG_4:V"  settable="false"/>
+          <channel handle="Sts" signal="MEBT_Vac:CVG_4:Sts"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="MEBT_Vac:IG_5" pos="2.255" len="0">
+       <channelsuite>
+          <channel handle="P" signal="MEBT_Vac:IG_5:P"  settable="false"/>
+          <channel handle="Sts" signal="MEBT_Vac:IG_5:Sts"  settable="false"/>
+          <channel handle="Raw" signal="MEBT_Vac:IG_5:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="MEBT_Vac:IG_7" pos="3.16" len="0">
+       <channelsuite>
+          <channel handle="P" signal="MEBT_Vac:IG_7:P"  settable="false"/>
+          <channel handle="Raw" signal="MEBT_Vac:IG_7:Raw"  settable="false"/>
+          <channel handle="Sts" signal="MEBT_Vac:IG_7:Sts"  settable="false"/>
+       </channelsuite>
+    </node>
+    <node type="IG" id="MEBT_Vac:IG_8" pos="3.505" len="0">
+       <channelsuite>
+          <channel handle="P" signal="MEBT_Vac:IG_8:P"  settable="false"/>
+          <channel handle="Sts" signal="MEBT_Vac:IG_8:Sts"  settable="false"/>
+          <channel handle="Raw" signal="MEBT_Vac:IG_8:Raw"  settable="false"/>
+       </channelsuite>
+    </node>
+  </sequence>
+</xdxf>

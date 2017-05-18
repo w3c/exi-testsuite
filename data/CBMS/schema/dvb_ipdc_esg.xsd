@@ -1,0 +1,406 @@
+<schema targetNamespace="urn:dvb:ipdc:esg:2005" 
+				xmlns:esg="urn:dvb:ipdc:esg:2005" 
+				xmlns:tva="urn:tva:metadata:2005" 
+				xmlns="http://www.w3.org/2001/XMLSchema" 
+				xmlns:mpeg7="urn:mpeg:mpeg7:schema:2001" 
+				elementFormDefault="qualified" 
+				attributeFormDefault="unqualified">
+				
+	<import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+	<import namespace="urn:mpeg:mpeg7:schema:2001" schemaLocation="mpeg7.xsd"/>
+	<import namespace="urn:tva:metadata:2005" schemaLocation="tva.xsd"/>
+
+    <annotation>
+        <documentation xml:lang="en">
+            ======== DVB CBMS ESG Schema - 2005-31-11
+            -------- This XML Schema file corresponds to the the DVB CBMS ESG specification
+            work described in the document 
+            					A099 - IP Datacast over DVB-H: Electronic Service Guide (ESG)
+            					http://www.dvb-h-online.org/PDF/a099.tm3348r2.cbms1199r14.IPDC_ESG.pdf
+
+            Latest known modifications to the schema have been sent by 2005-10-12 by 
+            Joerg Heuer to the tm-cbms mailing list (tm-cbms1199_ESGSpec_051001v5.zip)
+
+            File created by: 	Gwenael Durand, Expway
+            Date:   	2005-12-10
+        </documentation>
+    </annotation>
+	
+<element name="ESGMain" type="esg:ESGMainType"/>
+
+<complexType name="ESGMainType">
+	<sequence>
+		<element name="CopyrightNotice" type="string" minOccurs="0"/>
+		<element name="ClassificationSchemeTable" type="tva:ClassificationSchemeTableType" minOccurs="0"/>
+		<element name="ESG" type="esg:ESGType" minOccurs="0"/>
+	</sequence>
+	<attribute ref="xml:lang" default="en" use="optional"/>
+	<attribute name="publisher" type="string" use="optional"/>
+	<attribute name="publicationTime" type="dateTime" use="optional"/>
+	<attribute name="rightsOwner" type="string" use="optional"/>
+</complexType>
+
+<complexType name="ESGType">
+	<sequence>
+		<element name="ContentTable" type="esg:ContentTableType" minOccurs="0"/>
+		<element name="ScheduleEventTable" type="esg:ScheduleEventTableType" minOccurs="0"/>
+		<element name="ServiceTable"  type="esg:ServiceTableType" minOccurs="0"/>
+		<element name="ServiceBundleTable"  type="esg:ServiceBundleTableType" minOccurs="0"/>
+		<element name="PurchaseTable" type="esg:PurchaseTableType" minOccurs="0"/>
+		<element name="PurchaseChannelTable" type="esg:PurchaseChannelTableType" minOccurs="0"/>
+		<element name="AcquisitionTable" type="esg:AcquisitionTableType" minOccurs="0"/>
+	</sequence>
+</complexType>
+<complexType name="ContentTableType">
+	<sequence>
+		<element name="Content" type="esg:ContentType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<complexType name="ScheduleEventTableType">
+	<sequence>
+		<element name="ScheduleEvent" type="esg:ScheduleEventType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<complexType name="ServiceTableType">
+	<sequence>
+		<element name="Service" type="esg:ServiceType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<complexType name="ServiceBundleTableType">
+	<sequence>
+		<element name="ServiceBundle" type="esg:ServiceBundleType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<complexType name="PurchaseTableType">
+	<sequence>
+		<element name="Purchase" type="esg:PurchaseType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<complexType name="PurchaseChannelTableType">
+	<sequence>
+		<element name="PurchaseChannel" type="esg:PurchaseChannelType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+<complexType name="AcquisitionTableType">
+	<sequence>
+		<element name="Acquisition" type="esg:AcquisitionType" minOccurs="0" maxOccurs="unbounded"/>
+	</sequence>
+</complexType>
+
+
+
+	<complexType name="ESGIDRefType">
+		<attribute name="IDRef" type="anyURI"/>
+	</complexType>
+
+	<complexType name="AcquisitionRefType">
+		<complexContent>
+			<extension base="esg:ESGIDRefType">
+				<sequence>
+						<element name="Label" type="mpeg7:TextualType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="ServiceRefType">
+		<complexContent>
+			<extension base="esg:ESGIDRefType">
+				<attribute name="serviceNumber" type="unsignedShort"/>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="RelatedMaterialType">
+		<sequence>
+			<element name="HowRelated" type="tva:ControlledTermType" minOccurs="0"/>
+			<element name="MediaLocator" type="mpeg7:MediaLocatorType"/>
+			<element name="PromotionalText" type="mpeg7:TextualType" minOccurs="0" maxOccurs="unbounded"/> 
+			<element name="PromotionalMedia" type="mpeg7:TitleMediaType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	
+	<complexType name="ProviderType">
+		<sequence>
+			<element name="ProviderURI" type="anyURI" minOccurs="0"/>
+			<element name="ProviderName" type="mpeg7:TextualType" maxOccurs="unbounded"/>
+			<element name="ProviderLogo" type="mpeg7:TitleMediaType" minOccurs="0"/>
+			<element name="ProviderInformationURL" type="anyURI" minOccurs="0"/>
+		</sequence>
+	</complexType>
+		
+	<complexType name="PrivateDataType" abstract="true"/>
+	
+	<complexType name="ServiceType">
+		<sequence>
+			<element name="ServiceName" type="tva:ServiceInformationNameType" maxOccurs="unbounded"/>
+			<element name="ServiceNumber" type="unsignedShort" minOccurs="0"/>
+			<element name="ServiceLogo" type="mpeg7:TitleMediaType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ServiceDescription" type="tva:SynopsisType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ServiceGenre" type="tva:GenreType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ServiceType" type="tva:ControlledTermType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ParentalGuidance" type="mpeg7:ParentalGuidanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ServiceLanguage" type="language" minOccurs="0" />
+			<element name="ServiceProvider" type="esg:ProviderType" minOccurs="0" />
+			<element name="AcquisitionRef" type="esg:AcquisitionRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RelatedMaterial" type="esg:RelatedMaterialType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrivateData" type="esg:PrivateDataType" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+		<attribute name="serviceID" type="anyURI" use="required"/>
+		<attribute name="freeToAir" type="boolean" use="optional"/>
+		<attribute name="clearToAir" type="boolean" use="optional"/>
+	</complexType>
+	
+	<complexType name="ServiceBundleType">
+		<sequence>
+			<element name="ServiceBundleName" type="mpeg7:TextualType" maxOccurs="unbounded"/>
+			<element name="ServiceBundleProvider" type="esg:ProviderType" minOccurs="0"/>
+			<element name="ServiceBundleMediaTitle" type="mpeg7:TitleMediaType" minOccurs="0"/>
+			<element name="ServiceBundleDescription" type="mpeg7:TextualType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ServiceBundleGenre" type="tva:GenreType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ServiceRef" type="esg:ServiceRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ParentalGuidance" type="mpeg7:ParentalGuidanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="RelatedMaterial" type="esg:RelatedMaterialType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="serviceBundleID" type="anyURI" use="required"/>
+	</complexType>
+
+	<complexType name="ContentType">
+		<sequence>
+			<element name="Title" type="mpeg7:TitleType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MediaTitle" type="mpeg7:TitleMediaType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ServiceRef" type="esg:ESGIDRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Synopsis" type="tva:SynopsisType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Keyword" type="tva:KeywordType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Genre" type="tva:GenreType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ContentType" type="tva:ControlledTermType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="ParentalGuidance" type="mpeg7:ParentalGuidanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Language" type="mpeg7:ExtendedLanguageType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="CaptionLanguage" type="tva:CaptionLanguageType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="SignLanguage" type="tva:SignLanguageType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="CreditsList" type="tva:CreditsListType" minOccurs="0"/>
+			<element name="RelatedMaterial" type="esg:RelatedMaterialType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Duration" type="duration" minOccurs="0"/>
+			<element name="PrivateData" type="esg:PrivateDataType" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+		<attribute name="contentID" type="anyURI" use="required"/>
+	</complexType>
+	
+	<complexType name="ScheduleEventType">
+		<sequence>
+			<element name="PublishedStartTime" type="dateTime" minOccurs="0"/>
+			<element name="PublishedEndTime" type="dateTime" minOccurs="0"/>
+			<element name="ServiceRef" type="esg:ESGIDRefType"/>
+			<sequence maxOccurs="unbounded">
+				<element name="ContentFragmentRef" type="esg:ESGIDRefType" minOccurs="0"/>
+					<sequence maxOccurs="unbounded">
+						<element name="AcquisitionRef" type="esg:AcquisitionRefType" minOccurs="0"/>
+						<element name="ContentLocation" type="anyURI" minOccurs="0"/>
+				</sequence>
+			</sequence>
+		</sequence>
+		<attribute name="live" type="boolean" use="optional"/>
+		<attribute name="repeat" type="boolean" use="optional"/>
+		<attribute name="freeToAir" type="boolean" use="optional"/>
+		<attribute name="clearToAir" type="boolean" use="optional"/>
+		<attribute name="scheduleId" type="anyURI" use="optional"/>
+	</complexType>
+	
+	<complexType name="PurchaseType">
+		<sequence>
+			<element name="ServiceBundleRef" type="esg:ESGIDRefType" minOccurs="0"/>
+			<element name="Price" maxOccurs="unbounded">
+				<complexType>
+					<simpleContent>
+						<extension base="float">
+							<attribute name="currency" type="esg:currencyCodeType" use="required"/>
+						</extension>
+					</simpleContent>
+				</complexType>
+			</element>
+			<element name="UsageConstraints" type="esg:UsageConstraintsType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="Description" type="mpeg7:TextualType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PurchaseRequest" type="esg:PurchaseRequestType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MediaTitle" type="mpeg7:TitleMediaType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="start" type="dateTime" use="optional"/>
+		<attribute name="end" type="dateTime" use="optional"/>
+		<attribute name="purchaseId" type="anyURI" use="optional"/>
+	</complexType>
+
+	<simpleType name="currencyCodeType">
+		<restriction base="string">
+			<pattern value="[a-zA-Z]{3}"/>
+		</restriction>
+	</simpleType>
+	
+	<complexType name="UsageConstraintsType">
+		<sequence>
+			<element name="PurchaseType" type="tva:ControlledTermType" minOccurs="0"/>
+			<element name="QuantityUnit" type="tva:ControlledTermType" minOccurs="0"/>
+			<element name="QuantityRange" minOccurs="0">
+				<complexType>
+					<attribute name="min" type="unsignedInt" use="optional"/>
+					<attribute name="max" type="unsignedInt" use="optional"/>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="PurchaseRequestType">
+		<sequence>
+			<element name="DRMSystem" type="anyURI" />
+			<element name="PurchaseData" type="esg:PurchaseDataBaseType" minOccurs="0"/>
+			<element name="PurchaseChannelIDRef" type="esg:ESGIDRefType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="PurchaseDataBaseType" abstract="true"/>
+
+	<complexType name="PurchaseDataType">
+		<complexContent>
+			<extension base="esg:PurchaseDataBaseType">
+				<sequence>
+						<element name="Data" type="string"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="PurchaseChannelType">
+		<sequence>
+			<element name="Name" type="mpeg7:TextualType" maxOccurs="unbounded"/>
+			<element name="Description" type="mpeg7:TextualType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PortalURL" type="anyURI" minOccurs="0"/>
+			<element name="ContactInfo" type="anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="MediaTitle" type="mpeg7:TitleMediaType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="PrivateData"	type="esg:PrivateDataType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="purchaseChannelID" type="anyURI" use="required"/>
+	</complexType>
+
+	<complexType name="AcquisitionType">
+		<sequence>
+			<element name="ComponentDescription" type="esg:ComponentDescriptionType" maxOccurs="unbounded"/>
+			<element name="ZappingSupport" type="esg:ZappingSupportType" minOccurs="0"/>
+			<element name="KeyStream" type="esg:KeyStreamBaseType" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="contentMimeType" type="mpeg7:mimeType" use="required"/>
+		<attribute name="acquisitionID" type="anyURI" use="required"/>
+	</complexType>
+
+	<complexType name="ComponentDescriptionType">
+		<sequence>
+			<element name="ComponentCharacteristic" type="esg:ComponentCharacteristicType" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="SessionDescription" type="esg:SessionDescriptionBaseType"/>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="SessionDescriptionBaseType" abstract="true" />
+
+	<complexType name="InlinedSDPType">
+		<complexContent>
+			<extension base="esg:SessionDescriptionBaseType">
+				<sequence>
+						<element name="SDP" type="esg:SDPType"/>
+						<element name="AssociatedDeliveryProcedure" type="anyURI" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="SDPRefType">
+		<complexContent>
+			<extension base="esg:SessionDescriptionBaseType">
+				<sequence>
+						<element name="SDPStream" type="esg:SDPType"/>
+						<element name="SDPURI" type="anyURI" />
+						<element name="AssociatedDeliveryProcedure" type="anyURI" minOccurs="0"/>
+					</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<simpleType name= "SDPType">
+		<!--- Note: the InlinedSDP below must be embedded in a CDATA section -->
+		<restriction base="string"/>
+	</simpleType>
+	
+	<complexType name="ZappingSupportType">
+			<sequence maxOccurs="unbounded">
+				<element name="Type" type="tva:ControlledTermType" minOccurs="0" maxOccurs="unbounded"/>
+				<choice>
+					<element name="MediaLocator" type="mpeg7:MediaLocatorType"/>
+					<element name="ZappingSDP" type="esg:SessionDescriptionBaseType" minOccurs="0"/>
+				</choice>
+		</sequence>
+	</complexType>
+		
+	<complexType name="KeyStreamBaseType" abstract="true"/>
+	
+	<complexType name="KeyStreamType">
+		<complexContent>
+			<extension base="esg:KeyStreamBaseType">
+				<attribute name="CBMSKMSId" type="unsignedShort" use="required" />
+				<attribute name="IPDCOperatorID" type="string" use="required" />
+			</extension>
+		</complexContent>
+	</complexType>
+	
+	<complexType name="ComponentCharacteristicType" abstract="true">
+		<sequence>
+			<element name="Bandwidth" type="tva:BitRateType" minOccurs="0"/>
+		</sequence>
+		<attribute name="purpose" type="string" use="optional"/>
+	</complexType>
+
+	<complexType name="VideoComponentType">
+		<complexContent>
+			<extension base="esg:ComponentCharacteristicType">
+				<sequence>
+					<element name="CodecCharacteristic" type="esg:VideoCodecCharacteristicType" minOccurs="0"/>
+					<element name="FrameRate" type="tva:FrameRateType" minOccurs="0"/>
+					<element name="OpenCaptionLanguage" type="language" minOccurs="0"/>
+					<element name="SignLanguage" type="tva:SignLanguageType" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="VideoCodecCharacteristicType">
+		<sequence>
+			<element name="Codec" type="tva:ControlledTermType" minOccurs="0"/>
+			<element name="ProfileLevelIndication" type="tva:ControlledTermType" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="AudioComponentType">
+		<complexContent>
+			<extension base="esg:ComponentCharacteristicType">
+				<sequence>
+					<element name="Codec" type="tva:ControlledTermType" minOccurs="0"/>
+					<element name="Mode" type="tva:ControlledTermType" minOccurs="0"/>
+					<element name="Language" type="mpeg7:ExtendedLanguageType" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+
+	<complexType name="FileDownloadComponentType">
+		<complexContent>
+			<extension base="esg:ComponentCharacteristicType">
+				<sequence>
+					<element name="FileFormat" type="string" minOccurs="0" maxOccurs="unbounded"/>
+					<element name="Storage" type="unsignedInt" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+</schema>

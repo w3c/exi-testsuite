@@ -1,0 +1,17 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn StartTag Grammar tests (attribute)">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/attribute"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#builtinElemGrammars"/>
+
+    <testCase name="builtin.attr-01">
+        <param name="testDescription"  value="Attribute learning"/>
+        <param name="japex.inputFile" value="${testDocFolder}/attr-01.xml" />
+    </testCase>
+    <testCase name="builtin.attr-02">
+        <param name="testDescription"  value="Attribute learning with specific attributes (xsi:type and xsi:nil)"/>
+        <param name="japex.inputFile" value="${testDocFolder}/attr-02.xml" />
+    </testCase>
+</testCaseGroup>
+

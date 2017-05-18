@@ -1,0 +1,7 @@
+<!-- =================================================================== -->
+<!-- Undeclared EEs are available only in default (non-strict) schema    -->
+<!-- mode. Use of end-of-element event after xsi:type and xsi:nil where  -->
+<!-- at least one attribute is expected as well as required to appear.   -->
+<!-- =================================================================== -->
+<foo:F xsi:type='foo:F' xsi:nil='true' xmlns:foo='urn:foo' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'></foo:F>

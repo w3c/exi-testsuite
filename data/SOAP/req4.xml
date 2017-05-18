@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <SOAP-ENV:Body>
+  <ns3:echoIntegerArray xmlns:ns3="http://soapinterop.org/">
+   <inputIntegerArray xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="xsd:int[1]" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+    <item xsi:type="xsd:int">42</item>
+   </inputIntegerArray>
+  </ns3:echoIntegerArray>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:goo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:goo="urn:goo"
+           elementFormDefault="qualified" attributeFormDefault="qualified">
+
+<!-- Don't add any more attribute declarations! -->
+<xsd:attribute name="a" type="xsd:date"/><!-- event code 0 -->
+<xsd:attribute name="c" type="xsd:time"/><!-- event code 4 -->
+
+<xsd:complexType name="tA">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="A" type="goo:tA" />
+    <xsd:element name="C" type="goo:tC" />
+  </xsd:sequence>
+  <xsd:attribute name="a" type="xsd:date"/>
+</xsd:complexType>
+
+<xsd:complexType name="tC">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="C" type="goo:tC" />
+    <xsd:element name="A" type="goo:tA" />
+  </xsd:sequence>
+  <xsd:attribute name="c" type="xsd:time"/>
+</xsd:complexType>
+
+<!-- Don't add any more element declarations! -->
+<xsd:element name="A" type="goo:tA" /><!-- event code 7 -->
+<xsd:element name="C" type="goo:tC" /><!-- event code 11 -->
+
+</xsd:schema>

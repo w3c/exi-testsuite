@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:foo" elementFormDefault="qualified"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="A" nillable="true">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="B" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

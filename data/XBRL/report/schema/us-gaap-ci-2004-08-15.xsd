@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:us-gaap-ci="http://www.xbrl.org/us/fr/gaap/ci/2004-08-15" targetNamespace="http://www.xbrl.org/taxonomy/us/fr/gaap/ci/us-gaap-ci-2004-08-15" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <annotation>
+    <appinfo>
+      <link:roleType roleURI="http://www.xbrl.org/us/fr/lr/role/IncomeStatement" id="IncomeStatement">
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.xbrl.org/us/fr/lr/role/StatementFinancialPosition" id="StatementFinancialPosition">
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.xbrl.org/us/fr/lr/role/StatementCashFlowsIndirect" id="StatementCashFlowsIndirect">
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.xbrl.org/us/fr/lr/role/StatementCashFlowsDirect" id="StatementCashFlowsDirect">
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.xbrl.org/us/fr/lr/role/StatementStockholdersEquity" id="StatementStockholdersEquity">
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.xbrl.org/us/fr/lr/role/TotalStockholdersEquityCalculation" id="TotalStockholdersEquityCalculation">
+        <link:usedOn>link:calculationLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.xbrl.org/us/fr/lr/role/Notes" id="Notes">
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+      </link:roleType>
+      <link:linkbaseRef xlink:type="simple" xlink:href="us-gaap-ci-2004-08-15-presentation.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Presentation Links, all" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="us-gaap-ci-2004-08-15-calculation.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Calculation Links, all" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="us-gaap-ci-2004-08-15-label.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Label Links, all" />
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="xbrl-instance-2003-12-31.xsd" />
+  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="../../linkbases/schema/xbrl-linkbase-2003-12-31.xsd" />
+  <import namespace="http://www.xbrl.org/us/fr/common/pt/2004-08-15" schemaLocation="usfr-pt-2004-08-15.xsd" />
+</schema>

@@ -1,0 +1,15 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+
+    <param name="japex.classPath" value="${japex.home}/jdsl/jdsl.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="Asn1Ber"/>
+
+    <driver name="ASN1BERSchema">
+        <param name="japex.driverClass" value="org.w3c.exi.ttf.BaseNativeDriver"/>
+        <param name="description" value="ASN.1 BER schema"/>
+        <param name="libraryName" value="JapexNativeDrvAsn1Ber2"/>
+        <param name="org.w3c.exi.ttf.applicationClass" value="schema"/>
+    </driver>
+
+</driverGroup>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+      <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+      <testCase name="MeSH/pa2006sample.xml">
+        <param name="japex.inputFile" value="${testsDir}/MeSH/pa2006sample.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MeSH/pa2006.xsd"/>
+      </testCase>
+      <testCase name="MeSH/pa_substance2006sample.xml">
+        <param name="japex.inputFile" value="${testsDir}/MeSH/pa_substance2006sample.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MeSH/pa_substance2006.xsd"/>
+      </testCase>
+      <testCase name="MeSH/xml2006sample.xml">
+        <param name="japex.inputFile" value="${testsDir}/MeSH/xml2006sample.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MeSH/autoschema.xsd"/>
+      </testCase>
+</testCaseGroup>

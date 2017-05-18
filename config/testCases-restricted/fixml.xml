@@ -1,0 +1,25 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+
+    <testCase name="FixML-4.4/FIXMLNewOrder.xml">
+	<param name="japex.inputFile" value="${testsDir}/FixML-4.4/FIXMLNewOrder.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/FixML-4.4/schema/fixml-main-4-4.xsd"/>
+    </testCase>
+    <testCase name="FixML-4.4/AllocRpt.xml">
+	<param name="japex.inputFile" value="${testsDir}/FixML-4.4/AllocRpt.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/FixML-4.4/schema/fixml-main-4-4.xsd"/>
+    </testCase>
+    <testCase name="FixML-4.4/AllocationInstructionAck.xml">
+	<param name="japex.inputFile" value="${testsDir}/FixML-4.4/AllocationInstructionAck.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/FixML-4.4/schema/fixml-main-4-4.xsd"/>
+    </testCase>
+    <testCase name="FixML-4.4/AllocationInstruction.xml">
+	<param name="japex.inputFile" value="${testsDir}/FixML-4.4/AllocationInstruction.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/FixML-4.4/schema/fixml-main-4-4.xsd"/>
+    </testCase>
+    <testCase name="FixML-4.4/AllocationReportAck.xml">
+	<param name="japex.inputFile" value="${testsDir}/FixML-4.4/AllocationReportAck.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/FixML-4.4/schema/fixml-main-4-4.xsd"/>
+    </testCase>
+</testCaseGroup>

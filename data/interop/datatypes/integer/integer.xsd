@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="root" >
+        <xs:complexType>
+            <!-- Built-in Type: Integer -->
+            <xs:sequence>
+                <xs:element name="integer"  type="xs:integer" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="integerA" minOccurs="0" maxOccurs="unbounded" >
+                    <xs:simpleType>
+                        <xs:restriction base="xs:integer"></xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="nonPositiveInteger"  type="xs:nonPositiveInteger" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="negativeInteger"  type="xs:negativeInteger" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="long"  type="xs:long" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="int"  type="xs:int" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="short"  type="xs:short" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

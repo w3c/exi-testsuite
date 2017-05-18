@@ -1,0 +1,82 @@
+<!--
+	The testcases are intended to test the dateTime data type for canonical EXI.
+	https://www.w3.org/TR/exi-c14n/#dt-dateTime
+-->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+               xmlns:xi="http://www.w3.org/2001/XInclude"
+               name="dateTime datatype testcases">
+   
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/dateTime"/>
+
+    <testCase name="dateTime-hour-01">
+        <param name="description"  value="The hour component MUST NOT be 24"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-hour-01.xml" />
+    </testCase>
+
+    <testCase name="dateTime-seconds-01">
+        <param name="description"  value="Leap second in June 2012"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-leap-seconds-01.xml" />
+    </testCase>
+
+    <testCase name="dateTime-fractionalSeconds-01">
+        <param name="description"  value="Fractional seconds component"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-fractionalSeconds-01.xml" />
+    </testCase>
+
+    <testCase name="dateTime-fractionalSeconds-02">
+        <param name="description"  value="Fractional seconds component MUST be omitted if its value is zero"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-fractionalSeconds-02.xml" />
+    </testCase>
+
+    <testCase name="dateTime-utcTime-01-true">
+        <param name="org.w3c.exi.ttf.utcTime" value="true" />
+        <param name="description"  value="utcTime=true with timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-01.xml" />
+    </testCase>
+    
+    <testCase name="dateTime-utcTime-01-false">
+        <param name="org.w3c.exi.ttf.utcTime" value="false" />
+        <param name="description"  value="utcTime=false with timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-01.xml" />
+    </testCase>
+
+    <testCase name="dateTime-utcTime-02-true">
+        <param name="org.w3c.exi.ttf.utcTime" value="true" />
+        <param name="description"  value="24:00:00 where utcTime=true with timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-02.xml" />
+    </testCase>
+    
+    <testCase name="dateTime-utcTime-02-false">
+        <param name="org.w3c.exi.ttf.utcTime" value="false" />
+        <param name="description"  value="24:00:00 where utcTime=false with timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-02.xml" />
+    </testCase>
+
+    <testCase name="dateTime-utcTime-03-true">
+        <param name="org.w3c.exi.ttf.utcTime" value="true" />
+        <param name="description"  value="23:59:60 where utcTime=true with timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-03.xml" />
+    </testCase>
+    
+    <testCase name="dateTime-utcTime-03-false">
+        <param name="org.w3c.exi.ttf.utcTime" value="false" />
+        <param name="description"  value="23:59:60 where utcTime=false with timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-03.xml" />
+    </testCase>
+
+    <testCase name="dateTime-utcTime-04-true">
+        <param name="org.w3c.exi.ttf.utcTime" value="true" />
+        <param name="description"  value="utcTime=true without timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-04.xml" />
+    </testCase>
+    
+    <testCase name="dateTime-utcTime-04-false">
+        <param name="org.w3c.exi.ttf.utcTime" value="false" />
+        <param name="description"  value="utcTime=false without timezone specified"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dateTime-utcTime-04.xml" />
+    </testCase>
+
+</testCaseGroup>

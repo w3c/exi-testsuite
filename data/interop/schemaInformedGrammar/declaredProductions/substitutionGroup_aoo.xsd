@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<xsd:schema targetNamespace="urn:aoo"
+  xmlns:aoo="urn:aoo" xmlns:foo="urn:foo"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:import namespace="urn:foo" schemaLocation="substitutionGroup_foo.xsd"/>
+
+<xsd:element name="B" type="aoo:tB" substitutionGroup="foo:C" />
+<xsd:element name="C" type="aoo:tC" substitutionGroup="foo:C" />
+
+<xsd:complexType name="tB">
+  <xsd:complexContent>
+    <xsd:extension base="foo:tD" />
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="tC">
+  <xsd:complexContent>
+    <xsd:extension base="aoo:tB" />
+  </xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>

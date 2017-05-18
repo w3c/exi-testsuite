@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ns2="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ns3="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns4="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns5="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:ns6="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ns7="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:ns8="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns9="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xmlns:ns10="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns11="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns12="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns13="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns14="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns15="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:ns16="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:elements="http://purl.org/dc/elements/1.1/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="elements.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/xforms" schemaLocation="xforms.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" schemaLocation="ns9.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" schemaLocation="ns5.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:config:1.0" schemaLocation="ns2.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" schemaLocation="ns14.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" schemaLocation="ns7.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" schemaLocation="ns3.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:form:1.0" schemaLocation="ns4.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" schemaLocation="ns16.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0" schemaLocation="ns13.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:script:1.0" schemaLocation="ns6.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" schemaLocation="ns11.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:style:1.0" schemaLocation="ns8.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" schemaLocation="ns12.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:table:1.0" schemaLocation="ns15.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" schemaLocation="ns1.xsd"/>
+  <xs:attribute name="use-header-name" type="xs:string"/>
+  <xs:attribute name="use-footer-name" type="xs:string"/>
+  <xs:attribute name="use-date-time-name" type="xs:string"/>
+  <xs:attribute name="presentation-page-layout-name">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:NCName">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:length value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="event-listener">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns10:sound"/>
+      </xs:sequence>
+      <xs:attribute ref="ns6:event-name" use="required"/>
+      <xs:attribute name="action" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="previous-page"/>
+            <xs:enumeration value="next-page"/>
+            <xs:enumeration value="first-page"/>
+            <xs:enumeration value="last-page"/>
+            <xs:enumeration value="hide"/>
+            <xs:enumeration value="stop"/>
+            <xs:enumeration value="execute"/>
+            <xs:enumeration value="show"/>
+            <xs:enumeration value="verb"/>
+            <xs:enumeration value="fade-out"/>
+            <xs:enumeration value="sound"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="effect" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="fade"/>
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="stripes"/>
+            <xs:enumeration value="open"/>
+            <xs:enumeration value="close"/>
+            <xs:enumeration value="dissolve"/>
+            <xs:enumeration value="wavyline"/>
+            <xs:enumeration value="random"/>
+            <xs:enumeration value="lines"/>
+            <xs:enumeration value="laser"/>
+            <xs:enumeration value="appear"/>
+            <xs:enumeration value="hide"/>
+            <xs:enumeration value="move-short"/>
+            <xs:enumeration value="checkerboard"/>
+            <xs:enumeration value="rotate"/>
+            <xs:enumeration value="stretch"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="direction" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="from-left"/>
+            <xs:enumeration value="from-top"/>
+            <xs:enumeration value="from-right"/>
+            <xs:enumeration value="from-bottom"/>
+            <xs:enumeration value="from-center"/>
+            <xs:enumeration value="from-upper-left"/>
+            <xs:enumeration value="from-upper-right"/>
+            <xs:enumeration value="from-lower-left"/>
+            <xs:enumeration value="from-lower-right"/>
+            <xs:enumeration value="to-left"/>
+            <xs:enumeration value="to-top"/>
+            <xs:enumeration value="to-right"/>
+            <xs:enumeration value="to-bottom"/>
+            <xs:enumeration value="to-upper-left"/>
+            <xs:enumeration value="to-upper-right"/>
+            <xs:enumeration value="to-lower-right"/>
+            <xs:enumeration value="to-lower-left"/>
+            <xs:enumeration value="path"/>
+            <xs:enumeration value="spiral-inward-left"/>
+            <xs:enumeration value="spiral-inward-right"/>
+            <xs:enumeration value="spiral-outward-left"/>
+            <xs:enumeration value="spiral-outward-right"/>
+            <xs:enumeration value="vertical"/>
+            <xs:enumeration value="horizontal"/>
+            <xs:enumeration value="to-center"/>
+            <xs:enumeration value="clockwise"/>
+            <xs:enumeration value="counter-clockwise"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="speed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="slow"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="fast"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="start-scale" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate1"/>
+      <xs:attribute name="verb" form="qualified" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="placeholder">
+    <xs:complexType>
+      <xs:attribute name="object" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="title"/>
+            <xs:enumeration value="outline"/>
+            <xs:enumeration value="subtitle"/>
+            <xs:enumeration value="text"/>
+            <xs:enumeration value="graphic"/>
+            <xs:enumeration value="object"/>
+            <xs:enumeration value="chart"/>
+            <xs:enumeration value="table"/>
+            <xs:enumeration value="orgchart"/>
+            <xs:enumeration value="page"/>
+            <xs:enumeration value="notes"/>
+            <xs:enumeration value="handout"/>
+            <xs:enumeration value="header"/>
+            <xs:enumeration value="footer"/>
+            <xs:enumeration value="date-time"/>
+            <xs:enumeration value="page-number"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns12:x1"/>
+      <xs:attributeGroup ref="ns12:y1"/>
+      <xs:attributeGroup ref="ns12:width1"/>
+      <xs:attributeGroup ref="ns12:height1"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="style-name">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:NCName">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:length value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="class-names">
+    <xs:simpleType>
+      <xs:list itemType="xs:NCName"/>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="class">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="title"/>
+        <xs:enumeration value="outline"/>
+        <xs:enumeration value="subtitle"/>
+        <xs:enumeration value="text"/>
+        <xs:enumeration value="graphic"/>
+        <xs:enumeration value="object"/>
+        <xs:enumeration value="chart"/>
+        <xs:enumeration value="table"/>
+        <xs:enumeration value="orgchart"/>
+        <xs:enumeration value="page"/>
+        <xs:enumeration value="notes"/>
+        <xs:enumeration value="handout"/>
+        <xs:enumeration value="header"/>
+        <xs:enumeration value="footer"/>
+        <xs:enumeration value="date-time"/>
+        <xs:enumeration value="page-number"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="placeholder">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="user-transformed">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="true"/>
+        <xs:enumeration value="false"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="notes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns3:rect"/>
+        <xs:element ref="ns3:line"/>
+        <xs:element ref="ns3:polyline"/>
+        <xs:element ref="ns3:polygon"/>
+        <xs:element ref="ns3:regular-polygon"/>
+        <xs:element ref="ns3:path"/>
+        <xs:element ref="ns3:circle"/>
+        <xs:element ref="ns3:ellipse"/>
+        <xs:element ref="ns3:g"/>
+        <xs:element ref="ns3:page-thumbnail"/>
+        <xs:element ref="ns3:frame"/>
+        <xs:element ref="ns3:measure"/>
+        <xs:element ref="ns3:caption"/>
+        <xs:element ref="ns3:connector"/>
+        <xs:element ref="ns3:control"/>
+        <xs:element ref="ns7:scene"/>
+        <xs:element ref="ns3:custom-shape"/>
+      </xs:choice>
+      <xs:attribute ref="ns10:use-header-name"/>
+      <xs:attribute ref="ns10:use-footer-name"/>
+      <xs:attribute ref="ns10:use-date-time-name"/>
+      <xs:attribute ref="ns8:page-layout-name"/>
+      <xs:attribute ref="ns3:style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="header-decl">
+    <xs:complexType mixed="true">
+      <xs:attribute name="name" use="required" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="footer-decl">
+    <xs:complexType mixed="true">
+      <xs:attribute name="name" use="required" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date-time-decl">
+    <xs:complexType mixed="true">
+      <xs:attribute name="name" use="required" form="qualified" type="xs:string"/>
+      <xs:attribute name="source" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="fixed"/>
+            <xs:enumeration value="current-date"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns8:data-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns10:show"/>
+      </xs:sequence>
+      <xs:attribute name="start-page" form="qualified" type="xs:string"/>
+      <xs:attribute name="show" form="qualified" type="xs:string"/>
+      <xs:attribute name="full-screen" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="endless" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="pause" form="qualified" type="xs:duration"/>
+      <xs:attribute name="show-logo" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="force-manual" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mouse-visible" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mouse-as-pen" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="start-with-navigator" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="animations" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="enabled"/>
+            <xs:enumeration value="disabled"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="transition-on-click" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="enabled"/>
+            <xs:enumeration value="disabled"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="stay-on-top" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sound">
+    <xs:complexType>
+      <xs:attribute name="play-full" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xlink:href" use="required"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:actuate1"/>
+      <xs:attributeGroup ref="xlink:show1"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="header">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="footer">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="date-time">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="animations">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns10:show-shape"/>
+        <xs:element ref="ns10:show-text"/>
+        <xs:element ref="ns10:hide-shape"/>
+        <xs:element ref="ns10:hide-text"/>
+        <xs:element ref="ns10:dim"/>
+        <xs:element ref="ns10:play"/>
+        <xs:element ref="ns10:animation-group"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="node-type">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="default"/>
+        <xs:enumeration value="on-click"/>
+        <xs:enumeration value="with-previous"/>
+        <xs:enumeration value="after-previous"/>
+        <xs:enumeration value="timing-root"/>
+        <xs:enumeration value="main-sequence"/>
+        <xs:enumeration value="interactive-sequence"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="preset-id" type="xs:string"/>
+  <xs:attribute name="preset-sub-type" type="xs:string"/>
+  <xs:attribute name="preset-class">
+    <xs:simpleType>
+      <xs:restriction base="xs:token">
+        <xs:enumeration value="custom"/>
+        <xs:enumeration value="entrance"/>
+        <xs:enumeration value="exit"/>
+        <xs:enumeration value="emphasis"/>
+        <xs:enumeration value="motion-path"/>
+        <xs:enumeration value="ole-action"/>
+        <xs:enumeration value="media-call"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="master-element" type="xs:IDREF"/>
+  <xs:attribute name="group-id" type="xs:string"/>
+  <xs:element name="show">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" form="qualified" type="xs:string"/>
+      <xs:attribute name="pages" use="required" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="show-shape">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns10:sound"/>
+      </xs:sequence>
+      <xs:attribute ref="ns3:shape-id" use="required"/>
+      <xs:attribute name="effect" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="fade"/>
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="stripes"/>
+            <xs:enumeration value="open"/>
+            <xs:enumeration value="close"/>
+            <xs:enumeration value="dissolve"/>
+            <xs:enumeration value="wavyline"/>
+            <xs:enumeration value="random"/>
+            <xs:enumeration value="lines"/>
+            <xs:enumeration value="laser"/>
+            <xs:enumeration value="appear"/>
+            <xs:enumeration value="hide"/>
+            <xs:enumeration value="move-short"/>
+            <xs:enumeration value="checkerboard"/>
+            <xs:enumeration value="rotate"/>
+            <xs:enumeration value="stretch"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="direction" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="from-left"/>
+            <xs:enumeration value="from-top"/>
+            <xs:enumeration value="from-right"/>
+            <xs:enumeration value="from-bottom"/>
+            <xs:enumeration value="from-center"/>
+            <xs:enumeration value="from-upper-left"/>
+            <xs:enumeration value="from-upper-right"/>
+            <xs:enumeration value="from-lower-left"/>
+            <xs:enumeration value="from-lower-right"/>
+            <xs:enumeration value="to-left"/>
+            <xs:enumeration value="to-top"/>
+            <xs:enumeration value="to-right"/>
+            <xs:enumeration value="to-bottom"/>
+            <xs:enumeration value="to-upper-left"/>
+            <xs:enumeration value="to-upper-right"/>
+            <xs:enumeration value="to-lower-right"/>
+            <xs:enumeration value="to-lower-left"/>
+            <xs:enumeration value="path"/>
+            <xs:enumeration value="spiral-inward-left"/>
+            <xs:enumeration value="spiral-inward-right"/>
+            <xs:enumeration value="spiral-outward-left"/>
+            <xs:enumeration value="spiral-outward-right"/>
+            <xs:enumeration value="vertical"/>
+            <xs:enumeration value="horizontal"/>
+            <xs:enumeration value="to-center"/>
+            <xs:enumeration value="clockwise"/>
+            <xs:enumeration value="counter-clockwise"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="speed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="slow"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="fast"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="delay" form="qualified" type="xs:duration"/>
+      <xs:attribute name="start-scale" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="path-id" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="show-text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns10:sound"/>
+      </xs:sequence>
+      <xs:attribute ref="ns3:shape-id" use="required"/>
+      <xs:attribute name="effect" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="fade"/>
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="stripes"/>
+            <xs:enumeration value="open"/>
+            <xs:enumeration value="close"/>
+            <xs:enumeration value="dissolve"/>
+            <xs:enumeration value="wavyline"/>
+            <xs:enumeration value="random"/>
+            <xs:enumeration value="lines"/>
+            <xs:enumeration value="laser"/>
+            <xs:enumeration value="appear"/>
+            <xs:enumeration value="hide"/>
+            <xs:enumeration value="move-short"/>
+            <xs:enumeration value="checkerboard"/>
+            <xs:enumeration value="rotate"/>
+            <xs:enumeration value="stretch"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="direction" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="from-left"/>
+            <xs:enumeration value="from-top"/>
+            <xs:enumeration value="from-right"/>
+            <xs:enumeration value="from-bottom"/>
+            <xs:enumeration value="from-center"/>
+            <xs:enumeration value="from-upper-left"/>
+            <xs:enumeration value="from-upper-right"/>
+            <xs:enumeration value="from-lower-left"/>
+            <xs:enumeration value="from-lower-right"/>
+            <xs:enumeration value="to-left"/>
+            <xs:enumeration value="to-top"/>
+            <xs:enumeration value="to-right"/>
+            <xs:enumeration value="to-bottom"/>
+            <xs:enumeration value="to-upper-left"/>
+            <xs:enumeration value="to-upper-right"/>
+            <xs:enumeration value="to-lower-right"/>
+            <xs:enumeration value="to-lower-left"/>
+            <xs:enumeration value="path"/>
+            <xs:enumeration value="spiral-inward-left"/>
+            <xs:enumeration value="spiral-inward-right"/>
+            <xs:enumeration value="spiral-outward-left"/>
+            <xs:enumeration value="spiral-outward-right"/>
+            <xs:enumeration value="vertical"/>
+            <xs:enumeration value="horizontal"/>
+            <xs:enumeration value="to-center"/>
+            <xs:enumeration value="clockwise"/>
+            <xs:enumeration value="counter-clockwise"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="speed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="slow"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="fast"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="delay" form="qualified" type="xs:duration"/>
+      <xs:attribute name="start-scale" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="path-id" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hide-shape">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns10:sound"/>
+      </xs:sequence>
+      <xs:attribute ref="ns3:shape-id" use="required"/>
+      <xs:attribute name="effect" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="fade"/>
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="stripes"/>
+            <xs:enumeration value="open"/>
+            <xs:enumeration value="close"/>
+            <xs:enumeration value="dissolve"/>
+            <xs:enumeration value="wavyline"/>
+            <xs:enumeration value="random"/>
+            <xs:enumeration value="lines"/>
+            <xs:enumeration value="laser"/>
+            <xs:enumeration value="appear"/>
+            <xs:enumeration value="hide"/>
+            <xs:enumeration value="move-short"/>
+            <xs:enumeration value="checkerboard"/>
+            <xs:enumeration value="rotate"/>
+            <xs:enumeration value="stretch"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="direction" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="from-left"/>
+            <xs:enumeration value="from-top"/>
+            <xs:enumeration value="from-right"/>
+            <xs:enumeration value="from-bottom"/>
+            <xs:enumeration value="from-center"/>
+            <xs:enumeration value="from-upper-left"/>
+            <xs:enumeration value="from-upper-right"/>
+            <xs:enumeration value="from-lower-left"/>
+            <xs:enumeration value="from-lower-right"/>
+            <xs:enumeration value="to-left"/>
+            <xs:enumeration value="to-top"/>
+            <xs:enumeration value="to-right"/>
+            <xs:enumeration value="to-bottom"/>
+            <xs:enumeration value="to-upper-left"/>
+            <xs:enumeration value="to-upper-right"/>
+            <xs:enumeration value="to-lower-right"/>
+            <xs:enumeration value="to-lower-left"/>
+            <xs:enumeration value="path"/>
+            <xs:enumeration value="spiral-inward-left"/>
+            <xs:enumeration value="spiral-inward-right"/>
+            <xs:enumeration value="spiral-outward-left"/>
+            <xs:enumeration value="spiral-outward-right"/>
+            <xs:enumeration value="vertical"/>
+            <xs:enumeration value="horizontal"/>
+            <xs:enumeration value="to-center"/>
+            <xs:enumeration value="clockwise"/>
+            <xs:enumeration value="counter-clockwise"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="speed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="slow"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="fast"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="delay" form="qualified" type="xs:duration"/>
+      <xs:attribute name="start-scale" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="path-id" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hide-text">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns10:sound"/>
+      </xs:sequence>
+      <xs:attribute ref="ns3:shape-id" use="required"/>
+      <xs:attribute name="effect" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="fade"/>
+            <xs:enumeration value="move"/>
+            <xs:enumeration value="stripes"/>
+            <xs:enumeration value="open"/>
+            <xs:enumeration value="close"/>
+            <xs:enumeration value="dissolve"/>
+            <xs:enumeration value="wavyline"/>
+            <xs:enumeration value="random"/>
+            <xs:enumeration value="lines"/>
+            <xs:enumeration value="laser"/>
+            <xs:enumeration value="appear"/>
+            <xs:enumeration value="hide"/>
+            <xs:enumeration value="move-short"/>
+            <xs:enumeration value="checkerboard"/>
+            <xs:enumeration value="rotate"/>
+            <xs:enumeration value="stretch"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="direction" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="from-left"/>
+            <xs:enumeration value="from-top"/>
+            <xs:enumeration value="from-right"/>
+            <xs:enumeration value="from-bottom"/>
+            <xs:enumeration value="from-center"/>
+            <xs:enumeration value="from-upper-left"/>
+            <xs:enumeration value="from-upper-right"/>
+            <xs:enumeration value="from-lower-left"/>
+            <xs:enumeration value="from-lower-right"/>
+            <xs:enumeration value="to-left"/>
+            <xs:enumeration value="to-top"/>
+            <xs:enumeration value="to-right"/>
+            <xs:enumeration value="to-bottom"/>
+            <xs:enumeration value="to-upper-left"/>
+            <xs:enumeration value="to-upper-right"/>
+            <xs:enumeration value="to-lower-right"/>
+            <xs:enumeration value="to-lower-left"/>
+            <xs:enumeration value="path"/>
+            <xs:enumeration value="spiral-inward-left"/>
+            <xs:enumeration value="spiral-inward-right"/>
+            <xs:enumeration value="spiral-outward-left"/>
+            <xs:enumeration value="spiral-outward-right"/>
+            <xs:enumeration value="vertical"/>
+            <xs:enumeration value="horizontal"/>
+            <xs:enumeration value="to-center"/>
+            <xs:enumeration value="clockwise"/>
+            <xs:enumeration value="counter-clockwise"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="speed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="slow"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="fast"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="delay" form="qualified" type="xs:duration"/>
+      <xs:attribute name="start-scale" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="path-id" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns10:sound"/>
+      </xs:sequence>
+      <xs:attribute ref="ns3:shape-id" use="required"/>
+      <xs:attribute ref="ns3:color" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="play">
+    <xs:complexType>
+      <xs:attribute ref="ns3:shape-id" use="required"/>
+      <xs:attribute name="speed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="slow"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="fast"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="animation-group">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns10:show-shape"/>
+        <xs:element ref="ns10:show-text"/>
+        <xs:element ref="ns10:hide-shape"/>
+        <xs:element ref="ns10:hide-text"/>
+        <xs:element ref="ns10:dim"/>
+        <xs:element ref="ns10:play"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

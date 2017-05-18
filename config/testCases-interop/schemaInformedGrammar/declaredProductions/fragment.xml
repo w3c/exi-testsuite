@@ -1,0 +1,75 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - fragment">
+
+    <param name="groupId" value="${groupId} | fragment"/>
+
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.fragments" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#informedFragGrammars"/>
+
+    <testCase name="schemaInformed.declared.fragment-01">
+        <param name="testDescription" 
+          value="Tests the production order in fragment grammars. 1st part of event 
+                 codes should take 4 bits when pis and comments are both preserved."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/fragment-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/fragment-a.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.fragment-02">
+        <param name="testDescription" 
+          value="Tests the production order in fragment grammars. 1st part of event
+                 codes should take only 3 (instead of 4) bits when neither pis nor 
+                 comments are preserved."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/fragment-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/fragment-a.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.fragment-03">
+        <param name="testDescription" 
+          value="There are 3 declarations of the element name 'foo:A' all of which 
+                 use the same type. The same is true for the element name 'foo:B'."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/fragment-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/fragment-b.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.fragment-04">
+        <param name="testDescription" 
+          value="There are 5 declarations of the element name 'foo:A' the types of 
+                 which vary. The same is true for the element name 'foo:B'."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/fragment-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/fragment-c.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.fragment-05">
+        <param name="testDescription" 
+          value="There are 3 declarations of the element name 'foo:A' all of which 
+                 use the same type but with different nillability. The same is true 
+                 for the element name 'foo:B'."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/fragment-05.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/fragment-d.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.fragment-06">
+        <param name="testDescription" 
+          value="There are 3 declarations of the element name 'foo:A' all of which 
+                 use the same type with the same nillability 'true'. The same is 
+                 true for the element name 'foo:B'."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/fragment-06.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/fragment-e.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+    </testCase>
+
+</testCaseGroup>

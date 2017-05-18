@@ -1,0 +1,97 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid dateTime encoding">
+
+    <param name="groupId" value="${groupId} | dateTimeValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingDateTime"/>
+
+    <testCase name="dateTime.valid-00">
+        <param name="description"  value="Simple date value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-00.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-01">
+        <param name="description"  value="Simple dateTime value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-01.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-02">
+        <param name="description"  value="dateTime with Z"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-02.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-03">
+        <param name="description"  value="dateTime with time zone value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-03.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-04">
+        <param name="description"  value="dateTime with fractional value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-04.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-05">
+        <param name="description"  value="dateTime with time zone and fractional value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-05.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-06">
+        <param name="description"  value="Simple gDay value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-06.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-07">
+        <param name="description"  value="Simple gMonth value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-07.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-08">
+        <param name="description"  value="gMonth value with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-08.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-08-1">
+        <param name="description"  value="gMonth value with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-08-1.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-09">
+        <param name="description"  value="Simple gMonthDay value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-09.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-10">
+        <param name="description"  value="gMonthDay value with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-10.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-11">
+        <param name="description"  value="gYear values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-11.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-12">
+        <param name="description"  value="gYear value with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-12.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-13">
+        <param name="description"  value="gYearMonth value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-13.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-14">
+        <param name="description"  value="gYearMonth values with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-14.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-14-1">
+        <param name="description"  value="gYearMonth values with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-14-1.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-15">
+        <param name="description"  value="time values with or without time zone and fractional values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-15.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-15-1">
+        <param name="description"  value="time values with or without time zone and fractional values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-15-1.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-15-2">
+        <param name="description"  value="time values with or without time zone and fractional values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-15-2.xml" />
+    </testCase>
+    <testCase name="dateTime.valid-15-3">
+        <param name="description"  value="time values with or without time zone and fractional values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime-valid-15-3.xml" />
+    </testCase>
+
+</testCaseGroup>

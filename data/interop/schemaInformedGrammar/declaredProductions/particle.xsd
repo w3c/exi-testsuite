@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="E1">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence>
+        <xsd:element name="A" minOccurs="0" maxOccurs="3" /><!-- (minOccurs,maxOccurs)=(0,3) -->
+        <xsd:sequence maxOccurs="2">
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+      </xsd:sequence>
+      <xsd:element name="D" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="E2">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence>
+        <xsd:element name="A" minOccurs="0" maxOccurs="unbounded" /><!-- (minOccurs,maxOccurs)=(0,unbounded) -->
+        <xsd:sequence maxOccurs="2">
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+      </xsd:sequence>
+      <xsd:element name="D" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="E3">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence minOccurs="2" maxOccurs="2"><!-- (minOccurs,maxOccurs)=(2,2) -->
+        <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+        <xsd:sequence maxOccurs="2">
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+      </xsd:sequence>
+      <xsd:element name="D" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="E4">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence minOccurs="2" maxOccurs="5"><!-- (minOccurs,maxOccurs)=(2,5) -->
+        <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+        <xsd:sequence maxOccurs="2">
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+      </xsd:sequence>
+      <xsd:element name="D" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="E5">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence minOccurs="2" maxOccurs="unbounded"><!-- (minOccurs,maxOccurs)=(2,unbounded) -->
+        <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+        <xsd:sequence maxOccurs="2">
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+      </xsd:sequence>
+      <xsd:element name="D" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:group name="E6">
+  <xsd:sequence>
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+      <xsd:sequence maxOccurs="2">
+        <xsd:element name="B" />
+        <xsd:element name="C" minOccurs="0" />
+      </xsd:sequence>
+    </xsd:sequence>
+    <xsd:element name="D" />
+  </xsd:sequence>
+</xsd:group>
+
+<xsd:complexType name="E6">
+  <xsd:group ref="E6" minOccurs="2" maxOccurs="2"/>
+  <xsd:attribute name="aA" />
+</xsd:complexType>
+
+<xsd:element name="E6" type="E6" />
+
+<xsd:complexType name="E6_mixed" mixed="true">
+  <xsd:group ref="E6" minOccurs="2" maxOccurs="2"/>
+  <xsd:attribute name="aA" />
+</xsd:complexType>
+
+<xsd:element name="E6_mixed" type="E6_mixed" />
+
+<xsd:element name="F1">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:choice minOccurs="0" maxOccurs="3">
+        <xsd:sequence>
+          <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:sequence>
+          <xsd:element name="D" />
+          <xsd:element name="E" />
+        </xsd:sequence>
+      </xsd:choice>
+      <xsd:element name="F" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="F2">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:choice minOccurs="0" maxOccurs="unbounded">
+        <xsd:sequence>
+          <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:sequence>
+          <xsd:element name="D" />
+          <xsd:element name="E" />
+        </xsd:sequence>
+      </xsd:choice>
+      <xsd:element name="F" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="F3">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:choice minOccurs="2" maxOccurs="2">
+        <xsd:sequence>
+          <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:sequence>
+          <xsd:element name="D" />
+          <xsd:element name="E" />
+        </xsd:sequence>
+      </xsd:choice>
+      <xsd:element name="F" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="F4">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:choice minOccurs="2" maxOccurs="5">
+        <xsd:sequence>
+          <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:sequence>
+          <xsd:element name="D" />
+          <xsd:element name="E" />
+        </xsd:sequence>
+      </xsd:choice>
+      <xsd:element name="F" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="F5">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:choice minOccurs="2" maxOccurs="unbounded">
+        <xsd:sequence>
+          <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:sequence>
+          <xsd:element name="D" />
+          <xsd:element name="E" />
+        </xsd:sequence>
+      </xsd:choice>
+      <xsd:element name="F" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+</xsd:schema>

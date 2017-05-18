@@ -1,0 +1,465 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo" xmlns:hoo="urn:hoo">
+
+<xsd:import namespace="urn:goo" schemaLocation="acceptance_imported_goo.xsd"/>
+<xsd:import namespace="urn:hoo" schemaLocation="acceptance_imported_hoo.xsd"/>
+<xsd:import namespace="urn:ioo" schemaLocation="acceptance_imported_ioo.xsd"/>
+<xsd:import schemaLocation="acceptance_imported_default.xsd"/>
+
+<xsd:simpleType name="finalString" final="#all">
+  <xsd:restriction base="xsd:string" />
+</xsd:simpleType>
+
+<xsd:complexType name="extendedDate">
+  <xsd:simpleContent>
+    <xsd:extension base="xsd:date">
+      <xsd:attribute ref="foo:aA" />
+    </xsd:extension>
+  </xsd:simpleContent>
+</xsd:complexType>
+
+<xsd:simpleType name="listOfBytes">
+  <xsd:list>
+    <xsd:simpleType>
+      <xsd:restriction base="xsd:byte"/>
+    </xsd:simpleType>
+  </xsd:list>
+</xsd:simpleType>
+
+<xsd:element name="ANY" type="xsd:anyType"/>
+
+<xsd:element name="nillable_ANY" type="xsd:anyType" nillable="true" />
+
+<xsd:complexType name="anyType">
+  <xsd:complexContent mixed="true">
+    <xsd:restriction base="xsd:anyType">
+      <xsd:sequence>
+        <xsd:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+      <xsd:anyAttribute namespace="##any" processContents="lax" />
+    </xsd:restriction>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="A">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence>
+        <xsd:element ref="foo:AB"/>
+        <xsd:element ref="foo:AC" minOccurs="0" maxOccurs="2"/>
+      </xsd:sequence>
+      <xsd:sequence minOccurs="1"/>
+      <xsd:element ref="foo:AD"/>
+      <xsd:element ref="foo:AE" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:complexType name="B">
+  <xsd:sequence>
+    <xsd:element ref="foo:AB"/>
+    <xsd:element ref="foo:AC" minOccurs="0" maxOccurs="2"/>
+    <xsd:element ref="foo:AD" minOccurs="0"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="restricted_B">
+  <xsd:complexContent>
+    <xsd:restriction base="foo:B">
+      <xsd:sequence>
+        <xsd:element ref="foo:AB"/>
+        <xsd:element ref="foo:AC" minOccurs="0"/>
+        <xsd:element ref="foo:AD" minOccurs="0"/>
+      </xsd:sequence>
+    </xsd:restriction>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="extended_B">
+  <xsd:complexContent>
+    <xsd:extension base="foo:B">
+      <xsd:attribute ref="foo:aA" use="required"/>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="B" type="foo:B" nillable="false"/>
+
+<xsd:element name="nillable_B" type="foo:B" nillable="true" />
+
+<xsd:complexType name="C">
+  <xsd:all>
+    <xsd:element ref="foo:AB" minOccurs="0" />
+    <xsd:element ref="foo:AC" />
+  </xsd:all>
+</xsd:complexType>
+
+<xsd:element name="C" type="foo:C"/>
+
+<xsd:element name="AB" type="xsd:anySimpleType" nillable="false" />
+<xsd:element name="nillable_AB" type="xsd:anySimpleType" nillable="true" />
+<xsd:element name="AC" type="xsd:anySimpleType"/>
+<xsd:element name="AD" type="xsd:anySimpleType"/>
+<xsd:element name="AE" type="xsd:anySimpleType"/>
+<xsd:element name="AF" type="xsd:date"/>
+
+<xsd:element name="D">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence>
+        <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+        <xsd:sequence maxOccurs="2">
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+          <xsd:element name="D" minOccurs="0" />
+        </xsd:sequence>
+      </xsd:sequence>
+      <xsd:element name="E" minOccurs="0" />
+      <xsd:element name="F" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="E">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:sequence maxOccurs="2">
+          <xsd:element name="A" minOccurs="0" maxOccurs="2" />
+          <xsd:element name="B" />
+          <xsd:element name="C" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:sequence minOccurs="0">
+          <xsd:element name="D" />
+          <xsd:element name="E" />
+          <xsd:element name="F" />
+        </xsd:sequence>
+      </xsd:choice>
+      <xsd:element name="G" minOccurs="0" />
+      <xsd:choice minOccurs="1"/>
+      <xsd:element name="H" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:attribute name="aA" />
+<xsd:attribute name="aB" />
+<xsd:attribute name="aC" />
+<xsd:attribute name="aD" />
+<xsd:attribute name="aE" />
+<xsd:attribute name="aF" />
+<xsd:attribute name="aG" />
+<xsd:attribute name="aH" />
+<xsd:attribute name="aI" />
+<xsd:attribute name="aJ" />
+<xsd:attribute name="aK" type="xsd:date" />
+<xsd:attribute name="aL" type="xsd:integer" />
+<xsd:attribute name="aM" type="xsd:base64Binary" />
+<xsd:attribute name="aN" type="foo:listOfBytes" />
+
+<xsd:attribute name="aBoolean" type="xsd:boolean" />
+
+<xsd:complexType name="F">
+  <xsd:sequence>
+    <xsd:element ref="foo:AB"/>
+  </xsd:sequence>
+  <xsd:attribute ref="foo:aB" />
+  <xsd:attribute ref="foo:aC" />
+  <xsd:attribute ref="foo:aA" use="required"/>
+</xsd:complexType>
+
+<xsd:complexType name="extended_F">
+  <xsd:complexContent>
+    <xsd:extension base="foo:F">
+      <xsd:anyAttribute namespace="##any" />
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="F" type="foo:F" nillable="true"/>
+
+<xsd:element name="G" nillable="true">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element ref="foo:AB" minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute ref="foo:aB" />
+    <xsd:attribute ref="foo:aC" />
+    <xsd:attribute ref="foo:aA" use="required"/>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="G2">
+  <xsd:complexType><!-- Don't make it a named type -->
+      <xsd:anyAttribute namespace="##any" />
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="G3"><!-- Don't make it nillable -->
+  <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="A" />
+      </xsd:sequence>
+      <xsd:anyAttribute namespace="##any" />
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="G4">
+  <xsd:complexType>
+    <xsd:attribute name="aK" type="xsd:positiveInteger" use="required"/>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="H">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:element name="A" minOccurs="0"/>
+      <xsd:any namespace="urn:eoo urn:goo" />
+      <xsd:element name="B" />
+      <xsd:any namespace="##other" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="H2">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:any namespace="##other" minOccurs="0" />
+      <xsd:any namespace="##targetNamespace ##local" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="H3">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:any namespace="urn:none_01" minOccurs="0" /> <!-- so that "urn:none_01" gets in uri partition. -->
+      <xsd:element ref="foo:AB" />
+      <xsd:any namespace="##any" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="H4">
+  <xsd:complexType>
+    <xsd:sequence>
+      <xsd:sequence>
+        <xsd:any namespace="##local ##targetNamespace" minOccurs="0" maxOccurs="2"/>
+        <xsd:element ref="hoo:AC" minOccurs="0"/>
+        <xsd:sequence>
+          <xsd:any namespace="urn:goo" minOccurs="0" />
+          <xsd:element ref="hoo:AB" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:sequence>
+      <xsd:any namespace="urn:ioo" minOccurs="0" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="I" nillable="true">
+  <xsd:complexType>
+    <xsd:choice>
+      <xsd:element name="A">
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:anySimpleType">
+              <xsd:anyAttribute namespace="urn:hoo urn:none_02 urn:goo urn:foo urn:hoo urn:hoo ##local" />
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="B">
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:anySimpleType">
+              <xsd:anyAttribute namespace="##other" />
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:choice>
+    <xsd:attribute ref="foo:aF" />
+    <xsd:attribute ref="foo:aI" use="required" />
+    <xsd:attribute ref="foo:aC" />
+    <xsd:anyAttribute namespace="##any" />
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:complexType name="I2">
+  <xsd:sequence>
+    <xsd:element name="A" minOccurs="0" />
+    <xsd:element name="B" minOccurs="0" />
+  </xsd:sequence>
+  <xsd:attribute ref="foo:aF" />
+  <xsd:attribute ref="foo:aI" use="required" />
+  <xsd:attribute ref="foo:aC" />
+  <xsd:anyAttribute namespace="urn:hoo urn:none_03 urn:goo" />
+</xsd:complexType>
+
+<xsd:complexType name="extended_I2">
+  <xsd:complexContent>
+    <xsd:extension base="foo:I2">
+      <xsd:anyAttribute namespace="##targetNamespace ##local" />
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="I2" type="foo:I2" nillable="true" />
+
+<xsd:element name="J">
+  <xsd:complexType>
+    <xsd:sequence maxOccurs="2">
+      <xsd:element ref="foo:AB"/>
+      <xsd:element ref="foo:AC" minOccurs="0" maxOccurs="2"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="K" type="foo:finalString"/>
+
+<xsd:element name="L">
+  <xsd:complexType>
+    <xsd:sequence minOccurs="2" maxOccurs="2">
+      <xsd:element ref="foo:AB"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="M">
+  <xsd:complexType>
+    <xsd:attribute ref="foo:aA" />
+    <xsd:attribute ref="foo:aB" use="required" />
+    <xsd:attribute ref="foo:aC" />
+    <xsd:attribute ref="foo:aD" />
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:attribute name="aJ4M2" type="xsd:hexBinary" />
+<xsd:attribute name="aK4M2" type="xsd:hexBinary" />
+<xsd:attribute name="aL4M2" type="xsd:hexBinary" />
+<xsd:attribute name="aM4M2" type="xsd:hexBinary" />
+<xsd:attribute name="aN4M2" type="xsd:hexBinary" />
+<xsd:attribute name="aO4M2" type="xsd:hexBinary" />
+
+<xsd:element name="M2">
+  <xsd:complexType>
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="A">
+        <xsd:complexType>
+          <xsd:attribute ref="foo:aK" /><!-- xsd:date -->
+          <xsd:attribute ref="foo:aL" /><!-- xsd:integer -->
+          <xsd:attribute ref="foo:aM" /><!-- xsd:base64Binary -->
+          <xsd:attribute ref="foo:aN" /><!-- xsd:listOfBytes -->
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="N">
+  <xsd:complexType>
+    <xsd:sequence maxOccurs="unbounded">
+      <xsd:element name="A" type="foo:extendedDate" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="P">
+  <xsd:complexType>
+    <xsd:choice maxOccurs="unbounded">
+      <xsd:element ref="foo:P1" />
+      <xsd:element ref="foo:P2" />
+      <xsd:element ref="foo:P3" />
+    </xsd:choice>
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:complexType name="P1">
+  <xsd:sequence>
+    <xsd:element ref="foo:AB" />
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="P1" type="foo:P1" />
+
+<xsd:complexType name="extended_P1">
+  <xsd:complexContent>
+    <xsd:extension base="foo:P1">
+      <xsd:sequence>
+        <xsd:element ref="foo:AB" />
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="P2">
+  <xsd:sequence>
+    <xsd:element ref="foo:AC" />
+  </xsd:sequence>
+  <xsd:attribute ref="foo:aA" />
+</xsd:complexType>
+
+<xsd:element name="P2" type="foo:P2" />
+
+<xsd:complexType name="extended_P2">
+  <xsd:complexContent>
+    <xsd:extension base="foo:P2">
+      <xsd:sequence>
+        <xsd:element ref="foo:AC" />
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="P3">
+  <xsd:sequence>
+    <xsd:element ref="foo:AD" />
+  </xsd:sequence>
+  <xsd:anyAttribute namespace="urn:eoo urn:foo" />
+</xsd:complexType>
+
+<xsd:element name="P3" type="foo:P3" />
+
+<xsd:complexType name="extended_P3">
+  <xsd:complexContent>
+    <xsd:extension base="foo:P3">
+      <xsd:sequence>
+        <xsd:element ref="foo:AD" />
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:element name="Q">
+  <xsd:complexType mixed="true">
+    <xsd:sequence>
+      <xsd:element name="Qc" form="qualified" minOccurs="0">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:any namespace="##other" minOccurs="0" />
+      <xsd:element ref="foo:Qb" minOccurs="0" /><!-- element Qb constitutes a substitution group. see below. -->
+      <xsd:any namespace="##local" minOccurs="0"/>
+      <xsd:element name="Qa" form="qualified" minOccurs="0">
+        <xsd:complexType/>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute ref="foo:aL" /><!-- xsd:integer -->
+    <xsd:attribute ref="foo:aK" /><!-- xsd:date -->
+    <xsd:anyAttribute namespace="urn:hoo urn:goo ##local urn:foo" />
+  </xsd:complexType>
+</xsd:element>
+
+<xsd:element name="Qb" type="foo:tQb" />
+<xsd:element name="Qz" type="foo:tQz" substitutionGroup="foo:Qb" />
+
+<xsd:complexType name="tQb"/>
+<xsd:complexType name="tQz">
+  <xsd:complexContent>
+    <xsd:extension base="foo:tQb" />
+  </xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>

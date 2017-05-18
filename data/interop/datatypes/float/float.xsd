@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="root" >
+        <xs:complexType>
+            <!-- Built-in Type: float -->
+            <xs:sequence>
+                <xs:element name="float"  type="xs:float" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="double"  type="xs:double" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute name="float" type="xs:float" use="optional"/>
+            <xs:attribute name="double" type="xs:double" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

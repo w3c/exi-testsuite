@@ -1,0 +1,134 @@
+<?xml version="1.0" ?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Header><To xmlns="http://www.w3.org/2005/08/addressing">http://localhost:4040/jaxwsa-w3c_s11/cr</To><MessageID xmlns="http://www.w3.org/2005/08/addressing">uuid:b707b56e-29cd-4a31-8106-f8e27ae0a62f</MessageID><ReplyTo xmlns="http://www.w3.org/2005/08/addressing"><Address>http://www.w3.org/2005/08/addressing/none</Address><Metadata><definitions:definitions xmlns:definitions="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:service="http://example.org/wsaTestService" xmlns:s1="http://example.org/echo" xmlns:s0="http://example.org/notify" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns="" xmlns:ns3="http://www.w3.org/2005/08/addressing" targetNamespace="http://example.org/wsaTestService">
+
+  <definitions:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://example.org/notify">
+        <xs:element name="notify" type="xs:string"></xs:element>
+    </xs:schema>
+
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://example.org/echo">
+        <xs:element name="echoIn" type="xs:string"></xs:element>
+        <xs:element name="echoOut" type="xs:string"></xs:element>
+    </xs:schema>
+  </definitions:types>
+
+  <definitions:message name="wsaNotifyMessage">
+    <definitions:part element="s0:notify" name="wsaNotifyMessagePart"></definitions:part>
+  </definitions:message>
+
+  <definitions:message name="wsaEchoInMessage">
+    <definitions:part element="s1:echoIn" name="wsaEchoInPart"></definitions:part>
+  </definitions:message>
+        
+  <definitions:message name="wsaEchoOutMessage">
+    <definitions:part element="s1:echoOut" name="wsaEchoOutPart"></definitions:part>
+  </definitions:message>
+        
+  <definitions:portType name="wsaTestPortType">
+    <definitions:operation name="notify">
+      <definitions:input message="service:wsaNotifyMessage" ns3:Action="http://example.org/action/notify"></definitions:input>
+    </definitions:operation>
+
+    <definitions:operation name="echo">
+      <definitions:input message="service:wsaEchoInMessage" ns3:Action="http://example.org/action/echoIn"></definitions:input>
+      <definitions:output message="service:wsaEchoOutMessage" ns3:Action="http://example.org/action/echoOut"></definitions:output>
+    </definitions:operation>
+  </definitions:portType>
+        
+  <definitions:binding name="wsaTestSoap11Binding" type="service:wsaTestPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <definitions:operation name="notify">
+          <soap:operation soapAction="" style="document"></soap:operation>
+          <definitions:input>
+              <soap:body use="literal"></soap:body>
+          </definitions:input>
+        </definitions:operation>
+
+        <definitions:operation name="echo">
+          <soap:operation soapAction="" style="document"></soap:operation>
+          <definitions:input>
+              <soap:body use="literal"></soap:body>
+          </definitions:input>
+          <definitions:output>
+              <soap:body use="literal"></soap:body>
+          </definitions:output>
+        </definitions:operation>
+
+    </definitions:binding>
+    
+    <definitions:service name="wsaTestService">
+      <definitions:port binding="service:wsaTestSoap11Binding" name="wsaTestPort">
+          <soap:address location="http://localhost:8080/jaxwsa-w3c_s11/cr"></soap:address>
+      </definitions:port>
+    </definitions:service>
+</definitions:definitions><description:description xmlns:description="http://www.w3.org/2006/01/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsoap="http://www.w3.org/2005/08/wsdl/soap" xmlns:wsdlx="http://www.w3.org/2005/08/wsdl-extensions" xmlns:whttp="http://www.w3.org/2005/08/wsdl/http" xmlns:service="http://example.org/wsaTestService" xmlns:notify="http://example.org/notify" xmlns:echo="http://example.org/echo" xmlns="" xmlns:ns3="http://www.w3.org/2005/08/addressing" targetNamespace="http://example.org/wsaTestService">
+   <description:types>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://example.org/notify">
+         <xs:element name="notify" type="xs:string"></xs:element>
+      </xs:schema>
+
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://example.org/echo">
+         <xs:element name="echoIn" type="xs:string"></xs:element>
+
+         <xs:element name="echoOut" type="xs:string"></xs:element>
+      </xs:schema>
+   </description:types>
+
+   <description:interface name="wsaTestService">
+      <description:fault name="service:EmptyEchoString"></description:fault>
+
+      <description:operation name="notify" pattern="http://www.w3.org/2005/08/wsdl/in-only">
+         <description:input element="notify:notify" messageLabel="In"></description:input>
+      </description:operation>
+
+      <description:operation name="echoIn" pattern="http://www.w3.org/2005/08/wsdl/robust-in-only">
+         <description:input element="s1:echoIn" messageLabel="In"></description:input>
+
+         <description:outfault messageLabel="Out" ref="service:EmptyEchoString"></description:outfault>
+      </description:operation>
+
+      <description:operation name="echoOut" pattern="http://www.w3.org/2005/08/wsdl/robust-in-only">
+         <description:input element="s1:echoOut" messageLabel="In"></description:input>
+
+         <description:outfault messageLabel="Out" ref="service:EmptyEchoString"></description:outfault>
+      </description:operation>
+
+      <description:operation name="echo" pattern="http://www.w3.org/2005/08/wsdl/in-out">
+         <description:input element="s1:echoIn" messageLabel="In"></description:input>
+
+         <description:output element="s1:echoOut" messageLabel="Out"></description:output>
+
+         <description:outfault messageLabel="Out" ref="service:EmptyEchoString"></description:outfault>
+      </description:operation>
+   </description:interface>
+
+   <description:binding interface="wsaTestService" name="wsaTestSoap11Binding" type="http://www.w3.org/2005/08/wsdl/soap" wsoap:version="1.1">wsoap:protocol="http://www.w3.org/2003/05/soap/bindings/HTTP"&gt; 
+   <description:operation ref="notify"></description:operation>
+
+   <description:operation ref="echoIn"></description:operation>
+
+   <description:operation ref="echoOut"></description:operation>
+
+   <description:operation ref="echo"></description:operation>
+
+   <description:fault ref="service:EmptyEchoString" wsoap:code="echo:EmptyEchoString"></description:fault>
+   </description:binding>
+
+   <description:binding interface="wsaTestService" name="wsaTestSoap12Binding" type="http://www.w3.org/2005/08/wsdl/soap" wsoap:version="1.2">wsoap:protocol="http://www.w3.org/2003/05/soap/bindings/HTTP"&gt; 
+
+   <description:operation ref="notify" wsoap:mep="http://www.w3.org/2003/05/soap/mep/request"></description:operation>
+
+   <description:operation ref="echoIn" wsoap:mep="http://www.w3.org/2003/05/soap/mep/request"></description:operation>
+
+   <description:operation ref="echoOut" wsoap:mep="http://www.w3.org/2003/05/soap/mep/request"></description:operation>
+
+   <description:operation ref="echo" wsoap:mep="http://www.w3.org/2003/05/soap/mep/request-response"></description:operation>
+
+   <description:fault ref="service:EmptyEchoString" wsoap:code="echo:EmptyEchoString"></description:fault>
+   </description:binding>
+
+   <description:service interface="service:wsaTestService" name="wsaTestService">
+      <description:endpoint address="http://example.org/node/B" binding="service:wsaTestSoap11Binding" name="wsaTestSoap11Endpoint"></description:endpoint>
+
+      <description:endpoint address="http://example.org/node/B" binding="service:wsaTestSoap12Binding" name="wsaTestSoap12Endpoint"></description:endpoint>
+   </description:service>
+</description:description></Metadata></ReplyTo><Action xmlns="http://www.w3.org/2005/08/addressing">http://example.org/action/notify</Action></S:Header><S:Body><notify xmlns="http://example.org/notify" xmlns:ns2="http://example.org/echo">test1107</notify></S:Body></S:Envelope>

@@ -1,0 +1,3973 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Duane Davis (Naval Postgraduate School) -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Duane Davis (Naval Postgraduate School) -->
+<!--
+<head>
+   <meta name="filename"    content="AVCL.xsd" />
+   <meta name="authors"     content="Duane Davis, Don Brutzman, US Naval Postgraduate School, Monterey, CA" />
+   <meta name="created"     content="02 March 2004" />
+   <meta name="revised"     content="20 May 2006" />
+   <meta name="description"     content="This file contains the schema for the XML autonomous vehicle command
+                        language. In general the command language enables the explicit declaration of an entire mission using
+                        execution-level commands, the ad-hoc definition of a mission by providing individual commands
+                        asynchronously (in the form of individual single command element documents), mission data archiving
+                        (telemetry, control orders, sonar data, derived sensor-based data, etc.), and communication between
+                        various levels of the control architecture (execution, tactical, strategic levels) or between multiple
+                        autonomous vehicles, software agents, or human controllers." />
+   <meta name="url"     content="C:/auv/Workbench/Scripts/AVCL.xsd" />
+</head>
+ -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" elementFormDefault="qualified" attributeFormDefault="unqualified" jaxb:extensionBindingPrefixes="xjc" jaxb:version="1.0">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<jaxb:globalBindings fixedAttributeAsConstantProperty="true">
+				<xjc:serializable/>
+			</jaxb:globalBindings>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<!-- Available root level elements are AVCL and AVCLMessage -->
+	<xsd:element name="AVCL">
+		<xsd:annotation>
+			<xsd:documentation>Autonomous Vehicle Command Language Root Element. Can contain all pre-, post- and in-mission data.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="head" type="avclHeadType" minOccurs="0"/>
+				<xsd:element name="body" type="avclBodyType"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:float" use="required" fixed="1.0"/>
+			<xsd:attribute name="vehicleType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="vehicleID" type="xsd:unsignedShort" use="optional" default="0"/>
+			<xsd:attribute name="date" type="xsd:date" use="optional"/>
+			<xsd:attributeGroup ref="CommonAttributes"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AVCLMessage" type="avclMessageType">
+		<xsd:annotation>
+			<xsd:documentation>Root level element for use in message passing between vehicles and other vehicles or operators.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="AVCLMessageList">
+		<xsd:annotation>
+			<xsd:documentation>Root level element for use as a wrapper for a series of AVCL messages.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="head" type="avclHeadType" minOccurs="0"/>
+				<xsd:element name="body" type="avclMessageListBodyType"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:float" use="required" fixed="1.0"/>
+			<xsd:attribute name="vehicleType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="vehicleID" type="xsd:unsignedShort" use="optional" default="0"/>
+			<xsd:attribute name="date" type="xsd:date" use="optional"/>
+			<xsd:attributeGroup ref="CommonAttributes"/>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Attribute groups containing attribute sequences utilized by multiple element types -->
+	<xsd:attributeGroup name="CommonAttributes">
+		<xsd:annotation>
+			<xsd:documentation>Attributes common to all elements of the tagset.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="timeStamp" type="nonNegativeScalarType" use="optional"/>
+		<xsd:attribute name="description" type="xsd:string" use="optional"/>
+		<xsd:attribute name="id" type="xsd:ID" use="optional"/>
+		<!--		<xsd:attribute name="idRef" type="xsd:IDREF" use="optional"/> -->
+	</xsd:attributeGroup>
+	<xsd:attributeGroup name="IffAttributes">
+		<xsd:annotation>
+			<xsd:documentation>Attributes related to Identify Friend Foe (IFF) Systems for radar contacts.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="mode1" type="xsd:int" use="optional"/>
+		<xsd:attribute name="mode2" type="xsd:int" use="optional"/>
+		<xsd:attribute name="mode3" type="xsd:int" use="optional"/>
+		<xsd:attribute name="modeC" type="xsd:int" use="optional"/>
+		<xsd:attribute name="mode4" type="xsd:boolean" use="optional"/>
+	</xsd:attributeGroup>
+	<!-- Simple Types, primarily used for enumerations and numerical range restriction-->
+	<xsd:simpleType name="monthsType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration for the months of the year.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="January"/>
+			<xsd:enumeration value="February"/>
+			<xsd:enumeration value="March"/>
+			<xsd:enumeration value="April"/>
+			<xsd:enumeration value="May"/>
+			<xsd:enumeration value="June"/>
+			<xsd:enumeration value="July"/>
+			<xsd:enumeration value="August"/>
+			<xsd:enumeration value="September"/>
+			<xsd:enumeration value="October"/>
+			<xsd:enumeration value="November"/>
+			<xsd:enumeration value="December"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="calendarDaysType">
+		<xsd:annotation>
+			<xsd:documentation>Range restriction for calendar days (1-31).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minExclusive value="0"/>
+			<xsd:maxInclusive value="31"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="clockHoursType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration for the hours of a 24-hour clock (0-23).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="23"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="clockMinutesOrSecondsType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration for the minutes or seconds of a clock (0-59).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="59"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="timeZoneType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration for global time zone relative to GMT [-12..12]</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:byte">
+			<xsd:minInclusive value="-12"/>
+			<xsd:maxInclusive value="12"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="positiveScalarType">
+		<xsd:annotation>
+			<xsd:documentation>Represents a floating point number that is greater than 0.0</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="nonNegativeScalarType">
+		<xsd:annotation>
+			<xsd:documentation>Represents a floating point number that is greater than or equal to 0.0</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="nonNegativeIntType">
+		<xsd:annotation>
+			<xsd:documentation>Represents an integer that is greater than to zero.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:int">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="positiveIntType">
+		<xsd:annotation>
+			<xsd:documentation>Represents an integer that is greater than or equal to zero.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:int">
+			<xsd:minExclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="percentType">
+		<xsd:annotation>
+			<xsd:documentation>Represents a percentage between 0 and 100.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="signedPercentType">
+		<xsd:annotation>
+			<xsd:documentation>Represents a signed percentage between -100 and 100.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="-100"/>
+			<xsd:maxInclusive value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="headingType">
+		<xsd:annotation>
+			<xsd:documentation>Represents a heading (degrees) between 0 and 360.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="360"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="orientationType">
+		<xsd:annotation>
+			<xsd:documentation>Represents a vehicle Euler angle (degrees) between -360 and 360.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minExclusive value="-360"/>
+			<xsd:maxExclusive value="360"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="areaOrientationType">
+		<xsd:annotation>
+			<xsd:documentation>Represents possible orientations of a rectangular area (between -90 and 90 degrees).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="-90"/>
+			<xsd:maxInclusive value="90"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="weaponStatusType">
+		<xsd:annotation>
+			<xsd:documentation>Possible weapons status conditions determining what types of targets can be engaged.</xsd:documentation>
+			<xsd:appinfo>
+				<jaxb:typesafeEnumClass/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="safe"/>
+			<xsd:enumeration value="tight"/>
+			<xsd:enumeration value="free"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="turnDirectionType">
+		<xsd:annotation>
+			<xsd:documentation>Available units for angular measurement.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="left"/>
+			<xsd:enumeration value="right"/>
+			<xsd:enumeration value="port"/>
+			<xsd:enumeration value="starboard"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="latitudeType">
+		<xsd:annotation>
+			<xsd:documentation>Latitude values are represented by double precision values in the range [-90, 90] (positives are northern hemisphere).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="-90"/>
+			<xsd:maxInclusive value="90"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="longitudeType">
+		<xsd:annotation>
+			<xsd:documentation>Longitude values are represented by double precision values in the range [-180, 180] (positives are eastern hemisphere).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:double">
+			<xsd:minInclusive value="-180"/>
+			<xsd:maxInclusive value="180"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="datumTypeType">
+		<xsd:annotation>
+			<xsd:documentation>Determines whether a search is to be based on a point or area datum.</xsd:documentation>
+			<xsd:appinfo>
+				<jaxb:typesafeEnumClass/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="point"/>
+			<xsd:enumeration value="area"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="uuvCapabilityType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential unmanned underwater vehicle characteristics.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="thrusterPowered"/>
+			<xsd:enumeration value="seaglider"/>
+			<xsd:enumeration value="bodyThrustersInstalled"/>
+			<xsd:enumeration value="hoverCapable"/>
+			<xsd:enumeration value="stationCapable"/>
+			<xsd:enumeration value="altitudeCapable"/>
+			<xsd:enumeration value="communicationsCapable"/>
+			<xsd:enumeration value="underwaterCommunicationsCapable"/>
+			<xsd:enumeration value="satelliteCommunicationsCapable"/>
+			<xsd:enumeration value="gpsCapable"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="usvCapabilityType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential unmanned surface vehicle characteristics.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="communicationsCapable"/>
+			<xsd:enumeration value="underwaterCommunicationsCapable"/>
+			<xsd:enumeration value="satelliteCommunicationsCapable"/>
+			<xsd:enumeration value="gpsCapable"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ugvCapabilityType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential unmanned ground vehicle characteristics.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="tracked"/>
+			<xsd:enumeration value="communicationsCapable"/>
+			<xsd:enumeration value="satelliteCommunicationsCapable"/>
+			<xsd:enumeration value="gpsCapable"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="uavCapabilityType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential unmanned aerial vehicle characteristics.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="fixedWing"/>
+			<xsd:enumeration value="rotaryWing"/>
+			<xsd:enumeration value="singleEngine"/>
+			<xsd:enumeration value="multiEngine"/>
+			<xsd:enumeration value="satelliteCommunicationsCapable"/>
+			<xsd:enumeration value="gpsCapable"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--	<xsd:simpleType name="sensorTypeType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential sensor types.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="activeSonar"/>
+			<xsd:enumeration value="passiveSonar"/>
+			<xsd:enumeration value="imagingSonar"/>
+			<xsd:enumeration value="blazedArraySonar"/>
+			<xsd:enumeration value="syntheticApertureSonar"/>
+			<xsd:enumeration value="radar"/>
+			<xsd:enumeration value="dopplerRadar"/>
+			<xsd:enumeration value="syntheticApertureRadar"/>
+			<xsd:enumeration value="trackWhileScanRadar"/>
+			<xsd:enumeration value="earlyWarningRadar"/>
+			<xsd:enumeration value="acquisitionRadar"/>
+			<xsd:enumeration value="trackingRadar"/>
+			<xsd:enumeration value="fireControlRadar"/>
+			<xsd:enumeration value="surfaceSearchRadar"/>
+			<xsd:enumeration value="esm"/>
+			<xsd:enumeration value="passiveSoundDetector"/>
+			<xsd:enumeration value="chemicalDetector"/>
+			<xsd:enumeration value="biologicalDetector"/>
+			<xsd:enumeration value="radiologicalDetector"/>
+			<xsd:enumeration value="video"/>
+			<xsd:enumeration value="flir"/>
+			<xsd:enumeration value="motionSensor"/>
+		</xsd:restriction>
+	</xsd:simpleType> -->
+	<xsd:simpleType name="illuminatorType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential illumination types (flares or spotlight).</xsd:documentation>
+			<xsd:appinfo>
+				<jaxb:typesafeEnumClass/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="pyrotechnics"/>
+			<xsd:enumeration value="spotlight"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="markerType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential marker types (laser, smoke, etc.).</xsd:documentation>
+			<xsd:appinfo>
+				<jaxb:typesafeEnumClass/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="laser"/>
+			<xsd:enumeration value="smoke"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="contaminantType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential contaminant types.</xsd:documentation>
+			<xsd:appinfo>
+				<jaxb:typesafeEnumClass/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="nuclear"/>
+			<xsd:enumeration value="chemical"/>
+			<xsd:enumeration value="biological"/>
+			<xsd:enumeration value="explosive"/>
+			<xsd:enumeration value="toxin"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="trackModeType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential waypoint tracking (homing) modes.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="directTo"/>
+			<xsd:enumeration value="trackTo"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="acknowledgeType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration of potential message acknowledgement requirements.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="yes"/>
+			<xsd:enumeration value="no"/>
+			<xsd:enumeration value="optional"/>
+			<xsd:enumeration value="positiveOnly"/>
+			<xsd:enumeration value="negativeOnly"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="priorityType">
+		<xsd:annotation>
+			<xsd:documentation>Value used to represent a message priority (low numbers are high priority).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:unsignedByte">
+			<xsd:minExclusive value="0"/>
+			<xsd:maxInclusive value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="reportingCriteriaType">
+		<xsd:annotation>
+			<xsd:documentation>Value used to identify when reports are required during goal accomplishment.</xsd:documentation>
+			<xsd:appinfo>
+				<jaxb:typesafeEnumClass/>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="never">
+				<xsd:annotation>
+					<xsd:documentation>No reports are to be made concerning the progress of this goal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="periodic">
+				<xsd:annotation>
+					<xsd:documentation>Reports are to be made at specific periods until this goal is complete.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="statusChanged">
+				<xsd:annotation>
+					<xsd:documentation>A report is to be made whenever an action effecting this goal occurs (e.g. new contact).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="onCommence">
+				<xsd:annotation>
+					<xsd:documentation>A report is to be made whenever the vehicle commences actions to achieve this goal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="onComplete">
+				<xsd:annotation>
+					<xsd:documentation>A report is to be made whenever the vehicle achieves the goal or checks off station.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="vehicleGroupCompositionType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration describing activities pertaining to the formation and maintanence of a cooperative group of vehicles.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="initiateGroupFormation">
+				<xsd:annotation>
+					<xsd:documentation>Calls for the initiation of protocols for forming a cooperative group.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="finalizeGroupFormation">
+				<xsd:annotation>
+					<xsd:documentation>Finalizes the cooprative group formation process.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="dissolveGroup">
+				<xsd:annotation>
+					<xsd:documentation>Terminates a cooperative group.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="locateGroup">
+				<xsd:annotation>
+					<xsd:documentation>Used by an arriving vehicle to determine whether or not a group currently exists.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="announceGroup">
+				<xsd:annotation>
+					<xsd:documentation>Used to affirmatively respond to a locateGroup message.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="joinGroup">
+				<xsd:annotation>
+					<xsd:documentation>Used by an individual vehicle to join an existing group.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="leaveGroup">
+				<xsd:annotation>
+					<xsd:documentation>Used by an individual vehicle to leave a group of which it is a member.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="informationRequestType">
+		<xsd:annotation>
+			<xsd:documentation>Enumeration describing the available types of information that can be requested.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ping">
+				<xsd:annotation>
+					<xsd:documentation>Request for a communications check.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="vehicleCharacteristics">
+				<xsd:annotation>
+					<xsd:documentation>Request for a vehicle's capabilities and operating characteristics summary.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="sensorData">
+				<xsd:annotation>
+					<xsd:documentation>Request for a vehicle's most recent sensor information.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="contactSummary">
+				<xsd:annotation>
+					<xsd:documentation>Request for a summary of the vehicle's contacts of interest.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="vehicleTime">
+				<xsd:annotation>
+					<xsd:documentation>Request for the vehicle's current internal clock time.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="controlSettings">
+				<xsd:annotation>
+					<xsd:documentation>Request for vehicle's current control settings or level of propulsive effort.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="posture">
+				<xsd:annotation>
+					<xsd:documentation>Request for vehicle's current location and orientation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="velocity">
+				<xsd:annotation>
+					<xsd:documentation>Request for vehicle's current linear and angular velocity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="waypoint">
+				<xsd:annotation>
+					<xsd:documentation>Request for vehicle's current waypoint.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Complex Types, for AVCL content elements -->
+	<xsd:complexType name="avclMessageType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify a message between multiple autonomous vehicles and/or operators.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="head" type="avclMessageHeadType"/>
+			<xsd:element name="body" type="avclMessageBodyType"/>
+		</xsd:sequence>
+		<xsd:attribute name="version" use="required" fixed="1.0"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+		<xsd:attribute name="transportStatus" use="optional" default="none">
+			<xsd:annotation>
+				<xsd:documentation>Used to mark whether the message was sent or received (primarily for logging purposes).</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="received"/>
+					<xsd:enumeration value="sent"/>
+					<xsd:enumeration value="none"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="avclMessageHeadType">
+		<xsd:annotation>
+			<xsd:documentation>Header and routing information of an AVCL message.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="meta" type="metaDataType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Priority" type="priorityElementType" minOccurs="0"/>
+			<xsd:element name="Sender" type="nonNegativeIntegerElementType"/>
+			<xsd:element name="Recipient" type="nonNegativeIntegerElementType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Vehicle ID of the recipient, if omitted, the message is a broadcast to all vehicles.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Acknowledge" type="acknowledgeElementType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="avclMessageBodyType">
+		<xsd:annotation>
+			<xsd:documentation>Body portion of an in-mission message between a vehicle and another vehicle or operator.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="MessageBodyContent" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="avclHeadType">
+		<xsd:annotation>
+			<xsd:documentation>Container element for meta information relevant to a single mission file</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="meta" type="metaDataType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="metaDataType">
+		<xsd:annotation>
+			<xsd:documentation>Container element for one item of meta information</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="content" type="xsd:string" use="optional"/>
+		<xsd:attribute name="description" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="avclBodyType">
+		<xsd:annotation>
+			<xsd:documentation>Container element for mission, state, communications, or planning data elements</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="MissionPreparation" type="missionPreparationElementType"/>
+			<xsd:element name="EventLog" type="eventLogElementType" minOccurs="0"/>
+			<xsd:element name="MissionResults" type="missionResultsElementType" minOccurs="0"/>
+		</xsd:all>
+	</xsd:complexType>
+	<xsd:complexType name="avclMessageListBodyType">
+		<xsd:annotation>
+			<xsd:documentation>Container element for a sequence of AVCL messages.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="AVCLMessage" type="avclMessageType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="missionPreparationElementType">
+		<xsd:annotation>
+			<xsd:documentation>Contains mission configuration elements such as tasking, control coefficients, and units of measure.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="UnitsOfMeasure" type="unitsOfMeasureElementType"/>
+			<xsd:element name="GeoOrigin" type="geoOriginElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Defines a geographic point that will serve as the origin of the cartesian system for any cartesian points utilized.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Configuration" type="configurationElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Delineates the vehicle capabilities that are required to execute the specified mission.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="MissionSpecification" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="unitsOfMeasureElementType">
+		<xsd:annotation>
+			<xsd:documentation>Defines units of measure used.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="distance" use="required" fixed="meters"/>
+		<xsd:attribute name="angle" use="required" fixed="degrees"/>
+		<xsd:attribute name="mass" use="required" fixed="kilograms"/>
+		<xsd:attribute name="time" use="required" fixed="seconds"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="configurationElementType">
+		<xsd:annotation>
+			<xsd:documentation>Configuration of vehicle and supporting equipment. For a document describing a mission, this element describes the vehicle characteristics required to execute that mission.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="UnmannedUnderwaterVehicle" type="uuvCharacteristicsElementType"/>
+			<xsd:element name="UnmannedSurfaceVehicle" type="usvCharacteristicsElementType"/>
+			<xsd:element name="UnmannedGroundVehicle" type="ugvCharacteristicsElementType"/>
+			<xsd:element name="UnmannedAerialVehicle" type="uavCharacteristicsElementType"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Configuration of an unmanned underwater vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Dimensions" type="dimensionsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The physical dimensions and weight of the vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OperatingCharacteristics" type="uuvOperatingCharacteristicsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, maximum depth, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DegreesOfControl" type="degreesOfControlElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Describes the degrees of freedom over which the vehicle can control its motion.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Capability" type="uuvCapabilityElementType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Used to enumerate specific UUV capabilities or characteristics.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvOperatingCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, endurance, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="maxSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="cruiseSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxDepth" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="endurance" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxPitchRate" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxYawRate" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="turnRadius" type="positiveScalarType" use="optional"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvCapabilityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Description of an individual UUV characteristic.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="uuvCapabilityType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Configuration of an unmanned surface vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Dimensions" type="dimensionsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The physical dimensions and weight of the vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OperatingCharacteristics" type="usvOperatingCharacteristicsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, maximum depth, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DegreesOfControl" type="degreesOfControlElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Describes the degrees of freedom over which the vehicle can control its motion.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Capability" type="usvCapabilityElementType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Used to enumerate specific USV capabilities or characteristics.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvOperatingCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, endurance, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="maxSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="cruiseSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="endurance" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxYawRate" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="turnRadius" type="positiveScalarType" use="optional"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvCapabilityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Description of an individual USV characteristic.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="usvCapabilityType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Configuration of an unmanned ground vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Dimensions" type="dimensionsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The physical dimensions and weight of the vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OperatingCharacteristics" type="ugvOperatingCharacteristicsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, maximum depth, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DegreesOfControl" type="degreesOfControlElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Describes the degrees of freedom over which the vehicle can control its motion.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Capability" type="ugvCapabilityElementType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Used to enumerate specific UGV capabilities or characteristics.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvOperatingCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, endurance, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="maxSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="cruiseSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="endurance" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxYawRate" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="turnRadius" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="wheelBase" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="trackWidth" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="staticRollover" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="staticPitchover" type="positiveScalarType" use="optional"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvCapabilityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Description of an individual UGV characteristic.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="ugvCapabilityType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Configuration of an unmanned aerial vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Dimensions" type="dimensionsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The physical dimensions and weight of the vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OperatingCharacteristics" type="uavOperatingCharacteristicsElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, maximum depth, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DegreesOfControl" type="degreesOfControlElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Describes the degrees of freedom over which the vehicle can control its motion.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Capability" type="uavCapabilityElementType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Used to enumerate specific UAV capabilities or characteristics.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavOperatingCharacteristicsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Desribes the vehicle's operating capabilities such as maximum speed, endurance, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="maxSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="cruiseSpeed" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxAltitude" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="endurance" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxRollRate" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxPitchRate" type="positiveScalarType" use="optional"/>
+		<xsd:attribute name="maxYawRate" type="positiveScalarType" use="optional"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavCapabilityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Description of an individual UAV characteristic.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="uavCapabilityType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="dimensionsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element for describing the physical dimensions and mass of the vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="length" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="width" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="height" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="mass" type="positiveScalarType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="degreesOfControlElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing the degrees of freedom over which the vehicle can exercise control.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="longitudinal" type="xsd:boolean" use="optional" default="true"/>
+		<xsd:attribute name="lateral" type="xsd:boolean" use="optional" default="false"/>
+		<xsd:attribute name="vertical" type="xsd:boolean" use="optional" default="false"/>
+		<xsd:attribute name="roll" type="xsd:boolean" use="optional" default="false"/>
+		<xsd:attribute name="pitch" type="xsd:boolean" use="optional" default="false"/>
+		<xsd:attribute name="yaw" type="xsd:boolean" use="optional" default="true"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvScriptCommandsType">
+		<xsd:annotation>
+			<xsd:documentation>Extends generic script commands to add those applicable to unmanned underwater vehicles.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="uuvCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FollowBeacon" type="followBeaconCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to follow a light source to a recovery location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GpsFix" type="gpsFixCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Orders the vehicle to surface for a gps fix or resume mission after obtaining a gps fix.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Hover" type="hoverCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the vehicle to transit to (if required) and maintain position at a specified position.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="uuvLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeAltitude" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle altitude above the bottom.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeDepth" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle depth.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint or recovery control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeKnots" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in knots.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MoveLateral" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to slide laterally with a fixed thruster setting as a percentage of max speed (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MoveRotate" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to rotate (yaw) with a fixed thruster setting as a percentage of max speed (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Recover" type="recoverCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to recover at a recovering station (vehicle should be directly in front of station, but heading can be off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPlanes" type="setPlanesCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set bow and/or stern plane deflection angle as a percent of max authority (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="uuvPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned underwater vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPower" type="setPropellerCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set one or more propeller speeds as a percentage of max speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetRudder" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set rudder deflection as a percentage of max speed (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetSonar" type="setSonarCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Set the specied steerable sonar to automatic scan or a manually commanded bearing and elevation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetThruster" type="setThrusterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set bow and/or stern plane deflection angle as a percentage of max power (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TakeStation" type="takeStationCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to take up a specified fixed station relative to an external object.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Thrusters" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Enable or disable the vehicle's body (lateral and vertical) thrusters (may be overridden by some vehicle commands).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait for a specified time duration before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="uuvWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned underwater vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvScriptCommandsType">
+		<xsd:annotation>
+			<xsd:documentation>Script commands applicable to unmanned ground vehicles.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="ugvCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FollowBeacon" type="followBeaconCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to follow a light source to a recovery location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="ugvLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeKnots" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in knots.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="ugvPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned ground vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="ugvWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned ground vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvScriptCommandsType">
+		<xsd:annotation>
+			<xsd:documentation>Script commands applicable to unmanned surface vehicles.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="usvCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FollowBeacon" type="followBeaconCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to follow a light source to a recovery location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="usvLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeKnots" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in knots true air speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="usvPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned surface vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPower" type="setPropellerCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set one or more propeller speeds as a percentage of max speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetRudder" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set rudder deflection as a percentage of max deflection (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="usvWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned surface vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavScriptCommandsType">
+		<xsd:annotation>
+			<xsd:documentation>Extends generic script commands to add those applicable to unmanned aerial vehicles.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="uavCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FollowBeacon" type="followBeaconCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to follow a light source to a recovery location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="uavLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeAltitudeAGL" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle altitude in mean sea level.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeAltitudeMSL" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle altitude in mean sea level.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeClimbRate" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle climb rate as a percentage of maximum.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeKnots" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in knots true air speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeTurnRate" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle turn rate as a percentage of maximum.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetAileron" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set aeleron deflection as a percentage of max authority (positive will result in right roll, turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetElevator" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set elevator as a percentage of max authority (port and starboard) deflection (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="uavPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned aerial vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPower" type="percentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set the commanded engine power as a percentage of max power.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetRudder" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set rudder deflection as a percent of max deflection (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="uavWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned aerial vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="agendaMissionElementType">
+		<xsd:annotation>
+			<xsd:documentation>Declarative agenda-based (goals) mission definition suitable for use by an agent or other high level mission controller.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="LaunchPosition" type="absoluteHorizontalPositionElementType" minOccurs="0"/>
+			<xsd:element name="RecoveryPosition" type="absoluteHorizontalPositionElementType" minOccurs="0"/>
+			<xsd:element name="GoalList" type="agendaGoalListType"/>
+			<xsd:element name="ConstraintList" type="agendaConstraintListType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="agendaGoalListType">
+		<xsd:annotation>
+			<xsd:documentation>List of agenda goals--things that you want the mission to accomplish.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Goal" type="agendaGoalElementType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="agendaGoalElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element utilized to specify a single declarative mission goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="GoalElements"/>
+			<xsd:element name="OperatingArea" type="areaElementType"/>
+			<xsd:group ref="TimingTypeElements"/>
+			<xsd:element name="ReportingCriteria" type="reportingCriteriaElementType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="alert" type="xsd:boolean" use="optional" default="false"/>
+		<xsd:attribute name="timeStamp" type="nonNegativeScalarType" use="optional"/>
+		<xsd:attribute name="description" type="xsd:string" use="optional"/>
+		<xsd:attribute name="id" type="xsd:ID" use="required"/>
+		<xsd:attribute name="nextOnSucceed" type="xsd:IDREF" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Goal element to complete next if this one is successful.  Mission complete if this is absent.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="nextOnFail" type="xsd:IDREF" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Goal element to complete next if this one is unsuccessful.  Mission complete if this is absent.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="attackElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a attack goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Target" type="actionObjectElementType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="weaponStatus" type="weaponStatusType" use="required"/>
+		<xsd:attribute name="disableOnly" type="xsd:boolean" default="false"/>
+		<xsd:attribute name="singleTarget" type="xsd:boolean" use="optional" default="false">
+			<xsd:annotation>
+				<xsd:documentation>Set to true if the goal is complete upon finding a attack a single instance of a target.  False means that the goal execution continues in order to locate and attack multiple instances.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="decontaminateElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a decontaminate goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Contaminant" type="contaminantElementType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="demolishElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a demolish goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Target" type="actionObjectElementType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="singleTarget" type="xsd:boolean" use="optional" default="false">
+			<xsd:annotation>
+				<xsd:documentation>Set to true if the goal is complete upon finding and demolishing a single instance of a target.  False means that the goal execution continues in order to locate and demolish multiple instances.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="permanentDisable" type="xsd:boolean" default="true"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="illuminateElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for an illuminate goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Illuminator" type="illuminatorElementType"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="jamElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a jam goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="FrequencyRange" type="frequencyRangeElementType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="markElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a mark goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Marker" type="markerElementType"/>
+			<xsd:element name="Target" type="actionObjectElementType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="monitorTransmissionsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a provide electronic support (monitoring of electronic transmissions).</xsd:documentation>
+			<xsd:documentation>Equates to the "Intercept" action-task-activity-code in C2IEDM.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="FrequencyRange" type="frequencyRangeElementType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="patrolElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a patrol goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Qualifier" type="stringElementType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Provides arbitrary amplifying information concerning the type of patrol action required.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="rendezvousElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a rendezvous goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Qualifier" type="stringElementType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Provides arbitrary amplifying information concerning the rendezvous.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="targetVehicleID" type="xsd:string" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="sampleEnvironmentElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a sample environment goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Contaminant" type="contaminantElementType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="searchElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing parameters for a search goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SearchTarget" type="actionObjectElementType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="datumType" type="datumTypeType" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Specifies whether the search datum is a point (center of the goal area) or the entire area.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="requiredPD" type="percentType" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Required probability of detection of the search.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="singleTarget" type="xsd:boolean" use="optional" default="false">
+			<xsd:annotation>
+				<xsd:documentation>Set to true if the search is complete upon finding a single instance of a search target.  False means that the search continues in order to locate multiple instances.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="reportingCriteriaElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify reporting requirements while attempting to attain a goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="reportingCriteriaType" use="required"/>
+		<xsd:attribute name="periodicity" type="positiveScalarType">
+			<xsd:annotation>
+				<xsd:documentation>Used to define the timing between periodic reports.  Ignored for reporting types other than periodic.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="agendaConstraintListType">
+		<xsd:annotation>
+			<xsd:documentation>List of agenda constraints--things that impact how the vehicle must accomplish its tasking (nogo areas, reporting criteria, etc.).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IngressRouting" type="routeElementType" minOccurs="0"/>
+			<xsd:element name="AvoidArea" type="areaElementType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="EgressRouting" type="routeElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="illuminatorElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing an illuminator.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IlluminatorCharacteristic" type="stringElementType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="illuminatorType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="markerElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing a marker.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="MarkerCharacteristic" type="stringElementType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="markerType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="contaminantElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing a contaminant that will be cleaned as part of a decontaminate goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="type" type="contaminantType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="frequencyRangeElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing a range of frequencies to be jammed or monitored.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="minFrequency" type="nonNegativeScalarType" use="required"/>
+		<xsd:attribute name="maxFrequency" type="positiveScalarType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="actionObjectElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify a type of object with which a goal is concerned.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+		<!-- change to c2IEDM enumeration -->
+	</xsd:complexType>
+	<xsd:complexType name="areaElementType">
+		<xsd:annotation>
+			<xsd:documentation>Utilized to specify a geographic area.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="AreaElements" minOccurs="0"/>
+			<xsd:group ref="VerticalBlockElements" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="eventLogElementType">
+		<xsd:annotation>
+			<xsd:documentation>Contains mission event elements such as communications, tasking orders, errors, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="LoggableEvent" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvLoggableEventType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing asynchronous UUV events for a discrete time.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="uuvCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FollowBeacon" type="followBeaconCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to follow a light source to a recovery location.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GpsFix" type="gpsFixCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Orders the vehicle to surface for a gps fix or resume mission after obtaining a gps fix.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Hover" type="hoverCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the vehicle to transit to (if required) and maintain position at a specified position.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="uuvLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeAltitude" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle altitude above the bottom.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeDepth" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle depth.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint or recovery control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeKnots" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in knots.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MoveLateral" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to slide laterally with a fixed thruster setting (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MoveRotate" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to rotate (yaw) with a fixed thruster setting (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Recover" type="recoverCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to recover at a recovering station (vehicle should be directly in front of station, but heading can be off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPlanes" type="setPlanesCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set bow and/or stern plane deflection angle as a percent of max authority (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="uuvPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned underwater vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPower" type="setPropellerCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set one or more propeller speeds as a percentage of max speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetRudder" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set rudder deflection (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetSonar" type="setSonarCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Set the specied steerable sonar to automatic scan or a manually commanded bearing and elevation.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetThruster" type="setThrusterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set bow and/or stern plane deflection angle as a percentage of max power (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TakeStation" type="takeStationCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Commands the vehicle to take up a specified fixed station relative to an external object.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Thrusters" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Enable or disable the vehicle's body (lateral and vertical) thrusters (may be overridden by some vehicle commands).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait a specified period of time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="uuvWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned underwater vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AVCLMessage" type="avclMessageType">
+				<xsd:annotation>
+					<xsd:documentation>Element used to log messages received and sent.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvLoggableEventType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing asynchronous UGV events for a discrete time.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="ugvCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="ugvLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="ugvPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned ground vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait a specified period of time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="ugvWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned ground vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AVCLMessage" type="avclMessageType">
+				<xsd:annotation>
+					<xsd:documentation>Element used to log messages received and sent.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvLoggableEventType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing asynchronous USV events for a discrete time.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="usvCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="usvLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeKnots" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in knots true air speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="usvPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned surface vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPower" type="setPropellerCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set one or more propeller speeds as a percentage of max speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetRudder" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set rudder deflection (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait a specified period of time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="usvWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned surface vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AVCLMessage" type="avclMessageType">
+				<xsd:annotation>
+					<xsd:documentation>Element used to log messages received and sent.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavLoggableEventType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing asynchronous UAV events for a discrete time.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice maxOccurs="unbounded">
+			<xsd:element name="CompositeWaypoint" type="uavCompositeWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Help" type="noValueElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes a list of valid commands to be printed to the console (if available).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Loiter" type="uavLoiterCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Maintain position in the vicinity of a specified point for a specified period of time (hover not required).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeAltitudeAGL" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle altitude in mean sea level.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeAltitudeMSL" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle altitude in mean sea level.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeClimbRate" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle climb rate as a percentage of maximum.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeHeading" type="headingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle heading (disables waypoint control).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeKnots" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in knots true air speed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeSpeed" type="speedElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set the commanded forward speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MakeTurnRate" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Set commanded vehicle turn rate as a percentage of maximum.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MetaCommand" type="metaDataType">
+				<xsd:annotation>
+					<xsd:documentation>Command with no action required, but containing information relevant to the mission or vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScript" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and continues execution with the new script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionScriptInline" type="stringElementType">
+				<xsd:annotation>
+					<xsd:documentation>Loads a new mission script from a specified file and inlines the new script into the existing script.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Quit" type="quitCommandType">
+				<xsd:annotation>
+					<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Realtime" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes execution to run in realtime (or turns realtime execution off).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SendMessage" type="sendMessageCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Send a specified message to one or more vehicles using the designated communications method.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetAileron" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set aeleron deflection (positive will result in right roll, turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetElevator" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set elevator (port and starboard) deflection (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPosition" type="uavPositionCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Update of unmanned aerial vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetPower" type="percentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set the commanded engine power.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetRudder" type="signedPercentElementType">
+				<xsd:annotation>
+					<xsd:documentation>Manually set rudder deflection (turns off all automatic control modes).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetStandoff" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the acceptable standoff radius around hoverpoints and waypoints.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTime" type="scalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Resets the vehicle's mission time to a specified value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SetTimeStep" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Reset the elapsed time for each closed loop control cycle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Trace" type="booleanElementType">
+				<xsd:annotation>
+					<xsd:documentation>Turns the vehicle trace feature (runtime debug messages printed to console) on or off.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Wait" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait a specified period of time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WaitUntilTime" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Causes the vehicle to wait until a specified time before proceeding to the next command.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Waypoint" type="uavWaypointCommandType">
+				<xsd:annotation>
+					<xsd:documentation>Command the unmanned aerial vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AVCLMessage" type="avclMessageType">
+				<xsd:annotation>
+					<xsd:documentation>Element used to log messages received and sent.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="missionResultsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Contains mission results elements such as telemetry, control orders, and weapon and sensor data.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="MissionStartTime" type="dateTimeGroupElementType" minOccurs="0"/>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="SampledResults" type="discreteTimeResultsElementType"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="dateTimeGroupElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to represent a date time group (day, month, year, time, time zone).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="day" type="calendarDaysType" use="required"/>
+		<xsd:attribute name="year" type="positiveIntType" use="required"/>
+		<xsd:attribute name="month" type="monthsType" use="required"/>
+		<xsd:attribute name="hour" type="clockHoursType" use="required"/>
+		<xsd:attribute name="minute" type="clockMinutesOrSecondsType" use="required"/>
+		<xsd:attribute name="second" type="clockMinutesOrSecondsType" use="required"/>
+		<xsd:attribute name="timeZone" type="timeZoneType" use="required"/>
+		<xsd:attribute name="description" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="sensorElementType">
+		<xsd:annotation>
+			<xsd:documentation>Contains unprocessed and uninterpreted sensor data.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:group ref="SensorElements" maxOccurs="unbounded"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="weaponElementType">
+		<xsd:annotation>
+			<xsd:documentation>Contains weapon launch data.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+		<!-- Not yet implemented -->
+	</xsd:complexType>
+	<!-- Complex Types, used to define element types that are used in multiple places -->
+	<xsd:complexType name="horizontalPositionElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a geographic position as an (x, y) coordinate, latitude/longitude, or relative (x, y) coordinate.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:group ref="HorizontalPositionElements"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="absoluteHorizontalPositionElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a geographic position as an (x, y) coordinate or latitude/longitude.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:group ref="AbsoluteHorizontalPositionElements"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="latitudeLongitudeElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element that will represent a geographic position as a latitude and longitude.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="latitude" type="latitudeType" use="required"/>
+		<xsd:attribute name="longitude" type="longitudeType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="xyElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element that will represent a geographic position as a (x, y) coordinate pair.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="x" type="xsd:double" use="required"/>
+		<xsd:attribute name="y" type="xsd:double" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="geoOriginElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element that will represent the geographic origin and area of interest.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="latitudeLongitudeElementType">
+				<xsd:attribute name="radiusOfInterest" type="positiveScalarType" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="rectangleElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify a rectangular area using the northwest corner, width (east/west) and height (north/south) in meters.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="NorthwestCorner" type="absoluteHorizontalPositionElementType"/>
+			<xsd:element name="Width" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>East/West width of the rectangle in meters.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Height" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>North/South height of the rectangle in meters.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Orientation" type="areaOrientationElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Orientation of the rectangle about the northwest corner (-90 to 90 degrees).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="polygonElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify an arbitrary polygon as an ordered set of points.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="PointListElements"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="circleElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify a circular area using the center and radius in meters.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Center" type="absoluteHorizontalPositionElementType"/>
+			<xsd:element name="Radius" type="positiveScalarElementType"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="limitingLineElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify a connected ordered set of line segments that the vehicle is not to cross.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="PointListElements"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="routeElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element that is used to contain routing information (geographic route and altitude or depth reuirements).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="PointListElements" minOccurs="0"/>
+			<xsd:group ref="VerticalBlockElements" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="orientationElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing an unmanned vehicle orientation (heading, pitch, and roll).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="phi" type="orientationType" use="optional"/>
+		<xsd:attribute name="theta" type="orientationType" use="optional"/>
+		<xsd:attribute name="psi" type="orientationType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="worldCoordinateVelocityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing an unmanned vehicle's velocity in world coordinates.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="xDot" type="xsd:double" use="optional"/>
+		<xsd:attribute name="yDot" type="xsd:double" use="optional"/>
+		<xsd:attribute name="zDot" type="xsd:double" use="optional"/>
+		<xsd:attribute name="phiDot" type="xsd:double" use="optional"/>
+		<xsd:attribute name="thetaDot" type="xsd:double" use="optional"/>
+		<xsd:attribute name="psiDot" type="xsd:double" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="bodyCoordinateVelocityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing an unmanned vehicle's velocity in body coordinates.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="u" type="xsd:double" use="optional"/>
+		<xsd:attribute name="v" type="xsd:double" use="optional"/>
+		<xsd:attribute name="w" type="xsd:double" use="optional"/>
+		<xsd:attribute name="p" type="xsd:double" use="optional"/>
+		<xsd:attribute name="q" type="xsd:double" use="optional"/>
+		<xsd:attribute name="r" type="xsd:double" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="dopplerVelocityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing doppler radar or sonar derived velocities over the ground or through the water or air.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="speedOverGroundU" type="xsd:double" use="optional"/>
+		<xsd:attribute name="speedOverGroundV" type="xsd:double" use="optional"/>
+		<xsd:attribute name="speedThroughMediumU" type="xsd:double" use="optional"/>
+		<xsd:attribute name="speedThroughMediumV" type="xsd:double" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="discreteTimeResultsElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element containing telemetry, control order, and sensor data for a single timestep.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="UUVTelemetry" type="uuvTelemetryElementType"/>
+				<xsd:element name="USVTelemetry" type="usvTelemetryElementType"/>
+				<xsd:element name="UGVTelemetry" type="ugvTelemetryElementType"/>
+				<xsd:element name="UAVTelemetry" type="uavTelemetryElementType"/>
+			</xsd:choice>
+			<xsd:choice minOccurs="0">
+				<xsd:element name="UUVControlOrder" type="uuvControlOrdersElementType"/>
+				<xsd:element name="USVControlOrder" type="usvControlOrdersElementType"/>
+				<xsd:element name="UGVControlOrder" type="ugvControlOrdersElementType"/>
+				<xsd:element name="UAVControlOrder" type="uavControlOrdersElementType"/>
+			</xsd:choice>
+			<xsd:element name="Sensor" type="sensorElementType" minOccurs="0"/>
+			<xsd:element name="Weapon" type="weaponElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvTelemetryElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Underwater Vehicle discrete telemetry</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="GeographicPosition" type="absoluteHorizontalPositionElementType" minOccurs="0"/>
+			<xsd:element name="VerticalPosition" type="uuvVerticalPositionElementType" minOccurs="0"/>
+			<xsd:element name="Orientation" type="orientationElementType" minOccurs="0"/>
+			<xsd:element name="WorldCoordinateVelocity" type="worldCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="BodyCoordinateVelocity" type="bodyCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="DopplerVelocity" type="dopplerVelocityElementType" minOccurs="0"/>
+			<xsd:element name="RemainingPower" type="percentElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage of available power (probably battery) remaining.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvVerticalPositionElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing an unmanned underwater vehicle vertical position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="depth" type="nonNegativeScalarType" use="required"/>
+		<xsd:attribute name="altitude" type="nonNegativeScalarType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvTelemetryElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Surface Vehicle discrete telemetry.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="GeographicPosition" type="absoluteHorizontalPositionElementType" minOccurs="0"/>
+			<xsd:element name="Orientation" type="orientationElementType" minOccurs="0"/>
+			<xsd:element name="WorldCoordinateVelocity" type="worldCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="BodyCoordinateVelocity" type="bodyCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="DopplerVelocity" type="dopplerVelocityElementType" minOccurs="0"/>
+			<xsd:element name="RemainingPower" type="percentElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage of available power (fuel or battery) remaining.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvTelemetryElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Ground Vehicle discrete telemetry</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="GeographicPosition" type="absoluteHorizontalPositionElementType" minOccurs="0"/>
+			<xsd:element name="Altitude" type="ugvVerticalPositionElementType" minOccurs="0"/>
+			<xsd:element name="Orientation" type="orientationElementType" minOccurs="0"/>
+			<xsd:element name="WorldCoordinateVelocity" type="worldCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="BodyCoordinateVelocity" type="bodyCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="DopplerVelocity" type="dopplerVelocityElementType" minOccurs="0"/>
+			<xsd:element name="RemainingPower" type="percentElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage of available power (fuel or battery) remaining.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvVerticalPositionElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing an unmanned ground vehicle operating altitude.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="altitudeMSL" type="xsd:double" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavTelemetryElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Aerial Vehicle discrete telemetry</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="GeographicPosition" type="absoluteHorizontalPositionElementType" minOccurs="0"/>
+			<xsd:element name="VerticalPosition" type="uavVerticalPositionElementType" minOccurs="0"/>
+			<xsd:element name="Orientation" type="orientationElementType" minOccurs="0"/>
+			<xsd:element name="WorldCoordinateVelocity" type="worldCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="BodyCoordinateVelocity" type="bodyCoordinateVelocityElementType" minOccurs="0"/>
+			<xsd:element name="DopplerVelocity" type="dopplerVelocityElementType" minOccurs="0"/>
+			<xsd:element name="RemainingPower" type="percentElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The percentage of available power (fuel or battery) remaining.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavVerticalPositionElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing an unmanned aerial vehicle vertical position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="altitudeMSL" type="xsd:double" use="required"/>
+		<xsd:attribute name="altitudeAGL" type="positiveScalarType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvControlOrdersElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Underwater Vehicle commanded settings for individual controls.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="Propellers" type="uuvPropellersOrderElementType" minOccurs="0"/>
+			<xsd:element name="Rudder" type="scalarElementType" minOccurs="0"/>
+			<xsd:element name="Planes" type="uuvPlanesOrderElementType" minOccurs="0"/>
+			<xsd:element name="BodyThrusters" type="uuvBodyThrustersOrderElementType" minOccurs="0"/>
+		</xsd:all>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvPropellersOrderElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a commanded unmanned underwater vehicle propeller settings.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="all" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="port" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="starboard" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="centerline" type="signedPercentType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvPlanesOrderElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a commanded unmanned underwater vehicle planes settings.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="stern" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="bow" type="signedPercentType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvBodyThrustersOrderElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a commanded unmanned underwater vehicle body thruster settings.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="bowLateral" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="sternLateral" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="bowVertical" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="sternVertical" type="signedPercentType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvControlOrdersElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Surface Vehicle commanded settings for individual controls.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="Propellers" type="usvPropellersOrderElementType" minOccurs="0"/>
+			<xsd:element name="Rudder" type="signedPercentElementType" minOccurs="0"/>
+		</xsd:all>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvPropellersOrderElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a commanded unmanned surface vehicle propeller settings.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="all" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="port" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="starboard" type="signedPercentType" use="optional"/>
+		<xsd:attribute name="centerline" type="signedPercentType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvControlOrdersElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Ground Vehicle commanded settings for individual controls.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:all>
+			<xsd:element name="PlaceHolder" type="noValueElementType" minOccurs="0"/>
+		</xsd:all>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavControlOrdersElementType">
+		<xsd:annotation>
+			<xsd:documentation>Unmanned Aerial Vehicle commanded settings for individual controls.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:group ref="FixedWingUAVControlOrders"/>
+			<xsd:group ref="RotaryWingUAVControlOrders"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavEnginesOrdersElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a fixed-wing unmanned aerial vehicle commanded engine settings.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="engine1" type="signedPercentType" use="required"/>
+		<xsd:attribute name="engine2" type="signedPercentType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavStabilatorOrderElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing rotary-wing unmanned aerial vehicle commanded stabilator setting.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="port" type="signedPercentType" use="required"/>
+		<xsd:attribute name="starboard" type="signedPercentType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavCyclicOrderElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing rotary-wing unmanned aerial vehicle commanded cyclic settings.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="foreAft" type="signedPercentType" use="required"/>
+		<xsd:attribute name="lateral" type="signedPercentType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="targetElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element that will represent a geographic position as a (x, y) coordinate pair.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="range" type="xsd:double" use="required"/>
+		<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+		<xsd:attribute name="elevation" type="xsd:double" use="optional"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="scalarElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single scalar valued attribute.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="xsd:double" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="positiveScalarElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single scalar valued attribute that is greater than or 0.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="positiveScalarType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="nonNegativeScalarElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single scalar valued attribute that is greater than or equal to 0.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="nonNegativeScalarType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="speedElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single scalar valued attribute that is greater than or equal to 0.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="positiveScalarElementType">
+				<xsd:attribute name="speedOverGround" type="xsd:boolean" use="optional" default="false">
+					<xsd:annotation>
+						<xsd:documentation>Set to true if speed is to be over the ground, false if it is speed through the air or water.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="headingElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single scalar valued attribute specifying a vehicle heading.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="headingType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="areaOrientationElementType">
+		<xsd:annotation>
+			<xsd:documentation>Rotation of a rectangular area about the northwest corner (-90 to 90 degrees).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="areaOrientationType" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="percentElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single percentage element [0, 100].</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="percentType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="signedPercentElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single percentage element [-100, 100].</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="signedPercentType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="integerElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single integer valued attribute.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="xsd:int" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="positiveIntegerElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single positive integer valued attribute.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="positiveIntType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="nonNegativeIntegerElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single integer valued attribute that is greater than or equal to zero.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="xsd:unsignedShort" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="priorityElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a priority attribute (value in the range of [0..255]).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="priorityType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="booleanElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single boolean attribute.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="xsd:boolean" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="stringElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single string attribute.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="xsd:string" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="tokenElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with a single token attribute.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="xsd:token" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="noValueElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with no associated values.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="numericalBlockElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type used to represent an inclusive range of numerical data.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="minimum" type="nonNegativeScalarType" use="required"/>
+		<xsd:attribute name="maximum" type="positiveScalarType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="absoluteTimingElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type used to represent an absolute start and stop time for event execution.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="start" type="nonNegativeScalarType" use="required"/>
+		<xsd:attribute name="stop" type="positiveScalarType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="acknowledgeElementType">
+		<xsd:annotation>
+			<xsd:documentation>Type for an element with no associated values.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="acknowledgeType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="trackModeElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element representing the type of homing to be used in transit to a waypoint or hoverpoint.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="value" type="trackModeType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="vehicleGroupCompositionElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element relating to an activity required for the formation or maintenance of a cooperating vehicle group.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="request" type="vehicleGroupCompositionType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="informationRequestElementType">
+		<xsd:annotation>
+			<xsd:documentation>Element describing the available types of information that can be requested.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="informationType" type="informationRequestType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="recoverCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Commands the vehicle to recover at a recovering station (vehicle should be directly in front of station, but heading can be off).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Range" type="scalarElementType"/>
+			<xsd:element name="Heading" type="headingElementType"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="followBeaconCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Commands the vehicle to follow a light source to a recovery location.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Beacon" type="stringElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="gpsFixCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Orders the vehicle to surface for a gps fix or resume mission after obtaining a gps fix.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="booleanElementType">
+				<xsd:attribute name="timeOut" type="positiveScalarType" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="hoverCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Command the vehicle to transit to (if required) and maintain position at a specified position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements" minOccurs="0"/>
+			<xsd:group ref="DepthTypeElements" minOccurs="0"/>
+			<xsd:element name="Heading" type="headingElementType" minOccurs="0"/>
+			<xsd:element name="ObtainGps" type="booleanElementType" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvPositionCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Update of unmanned underwater vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="AbsoluteHorizontalPositionElements"/>
+			<xsd:element name="Depth" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvPositionCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Update of unmanned ground vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="AbsoluteHorizontalPositionElements"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvPositionCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Update of unmanned surface vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="AbsoluteHorizontalPositionElements"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavPositionCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Update of unmanned aerial vehicle position in the world (new navigation fix has been obtained).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="AbsoluteHorizontalPositionElements"/>
+			<xsd:element name="MSLAltitude" type="scalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="quitCommandType">
+		<xsd:annotation>
+			<xsd:documentation>End the vehicle mission after zeroing all control settings (does not initiate surfacing procedure prior to shutdown).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="ExitModeElements" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="sendMessageCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Send the specified message to another vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="AVCLMessage" type="avclMessageType"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="setPlanesCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Manually set bow and/or stern plane deflection angle as a percent of max authority (turns off all automatic control modes).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="BowPlanes" type="signedPercentElementType"/>
+				<xsd:element name="SternPlanes" type="signedPercentElementType"/>
+				<xsd:element name="AllPlanes" type="signedPercentElementType"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="setPropellerCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Manually set one or more propeller speeds as a percentage of max speed.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="PortPropeller" type="signedPercentElementType"/>
+			<xsd:element name="StarboardPropeller" type="signedPercentElementType"/>
+			<xsd:element name="CenterlinePropeller" type="signedPercentElementType"/>
+			<xsd:element name="AllPropellers" type="signedPercentElementType"/>
+		</xsd:choice>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="setSonarCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Set the specied steerable sonar to automatic scan or a manually commanded bearing and elevation.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Model" type="stringElementType"/>
+			<xsd:choice>
+				<xsd:element name="Manual" type="noValueElementType"/>
+				<xsd:element name="Scan" type="noValueElementType"/>
+				<xsd:element name="Track" type="noValueElementType"/>
+			</xsd:choice>
+			<xsd:element name="Bearing" type="scalarElementType" minOccurs="0"/>
+			<xsd:element name="Elevation" type="scalarElementType" minOccurs="0"/>
+			<xsd:group ref="BearingTypeElements" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="setThrusterCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Manually set bow and/or stern plane deflection angle as a percentage of max power (turns off all automatic control modes).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="BowLateralThruster" type="signedPercentElementType"/>
+				<xsd:element name="SternLateralThruster" type="signedPercentElementType"/>
+				<xsd:element name="LateralThrusters" type="signedPercentElementType"/>
+				<xsd:element name="BowVerticalThruster" type="signedPercentElementType"/>
+				<xsd:element name="SternVerticalThruster" type="signedPercentElementType"/>
+				<xsd:element name="VerticalThrusters" type="signedPercentElementType"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="takeStationCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Commands the vehicle to take up a specified fixed station relative to an external object.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:choice>
+				<xsd:element name="TargetSonarScan" type="noValueElementType"/>
+				<xsd:element name="TargetEdgeSonarScan" type="noValueElementType"/>
+			</xsd:choice>
+			<xsd:element name="TargetLocation" type="targetElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Approximate range and bearing to the target to aid in initial acquisition.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CommandedStation" type="targetElementType">
+				<xsd:annotation>
+					<xsd:documentation>Approximate range and bearing to the target to aid in initial acquisition.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Heading" type="headingElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Command the unmanned underwater vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements"/>
+			<xsd:group ref="DepthTypeElements" minOccurs="0"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:group ref="UuvSpeedElements" minOccurs="0"/>
+			<xsd:element name="ObtainGps" type="booleanElementType" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Command the unmanned ground vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements"/>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Command the unmanned surface vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Command the unmanned aerial vehicle to transit to a specified location.  Vehicle will not necessarily stop when position is reached (vehicle specific).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements"/>
+			<xsd:group ref="AltitudeTypeElements" minOccurs="0"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvLoiterCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Maintain position in the vicinity of a specified point (hover not required).  Should be followed by a "Wait" or "WaitUntilTime" command to determine how long to loiter.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Default position is the vehicle's current position.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:group ref="DepthTypeElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Depth or altitude the AUV is to utilize during the transit to the loiter point.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:group ref="UuvSpeedElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Speed or power to utilize during transit.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="LoiterDepth" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Depth the AUV is to assume once reaching the loiter point.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Time out is maximum allowable time to reach the loiter point (default and max is loiter duration).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvLoiterCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Maintain position in the vicinity of a specified point.  Should be followed by a "Wait" or "WaitUntilTime" command to determine how long to loiter.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Default position is the vehicle's current position.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Time out is maximum allowable time to reach the loiter point (default and max is loiter duration).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvLoiterCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Maintain position in the vicinity of a specified point.  Should be followed by a "Wait" or "WaitUntilTime" command to determine how long to loiter.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Default position is the vehicle's current position.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Speed to utilize during transit to the loiter point.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Time out is maximum allowable time to reach the loiter point (default and max is loiter duration).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavLoiterCommandType">
+		<xsd:annotation>
+			<xsd:documentation>Maintain position in the vicinity of a specified point (hover not required).  Should be followed by a "Wait" or "WaitUntilTime" command to determine how long to loiter.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="HorizontalPositionElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Default position is the vehicle's current position.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Speed to utilize during transit to the loiter point.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:group ref="AltitudeTypeElements" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Mean Sea Level or Above Ground Level altitude (meters) to utilize during transit to the loiter point.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="LoiterAltitude" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Mean sea level altitude (meters) to maintain while loitering.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Time out is maximum allowable time to reach the loiter point (default and max is loiter duration).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uuvCompositeWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>A single unmanned underwater vehicle command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="CompositeWaypointElements"/>
+			<xsd:group ref="DepthTypeElements"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:group ref="UuvSpeedElements" minOccurs="0"/>
+			<xsd:element name="GpsFixes" type="positiveIntegerElementType" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="usvCompositeWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>A single unmanned surface vehicle command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="CompositeWaypointElements"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="ugvCompositeWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>A single unmanned ground vehicle command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="CompositeWaypointElements"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="uavCompositeWaypointCommandType">
+		<xsd:annotation>
+			<xsd:documentation>A single unmanned aerial vehicle command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="CompositeWaypointElements"/>
+			<xsd:group ref="AltitudeTypeElements"/>
+			<xsd:element name="HomingMode" type="trackModeElementType" minOccurs="0"/>
+			<xsd:group ref="SpeedTypeElements" minOccurs="0"/>
+			<xsd:element name="Standoff" type="positiveScalarElementType" minOccurs="0"/>
+			<xsd:element name="TimeOut" type="positiveScalarElementType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="waypointListType">
+		<xsd:annotation>
+			<xsd:documentation>A series of geographic points specifying a series of waypoints.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="PointListElements"/>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="parallelTrackType">
+		<xsd:annotation>
+			<xsd:documentation>A lawnmower-type pattern consisting of a series of parallel lines of specified length and spacing between.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="StartPoint" type="horizontalPositionElementType"/>
+		</xsd:sequence>
+		<xsd:attribute name="orientation" type="headingType" use="required"/>
+		<xsd:attribute name="firstTurn" type="turnDirectionType" use="required"/>
+		<xsd:attribute name="trackLength" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="trackSpacing" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="trackCount" type="positiveIntType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="sectorPatternType">
+		<xsd:annotation>
+			<xsd:documentation>A pie-like pattern dividing a circle of specified radius into specified sectors.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="StartPoint" type="horizontalPositionElementType"/>
+		</xsd:sequence>
+		<xsd:attribute name="orientation" type="headingType" use="required"/>
+		<xsd:attribute name="firstTurn" type="turnDirectionType" use="required"/>
+		<xsd:attribute name="radius" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="sectorSize" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="sectorCount" type="positiveIntType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<xsd:complexType name="expandingSquareType">
+		<xsd:annotation>
+			<xsd:documentation>A pattern starting at a center point and spiraling outward in increasingly large squares for a specified number of points.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="StartPoint" type="horizontalPositionElementType"/>
+		</xsd:sequence>
+		<xsd:attribute name="orientation" type="headingType" use="required"/>
+		<xsd:attribute name="turnDirection" type="turnDirectionType" use="required"/>
+		<xsd:attribute name="trackSpacing" type="positiveScalarType" use="required"/>
+		<xsd:attribute name="trackCount" type="positiveIntType" use="required"/>
+		<xsd:attributeGroup ref="CommonAttributes"/>
+	</xsd:complexType>
+	<!-- Groups -->
+	<xsd:group name="HorizontalPositionElements">
+		<xsd:annotation>
+			<xsd:documentation>Selectable element to represent a horizontal position using latitude longitude, (x, y) coordinate pair, or (x, y) coordinate relative to the vehicle's current position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="LatitudeLongitude" type="latitudeLongitudeElementType">
+				<xsd:annotation>
+					<xsd:documentation>Absolute geographic position using latitude and longitude (+ value for North or East, - value for South or West)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="XYPosition" type="xyElementType">
+				<xsd:annotation>
+					<xsd:documentation>Absolute geographic position using a cartesian coordinate system (X north, Y east) and a specified or default geographic origin.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RelativeXYPosition" type="xyElementType">
+				<xsd:annotation>
+					<xsd:documentation>Position specified relative to the vehicle's current position (X meters north, Y meters east).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="AbsoluteHorizontalPositionElements">
+		<xsd:annotation>
+			<xsd:documentation>Selectable element to represent a horizontal position using latitude longitude, (x, y) coordinate pair, or (x, y) coordinate relative to the vehicle's current position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="LatitudeLongitude" type="latitudeLongitudeElementType">
+				<xsd:annotation>
+					<xsd:documentation>Absolute geographic position using latitude and longitude (+ value for North or East, - value for South or West)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="XYPosition" type="xyElementType">
+				<xsd:annotation>
+					<xsd:documentation>Absolute geographic position using a cartesian coordinate system (X north, Y east) and a specified or default geographic origin.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="PointListElements">
+		<xsd:annotation>
+			<xsd:documentation>Selectable element to represent a horizontal position using latitude longitude, (x, y) coordinate pair, or (x, y) coordinate relative to the vehicle's current position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="LatitudeLongitude" type="latitudeLongitudeElementType" maxOccurs="unbounded"/>
+			<xsd:element name="XYPosition" type="xyElementType" maxOccurs="unbounded"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="AreaElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements utilized to specify a single geographic area.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="Point" type="absoluteHorizontalPositionElementType"/>
+			<xsd:element name="Circle" type="circleElementType"/>
+			<xsd:element name="Rectangle" type="rectangleElementType"/>
+			<xsd:element name="Polygon" type="polygonElementType"/>
+			<xsd:element name="LimitingLine" type="limitingLineElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="VerticalBlockElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements available to specify a vertical block (use or avoid) or specify a specific altitude or depth.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:group ref="DepthTypeElements"/>
+			<xsd:group ref="AltitudeTypeElements"/>
+			<xsd:group ref="DepthBlockElements"/>
+			<xsd:group ref="AltitudeBlockElements"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="DepthTypeElements">
+		<xsd:annotation>
+			<xsd:documentation>Selectable element to specify vehicle depth as depth below the surface or altitude above the bottom.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="Depth" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a depth below the surface of the water.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Altitude" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying an altitude above the sea floor.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="DepthBlockElements">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify a block of depths to an AUV.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="DepthBlock" type="numericalBlockElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a minimum to maximum (inclusive) depth block.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AltitudeBlock" type="numericalBlockElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a minimum to maximum (inclusive) altitude above the bottom block.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DepthAltitudeBlock" type="numericalBlockElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a minimum depth to minimum altitude above the bottom (inclusive) block.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="AltitudeBlockElements">
+		<xsd:annotation>
+			<xsd:documentation>Element used to specify a block of depths to an AUV.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="AGLAltitudeBlock" type="numericalBlockElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a minimum to maximum (inclusive) Above Ground Level (AGL) altitude block.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MSLAltitudeBlock" type="numericalBlockElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a minimum to maximum (inclusive) Mean Sea Level (MSL) altitude block.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AGLMSLAltitudeBlock" type="numericalBlockElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a minimum AGL and maximum MSL altitude block.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="SpeedTypeElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements utilized to specify speed</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="Speed" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a speed in meters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Knots" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Element specifying a speed in knots.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="AltitudeTypeElements">
+		<xsd:annotation>
+			<xsd:documentation>Selectable element to specify vehicle altitude as MSL (mean sea level) or AGL (above ground level).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="AGLAltitude" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Altitude (meters) above ground level.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MSLAltitude" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Altitude (meters) above mean sea level.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="BearingTypeElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements utilized to specify bearing types.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="Relative" type="noValueElementType"/>
+			<xsd:element name="True" type="noValueElementType"/>
+			<xsd:element name="Magnetic" type="noValueElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="TimingTypeElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements utilized to specify timing requirements of an agenda goal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="Duration" type="positiveScalarElementType">
+				<xsd:annotation>
+					<xsd:documentation>Used to specify a length of time.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Timing" type="absoluteTimingElementType">
+				<xsd:annotation>
+					<xsd:documentation>Used to specify a start and stop time.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<!--	<xsd:group name="GpsFixStatusElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements utilized to control rear propellers of a UUV.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="StartGpsFix" type="noValueElementType"/>
+			<xsd:element name="GpsFixInProgress" type="noValueElementType"/>
+			<xsd:element name="GpsFixComplete" type="noValueElementType"/>
+			<xsd:element name="GpsFixFailed" type="noValueElementType"/>
+		</xsd:choice>
+	</xsd:group> -->
+	<xsd:group name="ExitModeElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements utilized to control rear propellers of a UUV.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="NormalExit" type="noValueElementType"/>
+			<xsd:element name="MissionAbort" type="noValueElementType"/>
+			<xsd:element name="SystemAbort" type="noValueElementType"/>
+			<xsd:element name="RecallAbort" type="noValueElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="TelemetryElement">
+		<xsd:annotation>
+			<xsd:documentation>Element representing a discrete autonomous vehicle telemetry</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="UUVTelemetry" type="uuvTelemetryElementType"/>
+			<xsd:element name="USVTelemetry" type="usvTelemetryElementType"/>
+			<xsd:element name="UGVTelemetry" type="ugvTelemetryElementType"/>
+			<xsd:element name="UAVTelemetry" type="uavTelemetryElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="SensorElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements for representing sensor data.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="ActiveSonar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a simple steerable ranging active sonar.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="required"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+					<xsd:attribute name="elevation" type="xsd:double" use="optional"/>
+					<xsd:attribute name="strength" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ImagingSonar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for an imaging sonar. Not yet implemented.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BlazedArraySonar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a blazed array sonar. Not yet implemented.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SyntheticApertureSonar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a synthetic aperture sonar.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PassiveSonar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a passive sonar.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="frequency" type="xsd:double" use="required"/>
+					<xsd:attribute name="strength" type="xsd:double" use="optional"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Radar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a generic radar.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="optional"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="optional"/>
+					<xsd:attribute name="elevation" type="xsd:double" use="optional"/>
+					<xsd:attribute name="altitude" type="xsd:double" use="optional"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="optional"/>
+					<xsd:attribute name="heading" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DopplerRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a generic doppler radar.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="optional"/>
+					<xsd:attribute name="range" type="xsd:double" use="optional"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="optional"/>
+					<xsd:attribute name="elevation" type="xsd:double" use="optional"/>
+					<xsd:attribute name="altitude" type="xsd:double" use="optional"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="optional"/>
+					<xsd:attribute name="heading" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SyntheticApertureRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a generic single target radar contact.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="optional"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="optional"/>
+					<xsd:attribute name="elevation" type="xsd:double" use="optional"/>
+					<xsd:attribute name="altitude" type="xsd:double" use="optional"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="optional"/>
+					<xsd:attribute name="heading" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TrackWhileScanRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a track-while-scan radar.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Track" maxOccurs="unbounded">
+							<xsd:annotation>
+								<xsd:documentation>Individual track of a track-while-scan radar.</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:attribute name="trackID" type="xsd:string" use="required"/>
+								<xsd:attribute name="range" type="xsd:double" use="required"/>
+								<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+								<xsd:attribute name="altitude" type="xsd:double" use="optional"/>
+								<xsd:attribute name="velocity" type="xsd:double" use="required"/>
+								<xsd:attribute name="heading" type="xsd:double" use="required"/>
+								<xsd:attributeGroup ref="IffAttributes"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EarlyWarningRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for an early warning radar contact.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="required"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+					<xsd:attribute name="altitude" type="xsd:double" use="optional"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="optional"/>
+					<xsd:attribute name="heading" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AcquisitionRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a target acquisition radar contact.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="required"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+					<xsd:attribute name="altitude" type="xsd:double" use="optional"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="optional"/>
+					<xsd:attribute name="heading" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TrackingRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a target tracking radar contact.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="required"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+					<xsd:attribute name="altitude" type="xsd:double" use="required"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="required"/>
+					<xsd:attribute name="heading" type="xsd:double" use="required"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="FireControlRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a fire control radar contact.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="required"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+					<xsd:attribute name="altitude" type="xsd:double" use="required"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="required"/>
+					<xsd:attribute name="heading" type="xsd:double" use="required"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SurfaceSearchRadar">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a surface search radar contact.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="range" type="xsd:double" use="required"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="required"/>
+					<xsd:attribute name="velocity" type="xsd:double" use="required"/>
+					<xsd:attribute name="heading" type="xsd:double" use="required"/>
+					<xsd:attributeGroup ref="IffAttributes"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ESM">
+				<xsd:annotation>
+					<xsd:documentation>Data element for an electronic support measure system.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="frequency" type="xsd:double" use="required"/>
+					<xsd:attribute name="strength" type="xsd:double" use="optional"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PassiveSoundDetection">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a passive listening device.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="frequency" type="xsd:double" use="required"/>
+					<xsd:attribute name="strength" type="xsd:double" use="optional"/>
+					<xsd:attribute name="bearing" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ChemicalBiologicalRadiologicalDetection">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a chemical, biological, or radiological detection system.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attribute name="substance" type="xsd:string" use="required"/>
+					<xsd:attribute name="magnitude" type="xsd:double" use="optional"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Video">
+				<xsd:annotation>
+					<xsd:documentation>Data element for video data. Not yet implemented.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="FLIR">
+				<xsd:annotation>
+					<xsd:documentation>Data element for FLIR data. Not yet implemented.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="MotionSensor">
+				<xsd:annotation>
+					<xsd:documentation>Data element for a motion sensor system. Not yet implemented.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attribute name="model" type="xsd:string" use="required"/>
+					<xsd:attributeGroup ref="CommonAttributes"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<!-- Groups encapsulating allowable child elements of higher level tags -->
+	<xsd:group name="GoalElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements that can be used to specify a single goal to be accomplished during a mission.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="Attack" type="attackElementType"/>
+			<xsd:element name="Decontaminate" type="decontaminateElementType"/>
+			<xsd:element name="Demolish" type="demolishElementType"/>
+			<xsd:element name="IlluminateArea" type="illuminateElementType"/>
+			<xsd:element name="Jam" type="jamElementType"/>
+			<xsd:element name="MarkTarget" type="markElementType"/>
+			<xsd:element name="MonitorTransmissions" type="monitorTransmissionsElementType"/>
+			<xsd:element name="Patrol" type="patrolElementType"/>
+			<xsd:element name="Rendezvous" type="rendezvousElementType"/>
+			<xsd:element name="Reposition" type="noValueElementType"/>
+			<xsd:element name="SampleEnvironment" type="sampleEnvironmentElementType"/>
+			<xsd:element name="Search" type="searchElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="CompositeWaypointElements">
+		<xsd:annotation>
+			<xsd:documentation>A single command specifying a pattern consisting of multiple waypoints.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="WaypointList" type="waypointListType"/>
+			<xsd:element name="ParallelTrack" type="parallelTrackType"/>
+			<xsd:element name="SectorPattern" type="sectorPatternType"/>
+			<xsd:element name="ExpandingSquare" type="expandingSquareType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="FixedWingUAVControlOrders">
+		<xsd:annotation>
+			<xsd:documentation>Group representing individual control orders for a fixed-wing aerial vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Engines" type="uavEnginesOrdersElementType" minOccurs="0"/>
+			<xsd:element name="Aileron" type="signedPercentElementType" minOccurs="0"/>
+			<xsd:element name="Rudder" type="signedPercentElementType" minOccurs="0"/>
+			<xsd:element name="Elevator" type="uavStabilatorOrderElementType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="RotaryWingUAVControlOrders">
+		<xsd:annotation>
+			<xsd:documentation>Group representing individual control orders for a helicopter-like vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Collective" type="signedPercentElementType" minOccurs="0"/>
+			<xsd:element name="Cyclic" type="uavCyclicOrderElementType" minOccurs="0"/>
+			<xsd:element name="Pedals" type="signedPercentElementType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="MissionSpecification">
+		<xsd:annotation>
+			<xsd:documentation>Scripted or agenda (goal-based) mission for an autonomous vehicle.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="UUVCommandScript" type="uuvScriptCommandsType"/>
+			<xsd:element name="USVCommandScript" type="usvScriptCommandsType"/>
+			<xsd:element name="UGVCommandScript" type="ugvScriptCommandsType"/>
+			<xsd:element name="UAVCommandScript" type="uavScriptCommandsType"/>
+			<xsd:element name="AgendaMission" type="agendaMissionElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="UuvSpeedElements">
+		<xsd:annotation>
+			<xsd:documentation>Elements suitable for specifying the forward speed of a UUV</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="SetPower" type="setPropellerCommandType"/>
+			<xsd:element name="MakeKnots" type="speedElementType"/>
+			<xsd:element name="MakeSpeed" type="speedElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="MessageBodyContent">
+		<xsd:annotation>
+			<xsd:documentation>The content portion of an AVCL message containing the data that is being sent from one vehicle to another.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<!-- Request messages (new tasking or requests for information) -->
+			<xsd:group ref="MissionSpecification">
+				<xsd:annotation>
+					<xsd:documentation>Used to issue a new mission (script or agenda).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="UUVCommand" type="uuvScriptCommandsType">
+				<xsd:annotation>
+					<xsd:documentation>Used to issue a single script command to a UUV.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UGVCommand" type="ugvScriptCommandsType">
+				<xsd:annotation>
+					<xsd:documentation>Used to issue a single script command to a UGV.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="USVCommand" type="usvScriptCommandsType">
+				<xsd:annotation>
+					<xsd:documentation>Used to issue a single script command to a USV.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UAVCommand" type="uavScriptCommandsType">
+				<xsd:annotation>
+					<xsd:documentation>Used to issue a single script command to a UAV.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="InformationRequest" type="informationRequestElementType">
+				<xsd:annotation>
+					<xsd:documentation>Request for current vehicle status information.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GroupMaintenance" type="vehicleGroupCompositionElementType">
+				<xsd:annotation>
+					<xsd:documentation>Used to initiate a request relating to the establishment or maintenance of a cooperating group.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<!-- Inform messages (provide status information) -->
+			<xsd:group ref="VehicleCharacteristicsGroup">
+				<xsd:annotation>
+					<xsd:documentation>Used to transmit a summary of vehicle capabilities and characteristics.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="VehicleState" type="discreteTimeResultsElementType">
+				<xsd:annotation>
+					<xsd:documentation>Used to transmit vehicle telemetry or control settings information.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="LoggableEvent">
+				<xsd:annotation>
+					<xsd:documentation>Used to notify other vehicles of an event.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="SensorDataReport">
+				<xsd:annotation>
+					<xsd:documentation>Used to report sensor data.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:group ref="SensorElements" maxOccurs="unbounded"/>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="VehicleCharacteristicsGroup">
+		<xsd:choice>
+			<xsd:annotation>
+				<xsd:documentation>Elements utilized to specify vehicle capability requirements.</xsd:documentation>
+			</xsd:annotation>
+			<xsd:element name="UUVCharacteristics" type="uuvCharacteristicsElementType"/>
+			<xsd:element name="UGVCharacteristics" type="ugvCharacteristicsElementType"/>
+			<xsd:element name="USVCharacteristics" type="usvCharacteristicsElementType"/>
+			<xsd:element name="UAVCharacteristics" type="uavCharacteristicsElementType"/>
+		</xsd:choice>
+	</xsd:group>
+	<xsd:group name="LoggableEvent">
+		<xsd:annotation>
+			<xsd:documentation>Used to capture a single loggable vehicle event.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice>
+			<xsd:element name="UUVEvent" type="uuvLoggableEventType"/>
+			<xsd:element name="UGVEvent" type="ugvLoggableEventType"/>
+			<xsd:element name="USVEvent" type="usvLoggableEventType"/>
+			<xsd:element name="UAVEvent" type="uavLoggableEventType"/>
+		</xsd:choice>
+	</xsd:group>
+</xsd:schema>

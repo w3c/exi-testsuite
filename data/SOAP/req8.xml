@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <SOAP-ENV:Body>
+  <ns3:echoStructArray xmlns:ns3="http://soapinterop.org/">
+   <inputStructArray href="#id0"/>
+  </ns3:echoStructArray>
+  <multiRef id="id0" xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="ns6:SOAPStruct[3]" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns6="http://soapinterop.org/xsd">
+   <item href="#id1"/>
+   <item href="#id2"/>
+   <item href="#id3"/>
+  </multiRef>
+  <multiRef id="id3" xsi:type="ns12:SOAPStruct" xmlns:ns12="http://soapinterop.org/xsd">
+   <varFloat xsi:type="xsd:float">3.3</varFloat>
+   <varInt xsi:type="xsd:int">3</varInt>
+   <varString xsi:type="xsd:string">three</varString>
+  </multiRef>
+  <multiRef id="id2" xsi:type="ns20:SOAPStruct" xmlns:ns20="http://soapinterop.org/xsd">
+   <varFloat xsi:type="xsd:float">2.2</varFloat>
+   <varInt xsi:type="xsd:int">2</varInt>
+   <varString xsi:type="xsd:string">two</varString>
+  </multiRef>
+  <multiRef id="id1" xsi:type="ns28:SOAPStruct" xmlns:ns28="http://soapinterop.org/xsd">
+   <varFloat xsi:type="xsd:float">1.1</varFloat>
+   <varInt xsi:type="xsd:int">1</varInt>
+   <varString xsi:type="xsd:string">one</varString>
+  </multiRef>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

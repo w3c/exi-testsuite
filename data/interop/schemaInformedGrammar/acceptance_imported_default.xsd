@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:foo="urn:foo">
+
+<xsd:import namespace="urn:foo" schemaLocation="acceptance.xsd"/>
+
+<xsd:element name="AB" type="xsd:anySimpleType"/>
+
+<xsd:element name="AC" type="xsd:anySimpleType"/>
+
+<xsd:element name="AD" type="xsd:anySimpleType"/>
+
+<xsd:element name="AE" type="xsd:anySimpleType"/>
+
+<xsd:complexType name="extended_F">
+  <xsd:complexContent>
+    <xsd:extension base="foo:extended_F">
+      <xsd:sequence>
+        <xsd:element ref="foo:AC" />
+      </xsd:sequence>
+    </xsd:extension>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="restricted_F" final="#all">
+  <xsd:complexContent>
+    <xsd:restriction base="extended_F">
+      <xsd:sequence>
+        <xsd:element ref="foo:AB"/>
+        <xsd:element ref="foo:AC" />
+      </xsd:sequence>
+      <xsd:attribute ref="foo:aA" use="required"/>
+    </xsd:restriction>
+  </xsd:complexContent>
+</xsd:complexType>
+
+</xsd:schema>

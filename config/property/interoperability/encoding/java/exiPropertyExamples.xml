@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="Compaction"
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <!-- general test suite properties -->
+    <param name="japex.warmupIterations" value="0"/>
+    <param name="japex.runIterations" value="0"/>
+    <param name="japex.resultUnit" value="bytes"/>
+    <param name="japex.reportsDirectory" value="reports/test/compaction"/>
+    <param name="org.w3c.exi.ttf.measurementProperty" value="compactness"/>
+    <param name="org.w3c.exi.ttf.dataSourceSink.URI" value="memory:/"/>
+
+<!-- EXI properties -->
+<!-- These can be set for an entire testSuite, specific testGroups or individual testCases -->
+    <!-- options inherited from performance testing -->
+    <param name="org.w3c.exi.ttf.preserve" value="comments dtds pis lexicalvalues prefixes"/>
+    <param name="org.w3c.exi.ttf.fragments" value="true"/>
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/> <!-- !strict -->
+
+    <!-- options added for interoperability testing -->
+    <param name="org.w3c.exi.ttf.includeOptions" value="true"/>
+    <param name="org.w3c.exi.ttf.includeSchemaId" value="true"/>
+    <param name="org.w3c.exi.ttf.includeCookie" value="true"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+    <param name="org.w3c.exi.ttf.compression" value="true"/>
+    <param name="org.w3c.exi.ttf.preCompression" value="false"/>
+    <param name="org.w3c.exi.ttf.byteAlign" value="false"/>
+    <param name="org.w3c.exi.ttf.valuePartitionCapacity" value="64"/>
+    <param name="org.w3c.exi.ttf.valueMaxLength" value="32"/>
+    <param name="org.w3c.exi.ttf.blockSize" value="4096"/>
+    <param name="org.w3c.exi.ttf.selfContainedQNames" value=
+	"{http://www.fpml.org/2003/FpML-4-0}trade
+	 {http://www.fpml.org/2003/FpML-4-0}party" />
+    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+	"{http://www.w3.org/2001/XMLSchema}integer  {http://www.w3.org/2009/exi}string
+	 {http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal" />
+
+<!-- may include specific drivers to test here -->
+<!-- 
+    <xi:include href="../../../../drivers/sax/efficientxml4.0-neither.xml"/>
+-->
+
+<!-- may include specific testcases here -->
+<!-- e.g.:
+    <xi:include href="../../../../testCases-restricted/fpml.xml"/>
+-->
+</testSuite>
+

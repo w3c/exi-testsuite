@@ -1,0 +1,2149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.3" 
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+   xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+   xmlns:xjc ="http://java.sun.com/xml/ns/jaxb/xjc"
+   jaxb:extensionBindingPrefixes="xjc"
+   jaxb:version="1.0">
+
+<!-- Name:  DistributedInteractiveSimulation.xsd
+    Authors:    Don Brutzman, Ekrem Serin, Curt Blais, various
+    Created:        1 March 2003
+    Revised:        13 February 2006
+    Description:    XML Schema for Distributed Interactive Simulation (DIS) Protocol, IEEE-1278.1a-1998
+-->
+<!-- Naming Convention Rules 
+    ** 1.   Clarity implies understandable and consistent.
+    ** 2.   CamelCaseNaming.
+    ** 3.   Elements/classes/types start with upper case; attributes/fields start with lower case e.g., <NavigationInfo visibilityLimit=”10000”/>.
+    ** 4.   Avoid special characters. Don’t use special characters that are programming language operators (e.g., ‘-‘).
+    ** 5.   Slash for hierarchy, structure, etc. Work on design more, try to eliminate.
+    ** 6.   No abbreviations. RARE exception is unconfusable acronyms (e.g., LOD). Consider camel-casing anyway.
+    ** 7.   Metric for good naming: nobody “talks about it” anymore.
+    ** 8.   If repeatable and/or complex type, use element.
+    ** 9.   If simple type, singleton, or closely tied to the element, use attribute.
+    ** 10. ".xsd" for schema filename extension.
+    ** 11. "xsd:" for schema namespace.
+    ** 12. In general, payload data should be an attribute.
+-->
+
+ <!-- Sets JAXB binding options, such as having repeated elements be represented as Vectors in the java bindings. -->
+ <xsd:annotation>
+      <xsd:appinfo>
+         <jaxb:globalBindings>
+            <xjc:noValidatingUnmarshaller />
+            <xjc:noValidator />
+         </jaxb:globalBindings>
+      </xsd:appinfo>
+        <xsd:documentation> Sets various global options for JAXB, such as having collections be represented as Vectors in the Java classes. </xsd:documentation>
+        <!--
+        <xsd:appinfo>
+          <globalBindings collectionType="java.util.Vector"/>
+        </xsd:appinfo>
+        -->
+    </xsd:annotation>
+    <!-- attribute types ============================================== -->
+        
+    <xsd:complexType name="Vector3Float">
+        <xsd:annotation>
+            <xsd:documentation>Denotes 32-bit floating-point triplet</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="x" type="xsd:float"/>
+        <xsd:attribute name="y" type="xsd:float"/>
+        <xsd:attribute name="z" type="xsd:float"/>
+    </xsd:complexType>
+    <xsd:complexType name="Vector3Double">
+        <xsd:annotation>
+            <xsd:documentation>Denotes 64-bit floating-point triplet</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="x" type="xsd:double"/>
+        <xsd:attribute name="y" type="xsd:double"/>
+        <xsd:attribute name="z" type="xsd:double"/>
+    </xsd:complexType>
+    <!-- contained-element types ====================================== -->
+    <xsd:complexType name="AggregateIDType">
+        <xsd:annotation>
+            <xsd:documentation>These fields shall identify subaggregates that are transmitting Aggregate StatePDUs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="site" type="xsd:unsignedShort"/>
+        <xsd:attribute name="application" type="xsd:unsignedShort"/>
+        <xsd:attribute name="aggregate" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="AggregateTypeType">
+        <xsd:annotation>
+            <xsd:documentation>This field shall identify the grouping criterion used to group the aggregate. This 
+                               field shall be represented by an 8-bit enumeration indicating the common characteristic of the aggregate.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="aggregateKind" type="xsd:byte"/>
+        <xsd:attribute name="domain" type="xsd:byte"/>
+        <xsd:attribute name="country" type="xsd:short"/>
+        <xsd:attribute name="category" type="xsd:byte"/>
+        <xsd:attribute name="subcategory" type="xsd:byte"/>
+        <xsd:attribute name="specific" type="xsd:byte"/>
+        <xsd:attribute name="extra" type="xsd:byte"/>
+    </xsd:complexType>
+    <xsd:complexType name="AggregateMarkingType">
+        <xsd:annotation>
+            <xsd:documentation>This field shall identify the unique marking associated with the aggregate. This field should not be used to encode other information.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="characterSet">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:hexBinary">
+                    <xsd:length value="31"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+    <xsd:complexType name="ArticulationParametersType">
+        <xsd:annotation>
+            <xsd:documentation>ArticulationParametersType is.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="parameterTypeDesignator" type="xsd:byte"/>
+        <xsd:attribute name="change" type="xsd:unsignedShort"/>
+        <xsd:attribute name="IDPartAttachedTo" type="xsd:unsignedShort"/>
+        <xsd:attribute name="parameterType" type="xsd:int"/>
+        <xsd:attribute name="parameterValue" type="xsd:double"/>
+    </xsd:complexType>
+    <xsd:complexType name="BoundingSphereRecordType">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CentroidLocation" type="Vector3Double"/>
+        </xsd:sequence>
+        <xsd:attribute name="radius" type="xsd:float"/>
+    </xsd:complexType>
+    <xsd:complexType name="BurstDescriptorType">
+        <xsd:annotation>
+            <xsd:documentation>BurstDescriptorType is describes a burst of fire..</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="munition" type="EntityType"/>
+        </xsd:sequence>
+        <xsd:attribute name="warhead" type="xsd:short"/>
+        <xsd:attribute name="fuse" type="xsd:short"/>
+        <xsd:attribute name="quantity" type="xsd:unsignedShort"/>
+        <xsd:attribute name="rate" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="ClockType">
+        <xsd:annotation>
+            <xsd:documentation>This type is used to represent a structure containing two field: Hour, and Time Past Hour</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="hour" type="xsd:int"/>
+        <xsd:attribute name="timePastHour" type="xsd:unsignedInt"/>
+    </xsd:complexType>
+    <xsd:complexType name="CombicStateType">
+        <xsd:annotation>
+            <xsd:documentation>The CombicStateType is a subtype to the StateRecordType.  Defined in EBV-DOC.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="MunitionSource" type="EntityType"/>
+            <xsd:element name="DetonationVelocity" type="EulerAnglesType"/>
+        </xsd:sequence>
+        <xsd:attribute name="timeSinceCreation" type="xsd:unsignedLong" use="required"/>
+        <xsd:attribute name="numberOfSources" type="xsd:long" use="required"/>
+        <xsd:attribute name="geometryIndex" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="padding" type="xsd:short" default="0"/>
+        <xsd:attribute name="sourceType" type="xsd:unsignedLong" use="required"/>
+        <xsd:attribute name="barrageRate" type="xsd:float" use="required"/>
+        <xsd:attribute name="barrageDuration" type="xsd:float" use="required"/>
+        <xsd:attribute name="barrageCrosswindLength" type="xsd:float" use="required"/>
+        <xsd:attribute name="barrageDownwindLength" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConeRecord1Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="VertexLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+        </xsd:sequence>
+        <xsd:attribute name="height" type="xsd:float" use="required"/>
+        <xsd:attribute name="peakAngle" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ConeRecord2Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="VertexLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+            <xsd:element name="Velocity" type="Vector3Float"/>
+            <xsd:element name="AngularVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+        <xsd:attribute name="height" type="xsd:float" use="required"/>
+        <xsd:attribute name="dheightdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="peakAngle" type="xsd:float" use="required"/>
+        <xsd:attribute name="dpeakAngledt" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="CommunicationIDType">
+        <xsd:annotation>
+            <xsd:documentation>CommunicationIDType specifies the simulation application sending or receiving the Linear Object State PDU.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="site" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="application" type="xsd:unsignedShort" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="DeadReckoningParametersType">
+        <xsd:sequence>
+            <xsd:element name="EntityLinearAcceleration" type="Vector3Float"/>
+            <xsd:element name="EntityAngularVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+        <xsd:attribute name="deadReckoningAlgorithm" type="xsd:byte"/>
+        <xsd:attribute name="otherParameters">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:hexBinary">
+                    <xsd:length value="15"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+    <xsd:complexType name="EllipsoidRecord1Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CentroidLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+        </xsd:sequence>
+        <xsd:attribute name="sigmaX" type="xsd:float" use="required"/>
+        <xsd:attribute name="sigmaY" type="xsd:float" use="required"/>
+        <xsd:attribute name="sigmaZ" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="EllipsoidRecord2Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CentroidLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+            <xsd:element name="Velocity" type="Vector3Float"/>
+            <xsd:element name="AngularVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+        <xsd:attribute name="sigmaX" type="xsd:float" use="required"/>
+        <xsd:attribute name="sigmaY" type="xsd:float" use="required"/>
+        <xsd:attribute name="sigmaZ" type="xsd:float" use="required"/>
+        <xsd:attribute name="dsigmaXdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dsigmaYdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dsigmaZdt" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="EmitterSystemType">
+        <xsd:attribute name="EmitterName" type="xsd:short"/>
+        <xsd:attribute name="Function" type="xsd:short"/>
+        <xsd:attribute name="EmitterIDNumber" type="xsd:unsignedByte"/>
+    </xsd:complexType>
+    <xsd:complexType name="EntityIDType">
+        <xsd:annotation>
+            <xsd:documentation>EntityIDType is unique triplet identifier for each simulation entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="site" type="xsd:unsignedShort"/>
+        <xsd:attribute name="application" type="xsd:unsignedShort"/>
+        <xsd:attribute name="entity" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="EntityManagementFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for EntityManagementFamilyType PDUs (extends ProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="EntityMarking">
+        <xsd:annotation>
+            <xsd:documentation>EntityMarking is a way to put a small text string on entities. A short string and a charset are included.
+       </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="characterSet" type="xsd:byte"/>
+        <xsd:attribute name="characters">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:hexBinary">
+                    <xsd:length value="11"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+    <xsd:complexType name="EntityType">
+        <xsd:attribute name="entityKind" type="xsd:byte"/>
+        <xsd:attribute name="domain" type="xsd:byte"/>
+        <xsd:attribute name="country" type="xsd:short"/>
+        <xsd:attribute name="category" type="xsd:byte"/>
+        <xsd:attribute name="subCategory" type="xsd:byte"/>
+        <xsd:attribute name="specific" type="xsd:byte"/>
+        <xsd:attribute name="extra" type="xsd:byte"/>
+    </xsd:complexType>
+    <xsd:complexType name="EnvironmentRecordType">
+        <xsd:annotation>
+            <xsd:documentation>The Environment Record  contains specific geometry, state, or bounding volume information.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:choice>
+            <xsd:element name="StateRecord" type="StateRecordType"/>
+            <xsd:element name="GeometryRecord" type="GeometryRecordType"/>
+        </xsd:choice>
+        <xsd:attribute name="type" type="xsd:long" use="required"/>
+        <xsd:attribute name="length" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="index" type="xsd:unsignedByte" use="required"/>
+        <xsd:attribute name="padding1" type="xsd:byte" default="0"/>
+        <xsd:attribute name="padding2" type="xsd:long" default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="EnvironmentTypeType">
+        <xsd:annotation>
+            <xsd:documentation>The EnvironmentTypeType identifies the type of environmental entity being described.
+            </xsd:documentation>
+            <xsd:documentation>The EnvironmentTypeType is a complexType for the Environment Type element, therefore the awkward use of "TypeType" is found here.
+            Note also that the class field has been changed to classId; class is a reserved word in jaxb and when generating Java code.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="kind" type="xsd:byte" use="required"/>
+        <xsd:attribute name="domain" type="xsd:byte" use="required"/>
+        <xsd:attribute name="classId" type="xsd:short" use="required"/>
+        <xsd:attribute name="category" type="xsd:byte" use="required"/>
+        <xsd:attribute name="specific" type="xsd:byte" use="required"/>
+        <xsd:attribute name="extra" type="xsd:byte" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="EulerAnglesType">
+        <xsd:attribute name="psi" type="xsd:float"/>
+        <xsd:attribute name="theta" type="xsd:float"/>
+        <xsd:attribute name="phi" type="xsd:float"/>
+    </xsd:complexType>
+    <xsd:complexType name="EventIDType">
+        <xsd:annotation>
+            <xsd:documentation>This record shall consist of a SimulationAddress record and a 16-bit unsigned integer specifying the event number. The latter is uniquely
+assigned within the host by the simulation application that initiates the sequence of events. The Event Number eld of the Event Identier record shall be set to one for each exercise and incremented by one for each
+re event, collision event, or electromagnetic mission event. In the case where all possible values are
+exhausted, the numbers may be reused beginning again at one.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="site" type="xsd:unsignedShort" default="0"/>
+        <xsd:attribute name="application" type="xsd:unsignedShort" 
+default="0"/>
+        <xsd:attribute name="eventNumber" type="xsd:unsignedShort" 
+default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="FixedDatumType">
+        <xsd:annotation>
+            <xsd:documentation>Common shared attributes for ActionRequestPdu, ActionResponsePdu, SetDataPdu, DataPdu, EventReportPdu, and CommentPdu.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="fixedDatumID" type="xsd:long"/>
+        <xsd:attribute name="fixedDatumValue" type="xsd:long"/>
+    </xsd:complexType>
+    <xsd:complexType name="FlareStateType">
+        <xsd:annotation>
+            <xsd:documentation>The FlareStateType is a subtype of the StateRecordType.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="Source" type="EntityType"/>
+        </xsd:all>
+        <xsd:attribute name="numberIntensity" type="xsd:long" use="required"/>
+        <xsd:attribute name="numberOfSources" type="xsd:long" use="required"/>
+        <xsd:attribute name="geometryIndex" type="xsd:unsignedShort" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="FundamentalParameterDataType">
+        <xsd:attribute name="Frequency" type="xsd:float"/>
+        <xsd:attribute name="FrequencyRange" type="xsd:float"/>
+        <xsd:attribute name="EffectiveRadiatedPower" type="xsd:float"/>
+        <xsd:attribute name="PulseRepetitionFrequency" type="xsd:float"/>
+        <xsd:attribute name="PulseWidth" type="xsd:float"/>
+        <xsd:attribute name="BeamAzimuthCenter" type="xsd:float"/>
+        <xsd:attribute name="BeamAzimuthSweep" type="xsd:float"/>
+        <xsd:attribute name="BeamElevationCenter" type="xsd:float"/>
+        <xsd:attribute name="BeamElevationSweep" type="xsd:float"/>
+        <xsd:attribute name="BeamSweepSync" type="xsd:float"/>
+    </xsd:complexType>
+    <xsd:complexType name="GaussianPluffRecordType">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="PuffLocation" type="Vector3Double"/>
+            <xsd:element name="OriginationLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+            <xsd:element name="Velocity" type="Vector3Float"/>
+            <xsd:element name="AngularVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+        <xsd:attribute name="sigmaX" type="xsd:float" use="required"/>
+        <xsd:attribute name="sigmaY" type="xsd:float" use="required"/>
+        <xsd:attribute name="sigmaZ" type="xsd:float" use="required"/>
+        <xsd:attribute name="dsigmaXdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dsigmaYdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dsigmaZdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="centroidHeight" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="GaussianPlumeRecordType">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="SourceLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+            <xsd:element name="LeadingEdgeVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+        <xsd:attribute name="plumeLength" type="xsd:float" use="required"/>
+        <xsd:attribute name="plumeWidth" type="xsd:float" use="required"/>
+        <xsd:attribute name="plumeHeight" type="xsd:float" use="required"/>
+        <xsd:attribute name="dplumeLengthdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dplumeWidthdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dplumeHeightdt" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="GeometryRecordType">
+        <xsd:annotation>
+            <xsd:documentation>The Geometry Record Type describes a geometry within the engagement space. They may also describe the method by which 
+                               that geometry shall be dead reckoned and the parameters used in that 
+                               dead reckoning.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="PointRecord1" type="PointRecord1Type"/>
+            <xsd:element name="PointRecord2" type="PointRecord2Type"/>
+            <xsd:element name="LineRecord1" type="LineRecord1Type"/>
+            <xsd:element name="LineRecord2" type="LineRecord2Type"/>
+            <xsd:element name="BoundingSphereRecord" type="BoundingSphereRecordType"/>
+            <xsd:element name="SphereRecord1" type="SphereRecord1Type"/>
+            <xsd:element name="SphereRecord2" type="SphereRecord2Type"/>
+            <xsd:element name="EllipsoidRecord1" type="EllipsoidRecord1Type"/>
+            <xsd:element name="EllipsoidRecord2" type="EllipsoidRecord2Type"/>
+            <xsd:element name="ConeRecord1" type="ConeRecord1Type"/>
+            <xsd:element name="ConeRecord2" type="ConeRecord2Type"/>
+            <xsd:element name="RectangularVolumeRecord1" type="RectangularVolumeRecord1Type"/>
+            <xsd:element name="RectangularVolumeRecord2" type="RectangularVolumeRecord2Type"/>
+            <xsd:element name="GaussianPlumeRecord" type="GaussianPlumeRecordType"/>
+            <xsd:element name="GaussianPluffRecord" type="GaussianPluffRecordType"/>
+            <xsd:element name="RectangularVolumeRecord3" type="RectangularVolumeRecord3Type"/>
+        </xsd:sequence>
+        <xsd:attribute name="Field1" type="xsd:unsignedByte" default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="GridAxisRecordFixedType">
+        <xsd:annotation>
+            <xsd:documentation>The Grid Axis record provides detailed information about each grid axes for environmental state variables for use in the Gridded Data PDU.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="domainInitialXi" type="xsd:double" use="required"/>
+        <xsd:attribute name="domainFinalXi" type="xsd:double" use="required"/>
+        <xsd:attribute name="domainPointsXi" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="interleafFactor" type="xsd:byte" use="required"/>
+        <xsd:attribute name="axisType" type="xsd:byte" use="required"/>
+        <xsd:attribute name="numberOfPointsOnXiAxis" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="initialIndexXi" type="xsd:unsignedShort" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="GridAxisRecordVariableType">
+        <xsd:annotation>
+            <xsd:documentation>The Grid Axis record provides detailed information about each grid axes and grid location coordinates for environmental state variables for use in the Gridded Data PDU.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="XiValue" type="xsd:unsignedShort" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="domainInitialXi" type="xsd:double" use="required"/>
+        <xsd:attribute name="domainFinalXi" type="xsd:double" use="required"/>
+        <xsd:attribute name="domainPointsXi" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="interleafFactor" type="xsd:byte" use="required"/>
+        <xsd:attribute name="axisType" type="xsd:byte" use="required"/>
+        <xsd:attribute name="numberOfPointsOnXiAxis" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="initialIndexXi" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="coordinateScaleXi" type="xsd:double" use="required"/>
+        <xsd:attribute name="coordinateOffsetXi" type="xsd:double" use="required"/>
+        <xsd:attribute name="padding" type="xsd:double" default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="GridDataRecordType0">
+        <xsd:annotation>
+            <xsd:documentation>The Grid Data record contains the actual environmental state variable data for each grid location.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="DataValuei" type="xsd:byte" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="sampleType" type="xsd:short" use="required"/>
+        <xsd:attribute name="dataRepresentation" type="xsd:short" use="required"/>
+        <xsd:attribute name="numberOfBytes" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="padding" type="xsd:short" default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="GridDataRecordType1">
+        <xsd:annotation>
+            <xsd:documentation>The Grid Data record contains the actual environmental state variable data for each grid location.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="DataValuej" type="xsd:unsignedShort" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="sampleType" type="xsd:short" use="required"/>
+        <xsd:attribute name="dataRepresentation" type="xsd:short" use="required"/>
+        <xsd:attribute name="fieldScale" type="xsd:float" use="required"/>
+        <xsd:attribute name="fieldOffset" type="xsd:float" use="required"/>
+        <xsd:attribute name="numberOfValues" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="padding" type="xsd:float" default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="GridDataRecordType2">
+        <xsd:annotation>
+            <xsd:documentation>The Grid Data record contains the actual environmental state variable data for each grid location.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="DataValuej" type="xsd:float" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="sampleType" type="xsd:short" use="required"/>
+        <xsd:attribute name="dataRepresentation" type="xsd:short" use="required"/>
+        <xsd:attribute name="numberOfValues" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="padding" type="xsd:short" default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="HeaderType">
+        <xsd:annotation>
+            <xsd:documentation>Common header for all PDUs. Default DIS protocol version is 6, for DIS-1998.
+             0: other  1: DIS-1992  2: DIS-1993 3: DIS-May 1993 4: DIS-March 1994  5: DIS-1995 (first IEEE Standard, IEEE 1278.1-1995)
+             6: DIS-1998, IEEE 1278.1A-1998</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="protocolVersion" type="xsd:byte" default="6"/>
+        <xsd:attribute name="exerciseID" type="xsd:unsignedByte" default="0"/>
+        <xsd:attribute name="pduType" type="xsd:byte"/>
+        <xsd:attribute name="protocolFamily" type="xsd:byte"/>
+        <xsd:attribute name="timestamp" type="xsd:unsignedInt"/>
+        <xsd:attribute name="length" type="xsd:unsignedShort"/>
+        <xsd:attribute name="padding" type="xsd:short" default="0"/>
+        <!-- DIS-1995 standard  for default protocol version -->
+        <!-- Padding should always be initialized to zeros -->
+    </xsd:complexType>
+    <xsd:complexType name="LEEntityIDType">
+        <xsd:annotation>
+            <xsd:documentation>LEEntityIDType is unique triplet identifier for each LE simulation entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="site" type="xsd:unsignedByte"/>
+        <xsd:attribute name="application" type="xsd:unsignedByte"/>
+        <xsd:attribute name="entity" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="LEEventIDType">
+        <xsd:annotation>
+            <xsd:documentation>LEEventIDType is an identification generated by a firing entity to associate related firing and detonation events.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="site" type="xsd:unsignedByte"/>
+        <xsd:attribute name="application" type="xsd:unsignedByte"/>
+        <xsd:attribute name="eventNumber" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="LEHeaderType">
+        <xsd:annotation>
+            <xsd:documentation>Common header for all Live Entity (LE) PDUs.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="protocolVersion" type="xsd:byte"/>
+        <xsd:attribute name="exerciseID" type="xsd:unsignedByte"/>
+        <xsd:attribute name="pduType" type="xsd:byte"/>
+        <xsd:attribute name="protocolFamily" type="xsd:byte"/>
+        <xsd:attribute name="timestamp" type="xsd:unsignedInt"/>
+        <xsd:attribute name="length" type="xsd:unsignedShort"/>
+        <xsd:attribute name="subprotocolNumber" type="xsd:byte"/>
+        <xsd:attribute name="padding" type="xsd:byte"/>
+    </xsd:complexType>
+    <xsd:complexType name="LEProtocolDataUnitType">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for all Live Entity (LE) PDUs.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="LEPDUHeader" type="LEHeaderType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LineRecord1Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="StartPointLocation" type="Vector3Double"/>
+            <xsd:element name="EndPointLocation" type="Vector3Double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LineRecord2Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="StartPointLocation" type="Vector3Double"/>
+            <xsd:element name="EndPointLocation" type="Vector3Double"/>
+            <xsd:element name="StartPointVelocity" type="Vector3Float"/>
+            <xsd:element name="EndPointVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LineSegmentParametersType">
+        <xsd:annotation>
+            <xsd:documentation>The Parameters Type specifies the parameter values for representing each linear segment.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="SegmentLocation" type="Vector3Float"/>
+            <xsd:element name="SegmentOrientation" type="EulerAnglesType"/>
+        </xsd:all>
+        <xsd:attribute name="segmentNumber" type="xsd:unsignedByte" use="required"/>
+        <xsd:attribute name="segementModifications" type="xsd:byte" use="required"/>
+        <xsd:attribute name="segmentApperance" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:hexBinary">
+                    <xsd:length value="6"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="segmentLength" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="segmentWidth" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="segmentHeight" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="segmentDepth" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="padding" type="xsd:long" default="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="LiveEntityFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for LiveEntityFamily PDUs (extends LEProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="LEProtocolDataUnitType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ModulationTypeType">
+        <xsd:attribute name="spreadSpectrum" type="xsd:boolean"/>
+        <xsd:attribute name="major" type="xsd:short"/>
+        <xsd:attribute name="detail" type="xsd:short"/>
+        <xsd:attribute name="system" type="xsd:short"/>
+    </xsd:complexType>
+    <xsd:complexType name="NamedLocationIDType">
+        <xsd:annotation>
+            <xsd:documentation>This field identifies the discrete positional relationship that the host entity will have with respect to the part entity upon receipt of an Acknowledgment PDU with a response indicating 
+                               the requested simulation application is able to comply with the requested action.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="stationName" type="xsd:short"/>
+        <xsd:attribute name="stationNumber" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="ObjectIDType">
+        <xsd:annotation>
+            <xsd:documentation>ObjectIDType is a unique triplet identifier for each synthetic environment object.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="site" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="application" type="xsd:unsignedShort" use="required"/>
+        <xsd:attribute name="object" type="xsd:unsignedShort" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ObjectTypeType">
+        <xsd:annotation>
+            <xsd:documentation>The ObjectTypeType identifies the type of synthetic environment object.</xsd:documentation>
+            <xsd:documentation>The ObjectTypeType is a complexType for the Object Type of the Areal, Linear and Point Object State PDUs, therefore the awkward use of "TypeType" is found here.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="domain" type="xsd:byte" use="required"/>
+        <xsd:attribute name="objectKind" type="xsd:short" use="required"/>
+        <xsd:attribute name="category" type="xsd:byte" use="required"/>
+        <xsd:attribute name="subcategory" type="xsd:byte" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="OrientationErrorType">
+        <xsd:annotation>
+            <xsd:documentation>Defines the orientation-error components that are associated with the measurement of the entity's orientation</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="azimuthError" type="xsd:unsignedShort"/>
+        <xsd:attribute name="elevationError" type="xsd:unsignedShort"/>
+        <xsd:attribute name="rotationError" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="PointRecord1Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Location" type="Vector3Double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PointRecord2Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Location" type="Vector3Double"/>
+            <xsd:element name="Velocity" type="Vector3Float"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PositionErrorType">
+        <xsd:annotation>
+            <xsd:documentation>Defines the error components that are associated with the location measurement for an entity</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="horizontalError" type="xsd:unsignedShort"/>
+        <xsd:attribute name="verticalError" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="RadioEntityTypeType">
+        <xsd:attribute name="entityKind" type="xsd:short"/>
+        <xsd:attribute name="domain" type="xsd:short"/>
+        <xsd:attribute name="country" type="xsd:byte"/>
+        <xsd:attribute name="category" type="xsd:short"/>
+        <xsd:attribute name="nomenclatureVersion" type="xsd:short"/>
+        <xsd:attribute name="nomenclature" type="xsd:byte"/>
+    </xsd:complexType>
+    <xsd:complexType name="RecordSetType">
+        <xsd:annotation>
+            <xsd:documentation>This field shall specify the number of record sets, the identification of the record, the serial number of the 
+                               record, the record length, the record count and the specific record values.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="recordID" type="xsd:long"/>
+        <xsd:attribute name="recordSetSerialNumber" type="xsd:unsignedLong"/>
+        <xsd:attribute name="recordLength" type="xsd:unsignedShort"/>
+        <xsd:attribute name="recordCount" type="xsd:unsignedShort"/>
+        <xsd:attribute name="recordValues" type="xsd:float"/>
+        <xsd:attribute name="padding" type="xsd:float"/>
+    </xsd:complexType>
+    <xsd:complexType name="RelationshipType">
+        <xsd:annotation>
+            <xsd:documentation>This field provides information that addresses the specific purpose (nature) for joining the entities and the relationship of the part entity to it host entity</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="nature" type="xsd:short"/>
+        <xsd:attribute name="position" type="xsd:short"/>
+    </xsd:complexType>
+    <xsd:complexType name="SilentAggregateSystemListType">
+        <xsd:annotation>
+            <xsd:documentation>These fields contain information about subaggregates not producing Aggregate State PDUs</xsd:documentation>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="AggregateType" type="AggregateTypeType"/>
+        </xsd:all>
+        <xsd:attribute name="numberOfAggregates" type="xsd:unsignedShort"/>
+        <xsd:attribute name="padding" type="xsd:short"/>
+    </xsd:complexType>
+    <xsd:complexType name="SilentEntitySystemListType">
+        <xsd:annotation>
+            <xsd:documentation>These fields contains information about entities not producing Entity State PDUs.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:all>
+            <xsd:element name="Entities" type="EntityType"/>
+        </xsd:all>
+        <xsd:attribute name="numberOfEntities" type="xsd:unsignedShort"/>
+        <xsd:attribute name="numberOfAppearanceRecords" type="xsd:unsignedShort"/>
+        <xsd:attribute name="entityAppearance" type="xsd:long"/>
+    </xsd:complexType>
+    <xsd:complexType name="RectangularVolumeRecord1Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CornerLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+        </xsd:sequence>
+        <xsd:attribute name="lengthX" type="xsd:float" use="required"/>
+        <xsd:attribute name="lengthY" type="xsd:float" use="required"/>
+        <xsd:attribute name="lengthZ" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="RectangularVolumeRecord2Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CornerLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+            <xsd:element name="Velocity" type="Vector3Float"/>
+            <xsd:element name="AngularVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+        <xsd:attribute name="lengthX" type="xsd:float" use="required"/>
+        <xsd:attribute name="lengthY" type="xsd:float" use="required"/>
+        <xsd:attribute name="lengthZ" type="xsd:float" use="required"/>
+        <xsd:attribute name="dlengthXdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dlengthYdt" type="xsd:float" use="required"/>
+        <xsd:attribute name="dlengthZdt" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="RectangularVolumeRecord3Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CenterLocation" type="Vector3Double"/>
+            <xsd:element name="Orientation" type="EulerAnglesType"/>
+        </xsd:sequence>
+        <xsd:attribute name="lengthX" type="xsd:float" use="required"/>
+        <xsd:attribute name="lengthY" type="xsd:float" use="required"/>
+        <xsd:attribute name="lengthZ" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="RelativeWorldCoordinatesType">
+        <xsd:annotation>
+            <xsd:documentation>Location of the origin of the LEs coordinate system</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="referencePoint" type="xsd:unsignedShort"/>
+        <xsd:attribute name="deltaX" type="xsd:unsignedShort"/>
+        <xsd:attribute name="deltaY" type="xsd:unsignedShort"/>
+        <xsd:attribute name="deltaZ" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="SimulationManagementWithReliabilityFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for Simulation Management with Reliability FamilyType PDUs (extends ProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType">
+                <xsd:sequence>
+                    <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                    <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                </xsd:sequence>
+                <xsd:attribute name="requiredReliabilityService" type="xsd:byte"/>
+                <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SphereRecord1Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CentroidLocation" type="Vector3Double"/>
+        </xsd:sequence>
+        <xsd:attribute name="radius" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="SphereRecord2Type">
+        <xsd:annotation>
+            <xsd:documentation>SubType used by GeometryRecordType</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CentroidLocation" type="Vector3Double"/>
+            <xsd:element name="Velocity" type="Vector3Float"/>
+            <xsd:element name="AngularVelocity" type="Vector3Float"/>
+        </xsd:sequence>
+        <xsd:attribute name="radius" type="xsd:float" use="required"/>
+        <xsd:attribute name="dradiusdt" type="xsd:float" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="StateRecordType">
+        <xsd:annotation>
+            <xsd:documentation>The State Record Type specifies the value of environmental parameters within the specified volume or volumes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="CombicState" type="CombicStateType"/>
+            <xsd:element name="FlareState" type="FlareStateType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SyntheticEnvironmentFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for Synthetic Environment PDUs (extends ProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SuppliesType">
+        <xsd:attribute name="entityKind" type="xsd:byte"/>
+        <xsd:attribute name="domain" type="xsd:byte"/>
+        <xsd:attribute name="country" type="xsd:short"/>
+        <xsd:attribute name="category" type="xsd:byte"/>
+        <xsd:attribute name="subcategory" type="xsd:byte"/>
+        <xsd:attribute name="specific" type="xsd:byte"/>
+        <xsd:attribute name="extra" type="xsd:byte"/>
+        <xsd:attribute name="quantity" type="xsd:float"/>
+    </xsd:complexType>
+    <xsd:complexType name="TrackJamType">
+        <xsd:attribute name="site" type="xsd:unsignedShort"/>
+        <xsd:attribute name="host" type="xsd:unsignedShort"/>
+        <xsd:attribute name="entity" type="xsd:unsignedShort"/>
+        <xsd:attribute name="emitterID" type="xsd:unsignedByte"/>
+        <xsd:attribute name="beamID" type="xsd:unsignedByte"/>
+    </xsd:complexType>
+    <xsd:complexType name="TransmitterPduEntityIDType">
+        <xsd:attribute name="site" type="xsd:unsignedShort"/>
+        <xsd:attribute name="host" type="xsd:unsignedShort"/>
+        <xsd:attribute name="entity" type="xsd:unsignedShort"/>
+    </xsd:complexType>
+    <xsd:complexType name="VariableDatumType">
+        <xsd:annotation>
+            <xsd:documentation>Common shared attributes for ActionRequestPdu, ActionResponsePdu, SetDataPdu, DataPdu, EventReportPdu, and CommentPdu.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="variableDatumID" type="xsd:long"/>
+        <xsd:attribute name="variableDatumLength" type="xsd:unsignedLong"/>
+        <xsd:attribute name="variableDatumValue" type="xsd:long"/>
+        <xsd:attribute name="padding" type="xsd:long"/>
+    </xsd:complexType>
+    <!-- PDU element types ============================================ -->
+    <xsd:complexType name="DistributedEmissionRegenerationFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for DistributedEmissionRegenerationFamily PDUs (extends ProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="EntityInformationInteractionFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for EntityInformation_InteractionFamily PDUs (extends ProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="LogisticsFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for LogisticsFamily PDUs (extends ProtocolDataUnitType as base type).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProtocolDataUnitType">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for all PDUs.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="PduHeader" type="HeaderType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="RadioCommunicationsFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for RadioCommunicationsFamily PDUs (extends ProtocolDataUnitType as base type).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType">
+                <xsd:sequence>
+                    <xsd:element name="EntityID" type="EntityIDType"/>
+                </xsd:sequence>
+                <xsd:attribute name="radioID" type="xsd:unsignedShort"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SimulationManagementFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for SimulationManagementFamilyType PDUs (extends ProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType">
+                <xsd:sequence>
+                    <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                    <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WarfareFamilyType" mixed="false">
+        <xsd:annotation>
+            <xsd:documentation>Common shared structure for WarfareFamilyType PDUs (extends ProtocolDataUnitType as base type).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="ProtocolDataUnitType">
+                <xsd:sequence>
+                    <xsd:element name="FiringEntityID" type="EntityIDType"/>
+                    <xsd:element name="TargetEntityID" type="EntityIDType"/>
+                    <xsd:element name="MunitionID" type="EntityIDType"/>
+                    <xsd:element name="EventID" type="EventIDType"/>
+                    <xsd:element name="Velocity" type="Vector3Float"/>
+                    <xsd:element name="LocationInWorldCoordinates" type="Vector3Double"/>
+                    <xsd:element name="BurstDescriptor" type="BurstDescriptorType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <!-- root element ================================================= -->
+    <xsd:element name="DIS">
+        <xsd:annotation>
+            <xsd:documentation>Document root tag for collection of DIS PDUs.  
+Data messages, known as protocol data units (PDUs), that are exchanged 
+on a network between simulation applications are defined. These PDUs 
+are for interactions that take place within specified domains called 
+protocol families, which include Entity Information/Interaction, 
+Warfare, Logistics, Simulation Management, Distributed Emission 
+Regeneration, and Radio Communications.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="AcknowledgePdu"/>
+                <xsd:element ref="ActionRequestPdu"/>
+                <xsd:element ref="ActionResponsePdu"/>
+                <xsd:element ref="CollisionPdu"/>
+                <xsd:element ref="CommentPdu"/>
+                <xsd:element ref="CreateEntityPdu"/>
+                <xsd:element ref="DataPdu"/>
+                <xsd:element ref="DataQueryPdu"/>
+                <xsd:element ref="DesignatorPdu"/>
+                <xsd:element ref="DetonationPdu"/>
+                <xsd:element ref="ElectromagneticEmissionPdu"/>
+                <xsd:element ref="EntityStatePdu"/>
+                <xsd:element ref="EventReportPdu"/>
+                <xsd:element ref="FirePdu"/>
+                <xsd:element ref="ReceiverPdu"/>
+                <xsd:element ref="RemoveEntityPdu"/>
+                <xsd:element ref="RepairCompletePdu"/>
+                <xsd:element ref="RepairResponsePdu"/>
+                <xsd:element ref="ResupplyCancelPdu"/>
+                <xsd:element ref="ResupplyOfferPdu"/>
+                <xsd:element ref="ResupplyReceivedPdu"/>
+                <xsd:element ref="ServiceRequestPdu"/>
+                <xsd:element ref="SetDataPdu"/>
+                <xsd:element ref="SignalPdu"/>
+                <xsd:element ref="StartResumePdu"/>
+                <xsd:element ref="StopFreezePdu"/>
+                <xsd:element ref="TransmitterPdu"/>
+                <!-- choice of any implemented PDU element goes here -->
+            </xsd:choice>
+        </xsd:complexType>
+    </xsd:element>
+    <!-- PDU elements ================================================= -->
+    <xsd:element name="AcknowledgePdu">
+        <xsd:annotation>
+            <xsd:documentation>The acknowledge PDU denotes the acknowledgement of the receipt of a Start/Resume PDU, Stop/Freeze PDU, Create Entity PDU or a Remove Entity PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:attribute name="acknowledgeFlag" type="xsd:short"/>
+                    <xsd:attribute name="responseFlag" type="xsd:short"/>
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="AcknowledgeRPdu">
+        <xsd:annotation>
+            <xsd:documentation>The acknowledgment of the receipt of PDU shall be communicated by issuing an Acknowledge-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="ProtocolDataUnitType">
+                    <xsd:sequence>
+                        <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="acknowledgeFlag" type="xsd:short"/>
+                    <xsd:attribute name="responseFlag" type="xsd:short"/>
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ActionRequestPdu">
+        <xsd:annotation>
+            <xsd:documentation>The action request PDU carries a request from the Simulation Manager to a managed entity to perform a specified action.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="FixedDatum_N" type="FixedDatumType" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum_M" type="VariableDatumType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                    <xsd:attribute name="actionID" type="xsd:int"/>
+                    <xsd:attribute name="numberOfFixedDatumRecords_N" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords_M" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ActionResponsePdu">
+        <xsd:annotation>
+            <xsd:documentation>The action response PDU denotes the acknowledge of the receipt of Action Request PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="FixedDatum_N" type="FixedDatumType" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum_M" type="VariableDatumType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                    <xsd:attribute name="requestStatus" type="xsd:int"/>
+                    <xsd:attribute name="numberOfFixedDatumRecords_N" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords_M" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ActionRequestRPdu">
+        <xsd:annotation>
+            <xsd:documentation>A request from an SM to a managed entity to perform a specified action shall be communicated using an Action Request-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RequiredReliabilityservice" type="xsd:byte"/>
+                        <xsd:element name="Padding" type="xsd:hexBinary" minOccurs="3" maxOccurs="3"/>
+                        <xsd:element name="RequestId" type="xsd:unsignedLong"/>
+                        <xsd:element name="ActionId" type="xsd:float"/>
+                        <xsd:element name="NumberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="NumberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="FixedDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="fixedDatumId" type="xsd:long"/>
+                                <xsd:attribute name="fixedDatumValue" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="VariableDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="variableDatumId" type="xsd:long"/>
+                                <xsd:attribute name="variabledatumLength" type="xsd:unsignedLong"/>
+                                <xsd:attribute name="variableDatumValue" type="xsd:float"/>
+                                <xsd:attribute name="padding" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ActionResponseRPdu">
+        <xsd:annotation>
+            <xsd:documentation>To acknowledge the receipt of an Action Request-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RequestId" type="xsd:unsignedLong"/>
+                        <xsd:element name="ResponseStatus" type="xsd:float"/>
+                        <xsd:element name="NumberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="NumberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="FixedDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="fixedDatumId" type="xsd:long"/>
+                                <xsd:attribute name="fixedDatumValue" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="VariableDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="variableDatumId" type="xsd:long"/>
+                                <xsd:attribute name="variabledatumLength" type="xsd:unsignedLong"/>
+                                <xsd:attribute name="variableDatumValue" type="xsd:float"/>
+                                <xsd:attribute name="padding" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="AggregateStatePdu">
+        <xsd:annotation>
+            <xsd:documentation>Detailed information about aggregating entities and communicating information about the aggregated entities shall be communicated using the Aggregate State PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="EntityManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="AggregateID" type="AggregateIDType"/>
+                        <xsd:element name="AggregateType" type="AggregateTypeType"/>
+                        <xsd:element name="AggregateMarking" type="AggregateMarkingType"/>
+                        <xsd:element name="Dimensions" type="Vector3Float"/>
+                        <xsd:element name="Orientation" type="EulerAnglesType"/>
+                        <xsd:element name="CenterOfMassLocation" type="Vector3Float"/>
+                        <xsd:element name="Velocity" type="Vector3Float"/>
+                        <!--Aggregate ID List is from #1 to #w -->
+                        <xsd:element name="AggregateIDList" type="AggregateIDType"/>
+                        <!--Entity ID List is from #1 to #j -->
+                        <xsd:element name="EntityIDList" type="EntityIDType"/>
+                        <!--SilentAggregateSystemList is from #1 to #k -->
+                        <xsd:element name="SilentAggregateSystemList" type="SilentAggregateSystemListType"/>
+                        <!--SilentEntitySystemList from #1 to #s -->
+                        <xsd:element name="SilentEntitySystemList" type="SilentEntitySystemListType"/>
+                        <!--VariableDatumType is from #1 to #M -->
+                        <xsd:element name="VariableDatum" type="VariableDatumType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="forceID" type="xsd:byte"/>
+                    <xsd:attribute name="aggregateState" type="xsd:byte"/>
+                    <xsd:attribute name="formation" type="xsd:long"/>
+                    <xsd:attribute name="numberOfDisAggregates" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="numberOfDisEntities" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="numberOfSilentAggregateTypes" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="numberOfSilentEntityTypes" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="padding" type="xsd:long"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="AppearancePdu">
+        <xsd:annotation>
+            <xsd:documentation>The Appearance PDU communicate information about the appearance of an LE.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LiveEntityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="EntityID" type="LEEntityIDType"/>
+                        <xsd:element name="Entity" type="EntityType" minOccurs="0"/>
+                        <xsd:element name="AlternativeEntity" type="EntityType" minOccurs="0"/>
+                        <xsd:element name="EntityMarking" type="EntityMarking" minOccurs="0"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="appearanceFlag1" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="appearanceFlag2" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="forceID" type="xsd:byte"/>
+                    <xsd:attribute name="capabilities" type="xsd:int"/>
+                    <xsd:attribute name="appearanceVisual" type="xsd:int"/>
+                    <xsd:attribute name="appearanceIR" type="xsd:int"/>
+                    <xsd:attribute name="appearanceEM" type="xsd:int"/>
+                    <xsd:attribute name="appearanceAudio" type="xsd:int"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ArticulatedPartsPdu">
+        <xsd:annotation>
+            <xsd:documentation>The Articulated Parts PDU communicate information about the articulated and attached parts of a live entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LiveEntityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="EntityID" type="LEEntityIDType"/>
+                        <xsd:element name="ArticulationParameters" type="ArticulationParametersType" maxOccurs="255"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="numberOfArticulationParameters" type="xsd:unsignedByte" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ArealObjectStatePdu">
+        <xsd:annotation>
+            <xsd:documentation>The Areal Object State PDU communicates detailed information about the addition/modification of a synthetic environment 
+                               object that is geometrically
+                               anchored to the terrain with a set of three or more points that come to a closure.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SyntheticEnvironmentFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ObjectID" type="ObjectIDType"/>
+                        <xsd:element name="ReferencedObjectID" type="ObjectIDType"/>
+                        <xsd:element name="ObjectType" type="ObjectTypeType"/>
+                        <xsd:element name="RequestorID" type="CommunicationIDType"/>
+                        <xsd:element name="ReceivingID" type="CommunicationIDType"/>
+                        <xsd:element name="ObjectLocation" type="Vector3Double" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="updateNumber" type="xsd:unsignedShort" use="required"/>
+                    <xsd:attribute name="forceID" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="modifications" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="ObjectApperance" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:hexBinary">
+                                <xsd:length value="6"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                    <xsd:attribute name="numberOfPoints" type="xsd:unsignedShort" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CollisionPdu">
+        <xsd:annotation>
+            <xsd:documentation>The Collision PDU describes the collisions between entities..</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="EntityInformationInteractionFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="IssuingEntityID" type="EntityIDType"/>
+                        <xsd:element name="CollidingEntityID" type="EntityIDType"/>
+                        <xsd:element name="EventID" type="EventIDType"/>
+                        <xsd:element name="Velocity" type="Vector3Float"/>
+                        <xsd:element name="LocationWithRespectToEntity" type="Vector3Float"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="collisionType" type="xsd:byte"/>
+                    <xsd:attribute name="padding" type="xsd:byte" default="0"/>
+                    <xsd:attribute name="mass" type="xsd:float"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CommentPdu">
+        <xsd:annotation>
+            <xsd:documentation>Reports arbitrary messages (character strings, for example).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="FixedDatum_N" type="FixedDatumType" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum_M" type="VariableDatumType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="numberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CreateEntityPdu">
+        <xsd:annotation>
+            <xsd:documentation>Reports the creation of a new entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CreateEntityRPdu">
+        <xsd:annotation>
+            <xsd:documentation>The creation of a new entity shall be communicated using a Create Entity-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:attribute name="padding" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:hexBinary">
+                                <xsd:minLength value="3"/>
+                                <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DataPdu">
+        <xsd:annotation>
+            <xsd:documentation>Information issued in response to a Data Query PDU or Set Data PDU shall be communicated using a Data PDU. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="FixedDatum_N" type="FixedDatumType" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum_M" type="VariableDatumType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="requestID" type="xsd:long"/>
+                    <xsd:attribute name="padding" type="xsd:long"/>
+                    <xsd:attribute name="numberOfFixedDatumRecords_N" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords_M" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DataRPdu">
+        <xsd:annotation>
+            <xsd:documentation>Information issued in response to a Data Query-R PDU or Set Data-R PDU shall be communicated using Data-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RequestId" type="xsd:unsignedLong"/>
+                        <xsd:element name="RequiredReliabilityService" type="xsd:byte"/>
+                        <xsd:element name="Padding" type="xsd:hexBinary" minOccurs="3" maxOccurs="3"/>
+                        <xsd:element name="NumberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="NumberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="FixedDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="fixedDatumId" type="xsd:long"/>
+                                <xsd:attribute name="fixedDatumValue" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="VariableDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="variableDatumId" type="xsd:long"/>
+                                <xsd:attribute name="variabledatumLength" type="xsd:unsignedLong"/>
+                                <xsd:attribute name="variableDatumValue" type="xsd:float"/>
+                                <xsd:attribute name="padding" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DataQueryPdu">
+        <xsd:annotation>
+            <xsd:documentation>A request for data from an entity shall be communicated by issuing a Data Query PDU. </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="requestID" type="xsd:long"/>
+                    <xsd:attribute name="timeInterval" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfFixedDatumRecords_N" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords_M" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="fixedDatumID" type="xsd:long"/>
+                    <xsd:attribute name="variableDatumID" type="xsd:long"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DataQueryRPdu">
+        <xsd:annotation>
+            <xsd:documentation>A request for data from an entity shall be communicated by issuing a Date Query-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RequiredReliabilityService" type="xsd:byte"/>
+                        <xsd:element name="Padding" type="xsd:hexBinary" minOccurs="3" maxOccurs="3"/>
+                        <xsd:element name="RequestId" type="xsd:unsignedLong"/>
+                        <xsd:element name="TimeInterval" type="xsd:unsignedLong"/>
+                        <xsd:element name="ResponseStatus" type="xsd:float"/>
+                        <xsd:element name="NumberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="NumberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="FixedDatum" type="xsd:float" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum" type="xsd:float" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DesignatorPdu">
+        <xsd:annotation>
+            <xsd:documentation>The Designator PDU shall be used to communicate information for designation functions such as a lasing function to support a laser-guided weapon engagement.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="DistributedEmissionRegenerationFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="Header" type="HeaderType"/>
+                        <xsd:element name="DesignatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="CodeName" type="xsd:short"/>
+                        <xsd:element name="DesignatedEntityID" type="EntityIDType"/>
+                        <xsd:element name="DesignatorCode" type="xsd:short"/>
+                        <xsd:element name="DesignatorPower" type="xsd:float"/>
+                        <xsd:element name="DesignatorWavelength" type="xsd:float"/>
+                        <xsd:element name="DesignatorSpotWithRespectToDesginatedEntity" type="Vector3Float"/>
+                        <xsd:element name="DesignatorSpotLocation" type="Vector3Double"/>
+                        <xsd:element name="DeadReckingAlgorithm" type="xsd:byte"/>
+                        <xsd:element name="Padding" type="xsd:byte"/>
+                        <xsd:element name="EntityLinearAcceleration" type="Vector3Float"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DetonationPdu">
+        <xsd:annotation>
+            <xsd:documentation>The Detonation PDU shall be used to communicate information associated with the impact or detonation of munition.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="WarfareFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="LocationInEntityCoordinates" type="Vector3Float"/>
+                        <xsd:element name="ArticulationParamaters" type="ArticulationParametersType" minOccurs="0" maxOccurs="81"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="detonationResult" type="xsd:byte" default="0"/>
+                    <xsd:attribute name="numberOfArticulationParameters" type="xsd:unsignedShort" default="0"/>
+                    <xsd:attribute name="requestID" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="padding" type="xsd:short" default="0"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ElectromagneticEmissionPdu">
+        <xsd:annotation>
+            <xsd:documentation>The Electronicmagnetic Emmission PDU denotes 
+information about active electronic warfare (EW) emissions and active 
+EW countermeasures that shall be communicated using an Electromagnetic 
+Emission PDU.  The exception is for radio communications and designator 
+tracking, which are handled by separate PDUs.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="DistributedEmissionRegenerationFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="EmittingEntityID" type="EntityIDType"/>
+                        <xsd:element name="EventID" type="EventIDType"/>
+                        <xsd:element name="EmitterSystem" type="EmitterSystemType"/>
+                        <xsd:element name="LocationWithRespectToEntity" type="Vector3Float"/>
+                        <xsd:element name="FundamentalParameterData" type="FundamentalParameterDataType"/>
+                        <xsd:element name="TrackJam" type="TrackJamType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="stateUpdateIndicator" type="xsd:byte"/>
+                    <xsd:attribute name="numberOfSystems" type="xsd:byte"/>
+                    <xsd:attribute name="padding" type="xsd:short"/>
+                    <xsd:attribute name="systemDataLength" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="numberOfBeams" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="padding2" type="xsd:short"/>
+                    <xsd:attribute name="beamDataLength" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="beamIDNumber" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="beamParameterIndex" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="beamFunction" type="xsd:byte"/>
+                    <xsd:attribute name="numberOfTargetsInTheTrackJamField" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="highDensityTrackJam" type="xsd:byte"/>
+                    <xsd:attribute name="padding3" type="xsd:byte"/>
+                    <xsd:attribute name="jammingModeSequence" type="xsd:unsignedInt"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="EntityStatePdu">
+        <xsd:annotation>
+            <xsd:documentation>Reports information about a particular entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="EntityInformationInteractionFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="EntityID" type="EntityIDType"/>
+                        <xsd:element name="Entity" type="EntityType"/>
+                        <xsd:element name="AlternativeEntity" type="EntityType"/>
+                        <xsd:element name="EntityLinearVelocity" type="Vector3Float"/>
+                        <xsd:element name="EntityLocation" type="Vector3Double"/>
+                        <xsd:element name="EntityOrientation" type="EulerAnglesType"/>
+                        <xsd:element name="DeadReckoningParameters" type="DeadReckoningParametersType"/>
+                        <xsd:element name="EntityMarking" type="EntityMarking"/>
+                        <xsd:element name="ArticulationParameters" type="ArticulationParametersType" minOccurs="0" maxOccurs="81"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="forceID" type="xsd:byte"/>
+                    <xsd:attribute name="numberOfArticulationParameters" type="xsd:byte"/>
+                    <xsd:attribute name="entityAppearance" type="xsd:int"/>
+                    <xsd:attribute name="capabilities" type="xsd:int"/>
+                </xsd:extension>
+                <!-- attributes of the Espdu -->
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="EnvironmentalProcessPdu">
+        <xsd:annotation>
+            <xsd:documentation>The Environmental Process PDU communicates information about environmental effects and processes.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SyntheticEnvironmentFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="EnvironmentalProcessID" type="EntityIDType"/>
+                        <xsd:element name="EnvironmentType" type="EnvironmentTypeType"/>
+                        <xsd:element name="EnvironmentRecord" type="EnvironmentRecordType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="modelType" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="environmentStatus" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="numberOfEnvironmentRecords" type="xsd:unsignedShort" use="required"/>
+                    <xsd:attribute name="sequenceNumber" type="xsd:unsignedShort" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="EventReportPdu">
+        <xsd:annotation>
+            <xsd:documentation>Reports the occurrence of a significant event to the Simulation Manager.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="FixedDatum_N" type="FixedDatumType" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum_M" type="VariableDatumType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="eventType" type="xsd:long"/>
+                    <xsd:attribute name="padding" type="xsd:long"/>
+                    <xsd:attribute name="numberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="EventReportRPdu">
+        <xsd:annotation>
+            <xsd:documentation>A managed entity shall report the occurrence of a significant event to the SM using an Event Report-R PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="FixedDatum" type="FixedDatumType" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum" type="VariableDatumType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="eventType" type="xsd:long"/>
+                    <xsd:attribute name="padding" type="xsd:float"/>
+                    <xsd:attribute name="numberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="FirePdu">
+        <xsd:annotation>
+            <xsd:documentation>The Fire PDU shall be used to communicate information associated with the Firing of a weapon.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="WarfareFamilyType">
+                    <xsd:attribute name="range" type="xsd:float"/>
+                    <xsd:attribute name="fireMissionIndex" type="xsd:unsignedShort"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="GriddedDataPdu">
+        <xsd:annotation>
+            <xsd:documentation>The Gridded Data PDU communicates information about global, spatially varying environmental effects.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SyntheticEnvironmentFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="EnvironmentalSimulationApplicationID" type="EntityIDType"/>
+                        <xsd:element name="EnvironmentType" type="EnvironmentTypeType"/>
+                        <xsd:element name="Orientation" type="EulerAnglesType"/>
+                        <xsd:choice>
+                            <xsd:element name="GridAxisDescriptorFixed" type="GridAxisRecordFixedType" maxOccurs="unbounded"/>
+                            <xsd:element name="GridAxisDescriptorVariable" type="GridAxisRecordVariableType" maxOccurs="unbounded"/>
+                        </xsd:choice>
+                        <xsd:choice>
+                            <xsd:element name="GridDataType0" type="GridDataRecordType0" maxOccurs="unbounded"/>
+                            <xsd:element name="GridDataType1" type="GridDataRecordType1" maxOccurs="unbounded"/>
+                            <xsd:element name="GridDataType2" type="GridDataRecordType2" maxOccurs="unbounded"/>
+                        </xsd:choice>
+                    </xsd:sequence>
+                    <xsd:attribute name="fieldNumber" type="xsd:unsignedShort" use="required"/>
+                    <xsd:attribute name="pduNumber" type="xsd:unsignedShort" use="required"/>
+                    <xsd:attribute name="pduTotal" type="xsd:unsignedShort" use="required"/>
+                    <xsd:attribute name="coordinateSystem" type="xsd:short" use="required"/>
+                    <xsd:attribute name="numberOfGridAxes" type="xsd:unsignedByte" use="required"/>
+                    <xsd:attribute name="constantGrid" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="sampleTime" type="xsd:unsignedLong" use="required"/>
+                    <xsd:attribute name="totalValues" type="xsd:unsignedLong" use="required"/>
+                    <xsd:attribute name="vectorDimensionV" type="xsd:unsignedByte" use="required"/>
+                    <xsd:attribute name="padding" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:hexBinary">
+                                <xsd:length value="3"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="IsGroupOfPdu">
+        <xsd:annotation>
+            <xsd:documentation>Information about a particular group of entities (grouped together for the purposes of network bandwidth reduction or 
+                                aggregation) shall be communicated by issuing an IsGroupOf PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="EntityManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="GroupEntityID" type="EntityIDType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="groupedEntityCategory" type="xsd:byte"/>
+                    <xsd:attribute name="numberOfGroupedEntities" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="padding" type="xsd:long"/>
+                    <xsd:attribute name="groupReference" type="xsd:float"/>
+                    <xsd:attribute name="point" type="xsd:float"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="IsPartOfPdu">
+        <xsd:annotation>
+            <xsd:documentation>The joining of two or more simulation entities forms a single entity with constituent parts. This joining is communicated by issuance and acknowledgment of the IsPartOf PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="EntityManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="Relationship" type="RelationshipType"/>
+                        <xsd:element name="PartLocation" type="Vector3Float"/>
+                        <xsd:element name="NamedLocationID" type="NamedLocationIDType"/>
+                        <xsd:element name="PartEntityType" type="EntityType"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="LEDetonationPdu">
+        <xsd:annotation>
+            <xsd:documentation>The LE Detonation PDU communicate information about the detonation or impact of munitions.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LiveEntityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="FiringEntityID" type="LEEntityIDType"/>
+                        <xsd:choice>
+                            <xsd:sequence>
+                                <xsd:element name="TargetEntityID" type="LEEntityIDType"/>
+                                <xsd:element name="LocationInEntityCoordinates" type="Vector3Float"/>
+                            </xsd:sequence>
+                            <xsd:element name="Location" type="RelativeWorldCoordinatesType"/>
+                        </xsd:choice>
+                        <xsd:element name="MunitionID" type="LEEntityIDType" minOccurs="0"/>
+                        <xsd:element name="EventID" type="LEEventIDType" minOccurs="0"/>
+                        <xsd:element name="Velocity" type="Vector3Float"/>
+                        <xsd:element name="MunitionOrientation" type="EulerAnglesType"/>
+                        <xsd:element name="BurstDescriptor" type="BurstDescriptorType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="detonationFlag1" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="detonationFlag2" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="detonationResult" type="xsd:byte" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="LEFirePdu">
+        <xsd:annotation>
+            <xsd:documentation>The LE Fire PDU communicate information about the firing of a weapon.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LiveEntityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="FiringEntityID" type="LEEntityIDType"/>
+                        <xsd:choice maxOccurs="2">
+                            <xsd:element name="TargetEntityID" type="LEEntityIDType"/>
+                            <xsd:element name="Location" type="RelativeWorldCoordinatesType"/>
+                        </xsd:choice>
+                        <xsd:element name="MunitionID" type="LEEntityIDType" minOccurs="0"/>
+                        <xsd:element name="EventID" type="LEEventIDType" minOccurs="0"/>
+                        <xsd:element name="BurstDescriptor" type="BurstDescriptorType"/>
+                        <xsd:element name="Velocity" type="Vector3Float"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="fireFlag" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="range" type="xsd:unsignedShort" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="LinearObjectStatePdu">
+        <xsd:annotation>
+            <xsd:documentation>The Linear Object State PDU communicates detailed information about the addition/modification of a synthetic environment  object that is geometrically
+                              anchored to the terrain with one point and has size and orientation.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SyntheticEnvironmentFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ObjectID" type="ObjectIDType"/>
+                        <xsd:element name="ReferencedObjectID" type="ObjectIDType"/>
+                        <xsd:element name="RequestorID" type="CommunicationIDType"/>
+                        <xsd:element name="ReceivingID" type="CommunicationIDType"/>
+                        <xsd:element name="ObjectType" type="ObjectTypeType"/>
+                        <xsd:element name="LinerSegmentParameters" type="LineSegmentParametersType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="updateNumber" type="xsd:unsignedShort" use="required"/>
+                    <xsd:attribute name="forceID" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="numberOfSegments" type="xsd:unsignedByte" use="required"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="PointObjectStatePdu">
+        <xsd:annotation>
+            <xsd:documentation>The Point Object State PDU communicates detailed information about the addition/modification of a synthetic environment 
+                               object that is geometrically anchored to the terrain with a single point.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SyntheticEnvironmentFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ObjectID" type="ObjectIDType"/>
+                        <xsd:element name="ReferencedObjectID" type="ObjectIDType"/>
+                        <xsd:element name="ObjectType" type="ObjectTypeType"/>
+                        <xsd:element name="ObjectLocation" type="Vector3Double"/>
+                        <xsd:element name="ObjectOrientation" type="EulerAnglesType"/>
+                        <xsd:element name="RequestorID" type="CommunicationIDType"/>
+                        <xsd:element name="ReceivingID" type="CommunicationIDType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="updateNumber" type="xsd:unsignedShort" use="required"/>
+                    <xsd:attribute name="forceID" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="modifications" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="ObjectAppearance" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:hexBinary">
+                                <xsd:length value="6"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                    <xsd:attribute name="padding1" type="xsd:short" default="0"/>
+                    <xsd:attribute name="padding2" type="xsd:long" default="0"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ReceiverPdu">
+        <xsd:annotation>
+            <xsd:documentation>ReceiverPdu indicates receiving a transmission from a radio.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="RadioCommunicationsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="TransmitterEntityID" type="EntityIDType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="receiverState" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="padding1" type="xsd:short"/>
+                    <xsd:attribute name="receivedPower" type="xsd:float"/>
+                    <xsd:attribute name="transmitterRadioID" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="orientation" type="xsd:short"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RemoveEntityPdu">
+        <xsd:annotation>
+            <xsd:documentation>Reports the removal of an entity from the simulation.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RemoveEntityRPdu">
+        <xsd:annotation>
+            <xsd:documentation>The removal of an entity from an exercise shall be communicated with a Remove Entity-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:attribute name="Padding" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:hexBinary">
+                                <xsd:minLength value="3"/>
+                                <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RepairCompletePdu">
+        <xsd:annotation>
+            <xsd:documentation>When a Service Request PDU has been received and the repairing entity has completed a requested repair, the repairing 
+                                 entity shall notify the receiving entity of the repair by issuing a Repair Complete PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LogisticsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="RepairingEntityID" type="EntityIDType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="repair" type="xsd:short"/>
+                    <xsd:attribute name="padding" type="xsd:short"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="RepairResponsePdu">
+        <xsd:annotation>
+            <xsd:documentation>When a receiving entity receives a Repair Complete PDU from its repairing entity, the receiving entity shall 
+                                acknowledge the receipt of the repair by issuing a Repair Response PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LogisticsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="SupplyingEntityID" type="EntityIDType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="repairResult" type="xsd:byte"/>
+                    <xsd:attribute name="padding1" type="xsd:short"/>
+                    <xsd:attribute name="padding2" type="xsd:byte"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ResupplyCancelPdu">
+        <xsd:annotation>
+            <xsd:documentation>The canceling of a service function by either the receiving or the supplying entity shall be communicated by issuing a Resupply Cancel PDU.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LogisticsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="SupplyingEntityID" type="EntityIDType"/>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ResupplyOfferPdu">
+        <xsd:annotation>
+            <xsd:documentation>Communicates the offer of supplies by a supplying entity to a receiving entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LogisticsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="SupplyingEntityID" type="EntityIDType"/>
+                        <xsd:element name="Supplies" type="SuppliesType" maxOccurs="255"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="numberOfSupplyTypes" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="padding1" type="xsd:short"/>
+                    <xsd:attribute name="padding2" type="xsd:byte"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ResupplyReceivedPdu">
+        <xsd:annotation>
+            <xsd:documentation>Used to acknowledge the receipt of supplies by the receiving entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LogisticsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="SupplyingEntityID" type="EntityIDType"/>
+                        <xsd:element name="Supplies" type="SuppliesType" maxOccurs="255"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="numberOfSupplyTypes" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="padding1" type="xsd:short"/>
+                    <xsd:attribute name="padding2" type="xsd:byte"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ServiceRequestPdu">
+        <xsd:annotation>
+            <xsd:documentation>Communicates information associated with one entity requesting a service from another.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LogisticsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RequestingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ServicingEntityID" type="EntityIDType"/>
+                        <xsd:element name="Supplies" type="SuppliesType" maxOccurs="255"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="serviceTypeRequested" type="xsd:byte"/>
+                    <xsd:attribute name="numberOfSupplyTypes" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="padding" type="xsd:short"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="SetDataPdu">
+        <xsd:annotation>
+            <xsd:documentation>Initializing or changing internal state information shall be communicated using a Set Data PDU.  
+</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="FixedDatum_N" type="FixedDatumType" maxOccurs="unbounded"/>
+                        <xsd:element name="VariableDatum_M" type="VariableDatumType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="requestID" type="xsd:long"/>
+                    <xsd:attribute name="padding" type="xsd:long"/>
+                    <xsd:attribute name="numberOfFixedDatumRecords_N" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="numberOfVariableDatumRecords_M" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="SetDataRPdu">
+        <xsd:annotation>
+            <xsd:documentation>Initializing or changing internal state information shall be communicated using the Set Data-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RequiredReliabilityService" type="xsd:byte"/>
+                        <xsd:element name="Padding" type="xsd:hexBinary" minOccurs="3" maxOccurs="3"/>
+                        <xsd:element name="RequestId" type="xsd:unsignedLong"/>
+                        <xsd:element name="NumberOfFixedDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="NumberOfVariableDatumRecords" type="xsd:unsignedLong"/>
+                        <xsd:element name="FixedDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="fixedDatumId" type="xsd:long"/>
+                                <xsd:attribute name="fixedDatumValue" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="VariableDatum" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:attribute name="variableDatumId" type="xsd:long"/>
+                                <xsd:attribute name="variabledatumLength" type="xsd:unsignedLong"/>
+                                <xsd:attribute name="variableDatumValue" type="xsd:float"/>
+                                <xsd:attribute name="padding" type="xsd:float"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="SignalPdu">
+        <xsd:annotation>
+            <xsd:documentation>SignalPdu provides a message sent by radio communication.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="RadioCommunicationsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="Data" type="xsd:unsignedByte" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="encodingScheme" type="xsd:short"/>
+                    <xsd:attribute name="tdlType" type="xsd:short"/>
+                    <xsd:attribute name="sampleRate" type="xsd:long"/>
+                    <xsd:attribute name="dataLength" type="xsd:short"/>
+                    <xsd:attribute name="samples" type="xsd:short"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="StartResumePdu">
+        <xsd:annotation>
+            <xsd:documentation>The Start/Resume PDU shall be used to communicate 
+to a simulation entity that it is to leave a Stopped/Frozen state and 
+begin participating in a simulation exercise.  This PDU indicates to 
+the entity the time it is to join the simulation.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RealWorldTime" type="ClockType"/>
+                        <xsd:element name="SimulationTime" type="ClockType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="StartResumeRPdu">
+        <xsd:annotation>
+            <xsd:documentation>The starting or resuming of an entity/exercise shall be communicated using a Start/Resume-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RealWorldTime" type="ClockType"/>
+                        <xsd:element name="SimulationTime" type="ClockType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="padding" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:hexBinary">
+                                <xsd:minLength value="3"/>
+                                <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="StopFreezePdu">
+        <xsd:annotation>
+            <xsd:documentation>The Stop/Freeze PDU shall be issued by an SM to an entity when the SM requests an entity to stop simulating.  The 
+                               Stop/Freeze PDU shall be issued using a best effort unicast or multicast communication service.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="SimulationManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RealWorldTime" type="ClockType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="reason" type="xsd:byte"/>
+                    <xsd:attribute name="frozenBehavior" type="xsd:byte"/>
+                    <xsd:attribute name="padding" type="xsd:short"/>
+                    <xsd:attribute name="requestID" type="xsd:unsignedInt"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="StopFreezeRPdu">
+        <xsd:annotation>
+            <xsd:documentation>The stopping or freezing of an entity shall be communicated using a Stop/Freeze-R PDU</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+            <xsd:complexContent>
+                <xsd:extension base="SimulationManagementWithReliabilityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RealWordTime" type="ClockType"/>
+                        <xsd:element name="Reason" type="xsd:byte"/>
+                        <xsd:element name="FrozenBehavior" type="xsd:byte"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="padding" use="required">
+                        <xsd:simpleType>
+                            <xsd:restriction base="xsd:hexBinary">
+                                <xsd:minLength value="1"/>
+                                <xsd:maxLength value="1"/>
+                            </xsd:restriction>
+                        </xsd:simpleType>
+                    </xsd:attribute>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="TransferControlRequestPdu">
+        <xsd:annotation>
+            <xsd:documentation>Information initiating the dynamic allocation and control of simulation entities between two simulation applications is initiated by a Transfer Control Request PDU.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="EntityManagementFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="OriginatingEntityID" type="EntityIDType"/>
+                        <xsd:element name="ReceivingEntityID" type="EntityIDType"/>
+                        <xsd:element name="TransferEntityID" type="EntityIDType"/>
+                        <xsd:element name="RecordSet" type="RecordSetType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="requestID" type="xsd:unsignedLong"/>
+                    <xsd:attribute name="requiredReliabilityService" type="xsd:byte"/>
+                    <xsd:attribute name="transferType" type="xsd:byte"/>
+                    <xsd:attribute name="numberOfRecordSets" type="xsd:unsignedLong"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="TransmitterPdu">
+        <xsd:annotation>
+            <xsd:documentation>TransmitterPdu indicates a transmission from a radio.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="RadioCommunicationsFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="RadioEntityType" type="RadioEntityTypeType"/>
+                        <xsd:element name="AntennaLocation" type="Vector3Double"/>
+                        <xsd:element name="RelativeAntennaLocation" type="Vector3Float"/>
+                        <xsd:element name="ModulationType" type="ModulationTypeType"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="transmitState" type="xsd:byte"/>
+                    <xsd:attribute name="inputSource" type="xsd:byte"/>
+                    <xsd:attribute name="padding1" type="xsd:short"/>
+                    <xsd:attribute name="antennaPatternType" type="xsd:short"/>
+                    <xsd:attribute name="antennaPatternLength" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="frequency" type="xsd:double"/>
+                    <xsd:attribute name="transmitFrequencyBandwidth" type="xsd:float"/>
+                    <xsd:attribute name="power" type="xsd:float"/>
+                    <xsd:attribute name="cryptoSystem" type="xsd:short"/>
+                    <xsd:attribute name="cryptoKeyID" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="lengthOfModulationParameters" type="xsd:unsignedByte"/>
+                    <xsd:attribute name="padding2" type="xsd:short"/>
+                    <xsd:attribute name="padding3" type="xsd:byte"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="TSPIPdu">
+        <xsd:annotation>
+            <xsd:documentation>The TSPI PDU communicate information about a LEs state vector.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType mixed="false">
+            <xsd:complexContent mixed="false">
+                <xsd:extension base="LiveEntityFamilyType">
+                    <xsd:sequence>
+                        <xsd:element name="EntityID" type="LEEntityIDType"/>
+                        <xsd:element name="EntityLocation" type="RelativeWorldCoordinatesType"/>
+                        <xsd:element name="EntityLinearVelocity" type="Vector3Float" minOccurs="0"/>
+                        <xsd:element name="EntityOrientation" type="EulerAnglesType" minOccurs="0"/>
+                        <xsd:element name="PositionError" type="PositionErrorType" minOccurs="0"/>
+                        <xsd:element name="OrientationError" type="OrientationErrorType" minOccurs="0"/>
+                        <xsd:element name="DeadReckoningParameters" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="EntityLinearAcceleration" type="Vector3Float"/>
+                                    <xsd:element name="EntityAngularVelocity" type="Vector3Float"/>
+                                </xsd:sequence>
+                                <xsd:attribute name="deadReckoningAlgorithm" type="xsd:byte"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="SystemSpecificData" type="xsd:byte" minOccurs="0" maxOccurs="255"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="flagTSPI" type="xsd:byte" use="required"/>
+                    <xsd:attribute name="measuredSpeed" type="xsd:unsignedShort"/>
+                    <xsd:attribute name="systemSpecificDataLength" type="xsd:unsignedByte"/>
+                </xsd:extension>
+            </xsd:complexContent>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
+
+

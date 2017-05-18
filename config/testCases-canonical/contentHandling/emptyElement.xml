@@ -1,0 +1,24 @@
+<!-- This test case is intended to handle the empty element content
+		https://www.w3.org/TR/exi-c14n/#emptyElementContent -->
+		
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="empty element content">
+   
+   <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/contentHandling/contentHandling.xsd"/>
+   <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/contentHandling"/>
+   
+   <testCase name="empty_element_1">
+        <param name="testDescription"  value="Empty element with strict mode"/>
+        <param name="japex.inputFile" value="${test.docFolder}/emel_01.xml"/>
+   </testCase>
+   
+   <testCase name="empty_element_2">
+   		<param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="testDescription"  value="Empty element without strict mode"/>
+        <param name="japex.inputFile" value="${test.docFolder}/emel_01.xml"/>
+   </testCase>
+   
+</testCaseGroup>

@@ -1,0 +1,16 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+
+  <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+  <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/esxml/dist/candidate-esxml.jar"/>
+  <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/esxml/lib/*.jar"/>
+
+  <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.esxml.EsxmlSAXDriver"/>
+  <param name="org.w3c.exi.ttf.driver.candidateName" value="Esxml"/>
+
+  <driver name="EsxmlDocumentSAX">
+    <param name="description" value="Basic Esxml format with gzip"/>
+    <param name="org.w3c.exi.ttf.applicationClass" value="document"/>
+    <param name="org.w3c.exi.ttf.applicationClass.documentAnalysing.GZIP" value="true"/>
+  </driver>
+
+</driverGroup>

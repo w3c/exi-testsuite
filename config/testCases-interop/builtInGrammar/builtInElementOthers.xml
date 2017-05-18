@@ -1,0 +1,54 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn Element Grammar tests (CM, PIs, Namespaces productions)">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/preserve/element"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#builtinElemGrammars"/>
+
+    <testCase name="builtin.element.other-01">
+        <param name="testDescription"  value="CM in starttag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-01.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-02">
+        <param name="testDescription"  value="PI in starttag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-02.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-03">
+        <param name="testDescription"  value="CM in element content grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-03.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-04">
+        <param name="testDescription"  value="PI in element content grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-04.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-05">
+        <param name="testDescription"  value="Various PI and CM"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-05.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-06">
+        <param name="testDescription"  value="Single namespace definition"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-06.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-07">
+        <param name="testDescription"  value="Redundant namespace definition"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-07.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-08">
+        <param name="testDescription"  value="default namespace"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-08.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-08">
+        <param name="testDescription"  value="Initial Namespace Entry"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-09.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-09">
+        <param name="testDescription"  value="various namespaces, CM and PI"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-10.xml" />
+    </testCase>
+    <testCase name="builtin.element.other-10">
+        <param name="testDescription"  value="Various ER tests."/>
+        <param name="japex.inputFile" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar/undeclaredProductions/er-01.xml" />
+    </testCase>
+
+</testCaseGroup>
+

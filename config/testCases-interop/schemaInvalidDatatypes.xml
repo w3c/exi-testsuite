@@ -1,0 +1,16 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-invalid datatype interoperability tests">
+
+    <param name="groupId" value="${groupId} | invalidDatatype"/>
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>
+
+    <!-- add schema-invalid datatype test cases here -->
+    <xi:include href="builtInDatatypes/binaryInvalidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/qnameInvalidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/integerInvalidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/nbitIntegerInvalidEncoding.xml"/>
+    <xi:include href="builtInDatatypes/unsignedIntegerInvalidEncoding.xml"/>
+    
+</testCaseGroup>

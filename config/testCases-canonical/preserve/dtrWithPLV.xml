@@ -1,0 +1,30 @@
+<!-- both the testcases should return same value as preserve lexicalvalues are passed and in that case 
+		dtr should be omitted -->
+		
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="preserve lexical values tests">
+
+    <param name="org.w3c.exi.ttf.preserve" value="lexicalvalues"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+    
+    <!-- dtr must be omitted -->
+    <testCase name="dtr-01">
+        <param name="description"  value="with DTRMap"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}string
+	 			{http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <testCase name="no-dtr">
+        <param name="description"  value="without DTRMap"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+    </testCase>
+    
+</testCaseGroup>

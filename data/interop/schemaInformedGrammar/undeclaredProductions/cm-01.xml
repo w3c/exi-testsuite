@@ -1,0 +1,21 @@
+<!-- =================================================================== -->
+<!-- Tests CM where there is no declared attributes or declared          -->
+<!-- attribute wildcard.                                                 -->
+<!-- =================================================================== -->
+<foo:P xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <foo:P1>
+    <!-- CM -->
+    <foo:AB>a</foo:AB>
+    <!-- CM -->
+  </foo:P1>
+  <foo:P1 xsi:nil='true'>
+    <!-- CM -->
+  </foo:P1>
+  <foo:P1 xsi:type='foo:extended_P1'>
+    <!-- CM -->
+    <foo:AB>a</foo:AB>
+    <!-- CM -->
+    <foo:AB>a</foo:AB>
+    <!-- CM -->
+  </foo:P1>
+</foo:P>

@@ -1,0 +1,8 @@
+<!-- =================================================================== -->
+<!-- Use of wildcard attribute with {namespace constraint} being a set   -->
+<!-- of namespace names.                                                 -->
+<!-- =================================================================== -->
+<foo:I xmlns:foo='urn:foo' xmlns:goo='urn:goo' xmlns:hoo='urn:hoo' 
+  xmlns:none='urn:none_02' foo:aI="" >
+  <A hoo:aA="" none:x="" goo:aA="" foo:aA="" aA="" />
+</foo:I>

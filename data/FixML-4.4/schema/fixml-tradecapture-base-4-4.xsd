@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 2003,20041218
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="TradeCaptureReportRequestElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="InstrmtExt" type="InstrumentExtension_Block_t" minOccurs="0" />
+		<xs:element name="FinDetls" type="FinancingDetails_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdCapDt" type="TrdCapDtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="TradeCaptureReportRequestAttributes">
+		<xs:attribute name="ReqID" type="TradeRequestID_t" use="required"/>
+		<xs:attribute name="ReqTyp" type="TradeRequestType_t" use="required"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+		<xs:attribute name="RptID" type="TradeReportID_t" use="optional"/>
+		<xs:attribute name="RptID2" type="SecondaryTradeReportID_t" use="optional"/>
+		<xs:attribute name="ExecID" type="ExecID_t" use="optional"/>
+		<xs:attribute name="ExecTyp" type="ExecType_t" use="optional"/>
+		<xs:attribute name="OrdID" type="OrderID_t" use="optional"/>
+		<xs:attribute name="ClOrdID" type="ClOrdID_t" use="optional"/>
+		<xs:attribute name="MtchStat" type="MatchStatus_t" use="optional"/>
+		<xs:attribute name="TrdTyp" type="TrdType_t" use="optional"/>
+		<xs:attribute name="TrdSubTyp" type="TrdSubType_t" use="optional"/>
+		<xs:attribute name="TrnsfrRsn" type="TransferReason_t" use="optional"/>
+		<xs:attribute name="TrdTyp2" type="SecondaryTrdType_t" use="optional"/>
+		<xs:attribute name="LinkID" type="TradeLinkID_t" use="optional"/>
+		<xs:attribute name="TrdMtchID" type="TrdMatchID_t" use="optional"/>
+		<xs:attribute name="BizDt" type="ClearingBusinessDate_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="TmBkt" type="TimeBracket_t" use="optional"/>
+		<xs:attribute name="Side" type="Side_t" use="optional"/>
+		<xs:attribute name="MLEGRptTyp" type="MultiLegReportingType_t" use="optional"/>
+		<xs:attribute name="InptSrc" type="TradeInputSource_t" use="optional"/>
+		<xs:attribute name="InptDev" type="TradeInputDevice_t" use="optional"/>
+		<xs:attribute name="RspTransportTyp" type="ResponseTransportType_t" use="optional"/>
+		<xs:attribute name="RspDest" type="ResponseDestination_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="TradeCaptureReportRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TradeCaptureReportRequest can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TradeCaptureReportRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="TradeCaptureReportRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="TradeCaptureReportRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="TrdCaptRptReq" type="TradeCaptureReportRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="TradeCaptureReportElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="FinDetls" type="FinancingDetails_Block_t" minOccurs="0" />
+		<xs:element name="OrdQty" type="OrderQtyData_Block_t" minOccurs="0" />
+		<xs:element name="Yield" type="YieldData_Block_t" minOccurs="0" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="SprdBnchmkCurve" type="SpreadOrBenchmarkCurveData_Block_t" minOccurs="0" />
+		<xs:element name="Amt" type="PositionAmountData_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdLeg" type="TrdInstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdRegTS" type="TrdRegTimestamps_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="RptSide" type="TrdCapRptSideGrp_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="TradeCaptureReportAttributes">
+		<xs:attribute name="RptID" type="TradeReportID_t" use="required"/>
+		<xs:attribute name="TransTyp" type="TradeReportTransType_t" use="optional"/>
+		<xs:attribute name="RptTyp" type="TradeReportType_t" use="optional"/>
+		<xs:attribute name="ReqID" type="TradeRequestID_t" use="optional"/>
+		<xs:attribute name="TrdTyp" type="TrdType_t" use="optional"/>
+		<xs:attribute name="TrdSubTyp" type="TrdSubType_t" use="optional"/>
+		<xs:attribute name="TrdTyp2" type="SecondaryTrdType_t" use="optional"/>
+		<xs:attribute name="TrnsfrRsn" type="TransferReason_t" use="optional"/>
+		<xs:attribute name="ExecTyp" type="ExecType_t" use="optional"/>
+		<xs:attribute name="TotNumTrdRpts" type="TotNumTradeReports_t" use="optional"/>
+		<xs:attribute name="LastRptReqed" type="LastRptRequested_t" use="optional"/>
+		<xs:attribute name="Unsol" type="UnsolicitedIndicator_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+		<xs:attribute name="RptRefID" type="TradeReportRefID_t" use="optional"/>
+		<xs:attribute name="RptRefID2" type="SecondaryTradeReportRefID_t" use="optional"/>
+		<xs:attribute name="RptID2" type="SecondaryTradeReportID_t" use="optional"/>
+		<xs:attribute name="LinkID" type="TradeLinkID_t" use="optional"/>
+		<xs:attribute name="TrdMtchID" type="TrdMatchID_t" use="optional"/>
+		<xs:attribute name="ExecID" type="ExecID_t" use="optional"/>
+		<xs:attribute name="OrdStat" type="OrdStatus_t" use="optional"/>
+		<xs:attribute name="ExecID2" type="SecondaryExecID_t" use="optional"/>
+		<xs:attribute name="ExecRstmtRsn" type="ExecRestatementReason_t" use="optional"/>
+		<xs:attribute name="PrevlyRpted" type="PreviouslyReported_t" use="required"/>
+		<xs:attribute name="PxTyp" type="PriceType_t" use="optional"/>
+		<xs:attribute name="QtyTyp" type="QtyType_t" use="optional"/>
+		<xs:attribute name="UndSesID" type="UnderlyingTradingSessionID_t" use="optional"/>
+		<xs:attribute name="UndSesSub" type="UnderlyingTradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="LastQty" type="LastQty_t" use="required"/>
+		<xs:attribute name="LastPx" type="LastPx_t" use="required"/>
+		<xs:attribute name="LastParPx" type="LastParPx_t" use="optional"/>
+		<xs:attribute name="LastSpotRt" type="LastSpotRate_t" use="optional"/>
+		<xs:attribute name="LastFwdPnts" type="LastForwardPoints_t" use="optional"/>
+		<xs:attribute name="LastMkt" type="LastMkt_t" use="optional"/>
+		<xs:attribute name="TrdDt" type="TradeDate_t" use="required"/>
+		<xs:attribute name="BizDt" type="ClearingBusinessDate_t" use="optional"/>
+		<xs:attribute name="AvgPx" type="AvgPx_t" use="optional"/>
+		<xs:attribute name="AvgPxInd" type="AvgPxIndicator_t" use="optional"/>
+		<xs:attribute name="MLEGRptTyp" type="MultiLegReportingType_t" use="optional"/>
+		<xs:attribute name="TrdLegRefID" type="TradeLegRefID_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="SettlTyp" type="SettlType_t" use="optional"/>
+		<xs:attribute name="SettlDt" type="SettlDate_t" use="optional"/>
+		<xs:attribute name="MtchStat" type="MatchStatus_t" use="optional"/>
+		<xs:attribute name="MtchTyp" type="MatchType_t" use="optional"/>
+		<xs:attribute name="CopyMsgInd" type="CopyMsgIndicator_t" use="optional"/>
+		<xs:attribute name="PubTrdInd" type="PublishTrdIndicator_t" use="optional"/>
+		<xs:attribute name="ShrtSaleRsn" type="ShortSaleReason_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="TradeCaptureReport_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TradeCaptureReport can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TradeCaptureReport" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="TradeCaptureReportElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="TradeCaptureReportAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="TrdCaptRpt" type="TradeCaptureReport_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="TradeCaptureReportRequestAckElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="TradeCaptureReportRequestAckAttributes">
+		<xs:attribute name="ReqID" type="TradeRequestID_t" use="required"/>
+		<xs:attribute name="ReqTyp" type="TradeRequestType_t" use="required"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+		<xs:attribute name="TotNumTrdRpts" type="TotNumTradeReports_t" use="optional"/>
+		<xs:attribute name="ReqRslt" type="TradeRequestResult_t" use="required"/>
+		<xs:attribute name="ReqStat" type="TradeRequestStatus_t" use="required"/>
+		<xs:attribute name="MLEGRptTyp" type="MultiLegReportingType_t" use="optional"/>
+		<xs:attribute name="RspTransportTyp" type="ResponseTransportType_t" use="optional"/>
+		<xs:attribute name="RspDest" type="ResponseDestination_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="TradeCaptureReportRequestAck_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TradeCaptureReportRequestAck can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TradeCaptureReportRequestAck" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="TradeCaptureReportRequestAckElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="TradeCaptureReportRequestAckAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="TrdCaptRptReqAck" type="TradeCaptureReportRequestAck_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="TradeCaptureReportAckElements">
+		<xs:sequence>		
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="TrdRegTS" type="TrdRegTimestamps_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdLeg" type="TrdInstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Alloc" type="TrdAllocGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="TradeCaptureReportAckAttributes">
+		<xs:attribute name="RptID" type="TradeReportID_t" use="required"/>
+		<xs:attribute name="TransTyp" type="TradeReportTransType_t" use="optional"/>
+		<xs:attribute name="RptTyp" type="TradeReportType_t" use="optional"/>
+		<xs:attribute name="TrdTyp" type="TrdType_t" use="optional"/>
+		<xs:attribute name="TrdSubTyp" type="TrdSubType_t" use="optional"/>
+		<xs:attribute name="TrdTyp2" type="SecondaryTrdType_t" use="optional"/>
+		<xs:attribute name="TrnsfrRsn" type="TransferReason_t" use="optional"/>
+		<xs:attribute name="ExecTyp" type="ExecType_t" use="required"/>
+		<xs:attribute name="RptRefID" type="TradeReportRefID_t" use="optional"/>
+		<xs:attribute name="RptRefID2" type="SecondaryTradeReportRefID_t" use="optional"/>
+		<xs:attribute name="TrdRptStat" type="TrdRptStatus_t" use="optional"/>
+		<xs:attribute name="RptRejRsn" type="TradeReportRejectReason_t" use="optional"/>
+		<xs:attribute name="RptID2" type="SecondaryTradeReportID_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+		<xs:attribute name="LinkID" type="TradeLinkID_t" use="optional"/>
+		<xs:attribute name="TrdMtchID" type="TrdMatchID_t" use="optional"/>
+		<xs:attribute name="ExecID" type="ExecID_t" use="optional"/>
+		<xs:attribute name="ExecID2" type="SecondaryExecID_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="optional"/>
+		<xs:attribute name="RspTransportTyp" type="ResponseTransportType_t" use="optional"/>
+		<xs:attribute name="RspDest" type="ResponseDestination_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="ClrFeeInd" type="ClearingFeeIndicator_t" use="optional"/>
+		<xs:attribute name="Cpcty" type="OrderCapacity_t" use="optional"/>
+		<xs:attribute name="Rstctions" type="OrderRestrictions_t" use="optional"/>
+		<xs:attribute name="CustCpcty" type="CustOrderCapacity_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="optional"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="optional"/>
+		<xs:attribute name="PosEfct" type="PositionEffect_t" use="optional"/>
+		<xs:attribute name="PreallocMeth" type="PreallocMethod_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="TradeCaptureReportAck_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TradeCaptureReportAck can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TradeCaptureReportAck" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="TradeCaptureReportAckElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="TradeCaptureReportAckAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="TrdCaptRptAck" type="TradeCaptureReportAck_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="TrdCapRptSideGrpElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="ClrInst" type="ClrInstGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Comm" type="CommissionData_Block_t" minOccurs="0" />
+		<xs:element name="ContAmt" type="ContAmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Stip" type="Stipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="MiscFees" type="MiscFeesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Alloc" type="TrdAllocGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="TrdCapRptSideGrpAttributes">
+		<xs:attribute name="Side" type="Side_t" use="required"/>
+		<xs:attribute name="OrdID" type="OrderID_t" use="required"/>
+		<xs:attribute name="OrdID2" type="SecondaryOrderID_t" use="optional"/>
+		<xs:attribute name="ClOrdID" type="ClOrdID_t" use="optional"/>
+		<xs:attribute name="ClOrdID2" type="SecondaryClOrdID_t" use="optional"/>
+		<xs:attribute name="ListID" type="ListID_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="optional"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="optional"/>
+		<xs:attribute name="ProcCode" type="ProcessCode_t" use="optional"/>
+		<xs:attribute name="OddLot" type="OddLot_t" use="optional"/>
+		<xs:attribute name="ClrFeeInd" type="ClearingFeeIndicator_t" use="optional"/>
+		<xs:attribute name="InptSrc" type="TradeInputSource_t" use="optional"/>
+		<xs:attribute name="InptDev" type="TradeInputDevice_t" use="optional"/>
+		<xs:attribute name="OrdInptDev" type="OrderInputDevice_t" use="optional"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="ComplianceID" type="ComplianceID_t" use="optional"/>
+		<xs:attribute name="SolFlag" type="SolicitedFlag_t" use="optional"/>
+		<xs:attribute name="Cpcty" type="OrderCapacity_t" use="optional"/>
+		<xs:attribute name="Rstctions" type="OrderRestrictions_t" use="optional"/>
+		<xs:attribute name="CustCpcty" type="CustOrderCapacity_t" use="optional"/>
+		<xs:attribute name="OrdTyp" type="OrdType_t" use="optional"/>
+		<xs:attribute name="ExecInst" type="ExecInst_t" use="optional"/>
+		<xs:attribute name="TransBkdTm" type="TransBkdTime_t" use="optional"/>
+		<xs:attribute name="SesID" type="TradingSessionID_t" use="optional"/>
+		<xs:attribute name="SesSub" type="TradingSessionSubID_t" use="optional"/>
+		<xs:attribute name="TmBkt" type="TimeBracket_t" use="optional"/>
+		<xs:attribute name="GrossTrdAmt" type="GrossTradeAmt_t" use="optional"/>
+		<xs:attribute name="NumDaysInt" type="NumDaysInterest_t" use="optional"/>
+		<xs:attribute name="ExDt" type="ExDate_t" use="optional"/>
+		<xs:attribute name="AcrdIntRt" type="AccruedInterestRate_t" use="optional"/>
+		<xs:attribute name="AcrdIntAmt" type="AccruedInterestAmt_t" use="optional"/>
+		<xs:attribute name="IntAtMat" type="InterestAtMaturity_t" use="optional"/>
+		<xs:attribute name="EndAcrdIntAmt" type="EndAccruedInterestAmt_t" use="optional"/>
+		<xs:attribute name="StartCsh" type="StartCash_t" use="optional"/>
+		<xs:attribute name="EndCsh" type="EndCash_t" use="optional"/>
+		<xs:attribute name="Concession" type="Concession_t" use="optional"/>
+		<xs:attribute name="TotTakedown" type="TotalTakedown_t" use="optional"/>
+		<xs:attribute name="NetMny" type="NetMoney_t" use="optional"/>
+		<xs:attribute name="SettlCurrAmt" type="SettlCurrAmt_t" use="optional"/>
+		<xs:attribute name="SettlCcy" type="SettlCurrency_t" use="optional"/>
+		<xs:attribute name="SettlCurrFxRt" type="SettlCurrFxRate_t" use="optional"/>
+		<xs:attribute name="SettlCurrFxRtCalc" type="SettlCurrFxRateCalc_t" use="optional"/>
+		<xs:attribute name="PosEfct" type="PositionEffect_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="MLegRptTyp" type="SideMultiLegReportingType_t" use="optional"/>
+		<xs:attribute name="ExchRule" type="ExchangeRule_t" use="optional"/>
+		<xs:attribute name="AllocInd" type="TradeAllocIndicator_t" use="optional"/>
+		<xs:attribute name="PreallocMeth" type="PreallocMethod_t" use="optional"/>
+		<xs:attribute name="AllocID" type="AllocID_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="TrdCapRptSideGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TrdCapRptSideGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TrdCapRptSideGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TrdCapRptSideGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TrdCapRptSideGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="TrdInstrmtLegGrpElements">
+		<xs:sequence>		
+		<xs:element name="Leg" type="InstrumentLeg_Block_t" minOccurs="0" />
+		<xs:element name="Stip" type="LegStipulations_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Pty" type="NestedParties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="TrdInstrmtLegGrpAttributes">
+		<xs:attribute name="Qty" type="LegQty_t" use="optional"/>
+		<xs:attribute name="SwapTyp" type="LegSwapType_t" use="optional"/>
+		<xs:attribute name="PosEfct" type="LegPositionEffect_t" use="optional"/>
+		<xs:attribute name="Cover" type="LegCoveredOrUncovered_t" use="optional"/>
+		<xs:attribute name="RefID" type="LegRefID_t" use="optional"/>
+		<xs:attribute name="Px" type="LegPrice_t" use="optional"/>
+		<xs:attribute name="SettlTyp" type="LegSettlType_t" use="optional"/>
+		<xs:attribute name="SettlDt" type="LegSettlDate_t" use="optional"/>
+		<xs:attribute name="LastPx" type="LegLastPx_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="TrdInstrmtLegGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TrdInstrmtLegGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TrdInstrmtLegGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TrdInstrmtLegGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TrdInstrmtLegGrpAttributes"/>
+	</xs:complexType>
+	<xs:group name="TrdCapDtGrpElements">
+		<xs:sequence/>
+	</xs:group>
+	<xs:attributeGroup name="TrdCapDtGrpAttributes">
+		<xs:attribute name="TrdDt" type="TradeDate_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="TrdCapDtGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">TrdCapDtGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="TrdCapDtGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="TrdCapDtGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="TrdCapDtGrpAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
+

@@ -1,0 +1,27 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <testCase name="WS-Addressing/ws-addressing-0.xml">
+	<param name="japex.inputFile" value="${testsDir}/WS-Addressing/ws-addressing-0.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/WS-Addressing/schemas/ws-addr1.xsd"/>
+    </testCase>
+    <testCase name="WS-Addressing/ws-addressing-1.xml">
+	<param name="japex.inputFile" value="${testsDir}/WS-Addressing/ws-addressing-1.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/WS-Addressing/schemas/ws-addr1.xsd"/>
+    </testCase>
+    <testCase name="WS-Addressing/ws-addressing-10.xml">
+	<param name="japex.inputFile" value="${testsDir}/WS-Addressing/ws-addressing-10.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/WS-Addressing/schemas/ws-addr1.xsd"/>
+    </testCase>
+    <testCase name="WS-Addressing/ws-addressing-11.xml">
+	<param name="japex.inputFile" value="${testsDir}/WS-Addressing/ws-addressing-11.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/WS-Addressing/schemas/ws-addr1.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+    <testCase name="WS-Addressing/ws-addressing-12.xml">
+	<param name="japex.inputFile" value="${testsDir}/WS-Addressing/ws-addressing-12.xml"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/WS-Addressing/schemas/ws-addr1.xsd"/>
+    </testCase>
+
+</testCaseGroup>
+

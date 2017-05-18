@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>candidate-xml-jaxp</name>
+            <properties/>
+            <folders>
+                <source-folder>
+                    <label>src</label>
+                    <type>java</type>
+                    <location>src</location>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="build">
+                    <target>dist</target>
+                </action>
+                <action name="clean">
+                    <target>clean</target>
+                </action>
+                <action name="rebuild">
+                    <target>clean</target>
+                    <target>dist</target>
+                </action>
+            </ide-actions>
+            <export>
+                <type>jar</type>
+                <location>dist/candidate-xml-jaxp.jar</location>
+                <build-target>dist</build-target>
+            </export>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>src</label>
+                        <location>src</location>
+                    </source-folder>
+                    <source-file>
+                        <location>build.xml</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="build"/>
+                    <ide-action name="clean"/>
+                    <ide-action name="rebuild"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/1">
+            <compilation-unit>
+                <package-root>src</package-root>
+                <classpath mode="compile">../../japex/lib/activation.jar:../../japex/lib/ant.jar:../../japex/lib/japex.jar:../../japex/lib/jaxb-api.jar:../../japex/lib/jaxb-impl.jar:../../japex/lib/jaxb-xjc.jar:../../japex/lib/jaxb1-impl.jar:../../japex/lib/jcommon-1.0.0-rc1.jar:../../japex/lib/jfreechart-1.0.0-rc1.jar:../../japex/lib/jsr173_api.jar:../../japex/lib/sjsxp.jar:../../framework/dist/ttfms-framework.jar</classpath>
+                <built-to>dist/candidate-xml-jaxp.jar</built-to>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+        </java-data>
+    </configuration>
+</project>

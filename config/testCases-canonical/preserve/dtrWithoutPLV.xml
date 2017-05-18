@@ -1,0 +1,42 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="preserve lexical values tests">
+    
+    <param name="org.w3c.exi.ttf.preserve" value=""/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+    
+    <testCase name="dtr-01">
+        <param name="description"  value="dtr-01"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}string
+	 			{http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+	<!--  This dtr should be ignored as it matches to default built-in data type decimal -->
+    <testCase name="dtr-02">
+        <param name="description"  value="dtr-02"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+    
+    
+    <!--  tuples should be sorted lexicographically -->
+    <testCase name="dtr-03">
+        <param name="description"  value="dtr-03"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal
+	 			{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}string" />
+    </testCase>
+    
+</testCaseGroup>

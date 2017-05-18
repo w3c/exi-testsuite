@@ -1,0 +1,19 @@
+<!-- DTD file for substances and their pharmacological actions in MeSH. pa_substance2006.dtd -->
+<!-- List is by substance.                                                                   -->
+
+<!ENTITY  % DescriptorReference "(DescriptorUI, DescriptorName)">
+<!ELEMENT PharmacologicalActionSubstanceSet (Substance*)>
+<!ELEMENT Substance ((RecordUI,RecordName),
+                      PharmacologicalActionList)+>
+<!ELEMENT PharmacologicalActionList (PharmacologicalActionOfSubstance)+>
+<!ELEMENT PharmacologicalActionOfSubstance (DescriptorReferredTo)>
+
+<!ELEMENT DescriptorReferredTo (%DescriptorReference;)>
+<!ELEMENT DescriptorUI (#PCDATA)>
+<!ELEMENT DescriptorName (String)>
+<!ELEMENT RecordUI (#PCDATA) >
+<!ELEMENT RecordName (String) >
+<!ELEMENT String (#PCDATA)>
+
+
+

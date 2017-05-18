@@ -1,0 +1,23 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Event Code Assignment">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | eventCodeAssignment"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#eventCodeAssignment"/>
+
+    <!-- =================================================================== -->
+    <!-- Most of the test cases below are primarily designed for use with    -->
+    <!-- strict schema grammars. Please make sure to run them at least once  -->
+    <!-- with strict option turned on.                                       -->
+    <!-- <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />     -->
+    <!-- =================================================================== -->
+
+    <testCase name="schemaInformed.declared.eventCodeAssignment-01">
+        <param name="testDescription" value="Tests the assignment of event codes."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/eventCodeAssignment-01.xml" />
+    </testCase>
+
+</testCaseGroup>

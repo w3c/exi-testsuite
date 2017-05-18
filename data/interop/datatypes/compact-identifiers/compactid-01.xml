@@ -1,0 +1,13 @@
+<foo:H3 xmlns:foo='urn:foo' xmlns:none='urn:none_01'
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+        xmlns:xsd='http://www.w3.org/2001/XMLSchema' >
+  <foo:AB/> <!-- xsd:element name="A" / -->
+  <none:AB/> <!-- xsd:any namespace="##any" minOccurs="0" / -->
+  <none:BC xsi:nil='false' nil='false'/>
+  <none:BC xsi:type='xsd:integer'>1</none:BC>
+  <none:BC xsi:type='xsd:id'>myid</none:BC>
+  <none:BC type='xsd:integer' a='true'>1</none:BC>
+  <xsd:simpleType name='a'>
+    <xsd:restriction base='xsd:id'></xsd:restriction>
+  </xsd:simpleType>
+</foo:H3>

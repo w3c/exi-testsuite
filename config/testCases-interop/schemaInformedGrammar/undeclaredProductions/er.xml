@@ -1,0 +1,34 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - ER">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.er-01">
+        <param name="testDescription"  
+          value="Tests ER where there is no declared attributes or declared
+                 attribute wildcard."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/er-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.er-02">
+        <param name="testDescription"  
+          value="Tests ER where there is a declared attribute."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/er-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.er-03">
+        <param name="testDescription"  
+          value="Tests ER where there's a declared attribute wildcard."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/er-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds"/>
+    </testCase>
+
+</testCaseGroup>

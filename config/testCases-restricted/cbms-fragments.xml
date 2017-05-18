@@ -1,0 +1,24 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+  <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+  <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/CBMS/schema/dvb_ipdc_esg.xsd"/>
+  <param name="org.w3c.exi.ttf.fragments" value="true" />
+
+  <testCase name="CBMS/fragments/cbms.20060101BBCAsian_pi.xml.Content0.frag">
+    <param name="japex.inputFile" value="${testsDir}/CBMS/fragments/cbms.20060101BBCAsian_pi.xml.Content0.frag"/>
+  </testCase>
+  <testCase name="CBMS/fragments/cbms.20060101BBCCBBC_pi.xml.Content0.frag">
+    <param name="japex.inputFile" value="${testsDir}/CBMS/fragments/cbms.20060101BBCCBBC_pi.xml.Content0.frag"/>
+  </testCase>
+  <testCase name="CBMS/fragments/cbms.20060101BBCAsian_pl.xml.ScheduleEvent0.frag">
+    <param name="japex.inputFile" value="${testsDir}/CBMS/fragments/cbms.20060101BBCAsian_pl.xml.ScheduleEvent0.frag"/>
+  </testCase>
+  <testCase name="CBMS/fragments/cbms.20060101BBCCBBC_pl.xml.ScheduleEvent0.frag">
+    <param name="japex.inputFile" value="${testsDir}/CBMS/fragments/cbms.20060101BBCCBBC_pl.xml.ScheduleEvent0.frag" />
+  </testCase>
+  <testCase name="CBMS/fragments/cbms.ServiceInformation.xml.Acquisition19.frag">
+    <param name="japex.inputFile" value="${testsDir}/CBMS/fragments/cbms.ServiceInformation.xml.Acquisition19.frag"/>
+  </testCase>
+  <testCase name="CBMS/fragments/cbms.ServiceInformation.xml.Service0.frag">
+    <param name="japex.inputFile" value="${testsDir}/CBMS/fragments/cbms.ServiceInformation.xml.Service0.frag"/>
+  </testCase>
+</testCaseGroup>

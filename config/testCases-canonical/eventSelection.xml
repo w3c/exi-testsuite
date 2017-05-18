@@ -1,0 +1,12 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="All canonical eventselection tests">
+
+    <param name="groupId" value="${groupId} | eventSelection"/> 
+
+    <xi:include href="eventSelection/ATEventSelection.xml"/>
+    <xi:include href="eventSelection/CHEventSelection.xml"/>
+    <xi:include href="eventSelection/SEEventSelection.xml"/>
+    
+</testCaseGroup>

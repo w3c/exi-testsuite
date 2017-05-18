@@ -1,0 +1,52 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+     name="String encoding with memory bounded tables">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingOptimizedForMisses"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/string"/>
+
+    <!-- valuePartitionCapacity tests -->
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="valuePartitionCapacity">
+        <param name="groupId" value="${groupId} | valuePartitionCapacity"/> 
+        <testCase name="boundedTables-00">
+            <param name="org.w3c.exi.ttf.valuePartitionCapacity" value="80"/>
+            <param name="description"  value="Value partition capacity test limited to 80 values"/>
+            <param name="japex.inputFile" value="${test.docFolder}/indexed-11.xml" />
+        </testCase>
+        <testCase name="boundedTables-01">
+            <param name="org.w3c.exi.ttf.valuePartitionCapacity" value="0"/>
+            <param name="description"  value="Test the case of no string indexing"/>
+            <param name="japex.inputFile" value="${test.docFolder}/indexed-11.xml" />
+        </testCase>
+        <testCase name="boundedTables-02">
+            <param name="description"  value="Unlimited value partition capacity test"/>
+            <param name="japex.inputFile" value="${test.docFolder}/indexed-11.xml" />
+        </testCase>
+    </testCaseGroup>
+
+    <!-- valueMaxLength tests -->
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="valueMaxLength">
+        <param name="groupId" value="${groupId} | valueMaxLength"/> 
+        <testCase name="boundedTables-03">
+            <param name="org.w3c.exi.ttf.valueMaxLength" value="0"/>
+            <param name="description"  value="Value max length equal to 0"/>
+            <param name="japex.inputFile" value="${test.docFolder}/indexed-13.xml" />
+        </testCase>
+        <testCase name="boundedTables-04">
+            <param name="org.w3c.exi.ttf.valueMaxLength" value="4"/>
+            <param name="description"  value="Value max length test"/>
+            <param name="japex.inputFile" value="${test.docFolder}/indexed-13.xml" />
+        </testCase>
+        <testCase name="boundedTables-05">
+            <param name="description"  value="Unlimited value max length"/>
+            <param name="japex.inputFile" value="${test.docFolder}/indexed-13.xml" />
+        </testCase>
+        <testCase name="boundedTables-06">
+            <param name="org.w3c.exi.ttf.valueMaxLength" value="6"/>
+            <param name="description"  value="Value max length test"/>
+            <param name="japex.inputFile" value="${test.docFolder}/indexed-13.xml" />
+        </testCase>
+    </testCaseGroup>
+
+</testCaseGroup>
+

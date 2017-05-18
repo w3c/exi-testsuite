@@ -1,0 +1,13 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Pre-compression interoperability tests">
+
+    <param name="groupId" value="${groupId} | preCompression"/>
+    <param name="org.w3c.exi.ttf.preCompression" value="true"/>
+
+    <!-- note: blockSize tests only apply to compression and preCompressin cases -->
+    <xi:include href="general.xml"/>
+    <xi:include href="blockSize.xml"/>
+
+</testCaseGroup>

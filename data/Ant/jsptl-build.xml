@@ -1,0 +1,235 @@
+<project name="jsptl" default="main" basedir=".">
+
+    <!-- ******************** Adjustable Properties *********************** -->
+
+    <property file="../build.properties"/>
+    <property file="../common.properties"/>
+    <property name="js.jar"   value="lib/js.jar"/>
+    <property name="classpath" value="${servlet23.jar}"/>
+    <property name="taglib.name"    value="jsptl"/>
+
+    <!-- ****************** Project Standard Properties ******************* -->
+
+    <!-- *********************** Default Properties ********************** -->
+
+    <!-- ********************* Derived Properties ************************* -->
+
+    <!--
+
+        These property values are derived from the previously defined values,
+	and should not normally be overridden from the command line.
+
+        build.doc                   Target directory for documentation app
+        build.examples		    Target directory for examples app
+        build.library               Target directory for tag library
+	dist.doc                    Destination WAR for documentation app
+	dist.examples		    Destination WAR for examples app
+	dist.library                Destination JAR for tag library
+	dist.tld                    Destination TLD file for tag library
+
+    -->
+
+    <property name="dist-jr.tld"    value="${dist.dir}/${taglib.name}/${taglib.name}-jr.tld"/>
+    <property name="dist-jx.tld"    value="${dist.dir}/${taglib.name}/${taglib.name}-jx.tld"/>
+    <property name="dist-scriptfree.tld"    value="${dist.dir}/${taglib.name}/${taglib.name}-scriptfree.tld"/>
+    <property name="jxpath.jar"	    value="lib/commons-JXPath-0.1-dev.jar"/>
+
+  <!-- ********************** Destination Preparation ********************* -->
+
+  <target name="prepare">
+    <!-- Make sure required dependencies are available -->
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${servlet23.jar}"/>
+       <param name="fail.message" value="A jar file containing the Servlet 2.3 and JSP1.2 classes is required to compile the jsptl taglib. please define the property servlet23.jar in your build.properties file and ensure that the file exists."/>
+    </antcall>
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${jaxp.jar}"/>
+       <param name="fail.message" value="The jsptl taglib required the JAXP 1.1 jaxp.jar file, please define the property jaxp.jar in your build.properties file and ensure that the file exists."/>
+    </antcall>
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${crimson.jar}"/>     
+       <param name="fail.message" value="The jsptl taglib required the JAXP 1.1 crimson.jar file, please define the property crimson.jar in your build.properties file and ensure that the file exists."/>
+    </antcall>
+    <!--
+    <antcall target="checkOptionalFile">
+       <param name="file" value="${jxpath.jar}"/>
+       <param name="warn.message" value="The jsptl taglib requires that you provide the JXPath JAR if you desire support of the JXPath Expression Language.  Since the property jxpath.jar in your build.properties file does not point to a valid file or is not defined, JXPath support will not be included in the compilation or the 'example' application."/>
+    </antcall>
+    -->
+
+    <!-- Set up build directories -->
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${build.doc}"/>
+    <mkdir dir="${build.doc}/WEB-INF"/>
+    <mkdir dir="${build.doc}/WEB-INF/classes"/>
+    <mkdir dir="${build.doc}/WEB-INF/lib"/>
+    <mkdir dir="${build.examples}"/>
+    <mkdir dir="${build.examples}/WEB-INF"/>
+    <mkdir dir="${build.examples}/WEB-INF/classes"/>
+    <mkdir dir="${build.examples}/WEB-INF/lib"/>
+    <mkdir dir="${build.library}"/>
+    <mkdir dir="${build.library}/META-INF"/>
+    <!-- Set up distribution directory -->
+    <mkdir dir="${dist.dir}"/>
+    <mkdir dir="${dist.dir}/${taglib.name}"/>
+  </target>
+
+
+  <!-- **************** Compile Tag Library Components ******************** -->
+
+  <!-- Compile the documentation application -->
+  <target name="documentation" depends="prepare">
+    <copy todir="${build.doc}/WEB-INF">
+      <fileset dir="${doc.src}/conf"/>
+    </copy>
+    <style in="${xml.src}/intro.xml"
+           destdir="${build.doc}"                                          
+           out="${build.doc}/intro.html"
+           style="${taglibs.xsl}">
+      <param name="prefix" expression="../../"/>
+    </style>
+    <copy todir="${build.doc}">
+      <fileset dir="${doc.src}/web">
+        <include name="**/*.html"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- Compile the examples application -->
+  <target name="examples" depends="library-dist">
+    <copy todir="${build.examples}/WEB-INF">
+      <fileset dir="${examples.src}/conf"/>
+    </copy>
+    <copy todir="${build.examples}">
+      <fileset dir="${examples.src}/web"/>
+    </copy>
+    <!-- Copy implementation-detail jar files -->
+    <copy todir="${build.examples}/WEB-INF/lib">
+      <fileset dir="lib" includes="*.jar"/>
+    </copy>
+    <!-- Copy required external API jar files -->
+    <copy file="${jaxp.jar}"
+          tofile="${build.examples}/WEB-INF/lib/jaxp.jar"/>
+    <copy file="${crimson.jar}"
+          tofile="${build.examples}/WEB-INF/lib/crimson.jar"/>
+    <!-- Copy the jsptl TLD files -->
+    <copy file="${dist-jx.tld}"
+              tofile="${build.examples}/WEB-INF/jx.tld"/>
+    <copy file="${dist-jr.tld}"
+              tofile="${build.examples}/WEB-INF/jr.tld"/>
+    <copy file="${dist-scriptfree.tld}"
+              tofile="${build.examples}/WEB-INF/scriptfree.tld"/>
+    <!-- Copy the jsptl jar files -->
+    <copy file="${dist.library}/${taglib.name}.jar"
+              tofile="${build.examples}/WEB-INF/lib/${taglib.name}.jar"/>
+    <javac srcdir="${examples.src}" destdir="${build.examples}/WEB-INF/classes"
+        classpath="${servlet23.jar}:${build.library}"/>
+  </target>
+
+  <!-- Compile the tag library itself -->
+  <target name="library" depends="prepare">
+    <copy file="${conf.src}/jx.tld"
+              tofile="${build.library}/META-INF/jx.tld"/>
+    <copy file="${conf.src}/jr.tld"
+              tofile="${build.library}/META-INF/jr.tld"/>
+    <copy todir="${build.library}">
+	<fileset dir="${library.src}">
+	    <include name="**/*.properties"/>
+	</fileset>
+    </copy>
+<!--
+    - [ for optional JXPath (versus integrated JXPath) ... ] -
+    <javac srcdir="${library.src}" destdir="${build.library}"
+           classpath="${servlet23.jar}"
+	   excludes="org/apache/taglibs/jsptl/lang/jxpath/**"
+	   debug="on"/>
+    <available file="${jxpath.jar}" property="jxpath.available"/>
+    <antcall target="libraryJXPath"/>
+  </target>
+
+  <target name="libraryJXPath" if="jxpath.available">
+    <javac srcdir="${library.src}" destdir="${build.library}"
+	classpath="${servlet23.jar}"
+	includes="org/apache/taglibs/jsptl/lang/jxpath/**"
+	debug="on"/>
+  </target>
+-->
+
+    <javac srcdir="${library.src}" destdir="${build.library}"
+           classpath="${servlet23.jar}:${jxpath.jar}:${js.jar}"
+	   debug="on"/>
+  </target>
+
+  <!-- Compile the library as well as the associated applications -->
+  <target name="main" depends="library,documentation,examples"/>
+
+
+  <!-- ******************* Create Distribution Files ********************** -->
+
+  <!-- Create the documentation application WAR file -->
+  <target name="documentation-dist" depends="documentation">
+    <jar jarfile="${dist.doc}" basedir="${build.doc}" excludes="intro.html"/>
+    <mkdir dir="${taglibs.doc}"/>
+    <copy todir="${taglibs.doc}">
+      <fileset dir="${build.doc}">
+        <exclude name="WEB-INF/**"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!-- Create the examples application WAR file -->
+  <target name="examples-dist" depends="examples">
+    <jar jarfile="${dist.examples}" basedir="${build.examples}"/>
+  </target>
+
+  <!-- Create the library distribution files -->
+  <target name="library-dist" depends="library">
+    <!-- Create the tag library jar -->
+    <jar jarfile="${dist.library}/${taglib.name}.jar"
+         basedir="${build.library}"/>
+    <!-- Create the jsptl API jar -->
+    <jar jarfile="${dist.library}/jsptl-api.jar"
+         basedir="${build.library}"
+         includes="javax/**"/>
+    <copy file="${conf.src}/jx.tld" tofile="${dist-jx.tld}"/>
+    <copy file="${conf.src}/jr.tld" tofile="${dist-jr.tld}"/>
+    <copy file="${conf.src}/scriptfree.tld" tofile="${dist-scriptfree.tld}"/>
+  </target>
+
+  <!-- Create the entire set of distribution files -->
+  <target name="dist" depends="library-dist,examples-dist,documentation-dist"/>
+
+
+
+  <!-- ************************ Utility Commands ************************** -->
+
+  <!-- Delete output directories and files so we can build from scratch -->
+  <target name="clean">
+    <delete dir="${build.dir}/${taglib.name}"/>
+    <delete dir="${dist.dir}/${taglib.name}"/>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Scripts used with antcall for checking for required classes or jars -->
+  <!-- Must provide "class" or "file" and "fail.message" parameters        -->
+  <!-- =================================================================== -->
+  <target name="checkRequiredClass">
+    <available classname="${class}" property="requirement.satisfied"/>
+    <antcall target="checkRequired.fail"/>
+  </target>
+  <target name="checkRequiredFile">
+    <available file="${file}" property="requirement.satisfied"/>
+    <antcall target="checkRequired.fail"/>
+  </target>
+  <target name="checkOptionalFile">
+    <available file="${file}" property="requirement.satisfied"/>
+    <antcall target="checkRequired.warn"/>
+  </target>
+  <target name="checkRequired.fail" unless="requirement.satisfied">
+    <fail message="${fail.message}"/>
+  </target>
+  <target name="checkRequired.warn" unless="requirement.satisfied">
+    <echo message="WARNING: ${warn.message}"/>
+  </target>
+
+</project>

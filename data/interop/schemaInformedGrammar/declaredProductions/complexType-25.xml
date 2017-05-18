@@ -1,0 +1,10 @@
+<!-- =================================================================== -->
+<!-- Full-fledged complex type grammar.                                  -->
+<!-- Use AT(goo:*) where both AT(xsi:type) and AT(xsi:nil) are           -->
+<!-- available. The attribute goo:aA matches AT(urn:goo).                -->
+<!-- =================================================================== -->
+<foo:I2 xmlns:foo='urn:foo' xmlns:goo='urn:goo' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  goo:aA="" foo:aI="">
+  <A/><B/>
+</foo:I2>

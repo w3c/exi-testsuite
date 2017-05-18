@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<schema elementFormDefault="qualified" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xbrl.org/us/fr/ids/xii/2004-10-29" attributeFormDefault="unqualified" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xii="http://www.xbrl.org/us/fr/ids/xii/2004-10-29">
+  <annotation>
+    <appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="xii-2004-10-29-presentation.xml" xlink:title="Presentation Links, all" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef"/>
+      <link:linkbaseRef xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="xii-2004-10-29-calculation.xml" xlink:title="Calculation Links, all" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef"/>
+      <link:linkbaseRef xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="xii-2004-10-29-label.xml" xlink:title="Label Links, all" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef"/>
+      <link:roleType roleURI="http://www.xbrl.org/2003/role/XBRLInt" id="XBRLInt">
+        <link:definition>XBRL-Int</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:labelLink</link:usedOn>
+      </link:roleType>
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="xbrl-instance-2003-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="../../linkbases/schema/xbrl-linkbase-2003-12-31.xsd"/>
+  <import namespace="http://www.xbrl.org/taxonomy/us/fr/gaap/ci/us-gaap-ci-2004-08-15" schemaLocation="us-gaap-ci-2004-08-15.xsd"/>
+  <import namespace="http://www.xbrl.org/us/fr/rpt/ar/2004-08-15" schemaLocation="usfr-ar-2004-08-15.xsd"/>
+  <element name="AccountingMethod" id="xii_AccountingMethod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ChangesCosponsorshipConferenceFeesReceivable" id="xii_ChangesCosponsorshipConferenceFeesReceivable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ChangesOperatingAssetsLliabilities" id="xii_ChangesOperatingAssetsLliabilities" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" xbrli:periodType="instant"/>
+  <element name="ChangesPrepaidExpensesOtherAssets" id="xii_ChangesPrepaidExpensesOtherAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="CommunicationsDataProcessing" id="xii_CommunicationsDataProcessing" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="CompensationEmployeeBenefits" id="xii_CompensationEmployeeBenefits" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ConsultingFees" id="xii_ConsultingFees" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ContributedServicesExpense" id="xii_ContributedServicesExpense" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ContributedServicesOrganizationalSupport" id="xii_ContributedServicesOrganizationalSupport" xbrli:balance="credit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ContributedServicesPolicy" id="xii_ContributedServicesPolicy" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ContributedServicesRevenue" id="xii_ContributedServicesRevenue" xbrli:balance="credit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ContributedServicesWebsiteDevelopment" id="xii_ContributedServicesWebsiteDevelopment" xbrli:balance="credit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="CosponsorshipConferenceFee" id="xii_CosponsorshipConferenceFee" xbrli:balance="credit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="CosponsorshipConferenceFeeIncomePolicy" id="xii_CosponsorshipConferenceFeeIncomePolicy" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="CosponsorshipConferenceFeesReceivable" id="xii_CosponsorshipConferenceFeesReceivable" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="DuesIncome" id="xii_DuesIncome" xbrli:balance="credit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="DuesIncomePolicy" id="xii_DuesIncomePolicy" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="DuesReceivable" id="xii_DuesReceivable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="IncreaseDecreaseAccountsPayableTrade" id="xii_IncreaseDecreaseAccountsPayableTrade" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="InsuranceExpense" id="xii_InsuranceExpense" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="InterestIncomeExpenseGross" id="xii_InterestIncomeExpenseGross" xbrli:balance="credit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="LegalAccountingFees" id="xii_LegalAccountingFees" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="MeetingExpense" id="xii_MeetingExpense" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="NotesFinancialStatements" id="xii_NotesFinancialStatements" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" xbrli:periodType="instant"/>
+  <element name="OrganizationalSupportAmount" id="xii_OrganizationalSupportAmount" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="OrganizationalSupportDescription" id="xii_OrganizationalSupportDescription" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="PrepaidExpensesOtherAssets" id="xii_PrepaidExpensesOtherAssets" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+  <element name="ProfessionalFees" id="xii_ProfessionalFees" xbrli:balance="debit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="ProgramServices" id="xii_ProgramServices" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" xbrli:periodType="instant"/>
+  <element name="SponsorshipIncome" id="xii_SponsorshipIncome" xbrli:balance="credit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+  <element name="StatementsofActivities" id="xii_StatementsofActivities" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" xbrli:periodType="instant"/>
+  <element name="StatementsOfCashFlows" id="xii_StatementsOfCashFlows" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" xbrli:periodType="instant"/>
+  <element name="StatementsoFinancialPosition" id="xii_StatementsoFinancialPosition" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" xbrli:periodType="instant"/>
+  <element name="SupportingServices" id="xii_SupportingServices" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" xbrli:periodType="instant"/>
+</schema>

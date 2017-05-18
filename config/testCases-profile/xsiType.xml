@@ -1,0 +1,37 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile interoperability tests ">
+
+    <param name="reference" value="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism"/>
+    <!-- If an element E already has an xsi:type attribute and grammar       
+         learning is disabled for the grammar representing the element E,    
+         the xsi:type attribute value MUST refer to a known schema-informed  
+         grammar that can represent the given element. -->
+
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-profile/xsiType"/>
+
+    <param name="org.w3c.exi.ttf.useProfile" value="true"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value=""/>
+
+    <testCase name="xsitype-01">
+        <param name="description"  value="Explicit uses of xsi-type cast with valid values"/>
+        <param name="org.w3c.exi.ttf.maxBuiltinGr" value="0"/>
+        <param name="org.w3c.exi.ttf.maxBuiltinProd" value="0"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xsiType-01.xml" />
+    </testCase>
+
+    <testCase name="xsitype-02">
+        <param name="description" value="AT(xsi:type) productions that would 
+be inserted in grammars that would be instantiated after the 
+maximumNumberOfBuiltInElementGrammars threshold are not counted."/>
+        <param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+        <param name="org.w3c.exi.ttf.maxBuiltinProd" value="2"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xsiType-02.xml" />
+    </testCase>
+
+</testCaseGroup>

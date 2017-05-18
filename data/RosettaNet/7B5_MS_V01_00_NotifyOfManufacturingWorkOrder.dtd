@@ -1,0 +1,602 @@
+<!-- 
+
+RosettaNet XML Message Schema
+7B5_MS_V01_00_NotifyOfManufacturingWorkOrder.dtd (9-Dec-2002 11:22:33 AM)
+This document has been prepared by RosettaNet (http://www.rosettanet.org) from requirements gathered during the cluster/segment workshops and in conformance with the RosettaNet methodology.
+
+-->
+
+<!ENTITY % common-attributes "id CDATA #IMPLIED">
+
+<!ELEMENT Pip7B5NotifyOfManufacturingWorkOrder
+	(fromRole, 
+	 GlobalDocumentFunctionCode, 
+	 thisDocumentGenerationDateTime, 
+	 thisDocumentIdentifier, 
+	 toRole, 
+	 WorkOrder)>
+
+<!ELEMENT fromRole
+	(PartnerRoleDescription)>
+
+<!ELEMENT PartnerRoleDescription
+	(ContactInformation?, 
+	 GlobalPartnerRoleClassificationCode, 
+	 PartnerDescription)>
+
+<!ELEMENT ContactInformation
+	(contactName, 
+	 EmailAddress, 
+	 facsimileNumber?, 
+	 telephoneNumber?)>
+
+<!ELEMENT contactName
+	(FreeFormText)>
+
+<!ELEMENT FreeFormText
+	(#PCDATA)>
+
+<!ATTLIST FreeFormText xml:lang CDATA #IMPLIED >
+
+<!ELEMENT EmailAddress
+	(#PCDATA)>
+
+<!ELEMENT facsimileNumber
+	(CommunicationsNumber)>
+
+<!ELEMENT CommunicationsNumber
+	(#PCDATA)>
+
+<!ELEMENT telephoneNumber
+	(CommunicationsNumber)>
+
+<!ELEMENT GlobalPartnerRoleClassificationCode
+	(#PCDATA)>
+
+<!ELEMENT PartnerDescription
+	(BusinessDescription, 
+	 GlobalPartnerClassificationCode, 
+	 ContactInformation?, 
+	 PhysicalLocation?)>
+
+<!ELEMENT BusinessDescription
+	(GlobalBusinessIdentifier?, 
+	 GlobalSupplyChainCode?, 
+	 businessName?, 
+	 PartnerBusinessIdentification*)>
+
+<!ELEMENT GlobalBusinessIdentifier
+	(#PCDATA)>
+
+<!ELEMENT GlobalSupplyChainCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalPartnerClassificationCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalDocumentFunctionCode
+	(#PCDATA)>
+
+<!ELEMENT thisDocumentGenerationDateTime
+	(DateTimeStamp)>
+
+<!ELEMENT DateTimeStamp
+	(#PCDATA)>
+
+<!ELEMENT thisDocumentIdentifier
+	(ProprietaryDocumentIdentifier)>
+
+<!ELEMENT ProprietaryDocumentIdentifier
+	(#PCDATA)>
+
+<!ELEMENT toRole
+	(PartnerRoleDescription)>
+
+<!ELEMENT WorkOrder
+	(billTo?, 
+	 comment?, 
+	 DocumentReference*, 
+	 GlobalBusinessActionCode, 
+	 internalBusinessEntity*, 
+	 RevisionNumber, 
+	 shipTo*, 
+	 WorkOrderLineItems+, 
+	 WorkOrderNumber)>
+
+<!ELEMENT billTo
+	(PartnerDescription)>
+
+<!ELEMENT businessName
+	(FreeFormText)>
+
+<!ELEMENT PartnerBusinessIdentification
+	(ProprietaryBusinessIdentifier, 
+	 ProprietaryDomainIdentifier, 
+	 ProprietaryIdentifierAuthority?)>
+
+<!ELEMENT ProprietaryBusinessIdentifier
+	(#PCDATA)>
+
+<!ELEMENT ProprietaryDomainIdentifier
+	(#PCDATA)>
+
+<!ELEMENT ProprietaryIdentifierAuthority
+	(#PCDATA)>
+
+<!ELEMENT PhysicalLocation
+	(GlobalLocationIdentifier?, 
+	 PartnerLocationIdentification*, 
+	 PhysicalAddress?)>
+
+<!ELEMENT GlobalLocationIdentifier
+	(#PCDATA)>
+
+<!ELEMENT PartnerLocationIdentification
+	(ProprietaryDomainIdentifier, 
+	 ProprietaryIdentifierAuthority?, 
+	 ProprietaryLocationIdentifier)>
+
+<!ELEMENT ProprietaryLocationIdentifier
+	(#PCDATA)>
+
+<!ELEMENT PhysicalAddress
+	(addressLine1?, 
+	 addressLine2?, 
+	 addressLine3?, 
+	 cityName?, 
+	 GlobalCountryCode?, 
+	 NationalPostalCode?, 
+	 postOfficeBoxIdentifier?, 
+	 regionName?)>
+
+<!ELEMENT addressLine1
+	(FreeFormText)>
+
+<!ELEMENT addressLine2
+	(FreeFormText)>
+
+<!ELEMENT addressLine3
+	(FreeFormText)>
+
+<!ELEMENT cityName
+	(FreeFormText)>
+
+<!ELEMENT GlobalCountryCode
+	(#PCDATA)>
+
+<!ELEMENT NationalPostalCode
+	(#PCDATA)>
+
+<!ELEMENT postOfficeBoxIdentifier
+	(FreeFormText)>
+
+<!ELEMENT regionName
+	(FreeFormText)>
+
+<!ELEMENT comment
+	(FreeFormText)>
+
+<!ELEMENT DocumentReference
+	(DateTimeStamp?, 
+	 GlobalDocumentReferenceTypeCode, 
+	 GlobalPartnerRoleClassificationCode?, 
+	 LineItemNumber?, 
+	 ProprietaryDocumentIdentifier, 
+	 RevisionNumber?)>
+
+<!ELEMENT GlobalDocumentReferenceTypeCode
+	(#PCDATA)>
+
+<!ELEMENT LineItemNumber
+	(#PCDATA)>
+
+<!ELEMENT RevisionNumber
+	(#PCDATA)>
+
+<!ELEMENT GlobalBusinessActionCode
+	(#PCDATA)>
+
+<!ELEMENT internalBusinessEntity
+	(PartnerCompanyDescription)>
+
+<!ELEMENT PartnerCompanyDescription
+	(BusinessDescription, 
+	 GlobalPartnerClassificationCode)>
+
+<!ELEMENT shipTo
+	(PartnerDescription)>
+
+<!ELEMENT WorkOrderLineItems
+	(comment?, 
+	 CustomerProfile, 
+	 dateCode?, 
+	 DocumentReference*, 
+	 EngineeringInformation?, 
+	 GlobalChangeReasonCode?, 
+	 GlobalLineItemStatusCode?, 
+	 leadCount?, 
+	 LineNumber, 
+	 MarkInformation*, 
+	 ProcessRoutingInformation*, 
+	 PurposeOfMultipleSourceDevices?, 
+	 shipTo?, 
+	 SourceDevice*, 
+	 SpecialProcessingInformation*, 
+	 SublineItems*, 
+	 TargetDevice, 
+	 WorkOrderTypeCode)>
+
+<!ELEMENT CustomerProfile
+	(lineItemQuantity, 
+	 lineItemQuantityUOM, 
+	 ProprietaryShipToIdentifier?, 
+	 requestedEvent?, 
+	 requestedStartDate?)>
+
+<!ELEMENT lineItemQuantity
+	(ProductQuantity)>
+
+<!ELEMENT ProductQuantity
+	(#PCDATA)>
+
+<!ELEMENT lineItemQuantityUOM
+	(GlobalProductUnitOfMeasureCode)>
+
+<!ELEMENT GlobalProductUnitOfMeasureCode
+	(#PCDATA)>
+
+<!ELEMENT ProprietaryShipToIdentifier
+	(#PCDATA)>
+
+<!ELEMENT requestedEvent
+	(DateStamp)>
+
+<!ELEMENT DateStamp
+	(#PCDATA)>
+
+<!ELEMENT requestedStartDate
+	(DateStamp)>
+
+<!ELEMENT dateCode
+	(FreeFormText)>
+
+<!ELEMENT EngineeringInformation
+	(additionalDescription*, 
+	 DevicePackageTypeCode?, 
+	 expectedDaysPerLayer?, 
+	 GlobalPackageTypeCode?, 
+	 packageDescription?, 
+	 packageDimension?)>
+
+<!ELEMENT additionalDescription
+	(Attachment)>
+
+<!ELEMENT Attachment
+	(description?, 
+	 GlobalAttachmentDescriptionCode?, 
+	 GlobalMimeTypeQualifierCode, 
+	 UniversalResourceIdentifier)>
+
+<!ELEMENT description
+	(FreeFormText)>
+
+<!ELEMENT GlobalAttachmentDescriptionCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalMimeTypeQualifierCode
+	(#PCDATA)>
+
+<!ELEMENT UniversalResourceIdentifier
+	(#PCDATA)>
+
+<!ELEMENT DevicePackageTypeCode
+	(#PCDATA)>
+
+<!ELEMENT expectedDaysPerLayer
+	(CountableAmount)>
+
+<!ELEMENT CountableAmount
+	(#PCDATA)>
+
+<!ELEMENT GlobalPackageTypeCode
+	(#PCDATA)>
+
+<!ELEMENT packageDescription
+	(FreeFormText)>
+
+<!ELEMENT packageDimension
+	(PhysicalDimension)>
+
+<!ELEMENT PhysicalDimension
+	(GlobalPhysicalUnitOfMeasureCode, 
+	 HeightDimension?, 
+	 LengthDimension?, 
+	 WidthDimension?)>
+
+<!ELEMENT GlobalPhysicalUnitOfMeasureCode
+	(#PCDATA)>
+
+<!ELEMENT HeightDimension
+	(#PCDATA)>
+
+<!ELEMENT LengthDimension
+	(#PCDATA)>
+
+<!ELEMENT WidthDimension
+	(#PCDATA)>
+
+<!ELEMENT GlobalChangeReasonCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalLineItemStatusCode
+	(#PCDATA)>
+
+<!ELEMENT leadCount
+	(CountableAmount)>
+
+<!ELEMENT LineNumber
+	(#PCDATA)>
+
+<!ELEMENT MarkInformation
+	(MarkingContents+, 
+	 MarkSideCode?, 
+	 MarkTypeCode?)>
+
+<!ELEMENT MarkingContents
+	(markingLine?, 
+	 markingText)>
+
+<!ELEMENT markingLine
+	(CountableAmount)>
+
+<!ELEMENT markingText
+	(ProprietaryReferenceIdentifier)>
+
+<!ELEMENT ProprietaryReferenceIdentifier
+	(#PCDATA)>
+
+<!ELEMENT MarkSideCode
+	(#PCDATA)>
+
+<!ELEMENT MarkTypeCode
+	(#PCDATA)>
+
+<!ELEMENT ProcessRoutingInformation
+	(beginDate?, 
+	 endDate?, 
+	 GlobalWorkInProcessLocationCode?, 
+	 machinePlatform?, 
+	 platformHandle?, 
+	 platformSoftwareProgram?, 
+	 processingInstructions?, 
+	 ProcessTypeCode, 
+	 SequenceNumber)>
+
+<!ELEMENT beginDate
+	(DateStamp)>
+
+<!ELEMENT endDate
+	(DateStamp)>
+
+<!ELEMENT GlobalWorkInProcessLocationCode
+	(#PCDATA)>
+
+<!ELEMENT machinePlatform
+	(ProprietaryReferenceIdentifier)>
+
+<!ELEMENT platformHandle
+	(FreeFormText)>
+
+<!ELEMENT platformSoftwareProgram
+	(ProprietaryProgramIdentifier)>
+
+<!ELEMENT ProprietaryProgramIdentifier
+	(#PCDATA)>
+
+<!ELEMENT processingInstructions
+	(FreeFormText)>
+
+<!ELEMENT ProcessTypeCode
+	(#PCDATA)>
+
+<!ELEMENT SequenceNumber
+	(#PCDATA)>
+
+<!ELEMENT PurposeOfMultipleSourceDevices
+	(#PCDATA)>
+
+<!ELEMENT SourceDevice
+	(alternateSourceDevice*, 
+	 diePerWaferWorkOn?, 
+	 grossDiePerWafer?, 
+	 ProductIdentification, 
+	 SourceLot+, 
+	 WaferBacksideInformation?, 
+	 waferSize?)>
+
+<!ELEMENT alternateSourceDevice
+	(ProductIdentification)>
+
+<!ELEMENT ProductIdentification
+	(GlobalProductIdentifier?, 
+	 PartnerProductIdentification*)>
+
+<!ELEMENT GlobalProductIdentifier
+	(#PCDATA)>
+
+<!ELEMENT PartnerProductIdentification
+	(GlobalPartnerClassificationCode, 
+	 ProprietaryProductIdentifier, 
+	 revisionIdentifier?)>
+
+<!ELEMENT ProprietaryProductIdentifier
+	(#PCDATA)>
+
+<!ELEMENT revisionIdentifier
+	(FreeFormText)>
+
+<!ELEMENT diePerWaferWorkOn
+	(CountableAmount)>
+
+<!ELEMENT grossDiePerWafer
+	(CountableAmount)>
+
+<!ELEMENT SourceLot
+	(bondingPadSize?, 
+	 dieSize?, 
+	 GlobalLotCode?, 
+	 isInking?, 
+	 isMappingFile?, 
+	 LotQuantity, 
+	 mappingFileName?, 
+	 sourceLotNumber, 
+	 WaferInformation*)>
+
+<!ELEMENT bondingPadSize
+	(PhysicalDimension)>
+
+<!ELEMENT dieSize
+	(PhysicalDimension)>
+
+<!ELEMENT GlobalLotCode
+	(#PCDATA)>
+
+<!ELEMENT isInking
+	(AffirmationIndicator)>
+
+<!ELEMENT AffirmationIndicator
+	(#PCDATA)>
+
+<!ELEMENT isMappingFile
+	(AffirmationIndicator)>
+
+<!ELEMENT LotQuantity
+	(goodDieQuantity?, 
+	 goodDieQuantityUOM?, 
+	 waferQuantity, 
+	 waferQuantityUOM)>
+
+<!ELEMENT goodDieQuantity
+	(ProductQuantity)>
+
+<!ELEMENT goodDieQuantityUOM
+	(GlobalProductUnitOfMeasureCode)>
+
+<!ELEMENT waferQuantity
+	(ProductQuantity)>
+
+<!ELEMENT waferQuantityUOM
+	(GlobalProductUnitOfMeasureCode)>
+
+<!ELEMENT mappingFileName
+	(FreeFormText)>
+
+<!ELEMENT sourceLotNumber
+	(ProprietaryLotIdentifier)>
+
+<!ELEMENT ProprietaryLotIdentifier
+	(#PCDATA)>
+
+<!ELEMENT WaferInformation
+	(grade, 
+	 mappingFileName?, 
+	 RawWaferTypeCode?, 
+	 waferUniqueID)>
+
+<!ELEMENT grade
+	(GlobalQualityRatingCode)>
+
+<!ELEMENT GlobalQualityRatingCode
+	(#PCDATA)>
+
+<!ELEMENT RawWaferTypeCode
+	(#PCDATA)>
+
+<!ELEMENT waferUniqueID
+	(GlobalProductIdentifier)>
+
+<!ELEMENT WaferBacksideInformation
+	(isWaferBackGrind?, 
+	 waferBackGrindFinalThickness?, 
+	 waferBackGrindFinalThicknessUOM?, 
+	 WaferBackSideFinishTypeCode?, 
+	 WaferPassivationCode?)>
+
+<!ELEMENT isWaferBackGrind
+	(AffirmationIndicator)>
+
+<!ELEMENT waferBackGrindFinalThickness
+	(Magnitude)>
+
+<!ELEMENT Magnitude
+	(#PCDATA)>
+
+<!ELEMENT waferBackGrindFinalThicknessUOM
+	(GlobalPhysicalUnitOfMeasureCode)>
+
+<!ELEMENT WaferBackSideFinishTypeCode
+	(#PCDATA)>
+
+<!ELEMENT WaferPassivationCode
+	(#PCDATA)>
+
+<!ELEMENT waferSize
+	(PhysicalDimension)>
+
+<!ELEMENT SpecialProcessingInformation
+	(ProcessTypeCode?, 
+	 SequenceNumber?, 
+	 SpecialInstructionCategoryCode, 
+	 specialInstructions?)>
+
+<!ELEMENT SpecialInstructionCategoryCode
+	(#PCDATA)>
+
+<!ELEMENT specialInstructions
+	(FreeFormText)>
+
+<!ELEMENT SublineItems
+	(CustomerProfile, 
+	 shipTo?, 
+	 subLineNumber)>
+
+<!ELEMENT subLineNumber
+	(LineItemNumber)>
+
+<!ELEMENT TargetDevice
+	(customerLotNumber*, 
+	 customerTargetDevice, 
+	 GlobalPriorityCode?, 
+	 isTargetDeviceStatusEOL?, 
+	 targetDeviceLotNumber*, 
+	 TargetDeviceTypeCode?, 
+	 vendorTargetDevice?, 
+	 WaferBacksideInformation?)>
+
+<!ELEMENT customerLotNumber
+	(ProprietaryLotIdentifier)>
+
+<!ELEMENT customerTargetDevice
+	(ProductIdentification)>
+
+<!ELEMENT GlobalPriorityCode
+	(#PCDATA)>
+
+<!ELEMENT isTargetDeviceStatusEOL
+	(AffirmationIndicator)>
+
+<!ELEMENT targetDeviceLotNumber
+	(ProprietaryLotIdentifier)>
+
+<!ELEMENT TargetDeviceTypeCode
+	(#PCDATA)>
+
+<!ELEMENT vendorTargetDevice
+	(ProductIdentification)>
+
+<!ELEMENT WorkOrderTypeCode
+	(#PCDATA)>
+
+<!ELEMENT WorkOrderNumber
+	(#PCDATA)>
+

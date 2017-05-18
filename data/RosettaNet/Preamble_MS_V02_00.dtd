@@ -1,0 +1,29 @@
+<!--
+
+   RosettaNet XML Message Schema
+   Preamble_MS_V02_00.dtd (11-Jul-2001)
+
+-->
+
+
+<!ENTITY % common-attributes "id  CDATA #IMPLIED" >
+ 
+<!ELEMENT Preamble ( 
+          standardName ,
+          standardVersion ) > 
+
+<!ATTLIST Preamble xmlns CDATA #FIXED
+          "http://www.rosettanet.org/RNIF/V02.00" >
+
+<!ELEMENT standardName
+           ( GlobalAdministeringAuthorityCode ) > 
+
+<!ELEMENT GlobalAdministeringAuthorityCode
+           ( #PCDATA ) >
+
+<!ELEMENT standardVersion
+           ( VersionIdentifier ) > 
+
+<!ELEMENT VersionIdentifier
+           ( #PCDATA ) >
+

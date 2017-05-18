@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="Compaction:Neither"
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <param name="japex.warmupIterations" value="0"/>
+    <param name="japex.runIterations" value="0"/>
+    <param name="japex.resultUnit" value="bytes"/>
+
+    <param name="japex.reportsDirectory" value="reports/property/compaction/neither"/>
+    <param name="org.w3c.exi.ttf.measurementProperty" value="compactness"/>
+
+    <param name="org.w3c.exi.ttf.dataSourceSink.URI" value="memory:/"/>
+
+    <xi:include href="drivers-neither.xml"/>
+</testSuite>

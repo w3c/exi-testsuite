@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <testCase name="MARCXML/clasmrc.xml">
+	<param name="japex.inputFile" value="${testsDir}/MARCXML/clasmrc.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MARCXML/MARC21slim.xsd"/>
+    </testCase>
+    <testCase name="MARCXML/collection.xml">
+	<param name="japex.inputFile" value="${testsDir}/MARCXML/collection.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MARCXML/MARC21slim.xsd"/>
+    </testCase>
+    <testCase name="MARCXML/namemrc.xml">
+	<param name="japex.inputFile" value="${testsDir}/MARCXML/namemrc.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MARCXML/MARC21slim.xsd"/>
+    </testCase>
+    <testCase name="MARCXML/sandburg.xml">
+	<param name="japex.inputFile" value="${testsDir}/MARCXML/sandburg.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MARCXML/MARC21slim.xsd"/>
+    </testCase>
+    <testCase name="MARCXML/sandburgdc.xml">
+	<param name="japex.inputFile" value="${testsDir}/MARCXML/sandburgdc.xml"/>
+    </testCase>
+    <testCase name="MARCXML/sandburgmods.xml">
+	<param name="japex.inputFile" value="${testsDir}/MARCXML/sandburgmods.xml"/>
+    </testCase>
+    <testCase name="MARCXML/subjmrc.xml">
+	<param name="japex.inputFile" value="${testsDir}/MARCXML/subjmrc.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MARCXML/MARC21slim.xsd"/>
+    </testCase>
+</testCaseGroup>

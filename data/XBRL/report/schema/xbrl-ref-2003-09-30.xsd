@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- (c) XBRL International.  See www.xbrl.org/legal -->
+<schema targetNamespace="http://www.xbrl.org/2003/ref" 
+	xmlns:ref="http://www.xbrl.org/2003/ref" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	xmlns:link="http://www.xbrl.org/2003/linkbase" 
+	xmlns="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified">
+	
+	<import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="../../linkbases/schema/xbrl-linkbase-2003-12-31.xsd" />
+	
+	<element name="name" type="string" substitutionGroup="link:part" id="name"/>
+	<element name="number" type="string" substitutionGroup="link:part" id="number"/>
+	<element name="paragraph" type="string" substitutionGroup="link:part" id="paragraph"/>
+	<element name="subparagraph" type="string" substitutionGroup="link:part" id="subparagraph"/>
+	<element name="clause" type="string" substitutionGroup="link:part" id="clause"/>
+	<element name="pages" type="string" substitutionGroup="link:part" id="pages"/>
+
+</schema>

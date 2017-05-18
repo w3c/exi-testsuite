@@ -1,0 +1,8 @@
+<!-- =================================================================== -->
+<!-- The codec used for an enumerated type is not *generally* affected   -->
+<!-- by DTRM entry attached to its ancestral type. When such an          -->
+<!-- ancestral type has enumerated values, however, it *does* affect the -->
+<!-- codec used for the enumerated type in question.                     -->
+<!-- =================================================================== -->
+<foo:A xmlns:foo="urn:foo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:type="foo:stringDerived2">12345</foo:A>

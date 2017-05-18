@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="ParsingPerformance" xmlns="http://www.sun.com/japex/testSuite">
+
+    <param name="japex.classPath" value="${JAPEX_HOME}/jdsl/*.jar"/>
+    
+    <param name="japex.resultUnit" value="ms"/>
+    <param name="japex.warmupIterations" value="1"/>
+    <param name="japex.runIterations" value="1"/>
+
+    <driver name="JapexNativeDriverOne">
+        <param name="japex.driverClass" value="com.sun.japex.jdsl.nativecode.JapexNativeDriver"/>
+        <param name="description" value="Japex Native Driver One"/>
+        <param name="libraryName" value="JapexNativeDriverOne"/>
+        <param name="libraryPath" value="dist/lib"/>
+    </driver>
+
+    <driver name="JapexNativeDriverTwo">
+        <param name="japex.driverClass" value="com.sun.japex.jdsl.nativecode.JapexNativeDriver"/>
+        <param name="description" value="Japex Native Driver Two"/>
+        <param name="libraryName" value="JapexNativeDriverTwo"/>
+        <param name="libraryPath" value="dist/lib"/>
+    </driver>
+
+    <testCase name="foo">
+        <param name="xmlfile" value="somefilename"/>
+    </testCase>
+
+</testSuite>

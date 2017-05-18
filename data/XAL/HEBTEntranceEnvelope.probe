@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE probe SYSTEM "xal.mod.probe.dtd">
+<probe type="gov.sns.xal.model.probe.EnvelopeProbe" id="par1" author="C.K. Allen" >
+    <comment author="jdg" 
+             date="1/13/2004"
+             text="XAL model probe representing rms envelope state at HEBT entrance"
+             />
+    <algorithm type="EnvelopeTracker">
+		<tracker update="1" debug="false"/>
+    		<options  useSpacecharge="false"/>
+    	</algorithm>
+    <state type="gov.sns.xal.model.probe.traj.EnvelopeProbeState"> 
+        <location s="0.0" W="1000.e6" elem=""/>
+        <species q="-1." Er="939.3014e+6"/>
+        <!--<beam I="0.0" Q="0"/> -->
+        <beam I="0.038" Q="4.7205e-11"/>
+        <!--beam I="0.00000038" Q="4.7205e-16"/-->
+	<!-- info source: transverse = Deepak's HEBT lattice + param. list emit, long: = parmilla output from web-->
+        <envelope correlation="{ 
+            { 1.05189E-5 -2.73417E-6 0.0 0.0 0.0 0.0 0.0 }
+            { -2.73417E-6 1.51019E-6 0.0 0.0 0.0 0.0 0.0 }
+            { 0.0 0.0 2.769148E-5 5.806287E-6 0.0 0.0 0.0 }
+            { 0.0 0.0 5.806287E-6 1.521152E-6 0.0 0.0 0.0 }
+            { 0.0 0.0 0.0 0.0 2.247739E-6 9.880611E-8 0.0 }
+            { 0.0 0.0 0.0 0.0 9.880611E-8 6.580244E-6 0.0 }
+            { 0.0 0.0 0.0 0.0 0.0 0.0 1.0 } }"/>
+    </state>
+
+</probe>

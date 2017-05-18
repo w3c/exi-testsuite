@@ -1,0 +1,13 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/xml/dist/candidate-xml-jaxp.jar"/>
+
+    <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.xml.jaxp.JAXPSAXDriver"/>
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="XML"/>
+    <param name="org.w3c.exi.ttf.driver.isXmlProcessor" value="true"/>
+
+    <driver name="XMLNeither" normal="true">
+        <param name="description" value="XML"/>
+        <param name="org.w3c.exi.ttf.applicationClass" value="neither"/>
+    </driver>
+</driverGroup>

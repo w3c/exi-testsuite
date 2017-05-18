@@ -1,0 +1,57 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile interoperability tests ">
+
+    <param name="org.w3c.exi.ttf.useProfile" value="true"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/builtInElement.xsd"/>
+    
+    <param name="reference" value="http://www.w3.org/TR/exi-profile/#grammarCapping"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars"/>
+
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>  
+
+	<testCase name="partiallearning-01">
+		<param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+		<param name="org.w3c.exi.ttf.maxBuiltinProd" value="1"/>
+	    <param name="description"  value="1 unexpected element d"/>
+	    <param name="japex.inputFile" value="${test.docFolder}/builtInElement-11.xml" />
+	</testCase>
+    
+    <testCase name="partiallearning-02">
+		<param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+		<param name="org.w3c.exi.ttf.maxBuiltinProd" value="1"/>
+        <param name="description"  value="BuiltIn Element and unexpected global element"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-12.xml" />
+    </testCase>
+    
+    <testCase name="partiallearning-03">
+		<param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+		<param name="org.w3c.exi.ttf.maxBuiltinProd" value="1"/>
+        <param name="description"  value="Unexpected Global and BuiltIn Element grammar within simple element"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-13.xml" />
+    </testCase>
+    
+    <testCase name="partiallearning-04">
+		<param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+		<param name="org.w3c.exi.ttf.maxBuiltinProd" value="2"/>
+        <param name="description"  value="Unexpected elements with attributes with also invalid attributes"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-14.xml" />
+    </testCase>
+    
+    <testCase name="partiallearning-05">
+		<param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+		<param name="org.w3c.exi.ttf.maxBuiltinProd" value="2"/>
+        <param name="description"  value="Unexpected known element with xsd:typed unknown element"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-15.xml" />
+    </testCase>
+    
+    <testCase name="partiallearning-06">
+		<param name="org.w3c.exi.ttf.maxBuiltinGr" value="1"/>
+		<param name="org.w3c.exi.ttf.maxBuiltinProd" value="8"/>
+        <param name="description"  value="Unexpected elements with attributes with also invalid attributes"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-16.xml" />
+    </testCase>
+</testCaseGroup>

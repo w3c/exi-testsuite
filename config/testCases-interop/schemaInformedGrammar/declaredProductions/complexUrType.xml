@@ -1,0 +1,76 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Complex Ur-Type">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | complexUrTypeGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#anyTypeGrammar"/>
+
+    <!-- =================================================================== -->
+    <!-- Most of the test cases below are primarily designed for use with    -->
+    <!-- strict schema grammars. Please make sure to run them at least once  -->
+    <!-- with strict option turned on.                                       -->
+    <!-- <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />     -->
+    <!-- =================================================================== -->
+
+    <testCase name="schemaInformed.declared.complexUrType-01">
+        <param name="testDescription" 
+          value="Tests AT(*) with two attributes one of which is globally declared 
+                 and the other not declared."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexUrType-02">
+        <param name="testDescription" 
+          value="Tests AT(*) with an globally defined attribute that has an invalid 
+                 value."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexUrType-03">
+        <param name="testDescription" 
+          value="Tests the semantics of xsi:type attribute."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-03.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexUrType-04">
+        <param name="testDescription" 
+          value="xsi:type attribute with a value of which the prefix is not defined."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-04.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexUrType-05">
+        <param name="testDescription" 
+          value="xsi:type attribute with a value that does not resolve to a type."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-05.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexUrType-06">
+        <param name="testDescription" 
+          value="Tests the semantics of xsi:nil attribute."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-06.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexUrType-08">
+        <param name="testDescription" 
+          value="Tests SE(*) when it is matched by a non-declared element."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-08.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.complexUrType-09">
+        <param name="testDescription" 
+          value="Tests SE(*) when it is matched by a globally declared element."/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/complexUrType-09.xml" />
+    </testCase>
+
+</testCaseGroup>

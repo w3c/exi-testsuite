@@ -1,0 +1,36 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Preserve Schema Informed Document Grammar tests">
+
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#informedDocGrammars"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+
+    <!-- pruning is also mostly tested in schema informed tests 
+         we vary the fidelity options a bit for further tests -->
+    <testCase name="preserve.schemaInformed.document-00">
+        <param name="testDescription" value="Test schema informed doc grammar fidelity with dtds only " />
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-03.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds" />
+    </testCase>
+    <testCase name="preserve.schemaInformed.document-01">
+        <param name="testDescription" value="Test schema informed doc grammar fidelity with dtds and pis" />
+        <param name="testDescription" value="Use of document grammar with the 2nd element declaration matched" />
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-03.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis" />
+    </testCase>
+
+    <testCase name="preserve.schemaInformed.document-02">
+        <param name="testDescription" value="Test schema informed doc grammar fidelity with dtds and comments" />
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-03.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds comments" />
+    </testCase>
+
+    <testCase name="preserve.schemaInformed.document-03">
+        <param name="testDescription" value="Test schema informed doc grammar fidelity with pis and comments" />
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/document-03.xml" />
+        <param name="org.w3c.exi.ttf.preserve" value="pis comments" />
+    </testCase>
+
+</testCaseGroup>
+

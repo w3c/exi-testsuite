@@ -1,0 +1,189 @@
+<!--
+
+   RosettaNet XML Message Schema
+   ServiceHeader_MS_V02_00.dtd (11-Jul-2001)
+
+-->
+
+
+<!ENTITY % common-attributes "id  CDATA #IMPLIED" >
+
+<!ELEMENT ServiceHeader ( 
+          ProcessControl ) > 
+
+<!ATTLIST ServiceHeader xmlns CDATA #FIXED
+          "http://www.rosettanet.org/RNIF/V02.00" >
+
+<!ELEMENT ProcessControl ( 
+          ActivityControl ,
+          GlobalUsageCode ,
+          partnerDefinedPIPPayloadBindingId? ,
+          pipCode ,
+          pipInstanceId ,
+          pipVersion ,
+          QualityOfServiceSpecification?,
+(           KnownInitiatingPartner |
+           UnknownInitiatingPartner ) ) > 
+
+<!ELEMENT ActivityControl ( 
+          BusinessActivityIdentifier ,
+          MessageControl ) > 
+
+<!ELEMENT BusinessActivityIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT MessageControl ( 
+          fromRole ,
+          fromService ,
+          inReplyTo? ,
+          Manifest ,
+          toRole ,
+          toService ) > 
+
+<!ELEMENT fromRole
+           ( GlobalPartnerRoleClassificationCode ) > 
+
+<!ELEMENT GlobalPartnerRoleClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT fromService
+           ( GlobalBusinessServiceCode ) > 
+
+<!ELEMENT GlobalBusinessServiceCode
+           ( #PCDATA ) >
+
+<!ELEMENT inReplyTo
+            ( ActionControl ) > 
+
+<!ELEMENT ActionControl ( 
+          ActionIdentity ,
+          messageTrackingID ) > 
+
+<!ELEMENT ActionIdentity ( 
+          GlobalBusinessActionCode ,
+          messageStandard? ,
+          standardVersion? ) > 
+
+<!ELEMENT GlobalBusinessActionCode
+           ( #PCDATA ) >
+
+<!ELEMENT messageStandard
+           ( FreeFormText ) > 
+
+<!ELEMENT FreeFormText
+           ( #PCDATA ) >
+<!ATTLIST FreeFormText
+           xml:lang CDATA #IMPLIED >
+
+<!ELEMENT standardVersion
+           ( VersionIdentifier ) > 
+
+<!ELEMENT VersionIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT messageTrackingID
+           ( InstanceIdentifier ) > 
+
+<!ELEMENT InstanceIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT Manifest ( 
+          Attachment* ,
+          numberOfAttachments ,
+          ServiceContentControl ) > 
+
+<!ELEMENT Attachment ( 
+          description? ,
+          GlobalMimeTypeQualifierCode ,
+          UniversalResourceIdentifier ) > 
+
+<!ELEMENT description
+            ( FreeFormText ) > 
+
+<!ELEMENT GlobalMimeTypeQualifierCode
+           ( #PCDATA ) >
+
+<!ELEMENT UniversalResourceIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT numberOfAttachments
+           ( CountableAmount ) > 
+
+<!ELEMENT CountableAmount
+           ( #PCDATA ) >
+
+<!ELEMENT ServiceContentControl ( 
+(           ActionIdentity |
+           SignalIdentity ) ) > 
+
+<!ELEMENT SignalIdentity ( 
+          GlobalBusinessSignalCode ,
+          VersionIdentifier ) > 
+
+<!ELEMENT GlobalBusinessSignalCode
+           ( #PCDATA ) >
+
+<!ELEMENT toRole
+            ( GlobalPartnerRoleClassificationCode ) > 
+
+<!ELEMENT toService
+            ( GlobalBusinessServiceCode ) > 
+
+<!ELEMENT GlobalUsageCode
+           ( #PCDATA ) >
+
+<!ELEMENT KnownInitiatingPartner ( 
+          PartnerIdentification ) > 
+
+<!ELEMENT PartnerIdentification ( 
+          domain? ,
+          GlobalBusinessIdentifier ,
+          locationID? ) > 
+
+<!ELEMENT domain
+            ( FreeFormText ) > 
+
+<!ELEMENT GlobalBusinessIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT locationID
+            ( Value ) > 
+
+<!ELEMENT UnknownInitiatingPartner ( 
+          PartnerIdentification ,
+          UniformResourceLocator ) > 
+
+<!ELEMENT UniformResourceLocator
+           ( #PCDATA ) >
+
+<!ELEMENT partnerDefinedPIPPayloadBindingId
+           ( ProprietaryReferenceIdentifier ) > 
+
+<!ELEMENT ProprietaryReferenceIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT pipCode
+           ( GlobalProcessIndicatorCode ) > 
+
+<!ELEMENT GlobalProcessIndicatorCode
+           ( #PCDATA ) >
+
+<!ELEMENT pipInstanceId
+            ( InstanceIdentifier ) > 
+
+<!ELEMENT pipVersion
+            ( VersionIdentifier ) > 
+
+<!ELEMENT QualityOfServiceSpecification ( 
+          QualityOfServiceElement+ ) > 
+
+<!ELEMENT QualityOfServiceElement ( 
+          QualityOfServiceClassificationCode ,
+          Value ) > 
+
+<!ELEMENT QualityOfServiceClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT Value
+           ( #PCDATA ) >
+

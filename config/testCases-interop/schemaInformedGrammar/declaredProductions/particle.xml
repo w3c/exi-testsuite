@@ -1,0 +1,95 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - Particle">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | particleGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/particle.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#particles"/>
+
+    <testCase name="schemaInformed.declared.particle-01">
+        <param name="testDescription" 
+          value="0 occurrences of an element particle that has (minOccurs,maxOccurs) of (0,3)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-01.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-02">
+        <param name="testDescription"  
+          value="3 occurrences of an element particle that has (minOccurs,maxOccurs) of (0,3)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-02.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-03">
+        <param name="testDescription" 
+          value="5 occurrences of an element particle that has (minOccurs,maxOccurs) of (0,unbounded)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-03.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-04">
+        <param name="testDescription" 
+          value="2 occurrences of a sequence particle that has (minOccurs,maxOccurs) of (2,2)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-04.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-05">
+        <param name="testDescription" 
+          value="2 occurrences of a sequence particle that has (minOccurs,maxOccurs) of (2,5)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-05.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-06">
+        <param name="testDescription" 
+          value="5 occurrences of a sequence particle that has (minOccurs,maxOccurs) of (2,5)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-06.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-07">
+        <param name="testDescription" 
+          value="6 occurrences of a sequence particle that has (minOccurs,maxOccurs) of (2,unbounded)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-07.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-08">
+        <param name="testDescription" 
+          value="0 occurrences of a choice particle that has (minOccurs,maxOccurs) of (0,3)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-08.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-09">
+        <param name="testDescription" 
+          value="3 occurrences of a choice particle that has (minOccurs,maxOccurs) of (0,3)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-09.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-10">
+        <param name="testDescription" 
+          value="5 occurrences of a choice particle that has (minOccurs,maxOccurs) of (0,unbounded)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-10.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-11">
+        <param name="testDescription" 
+          value="2 occurrences of a choice particle that has (minOccurs,maxOccurs) of (2,2)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-11.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-12">
+        <param name="testDescription" 
+          value="2 occurrences of a choice particle that has (minOccurs,maxOccurs) of (2,5)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-12.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-13">
+        <param name="testDescription" 
+          value="5 occurrences of a choice particle that has (minOccurs,maxOccurs) of (2,5)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-13.xml" />
+    </testCase>
+
+    <testCase name="schemaInformed.declared.particle-14">
+        <param name="testDescription" 
+          value="6 occurrences of a choice particle that has (minOccurs,maxOccurs) of (2,unbounded)"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/particle-14.xml" />
+    </testCase>
+
+</testCaseGroup>

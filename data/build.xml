@@ -1,0 +1,69 @@
+<project name="ttfms-data-prepare" default="prepare">
+    <property environment="env"/>
+
+    <target name="mage-ml-set">
+      <uptodate property="mage-ml-uptodate">
+	<srcfiles dir="MAGE-ML" includes="*.zip"/>
+	<mapper type="glob" from="*.zip" to="*"/>
+      </uptodate>
+    </target>
+    <target name="heprep-set">
+      <uptodate property="heprep-uptodate">
+	<srcfiles dir="HepRep" includes="*.gz"/>
+	<mapper type="glob" from="*.gz" to="*"/>
+      </uptodate>
+    </target>
+    <target name="uptodate-set" depends="mage-ml-set,heprep-set"/>
+
+    <target name="gunzip">
+        <gunzip src="AVCL/telemCompTest1M.xml.gz"/>
+        <gunzip src="AVCL/telemCompTest10M.xml.gz"/>
+        <gunzip src="SeismicData/seis.xml.gz"/>
+        <gunzip src="X3D/distillery.x3d.gz"/>
+        <gunzip src="X3D/PixelTextureNavyJackDontTreadOnMe.x3d.gz"/>
+        <gunzip src="X3D/racer.x3d.gz"/>
+        <gunzip src="X3D/teapot.x3d.gz"/>
+    </target>
+    <target name="unzip-mage-ml" unless="mage-ml-uptodate">
+	<unzip src="MAGE-ML/A-TIGR-1-ArrayDesign.xml.zip" dest="MAGE-ML"/>
+	<touch file="MAGE-ML/A-TIGR-1-ArrayDesign.xml"/>
+        <unzip src="MAGE-ML/A-TIGR-1-BioSequence.xml.zip" dest="MAGE-ML"/>
+	<touch file="MAGE-ML/A-TIGR-1-BioSequence.xml"/>
+	<unzip src="MAGE-ML/A-TIGR-1-DesignElement.xml.zip" dest="MAGE-ML"/>
+	<touch file="MAGE-ML/A-TIGR-1-DesignElement.xml"/>
+	<unzip src="MAGE-ML/Iron_array.xml.zip" dest="MAGE-ML"/>
+	<touch file="MAGE-ML/Iron_array.xml"/>
+	<unzip src="MAGE-ML/MAGE-ML.dtd.zip" dest="MAGE-ML"/>
+	<touch file="MAGE-ML/MAGE-ML.dtd"/>
+	<unzip src="MAGE-ML/MAGE.xmi.zip" dest="MAGE-ML"/>
+	<touch file="MAGE-ML/MAGE.xmi"/>
+    </target>
+    <target name="unzip-heprep" unless="heprep-uptodate">
+	<gunzip src="HepRep/HEP_G4Data0.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/HEP_G4Data0.heprep"/>
+	<gunzip src="HepRep/HEP_G4Data1.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/HEP_G4Data1.heprep"/>
+	<gunzip src="HepRep/HEP_G4Data2.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/HEP_G4Data2.heprep"/>
+	<gunzip src="HepRep/HEP_G4Data3.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/HEP_G4Data3.heprep"/>
+	<gunzip src="HepRep/HEP_G4Data4.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/HEP_G4Data4.heprep"/>
+	<unzip src="HepRep/Event-1.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/Event-1.heprep"/>
+	<unzip src="HepRep/Event-13.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/Event-13.heprep"/>
+	<unzip src="HepRep/Medical_G4Data2.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/Medical_G4Data2.heprep"/>
+	<unzip src="HepRep/Medical_G4Data3.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/Medical_G4Data3.heprep"/>
+	<unzip src="HepRep/babar2.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/babar2.heprep"/>
+	<unzip src="HepRep/run_51994_(142)_35180b_fa726287.heprep.gz" dest="HepRep"/>
+	<touch file="HepRep/run_51994_(142)_35180b_fa726287.heprep"/>
+    </target>
+    <target name="unzip" depends="unzip-mage-ml,unzip-heprep"/>
+
+    <target name="prepare" depends="uptodate-set,gunzip,unzip"/>
+ 
+</project>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Schema for Generalized Analytical Markup Language (GAML).  James Duckworth, Thermo Informatics (James.Duckworth@thermo.com)-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:annotation>
+		<xsd:documentation>Schema for GAML data model for archival storage of analytical instrument measurement data.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="GAML">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="integrity" minOccurs="0">
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:hexBinary">
+								<xsd:attribute name="algorithm" use="required">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:NMTOKEN">
+											<xsd:enumeration value="SHA1"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:attribute>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="experiment" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:string" use="required"/>
+			<xsd:attribute name="name" type="name" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="experiment">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="collectdate" minOccurs="0"/>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="trace" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="name" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="trace">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="coordinates" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Xdata" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="name" use="optional"/>
+			<xsd:attribute name="technique" type="technique" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="coordinates">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="link" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="values"/>
+			</xsd:sequence>
+			<xsd:attribute name="units" type="units" use="required"/>
+			<xsd:attribute name="label" type="label" use="optional"/>
+			<xsd:attribute name="linkid" type="linkid" use="optional"/>
+			<xsd:attribute name="valueorder" type="valueorder" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Xdata">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="link" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="values"/>
+				<xsd:element ref="altXdata" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="Ydata" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="units" type="units" use="required"/>
+			<xsd:attribute name="label" type="label" use="optional"/>
+			<xsd:attribute name="linkid" type="linkid" use="optional"/>
+			<xsd:attribute name="valueorder" type="valueorder" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="altXdata">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="link" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="values"/>
+			</xsd:sequence>
+			<xsd:attribute name="units" type="units" use="required"/>
+			<xsd:attribute name="label" type="label" use="optional"/>
+			<xsd:attribute name="linkid" type="linkid" use="optional"/>
+			<xsd:attribute name="valueorder" type="valueorder" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Ydata">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="values"/>
+				<xsd:element ref="peaktable" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="units" type="units" use="required"/>
+			<xsd:attribute name="label" type="label" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="values">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:base64Binary">
+					<xsd:attribute name="format" use="required">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:NMTOKEN">
+								<xsd:enumeration value="FLOAT32"/>
+								<xsd:enumeration value="FLOAT64"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+					<xsd:attribute name="byteorder" use="required">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:NMTOKEN">
+								<xsd:enumeration value="INTEL"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+					<xsd:attribute name="numvalues" use="optional">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:positiveInteger"/>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="peaktable">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="peak" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+							<xsd:element name="peakXvalue">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:double"/>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="peakYvalue">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:double"/>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="baseline" minOccurs="0">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element ref="parameter" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="startXvalue">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:double"/>
+											</xsd:simpleType>
+										</xsd:element>
+										<xsd:element name="startYvalue">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:double"/>
+											</xsd:simpleType>
+										</xsd:element>
+										<xsd:element name="endXvalue">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:double"/>
+											</xsd:simpleType>
+										</xsd:element>
+										<xsd:element name="endYvalue">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:double"/>
+											</xsd:simpleType>
+										</xsd:element>
+										<xsd:element name="basecurve" minOccurs="0">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="baseXdata">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element ref="values"/>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+													<xsd:element name="baseYdata">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element ref="values"/>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="number" use="required">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:positiveInteger"/>
+							</xsd:simpleType>
+						</xsd:attribute>
+						<xsd:attribute name="group" type="group" use="optional"/>
+						<xsd:attribute name="name" type="name" use="optional"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="name" type="name" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="parameter">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="group" type="group" use="optional"/>
+					<xsd:attribute name="name" type="name" use="required"/>
+					<xsd:attribute name="label" type="label" use="optional"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="link">
+		<xsd:complexType>
+			<xsd:attribute name="linkref" type="linkref" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="collectdate">
+		<xsd:simpleType>
+			<xsd:restriction base="xsd:dateTime"/>
+		</xsd:simpleType>
+	</xsd:element>
+	<xsd:simpleType name="group">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="label">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="linkid">
+		<xsd:restriction base="xsd:ID"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="linkref">
+		<xsd:restriction base="xsd:IDREF"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="name">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="technique">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="ATOMIC"/>
+			<xsd:enumeration value="CHROM"/>
+			<xsd:enumeration value="FLUOR"/>
+			<xsd:enumeration value="IR"/>
+			<xsd:enumeration value="MS"/>
+			<xsd:enumeration value="NIR"/>
+			<xsd:enumeration value="NMR"/>
+			<xsd:enumeration value="PDA"/>
+			<xsd:enumeration value="PARTICLE"/>
+			<xsd:enumeration value="POLAR"/>
+			<xsd:enumeration value="RAMAN"/>
+			<xsd:enumeration value="THERMAL"/>
+			<xsd:enumeration value="UNKNOWN"/>
+			<xsd:enumeration value="UVVIS"/>
+			<xsd:enumeration value="XRAY"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="units">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="ABSORBANCE"/>
+			<xsd:enumeration value="AMPERES"/>
+			<xsd:enumeration value="ANGSTROMS"/>
+			<xsd:enumeration value="ATOMICMASSUNITS"/>
+			<xsd:enumeration value="CALORIES"/>
+			<xsd:enumeration value="CELSIUS"/>
+			<xsd:enumeration value="CENTIMETERS"/>
+			<xsd:enumeration value="DAYS"/>
+			<xsd:enumeration value="DECIBELS"/>
+			<xsd:enumeration value="DEGREES"/>
+			<xsd:enumeration value="ELECTRONVOLTS"/>
+			<xsd:enumeration value="EMISSION"/>
+			<xsd:enumeration value="FAHRENHEIT"/>
+			<xsd:enumeration value="GHERTZ"/>
+			<xsd:enumeration value="GRAMS"/>
+			<xsd:enumeration value="HERTZ"/>
+			<xsd:enumeration value="HOURS"/>
+			<xsd:enumeration value="JOULES"/>
+			<xsd:enumeration value="KELVIN"/>
+			<xsd:enumeration value="KILOCALORIES"/>
+			<xsd:enumeration value="KILOGRAMS"/>
+			<xsd:enumeration value="KILOHERTZ"/>
+			<xsd:enumeration value="KILOMETERS"/>
+			<xsd:enumeration value="KILOWATTS"/>
+			<xsd:enumeration value="KUBELKAMUNK"/>
+			<xsd:enumeration value="LITERS"/>
+			<xsd:enumeration value="LOGREFLECTANCE"/>
+			<xsd:enumeration value="MASSCHARGERATIO"/>
+			<xsd:enumeration value="MEGAHERTZ"/>
+			<xsd:enumeration value="MEGAWATTS"/>
+			<xsd:enumeration value="METERS"/>
+			<xsd:enumeration value="MICROGRAMS"/>
+			<xsd:enumeration value="MICRONS"/>
+			<xsd:enumeration value="MICROSECONDS"/>
+			<xsd:enumeration value="MILLIABSORBANCE"/>
+			<xsd:enumeration value="MILLIAMPS"/>
+			<xsd:enumeration value="MILLIGRAMS"/>
+			<xsd:enumeration value="MILLILITERS"/>
+			<xsd:enumeration value="MILLIMETERS"/>
+			<xsd:enumeration value="MILLIMOLAR"/>
+			<xsd:enumeration value="MILLISECONDS"/>
+			<xsd:enumeration value="MILLIVOLTS"/>
+			<xsd:enumeration value="MILLIWATTS"/>
+			<xsd:enumeration value="MINUTES"/>
+			<xsd:enumeration value="MOLAR"/>
+			<xsd:enumeration value="MOLES"/>
+			<xsd:enumeration value="NANOGRAMS"/>
+			<xsd:enumeration value="NANOMETERS"/>
+			<xsd:enumeration value="NANOSECONDS"/>
+			<xsd:enumeration value="PPB"/>
+			<xsd:enumeration value="PPM"/>
+			<xsd:enumeration value="PPT"/>
+			<xsd:enumeration value="RADIANS"/>
+			<xsd:enumeration value="RAMANSHIFT"/>
+			<xsd:enumeration value="REFLECTANCE"/>
+			<xsd:enumeration value="SECONDS"/>
+			<xsd:enumeration value="TRANSMISSIONPERCENT"/>
+			<xsd:enumeration value="TRANSMITTANCE"/>
+			<xsd:enumeration value="UNKNOWN"/>
+			<xsd:enumeration value="VOLTS"/>
+			<xsd:enumeration value="WATTS"/>
+			<xsd:enumeration value="WAVENUMBER"/>
+			<xsd:enumeration value="YEARS"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="valueorder">
+		<xsd:restriction base="xsd:NMTOKEN">
+			<xsd:enumeration value="EVEN"/>
+			<xsd:enumeration value="ORDERED"/>
+			<xsd:enumeration value="UNSPECIFIED"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

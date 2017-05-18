@@ -1,0 +1,15 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+
+    <param name="japex.classPath" value="${japex.home}/jdsl/jdsl.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="LibXML2"/>
+
+    <driver name="LibXML2Document" normal="true">
+        <param name="japex.driverClass" value="org.w3c.exi.ttf.BaseNativeDriver"/>
+        <param name="description" value="LibXML2 document"/>
+        <param name="libraryName" value="JapexNativeDriver2"/>
+        <param name="org.w3c.exi.ttf.applicationClass" value="document"/>
+    </driver>
+
+</driverGroup>

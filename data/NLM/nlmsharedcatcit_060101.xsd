@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NLMSharedCatCit DTD
+  
+     Comments and suggestions are welcome.
+     January 1, 2006
+  
+  
+     This is the DTD for data elements that are shared between 
+     NLMCatalogRecord and NLMMedlineCitation DTDs at the 
+     U.S. National Library of Medicine. 
+  
+    NOTE:  The use of "Medline" in a DTD or element name does not mean the record 
+    represents a citation from a Medline-selected journal.  When the NLM DTDs and 
+    XML elements were first created, MEDLINE records were the only data exported. 
+    Now NLM exports citations other than MEDLINE records using these tools. To 
+    minimize unnecessary disruption to users of the data and tools, NLM has
+    retained the original DTD and element names (e.g., NLMMedline DTD, MedlineTA,
+    MedlineJournalInfo)).       
+  
+  * = 0 or more occurrences (optional element, repeatable)
+  ? = 0 or 1 occurrences (optional element, at most 1)
+  + = 1 or more occurrences (required element, repeatable)
+   | = choice, one or the other but not both 
+  no symbol = required element
+-->
+<!-- ================================================================= -->
+<!--
+  Revision Notes Section 
+  
+  The following changes were made in the nlmsharedcatcit_060101.dtd:
+  
+       a.  Changed entity reference from "nlmcommon_041101.dtd"
+                        to "nlmcommon_060101.dtd"
+  
+       b.  Prefix attribute in OtherID moved before Source attribute
+  
+      Historic Revision notes for previous versions of NLMSharedcatcit DTD
+       See:
+       http://www.nlm.nih.gov/databases/dtd/history_dtd_nlmsharedcatcit.html
+  
+-->
+<!-- ====================================================================== -->
+<!-- Reference to Where the NLMCommon DTD is located -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:include schemaLocation="nlmcommon_060101.xsd"/>
+  <!-- ================================================================= -->
+  <!-- ================================================================= -->
+  <!-- Further Definitions of NLM Tags -->
+  <xs:element name="Chemical">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="RegistryNumber"/>
+        <xs:element ref="NameOfSubstance"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChemicalList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Chemical"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DateCompleted" type="normal.date"/>
+  <xs:element name="DateCreated" substitutionGroup="DateCreated.Ref"/>
+  <xs:element name="DateRevised" type="normal.date"/>
+  <xs:element name="GeneralNote">
+    <xs:complexType mixed="true">
+      <xs:attribute name="Owner" default="Undetermined" type="Owner"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Investigator">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="personal.name"/>
+        <xs:element minOccurs="0" ref="Affiliation"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InvestigatorList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Investigator"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Keyword">
+    <xs:complexType mixed="true">
+      <xs:attribute name="MajorTopicYN" default="N">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="Y"/>
+            <xs:enumeration value="N"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KeywordList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Keyword"/>
+      </xs:sequence>
+      <xs:attribute name="Owner" default="NLM" type="Owner"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NameOfSubstance" type="xs:string"/>
+  <xs:element name="OtherAbstract">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="Abstract">
+          <xs:attribute name="Type" use="required">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="AAMC"/>
+                <xs:enumeration value="HMD"/>
+                <xs:enumeration value="HSR"/>
+                <xs:enumeration value="KIE"/>
+                <xs:enumeration value="NASA"/>
+                <xs:enumeration value="NCBI"/>
+                <xs:enumeration value="NLM"/>
+                <xs:enumeration value="NTIS"/>
+                <xs:enumeration value="NYA"/>
+                <xs:enumeration value="PIP"/>
+                <xs:enumeration value="Producer"/>
+                <xs:enumeration value="Undetermined"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OtherID">
+    <xs:complexType mixed="true">
+      <xs:attribute name="Prefix"/>
+      <xs:attribute name="Source" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="HMD"/>
+            <xs:enumeration value="HSR"/>
+            <xs:enumeration value="IDM"/>
+            <xs:enumeration value="KIE"/>
+            <xs:enumeration value="NASA"/>
+            <xs:enumeration value="NLM"/>
+            <xs:enumeration value="NYA"/>
+            <xs:enumeration value="OCLC"/>
+            <xs:enumeration value="PIP"/>
+            <xs:enumeration value="Undetermined"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PersonalNameSubject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="personal.name"/>
+        <xs:element minOccurs="0" ref="DatesAssociatedWithName"/>
+        <xs:element minOccurs="0" ref="NameQualifier"/>
+        <xs:element minOccurs="0" ref="OtherInformation"/>
+        <xs:element minOccurs="0" ref="TitleAssociatedWithName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PersonalNameSubjectList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="PersonalNameSubject"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistryNumber" type="xs:string"/>
+  <xs:element name="SpaceFlightMission" type="xs:string"/>
+</xs:schema>

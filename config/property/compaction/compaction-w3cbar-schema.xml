@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This configuration ignores test case fidelity settings. It is used for determing -->
+<!-- whether candidates meet the W3C compactness bar. The W3C compactness bar for application -->
+<!-- classes "schema" and "both" is based on ASN.1 PER, which does not preserve comments, pis-->
+<!-- whitespace, dtds, etc. -->
+<testSuite name="Compaction (W3C BAR):Schema"
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <param name="japex.warmupIterations" value="0"/>
+    <param name="japex.runIterations" value="0"/>
+    <param name="japex.resultUnit" value="bytes"/>
+
+    <param name="japex.reportsDirectory" value="reports/property/compaction/schema"/>
+    <param name="org.w3c.exi.ttf.measurementProperty" value="compactness"/>
+
+    <param name="org.w3c.exi.ttf.dataSourceSink.URI" value="memory:/"/>
+    <param name="org.w3c.exi.ttf.ignoreFidelitySettings" value="true"/>
+
+    <xi:include href="../../drivers/sax/xml-neither.xml"/>
+    <xi:include href="drivers-schema.xml"/>
+</testSuite>

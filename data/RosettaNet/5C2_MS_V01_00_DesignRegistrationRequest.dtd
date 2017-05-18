@@ -1,0 +1,550 @@
+<!-- 
+
+RosettaNet XML Message Schema
+5C2_MS_V01_00_DesignRegistrationRequest.dtd (22-Jul-2003 3:59:22 PM)
+This document has been prepared by RosettaNet (http://www.rosettanet.org) from requirements gathered during the cluster/segment workshops and in conformance with the RosettaNet methodology.
+
+-->
+
+<!ENTITY % common-attributes "id CDATA #IMPLIED">
+
+<!ELEMENT Pip5C2DesignRegistrationRequest
+	(DesignRegistrationInformation, 
+	 fromRole, 
+	 GlobalDocumentFunctionCode, 
+	 thisDocumentGenerationDateTime, 
+	 thisDocumentIdentifier, 
+	 toRole)>
+
+<!ELEMENT DesignRegistrationInformation
+	(DesignProjectInformation)>
+
+<!ELEMENT DesignProjectInformation
+	(DesignAssemblyInformation+, 
+	 DesignCustomerInformation?, 
+	 DesignProjectDescription, 
+	 productProviderLeadDescription?, 
+	 productProviderLeadTrackingIdentifier?, 
+	 projectIdentifier?, 
+	 ProjectStatusCode?)>
+
+<!ELEMENT DesignAssemblyInformation
+	(assemblyDescription, 
+	 assemblyName?, 
+	 assemblyProductionDate, 
+	 assemblyPrototypeDate, 
+	 demandCreatorTrackingIdentifier, 
+	 DesignCustomerInformation, 
+	 DesignPartInformation+, 
+	 DesignRegistrationIdentification?, 
+	 estimated1stYearAssemblyQuantity, 
+	 estimated2ndYearAssemblyQuantity?, 
+	 estimated3rdYearAssemblyQuantity?, 
+	 estimatedLifetimeQuantity?, 
+	 GeographicRegion?, 
+	 GlobalRegistrationComplexityLevelCode?, 
+	 GlobalRegistrationInvolvementLevelCode?, 
+	 productProviderLeadDescription?, 
+	 productProviderLeadTrackingIdentifier?, 
+	 RegistrationStatus?)>
+
+<!ELEMENT assemblyDescription
+	(TextualDescription)>
+
+<!ELEMENT TextualDescription
+	(detail?, 
+	 primary?, 
+	 summary?)>
+
+<!ELEMENT detail
+	(FreeFormText)>
+
+<!ELEMENT FreeFormText
+	(#PCDATA)>
+
+<!ATTLIST FreeFormText xml:lang CDATA #IMPLIED >
+
+<!ELEMENT primary
+	(FreeFormText)>
+
+<!ELEMENT summary
+	(FreeFormText)>
+
+<!ELEMENT assemblyName
+	(FreeFormText)>
+
+<!ELEMENT assemblyProductionDate
+	(DateStamp)>
+
+<!ELEMENT DateStamp
+	(#PCDATA)>
+
+<!ELEMENT assemblyPrototypeDate
+	(DateStamp)>
+
+<!ELEMENT demandCreatorTrackingIdentifier
+	(ProprietaryReferenceIdentifier)>
+
+<!ELEMENT ProprietaryReferenceIdentifier
+	(#PCDATA)>
+
+<!ELEMENT DesignCustomerInformation
+	(designCustomer?, 
+	 designCustomerApplicationEngineer?, 
+	 designCustomerDistributorBranch?, 
+	 GlobalPartnerClassificationCode?, 
+	 pointOfSaleCustomer*, 
+	 pointOfSaleCustomerDistributorBranch?)>
+
+<!ELEMENT designCustomer
+	(PartnerDescription)>
+
+<!ELEMENT PartnerDescription
+	(BusinessDescription, 
+	 ContactInformation?, 
+	 GlobalPartnerClassificationCode, 
+	 PhysicalLocation?)>
+
+<!ELEMENT BusinessDescription
+	(businessName?, 
+	 GlobalBusinessIdentifier?, 
+	 PartnerBusinessIdentification*, 
+	 GlobalSupplyChainCode?)>
+
+<!ELEMENT businessName
+	(FreeFormText)>
+
+<!ELEMENT GlobalBusinessIdentifier
+	(#PCDATA)>
+
+<!ELEMENT PartnerBusinessIdentification
+	(ProprietaryBusinessIdentifier, 
+	 ProprietaryDomainIdentifier, 
+	 ProprietaryIdentifierAuthority?)>
+
+<!ELEMENT ProprietaryBusinessIdentifier
+	(#PCDATA)>
+
+<!ELEMENT ProprietaryDomainIdentifier
+	(#PCDATA)>
+
+<!ELEMENT ProprietaryIdentifierAuthority
+	(#PCDATA)>
+
+<!ELEMENT ContactInformation
+	(contactName, 
+	 EmailAddress?, 
+	 facsimileNumber?, 
+	 telephoneNumber?, 
+	 PhysicalLocation?)>
+
+<!ELEMENT contactName
+	(FreeFormText)>
+
+<!ELEMENT EmailAddress
+	(#PCDATA)>
+
+<!ELEMENT facsimileNumber
+	(CommunicationsNumber)>
+
+<!ELEMENT CommunicationsNumber
+	(#PCDATA)>
+
+<!ELEMENT telephoneNumber
+	(CommunicationsNumber)>
+
+<!ELEMENT GlobalPartnerClassificationCode
+	(#PCDATA)>
+
+<!ELEMENT PhysicalLocation
+	(GlobalLocationIdentifier?, 
+	 PartnerLocationIdentification*, 
+	 PhysicalAddress?)>
+
+<!ELEMENT GlobalLocationIdentifier
+	(#PCDATA)>
+
+<!ELEMENT PartnerLocationIdentification
+	(ProprietaryDomainIdentifier, 
+	 ProprietaryIdentifierAuthority?, 
+	 ProprietaryLocationIdentifier)>
+
+<!ELEMENT ProprietaryLocationIdentifier
+	(#PCDATA)>
+
+<!ELEMENT PhysicalAddress
+	(addressLine1?, 
+	 addressLine2?, 
+	 addressLine3?, 
+	 cityName?, 
+	 GlobalCountryCode?, 
+	 NationalPostalCode?, 
+	 postOfficeBoxIdentifier?, 
+	 regionName?)>
+
+<!ELEMENT addressLine1
+	(FreeFormText)>
+
+<!ELEMENT addressLine2
+	(FreeFormText)>
+
+<!ELEMENT addressLine3
+	(FreeFormText)>
+
+<!ELEMENT cityName
+	(FreeFormText)>
+
+<!ELEMENT GlobalCountryCode
+	(#PCDATA)>
+
+<!ELEMENT NationalPostalCode
+	(#PCDATA)>
+
+<!ELEMENT postOfficeBoxIdentifier
+	(FreeFormText)>
+
+<!ELEMENT regionName
+	(FreeFormText)>
+
+<!ELEMENT designCustomerApplicationEngineer
+	(PartnerDescription)>
+
+<!ELEMENT designCustomerDistributorBranch
+	(GlobalLocationIdentifier)>
+
+<!ELEMENT pointOfSaleCustomer
+	(PartnerDescription)>
+
+<!ELEMENT pointOfSaleCustomerDistributorBranch
+	(GlobalLocationIdentifier)>
+
+<!ELEMENT DesignPartInformation
+	(Attachment?, 
+ (CoreProductRegistration|DeviceProductRegistration)+, 
+	 demandCreatorFieldApplicationEngineer, 
+	 demandCreatorSalesRepresentative, 
+	 demandCreatorTrackingIdentifier, 
+	 DesignCustomerInformation?, 
+	 DesignRegistrationIdentification?, 
+	 GeographicRegion?, 
+	 independentFieldApplicationEngineer?, 
+	 independentSalesRepresentative?, 
+	 partConfidencePercent?, 
+	 partImplementorComments?, 
+	 productProviderFieldApplicationEngineer?, 
+	 productProviderSalesRepresentative?, 
+	 ProductQuantity)>
+
+<!ELEMENT Attachment
+	(description?, 
+	 GlobalAttachmentDescriptionCode?, 
+	 GlobalMimeTypeQualifierCode, 
+	 UniversalResourceIdentifier)>
+
+<!ELEMENT description
+	(FreeFormText)>
+
+<!ELEMENT GlobalAttachmentDescriptionCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalMimeTypeQualifierCode
+	(#PCDATA)>
+
+<!ELEMENT UniversalResourceIdentifier
+	(#PCDATA)>
+
+<!ELEMENT CoreProductRegistration
+	(DebitAuthorizationNumber?, 
+	 DesignCompetitorInformation*, 
+	 DeviceProductRegistration*, 
+	 DocumentReference*, 
+	 GlobalProductClassificationCode?, 
+	 isDeveloperToolKit?, 
+	 isPartSelected, 
+	 isRegisterable, 
+	 minimumOrderQuantity?, 
+	 ProductIdentification, 
+	 productProviderLeadDescription?, 
+	 productProviderLeadTrackingIdentifier?, 
+	 RegistrationStatus?, 
+	 TextualDescription?, 
+	 unitPrice?)>
+
+<!ELEMENT DebitAuthorizationNumber
+	(#PCDATA)>
+
+<!ELEMENT DesignCompetitorInformation
+	(comment?, 
+	 competitorName?, 
+	 competitorPartNumber?, 
+	 targetResaleAmount?)>
+
+<!ELEMENT comment
+	(FreeFormText)>
+
+<!ELEMENT competitorName
+	(FreeFormText)>
+
+<!ELEMENT competitorPartNumber
+	(ProprietaryReferenceIdentifier)>
+
+<!ELEMENT targetResaleAmount
+	(FinancialAmount)>
+
+<!ELEMENT FinancialAmount
+	(GlobalCurrencyCode, 
+	 GlobalMonetaryAmountTypeCode?, 
+	 InvoiceChargeTypeCode?, 
+	 MonetaryAmount)>
+
+<!ELEMENT GlobalCurrencyCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalMonetaryAmountTypeCode
+	(#PCDATA)>
+
+<!ELEMENT InvoiceChargeTypeCode
+	(#PCDATA)>
+
+<!ELEMENT MonetaryAmount
+	(#PCDATA)>
+
+<!ELEMENT DeviceProductRegistration
+	(DebitAuthorizationNumber?, 
+	 DesignCompetitorInformation*, 
+	 DocumentReference*, 
+	 GlobalProductClassificationCode?, 
+	 isDeveloperToolKit?, 
+	 isPartSelected, 
+	 isRegisterable, 
+	 minimumOrderQuantity?, 
+	 ProductIdentification, 
+	 productProviderLeadDescription?, 
+	 productProviderLeadTrackingIdentifier?, 
+	 RegistrationStatus?, 
+	 TextualDescription?, 
+	 unitPrice?)>
+
+<!ELEMENT DocumentReference
+	(DateTimeStamp?, 
+	 GlobalDocumentReferenceTypeCode, 
+	 GlobalPartnerRoleClassificationCode?, 
+	 LineNumber?, 
+	 ProprietaryDocumentIdentifier, 
+	 RevisionNumber?)>
+
+<!ELEMENT DateTimeStamp
+	(#PCDATA)>
+
+<!ELEMENT GlobalDocumentReferenceTypeCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalPartnerRoleClassificationCode
+	(#PCDATA)>
+
+<!ELEMENT LineNumber
+	(#PCDATA)>
+
+<!ELEMENT ProprietaryDocumentIdentifier
+	(#PCDATA)>
+
+<!ELEMENT RevisionNumber
+	(#PCDATA)>
+
+<!ELEMENT GlobalProductClassificationCode
+	(#PCDATA)>
+
+<!ELEMENT isDeveloperToolKit
+	(AffirmationIndicator)>
+
+<!ELEMENT AffirmationIndicator
+	(#PCDATA)>
+
+<!ELEMENT isPartSelected
+	(AffirmationIndicator)>
+
+<!ELEMENT isRegisterable
+	(AffirmationIndicator)>
+
+<!ELEMENT minimumOrderQuantity
+	(ProductQuantity)>
+
+<!ELEMENT ProductQuantity
+	(#PCDATA)>
+
+<!ELEMENT ProductIdentification
+	(GlobalProductIdentifier?, 
+	 PartnerProductIdentification*)>
+
+<!ELEMENT GlobalProductIdentifier
+	(#PCDATA)>
+
+<!ELEMENT PartnerProductIdentification
+	(GlobalPartnerClassificationCode, 
+	 ProprietaryProductIdentifier, 
+	 revisionIdentifier?)>
+
+<!ELEMENT ProprietaryProductIdentifier
+	(#PCDATA)>
+
+<!ELEMENT revisionIdentifier
+	(FreeFormText)>
+
+<!ELEMENT productProviderLeadDescription
+	(FreeFormText)>
+
+<!ELEMENT productProviderLeadTrackingIdentifier
+	(ProprietaryReferenceIdentifier)>
+
+<!ELEMENT RegistrationStatus
+	(DesignWinStatusReasonCode?, 
+	 designWinStatusReasonCodeExplanation?, 
+	 GlobalRegistrationStatusCode, 
+	 registrationStatusDate)>
+
+<!ELEMENT DesignWinStatusReasonCode
+	(#PCDATA)>
+
+<!ELEMENT designWinStatusReasonCodeExplanation
+	(FreeFormText)>
+
+<!ELEMENT GlobalRegistrationStatusCode
+	(#PCDATA)>
+
+<!ELEMENT registrationStatusDate
+	(DateStamp)>
+
+<!ELEMENT unitPrice
+	(ProductPricing)>
+
+<!ELEMENT ProductPricing
+	(FinancialAmount, 
+	 GlobalPriceTypeCode)>
+
+<!ELEMENT GlobalPriceTypeCode
+	(#PCDATA)>
+
+<!ELEMENT demandCreatorFieldApplicationEngineer
+	(ContactInformation)>
+
+<!ELEMENT demandCreatorSalesRepresentative
+	(ContactInformation)>
+
+<!ELEMENT DesignRegistrationIdentification
+	(designRegistrationIdentifier?, 
+	 designRegistrationRevision?, 
+	 effectiveRegistrationDate?, 
+	 GlobalDesignRegistrationNotificationCode)>
+
+<!ELEMENT designRegistrationIdentifier
+	(ProprietaryReferenceIdentifier)>
+
+<!ELEMENT designRegistrationRevision
+	(RevisionNumber)>
+
+<!ELEMENT effectiveRegistrationDate
+	(DatePeriod)>
+
+<!ELEMENT DatePeriod
+	(beginDate, 
+	 endDate?)>
+
+<!ELEMENT beginDate
+	(DateStamp)>
+
+<!ELEMENT endDate
+	(DateStamp)>
+
+<!ELEMENT GlobalDesignRegistrationNotificationCode
+	(#PCDATA)>
+
+<!ELEMENT GeographicRegion
+	(GlobalCountryCode*, 
+	 GlobalGeographicRegionCode?)>
+
+<!ELEMENT GlobalGeographicRegionCode
+	(#PCDATA)>
+
+<!ELEMENT independentFieldApplicationEngineer
+	(ContactInformation)>
+
+<!ELEMENT independentSalesRepresentative
+	(ContactInformation)>
+
+<!ELEMENT partConfidencePercent
+	(PercentAmount)>
+
+<!ELEMENT PercentAmount
+	(#PCDATA)>
+
+<!ELEMENT partImplementorComments
+	(FreeFormText)>
+
+<!ELEMENT productProviderFieldApplicationEngineer
+	(ContactInformation)>
+
+<!ELEMENT productProviderSalesRepresentative
+	(ContactInformation)>
+
+<!ELEMENT estimated1stYearAssemblyQuantity
+	(ProductQuantity)>
+
+<!ELEMENT estimated2ndYearAssemblyQuantity
+	(ProductQuantity)>
+
+<!ELEMENT estimated3rdYearAssemblyQuantity
+	(ProductQuantity)>
+
+<!ELEMENT estimatedLifetimeQuantity
+	(ProductQuantity)>
+
+<!ELEMENT GlobalRegistrationComplexityLevelCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalRegistrationInvolvementLevelCode
+	(#PCDATA)>
+
+<!ELEMENT DesignProjectDescription
+	(GlobalProjectMarketSegmentCode?, 
+	 projectComments?, 
+	 projectName?, 
+	 TextualDescription?)>
+
+<!ELEMENT GlobalProjectMarketSegmentCode
+	(#PCDATA)>
+
+<!ELEMENT projectComments
+	(FreeFormText)>
+
+<!ELEMENT projectName
+	(FreeFormText)>
+
+<!ELEMENT projectIdentifier
+	(ProprietaryReferenceIdentifier)>
+
+<!ELEMENT ProjectStatusCode
+	(#PCDATA)>
+
+<!ELEMENT fromRole
+	(PartnerRoleDescription)>
+
+<!ELEMENT PartnerRoleDescription
+	(ContactInformation?, 
+	 GlobalPartnerRoleClassificationCode, 
+	 PartnerDescription)>
+
+<!ELEMENT GlobalSupplyChainCode
+	(#PCDATA)>
+
+<!ELEMENT GlobalDocumentFunctionCode
+	(#PCDATA)>
+
+<!ELEMENT thisDocumentGenerationDateTime
+	(DateTimeStamp)>
+
+<!ELEMENT thisDocumentIdentifier
+	(ProprietaryDocumentIdentifier)>
+
+<!ELEMENT toRole
+	(PartnerRoleDescription)>
+

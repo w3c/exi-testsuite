@@ -1,0 +1,10 @@
+<!-- This testcases are intended to check data representation map with preserve lexical value and without it. -->
+
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Preserve tests">
+    
+    <param name="groupId" value="${groupId} | preserve"/> 
+    
+    <xi:include href="preserve/dtrWithPLV.xml"/>
+    <xi:include href="preserve/dtrWithoutPLV.xml"/>
+</testCaseGroup>

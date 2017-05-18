@@ -1,0 +1,21 @@
+<!-- =================================================================== -->
+<!-- Tests undeclared SE(*) where there is no declared attributes or     -->
+<!-- declared attribute wildcard.                                        -->
+<!-- =================================================================== -->
+<foo:P xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <foo:P1>
+    <foo:none/><!-- SE(*) -->
+    <foo:AB>a</foo:AB><!-- SE(foo:AB) -->
+    <foo:AB>a</foo:AB><!-- SE(*) -->
+  </foo:P1>
+  <foo:P1 xsi:nil='true'>
+    <foo:AB>a</foo:AB><!-- SE(*) -->
+  </foo:P1>
+  <foo:P1 xsi:type='foo:extended_P1'>
+    <foo:none/><!-- SE(*) -->
+    <foo:AB>a</foo:AB><!-- SE(foo:AB) -->
+    <foo:none/><!-- SE(*) -->
+    <foo:AB>a</foo:AB><!-- SE(foo:AB) -->
+    <foo:AB>a</foo:AB><!-- SE(*) -->
+  </foo:P1>
+</foo:P>

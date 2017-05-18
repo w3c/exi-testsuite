@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <SOAP-ENV:Body>
+  <ns3:echoFloatArray xmlns:ns3="http://soapinterop.org/">
+   <inputFloatArray xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="xsd:float[2]" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
+    <item xsi:type="xsd:float">3.7</item>
+    <item xsi:type="xsd:float">7.0</item>
+   </inputFloatArray>
+  </ns3:echoFloatArray>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

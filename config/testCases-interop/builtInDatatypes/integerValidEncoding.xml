@@ -1,0 +1,57 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid integer encoding">
+
+    <param name="groupId" value="${groupId} | integerValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/integer/integer.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/integer"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingInteger"/>
+    
+    <testCase name="integer-valid-00">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-00.xml" />
+    </testCase>
+    <testCase name="integer-valid-01">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-01.xml" />
+    </testCase>
+    <testCase name="integer-valid-02">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-02.xml" />
+    </testCase>
+    <testCase name="integer-valid-03">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-03.xml" />
+    </testCase>
+    <testCase name="integer-valid-04">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-04.xml" />
+    </testCase>
+    <testCase name="integer-valid-05">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-05.xml" />
+    </testCase>
+    <testCase name="integer-valid-06">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-06.xml" />
+    </testCase>
+    <testCase name="integer-valid-07">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-07.xml" />
+    </testCase>
+    <testCase name="integer-valid-08">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-08.xml" />
+    </testCase>
+    <testCase name="integer-valid-09">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-09.xml" />
+    </testCase>
+    <testCase name="integer-valid-10">
+        <param name="description"  value="Valid integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/integer-valid-10.xml" />
+    </testCase>
+
+</testCaseGroup>

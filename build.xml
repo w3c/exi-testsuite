@@ -1,0 +1,462 @@
+<project name="ttfms" default="run" basedir=".">
+    <property environment="env"/>
+
+    <condition property="compileNative">
+        <os name="Linux"/>
+    </condition>
+    
+    <property name="japex.home" value="${basedir}/japex"/>
+
+    <!-- the following properties cannot be overridden by a TTFMS properties file -->
+    <property name="japex.exi.ttfms.testCasesDir" value="data"/>
+    <property name="japex.exi.ttfms.testCasesConfigDir" value="${basedir}/config/testCases"/>
+    <property name="japex.exi.ttfms.frameworkLibDir" value="framework/dist"/>
+    <property name="japex.exi.ttfms.candidatesDir" value="candidates"/>
+
+    <!-- load the TTFMS properties file -->
+    <property file="${ttfmsProperties}"/>
+
+    <property name="japex.reportPeakHeapUsage" value="false"/>
+    <property name="japex.numberOfThreads" value=""/>
+    <property name="japex.resultUnit" value=""/>
+    <property name="japex.reportsDirectory" value=""/>
+    <property name="japex.runsPerDriver" value=""/>
+
+    <!-- the default test cases config -->
+    <property name="testCases" value="config/testCases-restricted/all-v1.xml"/>
+	
+	<property name="copyResult" value="false"/>
+	<property name="depotDir" value="encodings"/>
+	
+	<property name="framework.check" value=""/>
+	<property name="framework.debug" value=""/>
+
+    <path id="run.classpath">
+        <fileset dir="${japex.home}/lib" includes="*.jar"/>
+    </path>
+    
+    <path id="lib.path" >
+        <pathelement path="${japex.exi.ttfms.candidatesDir}/c/asn1ber/dist/lib"/>
+        <pathelement path="${japex.exi.ttfms.candidatesDir}/c/libxml2/dist/lib"/>
+    </path>
+
+    <path id="framework.lib.path">
+      <pathelement path="framework/lib/faxma-xas.jar"/>
+      <pathelement path="framework/lib/faxma.jar"/>
+      <pathelement path="framework/lib/kxml2.jar"/>
+    </path>
+
+    <property name="library.path" refid="lib.path"/>
+    <property name="framework.library.path" refid="framework.lib.path"/>
+
+    <available property="japexFound" file="${basedir}/japex/japex.zip"/>
+    
+    <target name="display-error" unless="japexFound">
+        <fail>Please download Japex from https://japex.dev.java.net and install zip file in the 'japex' directory</fail>
+    </target>
+
+    <target name="unzip-japex" if="japexFound">
+        <uptodate property="unzipNotNeeded" 
+            targetfile="japex/lib/japex.jar" srcfile="japex/japex.zip"/>
+        <antcall target="unzip"/>
+    </target>
+    
+    <target name="unzip" unless="unzipNotNeeded">
+        <delete includeemptydirs="true">
+            <fileset dir="japex" excludes="CVS japex.zip"/>
+        </delete>
+        <unzip src="japex/japex.zip" dest="."/>
+        <touch file="japex/lib/japex.jar"/>
+    </target>
+    
+    <target name="check-for-japex" depends="display-error, unzip-japex"/>
+    
+    <available property="dataBuildFile" file="${basedir}/data/build.xml"/>
+    
+    <target name="prepare" depends="check-for-japex, unzip" if="dataBuildFile">
+        <ant dir="data" target="prepare"/>
+    </target>
+
+    <target name="delegate-native" if="compileNative">
+        <ant dir="candidates/c/asn1ber" target="${target}"/>        
+        <ant dir="candidates/c/libxml2" target="${target}"/>        
+        <ant dir="candidates/c/x694per" target="${target}"/>        
+        <ant dir="candidates/c/x694perfi" target="${target}"/>        
+    </target>
+    
+    <target name="delegate">
+        <ant dir="framework" target="${target}"/>
+        <antcall target="delegate-native"/>
+        <ant dir="candidates/xml" target="${target}"/>
+        <ant dir="candidates/canonicalxml" target="${target}"/>
+        <ant dir="candidates/xals" target="${target}"/>
+        <ant dir="candidates/xebu" target="${target}"/>
+        <ant dir="candidates/fastinfoset" target="${target}"/>
+        <ant dir="candidates/efficientxml" target="${target}"/>
+        <ant dir="candidates/exificient" target="${target}"/>
+        <ant dir="candidates/openexi" target="${target}"/>
+        <!--
+        <ant dir="candidates/xsbc" target="${target}"/>    
+        <ant dir="candidates/esxml" target="${target}"/>
+        <ant dir="candidates/fxdi" target="${target}"/>
+        -->
+    </target>
+
+    <target name="clean">
+        <antcall target="delegate">
+            <param name="target" value="clean"/>
+        </antcall>
+    </target>
+
+    <target name="dist" depends="prepare" description="Compile TTFMS framework">
+        <antcall target="delegate">
+            <param name="target" value="dist"/>
+        </antcall>
+        
+        <!-- TEMP: Remove XSBC from runs until debugging info is turned off -->
+        <delete dir="candidates/xsbc/dist"/>
+    </target>
+    
+    <target name="run" depends="dist"
+        description="Run test suite using ${config} as configuration file">
+        
+        <!-- Default property values, ignored if these properties are defined -->
+        <property name="options" value=""/>
+        <property name="config" value="config/property/compaction/compaction.xml config/testCases-restricted/all-v1.xml"/>
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://localhost:9753"/>
+	<property name="validate.diff" value="false"/>
+
+        <!-- Print config file and URI being used -->
+        <echo message="Using: "/>
+        <echo message=" options = ${options}"/>
+        <echo message=" config = ${config}"/>
+        <echo message=" URI = ${japex.exi.ttfms.dataSourceSink.URI}"/>
+        
+        <java dir="." fork="true" classname="com.sun.japex.Japex">
+            <sysproperty key="java.library.path" path="${library.path}"/>
+            <sysproperty key="japex.classPath" path="${framework.library.path}"/>
+            <jvmarg value="-Djapex.home=${japex.home}"/>
+            <jvmarg value="-Djapex.numberOfThreads=${japex.numberOfThreads}"/>
+            <jvmarg value="-Djapex.resultUnit=${japex.resultUnit}"/>
+            <jvmarg value="-Djapex.reportsDirectory=${japex.reportsDirectory}"/>
+            <jvmarg value="-Djapex.runsPerDriver=${japex.runsPerDriver}"/>
+            <jvmarg value="-Djapex.exi.ttfms.testCasesDir=${japex.exi.ttfms.testCasesDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.testCasesConfigDir=${japex.exi.ttfms.testCasesConfigDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.frameworkLibDir=${japex.exi.ttfms.frameworkLibDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.candidatesDir=${japex.exi.ttfms.candidatesDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.dataSourceSink.URI=${japex.exi.ttfms.dataSourceSink.URI}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.validateDiff=${validate.diff}"/>
+        	<jvmarg value="-Dorg.w3c.exi.ttf.exiDataDir=${exiDataDir}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.copyResult=${copyResult}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.depotDir=${depotDir}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.check=${framework.check}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.debug=${framework.debug}"/>
+            <jvmarg value="-Xmx1024M"/>
+        	<jvmarg value="-Dfile.encoding=UTF-8"/>	    
+            <classpath refid="run.classpath"/>
+            <arg line="-silent -merge"/>
+            <arg line="${options} ${config}"/>
+        </java>
+    </target>    
+    
+    <!-- Compaction property -->
+    
+    <target name="run-compaction-classes" 
+        description="Run compaction test for each application class">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/compaction/compaction-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <!-- Processing efficiency: Decoding -->
+    
+    <target name="run-processing-decoding-classes-java"
+        description="Run java candidates processing decoding tests for all application classes">
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/java/processing-decoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-decoding-classes-native" if="compileNative"
+        description="Run native candidates processing decoding tests for all application classes">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/decoding/native/processing-decoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-decoding-classes" 
+        description="Run native and java candidates processing decoding tests for all application classes">
+        <antcall target="run-processing-decoding-classes-java"/>
+        <antcall target="run-processing-decoding-classes-native"/>
+    </target>
+
+    <!-- Processing efficiency: Encoding -->
+    
+    <target name="run-processing-encoding-classes-java"
+        description="Run java candidates processing encoding tests for all application classes">
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/java/processing-encoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-encoding-classes-native" if="compileNative"
+        description="Run native candidates processing encoding tests for all application classes">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-neither.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-document.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-schema.xml ${testCases}"/>
+        </antcall>
+        <antcall target="run">
+            <param name="config" value="config/property/processing/encoding/native/processing-encoding-both.xml ${testCases}"/>
+        </antcall>
+    </target>
+    
+    <target name="run-processing-encoding-classes" 
+        description="Run native and java candidates processing encoding tests for all application classes">
+        <antcall target="run-processing-encoding-classes-java"/>
+        <antcall target="run-processing-encoding-classes-native"/>
+    </target>
+    
+    <target name="run-compaction" 
+        description="Run compaction test">
+        <antcall target="run-compaction-classes"/>
+    </target>
+
+    <target name="run-decoding-nps100mbps" 
+        description="Run 100mbps SAX decoding test at NPS">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://192.168.1.2:9753"/>
+        <antcall target="run-processing-decoding-classes-java"/>
+    </target>
+    
+    <target name="run-encoding-nps100mbps" 
+        description="Run 100mbps SAX encoding test at NPS">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://192.168.1.2:9753"/>
+        <antcall target="run-processing-encoding-classes-java"/>
+    </target>
+
+    <target name="run-decoding-nps54mbps" 
+        description="Run 54mbps WIFI-G SAX decoding test at NPS">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://44.44.44.2:9753"/>
+        <antcall target="run-processing-decoding-classes-java"/>
+    </target>
+    
+    <target name="run-encoding-nps54mbps" 
+        description="Run 54mbps WIFI-G SAX encoding test at NPS">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://44.44.44.2:9753"/>
+        <antcall target="run-processing-encoding-classes-java"/>
+    </target>
+    
+    <target name="run-decoding-loopback" 
+        description="Run loopback SAX decoding test">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://localhost:9753"/>
+        <antcall target="run-processing-decoding-classes-java"/>
+    </target>
+    
+    <target name="run-encoding-loopback" 
+        description="Run loopback SAX encoding test">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://localhost:9753"/>
+        <antcall target="run-processing-encoding-classes-java"/>
+    </target>
+    
+    <target name="run-decoding-memory" 
+        description="Run memory SAX decoding test">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run-processing-decoding-classes"/>
+    </target>
+        
+    <target name="run-encoding-memory" 
+        description="Run memory SAX encoding test">
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="memory:/"/>
+        <antcall target="run-processing-encoding-classes"/>
+    </target>
+
+    <target name="run-with-dash-test" 
+        description="Run test suite with '-test' option to check for errors but without producing results">
+        <property name="options" value="${options} -test"/>
+        <antcall target="run"/>
+    </target>    
+
+    <!-- Interoperability test: C14N -->
+    <target name="run-iot-c14n-classes" 
+        description="Encode C14N interoperability test XML data with java and native implementations">
+        <antcall target="run-iot-c14n-classes-java"/>
+        <!-- antcall target="run-iot-encoding-classes-native"/ -->
+    </target>
+
+    <target name="run-iot-c14n-classes-java"
+        description="Encode C14N interoperability test XML data with java implementations">
+        <antcall target="run">
+            <param name="config" value="config/property/interoperability/encoding/java/iot-c14n-encoding.xml ${testCases}"/>
+            <param name="validate.diff" value="true"/>
+        </antcall>
+    </target>
+
+    <!-- Interoperability test: Encoding -->
+    <target name="run-iot-encoding-classes" 
+        description="Encode interoperability test XML data with java and native implementations">
+        <antcall target="run-iot-encoding-classes-java"/>
+        <!-- antcall target="run-iot-encoding-classes-native"/ -->
+    </target>
+
+    <target name="run-iot-encoding-classes-java"
+        description="Encode interoperability test XML data with java implementations">
+        <antcall target="run">
+            <param name="config" value="config/property/interoperability/encoding/java/iot-encoding.xml ${testCases}"/>
+            <param name="validate.diff" value="true"/>
+        </antcall>
+    </target>
+
+    <!-- Interoperability test: Decoding -->
+    <target name="run-iot-decoding-classes" 
+        description="Decode interoperability test EXI data with java and native implementations">
+        <antcall target="run-iot-decoding-classes-java"/>
+        <!-- antcall target="run-iot-decoding-classes-native"/ -->
+    </target>
+
+    <target name="run-iot-decoding-classes-java" depends="check-exiDataDir"
+        description="Decode interoperability test EXI data with java">
+        <antcall target="run">
+            <param name="config" value="config/property/interoperability/decoding/java/iot-decoding.xml ${testCases}"/>
+        </antcall>
+    </target>
+
+    <target name="do_check-exiDataDir">
+        <condition property="exiDataDir-unavailable">
+            <equals arg1="${exiDataDir}" arg2="$${exiDataDir}" />
+       </condition>
+    </target>
+
+    <target name="check-exiDataDir" depends="do_check-exiDataDir" if="exiDataDir-unavailable">
+        <fail>Please specify the directory that contains encoded EXI data by setting a value to the variable "exiDataDir".</fail>
+    </target>
+
+    <target name="create-package" description="Create 'exi-ttfms.zip' distribution package">
+        <!-- Remove all generated classes and libraries -->
+        <antcall target="clean"/>        
+        
+        <!-- Prepare data to unzip files -->        
+        <ant dir="data" target="prepare"/>
+        
+        <!-- Remove old zip and set up directories -->
+        <delete file="exi-ttfms.zip"/>
+        <mkdir dir="tmp/exi-ttfms"/>        
+        <mkdir dir="tmp/exi-ttfms/japex"/>
+        
+        <!-- Copy release notes -->
+        <copy todir="tmp/exi-ttfms" file="RELEASE_NOTES.txt"/>
+        
+        <!-- Copy this build file -->
+        <copy tofile="tmp/exi-ttfms/build.xml" file="build-package.xml"/>
+        
+        <!-- Copy NB project directory -->
+        <copy todir="tmp/exi-ttfms" includeemptydirs="true">
+            <fileset dir="." includes="nbproject/**/*"/>
+        </copy>
+        
+        <!-- Copy TTFMS framework source tree -->
+        <copy todir="tmp/exi-ttfms" includeemptydirs="true">
+            <fileset dir="." includes="framework/**/*"/>
+        </copy>        
+        
+        <!-- Copy config files for restricted case only -->
+        <copy todir="tmp/exi-ttfms" includeemptydirs="true">
+            <fileset dir="." includes="config/**/*"/>
+        </copy>        
+        <delete dir="tmp/exi-ttfms/config/testCases"/>
+        
+        <!-- Copy candidate drivers and exclude implementation libraries -->
+        <copy todir="tmp/exi-ttfms" includeemptydirs="true">
+            <fileset dir="." includes="candidates/**/*" excludes="candidates/xsbc/**/*"/>
+        </copy>        
+        <delete>
+            <fileset dir="tmp/exi-ttfms/candidates" includes="**/lib*/*.jar"/>
+            <fileset dir="tmp/exi-ttfms/candidates" includes="**/*.a, **/*.so"/>
+        </delete>
+        <delete dir="tmp/exi-ttfms/candidates/xsbc"/>
+        
+        <!-- 
+           -  Copy data directories used in restricted set. Note that
+           -  there is no filtering, so the complete directory is copied
+           -  even if only a few files are inf restricted set. After
+           -  copying, delete compressed files in this tree.
+          -->
+        <mkdir dir="tmp/exi-ttfms/data"/>
+        <copy todir="tmp/exi-ttfms/data">
+            <fileset dir="data" includes="AVCL/**/*"/>
+            <fileset dir="data" includes="CBMS/**/*"/>
+            <fileset dir="data" includes="DataStore/**/*"/>
+            <fileset dir="data" includes="FixML-4.4/**/*"/>
+            <fileset dir="data" includes="FpML/**/*"/>
+            <fileset dir="data" includes="Gaml/**/*"/>
+            <fileset dir="data" includes="Invoice/**/*"/>
+            <fileset dir="data" includes="MAGE-ML/**/*"/>
+            <fileset dir="data" includes="Miscellaneous/**/*"/>
+            <fileset dir="data" includes="OpenOffice/**/*"/>
+            <fileset dir="data" includes="SeismicData/**/*"/>
+            <fileset dir="data" includes="SVGTiny/animals/**/*"/>
+            <fileset dir="data" includes="SVGTinyCleaned/animals/**/*"/>
+            <fileset dir="data" includes="XAL/**/*"/>
+            <fileset dir="data" includes="Google/**/*"/>            
+            <fileset dir="data" includes="HepRep/**/*"/>
+            <fileset dir="data" includes="epicsArchiver/**/*"/>
+            <fileset dir="data" includes="LocationSightings/**/*"/>
+            <fileset dir="data" includes="JTLM/**/*"/>            
+            <fileset dir="data" includes="ASMTF/**/*"/>
+            <fileset dir="data" includes="WSDL/**/*"/>
+            <fileset dir="data" includes="fragments/**/*"/>
+            <fileset dir="data" includes="deviations/**/*"/>            
+        </copy>        
+        <delete>
+            <fileset dir="tmp/exi-ttfms/data" includes="**/*.gz, **/*.zip"/>
+        </delete>        
+
+        <!-- Finally create zip file and remove exi-ttfms directory -->
+        <zip destfile="${basedir}/exi-ttfms.zip" basedir="tmp"/> 
+        <delete dir="tmp"/>        
+    </target>
+
+        
+</project>

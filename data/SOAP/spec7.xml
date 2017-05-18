@@ -1,0 +1,16 @@
+<?xml version='1.0' ?>
+<env:Envelope xmlns:env="http://www.w3.org/2002/06/soap-envelope"
+            xmlns:f='http://www.w3.org/2002/06/soap-faults'>
+ <env:Header>
+    <f:Misunderstood qname='t:transaction'
+               xmlns:t="http://thirdparty.example.org/transaction"/>
+ </env:Header>  
+ <env:Body>
+    <env:Fault>
+      <env:Code>
+         <env:Value>env:MustUnderstand</env:Value>
+      </env:Code>
+      <env:Reason xml:lang="en-US">Header not understood</env:Reason>
+    </env:Fault>
+ </env:Body>
+</env:Envelope>

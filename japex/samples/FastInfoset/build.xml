@@ -1,0 +1,68 @@
+<project name="Japex Sample" default="run"  basedir=".">
+    <property environment="env"/>
+    
+    <property name="config" value="speed-config.xml"/>
+    
+    <path id="class.path">
+        <fileset dir="${env.JAPEX_HOME}/lib/" includes="*.jar"/>
+    </path>
+    
+    <target name="run">
+        <java dir="." fork="true" classname="com.sun.japex.Japex">
+            <jvmarg value="-server"/>
+            <classpath refid="class.path"/>
+            <jvmarg value="-Djapex.numberOfThreads=1"/>
+            <arg line="${config}"/>
+        </java>
+    </target>
+    
+    <target name="debug-nb">
+        <property name="src.folders" value="./src:./src/binding:../../src:../../src/binding"/>
+        <path id="cp">
+            <pathelement location="../../build/classes"/>
+            <path refid="class.path"/>
+        </path>
+        <nbjpdastart addressproperty="jpda.address" name="Japex" transport="dt_socket">
+            <classpath refid="cp"/>
+        </nbjpdastart>
+        <java classname="com.sun.japex.Japex" fork="true">
+            <classpath refid="cp"/>
+            <jvmarg value="-Xdebug"/>
+            <jvmarg value="-Xnoagent"/>
+            <jvmarg value="-Djava.compiler=none"/>
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=${jpda.address}"/>
+            <arg line="${config}"/>
+        </java>
+    </target>
+    
+    <target name="debug-nb-trendreport">
+        <property name="src.folders" value="./src:./src/binding:../../src:../../src/binding"/>
+        <path id="cp">
+            <pathelement location="../../build/classes"/>
+            <path refid="class.path"/>
+        </path>
+        <nbjpdastart addressproperty="jpda.address" name="Japex" transport="dt_socket">
+            <classpath refid="cp"/>
+        </nbjpdastart>
+        <java classname="com.sun.japex.TrendReport" fork="true">
+            <classpath refid="cp"/>
+            <jvmarg value="-Xdebug"/>
+            <jvmarg value="-Xnoagent"/>
+            <jvmarg value="-Djava.compiler=none"/>
+            <jvmarg value="-Xrunjdwp:transport=dt_socket,address=${jpda.address}"/>
+            <arg value="FastInfoset Sample"/>
+            <arg line="reports"/>
+            <arg line="reports/trends"/>
+        </java>
+    </target>
+    
+    <target name="generate-trends">
+        <java dir="." fork="true" classname="com.sun.japex.TrendReport">
+            <classpath refid="class.path"/>
+            <arg value="FastInfoset Sample"/>
+            <arg line="reports"/>
+            <arg line="reports/trends"/>
+        </java>
+    </target>    
+    
+</project>

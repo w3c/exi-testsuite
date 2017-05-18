@@ -1,0 +1,210 @@
+<project name="ttfms" default="package" basedir=".">
+    <property environment="env"/>
+    
+    <property name="japex.home" value="${basedir}/japex"/>
+
+    <!-- the following properties cannot be overridden by a TTFMS properties file -->
+    <property name="japex.exi.ttfms.testCasesDir" value="data"/>
+    <property name="japex.exi.ttfms.testCasesConfigDir" value="${basedir}/config/testCases"/>
+    <property name="japex.exi.ttfms.frameworkLibDir" value="framework/dist"/>
+    <property name="japex.exi.ttfms.candidatesDir" value="candidates"/>
+
+    <!-- load the TTFMS properties file -->
+    <property file="${ttfmsProperties}"/>
+
+    <property name="japex.reportPeakHeapUsage" value="false"/>
+    <property name="japex.numberOfThreads" value=""/>
+    <property name="japex.resultUnit" value=""/>
+    <property name="japex.reportsDirectory" value=""/>
+    <property name="japex.runsPerDriver" value=""/>
+
+    <!-- the default test cases config -->
+    <property name="testCases" value="config/testCases-restricted/all-v1.xml"/>
+	
+	<property name="copyResult" value="false"/>
+	<property name="depotDir" value="encodings"/>
+	
+	<property name="framework.check" value=""/>
+	<property name="framework.debug" value=""/>
+
+    <path id="run.classpath">
+        <fileset dir="${japex.home}/lib" includes="*.jar"/>
+    </path>
+    
+    <path id="lib.path" >
+        <pathelement path="${japex.exi.ttfms.candidatesDir}/c/asn1ber/dist/lib"/>
+        <pathelement path="${japex.exi.ttfms.candidatesDir}/c/libxml2/dist/lib"/>
+    </path>
+
+    <path id="framework.lib.path">
+      <pathelement path="framework/lib/faxma-xas.jar"/>
+      <pathelement path="framework/lib/faxma.jar"/>
+      <pathelement path="framework/lib/kxml2.jar"/>
+    </path>
+
+    <property name="library.path" refid="lib.path"/>
+    <property name="framework.library.path" refid="framework.lib.path"/>
+
+    <available property="japexFound" file="${basedir}/japex/japex.zip"/>
+    
+    <target name="display-error" unless="japexFound">
+        <fail>Please download Japex from https://japex.dev.java.net and install zip file in the 'japex' directory</fail>
+    </target>
+
+    <target name="unzip-japex" if="japexFound">
+        <uptodate property="unzipNotNeeded" 
+            targetfile="japex/lib/japex.jar" srcfile="japex/japex.zip"/>
+        <antcall target="unzip"/>
+    </target>
+    
+    <target name="unzip" unless="unzipNotNeeded">
+        <delete includeemptydirs="true">
+            <fileset dir="japex" excludes="CVS japex.zip"/>
+        </delete>
+        <unzip src="japex/japex.zip" dest="."/>
+        <touch file="japex/lib/japex.jar"/>
+    </target>
+    
+    <target name="check-for-japex" depends="display-error, unzip-japex"/>
+    
+    <available property="dataBuildFile" file="${basedir}/data/build.xml"/>
+    
+    <target name="prepare" depends="check-for-japex, unzip" if="dataBuildFile">
+        <ant dir="data" target="prepare"/>
+    </target>
+
+    <target name="delegate">
+        <ant dir="framework" target="${target}"/>
+        <ant dir="candidates/exificient" target="${target}"/>
+    </target>
+
+    <target name="clean">
+        <antcall target="delegate">
+            <param name="target" value="clean"/>
+        </antcall>
+    </target>
+
+    <target name="dist" depends="prepare" description="Compile TTFMS framework">
+        <antcall target="delegate">
+            <param name="target" value="dist"/>
+        </antcall>
+    </target>
+    
+    <target name="run" depends="dist"
+        description="Run test suite using ${config} as configuration file">
+        
+        <!-- Default property values, ignored if these properties are defined -->
+        <property name="options" value=""/>
+        <property name="config" value="config/property/compaction/compaction.xml config/testCases-restricted/all-v1.xml"/>
+        <property name="japex.exi.ttfms.dataSourceSink.URI" value="network://localhost:9753"/>
+    	<property name="validate.diff" value="false"/>
+
+        <!-- Print config file and URI being used -->
+        <echo message="Using: "/>
+        <echo message=" options = ${options}"/>
+        <echo message=" config = ${config}"/>
+        <echo message=" URI = ${japex.exi.ttfms.dataSourceSink.URI}"/>
+        
+        <java dir="." fork="true" classname="com.sun.japex.Japex">
+            <sysproperty key="java.library.path" path="${library.path}"/>
+            <sysproperty key="japex.classPath" path="${framework.library.path}"/>
+            <jvmarg value="-Djapex.home=${japex.home}"/>
+            <jvmarg value="-Djapex.numberOfThreads=${japex.numberOfThreads}"/>
+            <jvmarg value="-Djapex.resultUnit=${japex.resultUnit}"/>
+            <jvmarg value="-Djapex.reportsDirectory=${japex.reportsDirectory}"/>
+            <jvmarg value="-Djapex.runsPerDriver=${japex.runsPerDriver}"/>
+            <jvmarg value="-Djapex.exi.ttfms.testCasesDir=${japex.exi.ttfms.testCasesDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.testCasesConfigDir=${japex.exi.ttfms.testCasesConfigDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.frameworkLibDir=${japex.exi.ttfms.frameworkLibDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.candidatesDir=${japex.exi.ttfms.candidatesDir}"/>
+            <jvmarg value="-Djapex.exi.ttfms.dataSourceSink.URI=${japex.exi.ttfms.dataSourceSink.URI}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.validateDiff=${validate.diff}"/>
+        	<jvmarg value="-Dorg.w3c.exi.ttf.exiDataDir=${exiDataDir}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.copyResult=${copyResult}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.depotDir=${depotDir}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.check=${framework.check}"/>
+            <jvmarg value="-Dorg.w3c.exi.ttf.framework.debug=${framework.debug}"/>
+            <jvmarg value="-Xmx1024M"/>
+        	<jvmarg value="-Dfile.encoding=UTF-8"/>	    
+            <classpath refid="run.classpath"/>
+            <arg line="-silent -merge"/>
+            <arg line="${options} ${config}"/>
+        </java>
+    </target>    
+
+    <!-- Interoperability test: Encoding -->
+    <target name="run-iot-encoding-classes" 
+        description="Encode interoperability test XML data with java and native implementations">
+        <antcall target="run-iot-encoding-classes-java"/>
+        <!-- antcall target="run-iot-encoding-classes-native"/ -->
+    </target>
+
+    <target name="run-iot-encoding-classes-java"
+        description="Encode interoperability test XML data with java implementations">
+        <antcall target="run">
+            <param name="config" value="config/property/interoperability/encoding/java/iot-encoding.xml ${testCases}"/>
+            <param name="validate.diff" value="true"/>
+        </antcall>
+    </target>
+
+    <!-- Interoperability test: Decoding -->
+    <target name="run-iot-decoding-classes" 
+        description="Decode interoperability test EXI data with java and native implementations">
+        <antcall target="run-iot-decoding-classes-java"/>
+        <!-- antcall target="run-iot-decoding-classes-native"/ -->
+    </target>
+
+    <target name="run-iot-decoding-classes-java" depends="check-exiDataDir"
+        description="Decode interoperability test EXI data with java">
+        <antcall target="run">
+            <param name="config" value="config/property/interoperability/decoding/java/iot-decoding.xml ${testCases}"/>
+        </antcall>
+    </target>
+
+    <target name="do_check-exiDataDir">
+        <condition property="exiDataDir-unavailable">
+            <equals arg1="${exiDataDir}" arg2="$${exiDataDir}" />
+       </condition>
+    </target>
+
+    <target name="check-exiDataDir" depends="do_check-exiDataDir" if="exiDataDir-unavailable">
+        <fail>Please specify the directory that contains encoded EXI data by setting a value to the variable "exiDataDir".</fail>
+    </target>
+
+
+    <target name="package">
+        <delete file="${basedir}/ttfms-interop.zip"/>
+        <zip destfile="${basedir}/ttfms-interop.zip">
+            <!-- candidates: only exificient -->
+            <zipfileset dir="candidates/exificient" prefix="candidates/exificient">
+            	<exclude name="*/exificient.jar"/> 
+        	</zipfileset>
+            	
+            <!-- config: drivers and interop properties -->
+            <zipfileset dir="config/drivers/sax" includes="exificient-iot.xml" prefix="config/drivers/sax"/>
+            <zipfileset dir="config/property/interoperability"  prefix="config/property/interoperability"/>
+            <zipfileset dir="config/testCases-interop" prefix="config/testCases-interop"/>
+            <!-- data: interop folder -->
+            <zipfileset dir="data/interop" prefix="data/interop"/>
+            <zipfileset dir="data" includes="W3C-Test-Suite-License.htm" prefix="data"/>
+            <!-- encodings -->
+            <zipfileset dir="encodings/Canon" prefix="encodings/Canon"/>
+            <zipfileset dir="encodings/EfficientXML5.0" prefix="encodings/EfficientXML5.0">
+            	<filename name="**/restrictedCharacterSets/**" negate="true"/>
+        	</zipfileset>
+            <zipfileset dir="encodings/EXIficient" prefix="encodings/EXIficient"/>
+            <zipfileset dir="encodings" includes="W3C-Test-Suite-License.htm" prefix="encodings"/>
+        	
+        	<!-- framework -->
+            <zipfileset dir="framework" prefix="framework"/>
+            <!-- japex -->
+            <zipfileset dir="japex" prefix="japex"/>
+            <!-- license and this build file -->
+            <zipfileset dir="." includes="w3c-license.html"/>
+            <zipfileset dir="." includes="NOTE.txt"/>
+            <zipfileset dir="." includes="interop-README.txt" fullpath="README.txt"/>
+            <zipfileset dir="." includes="build-interop.xml" fullpath="build.xml"/>
+        </zip>
+    </target>
+
+</project>

@@ -1,0 +1,182 @@
+<!--
+
+   RosettaNet XML Message Schema.
+   http://www.rosettanet.org
+   RosettaNet XML Message Schema. 
+   Service Header
+   Version 1.1
+   
+   Created using Edifecs Commerce SpecBuilder. 
+   http://www.edifecs.com
+   http://www.commercedesk.com
+   Build # 22
+   
+-->
+
+
+<!ENTITY % common-attributes "id  CDATA #IMPLIED" >
+ 
+<!ELEMENT ServiceHeader ( 
+(           ProcessControl ) ) > 
+
+<!ELEMENT ProcessControl ( 
+          ProcessIdentity ,
+          ServiceRoute,
+(           TransactionControl ) ) > 
+
+<!ELEMENT TransactionControl ( 
+          AttemptCount ,
+          PartnerRoleRoute ,
+          TransactionIdentity,
+(           ActionControl |
+           SignalControl ) ) > 
+
+<!ELEMENT AttemptCount
+           ( #PCDATA ) >
+
+<!ELEMENT ActionControl ( 
+          ActionIdentity ,
+          GlobalDocumentFunctionCode ,
+          inResponseTo? ,
+          PartnerRoute ,
+          PerformanceControlRequest? ) > 
+
+<!ELEMENT ActionIdentity ( 
+          description? ,
+          GlobalBusinessActionCode ,
+          InstanceIdentifier ,
+          VersionIdentifier? ) > 
+
+<!ELEMENT description
+           ( FreeFormText ) > 
+
+<!ELEMENT FreeFormText
+           ( #PCDATA ) >
+<!ATTLIST FreeFormText
+           xml:lang CDATA #IMPLIED >
+
+<!ELEMENT GlobalBusinessActionCode
+           ( #PCDATA ) >
+
+<!ELEMENT InstanceIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT VersionIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalDocumentFunctionCode
+           ( #PCDATA ) >
+
+<!ELEMENT inResponseTo
+            ( ActionIdentity ) > 
+
+<!ELEMENT PartnerRoute ( 
+          fromPartner ,
+          toPartner ) > 
+
+<!ELEMENT fromPartner
+            ( PartnerDescription ) > 
+
+<!ELEMENT PartnerDescription ( 
+          BusinessDescription ,
+          GlobalPartnerClassificationCode ) > 
+
+<!ELEMENT BusinessDescription ( 
+          GlobalBusinessIdentifier ) > 
+
+<!ELEMENT GlobalBusinessIdentifier
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalPartnerClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT toPartner
+            ( PartnerDescription ) > 
+
+<!ELEMENT PerformanceControlRequest ( 
+          timeToAcknowledgeAcceptance? ,
+          timeToAcknowledgeReceipt? ,
+          timeToPerform? ) > 
+
+<!ELEMENT timeToAcknowledgeAcceptance
+           ( TimeDuration ) > 
+
+<!ELEMENT TimeDuration
+           ( #PCDATA ) >
+
+<!ELEMENT timeToAcknowledgeReceipt
+            ( TimeDuration ) > 
+
+<!ELEMENT timeToPerform
+            ( TimeDuration ) > 
+
+<!ELEMENT SignalControl ( 
+          inResponseTo ,
+          InstanceIdentifier ,
+          PartnerRoute ,
+          SignalIdentity ) > 
+
+<!ELEMENT SignalIdentity ( 
+          GlobalBusinessSignalCode ,
+          VersionIdentifier ) > 
+
+<!ELEMENT GlobalBusinessSignalCode
+           ( #PCDATA ) >
+
+<!ELEMENT PartnerRoleRoute ( 
+          fromRole ,
+          toRole ) > 
+
+<!ELEMENT fromRole
+            ( PartnerRoleDescription ) > 
+
+<!ELEMENT PartnerRoleDescription ( 
+          GlobalPartnerRoleClassificationCode ) > 
+
+<!ELEMENT GlobalPartnerRoleClassificationCode
+           ( #PCDATA ) >
+
+<!ELEMENT toRole
+            ( PartnerRoleDescription ) > 
+
+<!ELEMENT TransactionIdentity ( 
+          description? ,
+          GlobalTransactionCode ,
+          InstanceIdentifier ) > 
+
+<!ELEMENT GlobalTransactionCode
+           ( #PCDATA ) >
+
+<!ELEMENT ProcessIdentity ( 
+          description? ,
+          GlobalProcessCode ,
+          GlobalProcessIndicatorCode ,
+          initiatingPartner ,
+          InstanceIdentifier ,
+          VersionIdentifier ) > 
+
+<!ELEMENT GlobalProcessCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalProcessIndicatorCode
+           ( #PCDATA ) >
+
+<!ELEMENT initiatingPartner
+            ( GlobalBusinessIdentifier ) > 
+
+<!ELEMENT ServiceRoute ( 
+          fromService ,
+          toService ) > 
+
+<!ELEMENT fromService
+            ( BusinessServiceDescription ) > 
+
+<!ELEMENT BusinessServiceDescription ( 
+          GlobalBusinessServiceCode ) > 
+
+<!ELEMENT GlobalBusinessServiceCode
+           ( #PCDATA ) >
+
+<!ELEMENT toService
+            ( BusinessServiceDescription ) > 
+

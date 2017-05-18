@@ -1,0 +1,13 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+  <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+  <testCase name="WSDL/wsdl1.xml">
+    <param name="japex.inputFile" value="${testsDir}/WSDL/wsdl1.xml"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/WSDL/wsdl.xsd"/>
+  </testCase>
+  <testCase name="WSDL/wsdl2.xml">
+    <param name="japex.inputFile" value="${testsDir}/WSDL/wsdl2.xml"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/WSDL/wsdl.xsd"/>
+  </testCase>
+
+</testCaseGroup>

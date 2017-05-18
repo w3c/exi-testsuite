@@ -1,0 +1,25 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+  <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+  <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/Google/google.xsd"/>
+  <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/> 
+  <!-- Removed temporarily for consistency - JK
+  <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+  -->
+
+  <testCase name="Google/google00.xml">
+    <param name="japex.inputFile" value="${testsDir}/Google/google00.xml"/>
+  </testCase>
+  <testCase name="Google/google07.xml">
+    <param name="japex.inputFile" value="${testsDir}/Google/google07.xml"/>
+  </testCase>
+  <testCase name="Google/google15.xml">
+    <param name="japex.inputFile" value="${testsDir}/Google/google15.xml"/>
+  </testCase>
+  <testCase name="Google/google24.xml">
+    <param name="japex.inputFile" value="${testsDir}/Google/google24.xml"/>
+  </testCase>
+  <testCase name="Google/google30.xml">
+    <param name="japex.inputFile" value="${testsDir}/Google/google30.xml"/>
+  </testCase>
+</testCaseGroup>

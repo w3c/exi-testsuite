@@ -1,0 +1,65 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - AT(xsi:type) event type in default schema mode ">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeDefault-01">
+        <param name="testDescription"  
+          value="Use of xsi:type is permitted in default schema mode, even though it 
+                 would not have been permitted in strict schema mode. Switching from 
+                 complex type to another complex type."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeDefault-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeDefault-02">
+        <param name="testDescription"  
+          value="Use of xsi:type is permitted in default schema mode, even though it 
+                 would not have been permitted in strict schema mode. Switching from
+                 complex type to a simple type."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeDefault-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeDefault-03">
+        <param name="testDescription"  
+          value="Use of xsi:type is permitted in default schema mode, even though it 
+                 would not have been permitted in strict schema mode. Switching from 
+                 simple type to a complex type."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeDefault-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeDefault-04">
+        <param name="testDescription"  
+          value="xsi:type and xsi:nil='true' can occur together in default schema 
+                 mode. They must come before any other attributes in EXI streams,
+                 and xsi:type must come before xsi:nil."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeDefault-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeDefault-05">
+        <param name="testDescription"  
+          value="The type specified by xsi:type is not available."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeDefault-05.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiTypeDefault-06">
+        <param name="testDescription"  
+          value="The prefix used in xsi:type value does does not resolve to a namespace."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiTypeDefault-06.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+</testCaseGroup>
+

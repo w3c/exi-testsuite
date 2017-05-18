@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:bar"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:bar" >
+           
+           <xsd:element name="CH1" type="xsd:string"/>
+           <xsd:element name="WS1" type="xsd:integer"/>
+           
+           <xsd:element name="EX1">
+           	<xsd:complexType>
+           		<xsd:sequence>
+           			<xsd:element name="CH2" minOccurs="0" maxOccurs="2"/>
+           		</xsd:sequence>
+           	</xsd:complexType>
+           </xsd:element>
+           
+</xsd:schema>

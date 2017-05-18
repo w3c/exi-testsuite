@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="IOT-encode:Bitpacked"
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <param name="japex.warmupIterations" value="0"/>
+    <param name="japex.runIterations" value="0"/>
+    <param name="japex.resultUnit" value="bytes"/>
+
+    <param name="org.w3c.exi.ttf.measurementProperty" value="iot_c14n_encode"/>
+    <param name="japex.reportsDirectory" value="reports/property/interoperability/encoding/java"/>
+
+    <param name="org.w3c.exi.ttf.dataSourceSink.URI" value="${japex.exi.ttfms.dataSourceSink.URI}"/>
+
+    <param name="org.w3c.exi.ttf.recordDecodedEvents" value="no"/>
+
+    <!-- initially set groupId to empty -->
+    <param name="groupId" value=""/> 
+   
+    <xi:include href="drivers.xml"/>
+</testSuite>

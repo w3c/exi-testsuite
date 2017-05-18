@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo" elementFormDefault="qualified">
+           
+	<xsd:simpleType name="stringE">
+	  <xsd:restriction base="xsd:string">
+	    <xsd:enumeration value="Tokyo"/>
+	    <xsd:enumeration value="Osaka"/>
+	    <xsd:enumeration value="Tokyo"/>
+	  </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="decimalE">
+  		<xsd:restriction base="xsd:decimal">
+    		<xsd:enumeration value="100.1234567"/>
+    		<xsd:enumeration value="101.2345678"/>
+    		<xsd:enumeration value="100.1234567"/>
+  		</xsd:restriction>
+	</xsd:simpleType>
+	
+	
+	<xsd:simpleType name="base64BinaryE">
+  		<xsd:restriction base="xsd:base64Binary">
+    		<xsd:enumeration value="YWFhYWE="/><!-- aaaaa -->
+    		<xsd:enumeration value="Y2NjY2M="/><!-- ccccc -->
+    		<xsd:enumeration value="YWFhYWE="/><!-- aaaaa -->
+  		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="hexBinaryE">
+  		<xsd:restriction base="xsd:hexBinary">
+    		<xsd:enumeration value="6161616161"/><!-- aaaaa -->
+    		<xsd:enumeration value="6363636363"/><!-- ccccc -->
+    		<xsd:enumeration value="6161616161"/><!-- aaaaa -->
+  		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="floatE">
+		<xsd:restriction base="xsd:float">
+			<xsd:enumeration value="123E-1"/>
+			<xsd:enumeration value="123E-1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="doubleE">
+		<xsd:restriction base="xsd:double">
+	  		<xsd:enumeration value="-1E4"/>
+	  		<xsd:enumeration value="12.78e-2"/>
+	  		<xsd:enumeration value="-1E4"/>   
+	  	</xsd:restriction>
+	</xsd:simpleType>
+    
+    
+    <xsd:simpleType name="durationE">
+  		<xsd:restriction base="xsd:duration">
+    		<xsd:enumeration value="P1Y2M3DT10H30M"/>
+    		<xsd:enumeration value="P1Y2M4DT10H30M"/>
+    		<xsd:enumeration value="P1Y2M3DT10H30M"/>
+  		</xsd:restriction>
+	</xsd:simpleType>
+    
+    <xsd:simpleType name="dateTimeE">
+  		<xsd:restriction base="xsd:dateTime">
+    		<xsd:enumeration value="2003-03-19T13:20:00-05:00"/>
+    		<xsd:enumeration value="2003-03-19T13:20:00-05:00"/>
+  		</xsd:restriction>
+	</xsd:simpleType>
+	
+   <xsd:element name="root">
+      <xsd:complexType>
+        <xsd:all>
+            <xsd:element name="stringEnum" type="foo:stringE" />
+            <xsd:element name="decimalEnum" type="foo:decimalE" />
+            <xsd:element name="base64BinaryEnum" type="foo:base64BinaryE" />
+            <xsd:element name="hexBinaryEnum" type="foo:hexBinaryE" />
+            <xsd:element name="floatEnum" type="foo:floatE" />
+            <xsd:element name="doubleEnum" type="foo:doubleE" />
+            <xsd:element name="durationEnum" type="foo:durationE" />
+            <xsd:element name="dateTimeEnum" type="foo:dateTimeE" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:element>
+	
+
+</xsd:schema>

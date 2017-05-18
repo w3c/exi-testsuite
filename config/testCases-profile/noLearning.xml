@@ -1,0 +1,53 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile interoperability tests ">
+
+    <param name="org.w3c.exi.ttf.useProfile" value="true"/>
+	<param name="org.w3c.exi.ttf.maxBuiltinGr" value="0"/>
+	<param name="org.w3c.exi.ttf.maxBuiltinProd" value="0"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars/builtInElement.xsd"/>
+    
+    <param name="reference" value="http://www.w3.org/TR/exi-profile/#grammarCapping"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-profile/builtInElementGrammars"/>
+
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>  
+
+	<testCase name="nolearning-01">
+	    <param name="description"  value="1 unexpected element d"/>
+	    <param name="japex.inputFile" value="${test.docFolder}/builtInElement-01.xml" />
+	</testCase>
+    
+    <testCase name="nolearning-02">
+        <param name="description"  value="BuiltIn Element and unexpected global element"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-02.xml" />
+    </testCase>
+    
+    <testCase name="nolearning-03">
+        <param name="description"  value="Unexpected Global and BuiltIn Element grammanr within simple element"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-03.xml" />
+    </testCase>
+    
+    <testCase name="nolearning-04">
+        <param name="description"  value="Unexpected elements with attributes with also invalid attributes"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-04.xml" />
+    </testCase>
+    
+    <testCase name="nolearning-05">
+        <param name="description"  value="Unexpected known element with xsd:typed unknown element"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-05.xml" />
+    </testCase>
+    
+    <!-- testCase name="nolearning-06">
+        <param name="description"  value="Unexpected element with also invalid typed cast"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-06.xml" />
+    </testCase-->
+	
+    <testCase name="nolearning-07">
+        <param name="description"  value="Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar"/>
+        <param name="japex.inputFile" value="${test.docFolder}/builtInElement-23.xml" />
+    </testCase>
+	
+</testCaseGroup>

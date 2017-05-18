@@ -1,0 +1,47 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+     name="Indexed string encoding">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingOptimizedForMisses"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/string"/>
+
+    <testCase name="string.indexed-01">
+        <param name="description"  value="Locally indexed element value (same element qname)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+    <testCase name="string.indexed-02">
+        <param name="description"  value="Locally indexed attribute value (same element+attribute qname)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+    <testCase name="string.indexed-03">
+        <param name="description"  value="Locally indexed attribute value (same attribute qname, different element qname)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+    <testCase name="string.indexed-04">
+        <param name="description"  value="Locally indexed attribute value (element qname = attribute qname)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-04.xml" />
+    </testCase>
+    <testCase name="string.indexed-05">
+        <param name="description"  value="Globally indexed element-element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-05.xml" />
+    </testCase>
+    <testCase name="string.indexed-06">
+        <param name="description"  value="Globally indexed attribute-attribute value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-06.xml" />
+    </testCase>
+    <testCase name="string.indexed-07">
+        <param name="description"  value="Globally indexed element-attribute value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-07.xml" />
+    </testCase>
+    <testCase name="string.indexed-08">
+        <param name="description"  value="Unindexed comment values"/>
+        <param name="org.w3c.exi.ttf.preserve" value="comments"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-08.xml" />
+    </testCase>
+    <testCase name="string.indexed-09">
+        <param name="description"  value="Unindexed PI values"/>
+        <param name="org.w3c.exi.ttf.preserve" value="pis"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-09.xml" />
+    </testCase>
+</testCaseGroup>
+

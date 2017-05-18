@@ -1,0 +1,17 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/canonicalxml/dist/candidate-canonicalxml.jar"/>
+	<param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/canonicalxml/lib/*.jar"/>
+    
+    <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.canonicalxml.CanonicalXMLSAXDriver"/>
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="CanonicalXML"/>
+	<!--
+    <param name="org.w3c.exi.ttf.driver.isXmlProcessor" value="true"/>
+	-->
+
+    <driver name="CanonicalXMLSAX" normal="true">
+        <param name="description" value="Canonical XML"/>
+        <param name="org.w3c.exi.ttf.applicationClass" value="neither"/>
+    </driver>
+</driverGroup>
+

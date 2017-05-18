@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:usfr-ar="http://www.xbrl.org/us/fr/rpt/ar/2004-08-15" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.xbrl.org/us/fr/rpt/ar/2004-08-15" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <annotation>
+    <appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:href="usfr-ar-2004-08-15-labels.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Label Links, all" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="usfr-ar-2004-08-15-references.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Reference Links, all" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="usfr-ar-2004-08-15-presentation.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Presentation Links, all" />
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="xbrl-instance-2003-12-31.xsd" />
+  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="../../linkbases/schema/xbrl-linkbase-2003-12-31.xsd" />
+  <import namespace="http://www.xbrl.org/us/fr/common/ref/2003-12-31" schemaLocation="usfr-ref-2003-12-31.xsd" />
+  <element id="usfr-ar_AccountantsInformation" name="AccountantsInformation" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration" type="xbrli:stringItemType" />
+  <element id="usfr-ar_AccountantsInformationAddress" name="AccountantsInformationAddress" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_AccountantsInformationName" name="AccountantsInformationName" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_AccountantsInformationSignature" name="AccountantsInformationSignature" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_AccountantsReport" name="AccountantsReport" type="xbrli:stringItemType" substitutionGroup="xbrli:item" xbrli:periodType="duration" />
+  <element id="usfr-ar_AccountingStandardsApplied" name="AccountingStandardsApplied" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_Addressee" name="Addressee" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_BalanceSheetDate" name="BalanceSheetDate" type="xbrli:dateTimeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_CashFlowsStatementPeriod" name="CashFlowsStatementPeriod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_City" name="City" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_Country" name="Country" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_DateDualDate" name="DateDualDate" type="xbrli:dateTimeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_DualDate" name="DualDate" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_DualDateNote" name="DualDateNote" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_ExplanatoryParagraph" name="ExplanatoryParagraph" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_IncomeStatementPeriod" name="IncomeStatementPeriod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_IntroductoryParagraph" name="IntroductoryParagraph" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_OpinionParagraph" name="OpinionParagraph" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_ReportBody" name="ReportBody" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_ReportDate" name="ReportDate" type="xbrli:dateTimeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_ReportInformation" name="ReportInformation" abstract="true" substitutionGroup="xbrli:item" xbrli:periodType="duration" type="xbrli:stringItemType" />
+  <element id="usfr-ar_ReportingMethod" name="ReportingMethod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_ReportType" name="ReportType" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_ScopeParagraph" name="ScopeParagraph" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_StatementComprehensiveIncomePeriod" name="StatementComprehensiveIncomePeriod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_StatementsCovered" name="StatementsCovered" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_StatementStockholdersEquityPeriod" name="StatementStockholdersEquityPeriod" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_StateProvince" name="StateProvince" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_Street1" name="Street1" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_Street2" name="Street2" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_TitleReport" name="TitleReport" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="usfr-ar_ZIPPostalCode" name="ZIPPostalCode" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+</schema>

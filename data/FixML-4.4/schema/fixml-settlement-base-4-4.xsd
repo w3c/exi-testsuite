@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 2003,20041218
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="SettlementInstructionsElements">
+		<xs:sequence>		
+		<xs:element name="SetInst" type="SettlInstGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SettlementInstructionsAttributes">
+		<xs:attribute name="SettlInstMsgID" type="SettlInstMsgID_t" use="required"/>
+		<xs:attribute name="SettlInstReqID" type="SettlInstReqID_t" use="optional"/>
+		<xs:attribute name="SettlInstMode" type="SettlInstMode_t" use="required"/>
+		<xs:attribute name="SettlInstReqRejCode" type="SettlInstReqRejCode_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+		<xs:attribute name="ClOrdID" type="ClOrdID_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SettlementInstructions_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SettlementInstructions can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SettlementInstructions" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SettlementInstructionsElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SettlementInstructionsAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SettlInstrctns" type="SettlementInstructions_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SettlementInstructionRequestElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SettlementInstructionRequestAttributes">
+		<xs:attribute name="SettlInstReqID" type="SettlInstReqID_t" use="required"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="Acct" type="AllocAccount_t" use="optional"/>
+		<xs:attribute name="ActIDSrc" type="AllocAcctIDSource_t" use="optional"/>
+		<xs:attribute name="Side" type="Side_t" use="optional"/>
+		<xs:attribute name="Prod" type="Product_t" use="optional"/>
+		<xs:attribute name="SecTyp" type="SecurityType_t" use="optional"/>
+		<xs:attribute name="CFI" type="CFICode_t" use="optional"/>
+		<xs:attribute name="EfctvTm" type="EffectiveTime_t" use="optional"/>
+		<xs:attribute name="ExpireTm" type="ExpireTime_t" use="optional"/>
+		<xs:attribute name="LastUpdateTm" type="LastUpdateTime_t" use="optional"/>
+		<xs:attribute name="StandInstDbTyp" type="StandInstDbType_t" use="optional"/>
+		<xs:attribute name="StandInstDbName" type="StandInstDbName_t" use="optional"/>
+		<xs:attribute name="StandInstDbID" type="StandInstDbID_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="SettlementInstructionRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SettlementInstructionRequest can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SettlementInstructionRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="SettlementInstructionRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="SettlementInstructionRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="SettlInstrctnReq" type="SettlementInstructionRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="SettlInstGrpElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="SetInstr" type="SettlInstructionsData_Block_t" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="SettlInstGrpAttributes">
+		<xs:attribute name="SettlInstID" type="SettlInstID_t" use="optional"/>
+		<xs:attribute name="SettlInstTransTyp" type="SettlInstTransType_t" use="optional"/>
+		<xs:attribute name="SettlInstRefID" type="SettlInstRefID_t" use="optional"/>
+		<xs:attribute name="Side" type="Side_t" use="optional"/>
+		<xs:attribute name="Prod" type="Product_t" use="optional"/>
+		<xs:attribute name="SecTyp" type="SecurityType_t" use="optional"/>
+		<xs:attribute name="CFI" type="CFICode_t" use="optional"/>
+		<xs:attribute name="EfctvTm" type="EffectiveTime_t" use="optional"/>
+		<xs:attribute name="ExpireTm" type="ExpireTime_t" use="optional"/>
+		<xs:attribute name="LastUpdateTm" type="LastUpdateTime_t" use="optional"/>
+		<xs:attribute name="PmtMethod" type="PaymentMethod_t" use="optional"/>
+		<xs:attribute name="PmtRef" type="PaymentRef_t" use="optional"/>
+		<xs:attribute name="CardHolderName" type="CardHolderName_t" use="optional"/>
+		<xs:attribute name="CardNum" type="CardNumber_t" use="optional"/>
+		<xs:attribute name="CardStartDt" type="CardStartDate_t" use="optional"/>
+		<xs:attribute name="CardExpDt" type="CardExpDate_t" use="optional"/>
+		<xs:attribute name="CardIssNum" type="CardIssNum_t" use="optional"/>
+		<xs:attribute name="PmtDt" type="PaymentDate_t" use="optional"/>
+		<xs:attribute name="PmtRemtrID" type="PaymentRemitterID_t" use="optional"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="SettlInstGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">SettlInstGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="SettlInstGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="SettlInstGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="SettlInstGrpAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
+

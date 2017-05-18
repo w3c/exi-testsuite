@@ -1,0 +1,15 @@
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!-- Tries to test the following:
+        It should be noted that even if production insertion is disabled for a given
+        grammar, the productions inserted before production insertion is disabled        
+        for that grammar may be used throughout the whole document.
+    -->
+    <!-- Assmption: numberOfProduction == 1 (one) -->
+    <!-- after first attribute at1 production insertion is disabled,
+        however AT(at1) production can be used 
+        throughout the rest of the document -->
+    <el at1="at1_x" at2="at2_x">el1</el>
+    <el at1="at1_y" at2="at2_y">el2</el>
+    <el at1="at1_z" at2="at2_z">el3</el>
+</root>

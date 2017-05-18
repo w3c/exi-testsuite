@@ -1,0 +1,25 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <testCase name="UBL-1.0/xml/joinery/UBL-DespatchAdvice-1.0-Joinery-Example.xml">
+	<param name="japex.inputFile" value="${testsDir}/UBL-1.0/xml/joinery/UBL-DespatchAdvice-1.0-Joinery-Example.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/UBL-1.0/xsd/maindoc/UBL-DespatchAdvice-1.0.xsd"/>
+    </testCase>
+    <testCase name="UBL-1.0/xml/joinery/UBL-Invoice-1.0-Joinery-Example.xml">
+	<param name="japex.inputFile" value="${testsDir}/UBL-1.0/xml/joinery/UBL-Invoice-1.0-Joinery-Example.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/UBL-1.0/xsd/maindoc/UBL-Invoice-1.0.xsd"/>
+    </testCase>
+    <testCase name="UBL-1.0/xml/joinery/UBL-Order-1.0-Joinery-Example.xml">
+	<param name="japex.inputFile" value="${testsDir}/UBL-1.0/xml/joinery/UBL-Order-1.0-Joinery-Example.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/UBL-1.0/xsd/maindoc/UBL-Order-1.0.xsd"/>
+    </testCase>
+    <testCase name="UBL-1.0/xml/joinery/UBL-OrderResponse-1.0-Joinery-Example.xml">
+	<param name="japex.inputFile" value="${testsDir}/UBL-1.0/xml/joinery/UBL-OrderResponse-1.0-Joinery-Example.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/UBL-1.0/xsd/maindoc/UBL-OrderResponse-1.0.xsd"/>
+    </testCase>
+    <testCase name="UBL-1.0/xml/office/UBL-OrderCancellation-1.0-Office-Example.xml">
+	<param name="japex.inputFile" value="${testsDir}/UBL-1.0/xml/office/UBL-OrderCancellation-1.0-Office-Example.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/UBL-1.0/xsd/maindoc/UBL-OrderCancellation-1.0.xsd"/>
+    </testCase>
+</testCaseGroup>
+

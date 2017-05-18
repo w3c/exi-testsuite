@@ -1,0 +1,37 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude" 
+    name="Literal string encoding">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/string"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingString"/>
+
+    <testCase name="string.literal-01">
+        <param name="description"  value="Element value with non-ascii characters "/>
+        <param name="japex.inputFile" value="${test.docFolder}/literal-01.xml" />
+    </testCase>
+    <testCase name="string.literal-02">
+        <param name="description"  value="Element name with non-ascii characters "/>
+        <param name="japex.inputFile" value="${test.docFolder}/literal-02.xml" />
+    </testCase>
+    <testCase name="string.literal-03">
+        <param name="description"  value="Element value with standard ASCII characters "/>
+        <param name="japex.inputFile" value="${test.docFolder}/literal-03.xml" />
+    </testCase>
+    <testCase name="string.literal-04">
+        <param name="description"  value="Element value with one character 2 bytes UTF-8 "/>
+        <param name="japex.inputFile" value="${test.docFolder}/literal-04.xml" />
+    </testCase>
+    <testCase name="string.literal-05">
+        <param name="description"  value="Element value with one character 3 bytes UTF-8 "/>
+        <param name="japex.inputFile" value="${test.docFolder}/literal-05.xml" />
+    </testCase>
+    <testCase name="string.literal-06">
+        <param name="description"  value="Element value with one character 3 bytes UTF-8 / 3 bytes EXI"/>
+        <param name="japex.inputFile" value="${test.docFolder}/literal-06.xml" />
+    </testCase>
+    <testCase name="string.literal-07">
+        <param name="description"  value="Element value with one character 4 bytes UTF-8"/>
+        <param name="japex.inputFile" value="${test.docFolder}/literal-07.xml" />
+    </testCase>
+</testCaseGroup>
+

@@ -1,0 +1,12 @@
+<!-- =================================================================== -->
+<!-- Tests undeclared AT(*) [untyped value] using non-declared           -->
+<!-- attributes.                                                         -->
+<!-- =================================================================== -->
+<foo:M2 xmlns:foo='urn:foo'>
+  <A foo:aJ_none="a" foo:aK="2010-01-01" foo:aL="12345" foo:aM="QUJDREVGR0hJSg==" foo:aN="1 2 3" />
+  <A foo:aK="2010-01-01" foo:aK_none="b" foo:aL="12345" foo:aM="QUJDREVGR0hJSg==" foo:aN="1 2 3" />
+  <A foo:aK="2010-01-01" foo:aL="12345" foo:aL_none="c" foo:aM="QUJDREVGR0hJSg==" foo:aN="1 2 3" />
+  <A foo:aK="2010-01-01" foo:aL="12345" foo:aM="QUJDREVGR0hJSg==" foo:aM_none="d" foo:aN="1 2 3" />
+  <A foo:aK="2010-01-01" foo:aL="12345" foo:aM="QUJDREVGR0hJSg==" foo:aN="1 2 3" foo:aN_none="e" />
+  <A foo:aK="2010-01-01" foo:aL="12345" foo:aM="QUJDREVGR0hJSg==" foo:aN="1 2 3" foo:aN_none="f" foo:aO_none="g" />
+</foo:M2>

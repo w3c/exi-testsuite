@@ -1,0 +1,4 @@
+<foo:H2 xmlns:foo='urn:foo' xmlns:goo='urn:goo'>
+  <goo:AB/> <!-- xsd:any namespace="##other" minOccurs="0" -->
+  <AB/>     <!-- xsd:any namespace="##targetNamespace ##local" minOccurs="0" -->
+</foo:H2>

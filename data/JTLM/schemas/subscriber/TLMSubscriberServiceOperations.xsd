@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<!-- The US Government's license rights for this deliverable are listed in -->
+<!-- DFARS 252.227-7013 Rights in Technical Data - Noncommercial Items -->
+<!-- (Nov 1995) (Alternate 1 June 1995) and DFARS 252.227-7014 Rights in -->
+<!-- Noncommercial Computer Software and Noncommercial Computer Software -->
+<!-- Documentation (June 1995). -->
+<!-- COMPANY  : Raytheon Company -->
+<!-- COPYRIGHT: Copyright (c) 2005 Raytheon Company -->
+<!-- UNPUBLISHED WORK -->
+<!-- ALL RIGHTS RESERVED -->
+<!-- PROJECT  : Target List Management -->
+<!-- CONTRACT : DAAB07-99-C-E003 -->
+<!-- -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Sharon Blotkamp (Raytheon Company) -->
+<!-- Hand created file by M.T.Williams (Raytheon) -->
+<!-- -->
+<xs:schema 
+  targetNamespace="http://www.firesupport.com/schema/tlmsubs/operations" 
+  elementFormDefault="qualified" 
+  attributeFormDefault="unqualified" 
+  version="Draft" 
+  xmlns:common="http://www.firesupport.com/schema/jtlm/common" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:tlm="http://www.firesupport.com/schema/jtlm" 
+  xmlns:cot="http://www.firesupport.com/schema/Cursor-On-Target"
+  xmlns:target="http://www.firesupport.com/schema/jtlm/target">
+
+  <xs:import namespace="http://www.firesupport.com/schema/jtlm/common" 
+             schemaLocation="../Common.xsd"/>
+  <xs:import namespace="http://www.firesupport.com/schema/jtlm/target" 
+             schemaLocation="../Target.xsd"/>
+  <xs:import namespace="http://www.firesupport.com/schema/Cursor-On-Target" 
+             schemaLocation="../Event.xsd"/>
+  <xs:import namespace="http://www.firesupport.com/schema/jtlm" 
+             schemaLocation="../TLM.xsd"/>
+
+  <!--Target List Manager Subscriber Service Operations-->
+  <!-- -->
+  <xs:element name="subscriberEventNotification">
+     <xs:annotation>
+	<xs:documentation>The detail element must be of type TLMSubscriberEventType.  If the subscriberEvent element is not null, TLM will use that data and not the data in the detail element.</xs:documentation>
+     </xs:annotation>
+     <xs:complexType>
+	<xs:sequence>
+	  <xs:element name="tlmSubscriberEvent" 
+	              type="tlm:COTSubscriberEventType"/>
+	</xs:sequence>
+     </xs:complexType>
+  </xs:element>
+  <!-- GTURNER  removed subscriberEventNotificationResponse -->
+</xs:schema>

@@ -1,0 +1,44 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Blocksize interoperability tests">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/string"/>
+    <param name="groupId" value="${groupId} | blockSize"/>
+
+    <!-- blocksize test cases here -->
+    <testCase name="blockSize-00">
+        <param name="org.w3c.exi.ttf.blockSize" value="1"/>
+        <param name="reference" value="http://www.w3.org/TR/exi/#blocks"/>
+        <param name="description"  value="Block size = 1 with a document containing 100 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-10.xml" />
+    </testCase>
+    <testCase name="blockSize-01">
+        <param name="org.w3c.exi.ttf.blockSize" value="100"/>
+        <param name="reference" value="http://www.w3.org/TR/exi/#blocks"/>
+        <param name="description"  value="Block size = 100 with a document containing 100 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-10.xml" />
+    </testCase>
+    <testCase name="blockSize-02">
+        <param name="org.w3c.exi.ttf.blockSize" value="100"/>
+        <param name="reference" value="http://www.w3.org/TR/exi/#blocks"/>
+        <param name="description"  value="Block size = 100 with a document containing 99 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-12.xml" />
+    </testCase>
+    <testCase name="blockSize-03">
+        <param name="reference" value="http://www.w3.org/TR/exi/#blocks"/>
+        <param name="description"  value="Block size = unbounded with a document containing 100 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-10.xml" />
+    </testCase>
+    <!-- channel splitting tests -->
+    <testCase name="blockSize-04">
+        <param name="description"  value="Block size = unbounded with a document containing 99 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-12.xml" />
+    </testCase>
+    <testCase name="blockSize-05">
+        <param name="description"  value="Block size = unbounded with a document containing 200 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-11.xml" />
+    </testCase>
+
+</testCaseGroup>

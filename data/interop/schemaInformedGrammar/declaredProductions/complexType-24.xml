@@ -1,0 +1,9 @@
+<!-- =================================================================== -->
+<!-- Use of xsi:type in a full-fledged complex type grammar.             -->
+<!-- The attribute foo:none matches AT(foo:*) in type foo:extended_I2.   -->
+<!-- =================================================================== -->
+<foo:I2 xmlns:foo='urn:foo' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  xsi:type='foo:extended_I2' foo:aI="" foo:none="">
+  <A/><B/>
+</foo:I2>

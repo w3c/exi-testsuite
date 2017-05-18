@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo">
+
+<xsd:simpleType name="unionedEnum">
+  <xsd:restriction>
+    <xsd:simpleType>
+      <xsd:union memberTypes="xsd:int xsd:NMTOKEN"/>
+    </xsd:simpleType>
+    <xsd:enumeration value="100"/>
+    <xsd:enumeration value="Tokyo"/>
+    <xsd:enumeration value="101"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="unionedEnum" type="foo:unionedEnum" />
+
+<xsd:simpleType name="unionOfIntegerString">
+  <xsd:union>
+    <xsd:simpleType>
+      <xsd:restriction base="xsd:integer"/>
+    </xsd:simpleType>
+    <xsd:simpleType>
+      <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+  </xsd:union>
+</xsd:simpleType>
+
+<xsd:element name="unionOfIntegerString" type="foo:unionOfIntegerString" />
+
+<!-- xsd:simpleType name="refType">
+  <xsd:union memberTypes="xsd:NMTOKEN xsd:anyURI"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="unionOfUnion">
+  <xsd:union>
+    <xsd:simpleType>
+      <xsd:restriction base="xsd:NMTOKEN">
+        <xsd:enumeration value="main"/>
+        <xsd:enumeration value="secondary"/>
+        <xsd:enumeration value="alternative"/>
+      </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType>
+      <xsd:restriction base="foo:refType"/>
+    </xsd:simpleType>
+  </xsd:union>
+</xsd:simpleType -->
+
+</xsd:schema>

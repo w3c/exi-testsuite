@@ -1,0 +1,33 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Undeclared productions interoperability tests">
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+        name="Adding Productions when Strict is False">
+        <param name="groupId" value="${groupId} | addingProductionsDefault"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/attruseUntyped.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/attrWildcard.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/ch.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/cm.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/ee.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/er.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/namespaceDecl.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/pi.xml"/>
+        <!-- moved to selfContained.xml to avoid conflict with compression -->
+        <!-- <xi:include href="schemaInformedGrammar/undeclaredProductions/sc.xml"/> -->
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/se.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/xsiNilDefault.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/xsiTypeDefault.xml"/>
+    </testCaseGroup>
+
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+        name="Adding Productions when Strict is True">
+        <param name="groupId" value="${groupId} | addingProductionsStrict"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/xsiNilStrict.xml"/>
+        <xi:include href="schemaInformedGrammar/undeclaredProductions/xsiTypeStrict.xml"/>
+    </testCaseGroup>
+    
+    <xi:include href="schemaInformedGrammar/schemaCID.xml"/>
+
+</testCaseGroup>

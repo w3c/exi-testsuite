@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 2003,20041218
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-components-impl-4-4.xsd"/>
+
+
+	<xs:group name="PositionMaintenanceRequestElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdSes" type="TrdgSesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Qty" type="PositionQty_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PositionMaintenanceRequestAttributes">
+		<xs:attribute name="ReqID" type="PosReqID_t" use="required"/>
+		<xs:attribute name="TxnTyp" type="PosTransType_t" use="required"/>
+		<xs:attribute name="Actn" type="PosMaintAction_t" use="required"/>
+		<xs:attribute name="OrigReqRefID" type="OrigPosReqRefID_t" use="optional"/>
+		<xs:attribute name="RptRefID" type="PosMaintRptRefID_t" use="optional"/>
+		<xs:attribute name="BizDt" type="ClearingBusinessDate_t" use="required"/>
+		<xs:attribute name="SetSesID" type="SettlSessID_t" use="optional"/>
+		<xs:attribute name="SetSesSub" type="SettlSessSubID_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="required"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="AdjTyp" type="AdjustmentType_t" use="optional"/>
+		<xs:attribute name="CntraryInstrctnInd" type="ContraryInstructionIndicator_t" use="optional"/>
+		<xs:attribute name="PriorSpreadInd" type="PriorSpreadIndicator_t" use="optional"/>
+		<xs:attribute name="ThresholdAmt" type="ThresholdAmount_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="PositionMaintenanceRequest_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">PositionMaintenanceRequest can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="PositionMaintenanceRequest" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="PositionMaintenanceRequestElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="PositionMaintenanceRequestAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="PosMntReq" type="PositionMaintenanceRequest_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="PositionMaintenanceReportElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdSes" type="TrdgSesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Qty" type="PositionQty_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Amt" type="PositionAmountData_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PositionMaintenanceReportAttributes">
+		<xs:attribute name="RptID" type="PosMaintRptID_t" use="required"/>
+		<xs:attribute name="TxnTyp" type="PosTransType_t" use="required"/>
+		<xs:attribute name="ReqID" type="PosReqID_t" use="optional"/>
+		<xs:attribute name="Actn" type="PosMaintAction_t" use="required"/>
+		<xs:attribute name="OrigReqRefID" type="OrigPosReqRefID_t" use="required"/>
+		<xs:attribute name="Stat" type="PosMaintStatus_t" use="required"/>
+		<xs:attribute name="Rslt" type="PosMaintResult_t" use="optional"/>
+		<xs:attribute name="BizDt" type="ClearingBusinessDate_t" use="required"/>
+		<xs:attribute name="SetSesID" type="SettlSessID_t" use="optional"/>
+		<xs:attribute name="SetSesSub" type="SettlSessSubID_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="required"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="AdjTyp" type="AdjustmentType_t" use="optional"/>
+		<xs:attribute name="ThresholdAmt" type="ThresholdAmount_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="PositionMaintenanceReport_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">PositionMaintenanceReport can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="PositionMaintenanceReport" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="PositionMaintenanceReportElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="PositionMaintenanceReportAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="PosMntRpt" type="PositionMaintenanceReport_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="RequestForPositionsElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="TrdSes" type="TrdgSesGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="RequestForPositionsAttributes">
+		<xs:attribute name="ReqID" type="PosReqID_t" use="required"/>
+		<xs:attribute name="ReqTyp" type="PosReqType_t" use="required"/>
+		<xs:attribute name="MtchStat" type="MatchStatus_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="required"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="BizDt" type="ClearingBusinessDate_t" use="required"/>
+		<xs:attribute name="SetSesID" type="SettlSessID_t" use="optional"/>
+		<xs:attribute name="SetSesSub" type="SettlSessSubID_t" use="optional"/>
+		<xs:attribute name="TxnTm" type="TransactTime_t" use="required"/>
+		<xs:attribute name="RspTransportTyp" type="ResponseTransportType_t" use="optional"/>
+		<xs:attribute name="RspDest" type="ResponseDestination_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="RequestForPositions_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">RequestForPositions can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="RequestForPositions" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="RequestForPositionsElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="RequestForPositionsAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="PosReq" type="RequestForPositions_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="RequestForPositionsAckElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="RequestForPositionsAckAttributes">
+		<xs:attribute name="RptID" type="PosMaintRptID_t" use="required"/>
+		<xs:attribute name="ReqID" type="PosReqID_t" use="optional"/>
+		<xs:attribute name="TotRpts" type="TotalNumPosReports_t" use="optional"/>
+		<xs:attribute name="Unsol" type="UnsolicitedIndicator_t" use="optional"/>
+		<xs:attribute name="Rslt" type="PosReqResult_t" use="required"/>
+		<xs:attribute name="Stat" type="PosReqStatus_t" use="required"/>
+		<xs:attribute name="Acct" type="Account_t" use="required"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="RspTransportTyp" type="ResponseTransportType_t" use="optional"/>
+		<xs:attribute name="RspDest" type="ResponseDestination_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="RequestForPositionsAck_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">RequestForPositionsAck can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="RequestForPositionsAck" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="RequestForPositionsAckElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="RequestForPositionsAckAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="PosReqAck" type="RequestForPositionsAck_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="PositionReportElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="PosUnd" type="PosUndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Qty" type="PositionQty_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Amt" type="PositionAmountData_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PositionReportAttributes">
+		<xs:attribute name="RptID" type="PosMaintRptID_t" use="required"/>
+		<xs:attribute name="ReqID" type="PosReqID_t" use="optional"/>
+		<xs:attribute name="ReqTyp" type="PosReqType_t" use="optional"/>
+		<xs:attribute name="SubReqTyp" type="SubscriptionRequestType_t" use="optional"/>
+		<xs:attribute name="TotRpts" type="TotalNumPosReports_t" use="optional"/>
+		<xs:attribute name="Unsol" type="UnsolicitedIndicator_t" use="optional"/>
+		<xs:attribute name="Rslt" type="PosReqResult_t" use="required"/>
+		<xs:attribute name="BizDt" type="ClearingBusinessDate_t" use="required"/>
+		<xs:attribute name="SetSesID" type="SettlSessID_t" use="optional"/>
+		<xs:attribute name="SetSesSub" type="SettlSessSubID_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="required"/>
+		<xs:attribute name="AcctIDSrc" type="AcctIDSource_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="SetPx" type="SettlPrice_t" use="required"/>
+		<xs:attribute name="SetPxTyp" type="SettlPriceType_t" use="required"/>
+		<xs:attribute name="PriSetPx" type="PriorSettlPrice_t" use="required"/>
+		<xs:attribute name="RegStat" type="RegistStatus_t" use="optional"/>
+		<xs:attribute name="DlvDt" type="DeliveryDate_t" use="optional"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="PositionReport_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">PositionReport can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="PositionReport" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="PositionReportElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="PositionReportAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="PosRpt" type="PositionReport_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="AssignmentReportElements">
+		<xs:sequence>		
+		<xs:element name="Pty" type="Parties_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Instrmt" type="Instrument_Block_t" minOccurs="0" />
+		<xs:element name="Leg" type="InstrmtLegGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Undly" type="UndInstrmtGrp_Block_t" minOccurs="0" maxOccurs="unbounded"/>
+		<xs:element name="Qty" type="PositionQty_Block_t" maxOccurs="unbounded"/>
+		<xs:element name="Amt" type="PositionAmountData_Block_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="AssignmentReportAttributes">
+		<xs:attribute name="RptID" type="AsgnRptID_t" use="required"/>
+		<xs:attribute name="TotNumAsgnRpts" type="TotNumAssignmentReports_t" use="optional"/>
+		<xs:attribute name="LastRptReqed" type="LastRptRequested_t" use="optional"/>
+		<xs:attribute name="Acct" type="Account_t" use="optional"/>
+		<xs:attribute name="AcctTyp" type="AccountType_t" use="required"/>
+		<xs:attribute name="Ccy" type="Currency_t" use="optional"/>
+		<xs:attribute name="ThresholdAmt" type="ThresholdAmount_t" use="optional"/>
+		<xs:attribute name="SetPx" type="SettlPrice_t" use="required"/>
+		<xs:attribute name="SetPxTyp" type="SettlPriceType_t" use="required"/>
+		<xs:attribute name="UndSetPx" type="UnderlyingSettlPrice_t" use="required"/>
+		<xs:attribute name="ExpireDt" type="ExpireDate_t" use="optional"/>
+		<xs:attribute name="AsgnMeth" type="AssignmentMethod_t" use="required"/>
+		<xs:attribute name="Unit" type="AssignmentUnit_t" use="optional"/>
+		<xs:attribute name="OpenInt" type="OpenInterest_t" use="required"/>
+		<xs:attribute name="ExrMethod" type="ExerciseMethod_t" use="required"/>
+		<xs:attribute name="SetSesID" type="SettlSessID_t" use="required"/>
+		<xs:attribute name="SetSesSub" type="SettlSessSubID_t" use="required"/>
+		<xs:attribute name="BizDt" type="ClearingBusinessDate_t" use="required"/>
+		<xs:attribute name="Txt" type="Text_t" use="optional"/>
+		<xs:attribute name="EncTxtLen" type="EncodedTextLen_t" use="optional"/>
+		<xs:attribute name="EncTxt" type="EncodedText_t" use="optional"/>
+
+</xs:attributeGroup>
+	
+	<xs:complexType name="AssignmentReport_message_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">AssignmentReport can be found in Volume5 of the specification
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="AssignmentReport" ComponentType="Message"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>	
+	<xs:complexContent>
+			<xs:extension base="Abstract_message_t">
+				<xs:sequence>
+					<xs:group ref="AssignmentReportElements"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="AssignmentReportAttributes"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	
+<xs:element name="AsgnRpt" type="AssignmentReport_message_t" substitutionGroup="Message" final="#all"/>
+
+	<xs:group name="PosUndInstrmtGrpElements">
+		<xs:sequence>		
+		<xs:element name="Undly" type="UnderlyingInstrument_Block_t" minOccurs="0" />
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="PosUndInstrmtGrpAttributes">
+		<xs:attribute name="UndSetPx" type="UnderlyingSettlPrice_t" use="required"/>
+		<xs:attribute name="UndSetPxTyp" type="UnderlyingSettlPriceType_t" use="required"/>
+
+</xs:attributeGroup>
+
+	<xs:complexType name="PosUndInstrmtGrp_Block_t" final="#all">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">PosUndInstrmtGrp is a component
+		</xs:documentation>
+		<xs:appinfo xmlns:x="http://www.fixprotocol.org/fixml/metadata.xsd">
+			<xs:Xref Protocol="FIX" name="PosUndInstrmtGrp" ComponentType="ImplicitBlockRepeating"/>
+			<xs:Xref Protocol="ISO_15022_XML"/>
+		</xs:appinfo>
+	</xs:annotation>
+		<xs:sequence>
+			<xs:group ref="PosUndInstrmtGrpElements"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="PosUndInstrmtGrpAttributes"/>
+	</xs:complexType>
+
+</xs:schema>
+

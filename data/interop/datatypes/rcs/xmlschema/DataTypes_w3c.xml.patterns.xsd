@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsdt="http://www.w3.org/XML/2004/xml-schema-test-suite/"
+   xmlns:japex="http://www.sun.com/japex/testSuite">
+   <xs:element name="pattern">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="pattern1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern2">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{0,2}.[0-9]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern3">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{0,2}.[0-9]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern4">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{0,2}.[0-9]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern5">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="P\p{Nd}{1,4}Y\p{Nd}{1,2}MT\p{Nd}{1,2}H"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern6">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern7">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{1,2}:[0-9]{2}:[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern8">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{1,2}:[0-9]{2}:[0-9]{2}-[0-9]{2}:[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern9">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern10">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}-[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern11">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern12">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="--[0-9]{2}-[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern13">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="---[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern14">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="--[0-9]{2}--"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern15">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern16">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{1}peg"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern17">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern18">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern19">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern20">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern21">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern22">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern23">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern24">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern25">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern26">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="-\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern27">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="-\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern28">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern29">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern30">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern31">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern32">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern33">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern34">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern35">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern36">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern37">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern38">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern39">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9A-Fa-f]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern40">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{0,2}.[0-9]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern41">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{0,2}.[0-9]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern42">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{0,2}.[0-9]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern43">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="P\p{Nd}{1,4}Y\p{Nd}{1,2}MT\p{Nd}{1,2}H"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern44">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{1,2}:[0-9]{2}:[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern45">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{1,2}:[0-9]{2}:[0-9]{2}-[0-9]{2}:[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern46">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern47">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}-[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern48">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{4}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern49">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="--[0-9]{2}-[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern50">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="---[0-9]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern51">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="--[0-9]{2}--"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern52">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern53">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{1}peg"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern54">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern55">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern56">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="en-[a-z]{2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern57">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern58">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[A-C]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern59">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[A-C]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern60">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern61">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern62">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern63">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a-z]{3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern64">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern65">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="-\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern66">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="-\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern67">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern68">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern69">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern70">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern71">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern72">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern73">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern74">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern75">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern76">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\p{Nd}{1,3}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

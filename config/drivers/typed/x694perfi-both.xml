@@ -1,0 +1,17 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="japex.classPath" value="${japex.home}/jdsl/jdsl.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+    <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/c/x694perfi/dist/candidate-x694perfi.jar"/>
+
+    <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.x694perfi.X694PERFINativeDriver"/>
+    <param name="org.w3c.exi.ttf.driver.candidateName" value="x694perfi"/>
+    <param name="ossx.precompiledSchemas" value="${japex.exi.ttfms.candidatesDir}/c/x694perfi/dist/schemas.properties"/>
+    <param name="ossx.precompiledSchemaPath" value="${japex.exi.ttfms.candidatesDir}/c/x694perfi/lib/${japex.osName}/${japex.osArchitecture}"/>
+
+    <driver name="X694PERFIBothTyped">
+        <param name="description" value="PER or Fast Infoset compaction in 'both' mode"/>
+        <param name="libraryPath" value="${japex.exi.ttfms.candidatesDir}/c/x694perfi/lib/${os.name}/${os.arch}/drivers"/>
+	<param name="libraryName" value="candidate-x694perfi-PER+GZIP"/>
+        <param name="org.w3c.exi.ttf.applicationClass" value="both"/>
+    </driver>
+</driverGroup>

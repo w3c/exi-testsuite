@@ -1,0 +1,1761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This data is strictly for non-commercial use only.  See http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html for details of the terms and conditions.-->
+<ESGMainBCAST xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <Service id="BBCRThree" type="6" version="1" ServiceProtection="0">
+      <Name>BBC Radio 3</Name>
+      <Genre>Jazz</Genre>
+      <PreviewDataIDRef usage="0">urn:bbc:prevBBCRThree</PreviewDataIDRef>
+   </Service>
+   <Access id="BBCRThree_acc" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2
+s=SDP Example
+c=IN IP4 225.224.1.1
+t=0 0 
+m=audio 4004 RTP/AVP  98 
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCRThree</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Access id="BBCRThree_acc_MBMS" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2 
+c=IN IP4 225.224.1.3 
+t=0 0 
+m=audio 4004 RTP/AVP 98 
+a=rtpmap:98 AMR/8000 
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCRThree</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <PurchaseItem id="BBCRThree_1346" version="0">
+      <ServiceIDRef>BBCRThree</ServiceIDRef>
+      <Name>BBCRThree</Name>
+   </PurchaseItem>
+   <PurchaseData id="BBCRThree_23DGE" version="0">
+      <PurchaseItemIDRef>BBCRThree_1346</PurchaseItemIDRef>
+      <PurchaseChannelIDRef>BBC_purchase</PurchaseChannelIDRef>
+      <PriceInfo>
+         <SubscriptionUnit Type="1" Value="145" Unit="3"/>
+         <UnitText>month</UnitText>
+         <Price Currency="EUR" Value="1"/>
+      </PriceInfo>
+   </PurchaseData>
+   <PreviewData id="urn:bbc:prevBBCRThree" version="3">
+      <Picture>
+         <PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAwQAAgUBBv/EADAQAAICAQIEBAQFBQAAAAAAAAEC
+AAMRBCESMUFxEyJRYQUjgZEUJEJScjIzYrHB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEB
+AQEBAQAAAAAAAAAAAAAAAAERMUH/2gAMAwEAAhEDEQA/AHbdDUK2K5UgEjBgtPpPFoVzYcnoRmEf
+WP4bBqHGQRmc0uqSuhVYNkdcQKt8PfoUP0xEr6mRirAAg49ZqjW0fuI7iI6plscspyOI/wChFCiJ
+5oaxPlfWSlcvC6lfy47zIzWpZmPQS4pCKc5OPWMYAYM2y7bntBW6hBkL5tsSjhXbPpJF2axhyOBJ
+GD1Nv9p/4mD0g/Kp2l7Tilyf2mU0ZzpklBSinmoP0mbqUCu2AB5jy+k04jqR5j/I/wDIC1Kk2bTm
+oa1769PXgZGc4z1htOvzoLXPdRqValBxcH9RHvJBn6ii5bCGbjI54l005SviYgE+spZfqmPnZh22
+lq6hZXxM+T3gVPCDu2e0kL4KKuTtJKY37RmtuxlNIMadO0JYR4bdjB6Uj8Ou8A0TvG57mM2OAjEH
+kJjX6q04w7HtAe0w+fK/ELqQVXiy46DfEQrvvLAIzcTbDM6GNSFSMKP1dWMzbiyagau7KpuYC1Xq
+I339NhB2WcNwsQ4PtHWq8TDN5jjrKB1NxVedWJ9pJ3wQM4USS6h02n2nRcQNiBMz8RZ/j9oUajFP
+EQCfaQN3XkqBxd8TPdsOVUDEHZqnfqB2gjYzczmUP6Ur4ljk7KuIOxxYxPSAqchTjrOWXEbLzmWu
+KW4D4HKaelbOnr4ueJlKCzY6zRrZlUeX7Ss0xemaHwM7cpJem1XHPf3km5UrIJ3nHduAJk49JzJ5
+mUY5mVcM5JJAKrgJvzEFzMknKAWtckR1G8uCYlU2+I0hI95mrBq28++4MkoquTkbD3khcL33cVQX
+y8/0jEWJl1wfKd5V1AxiaZVkkkgXrrd3CqpLHkIZtBqlDE0nb0IM1vhtdFWj4uNS7jLkHce0qrLX
+b8kWO32EDFrUl8Y5c4/U3h4GFYHmDz+kLqdJZk2HgDnfgB3i1SCxgpB57kdJPQ01qKSFBY+nLEkr
+dot8mxj7STWJr//Z
+</PictureData>
+         <AlternativeText>BBC Radio 3</AlternativeText>
+      </Picture>
+      <AccessIDRef>BBCRThree_accpre</AccessIDRef>
+   </PreviewData>
+   <Access id="BBCRThree_accpre" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=prev 10001 1 IN IP4 192.1.1.65
+s=preview
+i=Vorschau
+t=0 0
+a=source-filter:  IN IP4 * 192.168.1.65
+a=flute-tsi:1
+a=flute-ch:1
+m=application 4000 FLUTE/UDP 0
+c=IN IP4 225.6.7.145</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>preview Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:824" version="2">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe features the Lindberg brothers in concert with the Stockholm Baroque Ensemble, plus works by Castello, Mendelssohn and Sweelinck</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:825" version="3">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe features Mahler's Symphony of a thousand, plus music by Rossi, Telemann, Frescobaldi, Vartabed, Delius, Lassus and Passereau</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:826" version="5">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe continues Through the Night with music from Dalza, Vivaldi, Halvorsen, Herbert and Murray</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:827" version="1">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe concludes Through the Night with music from Dütsch, Schoenberg, Schoek, Fabritius, De Heredia, Mozart, Reger, Hoffmann and Byrd</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e57" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e57" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:827</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3344995800" InteractivityWindowEndTime="3344996000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:833" version="2">
+      <Name>Morning on 3</Name>
+      <Description>Martin Handley hosts music by Schumann, Bach/Busoni and Tchaikovsky</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:832" version="4">
+      <Name>The Cowan Collection</Name>
+      <Description>Rob Cowan introduces some of his favourite recordings, including music by Rameau and Purcell</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:831" version="5">
+      <Name>Musical New Year</Name>
+      <Description>An International Celebration: Rob Cowan hosts a day of special concerts from around the world to mark the arrival of 2006, starting with Vienna</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:834" version="1">
+      <Name>Musical New Year</Name>
+      <Description>An International Celebration: Rob Cowan continues a day of special concerts from around the world, including Sydney, Berlin, Paris and Washington, to mark the arrival of 2006</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:830" version="3">
+      <Name>Drama on 3</Name>
+      <Description>The Club, by Gregory Whitehead</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:829" version="4">
+      <Name>Sunday Feature</Name>
+      <Description>In Search of Hans Christian Andersen: Another chance to hear Michael Rosen and Lars Tharp's visit to Denmark to uncover the truth about the unlikely creator of some our best loved tales</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:828" version="5">
+      <Name>Andy Kershaw</Name>
+      <Description>Rock legend Robert Plant brings his band The Strange Sensation in to the BBC's Maida Vale studios for an exclusive session, featuring songs from their album The Mighty Rearranger</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRThree_d0e727" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:824">
+         <Presentation_Window Presentation_Start_Time="3344976000" Presentation_End_Time="3344985900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e210" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2232055664 2730133056 IN IP4 192.168.0.41
+c=IN IP4 225.224.103.222
+m=audio 13766 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e741" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:825">
+         <Presentation_Window Presentation_Start_Time="3344985900" Presentation_End_Time="3344992800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e755" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:826">
+         <Presentation_Window Presentation_Start_Time="3344992800" Presentation_End_Time="3344994000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e769" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:827">
+         <Presentation_Window Presentation_Start_Time="3344994000" Presentation_End_Time="3345001200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e234" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2350158691 2450057982 IN IP4 192.168.0.183
+c=IN IP4 225.224.139.38
+m=audio 58764 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e783" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:833">
+         <Presentation_Window Presentation_Start_Time="3345001200" Presentation_End_Time="3345008400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e797" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:832">
+         <Presentation_Window Presentation_Start_Time="3345008400" Presentation_End_Time="3345012900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e811" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:831">
+         <Presentation_Window Presentation_Start_Time="3345012900" Presentation_End_Time="3345021600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e258" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2481277465 2614456175 IN IP4 192.168.0.13
+c=IN IP4 225.224.161.117
+m=audio 42308 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e825" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:834">
+         <Presentation_Window Presentation_Start_Time="3345021600" Presentation_End_Time="3345048000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e839" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:830">
+         <Presentation_Window Presentation_Start_Time="3345048000" Presentation_End_Time="3345053400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e853" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:829">
+         <Presentation_Window Presentation_Start_Time="3345053400" Presentation_End_Time="3345056100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e282" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2273590087 2563247679 IN IP4 192.168.0.100
+c=IN IP4 225.224.86.123
+m=audio 14162 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e867" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:828">
+         <Presentation_Window Presentation_Start_Time="3345056100" Presentation_End_Time="3345062400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:1030" version="2">
+      <Name>Composer of the Week</Name>
+      <Description>Johann Nepomuk Hummel (1778-1837): 1/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1035" version="3">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe presents Mozart at the 2005 Roskilde Schubertiade, plus music by Schoenberg, Brahms, Escher, Dutilleux and Lhotka</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1032" version="5">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe continues the programme with music by Chopin, Csiky, Dvorák, Sibelius, Schubert and Salmenhaara</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e340" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e340" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:1032</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345078900" InteractivityWindowEndTime="3345079100"/>
+   </InteractivityData>
+   <Content id="urn:bbc:1031" version="1">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe ends the programme with music by Poulenc, Haydn, Rangström, Malmfors, Sibelius, Sallinen, Mozart, Telemann, Stenhammar, Dittersdorf and Lindblad</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1034" version="2">
+      <Name>Morning on 3</Name>
+      <Description>Penny Gore begins Mozart's 250th anniversary year since his birth with early symphonies and wind divertimenti</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1033" version="4">
+      <Name>CD Masters</Name>
+      <Description>Jonathan Swain features recordings by Jascha Horenstein and Schumann piano works</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1036" version="5">
+      <Name>Composer of the Week</Name>
+      <Description>Aaron Copland (1900-1990): 1/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1044" version="1">
+      <Name>Lunchtime Concert</Name>
+      <Description>The Poems of Théophile Gautier: Mezzo-soprano Bernarda Fink and pianist Roger Vignoles present a programme of songs inspired by one of the major literary figures of 19th century France</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1043" version="3">
+      <Name>Afternoon Performance</Name>
+      <Description>Kings of Heaven and Earth: Part of a series reflecting the lead up to Epiphany on January 6, featuring the BBC Symphony Orchestra and BBC Singers</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1042" version="4">
+      <Name>Stage and Screen</Name>
+      <Description>The Merry Widow: Lehar's most famous creation celebrates her 100th birthday</Description>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1041" version="5">
+      <Name>Made in Britain</Name>
+      <Description>Martin Handley presents a series spotlighting some of the unexplored music composed in Britain in the 20th Century</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:1040" version="2">
+      <Name>New Generation Artists</Name>
+      <Description>Verity Sharp presents a special Christmas series highlighting the studio recordings made by Radio 3's New Generation Artists</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1039" version="3">
+      <Name>BBC Proms 2005</Name>
+      <Description>Continuing the special Christmas series of highlights from the summer Proms</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e532" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e532" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:1039</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345134400" InteractivityWindowEndTime="3345134600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:1037" version="4">
+      <Name>Belief</Name>
+      <Description>Series in which Joan Bakewell talks to guests about their beliefs, the influences that have shaped them and their ideas about life's big questions</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+   </Content>
+   <Schedule id="BBCRThree_d0e1948" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1030">
+         <Presentation_Window Presentation_Start_Time="3345062400" Presentation_End_Time="3345066000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e1962" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1035">
+         <Presentation_Window Presentation_Start_Time="3345066000" Presentation_End_Time="3345077100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e585" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2403320312 2635314940 IN IP4 192.168.0.76
+c=IN IP4 225.224.73.148
+m=audio 16236 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e1976" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1032">
+         <Presentation_Window Presentation_Start_Time="3345077100" Presentation_End_Time="3345080400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e1990" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1031">
+         <Presentation_Window Presentation_Start_Time="3345080400" Presentation_End_Time="3345087600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e2004" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1034">
+         <Presentation_Window Presentation_Start_Time="3345087600" Presentation_End_Time="3345098400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e609" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2132308959 2543334959 IN IP4 192.168.0.214
+c=IN IP4 225.224.106.59
+m=audio 23556 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e2018" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1033">
+         <Presentation_Window Presentation_Start_Time="3345098400" Presentation_End_Time="3345105600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e2032" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1036">
+         <Presentation_Window Presentation_Start_Time="3345105600" Presentation_End_Time="3345109200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e2046" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1044">
+         <Presentation_Window Presentation_Start_Time="3345109200" Presentation_End_Time="3345112800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e633" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2064605712 2241699217 IN IP4 192.168.0.157
+c=IN IP4 225.224.177.83
+m=audio 61660 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e2060" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1043">
+         <Presentation_Window Presentation_Start_Time="3345112800" Presentation_End_Time="3345120000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e2074" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1042">
+         <Presentation_Window Presentation_Start_Time="3345120000" Presentation_End_Time="3345123600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e2088" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1041">
+         <Presentation_Window Presentation_Start_Time="3345123600" Presentation_End_Time="3345129000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e657" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2346252441 2673217773 IN IP4 192.168.0.162
+c=IN IP4 225.224.59.231
+m=audio 47260 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e2102" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1040">
+         <Presentation_Window Presentation_Start_Time="3345129000" Presentation_End_Time="3345132600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e2116" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1039">
+         <Presentation_Window Presentation_Start_Time="3345132600" Presentation_End_Time="3345141600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e2130" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1037">
+         <Presentation_Window Presentation_Start_Time="3345141600" Presentation_End_Time="3345143400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e681" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2304122924 2778762816 IN IP4 192.168.0.83
+c=IN IP4 225.224.77.155
+m=audio 52658 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e2144" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1038">
+         <Presentation_Window Presentation_Start_Time="3345143400" Presentation_End_Time="3345148800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:1283" version="2">
+      <Name>Composer of the Week</Name>
+      <Description>Johann Nepomuk Hummel (1778-1837): 2/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1286" version="3">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe presents music by Schubert, Brahms, Shostakovich, Debussy, Franck, Martinu, Rimsky-Korsakov and Gounod</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1285" version="5">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe continues Through the Night with works by Granados, Sor, Flothius, Reger and Nicolai</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1284" version="1">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe ends Through the Night with music from Chopin, Tchaikovsky, Strauss, Gilson, Kapp, Vladigerov, Despalj, Rossi, Förster, Fesch and Haydn</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1289" version="5">
+      <Name>Composer of the Week</Name>
+      <Description>Aaron Copland (1900-1990): 2/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1290" version="1">
+      <Name>Lunchtime Concert</Name>
+      <Description>1/4</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1292" version="4">
+      <Name>Voices</Name>
+      <Description>Celebrated soprano Régine Crespin talks to Iain Burnside about her life and career, with excerpts from her favourite recordings</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRThree_d0e3253" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1283">
+         <Presentation_Window Presentation_Start_Time="3345148800" Presentation_End_Time="3345152400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3267" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1286">
+         <Presentation_Window Presentation_Start_Time="3345152400" Presentation_End_Time="3345163500"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e843" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2480834960 2730026244 IN IP4 192.168.0.144
+c=IN IP4 225.224.202.248
+m=audio 63048 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e3281" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1285">
+         <Presentation_Window Presentation_Start_Time="3345163500" Presentation_End_Time="3345166800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3295" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1284">
+         <Presentation_Window Presentation_Start_Time="3345166800" Presentation_End_Time="3345174000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3309" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1287">
+         <Presentation_Window Presentation_Start_Time="3345174000" Presentation_End_Time="3345184800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e867" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2258804321 2374816894 IN IP4 192.168.0.145
+c=IN IP4 225.224.239.190
+m=audio 63408 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e3323" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1288">
+         <Presentation_Window Presentation_Start_Time="3345184800" Presentation_End_Time="3345192000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3337" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1289">
+         <Presentation_Window Presentation_Start_Time="3345192000" Presentation_End_Time="3345195600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3351" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1290">
+         <Presentation_Window Presentation_Start_Time="3345195600" Presentation_End_Time="3345199200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e891" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2337234497 2742019653 IN IP4 192.168.0.251
+c=IN IP4 225.224.95.4
+m=audio 34358 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e3365" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1291">
+         <Presentation_Window Presentation_Start_Time="3345199200" Presentation_End_Time="3345206400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3379" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1292">
+         <Presentation_Window Presentation_Start_Time="3345206400" Presentation_End_Time="3345210000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3393" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1293">
+         <Presentation_Window Presentation_Start_Time="3345210000" Presentation_End_Time="3345215400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e915" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2296020507 2513534545 IN IP4 192.168.0.213
+c=IN IP4 225.224.12.15
+m=audio 57972 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e3407" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1294">
+         <Presentation_Window Presentation_Start_Time="3345215400" Presentation_End_Time="3345219000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3421" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1295">
+         <Presentation_Window Presentation_Start_Time="3345219000" Presentation_End_Time="3345225000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3435" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1296">
+         <Presentation_Window Presentation_Start_Time="3345225000" Presentation_End_Time="3345226800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e939" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2410797119 2509277343 IN IP4 192.168.0.209
+c=IN IP4 225.224.111.123
+m=audio 11134 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e3449" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1297">
+         <Presentation_Window Presentation_Start_Time="3345226800" Presentation_End_Time="3345231600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e3463" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1298">
+         <Presentation_Window Presentation_Start_Time="3345231600" Presentation_End_Time="3345235200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:1956" version="2">
+      <Name>Composer of the Week</Name>
+      <Description>Johann Nepomuk Hummel (1778-1837): 3/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1961" version="3">
+      <Name>Through the Night</Name>
+      <Description>Camerata Trajectina perform early Dutch Songs, plus works by Enescu, Gregorc, Strauss and Stucken</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e987" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e987" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:1961</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345240600" InteractivityWindowEndTime="3345240800"/>
+   </InteractivityData>
+   <Content id="urn:bbc:1957" version="1">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe concludes the programme with music by Goleminov, Telemann, Bach, Raffaelli, Rasi, Sweelinck, Sinigoj, Wagner, Schumann and Brahms</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1950" version="5">
+      <Name>Composer of the Week</Name>
+      <Description>Aaron Copland (1900-1990): 3/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:1947" version="1">
+      <Name>Lunchtime Concert</Name>
+      <Description>2/4</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1954" version="4">
+      <Name>Choral Evensong</Name>
+      <Description>A Service for Epiphany: Live from the Chapel of Trinity College, Cambridge</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1951" version="3">
+      <Name>BBC Proms 2005</Name>
+      <Description>Continuing the special series of highlights from the summer Proms</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1949" version="1">
+      <Name>Late Junction Special</Name>
+      <Description>Norwegian Voices: Fiona Talkington introduces highlights from the Norwegian Voices concert, the climax of celebrations to mark the centenary of Norway's independence</Description>
+      <Genre>Cutting edge</Genre>
+      <Genre>Innovative</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRThree_d0e4539" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1956">
+         <Presentation_Window Presentation_Start_Time="3345235200" Presentation_End_Time="3345238800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1131" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2337799072 2823333739 IN IP4 192.168.0.141
+c=IN IP4 225.224.220.226
+m=audio 7694 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e4553" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1961">
+         <Presentation_Window Presentation_Start_Time="3345238800" Presentation_End_Time="3345246900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4567" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1958">
+         <Presentation_Window Presentation_Start_Time="3345246900" Presentation_End_Time="3345253200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4581" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1957">
+         <Presentation_Window Presentation_Start_Time="3345253200" Presentation_End_Time="3345260400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1155" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2327041625 2669143675 IN IP4 192.168.0.42
+c=IN IP4 225.224.172.203
+m=audio 33280 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e4595" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1960">
+         <Presentation_Window Presentation_Start_Time="3345260400" Presentation_End_Time="3345271200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4609" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1959">
+         <Presentation_Window Presentation_Start_Time="3345271200" Presentation_End_Time="3345278400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4623" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1950">
+         <Presentation_Window Presentation_Start_Time="3345278400" Presentation_End_Time="3345282000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1179" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2310928344 2614440917 IN IP4 192.168.0.240
+c=IN IP4 225.224.174.248
+m=audio 58222 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e4637" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1947">
+         <Presentation_Window Presentation_Start_Time="3345282000" Presentation_End_Time="3345285600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4651" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1955">
+         <Presentation_Window Presentation_Start_Time="3345285600" Presentation_End_Time="3345292800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4665" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1954">
+         <Presentation_Window Presentation_Start_Time="3345292800" Presentation_End_Time="3345296400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1203" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2114562988 2588104247 IN IP4 192.168.0.245
+c=IN IP4 225.224.234.24
+m=audio 50750 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e4679" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1953">
+         <Presentation_Window Presentation_Start_Time="3345296400" Presentation_End_Time="3345301800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4693" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1952">
+         <Presentation_Window Presentation_Start_Time="3345301800" Presentation_End_Time="3345305400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4707" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1951">
+         <Presentation_Window Presentation_Start_Time="3345305400" Presentation_End_Time="3345312600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1227" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2207443237 2695510863 IN IP4 192.168.0.213
+c=IN IP4 225.224.60.203
+m=audio 16148 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e4721" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1948">
+         <Presentation_Window Presentation_Start_Time="3345312600" Presentation_End_Time="3345314400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e4735" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:1949">
+         <Presentation_Window Presentation_Start_Time="3345314400" Presentation_End_Time="3345321600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:2090" version="2">
+      <Name>Composer of the Week</Name>
+      <Description>Johann Nepomuk Hummel (1778-1837): 4/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2095" version="3">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe presents music by Guilmant, Strauss, JS Bach, Haydn, Beethoven, Brahms, Mozetich and Mendelssohn</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2092" version="5">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe continues the programme with music from Saint-Saëns, Gounod, Schubert, Moscheles, Brorson, Bellini and Rossini</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2091" version="1">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe ends the programme with music by Mozart, Cazzati, Geminiani, Lassus, Bartók, Henderson, Williams and Debussy</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e1311" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e1311" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:2091</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345341400" InteractivityWindowEndTime="3345341600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:2096" version="5">
+      <Name>Composer of the Week</Name>
+      <Description>Aaron Copland (1900-1990): 4/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:2104" version="1">
+      <Name>Lunchtime Concert</Name>
+      <Description>3/4</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2105" version="4">
+      <Name>Brian Kay's Light Programme</Name>
+      <Description>Music from Arthur Sullivan, Edward German, Clive Richardson and Sidney Torch, plus Montague Phillips' Empire March from a new BBC Concert Orchestra CD featuring his music</Description>
+      <Genre>Easy listening</Genre>
+      <Genre>Soundtrack</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:2098" version="1">
+      <Name>The Wire</Name>
+      <Description>Miscreant Mothers, by Rebecca Papworth</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRThree_d0e5872" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2090">
+         <Presentation_Window Presentation_Start_Time="3345321600" Presentation_End_Time="3345325200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1410" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2424148559 2860794066 IN IP4 192.168.0.167
+c=IN IP4 225.224.236.57
+m=audio 42260 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e5886" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2095">
+         <Presentation_Window Presentation_Start_Time="3345325200" Presentation_End_Time="3345336000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e5900" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2092">
+         <Presentation_Window Presentation_Start_Time="3345336000" Presentation_End_Time="3345339600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e5914" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2091">
+         <Presentation_Window Presentation_Start_Time="3345339600" Presentation_End_Time="3345346800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1434" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2489822387 2500686644 IN IP4 192.168.0.193
+c=IN IP4 225.224.115.181
+m=audio 17298 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e5928" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2094">
+         <Presentation_Window Presentation_Start_Time="3345346800" Presentation_End_Time="3345357600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e5942" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2093">
+         <Presentation_Window Presentation_Start_Time="3345357600" Presentation_End_Time="3345364800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e5956" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2096">
+         <Presentation_Window Presentation_Start_Time="3345364800" Presentation_End_Time="3345368400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1458" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2053649902 2197875976 IN IP4 192.168.0.112
+c=IN IP4 225.224.167.64
+m=audio 34618 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e5970" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2104">
+         <Presentation_Window Presentation_Start_Time="3345368400" Presentation_End_Time="3345372000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e5984" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2103">
+         <Presentation_Window Presentation_Start_Time="3345372000" Presentation_End_Time="3345379200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e5998" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2105">
+         <Presentation_Window Presentation_Start_Time="3345379200" Presentation_End_Time="3345382800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1482" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2325378417 2558471678 IN IP4 192.168.0.220
+c=IN IP4 225.224.101.103
+m=audio 46616 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e6012" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2102">
+         <Presentation_Window Presentation_Start_Time="3345382800" Presentation_End_Time="3345388200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e6026" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2101">
+         <Presentation_Window Presentation_Start_Time="3345388200" Presentation_End_Time="3345391800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e6040" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2100">
+         <Presentation_Window Presentation_Start_Time="3345391800" Presentation_End_Time="3345398100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1506" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2387878417 2483764647 IN IP4 192.168.0.228
+c=IN IP4 225.224.36.62
+m=audio 12694 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e6054" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2097">
+         <Presentation_Window Presentation_Start_Time="3345398100" Presentation_End_Time="3345399900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e6068" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2098">
+         <Presentation_Window Presentation_Start_Time="3345399900" Presentation_End_Time="3345402600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e6082" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:2099">
+         <Presentation_Window Presentation_Start_Time="3345402600" Presentation_End_Time="3345408000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1530" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2383911132 2833587645 IN IP4 192.168.0.12
+c=IN IP4 225.224.214.160
+m=audio 43698 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:3082" version="2">
+      <Name>Composer of the Week</Name>
+      <Description>Johann Nepomuk Hummel (1778 - 1837): 5/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:3080" version="3">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe presents music by Elsner, Haczewski, Engel, Lipinski, Scigalski, Nicolai, Mendelssohn, Soyka, Bartók and Bruch</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3091" version="1">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe ends the programme with music by Elsner, Röntgen, Saint-Saëns, Debussy, CPE Bach, Eyck, Castello, Reutter, Schumann, Erkel, and Stoyanov</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3085" version="4">
+      <Name>CD Masters</Name>
+      <Description>Jonathan Swain presents music by Haydn, Schumann and Bruckner</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3088" version="5">
+      <Name>Composer of the Week</Name>
+      <Description>Aaron Copland (1900-1990) 5/5</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:3081" version="1">
+      <Name>Lunchtime Concert</Name>
+      <Description>4/4</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e1640" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e1640" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:3081</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345456600" InteractivityWindowEndTime="3345456800"/>
+   </InteractivityData>
+   <Content id="urn:bbc:3092" version="3">
+      <Name>Afternoon Performance</Name>
+      <Description>Kings of Heaven and Earth</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3086" version="4">
+      <Name>Jazz Legends</Name>
+      <Description>Another chance to hear Julian Joseph in conversation with American saxophonist Branford Marsalis</Description>
+      <Genre>Jazz</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3078" version="5">
+      <Name>Made in Britain</Name>
+      <Description>A Good New Year: In the final programme of the series, Martin Handley looks back to some of the less heralded anniversaries of 2005 and forward to some significant birthdays in 2006</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:3084" version="2">
+      <Name>New Generation Artists</Name>
+      <Description>Verity Sharp presents a special Christmas series featuring the inspiring studio recordings made by singers from the Radio 3's New Generation Artists scheme</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3089" version="3">
+      <Name>BBC Proms 2005</Name>
+      <Description>Continuing this special Christmas and New Year series of highlights from last summer's Proms</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3077" version="1">
+      <Name>Mixing It</Name>
+      <Description>Mark Russell and Robert Sandall present the second part of their feature on alternative music in Los Angeles, interviewing key figures of the scene</Description>
+      <Genre>Cutting edge</Genre>
+      <Genre>Innovative</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3087" version="2">
+      <Name>Jazz on 3</Name>
+      <Description>Jez Nelson selects the best of the sessions recorded for Jazz on 3 in 2005, including music from Brotherhood of Breath, Gwilym Simcock, Steve Williamson and Meshell Ndegeocello</Description>
+      <Genre>Jazz</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Modern/Acid/Avant-garde</Genre>
+      <Genre>Bop/hard bop/bebop</Genre>
+      <Genre>Cool/free</Genre>
+      <Genre>Innovative</Genre>
+      <Genre>Contemporary</Genre>
+   </Content>
+   <Schedule id="BBCRThree_d0e7194" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3082">
+         <Presentation_Window Presentation_Start_Time="3345408000" Presentation_End_Time="3345411600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7208" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3080">
+         <Presentation_Window Presentation_Start_Time="3345411600" Presentation_End_Time="3345422400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7222" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3090">
+         <Presentation_Window Presentation_Start_Time="3345422400" Presentation_End_Time="3345426000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1824" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2112915039 2285583496 IN IP4 192.168.0.151
+c=IN IP4 225.224.143.120
+m=audio 62002 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e7236" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3091">
+         <Presentation_Window Presentation_Start_Time="3345426000" Presentation_End_Time="3345433200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7250" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3079">
+         <Presentation_Window Presentation_Start_Time="3345433200" Presentation_End_Time="3345444000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7264" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3085">
+         <Presentation_Window Presentation_Start_Time="3345444000" Presentation_End_Time="3345451200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1848" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2183502197 2473312377 IN IP4 192.168.0.242
+c=IN IP4 225.224.52.179
+m=audio 55930 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e7278" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3088">
+         <Presentation_Window Presentation_Start_Time="3345451200" Presentation_End_Time="3345454800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7292" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3081">
+         <Presentation_Window Presentation_Start_Time="3345454800" Presentation_End_Time="3345458400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7306" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3092">
+         <Presentation_Window Presentation_Start_Time="3345458400" Presentation_End_Time="3345465600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1872" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2314117431 2594406127 IN IP4 192.168.0.160
+c=IN IP4 225.224.138.205
+m=audio 29900 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e7320" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3086">
+         <Presentation_Window Presentation_Start_Time="3345465600" Presentation_End_Time="3345469200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7334" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3078">
+         <Presentation_Window Presentation_Start_Time="3345469200" Presentation_End_Time="3345474600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7348" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3084">
+         <Presentation_Window Presentation_Start_Time="3345474600" Presentation_End_Time="3345478200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1896" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2218276977 2489151000 IN IP4 192.168.0.244
+c=IN IP4 225.224.76.186
+m=audio 61268 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e7362" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3089">
+         <Presentation_Window Presentation_Start_Time="3345478200" Presentation_End_Time="3345486300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7376" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3083">
+         <Presentation_Window Presentation_Start_Time="3345486300" Presentation_End_Time="3345488100"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e7390" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3077">
+         <Presentation_Window Presentation_Start_Time="3345488100" Presentation_End_Time="3345492600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e1920" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2317443847 2580352782 IN IP4 192.168.0.130
+c=IN IP4 225.224.95.124
+m=audio 7448 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e7404" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:3087">
+         <Presentation_Window Presentation_Start_Time="3345492600" Presentation_End_Time="3345498000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:5262" version="2">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe presents music by Nielsen, Benoit, Mozart, Schickhard, Haydn, JS Bach and JC Bach</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5253" version="5">
+      <Name>Through the Night</Name>
+      <Description>Susan Sharpe ends the programme with music by Mosonyi, Liszt, Finzi, Vaughan Williams, Respighi, Nielsen, Merula, Lassus, Zulawski, Brahms, Beethoven and Ravel</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5266" version="1">
+      <Name>Morning on 3</Name>
+      <Description>Martin Handley presents music by Martin Handley presents music by Mozart, Mendelssohn, Dvorák and Tippett</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e1972" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e1972" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:5266</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345521400" InteractivityWindowEndTime="3345521600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:5268" version="2">
+      <Name>CD Review</Name>
+      <Description>Andrew McGregor plays some of this month's newest releases</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Cultural</Genre>
+   </Content>
+   <Content id="urn:bbc:5264" version="4">
+      <Name>The Early Music Show</Name>
+      <Description>The History of the Horn: Roger Montgomery describes and demonstrates the progression of the Horn from Cave to Concert Hall, taking in a Tibetan Monastery and a Swiss Alp on the way</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5267" version="5">
+      <Name>Discovering Music</Name>
+      <Description>Stephen Johnson joins the BBC Philharmonic and conductor Yasuo Shinozaki in front of an invited audience to explore the mysteries of Sibelius' profound Symphony No 7</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5260" version="1">
+      <Name>World Routes</Name>
+      <Description>Lucy Duran presents the second of two programmes recorded on location in Uganda</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5259" version="3">
+      <Name>Jazz Line-up</Name>
+      <Description>The annual New Year round table discussion about all things Jazz</Description>
+      <Genre>Jazz</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5255" version="4">
+      <Name>Jazz Record Requests</Name>
+      <Description>Geoffrey Smith requests your favourite jazz cut by E mail: jazz</Description>
+      <Genre>Jazz</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5254" version="5">
+      <Name>Jazz File</Name>
+      <Description>2/2</Description>
+      <Genre>Jazz</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5258" version="2">
+      <Name>Opera on 3</Name>
+      <Description>Live from the Met: L'Elisir d'Amore</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5257" version="3">
+      <Name>The Met Opera Quiz</Name>
+      <Description>Steven Blier puts listeners' questions to Ben Cameron, Henry Fogel and Stuart Hamilton</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5261" version="4">
+      <Name>Opera on 3</Name>
+      <Description>Live from the Met</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCRThreeint_d0e2155" InteractivityMediaDocumentPointer="BBCRThreeintgrp_d0e2155" version="1" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:5261</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345568800" InteractivityWindowEndTime="3345569000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:5256" version="1">
+      <Name>The Verb</Name>
+      <Description>Second of two programmes in which Ian MacMillan looks back over the best writing and performances broadcast by The Verb in the past twelve months</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:5265" version="2">
+      <Name>Between the Ears</Name>
+      <Description>Virgins and Virginals: The Shadowy World of John Bull: A portrait of the keyboard composer within a musical frame composed by Steven Faux, featuring the saxophone of Will Gregory</Description>
+      <Genre>Cutting edge</Genre>
+      <Genre>Innovative</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5251" version="3">
+      <Name>Pre-Hear</Name>
+      <Description>As a prelude to tonight's coverage of the 2005 Huddersfield Contemporary Music Festival, a flashback to 2004 and Kevin Volan's String Quartet No 1, White Man Sleeps, played by the Smith Quartet</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:5263" version="5">
+      <Name>Hear and Now</Name>
+      <Description>First of five broadcasts from the Huddersfield Contemporary Music Festival</Description>
+      <Genre>Cutting edge</Genre>
+      <Genre>Innovative</Genre>
+      <Genre>Contemporary</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRThree_d0e8612" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5262">
+         <Presentation_Window Presentation_Start_Time="3345498000" Presentation_End_Time="3345508800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8626" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5252">
+         <Presentation_Window Presentation_Start_Time="3345508800" Presentation_End_Time="3345512400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e2271" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2352890014 2405380248 IN IP4 192.168.0.22
+c=IN IP4 225.224.159.254
+m=audio 10636 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e8640" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5253">
+         <Presentation_Window Presentation_Start_Time="3345512400" Presentation_End_Time="3345519600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8654" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5266">
+         <Presentation_Window Presentation_Start_Time="3345519600" Presentation_End_Time="3345526800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8668" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5268">
+         <Presentation_Window Presentation_Start_Time="3345526800" Presentation_End_Time="3345541200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e2295" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2383224487 2642471313 IN IP4 192.168.0.98
+c=IN IP4 225.224.40.11
+m=audio 21854 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e8682" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5264">
+         <Presentation_Window Presentation_Start_Time="3345541200" Presentation_End_Time="3345544800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8696" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5267">
+         <Presentation_Window Presentation_Start_Time="3345544800" Presentation_End_Time="3345548400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8710" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5260">
+         <Presentation_Window Presentation_Start_Time="3345548400" Presentation_End_Time="3345552000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e2319" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2218032836 2405761717 IN IP4 192.168.0.219
+c=IN IP4 225.224.169.136
+m=audio 31950 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e8724" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5259">
+         <Presentation_Window Presentation_Start_Time="3345552000" Presentation_End_Time="3345555600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8738" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5255">
+         <Presentation_Window Presentation_Start_Time="3345555600" Presentation_End_Time="3345559200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8752" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5254">
+         <Presentation_Window Presentation_Start_Time="3345559200" Presentation_End_Time="3345561000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e2343" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2111831665 2534851074 IN IP4 192.168.0.25
+c=IN IP4 225.224.136.126
+m=audio 49556 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e8766" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5258">
+         <Presentation_Window Presentation_Start_Time="3345561000" Presentation_End_Time="3345565200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8780" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5257">
+         <Presentation_Window Presentation_Start_Time="3345565200" Presentation_End_Time="3345567000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8794" version="4" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5261">
+         <Presentation_Window Presentation_Start_Time="3345567000" Presentation_End_Time="3345570900"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e2367" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2091156005 2509292601 IN IP4 192.168.0.224
+c=IN IP4 225.224.235.81
+m=audio 1770 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e8808" version="1" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5256">
+         <Presentation_Window Presentation_Start_Time="3345570900" Presentation_End_Time="3345573600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8822" version="2" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5265">
+         <Presentation_Window Presentation_Start_Time="3345573600" Presentation_End_Time="3345575400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRThree_d0e8836" version="3" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5251">
+         <Presentation_Window Presentation_Start_Time="3345575400" Presentation_End_Time="3345577200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRThreeacc_d0e2391" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2170700073 2350112914 IN IP4 192.168.0.9
+c=IN IP4 225.224.13.158
+m=audio 19944 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRThree_d0e8850" version="5" ServiceIDRef="BBCRThree">
+      <ContentIDRef idRef="urn:bbc:5263">
+         <Presentation_Window Presentation_Start_Time="3345577200" Presentation_End_Time="3345584400"/>
+      </ContentIDRef>
+   </Schedule>
+</ESGMainBCAST>

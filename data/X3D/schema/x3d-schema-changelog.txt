@@ -1,0 +1,847 @@
+File:
+Draft schema changelog:		http://www.web3d.org/x3d/content/x3d-schema-changelog.txt
+  X3D schema changelog:		http://www.web3d.org/specifications/x3d-schema-changelog.txt
+
+References:
+- Final schema:        		http://www.web3d.org/specifications/x3d-3.0.xsd
+- Draft schema:        		http://www.web3d.org/x3d/content/x3d-3.0.xsd
+- Schema extensions:		http://www.web3d.org/specifications/x3d-3.0-Web3dExtensionsPublic.xsd
+				http://www.web3d.org/specifications/x3d-3.0-Web3dExtensionsPrivate.xsd
+- Documentation			http://www.web3d.org/x3d/content/X3dSchemaDocumentation3.0/x3d-3.0.html	
+
+- Final schema:        		http://www.web3d.org/specifications/x3d-3.1.xsd
+- Draft schema:        		http://www.web3d.org/x3d/content/x3d-3.1.xsd
+- Schema extensions:		http://www.web3d.org/specifications/x3d-3.1-Web3dExtensionsPublic.xsd
+				http://www.web3d.org/specifications/x3d-3.1-Web3dExtensionsPrivate.xsd
+- Documentation			http://www.web3d.org/x3d/content/X3dSchemaDocumentation3.1/x3d-3.1.html				
+				
+Author:				Don Brutzman
+
+Referencing the X3D Schema in X3D source scene:
+
+	<X3D xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.0.xsd"
+	     xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance">
+	     <!-- head and Scene go here -->
+	</X3D>
+
+=============================================================================
+
+Additional References:
+
+- XML Schema validator:		http://www.w3.org/2001/03/webdata/xsv
+
+- X3D tagset DTDs:     		http://www.web3d.org/specifications/x3d-3.0.dtd
+-				http://www.web3d.org/specifications/x3d-3.0.dtd
+-                      		http://www.web3d.org/specifications/x3d-3.0-InputOutputFields.dtd
+-                      		http://www.web3d.org/specifications/x3d-3.0-Web3dExtensions.dtd
+
+- Revised Web3D Extensions:	http://www.web3d.org/x3d-content/x3d-3.0-Web3dExtensions.dtd
+  
+- Related VRML specs:  		http://www.web3D.org/technicalinfo/specifications/vrml97
+                       		http://web3d.org/vrtp/dis-java-vrml
+                      		http://www.geovrml.org/1.0
+                       		http://h-anim.org/spec1.1
+                       		http://www.blaxxun.com/support/developerguide/developer/contact/3d/nurbs/spec/nurbsproposal.html
+- XML Schema DTD:      		http://www.w3.org/2000/10/XMLSchema.dtd
+- XML Schema schema: 		http://www.w3.org/2000/10/XMLSchema.xsd
+- XML Datatypes DTD: 		http://www.w3.org/2000/10/datatypes.dtd
+- XML Datatypes schema:		http://www.w3.org/2000/10/datatypes.xsd
+- XML Schema Primer:		http://www.w3.org/TR/2000/WD-xmlschema-0-20000922
+- XML Schema Structures:	http://www.w3.org/TR/2000/WD-xmlschema-1-20000922
+- XML Schema Datatypes:		http://www.w3.org/TR/2000/WD-xmlschema-2-20000922
+- XML Schema group:		http://www.w3.org/XML/Schema
+- XML Schema quality checker:	http://alphaworks.ibm.com/tech/xmlsqc
+
+- Interface hierarchy: 		http://www.web3d.org/spec_editors/abstract/Part01/concepts.html#InterfaceHierarchy
+- X3D Scene Access     		http://www.web3d.org/spec_editors/abstract/Part02
+  Interface (SAI):     		http://www.web3d.org/spec_editors/bindings
+
+- Robin Cover's pages: 		http://www.oasis-open.org/cover/schemas.html
+- Best practices:      		http://www.xfront.com/BestPractices.html
+- Xeena XML editor:    		http://www.alphaWorks.ibm.com/tech/xeena
+- Xeena xsd profile:   		http://www.web3D.org/x3d/content/XMLSchema.profile
+- X3D-Edit:            		http://www.web3D.org/x3d/content/README.X3D-Edit.html
+- X3D-Schema-Edit:     		http://www.web3D.org/x3d/content/X3D-Schema-Edit.bat
+- X3D Contributors:    		http://www.web3D.org/x3d.html
+
+- _Professional XML Schemas_ by Kurt Cagle, Jon Duckett,
+  Oliver Griffin, Stephen Mohr, Francis Norton, Nik Ozu, Ian Stokes-Rees,
+  Jeni Tennison and Kevin Williams, Wrox Press Ltd., Birmingham UK, 2001.
+                       http://www.wrox.com/Books/Book_Details.asp?ISBN=1861005474
+
+- _Definitive XML Schema_, Priscilla Walmsley, Prentice Hall, Upper Saddle River
+  New Jersey, 2002.  http://www.phptr.com
+
+W3C XmlSchema.dtd revisions:
+- None needed.  Using original W3C Schema and Datatypes DTDs listed above.
+
+=============================================================================
+
+X3D schema update activity:
+
+known problems:  none
+
+10 January 2006 grieve, brutzman
+- changed content model for Contour2D from [NurbsCurve|ContourPolyline2D] to
+  [NurbsCurve2D|ContourPolyline2D]
+
+5 January 2006 brutzman
+- added bboxCenter, bboxSize to X3DShapeNode
+
+2-3 January 2006 hudson, brutzman
+- corrected regular expressions (regexes) for SF/MF Matrix 3f-4d, MFVec4f, MFVec4d types
+- changed IMPORT InlineDEF to inlineDEF
+
+31 December 2005 brutzman
+- MultiTexture content model:  added ProtoInstance, removed MultiTexture
+- MultiTextureTransform content model corrected (TextureTransform or ProtoInstance)
+
+29-30 December 2005 brutzman
+- added accessType information for various fields, added completeness checks to
+  BuildSpecificationInterfacesFromSchema.xslt
+- fixed various DTD/schema mismatches discovered by checking accessType definitions
+- FloatVertexAttribute, Matrix3VertexAttribute, Matrix4VertexAttribute: 
+  X3DVertexAttributeNode given containerField attrib, added to X3DComposedGeometryNode
+- added containerField values to GeoOrigin, HAnimDisplacer, Script
+- HAnimDisplacer weight default value set to 0.0
+- GeoElevationGrid removed set_yScale
+- X3DShaderNode:  added containerField shaders
+- AppearanceChildContentModelNoProtoInstance:  added
+  ComposedShader, PackagedShader, ProgramShader
+- removed unneeded comment block:
+	<!--Wrapper tags: these already appear to be handled implicitly by element names and ContainedNodeLabel in content model.
+	enumeration vrmlNodeFieldNames is perhaps useful as a convenience enumeration showing what element tags are ignorable.
+	Probably won't be needed, commented out:
+  <xs:simpleType name="vrmlNodeFieldNames">
+    <xs:annotation>
+      <xs:appinfo></xs:appinfo>
+      <xs:documentation source="http://www.web3d.org/x3d/content/ComposingSceneGraphAlternatives.html"/>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="appearance"/>
+     <xs:enumeration value="children"/>
+     <xs:enumeration value="choice"/>
+     <xs:enumeration value="color"/>
+     <xs:enumeration value="coord"/>
+     <xs:enumeration value="fontStyle"/>
+     <xs:enumeration value="geometry"/>
+     <xs:enumeration value="level"/>
+     <xs:enumeration value="material"/>
+     <xs:enumeration value="normal"/>
+     <xs:enumeration value="proxy"/>
+     <xs:enumeration value="source"/>
+     <xs:enumeration value="texCoord"/>
+     <xs:enumeration value="texture"/>
+     <xs:enumeration value="textureTransform"/>
+   </xs:restriction>
+  </xs:simpleType>
+  -->
+# - removed unneeded blocks:
+	<!-- still needed? -->
+	<xs:complexType name="ContainedNodeLabel" abstract="true" mixed="false">
+		<xs:annotation>
+			<xs:appinfo>ContainedNodeLabel tags help distinguish between the different uses of node siblings that might otherwise share the same node type.
+These tags are labels in the scene graph, not instantiable nodes.
+Because these tags do not need to be instantiated as scene graph nodes, they do not have DEF or USE values like X3DNodes.
+ContainedNodeLabel tags are sometimes referred to as &quot;wrapper tags.&quot; Note that ContainedNodeLabel tags are not needed when node siblings have different types.  Thus &quot;wrapper tags&quot; are not needed for most child nodes in the VRML 97 node set.
+					<xs:attribute name="otherInterfaces" type="xs:string" fixed="org.w3c.dom.Element"/>
+			</xs:appinfo>
+			<xs:documentation/>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="X3DNode"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- is humanoidBodyType still needed? -->
+	<xs:element name="humanoidBodyType">
+		<xs:annotation>
+			<xs:appinfo/>
+			<xs:documentation source="http://ece.uwaterloo.ca/~h-anim/spec1.1/#humanoid"/>
+		</xs:annotation>
+		<xs:complexType mixed="false">
+			<xs:complexContent mixed="false">
+				<xs:extension base="ContainedNodeLabel"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="X3DArrayField" abstract="true" mixed="false">
+		<xs:annotation>
+			<xs:appinfo>X3DArrayField is equivalent to MF (Multiple Field) simple non-Node types in the VRML 97 Specification.</xs:appinfo>
+			<xs:documentation source="http://www.web3d.org/technicalinfo/specifications/vrml97/part1/fieldsRef.html#5.1.2"/>
+		</xs:annotation>
+		<xs:complexContent mixed="false">
+			<xs:extension base="X3DField"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+27 December 2005 brutzman
+- (v3.1 only) added Texturing3D component:  X3DTexture3DNode, Composed3DTexture,
+   Image3DTexture, Pixel3DTexture, TextureCoordinate3D, TextureCoordinate4D,
+   TextureMatrixTransform, TextureTransform3D
+
+26 December 2005 brutzman
+- (v3.1 only) Added CADAssembly, CADLayer to ChildContentModelFull
+- (v3.1 only) Added QuadSet, IndexedQuadSet to GeometryContentModelCAD
+- (v3.1 only) Renamed GeometryContentModel2DFull to GeometryContentModel2D
+- (v3.1 only) Added bboxCenter, bboxSize, name to CADFace
+- added controlPoint to X3DNurbsControlCurveNode
+- changed NurbsCurve2D, ContourPolyline2D to X3DNurbsControlCurveNode, 
+  removed local definition of controlPoint
+- (v3.1 only) componentNames:  added CubeMapTexturing, Texturing3D, Shaders
+- (v3.1 only) added Shaders component:  X3DProgrammableShaderObject, 
+  X3DShaderNode, X3DVertexAttributeNode, ComposedShader, 
+  FloatVertexAttribute, Matrix3VertexAttribute, Matrix4VertexAttribute,
+  PackagedShader, ProgramShader, ShaderPart, ShaderProgram, shaderPartTypeValues
+- (v3.1 only) Added CubeMapTexturing component:  X3DEnvironmentTextureNode, 
+  ComposedCubeMapTexture, GeneratedCubeMapTexture, ImageCubeMapTexture
+- changed X3DScriptNode list of contained Metadata nodes to ChildContentModeCore
+
+22 December 2005 brutzman
+- NurbsTextureCoordinate added to SceneGraphFragmentContentModel
+- (v3.1 only) LOD:  added initializeOnly field forceTransitions  
+- (v3.1 only) added X3dFieldTypes  SFMatrix3d MFMatrix3d SFMatrix3f MFMatrix3f SFMatrix4d MFMatrix4d SFMatrix4f MFMatrix4f SFVec4d MFVec4d SFVec4f MFVec4f
+
+21 December 2005 puk, brutzman
+- removed solid field from Circle2D since it is line-based, not polygonal 
+- added enabled field to EspduTranform, ReceiverPdu, SignalPdu, TransmitterPdu
+- (v3.1 only) DirectionalLight default value for global remains true, 
+  PointLight and Spotlight default value for global changed to false
+- LineProperties:  added inputOutput field applied 
+
+19 December 2005 brutzman
+- (v3.1 only) FogCoordinate default containerField value set to fogCoord
+- (v3.1 only) X3DCoordinateNode containerField moved to implementing nodes, since value may vary
+- (v3.1 only) FogCoordinate added to ColorCoordinateNormalTexCoordContentModel and
+  ColorNormalTexCoordContentModel.  FogCoordinate only allowed to follow
+  Coordinate/Color/Normal/TextureCoordinate since any-order content model is too complex otherwise.
+- (v3.1 only) Text node:  added outputOnly fields lineBounds and textBounds
+- (v3.1 only) X3DLightNode:  added inputOutput field global
+- (v3.1 only) LOD node:  added outputOnly field level_changed
+- (v3.1 only) NavigationInfo node:  added inputOutput field transitionTime, outputOnly field transitionComplete
+- (v3.1 only) added X3DFogObject
+
+18 December 2005 victor, brutzman
+- IndexedTriangleStripSet stripCount field removed
+- Polypoint2D points field renamed to point
+- EspduTransform articulationParameterIdPartAttachedArray field renamed to 
+  articulationParameterIdPartAttachedToArray
+- added NavigationInfo transitionType MFString, default "ANIMATE"
+- added solid field to Text, ArcClose2D, Circle2D, Disk2D, Rectangle2D, TriangleSet2D
+
+16 December 2005 ecer, brutzman
+- X3DSoundSourceNode duration_changed type changed to SFTime
+- CylinderSensor rotation_changed type changed to SFRotation
+- IntegerTrigger triggerValue type changed to SFInt32
+- LOD center type changed to SFVec3f
+- PointLight location type changed to SFVec3f
+- Rectangle2D size  type changed to SFVec2f
+- SphereSensor rotation_changed type changed to SFRotation
+- SpotLight location, direction type changed to SFVec3f
+- TimeTrigger triggerTime type changed to SFTime
+- ROUTE fromField, toField type changed to xs:NMTOKEN
+- GeoElevationGrid xSpacing, zSpacing type basis changed to SFDouble, default set to 1
+- GeoLOD center type changed to SFVec3d
+- GeoLOD range type changed to SFFloat
+
+4 December 2005  hudson, brutzman
+- make X3D version required rather than optional
+ - added EspduTransform fields collisionType, detonationLocation, detonationRelativeLocation, detonationResult,
+		eventApplicationID, eventEntityID, eventNumber, eventSiteID
+
+20 November 2005 victor, ecer, brutzman
+- EspduTransform firingRange type changed from SFInt32 to SFFloat
+- DirectionalLight direction type changed from MFVec3f to SFVec3f
+
+14 November 2005 brutzman
+- added CADGeometry component, matching 3.1 specification
+- added enumeration value for CADInterchange Profile, matching 3.1 specification
+
+22 October 2005 brutzman
+- added enumeration type x3dVersion to allow <X3D version="3.1"/> or "3.0" in x3d-3.1.xsd.
+  also refactored x3d-3.0.xsd as enumeration, continue to only allow "3.0" as allowed value.
+- relaxed order of GeoElevationGrid children (GeoOrigin, Color, Normal, TextureCoordinate)
+- corrected GeoViewpoint child GeoOrigin to be a reference, allowing proper validation of Geospatial scenes
+- relaxed GeoMetadata content model to permit zero child nodes
+- added FontStyle to allowed content for field, fieldValue, ProtoBody (SceneGraphFragmentContentModel)
+- added speed attribute to MovieTexture
+- rounded up pi/2 maxInclusive values to 1.5708
+
+21 October 2005 brutzman
+- added CAD profile:  X3DProductStructureChildNode, CADAssembly, CADFace, CADLayer, CADPart,
+  IndexedQuadSet, QuadSet
+- Node signature for 32.4.2 CADFace missing bbox fields and X3DBoundedObject interface, bug posted
+
+21 October 2005 brutzman
+- updated x3d-3.0.xsd (schema version 3.0.0) as x3d-3.0.xsd (schema version 3.0.1), incorporating all 
+  changes to date.  This will become the X3D Amendment 1 version of the X3D 3.0 schema.  
+- The X3D Amendment 1 schema itself is fully backwards compatible and can validate <X3D version="3.0"/> 
+  but also adds additional v3.1 nodes.  It is provided separately as x3d-3.1.xsd (schema version 3.1.1).
+- Thus the second digit in each schema version is the X3D amendment supported for validation, 
+  and the last digit in each schema version is the X3D amendment revision of the schema.
+
+21 October 2005 grieve, brutzman
+- moved otherInterfaces attribute (used to indicate multiple inheritance) into appinfo annotation, rather than
+  as an improper attribute.  These multiple interfaces are informational for application/API generation tools, 
+  since complexType doesn't allow definition of multiple interfaces.  A more verbose (but probably more
+  confusing) approach would be to rename the complexType definitions.  In any case, each complexType 
+  does include all attributes and child-element content defined by each of the implemented interfaces.
+
+10 October 2005 brutzman
+- MetadataSet choice of children maxOccurs changed from 0 to unbounded
+- Refactored AppearanceChildContentModelLooseNoProtoInstance inside AppearanceChildContentModelLoose
+- added MultiTextureTransform to AppearanceChildContentModelLooseNoProtoInstance
+- added Appearance to ChildContentModelInterchange
+- bound X3DNode type to ChildContentModelCore (Metadata nodes) and single child Metadata-node choice 
+- added ChildContentModelCore (Metadata nodes) to SceneGraphFragmentContentModel, field and fieldValue
+- rearranged definitions for HAnimHumanoid and ChildContentModelHumanoidAnimation for proper validation
+- rearranged definitions for SceneGraphFragmentContentModel and
+  SceneGraphFragmentWithPrototypeDeclarationsContentModel for proper validation
+- Provided NurbsPatchSurface with content model Coordinate, CoordinateDouble, TextureCoordinate,
+  TextureCoordinateGenerator,NurbsTextureCoordinate, ProtoInstance
+- added uClosed, vClosed to X3DNurbsSurfaceGeometryNode
+- added Coordinate, CoordinateDouble to NurbsCurve, NurbsOrientationInterpolator, 
+  NurbsPositionInterpolator, NurbsSurfaceInterpolator
+- added Contour2D to GeometryContentModelNurbs, also added default containerField trimmingContour
+- added NurbsCurve, ContourPolyline2D as content model for Contour2D
+- NurbsCurve:  added closed field, removed controlPoint attribute
+- NurbsCurve2D:  added closed field, changed controlPoint to MFVec2d
+- NurbsSet:  corrected content model to contain NurbsSurface nodes, proper interfaces
+- NurbsTextureCoordinate: added controlPoint
+- NurbsSweptSurface:  added one (ContourPolyline2D, NurbsCurve2D) node and
+  one NurbsCurve node to content model
+- NurbsSwungSurface:  added two (ContourPolyline2D, NurbsCurve2D) nodes to 
+  content model
+- NurbsTextureCoordinate:  changed weight to MFFloat
+- NurbsTrimmedSurface:  added content model Contour2D, Coordinate, CoordinateDouble,
+  TextureCoordinate, TextureCoordinateGenerator, NurbsTextureCoordinate
+
+2 October 2005 brutzman
+- began work on schema corrections to better validate under XMLSpy and other tools
+- AppearanceChildContentModel is problematic due to combinatoric explosion of
+  design pattern for FillProperties, LineProperties, ImageTexture, PixelTexture,
+  MovieTexture, TextureTransform, and ProtoInstance
+- replaced model for Appearance with AppearanceChildContentModelLoose, which
+  only validates legitimate child nodes but does not prevent duplicate entries.
+  This is an unfortunate limitation of XML Schema deterministic content
+  model requirements.
+- Removed AppearanceChildContentModel from schema since it creates problems for
+  schema validation tools, copied here for archival purposes
+
+<xs:group name="AppearanceChildContentModel">
+		<xs:annotation>
+			<xs:appinfo>AppearanceChildContentModel is the child-node content model corresponding to X3DAppearanceChildNode.  AppearanceChildContentModel can first contain optional FillProperties and/or LineProperties, then any-order Material, ImageTexture, MovieTexture, MultiTexture, PixelTexture, TextureTransform, MultiTextureTransform.  No more than one instance of any single node type is allowed.</xs:appinfo>
+			<xs:documentation source="http://www.web3d.org/x3d/specifications/ISO-IEC-19775-FDIS-X3dAbstractSpecification/Part01/components/shape.html#Appearancenode"/>
+		</xs:annotation>
+		<!-- 	cannot have a trailing ProtoInstance or two ProtoInstances represent FillProperties/LineProperties -->
+		<xs:sequence>
+			<xs:choice minOccurs="0">
+				<xs:sequence>
+					<xs:element ref="FillProperties"/>
+					<xs:element ref="LineProperties" minOccurs="0"/>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="LineProperties"/>
+					<xs:element ref="FillProperties" minOccurs="0"/>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="ProtoInstance"/>
+					<xs:choice minOccurs="0">
+						<xs:element ref="FillProperties"/>
+						<xs:element ref="LineProperties"/>
+					</xs:choice>
+				</xs:sequence>
+			</xs:choice>
+			<xs:choice minOccurs="0">
+				<xs:sequence>
+					<xs:element ref="Material"/>
+					<xs:choice minOccurs="0">
+						<xs:sequence>
+							<xs:choice>
+								<xs:element ref="ImageTexture"/>
+								<xs:element ref="MovieTexture"/>
+								<xs:element ref="MultiTexture"/>
+								<xs:element ref="PixelTexture"/>
+							</xs:choice>
+							<xs:choice minOccurs="0">
+								<xs:element ref="TextureTransform"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:element ref="TextureTransform"/>
+							<xs:choice minOccurs="0">
+								<xs:choice>
+									<xs:element ref="ImageTexture"/>
+									<xs:element ref="MovieTexture"/>
+									<xs:element ref="MultiTexture"/>
+									<xs:element ref="PixelTexture"/>
+								</xs:choice>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:element ref="ProtoInstance"/>
+							<xs:choice minOccurs="0">
+								<xs:choice>
+									<xs:element ref="ImageTexture"/>
+									<xs:element ref="MovieTexture"/>
+									<xs:element ref="MultiTexture"/>
+									<xs:element ref="PixelTexture"/>
+								</xs:choice>
+								<xs:element ref="TextureTransform"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+					</xs:choice>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:choice>
+						<xs:element ref="ImageTexture"/>
+						<xs:element ref="MovieTexture"/>
+						<xs:element ref="MultiTexture"/>
+						<xs:element ref="PixelTexture"/>
+					</xs:choice>
+					<xs:choice minOccurs="0">
+						<xs:sequence>
+							<xs:element ref="Material"/>
+							<xs:choice minOccurs="0">
+								<xs:element ref="TextureTransform"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:element ref="TextureTransform"/>
+							<xs:choice minOccurs="0">
+								<xs:element ref="Material"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:element ref="ProtoInstance"/>
+							<xs:choice minOccurs="0">
+								<xs:element ref="Material"/>
+								<xs:element ref="TextureTransform"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+					</xs:choice>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="TextureTransform"/>
+					<xs:choice minOccurs="0">
+						<xs:sequence>
+							<xs:element ref="Material"/>
+							<xs:choice minOccurs="0">
+								<xs:choice>
+									<xs:element ref="ImageTexture"/>
+									<xs:element ref="MovieTexture"/>
+									<xs:element ref="MultiTexture"/>
+									<xs:element ref="PixelTexture"/>
+								</xs:choice>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:choice>
+								<xs:element ref="ImageTexture"/>
+								<xs:element ref="MovieTexture"/>
+								<xs:element ref="MultiTexture"/>
+								<xs:element ref="PixelTexture"/>
+							</xs:choice>
+							<xs:choice minOccurs="0">
+								<xs:element ref="Material"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:element ref="ProtoInstance"/>
+							<xs:choice minOccurs="0">
+								<xs:element ref="Material"/>
+								<xs:choice>
+									<xs:element ref="ImageTexture"/>
+									<xs:element ref="MovieTexture"/>
+									<xs:element ref="MultiTexture"/>
+									<xs:element ref="PixelTexture"/>
+								</xs:choice>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+					</xs:choice>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="ProtoInstance"/>
+					<xs:choice minOccurs="0">
+						<xs:sequence>
+							<xs:element ref="Material"/>
+							<xs:choice minOccurs="0">
+								<xs:choice>
+									<xs:element ref="ImageTexture"/>
+									<xs:element ref="MovieTexture"/>
+									<xs:element ref="MultiTexture"/>
+									<xs:element ref="PixelTexture"/>
+								</xs:choice>
+								<xs:element ref="TextureTransform"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:choice>
+								<xs:element ref="ImageTexture"/>
+								<xs:element ref="MovieTexture"/>
+								<xs:element ref="MultiTexture"/>
+								<xs:element ref="PixelTexture"/>
+							</xs:choice>
+							<xs:choice minOccurs="0">
+								<xs:element ref="Material"/>
+								<xs:element ref="TextureTransform"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+						<xs:sequence>
+							<xs:element ref="ProtoInstance"/>
+							<xs:choice minOccurs="0">
+								<xs:element ref="Material"/>
+								<xs:choice>
+									<xs:element ref="ImageTexture"/>
+									<xs:element ref="MovieTexture"/>
+									<xs:element ref="MultiTexture"/>
+									<xs:element ref="PixelTexture"/>
+								</xs:choice>
+								<xs:element ref="TextureTransform"/>
+								<xs:element ref="ProtoInstance"/>
+							</xs:choice>
+						</xs:sequence>
+					</xs:choice>
+				</xs:sequence>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+
+26 November 2004, Steffen Nowacki
+- removed duplicate entry for bottomUrl in utility simpleType "inputOutputAccessTypes"
+
+2 October 2004, brutzman
+- children in GeoMetadata changed to be optional
+
+16 September 2004, puk, brutzman
+- added ContentModel type descriptions from specification as annotations
+  (used for autogenerating X3D Encoding of Nodes in XML Encodings specification)
+- corrected secondary node type for Collision node to X3DSensorNode
+  
+15 September 2004, brutzman and X3D Specification Team
+- URL for revisions to Web3D Extensions:
+  http://www.web3d.org/x3d-content/x3d-3.0-Web3dExtensionsPublic.xsd
+
+14 September 2004, brutzman
+- x3d-3.0-Web3dExtensionsPublic.xsd (including LatticeXVL node) and
+  x3d-3.0-Web3dExtensionsPrivate.xsd schemas added
+- revised version number to 3.0.0
+
+16 July 2004, dabrowski, brutzman
+- Renamed Lineset field 'lineCount' to 'vertexCount'
+
+11 July 2004, brutzman
+- corrected additional internal structural errors in ColorNormalTexCoordContentModel
+  and ColorCoordinateNormalTexCoordContentModel
+- GeoElevationGrid child content made optional
+
+ 8 July 2004, brutzman
+- removed Event
+- renamed the looser AppearanceChildContentModel alternative as
+  AppearanceChildContentModelLoose
+- NurbsTextureCoordinate now extends X3DTextureCoordinateNode vice X3DNode
+- ColorNormalTexCoordContentModel and ColorCoordinateNormalTexCoordContentModel
+  modified to permit TextureCoordinateGenerator, MultiTextureCoordinate and
+  NurbsTextureCoordinate as alternatives to TextureCoordinate
+
+- Successfully generated documentation using XMLSPY, placed in
+      c:/www.web3d.org/x3d/content/X3dSchemaDocumentation/x3d-3.0.html
+  http://www.web3d.org/x3d/content/X3dSchemaDocumentation/x3d-3.0.html
+  but then IndexedFaceSet began crashing it, likely due to more complex
+  ColorCoordinateNormalTexCoordContentModel
+  
+ 8 July 2004, brutzman
+- Tool bug:  alternative simplified AppearanceChildContentModel provided
+  to avoid ambiguous child content errors from xjc (jaxb) schema validation.
+  Commented sections have to be swapped when using schema to generate
+  data bindings since AppearanceChildContentModel appears too complicated
+  for tools otherwise.
+- Tool bug:  attribute name="class" has to be commented for xjc (jaxb) to build API classes
+	[ERROR] Attempt to create a property having the same name as the reserved word "Class".
+	line 1139 of x3d-3.0.xsd
+- Corrected content model for GeoMetadata to include MFNode 'data' field,
+  which can only refer to other GeoSpatial nodes.
+- Moved attribute name="class" back into attributeGroup globalAttributes
+  with corrected type="xsd:NMTOKEN" (not type="xsd:string")
+- Eliminated SFFloatPositive and SFFloatNonNegative.
+  Example redefinition:
+	<xsd:attribute name="creaseAngle" default="0"> <!-- type="SFFloatNonNegative" -->
+		<xsd:simpleType>
+			<xsd:restriction base="SFFloat">
+				<xsd:minInclusive value="0"/>
+			</xsd:restriction>
+		</xsd:simpleType>
+	</xsd:attribute>
+  Saved prior regex definitions, for information purposes:
+	<!--	SFFloatNonNegative and SFFloatPositive no longer needed
+	<xsd:simpleType name="SFFloatNonNegative">
+		<xsd:annotation>
+			<xsd:appinfo>SFFloat is a single-precision floating-point type.</xsd:appinfo>
+			<xsd:documentation source="http://www.web3d.org/x3d/specifications/ISO-IEC-19775-FDIS-X3dAbstractSpecification/Part01/fieldsDef.html#SFFloat"/>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="((\+)?(0|[1-9][0-9]*)?(\.[0-9]*)?((E|e)(\+|\-)?[0-9]+)?)?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SFFloatPositive">
+		<xsd:annotation>
+			<xsd:appinfo>SFFloat is a single-precision floating-point type.</xsd:appinfo>
+			<xsd:documentation source="http://www.web3d.org/x3d/specifications/ISO-IEC-19775-FDIS-X3dAbstractSpecification/Part01/fieldsDef.html#SFFloat"/>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="((\+)?(0\.(0)*[1-9][0-9]*|([1-9]([0-9]*)?)?(\.[0-9]*)?((E|e)(\+|\-)?[0-9]+)?))?"/>
+		</xsd:restriction>
+	</xsd:simpleType>  -->
+
+ 7 July 2004, brutzman
+- restructured ChildContentModel, SceneGraphStructureContentModel and
+  SceneGraphFragmentContentModel to avoid nondeterminism ambiguities
+
+ 1 July 2004, brutzman
+- change AppearanceChildContentModel for LineProperties, FillProperties
+  to avoid ambiguous child content errors from jaxb schema validation
+
+27 June 2004, brutzman
+- changed SFFloat to
+		<xsd:restriction base="xsd:float"/>
+  instead of
+		<xsd:restriction base="xsd:string">
+			<xsd:whiteSpace value="collapse"/>
+			<xsd:pattern value="((\+|\-)?(0|[1-9][0-9]*)?(\.[0-9]*)?((E|e)(\+|\-)?[0-9]+)?)?"/>
+		</xsd:restriction>
+- removed duplicative Metadata node declarations
+			<xsd:element ref="MetadataDouble"/>
+			<xsd:element ref="MetadataFloat"/>
+			<xsd:element ref="MetadataInteger"/>
+			<xsd:element ref="MetadataSet"/>
+			<xsd:element ref="MetadataString"/>
+  from ChildContentModeCore since already provided in X3DNode
+- removed erroneous declarations from ChildContentModeCore
+			<xsd:element ref="ExternProtoDeclare"/>
+			<xsd:element ref="ProtoDeclare"/>
+			<xsd:element ref="ProtoInstance"/>
+- removed extraneous CoordinateInterpolator2D from ChildContentModelImmersive
+- updated X3D Specification base url from
+  http://www.web3d.org/specifications/ISO-IEC-19775/Part01 to
+  http://www.web3d.org/x3d/specifications/ISO-IEC-19775-FDIS-X3dAbstractSpecification/Part01
+- removed redundant Metadata* nodes from MetadataSet since they are already
+    provided by X3DNode
+- removed redundant ColorCoordinateNormalTexCoordContentModel from IndexedFaceSet
+  content model, since already provided by X3DComposedGeometryNode
+- X3DScriptNode made a separate base type since it can contain mixed (CDATA text)
+  content, which means that it can't inherit from X3DNode.  Thus added metadata
+  children to precede field tags.  Script already in ChildContentModelImmersive.
+- Cannot have a trailing ProtoInstance or two ProtoInstances represent
+  FillProperties/LineProperties, restricted AppearanceChildContentModel slightly
+  to preclude nondeterministic combinations of child content
+- Eliminated redundant GeoLocation from content model for GeoLocation, GeoLOD
+- Restricted HAnimDisplacer to only appear under HAnimSite, not as any ChildNode
+- Similarly restricted HAnimJoint, HAnimSegment, HAnimSite to not appear as
+  any ChildNode
+
+=============================================================================
+change summary prior to 27 June 2004:
+
+Nodes with different attributes/interfaces/names than VRML 97:
+- Anchor:  implement X3DTouchSensorNode (and thus SensorNodeType)
+  interface, add attributes enabled, isActive, isOver, touchTime
+- Collision:  implement X3DEnvironmentalSensorNode (and thus SensorNodeType)
+  interface, add attributes enabled, isActive
+- Joint:   implement X3DBoundedObject interface, attributes bboxCenter, bboxSize
+- KeySensor:  new node
+- IndexedLineSet:  new attribute lineWidth
+- LOD:  children (instead of level), implement X3DBoundedObject interface
+  for bboxCenter, bboxSize
+- PointSet:  new attribute pointSize
+- Scene:  integrates functionality of VRML 97 Script node's Browser class
+- Site:   implement X3DBoundedObject interface, attributes bboxCenter, bboxSize
+- StringSensor:  new node
+- Switch:  children (instead of choice), might implement X3DBoundedObject
+  interface
+- Viewpoint:  new (experimental) attribute examine (rotation used
+  when active NavigationInfo is in EXAMINE mode)
+- No attributes are designated as eventIn, eventOut, field, exposedField
+  since all are treated equivalently (by design decision at 1999 summit).
+  Prototype fields can indicate fieldHint via attribute vrml97Hint for
+  backwards compatibility using X3D-to-VRML-97 translators.
+- Routing events via field-name prefix set_ (or suffix _changed) is no
+  longer required.  Ought to be designated as a deprecation so that X3D
+  implementations are forgiving.  X3dToVrml97.xslt needs to be updated
+  to support proper backwards translation automatically.
+
+=============================================================================
+
+X3D design work completed:
+- Removed profile attributes for all nodes.
+- Verify all nodes, attributes and relationships using DTD.
+- Verify node types against latest interface hierarchy.
+- Verify summary of attribute additions relative to VRML 97 specification.
+- Verify attribute distribution among node types using SAI version 1.
+- Resolve X3DNode and base type relationships and naming conventions.
+- Added StringsUrl type to allow further pattern restrictions on
+  valid url values, with expectation that further detail needs to be
+  specified that is compatible with URNs.  StringsUrl maps to
+  VRML 97 MFStrings.
+- Multiple interfaces for Anchor, Collision, MovieTexture, TimeSensor:
+  have verified there is no native Schema approach available for directly
+  indicating multiple simultaneous types.  Thus an otherInterfaces attribute
+  is provided in combination with explicit repetition of attributes for
+  these other interfaces.  This allows proper autogeneration of multiple
+  IDL and API interfaces by XSLT stylesheets.
+- Verify there are no other multiple interface nodes.
+- Extract tooltips from X3D-Edit to augment annotation->appinfo text.
+- Ensure setup and configuration files properly documented and available
+  online as part of X3D-Edit distribution.
+- VRML 97's Script node Browser class (for values exposed to a browser) is
+  being provided via attributes on Scene node (and thus a Scene interface).
+  Also need to update DTD, X3D-Edit tooltips profile and X3dToVrml97.xsl
+  translation stylesheet.
+- Use attributeGroup for any attributes contained in complexType (meaning
+  NodeType definitions) so that multiple-interface repetitions can refer to
+  the proper attributeGroup rather than explicitly repeating each attribute.
+- SceneGraphStructureType interface identifies scene-related nodes that are
+  not renderable nodes in the scene graph (X3D, Header, Scene, ROUTE etc.).
+- Scene Authoring Interface (SAI) Java bindings for interfaces in
+  org/web3d/x3d/sai/SceneAuthoringInterface.java are autogenerated
+  from X3dSchemaDraft.xml by BuildInterfacesFromSchema.xsl
+- Enumeration types originally converted to Java interfaces, now converted
+  into fully functional utility classes.
+- Can X3D element be formally designated as root node?  Apparently not,
+  according to revised Schema recommendation.  Nevertheless, structured
+  relationships of the node typing rules makes X3D the root.  No further
+  action required.
+- SceneGraphStructureNodeType nodes (X3D, Scene, Header, Prototype* etc.)
+  changed from Full profile to either Base or Core profile as appropriate.
+- Updated to match final 2001 XML Schema Recommendation revisions.
+- Investigate restrictions on use of abstract="true" for element content
+  as described in
+  http://www.w3.org/2000/05/12-xmlschema-lcissues.html#abstract-types
+- Profile renaming:
+  Core            to Interchange profile
+  CoreInteractive to Interactive profile
+  BaseLine        to Immersive   profile
+  Full         stays Full        profile
+  DisJavaVrml     to DIS         profile
+  GeoVrml         to GeoSpatial  profile
+- Wrapper tag issues:  http://www.web3D.org/x3d/ComposingSceneGraphAlternatives.html
+- Color:  naming collision between X3DField 'color' and node interface 'Color'
+  avoided by distinct naming conventions for field type and field name.
+- xsd:choice minOccurs/maxOccurs attributes moved to parent xsd:group when
+  used by reference (SoundChildContentModel, TextureBackgroundChildContentModel)
+- regex patterns for SFVec2d, MFVec2d, SFVec3d, MFVec3d, MFVec3f
+- Can SubstitutionGroup be used for deprecated node labels like
+  LOD-level (now LOD-children) and Switch-choice (now Switch-children)?  No.
+- Add source urls for annotations appinfo/documentation once specification
+  addresses are stable.  Initially using VRML 97 specification URLs for
+  clarity.  Updating to XLink urls into VRML 200x is the eventual goal.
+- Update the x3d-compact.dtd to precisely match names used for node types
+  (e.g. GroupingNode).
+- Can USE be substituted anywhere?  XML Schema substitutionGroup?  Wildcard?
+  Answer:  USE no longer allowed due to type ambiguity, redundancy.
+- Consider optionalAttributes for appropriate fields in Interchange profile nodes
+  that are only guaranteed at higher profile levels (or else just annotate them
+  and leave optional implementation silent as an implementer choice).
+  Answer:  no.
+- Is it possible for this schema to differentiate profile-optional attributes
+  (e.g. Anchor.target, IndexedFaceSet.convex etc.) in the same way that the
+  DTD allows strict or loose checking of different-profile attributes?  This
+  is a bit tricky since browsers can optionally support Immersive-related
+  attributes even when operating in a Interchange profile mode.  Answer:  no.
+- Relax ROUTE to appear within a scene/prototype, not solely at the end:
+  ROUTE is a child node type.
+- Can FloatNonNegative pattern restrictions instead be added on a
+  localized node-by-node basis?  Probably too verbose, but at least that
+  preserves base-type definitions.  Answer:  no, poor design choice.
+- Require ROUTE attributes.
+
+=============================================================================
+
+X3D Schema design work in progress:
+- Using XSV validator to check the internal consistency of the schema.
+- Still need to automate regression testing for schema-based validation of
+  content suites, a few esoteric schema warnings remain from xsqc and xsv.
+- Update source urls for annotations appinfo/documentation once specification
+  addresses are stable.
+- How to identify simple types as X3DField and X3DArrayField?
+- Need X3DTexture3DNode?
+  Probably keep Extrusion, [Geo]ElevationGrid as X3DGeometryNode
+- Need regex patterns for BoundingBoxSize, other special boundary constraints
+- Add additional type restrictions such as FloatNonNegative etc. ?
+  Consider whether this can be codified as further base types or
+  included as range restrictions on existing base types. 
+- Need constraint or pattern on TriangleFanSet fanCount and
+  TriangleStripSet stripCount (3 or more values)
+- is there some way to apply a restriction that only one child of
+  Collision can have containerField="proxy" ?
+- Augment H-Anim 1.1 with H-Anim 2001.  Decide if 1.1 can be included
+  compatibly (as with DTD).
+- Matching interfaces with org.w3c.dom Element, Attr and Event types.
+  Mapping to SAI X3DNode, X3DField and Event respectively.  Under
+  evaluation as part of Scene Authoring Interface (SAI) development.
+- Can deprecations be encoded as allowable options, or alternate/duplicate
+  attributes?  Stylesheets can capture and propagate the deprecations if
+  consistently defined.
+- Patterns for multifield types need to be completed?
+- Establish different namespace scopes using key/keyRef for DEF/USE ID/IDREFs
+  (and ROUTE/IS)  inside ProtoDeclare.
+- Establish different namespace scopes for node and ProtoDeclare names.
+  Or at least forbid reserved node names in prototypes.
+- Insert namespace prefixes (xsd: etc.) on X3D element - may need to use ref.
+  See next section of this documentation for example implementation details.
+- Is restricting values on fields with accessType inputOnly/outputOnly possible?
+- Need to integrate CoordinateDouble and ColorRGBA into content models
+
+=============================================================================
+
+Future work with namespaces and 'xsd:' qualifiers for non-X3D schema
+elements/datatypes, once software tools are namespace aware:
+
+  xmlns    ="http://www.w3.org/2000/10/XMLSchema"
+  xmlns:xsd="http://www.w3.org/2000/10/XMLSchema"
+  xmlns:x3d="http://www.web3d.org/specifications/x3d-3.0.xsd"
+  targetNamespace="http://www.web3d.org/specifications/x3d-3.0.xsd"
+
+DTD processing approach to namespaces:
+
+X3dSchemaDraft.xml entity declaration section (i.e. document subset)
+which goes inside the DOCTYPE tag at the top of this schema:
+
+<!DOCTYPE schema
+	  PUBLIC "-//W3C//DTD XMLSCHEMA 200102//EN"
+	         "http://www.w3.org/2001/XMLSchema.dtd"
+[
+  <!--	%p - can be overriden in the internal subset of a schema document to
+	establish a namespace prefix -->
+  <!--	%s - if %p is defined (e.g. as foo:) then you must also define %s as
+	the suffix for the appropriate namespace declaration (e.g. :foo) -->
+  <!--	reference:  XMLSchema.dtd header comments -->
+
+  <!ENTITY % p 'xsd:'>
+  <!ENTITY % s ':xsd'>
+]
+
+Caution:  Xeena and JAXP do not yet support document subset or namespaces,
+          so the preceding document subset fragment listed here will get
+          clobbered if inserted inside DOCTYPE.
+
+=============================================================================
+XSV validator server: http://www.w3.org/2001/03/webdata/xsv
+Actual schema public ID: -//W3C//DTD XMLSCHEMA 200102//EN
+Web address schema DTD:
+    http://www.w3.org/2001/XMLSchema.dtd
+Local address X3D schema:
+    C:\www.web3d.org\specifications\x3d-3.0.xsd
+=============================================================================
+

@@ -1,0 +1,16 @@
+<driverGroup xmlns="http://www.sun.com/japex/testSuite"
+             xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <param name="japex.classPath" value="${japex.exi.ttfms.frameworkLibDir}/*.jar"/>
+  <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/openexi/dist/candidate-openexi.jar"/>
+  <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/openexi/lib/*.jar"/>
+  <param name="japex.classPath" value="${japex.exi.ttfms.candidatesDir}/openexi/lib/apache/xerces/2.11.0/*.jar"/>
+
+  <param name="japex.driverClass" value="org.w3c.exi.ttf.candidate.openexi.Nagasena"/>
+  <param name="org.w3c.exi.ttf.driver.candidateName" value="OpenEXI"/>
+
+  <driver name="OpenEXI">
+    <param name="description" value="Nagasena driver"/>
+  </driver>
+
+</driverGroup>

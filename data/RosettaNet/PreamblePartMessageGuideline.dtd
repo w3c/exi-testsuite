@@ -1,0 +1,36 @@
+<!--
+
+   RosettaNet XML Message Schema.
+   http://www.rosettanet.org
+   RosettaNet XML Message Schema. 
+   Preamble.
+   Version 1.1
+   
+   Created using Edifecs Commerce SpecBuilder. 
+   http://www.edifecs.com
+   http://www.commercedesk.com
+   Build # 22
+   
+-->
+
+
+<!ENTITY % common-attributes "id  CDATA #IMPLIED ">
+ 
+<!ELEMENT Preamble ( 
+          DateTimeStamp ,
+          GlobalAdministeringAuthorityCode ,
+          GlobalUsageCode ,
+          VersionIdentifier ) > 
+
+<!ELEMENT DateTimeStamp
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalAdministeringAuthorityCode
+           ( #PCDATA ) >
+
+<!ELEMENT GlobalUsageCode
+           ( #PCDATA ) >
+
+<!ELEMENT VersionIdentifier
+           ( #PCDATA ) >
+

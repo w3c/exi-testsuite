@@ -1,0 +1,1200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This data is strictly for non-commercial use only.  See http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html for details of the terms and conditions.-->
+<ESGMainBCAST xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <Service id="OneXtra" type="6" version="1" ServiceProtection="0">
+      <Name>1Xtra</Name>
+      <Genre>MUSIC</Genre>
+      <PreviewDataIDRef usage="0">urn:bbc:prevOneXtra</PreviewDataIDRef>
+   </Service>
+   <Access id="OneXtra_acc" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2
+s=SDP Example
+c=IN IP4 225.224.1.13
+t=0 0 
+m=audio 4004 RTP/AVP  98 
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>OneXtra</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Access id="OneXtra_acc_MBMS" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2 
+c=IN IP4 225.224.1.207 
+t=0 0 
+m=audio 4004 RTP/AVP 98 
+a=rtpmap:98 AMR/8000 
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>OneXtra</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <PurchaseItem id="OneXtra_1346" version="0">
+      <ServiceIDRef>OneXtra</ServiceIDRef>
+      <Name>OneXtra</Name>
+   </PurchaseItem>
+   <PurchaseData id="OneXtra_23DGE" version="0">
+      <PurchaseItemIDRef>OneXtra_1346</PurchaseItemIDRef>
+      <PurchaseChannelIDRef>BBC_purchase</PurchaseChannelIDRef>
+      <PriceInfo>
+         <SubscriptionUnit Type="1" Value="234" Unit="3"/>
+         <UnitText>month</UnitText>
+         <Price Currency="EUR" Value="13"/>
+      </PriceInfo>
+   </PurchaseData>
+   <PreviewData id="urn:bbc:prevOneXtra" version="3">
+      <Picture>
+         <PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAwQAAgUBBv/EADAQAAICAQIEBAQFBQAAAAAAAAEC
+AAMRBCESMUFxEyJRYQUjgZEUJEJScjIzYrHB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEB
+AQEBAQAAAAAAAAAAAAAAAAERMUH/2gAMAwEAAhEDEQA/AHbdDUK2K5UgEjBgtPpPFoVzYcnoRmEf
+WP4bBqHGQRmc0uqSuhVYNkdcQKt8PfoUP0xEr6mRirAAg49ZqjW0fuI7iI6plscspyOI/wChFCiJ
+5oaxPlfWSlcvC6lfy47zIzWpZmPQS4pCKc5OPWMYAYM2y7bntBW6hBkL5tsSjhXbPpJF2axhyOBJ
+GD1Nv9p/4mD0g/Kp2l7Tilyf2mU0ZzpklBSinmoP0mbqUCu2AB5jy+k04jqR5j/I/wDIC1Kk2bTm
+oa1769PXgZGc4z1htOvzoLXPdRqValBxcH9RHvJBn6ii5bCGbjI54l005SviYgE+spZfqmPnZh22
+lq6hZXxM+T3gVPCDu2e0kL4KKuTtJKY37RmtuxlNIMadO0JYR4bdjB6Uj8Ou8A0TvG57mM2OAjEH
+kJjX6q04w7HtAe0w+fK/ELqQVXiy46DfEQrvvLAIzcTbDM6GNSFSMKP1dWMzbiyagau7KpuYC1Xq
+I339NhB2WcNwsQ4PtHWq8TDN5jjrKB1NxVedWJ9pJ3wQM4USS6h02n2nRcQNiBMz8RZ/j9oUajFP
+EQCfaQN3XkqBxd8TPdsOVUDEHZqnfqB2gjYzczmUP6Ur4ljk7KuIOxxYxPSAqchTjrOWXEbLzmWu
+KW4D4HKaelbOnr4ueJlKCzY6zRrZlUeX7Ss0xemaHwM7cpJem1XHPf3km5UrIJ3nHduAJk49JzJ5
+mUY5mVcM5JJAKrgJvzEFzMknKAWtckR1G8uCYlU2+I0hI95mrBq28++4MkoquTkbD3khcL33cVQX
+y8/0jEWJl1wfKd5V1AxiaZVkkkgXrrd3CqpLHkIZtBqlDE0nb0IM1vhtdFWj4uNS7jLkHce0qrLX
+b8kWO32EDFrUl8Y5c4/U3h4GFYHmDz+kLqdJZk2HgDnfgB3i1SCxgpB57kdJPQ01qKSFBY+nLEkr
+dot8mxj7STWJr//Z
+</PictureData>
+         <AlternativeText>1Xtra</AlternativeText>
+      </Picture>
+      <AccessIDRef>OneXtra_accpre</AccessIDRef>
+   </PreviewData>
+   <Access id="OneXtra_accpre" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=prev 10001 1 IN IP4 192.13.1.65
+s=preview
+i=Vorschau
+t=0 0
+a=source-filter:  IN IP4 * 192.168.1.65
+a=flute-tsi:1
+a=flute-ch:1
+m=application 4000 FLUTE/UDP 0
+c=IN IP4 225.6.7.234</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>preview Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:3426" version="2">
+      <Name>African Beats: DNA with DJ Edu</Name>
+      <Description>DestiNation Africa</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3428" version="3">
+      <Name>The Dancehall M1X Show</Name>
+      <Description>The hottest dancehall in the mix with Young Lion</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3422" version="5">
+      <Name>Jason and Iyare</Name>
+      <Description>Get outta bed and let the boys in! They're here to deliver new black music</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:3423" version="1">
+      <Name>Rampage</Name>
+      <Description>The best in new black music mixed and served up by Rampage</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <InteractivityData id="OneXtraint_d0e69" InteractivityMediaDocumentPointer="OneXtraintgrp_d0e69" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:3423</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346565400" InteractivityWindowEndTime="3346565600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:3425" version="2">
+      <Name>Nesha</Name>
+      <Description>The best in new black music with Nesha on the controls</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:3431" version="4">
+      <Name>TXU</Name>
+      <Description>A mix of news, hot music, sport and documentaries</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>NON-FICTION</Genre>
+   </Content>
+   <Content id="urn:bbc:3424" version="5">
+      <Name>Ace and Invisible</Name>
+      <Description>The troublemakers of digital radio</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:3430" version="1">
+      <Name>Dancehall Splurt with Robbo Ranx</Name>
+      <Description>Big interviews, new riddims and hot exclusives</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3429" version="3">
+      <Name>Desi Beats with Panjabi Hit Squad</Name>
+      <Description>The hottest Asian beats on the streets</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="OneXtra_d0e792" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3426">
+         <Presentation_Window Presentation_Start_Time="3346531200" Presentation_End_Time="3346538400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e216" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2129959106 2594696044 IN IP4 192.168.0.115
+c=IN IP4 225.224.32.96
+m=audio 18406 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e806" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3428">
+         <Presentation_Window Presentation_Start_Time="3346538400" Presentation_End_Time="3346552800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e820" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3422">
+         <Presentation_Window Presentation_Start_Time="3346552800" Presentation_End_Time="3346563600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e834" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3423">
+         <Presentation_Window Presentation_Start_Time="3346563600" Presentation_End_Time="3346574400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e240" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2356613159 2540222167 IN IP4 192.168.0.231
+c=IN IP4 225.224.254.139
+m=audio 13278 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e848" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3425">
+         <Presentation_Window Presentation_Start_Time="3346574400" Presentation_End_Time="3346581600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e862" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3431">
+         <Presentation_Window Presentation_Start_Time="3346581600" Presentation_End_Time="3346588800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e876" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3424">
+         <Presentation_Window Presentation_Start_Time="3346588800" Presentation_End_Time="3346599600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e264" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2295440673 2366195677 IN IP4 192.168.0.102
+c=IN IP4 225.224.234.234
+m=audio 35048 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e890" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3430">
+         <Presentation_Window Presentation_Start_Time="3346599600" Presentation_End_Time="3346610400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e904" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3429">
+         <Presentation_Window Presentation_Start_Time="3346610400" Presentation_End_Time="3346617600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:3532" version="2">
+      <Name>Deviation with Benji B</Name>
+      <Description>Soulful underground music</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3530" version="3">
+      <Name>The Hip Hop M1X Show: Mistajam</Name>
+      <Description>The hottest hip hop in the mix</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:3528" version="1">
+      <Name>Rampage</Name>
+      <Description>Hold tight for this week's games review and see who is Reppin Their Ends</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:3533" version="4">
+      <Name>TXU</Name>
+      <Description>News, music, sport and documentaries, with Charlene White and G Money</Description>
+      <Genre>Live</Genre>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:3526" version="1">
+      <Name>Friday Night Mixtape</Name>
+      <Description>With Semtex</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="OneXtraint_d0e381" InteractivityMediaDocumentPointer="OneXtraintgrp_d0e381" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:3526</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346687800" InteractivityWindowEndTime="3346688000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:3529" version="3">
+      <Name>The Set Up with Manny Norte</Name>
+      <Description>You want this party started right! Set it off with Manny in and out of a hip hop, RnB and dancehall party mix</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Schedule id="OneXtra_d0e1702" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3532">
+         <Presentation_Window Presentation_Start_Time="3346617600" Presentation_End_Time="3346624800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e429" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2303787231 2691772460 IN IP4 192.168.0.14
+c=IN IP4 225.224.111.102
+m=audio 26724 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e1716" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3530">
+         <Presentation_Window Presentation_Start_Time="3346624800" Presentation_End_Time="3346639200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e1730" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3531">
+         <Presentation_Window Presentation_Start_Time="3346639200" Presentation_End_Time="3346650000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e1744" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3528">
+         <Presentation_Window Presentation_Start_Time="3346650000" Presentation_End_Time="3346660800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e453" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2314956665 2326278686 IN IP4 192.168.0.190
+c=IN IP4 225.224.248.82
+m=audio 4766 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e1758" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3527">
+         <Presentation_Window Presentation_Start_Time="3346660800" Presentation_End_Time="3346668000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e1772" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3533">
+         <Presentation_Window Presentation_Start_Time="3346668000" Presentation_End_Time="3346675200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e1786" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3534">
+         <Presentation_Window Presentation_Start_Time="3346675200" Presentation_End_Time="3346686000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e477" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2174835205 2601577758 IN IP4 192.168.0.25
+c=IN IP4 225.224.238.183
+m=audio 1916 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e1800" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3526">
+         <Presentation_Window Presentation_Start_Time="3346686000" Presentation_End_Time="3346696800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e1814" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:3529">
+         <Presentation_Window Presentation_Start_Time="3346696800" Presentation_End_Time="3346704000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:7327" version="2">
+      <Name>RnB: Soul Power with DJ B</Name>
+      <Description>The soulful side of RnB in and out of the mix</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:7331" version="3">
+      <Name>The UKG M1X Show</Name>
+      <Description>The hottest UKG in the mix with DJ Q</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:7328" version="5">
+      <Name>Ayesha</Name>
+      <Description>Your weekend wake up call</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7324" version="1">
+      <Name>Jenna G</Name>
+      <Description>Loud, Big and Bashy! Txt us on 88111 [max cost 12p] or log on to bbc</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7332" version="2">
+      <Name>Dev</Name>
+      <Description>Step into Dev's world for fresh music and the latest mixtapes on the road</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7325" version="4">
+      <Name>Seani B</Name>
+      <Description>Catch the remix kid championing the biggest tunes and the hottest remixes around</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7333" version="5">
+      <Name>Twin B</Name>
+      <Description>Two hours of the freshest beats and new UK talent</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7329" version="1">
+      <Name>Saturday Night Mixtape with Semtex</Name>
+      <Description>Blowing up your speakers with the sickest hip hop from the US and UK and guests Loudmouth and Quality Control</Description>
+   </Content>
+   <Content id="urn:bbc:7330" version="3">
+      <Name>RnB: The Refix with G Child</Name>
+      <Description>The edgier side to RnB including his Refix mixes</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="OneXtraint_d0e687" InteractivityMediaDocumentPointer="OneXtraintgrp_d0e687" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:7330</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346785000" InteractivityWindowEndTime="3346785200"/>
+   </InteractivityData>
+   <Schedule id="OneXtra_d0e2594" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7327">
+         <Presentation_Window Presentation_Start_Time="3346704000" Presentation_End_Time="3346711200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e708" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2057846069 2312103271 IN IP4 192.168.0.184
+c=IN IP4 225.224.243.9
+m=audio 55202 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e2608" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7331">
+         <Presentation_Window Presentation_Start_Time="3346711200" Presentation_End_Time="3346725600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e2622" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7328">
+         <Presentation_Window Presentation_Start_Time="3346725600" Presentation_End_Time="3346736400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e2636" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7324">
+         <Presentation_Window Presentation_Start_Time="3346736400" Presentation_End_Time="3346747200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e732" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2277572631 2505294798 IN IP4 192.168.0.218
+c=IN IP4 225.224.84.123
+m=audio 64556 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e2650" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7332">
+         <Presentation_Window Presentation_Start_Time="3346747200" Presentation_End_Time="3346754400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e2664" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7325">
+         <Presentation_Window Presentation_Start_Time="3346754400" Presentation_End_Time="3346765200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e2678" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7333">
+         <Presentation_Window Presentation_Start_Time="3346765200" Presentation_End_Time="3346772400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e756" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2457672119 2567733764 IN IP4 192.168.0.76
+c=IN IP4 225.224.240.75
+m=audio 12186 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e2692" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7329">
+         <Presentation_Window Presentation_Start_Time="3346772400" Presentation_End_Time="3346783200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e2706" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7330">
+         <Presentation_Window Presentation_Start_Time="3346783200" Presentation_End_Time="3346790400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:7326" version="2">
+      <Name>1Xtra Live</Name>
+      <Description>RnB Sensations</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+   </Content>
+   <Content id="urn:bbc:7338" version="3">
+      <Name>UKG: Cameo's Pirate Sessions</Name>
+      <Description>Street sounds with young, up and coming UK garage talent</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:7337" version="5">
+      <Name>Vibrations with DJ Fitz</Name>
+      <Description>Bringing you the hottest nu-gospel beats with special guests and DJs in the mix</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:7336" version="1">
+      <Name>Jenna G</Name>
+      <Description>Loud, Big &amp; Bashy</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7341" version="2">
+      <Name>The Basement</Name>
+      <Description>The musical make up of top DJs, artists and producers</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7334" version="5">
+      <Name>100% Home Grown with Ras Kwame</Name>
+      <Description>Nothing but 100% UK music</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7339" version="1">
+      <Name>The Heartless Crew</Name>
+      <Description>Pure Vibes - good times from HLC</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:7340" version="3">
+      <Name>D&amp;B: Intabeats with Bailey</Name>
+      <Description>Upfront, exclusive drum &amp; bass pressure</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="OneXtra_d0e3510" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7326">
+         <Presentation_Window Presentation_Start_Time="3346790400" Presentation_End_Time="3346797600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e972" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2450912475 2705368041 IN IP4 192.168.0.41
+c=IN IP4 225.224.194.222
+m=audio 40424 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e3524" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7338">
+         <Presentation_Window Presentation_Start_Time="3346797600" Presentation_End_Time="3346812000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e3538" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7337">
+         <Presentation_Window Presentation_Start_Time="3346812000" Presentation_End_Time="3346822800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e3552" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7336">
+         <Presentation_Window Presentation_Start_Time="3346822800" Presentation_End_Time="3346833600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e996" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2153198242 2399322509 IN IP4 192.168.0.121
+c=IN IP4 225.224.119.125
+m=audio 28418 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e3566" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7341">
+         <Presentation_Window Presentation_Start_Time="3346833600" Presentation_End_Time="3346840800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e3580" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7335">
+         <Presentation_Window Presentation_Start_Time="3346840800" Presentation_End_Time="3346851600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e3594" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7334">
+         <Presentation_Window Presentation_Start_Time="3346851600" Presentation_End_Time="3346858800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1020" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2016876220 2104263304 IN IP4 192.168.0.193
+c=IN IP4 225.224.217.249
+m=audio 9642 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e3608" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7339">
+         <Presentation_Window Presentation_Start_Time="3346858800" Presentation_End_Time="3346869600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e3622" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7340">
+         <Presentation_Window Presentation_Start_Time="3346869600" Presentation_End_Time="3346876800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:7348" version="2">
+      <Name>Dancehall: Silver Star Presents</Name>
+      <Description>Randy, Gussy and Viper, Juggling the Newest Riddims, Bashy Vibes and Heaviest Dubs on Road</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:7342" version="3">
+      <Name>International Sounds of Soca</Name>
+      <Description>The UK's only national soca show hosted by Alex Jordan</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <InteractivityData id="OneXtraint_d0e1065" InteractivityMediaDocumentPointer="OneXtraintgrp_d0e1065" version="2" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:7342</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346885800" InteractivityWindowEndTime="3346886000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:7346" version="5">
+      <Name>Xtra Talent</Name>
+      <Description>BBC Blast competition winner, Jamie Wallace from Norwich, in the hotseat</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7507" version="1">
+      <Name>Xtra Talent</Name>
+      <Description>BBC Blast competition winner, Sabrina Bailey from Birmingham, in the hotseat</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7350" version="4">
+      <Name>Rampage</Name>
+      <Description>Has someone or something annoyed you over the weekend? Send in your Monday Murks</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7345" version="4">
+      <Name>RnB: Uptown Anthems - Ronnie Herel</Name>
+      <Description>Hot RnB in and out of the mix, and the definitive RnB chart</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:7347" version="5">
+      <Name>Original Fever with Skitz</Name>
+      <Description>Blazing hip hop from both sides of the Atlantic</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="OneXtra_d0e4649" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7348">
+         <Presentation_Window Presentation_Start_Time="3346876800" Presentation_End_Time="3346884000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1221" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2185150146 2219360351 IN IP4 192.168.0.140
+c=IN IP4 225.224.130.138
+m=audio 56830 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e4663" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7342">
+         <Presentation_Window Presentation_Start_Time="3346884000" Presentation_End_Time="3346891200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e4677" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7346">
+         <Presentation_Window Presentation_Start_Time="3346891200" Presentation_End_Time="3346894800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e4691" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7507">
+         <Presentation_Window Presentation_Start_Time="3346894800" Presentation_End_Time="3346898400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1245" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2311889648 2579772948 IN IP4 192.168.0.151
+c=IN IP4 225.224.169.97
+m=audio 64588 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e4705" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7343">
+         <Presentation_Window Presentation_Start_Time="3346898400" Presentation_End_Time="3346909200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e4719" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7350">
+         <Presentation_Window Presentation_Start_Time="3346909200" Presentation_End_Time="3346920000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e4733" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7351">
+         <Presentation_Window Presentation_Start_Time="3346920000" Presentation_End_Time="3346927200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1269" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2357940673 2760498046 IN IP4 192.168.0.104
+c=IN IP4 225.224.144.252
+m=audio 14528 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e4747" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7344">
+         <Presentation_Window Presentation_Start_Time="3346927200" Presentation_End_Time="3346934400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e4761" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7349">
+         <Presentation_Window Presentation_Start_Time="3346934400" Presentation_End_Time="3346945200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e4775" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7345">
+         <Presentation_Window Presentation_Start_Time="3346945200" Presentation_End_Time="3346956000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1293" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2031372070 2232986449 IN IP4 192.168.0.199
+c=IN IP4 225.224.182.123
+m=audio 45410 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e4789" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:7347">
+         <Presentation_Window Presentation_Start_Time="3346956000" Presentation_End_Time="3346963200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:1488" version="2">
+      <Name>Soulful House Session: Aaron Ross</Name>
+      <Description>Upfront soulful house plus guest mixes and interviews</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1485" version="3">
+      <Name>The D&amp;B M1x Show: DJ Sappo</Name>
+      <Description>The hottest drum and bass in the mix with Sappo</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1484" version="1">
+      <Name>Rampage</Name>
+      <Description>Rampage bringing the flava until Midday</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:1482" version="2">
+      <Name>Nesha</Name>
+      <Description>The best in new black music with Nesha</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:1487" version="1">
+      <Name>D&amp;B: Connexions with L Double</Name>
+      <Description>The hottest worldwide D&amp;B exclusives</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="OneXtraint_d0e1405" InteractivityMediaDocumentPointer="OneXtraintgrp_d0e1405" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:1487</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3347033400" InteractivityWindowEndTime="3347033600"/>
+   </InteractivityData>
+   <Content id="urn:bbc:1486" version="3">
+      <Name>Dancehall Splurt with Robbo Ranx</Name>
+      <Description>New, new, new riddims, hot exclusives and big dubs</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="OneXtra_d0e5548" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1488">
+         <Presentation_Window Presentation_Start_Time="3346963200" Presentation_End_Time="3346970400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e5562" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1485">
+         <Presentation_Window Presentation_Start_Time="3346970400" Presentation_End_Time="3346984800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1455" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2125900268 2240875243 IN IP4 192.168.0.52
+c=IN IP4 225.224.113.14
+m=audio 19396 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e5576" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1490">
+         <Presentation_Window Presentation_Start_Time="3346984800" Presentation_End_Time="3346995600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e5590" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1484">
+         <Presentation_Window Presentation_Start_Time="3346995600" Presentation_End_Time="3347006400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e5604" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1482">
+         <Presentation_Window Presentation_Start_Time="3347006400" Presentation_End_Time="3347013600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1479" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2372253417 2540847777 IN IP4 192.168.0.233
+c=IN IP4 225.224.227.23
+m=audio 59176 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e5618" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1483">
+         <Presentation_Window Presentation_Start_Time="3347013600" Presentation_End_Time="3347020800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e5632" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1489">
+         <Presentation_Window Presentation_Start_Time="3347020800" Presentation_End_Time="3347031600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e5646" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1487">
+         <Presentation_Window Presentation_Start_Time="3347031600" Presentation_End_Time="3347042400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1503" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2113143920 2261535643 IN IP4 192.168.0.124
+c=IN IP4 225.224.207.101
+m=audio 49286 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e5660" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1486">
+         <Presentation_Window Presentation_Start_Time="3347042400" Presentation_End_Time="3347049600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:1495" version="2">
+      <Name>The Definition with DJ Blakey</Name>
+      <Description>Hitting hip hop from every angle</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1497" version="3">
+      <Name>The RnB M1X Show</Name>
+      <Description>The hottest RnB in the mix with G Child</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1499" version="1">
+      <Name>Rampage</Name>
+      <Description>Look out for info on this month's online competition</Description>
+      <Genre>Blues/Rhythm and blues/Soul/Gospel</Genre>
+      <Genre>Reggae</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+   </Content>
+   <Content id="urn:bbc:1496" version="4">
+      <Name>TXU</Name>
+      <Description>A mix of news,music and sport</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1498" version="1">
+      <Name>UK G: The Blueprint with Richie Vee</Name>
+      <Description>The biggest guests from the UK garage scene</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:1494" version="3">
+      <Name>D&amp;B: The Next Chapter DJ Flight</Name>
+      <Description>Future drum and bass flavours for future people, plus a new talent mix from an up and coming DJ</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="OneXtra_d0e6467" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1495">
+         <Presentation_Window Presentation_Start_Time="3347049600" Presentation_End_Time="3347056800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e6481" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1497">
+         <Presentation_Window Presentation_Start_Time="3347056800" Presentation_End_Time="3347071200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1659" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2207763671 2444213866 IN IP4 192.168.0.246
+c=IN IP4 225.224.165.53
+m=audio 60646 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e6495" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1492">
+         <Presentation_Window Presentation_Start_Time="3347071200" Presentation_End_Time="3347082000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e6509" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1499">
+         <Presentation_Window Presentation_Start_Time="3347082000" Presentation_End_Time="3347092800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e6523" version="2" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1493">
+         <Presentation_Window Presentation_Start_Time="3347092800" Presentation_End_Time="3347100000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1683" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2126800537 2217849731 IN IP4 192.168.0.40
+c=IN IP4 225.224.24.180
+m=audio 5874 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e6537" version="4" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1496">
+         <Presentation_Window Presentation_Start_Time="3347100000" Presentation_End_Time="3347107200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e6551" version="5" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1491">
+         <Presentation_Window Presentation_Start_Time="3347107200" Presentation_End_Time="3347118000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="OneXtra_d0e6565" version="1" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1498">
+         <Presentation_Window Presentation_Start_Time="3347118000" Presentation_End_Time="3347128800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="OneXtraacc_d0e1707" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2278732299 2402542113 IN IP4 192.168.0.120
+c=IN IP4 225.224.79.145
+m=audio 4676 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="OneXtra_d0e6579" version="3" ServiceIDRef="OneXtra">
+      <ContentIDRef idRef="urn:bbc:1494">
+         <Presentation_Window Presentation_Start_Time="3347128800" Presentation_End_Time="3347136000"/>
+      </ContentIDRef>
+   </Schedule>
+</ESGMainBCAST>

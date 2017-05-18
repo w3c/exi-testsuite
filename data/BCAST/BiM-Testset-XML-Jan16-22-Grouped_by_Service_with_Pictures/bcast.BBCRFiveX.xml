@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This data is strictly for non-commercial use only.  See http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html for details of the terms and conditions.-->
+<ESGMainBCAST xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <Service id="BBCRFiveX" type="6" version="1" ServiceProtection="0">
+      <Name>BBC Radio 5 Extra</Name>
+      <Genre>Audio only</Genre>
+      <PreviewDataIDRef usage="0">urn:bbc:prevBBCRFiveX</PreviewDataIDRef>
+   </Service>
+   <Access id="BBCRFiveX_acc" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2
+s=SDP Example
+c=IN IP4 225.224.1.62
+t=0 0 
+m=audio 4004 RTP/AVP  98 
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCRFiveX</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Access id="BBCRFiveX_acc_MBMS" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2 
+c=IN IP4 225.224.1.9 
+t=0 0 
+m=audio 4004 RTP/AVP 98 
+a=rtpmap:98 AMR/8000 
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCRFiveX</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <PurchaseItem id="BBCRFiveX_1346" version="0">
+      <ServiceIDRef>BBCRFiveX</ServiceIDRef>
+      <Name>BBCRFiveX</Name>
+   </PurchaseItem>
+   <PurchaseData id="BBCRFiveX_23DGE" version="0">
+      <PurchaseItemIDRef>BBCRFiveX_1346</PurchaseItemIDRef>
+      <PurchaseChannelIDRef>BBC_purchase</PurchaseChannelIDRef>
+      <PriceInfo>
+         <SubscriptionUnit Type="1" Value="129" Unit="3"/>
+         <UnitText>month</UnitText>
+         <Price Currency="EUR" Value="62"/>
+      </PriceInfo>
+   </PurchaseData>
+   <PreviewData id="urn:bbc:prevBBCRFiveX" version="3">
+      <Picture>
+         <PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAwQAAgUBBv/EADAQAAICAQIEBAQFBQAAAAAAAAEC
+AAMRBCESMUFxEyJRYQUjgZEUJEJScjIzYrHB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEB
+AQEBAQAAAAAAAAAAAAAAAAERMUH/2gAMAwEAAhEDEQA/AHbdDUK2K5UgEjBgtPpPFoVzYcnoRmEf
+WP4bBqHGQRmc0uqSuhVYNkdcQKt8PfoUP0xEr6mRirAAg49ZqjW0fuI7iI6plscspyOI/wChFCiJ
+5oaxPlfWSlcvC6lfy47zIzWpZmPQS4pCKc5OPWMYAYM2y7bntBW6hBkL5tsSjhXbPpJF2axhyOBJ
+GD1Nv9p/4mD0g/Kp2l7Tilyf2mU0ZzpklBSinmoP0mbqUCu2AB5jy+k04jqR5j/I/wDIC1Kk2bTm
+oa1769PXgZGc4z1htOvzoLXPdRqValBxcH9RHvJBn6ii5bCGbjI54l005SviYgE+spZfqmPnZh22
+lq6hZXxM+T3gVPCDu2e0kL4KKuTtJKY37RmtuxlNIMadO0JYR4bdjB6Uj8Ou8A0TvG57mM2OAjEH
+kJjX6q04w7HtAe0w+fK/ELqQVXiy46DfEQrvvLAIzcTbDM6GNSFSMKP1dWMzbiyagau7KpuYC1Xq
+I339NhB2WcNwsQ4PtHWq8TDN5jjrKB1NxVedWJ9pJ3wQM4USS6h02n2nRcQNiBMz8RZ/j9oUajFP
+EQCfaQN3XkqBxd8TPdsOVUDEHZqnfqB2gjYzczmUP6Ur4ljk7KuIOxxYxPSAqchTjrOWXEbLzmWu
+KW4D4HKaelbOnr4ueJlKCzY6zRrZlUeX7Ss0xemaHwM7cpJem1XHPf3km5UrIJ3nHduAJk49JzJ5
+mUY5mVcM5JJAKrgJvzEFzMknKAWtckR1G8uCYlU2+I0hI95mrBq28++4MkoquTkbD3khcL33cVQX
+y8/0jEWJl1wfKd5V1AxiaZVkkkgXrrd3CqpLHkIZtBqlDE0nb0IM1vhtdFWj4uNS7jLkHce0qrLX
+b8kWO32EDFrUl8Y5c4/U3h4GFYHmDz+kLqdJZk2HgDnfgB3i1SCxgpB57kdJPQ01qKSFBY+nLEkr
+dot8mxj7STWJr//Z
+</PictureData>
+         <AlternativeText>BBC Radio 5 Extra</AlternativeText>
+      </Picture>
+      <AccessIDRef>BBCRFiveX_accpre</AccessIDRef>
+   </PreviewData>
+   <Access id="BBCRFiveX_accpre" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=prev 10001 1 IN IP4 192.62.1.65
+s=preview
+i=Vorschau
+t=0 0
+a=source-filter:  IN IP4 * 192.168.1.65
+a=flute-tsi:1
+a=flute-ch:1
+m=application 4000 FLUTE/UDP 0
+c=IN IP4 225.6.7.129</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>preview Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:4007" version="2">
+      <Name>On Sports Extra This Month...</Name>
+      <Description>Sports Extra Tennis: Coming up today at 8</Description>
+   </Content>
+   <Content id="urn:bbc:4005" version="3">
+      <Name>On Sports Extra This Month...</Name>
+      <Description>Sports Extra Tennis: Coming up at 8</Description>
+   </Content>
+   <Content id="urn:bbc:4009" version="5">
+      <Name>Sports Extra Tennis</Name>
+      <Description>Live, uninterrupted commentary from the Australian Open Tennis</Description>
+      <Genre>Live</Genre>
+      <Genre>SPORTS</Genre>
+      <Genre>Commented event</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4006" version="1">
+      <Name>On Sports Extra This Month...</Name>
+      <Description>Sports Extra Tennis: Coming up tomorrow at 8</Description>
+   </Content>
+   <InteractivityData id="BBCRFiveXint_d0e42" InteractivityMediaDocumentPointer="BBCRFiveXintgrp_d0e42" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:4006</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346324200" InteractivityWindowEndTime="3346324400"/>
+   </InteractivityData>
+   <Schedule id="BBCRFiveX_d0e241" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4007">
+         <Presentation_Window Presentation_Start_Time="3346272000" Presentation_End_Time="3346293600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e51" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2211303710 2709136961 IN IP4 192.168.0.91
+c=IN IP4 225.224.203.35
+m=audio 63924 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e255" version="3" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4005">
+         <Presentation_Window Presentation_Start_Time="3346293600" Presentation_End_Time="3346302600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e269" version="5" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4009">
+         <Presentation_Window Presentation_Start_Time="3346302600" Presentation_End_Time="3346322400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e283" version="1" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4006">
+         <Presentation_Window Presentation_Start_Time="3346322400" Presentation_End_Time="3346336800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e75" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2375946044 2482345580 IN IP4 192.168.0.11
+c=IN IP4 225.224.212.78
+m=audio 54296 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e297" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4008">
+         <Presentation_Window Presentation_Start_Time="3346336800" Presentation_End_Time="3346358400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e553" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4023">
+         <Presentation_Window Presentation_Start_Time="3346358400" Presentation_End_Time="3346380000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e567" version="3" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4020">
+         <Presentation_Window Presentation_Start_Time="3346380000" Presentation_End_Time="3346389000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e99" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2303848266 2359085082 IN IP4 192.168.0.236
+c=IN IP4 225.224.155.114
+m=audio 63860 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e581" version="5" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4022">
+         <Presentation_Window Presentation_Start_Time="3346389000" Presentation_End_Time="3346408800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e595" version="1" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4021">
+         <Presentation_Window Presentation_Start_Time="3346408800" Presentation_End_Time="3346423200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e609" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4024">
+         <Presentation_Window Presentation_Start_Time="3346423200" Presentation_End_Time="3346444800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e123" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2257064819 2310714721 IN IP4 192.168.0.113
+c=IN IP4 225.224.137.31
+m=audio 50074 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e865" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4055">
+         <Presentation_Window Presentation_Start_Time="3346444800" Presentation_End_Time="3346466400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e879" version="3" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4052">
+         <Presentation_Window Presentation_Start_Time="3346466400" Presentation_End_Time="3346475400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e893" version="5" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4053">
+         <Presentation_Window Presentation_Start_Time="3346475400" Presentation_End_Time="3346495200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e147" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2056335449 2193359374 IN IP4 192.168.0.152
+c=IN IP4 225.224.123.237
+m=audio 50530 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e907" version="1" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4054">
+         <Presentation_Window Presentation_Start_Time="3346495200" Presentation_End_Time="3346509600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e921" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4056">
+         <Presentation_Window Presentation_Start_Time="3346509600" Presentation_End_Time="3346531200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1177" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4075">
+         <Presentation_Window Presentation_Start_Time="3346531200" Presentation_End_Time="3346552800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e171" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2360321044 2789276122 IN IP4 192.168.0.188
+c=IN IP4 225.224.16.52
+m=audio 55084 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e1191" version="3" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4078">
+         <Presentation_Window Presentation_Start_Time="3346552800" Presentation_End_Time="3346561800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1205" version="5" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4076">
+         <Presentation_Window Presentation_Start_Time="3346561800" Presentation_End_Time="3346581600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1219" version="1" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4077">
+         <Presentation_Window Presentation_Start_Time="3346581600" Presentation_End_Time="3346596000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e195" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2457626342 2837631224 IN IP4 192.168.0.112
+c=IN IP4 225.224.25.120
+m=audio 29010 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e1233" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:4079">
+         <Presentation_Window Presentation_Start_Time="3346596000" Presentation_End_Time="3346617600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1489" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:6284">
+         <Presentation_Window Presentation_Start_Time="3346617600" Presentation_End_Time="3346639200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1503" version="3" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:6283">
+         <Presentation_Window Presentation_Start_Time="3346639200" Presentation_End_Time="3346648200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e219" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2221817016 2630798339 IN IP4 192.168.0.167
+c=IN IP4 225.224.91.218
+m=audio 20488 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e1517" version="5" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:6285">
+         <Presentation_Window Presentation_Start_Time="3346648200" Presentation_End_Time="3346668000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1531" version="1" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:6282">
+         <Presentation_Window Presentation_Start_Time="3346668000" Presentation_End_Time="3346682400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1545" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:6281">
+         <Presentation_Window Presentation_Start_Time="3346682400" Presentation_End_Time="3346704000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e243" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2168701171 2170837401 IN IP4 192.168.0.112
+c=IN IP4 225.224.30.191
+m=audio 32208 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:8181" version="1">
+      <Name>On Sports Extra This Month...</Name>
+      <Description>Sports Extra Football: Coming up at 2</Description>
+   </Content>
+   <Content id="urn:bbc:8180" version="2">
+      <Name>Sports Extra Football</Name>
+      <Description>Uninterrupted commentary on two matches in the Premier League</Description>
+      <Genre>Live</Genre>
+      <Genre>SPORTS</Genre>
+      <Genre>Commented event</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCRFiveX_d0e1866" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8178">
+         <Presentation_Window Presentation_Start_Time="3346704000" Presentation_End_Time="3346725600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1880" version="3" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8182">
+         <Presentation_Window Presentation_Start_Time="3346725600" Presentation_End_Time="3346734600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1894" version="5" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8183">
+         <Presentation_Window Presentation_Start_Time="3346734600" Presentation_End_Time="3346754400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e297" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2494705200 2505218505 IN IP4 192.168.0.189
+c=IN IP4 225.224.92.0
+m=audio 34628 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e1908" version="1" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8181">
+         <Presentation_Window Presentation_Start_Time="3346754400" Presentation_End_Time="3346757700"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1922" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8180">
+         <Presentation_Window Presentation_Start_Time="3346757700" Presentation_End_Time="3346773300"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e1936" version="4" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8179">
+         <Presentation_Window Presentation_Start_Time="3346773300" Presentation_End_Time="3346790400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e321" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2123687744 2560775756 IN IP4 192.168.0.19
+c=IN IP4 225.224.87.26
+m=audio 10966 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e2192" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8188">
+         <Presentation_Window Presentation_Start_Time="3346790400" Presentation_End_Time="3346812000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e2206" version="3" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8184">
+         <Presentation_Window Presentation_Start_Time="3346812000" Presentation_End_Time="3346821000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e2220" version="5" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8187">
+         <Presentation_Window Presentation_Start_Time="3346821000" Presentation_End_Time="3346840800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCRFiveXacc_d0e345" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2212844848 2450119017 IN IP4 192.168.0.214
+c=IN IP4 225.224.111.102
+m=audio 19676 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCRFiveX_d0e2234" version="1" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8185">
+         <Presentation_Window Presentation_Start_Time="3346840800" Presentation_End_Time="3346855200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCRFiveX_d0e2248" version="2" ServiceIDRef="BBCRFiveX">
+      <ContentIDRef idRef="urn:bbc:8186">
+         <Presentation_Window Presentation_Start_Time="3346855200" Presentation_End_Time="3346876800"/>
+      </ContentIDRef>
+   </Schedule>
+</ESGMainBCAST>

@@ -1,0 +1,35 @@
+<!--	This test case group tests the ability to choose the event that matches the prioritized heuristics most precisely 
+		for element events.
+			SE ( qname )
+			SE ( uri : * )
+			SE ( * )
+			
+		https://www.w3.org/TR/exi-c14n/#exiEventMatching
+ -->
+ 
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="event selection for start element">
+   
+   <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+   <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/eventSelection/eventSelection.xsd"/>
+   <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/eventSelection"/>
+   
+   <testCase name="start_element_1">
+        <param name="testDescription"  value="start element matches qname"/>
+        <param name="japex.inputFile" value="${test.docFolder}/element_01.xml" />>
+   </testCase>
+   
+   <testCase name="start_element_2">
+        <param name="testDescription"  value="start element matches qname"/>
+        <param name="japex.inputFile" value="${test.docFolder}/element_02.xml" />>
+   </testCase>
+   
+   <testCase name="start_element_3">
+        <param name="testDescription"  value="start element matches uri"/>
+        <param name="japex.inputFile" value="${test.docFolder}/element_03.xml" />>
+   </testCase>
+   
+</testCaseGroup>

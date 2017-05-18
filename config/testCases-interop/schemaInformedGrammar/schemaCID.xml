@@ -1,0 +1,28 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="String compact identifiers tests">
+
+    <param name="groupId" value="${groupId} | initialEntries"/> 
+
+    <param name="org.w3c.exi.ttf.preserve" value="prefixes" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+
+    <testCase name="schema-cid-01">
+        <param name="org.w3c.exi.ttf.schemaLocation" value=""/>
+        <param name="testDescription"  value="Strings encoded as compact ids, some of them using prepopulated schema-informed entries"/>
+        <param name="japex.inputFile" value="${testDocFolder}/compact-identifiers/compactid-01.xml" />
+    </testCase>
+    <testCase name="schema-cid-02">
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar/acceptance.xsd"/>
+        <param name="testDescription"  value="Strings encoded as compact ids, some of them using prepopulated schema-informed entries"/>
+        <param name="japex.inputFile" value="${testDocFolder}/compact-identifiers/compactid-01.xml" />
+    </testCase>
+    <testCase name="schema-cid-03">
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${testDocFolder}/compact-identifiers/XMLSchema.xsd"/>
+        <param name="testDescription"  value="Strings encoded as compact ids, using prepopulated reordered schema-informed entries"/>
+        <param name="japex.inputFile" value="${testDocFolder}/compact-identifiers/wsdl.xsd" />
+    </testCase>
+
+</testCaseGroup>

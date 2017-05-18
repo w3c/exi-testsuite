@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2002/xforms" 
+           xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0">
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:element name="model">
+    <xs:complexType>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="ns17:element14"/>
+      <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="bind" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,63 @@
+<!--	This test case group tests the ability to choose the event that matches the prioritized heuristics most precisely 
+		for Attribute events.
+			AT ( qname ) [schema-typed value]
+			AT ( qname ) [untyped value]
+			AT ( uri : * )
+			AT ( * )
+			AT ( * ) [untyped value]
+			
+		https://www.w3.org/TR/exi-c14n/#exiEventMatching
+ -->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="Attribute selection">
+   
+   <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+   <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/eventSelection/eventSelection.xsd"/>
+   <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/eventSelection"/>
+     
+    
+    <!--  -->
+    <testCase name="AT_01">
+        <param name="description"  value="Attribute selection with qname and schema typed value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_01.xml" />
+    </testCase>
+    
+    <testCase name="AT_02">
+        <param name="description"  value="Attribute selection with qname and false value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_02.xml" />
+    </testCase>
+    
+    <testCase name="AT_03">
+        <param name="description"  value="Attribute Selection of qname from qname and uri attributes"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_03.xml" />
+    </testCase>
+    
+    <testCase name="AT_04">
+        <param name="description"  value="Attribute selection of uri attribute"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_04.xml" />
+    </testCase>
+    
+    <testCase name="AT_05">
+        <param name="description"  value="Attribute selection of uri attribute from uri and anyattribute"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_05.xml" />
+    </testCase>
+    
+    <testCase name="AT_06">
+        <param name="description"  value="any attribute selection"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_06.xml" />
+    </testCase>
+    
+    <testCase name="AT_07">
+        <param name="description"  value="any attribute selection from any attribute with type and any attribute with untyped value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_07.xml" />
+    </testCase>
+    
+    <testCase name="AT_08">
+        <param name="description"  value="any attribute with untyped value selection"/>
+        <param name="japex.inputFile" value="${test.docFolder}/at_08.xml" />
+    </testCase>
+    
+</testCaseGroup>

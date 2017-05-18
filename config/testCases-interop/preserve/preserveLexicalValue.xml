@@ -1,0 +1,209 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn Element Grammar tests">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="false" />
+
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingValues"/>
+    <param name="org.w3c.exi.ttf.preserve" value="lexicalvalues"/>
+
+    <!-- base64 -->
+    <testCase name="preserve.datatype.base64-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/binary/binary.xsd"/>
+        <param name="description" value="Preserving Lexical Value of Valid base64 element value with '=' chars" />
+        <param name="japex.inputFile" value="${test.docFolder}/binary/base64-valid-01.xml" />
+    </testCase>
+    <!-- hexa -->
+    <testCase name="preserve.datatype.hex-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/binary/binary.xsd"/>
+        <param name="description" value="Preserving Lexical Value of Valid hexa value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/binary/hex-valid-00.xml" />
+    </testCase>
+    <!-- boolean -->
+    <testCase name="preserve.datatype.boolean-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/boolean/boolean.xsd"/>
+        <param name="description" value="Preserving Lexical Value of true boolean element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/boolean/boolean-valid-02.xml" />
+    </testCase>
+
+    <!-- dateTime -->
+    <testCase name="preserve.datatype.dateTime-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+        <param name="description" value="Preserving Lexical Value of dateTime with time zone value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime/datetime-valid-03.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.dateTime-01">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+        <param name="description" value="Preserving Lexical Value of Simple gDay value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime/datetime-valid-06.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.dateTime-02">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+        <param name="description" value="Preserving Lexical Value of Simple gMonth value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime/datetime-valid-07.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.dateTime-03">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+        <param name="description" value="Preserving Lexical Value of gMonthDay value with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime/datetime-valid-10.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.dateTime-04">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+        <param name="description" value="Preserving Lexical Value of gYear values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime/datetime-valid-11.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.dateTime-05">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+        <param name="description" value="Preserving Lexical Value of gYearMonth values with time zone"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime/datetime-valid-14.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.dateTime-06">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/datetime/dateTime.xsd"/>
+        <param name="description" value="Preserving Lexical Value of time values with or without time zone and fractional values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/datetime/datetime-valid-15.xml" />
+    </testCase>
+
+    <!-- decimal -->
+    <testCase name="preserve.datatype.decimal-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/decimal/decimal.xsd"/>
+        <param name="description" value="Preserving Lexical Value of Decimal with fraction with leading zeros"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal/decimal-valid-02.xml" />
+    </testCase>
+    <!-- float -->
+    <testCase name="preserve.datatype.float-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/float/float.xsd"/>
+        <param name="description" value="Preserving Lexical Value of Simple positive float values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/float/float-valid-00.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.float-01">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/float/float.xsd"/>
+        <param name="description" value="Preserving Lexical Value of Double values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/float/float-valid-06.xml" />
+    </testCase>
+
+    <!-- integers -->
+    <testCase name="preserve.datatype.nbitInteger-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger/nbitInteger.xsd"/>
+        <param name="description" value="Preserving N bit integer values"/>
+        <param name="japex.inputFile"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger/nbitInteger-invalid-00.xml"/>
+    </testCase>
+    
+    <testCase name="preserve.datatype.unsignedInteger-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/unsignedInteger/unsignedInteger.xsd"/>
+        <param name="description" value="Preserving unsigned integer values"/>
+        <param name="japex.inputFile"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/unsignedInteger/unsignedInteger-valid-00.xml"/>
+    </testCase>
+    
+    <testCase name="preserve.datatype.integer-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/integer/integer.xsd"/>
+        <param name="description" value="Preserving integer values"/>
+        <param name="japex.inputFile"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/integer/integer-valid-00.xml"/>
+    </testCase>
+
+    <!-- string with pattern case -->
+    <testCase name="preserve.datatype.string-pattern-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/string/string_pattern001.xsd"/>
+        <param name="description" value="Preserving pattern-string values"/>
+        <param name="japex.inputFile"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/string/string_pattern001.xml"/>
+    </testCase>
+    <!-- enumeration case -->
+    <testCase name="preserve.datatype.enumeration-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/enumeration/enumeration.xsd"/>
+        <param name="description"  value="Preserving lexical values of enumeration of month day, 8 choices"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration/enumeration-valid-00.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.enumeration-01">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/enumeration/enumeration.xsd"/>
+        <param name="description"  value="Preserving lexical values of enumeration of integers, 9 choices"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration/enumeration-valid-01.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.enumeration-02">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/enumeration/enumeration.xsd"/>
+        <param name="description"  value="Preserving lexical values of enumeration of floats, 1 choice"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration/enumeration-valid-02.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.enumeration-03">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/enumeration/enumeration.xsd"/>
+        <param name="description"  value="Preserving lexical values of enumeration of qnames"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration/enumeration-valid-03.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.enumeration-04">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/enumeration/enumeration.xsd"/>
+        <param name="description"  value="Preserving lexical values of enumeration of union"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration/enumeration-valid-04.xml" />
+    </testCase>
+    <!-- list case -->
+    <testCase name="preserve.datatype.list-00">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/list/list.xsd"/>
+        <param name="description"  value="Preserving lexical values of list of bytes"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list/list-valid-00.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.list-01">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/list/list.xsd"/>
+        <param name="description"  value="Preserving lexical values of list values without prefix and/or URI"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list/list-valid-01.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.list-02">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/list/list.xsd"/>
+        <param name="description"  value="Preserving lexical values of list of values with floats"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list/list-valid-02.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.list-03">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/list/list.xsd"/>
+        <param name="description"  value="Preserving lexical values of list of values with enumerations"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list/list-valid-03.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.list-04">
+        <param name="org.w3c.exi.ttf.schemaLocation"
+            value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/list/list.xsd"/>
+        <param name="description"  value="Preserving lexical values of list as NMTOKENS"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list/list-valid-04.xml" />
+    </testCase>
+    <!-- qname -->
+    <testCase name="preserve.datatype.qname-00">
+        <param name="org.w3c.exi.ttf.schemaLocation" value=""/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes lexicalvalues" />
+        <param name="description"  value="Preserving lexical values of qnames"/>
+        <param name="japex.inputFile" value="${test.docFolder}/qname/qname-valid-00.xml" />
+    </testCase>
+    <testCase name="preserve.datatype.qname-01">
+        <param name="org.w3c.exi.ttf.schemaLocation" value=""/>
+        <param name="org.w3c.exi.ttf.preserve" value="lexicalvalues prefixes" />
+        <param name="description"  value="Preserving lexical values of qnames"/>
+        <param name="japex.inputFile" value="${test.docFolder}/qname/qname-valid-01.xml" />
+    </testCase>
+
+</testCaseGroup>
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="ParsingPerformance" xmlns="http://www.sun.com/japex/testSuite">
+
+    <param name="japex.classPath" value="${JAPEX_HOME}/jdsl/*.jar"/>
+    
+    <!-- Run each test for 20 seconds -->
+    <param name="japex.warmupTime" value="10"/>
+    <param name="japex.runTime" value="10"/>
+
+    <driver name="JAXPDriver" normal="true">
+        <param name="japex.driverClass" value="com.sun.japex.jdsl.xml.parsing.sax.JAXPSAXDriver"/>
+        <param name="description" value="JAXP SAX Parser"/>
+    </driver>
+    <driver name="FastInfosetDriver">
+        <param name="japex.driverClass" value="com.sun.japex.jdsl.xml.parsing.sax.FastInfosetSAXDriver"/>
+        <param name="description" value="Fast Infoset SAX Parser"/>
+    </driver>
+
+    <testCase name="inv1.xml">
+        <param name="japex.inputFile" value="data/inv1.xml"/>
+    </testCase>
+    <testCase name="inv10.xml">
+        <param name="japex.inputFile" value="data/inv10.xml"/>
+    </testCase>
+    <testCase name="inv50.xml">
+        <param name="japex.inputFile" value="data/inv50.xml"/>
+    </testCase>
+    <testCase name="inv100.xml">
+        <param name="japex.inputFile" value="data/inv100.xml"/>
+    </testCase>
+</testSuite>

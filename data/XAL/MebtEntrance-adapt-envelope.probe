@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<probe time="Feb 9, 2004 2:42:00 PM" type="gov.sns.xal.model.probe.EnvelopeProbe">
+    <comment text="null|null|null|null|null|null|null|null|jdg|12/18/2003|XAL model probe representing rms envelope state at HEBT entrance"/>
+    <algorithm type="EnvTrackerAdapt" ver="1">
+        <tracker debug="false" update="1"/>
+        <adapt errortol="1.0E-5" initstep="0.031278684521382855" 
+	maxstep="0.0" norm="0" order="2" slack="0.05" maxiter="50"/>
+    </algorithm>
+    <state id="" type="gov.sns.xal.model.probe.traj.EnvelopeProbeState">
+        <location W="2500000.0" elem="" s="0.0"/>
+        <species Er="9.393014E8" q="-1."/>
+        <!--beam I="0.038" Q="9.440993788819875E-11"/-->
+        <beam I="0.020" Q="4.96894E-11"/>
+        <envelope
+            alphaX="-1.962" betaX="0.183" emitX="2.73e-6"
+            alphaY="1.768" betaY="0.161" emitY="2.73e-6"
+            alphaZ="0.0196" betaZ="0.5844" emitZ="3.8638e-6"/>
+    </state>
+</probe>

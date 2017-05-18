@@ -1,0 +1,15 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Bit-align interoperability tests">
+
+    <param name="groupId" value="${groupId} | bitAlign"/>
+
+    <!-- note: selfContained tests only apply to bit and byte aligned cases -->
+    <xi:include href="general.xml"/>
+    <xi:include href="selfContained.xml"/>
+    <xi:include href="schemaInformedGrammar/undeclaredProductions/xsiNilDecodeOnly.xml"/>
+    <xi:include href="dtrMapDecodeOnly.xml"/>
+    <xi:include href="profileDecodeOnly.xml"/>
+
+</testCaseGroup>

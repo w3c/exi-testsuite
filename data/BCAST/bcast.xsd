@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 U (http://www.altova.com) by Altova XMLSpy 2006 Enterprise Edition (W3C) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:oma:bcast:esg:2005" targetNamespace="urn:oma:bcast:esg:2005" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ESGMainBCAST">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element name="Service" type="ServiceType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Schedule" type="ScheduleType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Content" type="ContentType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="Access" type="AccessType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="PreviewData" type="PreviewDataType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="PurchaseItem" type="PurchaseItemType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="PurchaseData" type="PurchaseDataType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="PurchaseChannel" type="PurchaseChannelType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="InteractivityData" type="InteractivityDataType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="InteractivityDataType">
+		<xs:sequence>
+			<xs:element name="ServiceIDRed" type="ServiceIDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ContentIDRef" type="ContentIDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ScheduleReference" type="ScheduleReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="InteractivityWindow" type="InteractivityWindowType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="InteractivityDataIDType" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+		<xs:attribute name="PrelistenIndicator" type="xs:boolean" use="required"/>
+		<xs:attribute name="InteractivityMediaDocumentPointer" type="InteractivityMediaIDType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ScheduleReferenceType">
+		<xs:sequence>
+			<xs:element name="PresentationWindowID" type="xs:integer" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="idRef" type="ScheduleIDType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="InteractivityWindowType">
+		<xs:attribute name="InteractivityWindowStartTime" type="RelativeDateType" use="required"/>
+		<xs:attribute name="InteractivityWindowEndTime" type="RelativeDateType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PurchaseItemType">
+		<xs:sequence>
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ServiceIDRef" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ScheduleIDRef" type="ScheduleIDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ContentIDRef" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Name" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ParentalRating" type="xs:integer" minOccurs="0"/>
+			<xs:element name="PurchaseDataIDRef" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:anyURI" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+		<xs:attribute name="Weight" type="xs:unsignedInt"/>
+	</xs:complexType>
+	<xs:complexType name="PurchaseDataType">
+		<xs:sequence>
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PurchaseItemIDRef" type="xs:anyURI"/>
+			<xs:element name="PurchaseChannelIDRef" type="xs:anyURI" maxOccurs="unbounded"/>
+			<xs:element name="PriceInfo" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SubscriptionUnit">
+							<xs:complexType>
+								<xs:attribute name="Type" type="xs:integer" use="required"/>
+								<xs:attribute name="Value" type="xs:integer" use="required"/>
+								<xs:attribute name="Unit" type="xs:integer" use="required"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="UnitText" type="xs:string"/>
+						<xs:element name="Price" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="Currency" type="xs:string" use="required"/>
+								<xs:attribute name="Value" type="xs:integer" use="required"/>
+								<!--xs:attribute name="currency" type="xs:string" use="required"/>
+								<xs:attribute name="value" type="xs:integer" use="required"/-->
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MediaInformation" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="usage" type="xs:integer" use="required"/>
+					<xs:attribute name="idRef" type="xs:anyURI" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PromotionInfo" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Title" type="xs:string"/>
+						<xs:element name="TargetUserProfile" minOccurs="0"/>
+						<xs:element name="Description" type="xs:string" minOccurs="0"/>
+						<xs:element name="URL" type="xs:anyURI" minOccurs="0"/>
+					</xs:sequence>
+					<xs:attribute name="id" type="xs:unsignedInt" use="required"/>
+					<xs:attribute name="validFrom" type="xs:unsignedInt"/>
+					<xs:attribute name="validTo" type="xs:unsignedInt"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:anyURI" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+	</xs:complexType>
+	<xs:complexType name="PurchaseChannelType">
+		<xs:sequence>
+			<xs:element name="Selector">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Type" type="xs:string" use="required"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<!--xs:element name="selector">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="type" type="xs:string" use="required"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element-->
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Name" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="PortalURL" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Connection" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PurchaseURL" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:anyURI">
+										<xs:attribute name="Bearer" type="xs:integer" use="required"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ContactInfo" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:anyURI" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+		<xs:attribute name="localflag" type="xs:boolean" use="required"/>
+		<xs:attribute name="RightsIssuerURI" type="xs:anyURI" use="optional"/>
+		<!--xs:attribute name="LocalFlag" type="xs:boolean" use="required"/-->
+		<!--xs:attribute name="RightsIssuerURI" type="xs:anyURI" use="required"/-->
+		<!--xs:attribute name="Selector" type="xs:string" use="required"/-->
+	</xs:complexType>
+	<xs:complexType name="ServiceType">
+		<xs:sequence>
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="GlobalServiceID" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="Name" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ParentalRating" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="TargetUserProfile" type="TargetUserProfileType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Genre" type="GenreElementType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="UserRating" type="xs:integer" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PreviewDataIDRef" type="previewDataIDRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="broadcast_area" type="broadcast_areaType" minOccurs="0"/>
+			<!--xs:any namespace="##other" minOccurs="0"/-->
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:anyURI" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+		<xs:attribute name="type" type="xs:byte" use="required"/>
+		<xs:attribute name="Weight" type="xs:unsignedInt"/>
+		<xs:attribute name="ServiceProtection" type="xs:boolean"/>
+		<xs:attribute name="ServiceBaseCID" type="xs:string"/>
+		<!--xs:anyAttribute/-->
+	</xs:complexType>
+	<xs:complexType name="ScheduleType">
+		<xs:sequence>
+			<xs:element name="InteractivityDataIDRef" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Distribution_Window" type="Distribution_WindowType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="idRef" type="xs:anyURI" use="required"/>
+					<xs:attribute name="AutoStart" type="xs:boolean"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ContentIDRef" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Distribution_Window" type="Distribution_WindowType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="Presentation_Window" type="Presentation_WindowType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="idRef" type="ContentIDType" use="required"/>
+					<xs:attribute name="AutoStart" type="xs:boolean"/>
+					<xs:attribute name="RepeatPlayback" type="xs:boolean"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="PreviewDataIDRef" type="previewDataIDRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<!--xs:any namespace="##other" minOccurs="0"/-->
+		</xs:sequence>
+		<xs:attribute name="id" type="ScheduleIDType" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+		<xs:attribute name="ServiceIDRef" type="ServiceIDType" use="required"/>
+		<!--xs:anyAttribute/-->
+	</xs:complexType>
+	<xs:complexType name="ContentType">
+		<xs:sequence>
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Name" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ParentalRating" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="TargetUserProfile" type="TargetUserProfileType" minOccurs="0"/>
+			<xs:element name="Genre" type="GenreElementType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="UserRating" type="xs:integer" minOccurs="0"/>
+			<xs:element name="PreviewDataIDRef" type="previewDataIDRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="broadcast_area" type="broadcast_areaType" minOccurs="0"/>
+			<xs:element name="FileDescription" type="FileDescriptionType" minOccurs="0"/>
+			<!--xs:any namespace="##other" minOccurs="0"/-->
+		</xs:sequence>
+		<xs:attribute name="id" type="ContentIDType" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+		<xs:attribute name="ServiceIDRef" type="ServiceIDType"/>
+		<xs:attribute name="ContentType" type="xs:string"/>
+		<!--xs:anyAttribute/-->
+	</xs:complexType>
+	<xs:complexType name="AccessType">
+		<xs:sequence>
+			<xs:element name="AccessType" type="AccessTypeType"/>
+			<xs:element name="KeyManagementSystem" type="KMSType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="ExtensionURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:choice>
+				<xs:element name="ServiceIDRef" type="ServiceIDType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="ScheduleIDRef" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:anyURI">
+								<xs:attribute name="DistributionWindowID" type="xs:anyURI"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="UsageInfo" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="AlternativeAccessURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="TerminalCapabilityRequirement" type="TerminalCapabilityRequirementType" minOccurs="0"/>
+			<xs:element name="BandwidthRequirement" type="xs:integer" minOccurs="0"/>
+			<xs:element name="ServiceClass" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="PreviewDataIDRef" type="previewDataIDRefType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="NotificationReception" type="NotificationReceptionType" minOccurs="0"/>
+			<!--xs:any namespace="##other" minOccurs="0"/-->
+		</xs:sequence>
+		<xs:attribute name="id" type="AccessIDType" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:unsignedInt" use="optional"/>
+		<xs:attribute name="validTo" type="xs:unsignedInt"/>
+		<xs:attribute name="ServiceProtection" type="xs:boolean"/>
+		<xs:attribute name="AudioLanguage" type="xs:string"/>
+		<!--xs:anyAttribute/-->
+	</xs:complexType>
+	<xs:complexType name="NotificationReceptionType">
+		<xs:attribute name="NotificationPort" type="xs:integer" use="required"/>
+		<xs:attribute name="NotificationAddress" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TerminalCapabilityRequirementType">
+		<xs:sequence>
+			<xs:element name="Video" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Complexity" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Bitrate" minOccurs="0">
+										<xs:complexType>
+											<xs:attribute name="average" type="xs:unsignedShort"/>
+											<xs:attribute name="maximum" type="xs:unsignedShort"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Resolution" minOccurs="0">
+										<xs:complexType>
+											<xs:attribute name="horizontal" type="xs:unsignedShort" use="required"/>
+											<xs:attribute name="vertical" type="xs:unsignedShort" use="required"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="MinimumBufferSize" type="xs:unsignedInt" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Audio" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Complexity" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Bitrate" minOccurs="0">
+										<xs:complexType>
+											<xs:attribute name="average" type="xs:unsignedShort"/>
+											<xs:attribute name="maximum" type="xs:unsignedShort"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="MinimumBufferSize" type="xs:unsignedInt" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DownloadFile" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MIMETypeSet" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Type" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KMSType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="protectionType" type="xs:integer"/>
+				<xs:attribute name="RightsIssuerURI" type="xs:anyURI"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="AccessTypeType">
+		<xs:sequence>
+			<xs:element name="BroadcastTransmission" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SessionDescriptionReference" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="Type" type="xs:integer" use="required"/>
+								<xs:attribute name="URI" type="xs:anyURI"/>
+								<xs:attribute name="idRef" type="xs:anyURI"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="SDP" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+					<xs:attribute name="IPAddress" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="InteractiveTransmissionScheme" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AccessServerIPAddress" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="AccessServerURL" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="AccessServerPhoneNumber" type="xs:integer" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attribute name="TransmissionSchemeType" type="xs:integer" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="TransmissionMedia" type="xs:integer" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="FileDescriptionType">
+		<xs:sequence>
+			<xs:element name="File" type="FileType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="Content-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="Transfer-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="Content-Type" type="xs:string"/>
+		<xs:attribute name="Content-Encoding" type="xs:string"/>
+		<xs:attribute name="Content-MD5" type="xs:base64Binary"/>
+		<xs:attribute name="FEC-OTI-FEC-Instance-ID" type="xs:unsignedLong"/>
+		<xs:attribute name="FEC-OTI-Maximum-Source-Block-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="FEC-OTI-Encoding-Symbol-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="FEC-OTI-Max-Number-of-Encoding-Symbols" type="xs:unsignedLong"/>
+	</xs:complexType>
+	<xs:complexType name="FileType">
+		<xs:attribute name="Content-Location" type="xs:anyURI" use="required"/>
+		<xs:attribute name="TOI" type="xs:positiveInteger" use="required"/>
+		<xs:attribute name="Content-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="Transfer-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="Content-Type" type="xs:string"/>
+		<xs:attribute name="Content-Encoding" type="xs:string"/>
+		<xs:attribute name="Content-MD5" type="xs:base64Binary"/>
+		<xs:attribute name="FEC-OTI-FEC-Instance-ID" type="xs:unsignedLong"/>
+		<xs:attribute name="FEC-OTI-Maximum-Source-Block-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="FEC-OTI-Encoding-Symbol-Length" type="xs:unsignedLong"/>
+		<xs:attribute name="FEC-OTI-Max-Number-of-Encoding-Symbols" type="xs:unsignedLong"/>
+	</xs:complexType>
+	<xs:complexType name="previewDataIDRefType">
+		<xs:simpleContent>
+			<xs:extension base="PreviewDataIDType">
+				<xs:attribute name="usage" type="xs:byte" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Distribution_WindowType">
+		<xs:sequence>
+			<xs:element name="RepeatType" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="Unit" type="xs:integer" use="required"/>
+					<xs:attribute name="Num" type="xs:integer" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Distribution_Start_Time" type="xs:unsignedInt"/>
+		<xs:attribute name="Distribution_End_Time" type="xs:unsignedInt"/>
+		<xs:attribute name="Duration" type="xs:integer"/>
+		<xs:attribute name="DWid" type="xs:integer"/>
+	</xs:complexType>
+	<xs:complexType name="Presentation_WindowType">
+		<xs:sequence>
+			<xs:element name="RepeatType" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="Unit" type="xs:integer" use="required"/>
+					<xs:attribute name="Num" type="xs:integer" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Presentation_Start_Time" type="RelativeDateType"/>
+		<xs:attribute name="Presentation_End_Time" type="RelativeDateType"/>
+		<xs:attribute name="Duration" type="xs:integer"/>
+		<xs:attribute name="PWid" type="xs:integer"/>
+	</xs:complexType>
+	<xs:complexType name="broadcast_areaType">
+		<xs:sequence>
+			<xs:element name="target_area" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="shape" type="xs:string" minOccurs="0"/>
+						<xs:element name="cc" type="xs:string" minOccurs="0"/>
+						<xs:element name="name_area" type="xs:string" minOccurs="0"/>
+						<xs:element name="zip_code" type="xs:integer" minOccurs="0"/>
+						<xs:element name="Cell_ID" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="Cell_Group_ID" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="hor_ac" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="polarity" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TargetUserProfileType">
+		<xs:attribute name="ProfileAttributeName" type="xs:string" use="required"/>
+		<xs:attribute name="ProfileAttributeValue" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PreviewDataType">
+		<xs:sequence>
+			<xs:element name="SMIL" type="xs:string" minOccurs="0"/>
+			<xs:element name="Video" type="VideoType" minOccurs="0"/>
+			<xs:element name="Audio" type="AudioType" minOccurs="0"/>
+			<xs:element name="Picture" type="PictureType" minOccurs="0"/>
+			<xs:element name="Text" type="TextType" minOccurs="0"/>
+			<xs:element name="AccessIDRef" type="AccessIDType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="PreviewDataIDType" use="required"/>
+		<xs:attribute name="version" type="xs:unsignedInt" use="required"/>
+		<xs:attribute name="validFrom" type="xs:integer"/>
+		<xs:attribute name="validTo" type="xs:integer"/>
+	</xs:complexType>
+	<xs:complexType name="VideoType">
+		<xs:sequence>
+			<xs:element name="VideoURI" type="xs:anyURI"/>
+			<xs:element name="Codec" type="xs:integer" minOccurs="0"/>
+			<xs:element name="AlternativeText" type="TextType" minOccurs="0"/>
+			<xs:element name="AlternativePicture" type="PictureType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AudioType">
+		<xs:sequence>
+			<xs:element name="AudioURI" type="xs:anyURI"/>
+			<xs:element name="Codec" type="xs:integer" minOccurs="0"/>
+			<xs:element name="AlternativeText" type="TextType" minOccurs="0"/>
+			<xs:element name="AlternativePicture" type="PictureType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PictureType">
+		<xs:sequence>
+			<xs:element name="PictureURI" type="xs:anyURI" minOccurs="0"/>
+			<xs:element name="PictureData" type="xs:base64Binary" minOccurs="0"/>
+			<xs:element name="Codec" type="xs:integer" minOccurs="0"/>
+			<xs:element name="AlternativeText" type="TextType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="TextType">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="GenreElementType">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="ServiceIDType">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="RelativeDateType">
+		<xs:restriction base="xs:unsignedInt"/>
+	</xs:simpleType>
+	<xs:simpleType name="ContentIDType">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="ScheduleIDType">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="PreviewDataIDType">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="AccessIDType">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="InteractivityDataIDType">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<xs:simpleType name="InteractivityMediaIDType">
+		<xs:restriction base="xs:anyURI"/>
+	</xs:simpleType>
+	<!--xs:complexType name="TextType">
+		<xs:sequence>
+			<xs:element name="Font">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="size" type="xs:integer"/>
+							<xs:attribute name="color" type="xs:hexBinary"/>
+							<xs:attribute name="face" type="xs:string"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType-->
+</xs:schema>

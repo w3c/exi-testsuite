@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE probe SYSTEM "xal.mod.probe.dtd">
+<probe type="gov.sns.xal.model.probe.ParticleProbe" id="par1" author="C.K. Allen" >
+    <comment author="CKAllen" 
+             date="THU APR 3 15:00:00 MST 2003"
+             text="XAL model probe representing beam centroid at MEBT entrance"
+             />
+    <algorithm type="ParticleTracker">
+    	<tracker update="1" debug="false"/>
+    </algorithm>
+    <state type="gov.sns.xal.model.probe.traj.ParticleProbeState"> 
+        <location s="0.0" W="2.5e6" elem="RFQ"/>
+        <species q="-1.602e-19" Er="939.3014e+6"/>
+        <particle coordinates="(0.00,0.0,-0.00,0.0,0.0,0.0,1.0)"/> 
+    </state>
+
+</probe>

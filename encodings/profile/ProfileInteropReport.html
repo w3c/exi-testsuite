@@ -1,0 +1,3559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Processing-decoding-SAX:Schema, All interoperability tests</title>
+  <style type="text/css">
+    body {color: black; background: white;}
+    .pass { background-color: #00aa00; }
+    .fail { background-color: #aa0000; }
+    th { background-color: grey; }
+  </style>
+</head>
+<body>
+  <div class="testreport">
+  <h1>Profile Interoperability Test Report</h1>
+    <p>This report was generated from the EXI profile interoperability test suite. The 3 tested implementations are EXIficient, Canon and EXIP.
+      The table presents results for combinations of decoder/encoder (e.g., the column labeled "Canon2EXIficient" shows results for all test cases encoded by implementation "Canon" and decoded by implementation "EXIficient").
+    </p>
+    
+    <p>At the time of writing EXIP library only supports encoding and decoding of EXI Profile streams
+      with the most constrained set of Profile parameter values. That is
+      maximumNumberOfBuiltInElementGrammars set to 0,
+      maximumNumberOfBuiltInProductions set to 0 and localValuePartitions
+      parameter set to 0. Including these Profile parameters in the EXI header
+      as described by the EXI Profile specification is not supported i.e. only
+      out-of-band negotiation of these values is implemented.
+      Additionally, the following restrictions also apply - preserving processing instructions, comments and lexical values are
+        not supported and 
+        compression, pre-compression and self-contained elements are also not
+          supported.
+      That is the reason why one can see N/A entries in the table. 
+    </p>
+  <!--<p>iot-decoding.xml,all.xml</p>-->
+    <p>Note: The Working Group also maintains a list of <a href="http://www.w3.org/XML/EXI/#implementations">publicly available implementations</a> on its home page.</p>
+    
+   <p>$Date Fri Feb 07 11:22:58 CET 2014</p>
+   <table>
+   <tbody>
+
+<tr>
+  <th>#</th>
+  <th>Test case</th>
+  <th>Parameters</th>
+<th>Canon2Canon</th>
+<th>Canon2EXIficient</th>
+<th>EXIficient2Canon</th>
+<th>EXIficient2EXIficient</th>
+<th>Canon2EXIP</th>
+<th>EXIficient2EXIP</th>
+  <th>Specification reference</th>
+  <th>Input file</th>
+  <th>Testcase description</th>
+</tr>
+
+<tr class="testcase">
+<td>1</td>
+<td>nolocalvalues-01</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Globally and locally indexable element values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>2</td>
+<td>nolocalvalues-02</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Globally and locally indexable attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>3</td>
+<td>nolocalvalues-03</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Globally and locally indexable element and attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>4</td>
+<td>nolocalvalues-11</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>5</td>
+<td>nolocalvalues-12</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>6</td>
+<td>nolocalvalues-13</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>7</td>
+<td>nolocalvalues-14</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>8</td>
+<td>nolocalvalues-15</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>9</td>
+<td>nolocalvalues-16</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>10</td>
+<td>nolocalvalues-17</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>11</td>
+<td>nolocalvalues-18</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>12</td>
+<td>nolocalvalues-19</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>13</td>
+<td>nolocalvalues-21</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>14</td>
+<td>nolocalvalues-22</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>15</td>
+<td>nolocalvalues-23</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>16</td>
+<td>nolocalvalues-24</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>17</td>
+<td>nolocalvalues-25</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>18</td>
+<td>nolocalvalues-26</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>19</td>
+<td>nolocalvalues-21</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>20</td>
+<td>nolocalvalues-22</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>21</td>
+<td>nolocalvalues-23</td>
+<td>byteAlign, noLocalValuePartitions, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>22</td>
+<td>xsitype-01</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-01.xml">file</a></td>
+<td>Explicit uses of xsi-type cast with valid values</td>
+</tr>
+<tr class="testcase">
+<td>23</td>
+<td>xsitype-02</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>AT(xsi:type) productions that would  be inserted in grammars that would be instantiated after the  maximumNumberOfBuiltInElementGrammars threshold are not counted.</td>
+</tr>
+<tr class="testcase">
+<td>24</td>
+<td>nolearning-01</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-01.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>25</td>
+<td>nolearning-02</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-02.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>26</td>
+<td>nolearning-03</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-03.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammanr within simple element</td>
+</tr>
+<tr class="testcase">
+<td>27</td>
+<td>nolearning-04</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-04.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>28</td>
+<td>nolearning-05</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-05.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>29</td>
+<td>nolearning-07</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-23.xml">file</a></td>
+<td>Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar</td>
+</tr>
+<tr class="testcase">
+<td>30</td>
+<td>partiallearning-01</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-11.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>31</td>
+<td>partiallearning-02</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-12.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>32</td>
+<td>partiallearning-03</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-13.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammar within simple element</td>
+</tr>
+<tr class="testcase">
+<td>33</td>
+<td>partiallearning-04</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-14.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>34</td>
+<td>partiallearning-05</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-15.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>35</td>
+<td>partiallearning-06</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=8</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-16.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>36</td>
+<td>nolocalvalues-01</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Globally and locally indexable element values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>37</td>
+<td>nolocalvalues-02</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Globally and locally indexable attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>38</td>
+<td>nolocalvalues-03</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Globally and locally indexable element and attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>39</td>
+<td>nolocalvalues-11</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>40</td>
+<td>nolocalvalues-12</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>41</td>
+<td>nolocalvalues-13</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>42</td>
+<td>nolocalvalues-14</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>43</td>
+<td>nolocalvalues-15</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>44</td>
+<td>nolocalvalues-16</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>45</td>
+<td>nolocalvalues-17</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>46</td>
+<td>nolocalvalues-18</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>47</td>
+<td>nolocalvalues-19</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>48</td>
+<td>nolocalvalues-21</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>49</td>
+<td>nolocalvalues-22</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>50</td>
+<td>nolocalvalues-23</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>51</td>
+<td>nolocalvalues-24</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>52</td>
+<td>nolocalvalues-25</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>53</td>
+<td>nolocalvalues-26</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>54</td>
+<td>nolocalvalues-21</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>55</td>
+<td>nolocalvalues-22</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>56</td>
+<td>nolocalvalues-23</td>
+<td>noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>57</td>
+<td>xsitype-01</td>
+<td>maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-01.xml">file</a></td>
+<td>Explicit uses of xsi-type cast with valid values</td>
+</tr>
+<tr class="testcase">
+<td>58</td>
+<td>xsitype-02</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>AT(xsi:type) productions that would  be inserted in grammars that would be instantiated after the  maximumNumberOfBuiltInElementGrammars threshold are not counted.</td>
+</tr>
+<tr class="testcase">
+<td>59</td>
+<td>nolearning-01</td>
+<td>maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-01.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>60</td>
+<td>nolearning-02</td>
+<td>maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-02.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>61</td>
+<td>nolearning-03</td>
+<td>maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-03.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammanr within simple element</td>
+</tr>
+<tr class="testcase">
+<td>62</td>
+<td>nolearning-04</td>
+<td>maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-04.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>63</td>
+<td>nolearning-05</td>
+<td>maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-05.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>64</td>
+<td>nolearning-07</td>
+<td>maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-23.xml">file</a></td>
+<td>Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar</td>
+</tr>
+<tr class="testcase">
+<td>65</td>
+<td>partiallearning-01</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-11.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>66</td>
+<td>partiallearning-02</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-12.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>67</td>
+<td>partiallearning-03</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-13.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammar within simple element</td>
+</tr>
+<tr class="testcase">
+<td>68</td>
+<td>partiallearning-04</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-14.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>69</td>
+<td>partiallearning-05</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-15.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>70</td>
+<td>partiallearning-06</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=8</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-16.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>71</td>
+<td>decode-01</td>
+<td>maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/prodsBeforeDisabling.xml">file</a></td>
+<td>Even if production insertion is disabled for a given grammar, the productions inserted before production insertion is disabled for that grammar may be used throughout the whole document.</td>
+</tr>
+<tr class="testcase">
+<td>72</td>
+<td>xsitype-02-decodeOnly-bitPacked</td>
+<td>maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="n/a">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>A bit-packed decode-only version of xsitype-02 testcase</td>
+</tr>
+<tr class="testcase">
+<td>73</td>
+<td>nolocalvalues-01</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Globally and locally indexable element values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>74</td>
+<td>nolocalvalues-02</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Globally and locally indexable attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>75</td>
+<td>nolocalvalues-03</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Globally and locally indexable element and attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>76</td>
+<td>nolocalvalues-11</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>77</td>
+<td>nolocalvalues-12</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>78</td>
+<td>nolocalvalues-13</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>79</td>
+<td>nolocalvalues-14</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>80</td>
+<td>nolocalvalues-15</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>81</td>
+<td>nolocalvalues-16</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>82</td>
+<td>nolocalvalues-17</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>83</td>
+<td>nolocalvalues-18</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>84</td>
+<td>nolocalvalues-19</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>85</td>
+<td>nolocalvalues-21</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>86</td>
+<td>nolocalvalues-22</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>87</td>
+<td>nolocalvalues-23</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>88</td>
+<td>nolocalvalues-24</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>89</td>
+<td>nolocalvalues-25</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>90</td>
+<td>nolocalvalues-26</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>91</td>
+<td>nolocalvalues-21</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>92</td>
+<td>nolocalvalues-22</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>93</td>
+<td>nolocalvalues-23</td>
+<td>byteAlign, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>94</td>
+<td>xsitype-01</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-01.xml">file</a></td>
+<td>Explicit uses of xsi-type cast with valid values</td>
+</tr>
+<tr class="testcase">
+<td>95</td>
+<td>xsitype-02</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>AT(xsi:type) productions that would  be inserted in grammars that would be instantiated after the  maximumNumberOfBuiltInElementGrammars threshold are not counted.</td>
+</tr>
+<tr class="testcase">
+<td>96</td>
+<td>nolearning-01</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-01.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>97</td>
+<td>nolearning-02</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-02.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>98</td>
+<td>nolearning-03</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-03.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammanr within simple element</td>
+</tr>
+<tr class="testcase">
+<td>99</td>
+<td>nolearning-04</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-04.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>100</td>
+<td>nolearning-05</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-05.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>101</td>
+<td>nolearning-07</td>
+<td>byteAlign, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-23.xml">file</a></td>
+<td>Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar</td>
+</tr>
+<tr class="testcase">
+<td>102</td>
+<td>partiallearning-01</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-11.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>103</td>
+<td>partiallearning-02</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-12.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>104</td>
+<td>partiallearning-03</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-13.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammar within simple element</td>
+</tr>
+<tr class="testcase">
+<td>105</td>
+<td>partiallearning-04</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-14.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>106</td>
+<td>partiallearning-05</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-15.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>107</td>
+<td>partiallearning-06</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=8</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-16.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>108</td>
+<td>decode-01</td>
+<td>byteAlign, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/prodsBeforeDisabling.xml">file</a></td>
+<td>Even if production insertion is disabled for a given grammar, the productions inserted before production insertion is disabled for that grammar may be used throughout the whole document.</td>
+</tr>
+<tr class="testcase">
+<td>109</td>
+<td>xsitype-02-decodeOnly-byteAligned</td>
+<td>byteAlign, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="n/a">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>A byte-aligned decode-only version of xsitype-02 testcase</td>
+</tr>
+<tr class="testcase">
+<td>110</td>
+<td>nolocalvalues-01</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Globally and locally indexable element values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>111</td>
+<td>nolocalvalues-02</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Globally and locally indexable attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>112</td>
+<td>nolocalvalues-03</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Globally and locally indexable element and attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>113</td>
+<td>nolocalvalues-11</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>114</td>
+<td>nolocalvalues-12</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>115</td>
+<td>nolocalvalues-13</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>116</td>
+<td>nolocalvalues-14</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>117</td>
+<td>nolocalvalues-15</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>118</td>
+<td>nolocalvalues-16</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>119</td>
+<td>nolocalvalues-17</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>120</td>
+<td>nolocalvalues-18</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>121</td>
+<td>nolocalvalues-19</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>122</td>
+<td>nolocalvalues-21</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>123</td>
+<td>nolocalvalues-22</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>124</td>
+<td>nolocalvalues-23</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>125</td>
+<td>nolocalvalues-24</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>126</td>
+<td>nolocalvalues-25</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>127</td>
+<td>nolocalvalues-26</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>128</td>
+<td>nolocalvalues-21</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>129</td>
+<td>nolocalvalues-22</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>130</td>
+<td>nolocalvalues-23</td>
+<td>compression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>131</td>
+<td>xsitype-01</td>
+<td>compression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-01.xml">file</a></td>
+<td>Explicit uses of xsi-type cast with valid values</td>
+</tr>
+<tr class="testcase">
+<td>132</td>
+<td>xsitype-02</td>
+<td>compression, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>AT(xsi:type) productions that would  be inserted in grammars that would be instantiated after the  maximumNumberOfBuiltInElementGrammars threshold are not counted.</td>
+</tr>
+<tr class="testcase">
+<td>133</td>
+<td>nolearning-01</td>
+<td>compression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-01.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>134</td>
+<td>nolearning-02</td>
+<td>compression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-02.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>135</td>
+<td>nolearning-03</td>
+<td>compression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-03.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammanr within simple element</td>
+</tr>
+<tr class="testcase">
+<td>136</td>
+<td>nolearning-04</td>
+<td>compression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-04.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>137</td>
+<td>nolearning-05</td>
+<td>compression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-05.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>138</td>
+<td>nolearning-07</td>
+<td>compression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-23.xml">file</a></td>
+<td>Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar</td>
+</tr>
+<tr class="testcase">
+<td>139</td>
+<td>partiallearning-01</td>
+<td>compression, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-11.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>140</td>
+<td>partiallearning-02</td>
+<td>compression, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-12.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>141</td>
+<td>partiallearning-03</td>
+<td>compression, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-13.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammar within simple element</td>
+</tr>
+<tr class="testcase">
+<td>142</td>
+<td>partiallearning-04</td>
+<td>compression, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-14.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>143</td>
+<td>partiallearning-05</td>
+<td>compression, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-15.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>144</td>
+<td>partiallearning-06</td>
+<td>compression, maxBuiltinGr=1, maxBuiltinProd=8</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-16.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>145</td>
+<td>nolocalvalues-01</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Globally and locally indexable element values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>146</td>
+<td>nolocalvalues-02</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Globally and locally indexable attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>147</td>
+<td>nolocalvalues-03</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Globally and locally indexable element and attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>148</td>
+<td>nolocalvalues-11</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>149</td>
+<td>nolocalvalues-12</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>150</td>
+<td>nolocalvalues-13</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>151</td>
+<td>nolocalvalues-14</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>152</td>
+<td>nolocalvalues-15</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>153</td>
+<td>nolocalvalues-16</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>154</td>
+<td>nolocalvalues-17</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>155</td>
+<td>nolocalvalues-18</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>156</td>
+<td>nolocalvalues-19</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>157</td>
+<td>nolocalvalues-21</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>158</td>
+<td>nolocalvalues-22</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>159</td>
+<td>nolocalvalues-23</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>160</td>
+<td>nolocalvalues-24</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>161</td>
+<td>nolocalvalues-25</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>162</td>
+<td>nolocalvalues-26</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>163</td>
+<td>nolocalvalues-21</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>164</td>
+<td>nolocalvalues-22</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>165</td>
+<td>nolocalvalues-23</td>
+<td>preCompression, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>166</td>
+<td>xsitype-01</td>
+<td>preCompression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-01.xml">file</a></td>
+<td>Explicit uses of xsi-type cast with valid values</td>
+</tr>
+<tr class="testcase">
+<td>167</td>
+<td>xsitype-02</td>
+<td>preCompression, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>AT(xsi:type) productions that would  be inserted in grammars that would be instantiated after the  maximumNumberOfBuiltInElementGrammars threshold are not counted.</td>
+</tr>
+<tr class="testcase">
+<td>168</td>
+<td>nolearning-01</td>
+<td>preCompression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-01.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>169</td>
+<td>nolearning-02</td>
+<td>preCompression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-02.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>170</td>
+<td>nolearning-03</td>
+<td>preCompression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-03.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammanr within simple element</td>
+</tr>
+<tr class="testcase">
+<td>171</td>
+<td>nolearning-04</td>
+<td>preCompression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-04.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>172</td>
+<td>nolearning-05</td>
+<td>preCompression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-05.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>173</td>
+<td>nolearning-07</td>
+<td>preCompression, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-23.xml">file</a></td>
+<td>Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar</td>
+</tr>
+<tr class="testcase">
+<td>174</td>
+<td>partiallearning-01</td>
+<td>preCompression, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-11.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>175</td>
+<td>partiallearning-02</td>
+<td>preCompression, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-12.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>176</td>
+<td>partiallearning-03</td>
+<td>preCompression, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-13.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammar within simple element</td>
+</tr>
+<tr class="testcase">
+<td>177</td>
+<td>partiallearning-04</td>
+<td>preCompression, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-14.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>178</td>
+<td>partiallearning-05</td>
+<td>preCompression, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-15.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>179</td>
+<td>partiallearning-06</td>
+<td>preCompression, maxBuiltinGr=1, maxBuiltinProd=8</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-16.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>180</td>
+<td>nolocalvalues-01</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Globally and locally indexable element values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>181</td>
+<td>nolocalvalues-02</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Globally and locally indexable attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>182</td>
+<td>nolocalvalues-03</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Globally and locally indexable element and attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>183</td>
+<td>nolocalvalues-11</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>184</td>
+<td>nolocalvalues-12</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>185</td>
+<td>nolocalvalues-13</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>186</td>
+<td>nolocalvalues-14</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>187</td>
+<td>nolocalvalues-15</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>188</td>
+<td>nolocalvalues-16</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>189</td>
+<td>nolocalvalues-17</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>190</td>
+<td>nolocalvalues-18</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>191</td>
+<td>nolocalvalues-19</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>192</td>
+<td>nolocalvalues-21</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>193</td>
+<td>nolocalvalues-22</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>194</td>
+<td>nolocalvalues-23</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>195</td>
+<td>nolocalvalues-24</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>196</td>
+<td>nolocalvalues-25</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>197</td>
+<td>nolocalvalues-26</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>198</td>
+<td>nolocalvalues-21</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>199</td>
+<td>nolocalvalues-22</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>200</td>
+<td>nolocalvalues-23</td>
+<td>preserve=prefixes, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>201</td>
+<td>xsitype-01</td>
+<td>preserve=prefixes, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-01.xml">file</a></td>
+<td>Explicit uses of xsi-type cast with valid values</td>
+</tr>
+<tr class="testcase">
+<td>202</td>
+<td>xsitype-02</td>
+<td>preserve=prefixes, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>AT(xsi:type) productions that would  be inserted in grammars that would be instantiated after the  maximumNumberOfBuiltInElementGrammars threshold are not counted.</td>
+</tr>
+<tr class="testcase">
+<td>203</td>
+<td>nolearning-01</td>
+<td>preserve=prefixes, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-01.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>204</td>
+<td>nolearning-02</td>
+<td>preserve=prefixes, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-02.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>205</td>
+<td>nolearning-03</td>
+<td>preserve=prefixes, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-03.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammanr within simple element</td>
+</tr>
+<tr class="testcase">
+<td>206</td>
+<td>nolearning-04</td>
+<td>preserve=prefixes, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-04.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>207</td>
+<td>nolearning-05</td>
+<td>preserve=prefixes, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-05.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>208</td>
+<td>nolearning-07</td>
+<td>preserve=prefixes, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-23.xml">file</a></td>
+<td>Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar</td>
+</tr>
+<tr class="testcase">
+<td>209</td>
+<td>partiallearning-01</td>
+<td>preserve=prefixes, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-11.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>210</td>
+<td>partiallearning-02</td>
+<td>preserve=prefixes, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-12.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>211</td>
+<td>partiallearning-03</td>
+<td>preserve=prefixes, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-13.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammar within simple element</td>
+</tr>
+<tr class="testcase">
+<td>212</td>
+<td>partiallearning-04</td>
+<td>preserve=prefixes, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-14.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>213</td>
+<td>partiallearning-05</td>
+<td>preserve=prefixes, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-15.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>214</td>
+<td>partiallearning-06</td>
+<td>preserve=prefixes, maxBuiltinGr=1, maxBuiltinProd=8</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-16.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>215</td>
+<td>nolocalvalues-01</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Globally and locally indexable element values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>216</td>
+<td>nolocalvalues-02</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Globally and locally indexable attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>217</td>
+<td>nolocalvalues-03</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Globally and locally indexable element and attribute values (same qname)</td>
+</tr>
+<tr class="testcase">
+<td>218</td>
+<td>nolocalvalues-11</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>219</td>
+<td>nolocalvalues-12</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>220</td>
+<td>nolocalvalues-13</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>221</td>
+<td>nolocalvalues-14</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>222</td>
+<td>nolocalvalues-15</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>223</td>
+<td>nolocalvalues-16</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>224</td>
+<td>nolocalvalues-17</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Test the case of no string indexing</td>
+</tr>
+<tr class="testcase">
+<td>225</td>
+<td>nolocalvalues-18</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 1 values</td>
+</tr>
+<tr class="testcase">
+<td>226</td>
+<td>nolocalvalues-19</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value partition capacity test limited to 3 values</td>
+</tr>
+<tr class="testcase">
+<td>227</td>
+<td>nolocalvalues-21</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>228</td>
+<td>nolocalvalues-22</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>229</td>
+<td>nolocalvalues-23</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>230</td>
+<td>nolocalvalues-24</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>231</td>
+<td>nolocalvalues-25</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 0</td>
+</tr>
+<tr class="testcase">
+<td>232</td>
+<td>nolocalvalues-26</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 4</td>
+</tr>
+<tr class="testcase">
+<td>233</td>
+<td>nolocalvalues-21</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-01.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>234</td>
+<td>nolocalvalues-22</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-02.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>235</td>
+<td>nolocalvalues-23</td>
+<td>preserve=comments, noLocalValuePartitions</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#valueTableCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/localValueTables/indexed-03.xml">file</a></td>
+<td>Value max length equal to 3, Value partition capacity test limited to 2 values</td>
+</tr>
+<tr class="testcase">
+<td>236</td>
+<td>xsitype-01</td>
+<td>preserve=comments, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-01.xml">file</a></td>
+<td>Explicit uses of xsi-type cast with valid values</td>
+</tr>
+<tr class="testcase">
+<td>237</td>
+<td>xsitype-02</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarLearningDisablingMechanism">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/xsiType/xsiType-02.xml">file</a></td>
+<td>AT(xsi:type) productions that would  be inserted in grammars that would be instantiated after the  maximumNumberOfBuiltInElementGrammars threshold are not counted.</td>
+</tr>
+<tr class="testcase">
+<td>238</td>
+<td>nolearning-01</td>
+<td>preserve=comments, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-01.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>239</td>
+<td>nolearning-02</td>
+<td>preserve=comments, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-02.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>240</td>
+<td>nolearning-03</td>
+<td>preserve=comments, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-03.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammanr within simple element</td>
+</tr>
+<tr class="testcase">
+<td>241</td>
+<td>nolearning-04</td>
+<td>preserve=comments, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-04.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>242</td>
+<td>nolearning-05</td>
+<td>preserve=comments, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-05.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>243</td>
+<td>nolearning-07</td>
+<td>preserve=comments, maxBuiltinGr=0, maxBuiltinProd=0</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-23.xml">file</a></td>
+<td>Invalid element that contains empty element with CM only. Also in the case of Preserve.Comments set to TRUE it does require to add xsi:type cast to avoid creating evolving built-in element grammar</td>
+</tr>
+<tr class="testcase">
+<td>244</td>
+<td>partiallearning-01</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-11.xml">file</a></td>
+<td>1 unexpected element d</td>
+</tr>
+<tr class="testcase">
+<td>245</td>
+<td>partiallearning-02</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-12.xml">file</a></td>
+<td>BuiltIn Element and unexpected global element</td>
+</tr>
+<tr class="testcase">
+<td>246</td>
+<td>partiallearning-03</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-13.xml">file</a></td>
+<td>Unexpected Global and BuiltIn Element grammar within simple element</td>
+</tr>
+<tr class="testcase">
+<td>247</td>
+<td>partiallearning-04</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-14.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>248</td>
+<td>partiallearning-05</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=2</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-15.xml">file</a></td>
+<td>Unexpected known element with xsd:typed unknown element</td>
+</tr>
+<tr class="testcase">
+<td>249</td>
+<td>partiallearning-06</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=8</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="http://www.w3.org/TR/exi-profile/#grammarCapping">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/builtInElement-16.xml">file</a></td>
+<td>Unexpected elements with attributes with also invalid attributes</td>
+</tr>
+<tr class="testcase">
+<td>250</td>
+<td>gr-without-productions0</td>
+<td>preserve=comments, maxBuiltinGr=1, maxBuiltinProd=1</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="pass">PASSED</td>
+<td class="">N/A</td>
+<td class="">N/A</td>
+<td><a href="n/a">specification</a></td>
+<td><a href="http://www.w3.org/XML/Group/EXI/TTFMS/data/interop-profile/builtInElementGrammars/grammarInstantiationWithoutProductions.xml">file</a></td>
+<td>Even in the case where no production will be inserted in grammar G,  implementations MUST behave as if grammar G is instantiated</td>
+</tr>
+  </tbody>
+  </table>
+  </div>
+ </body>
+</html>

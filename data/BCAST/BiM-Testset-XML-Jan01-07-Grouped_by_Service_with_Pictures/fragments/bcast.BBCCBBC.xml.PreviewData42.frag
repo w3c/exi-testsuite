@@ -1,0 +1,20 @@
+<esg:PreviewData id="BBCCBBCpre_d0e1984" version="1" xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <esg:Picture>
+      <esg:PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAMBAgQF/8QAKxAAAgIBAwMDAwQDAAAAAAAAAAEC
+EQMSITEEIkEjYXEFM1ETMoGRUmKh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEBAQEBAQAA
+AAAAAAAAAAAAAAERITH/2gAMAwEAAhEDEQA/AOZNdjFGnKvTZmEAAAUAABAAAFDMauIF8S7P5AyH
+Zo+lIp0nTxzanO9uNx+ZejL4LfT41hb/ADIXwSuixXTi/wCwfR4Iptp0vc0u/wAFJ3KDSXKM6rH+
+ng0XpqN8+Ry6LA0moun7lJwzaWtNQqrvwaFOoJL+BoW+hw/4v+zJ1nTxwuOm9zpQla35M31KPpwf
+uWXqM2GPpIBuFejEChmX7UvgZ0Srp4+4vJ9uXwP6eOnDBexKQycdUHXIrLPs9Pl/8HSdR+SkYx1J
+JcmVS3kWFvV3UZoZHpqf7r4NjffVCXCLu1uuGBeHCj+EI+oK+muuGiU80OUmv9UZ+rz6oaHLd+KL
+ETi+1H4AmG0I/AGhaW6aNMWopK/YzWNabk3o8cWZobO3WmhTtSUmycV6d+SMm/an5AvKez+BUJSq
+/wA+CXF3LfwTCkgq6na32M/WQjPC5tdy4aGze8UlfsJzJyjK40vAELhARYGkTF9yGvJuxEXTt+Cb
+ezexKGRltu6KSm29nwxWSLkkky8YqO27a5YDJTdTp7k45aklfAtyhutr8lci7G8cgp+vvq7Kymmm
+hEW1G3yTe9fkImwK2BRMZ6XdWWWSMudmJTE5v3DBtcovir+Rb1Rk6mtzGAwa6k23e/uTFtPeUXfi
+zGAwb1pSSbSXySv023uc8Zh5YwObAq2AH//Z</esg:PictureData>
+   </esg:Picture>
+   <esg:AccessIDRef>BBCCBBC_accpre</esg:AccessIDRef>
+</esg:PreviewData>

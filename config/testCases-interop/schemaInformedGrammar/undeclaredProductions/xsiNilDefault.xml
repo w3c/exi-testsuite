@@ -1,0 +1,72 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - AT(xsi:nil) event type in default schema mode ">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.xsiNilDefault-01">
+        <param name="testDescription"  
+          value="Use of xsi:nil is permitted in default schema mode, even though it 
+                 would not have been permitted in strict schema mode. Annulling a 
+                 content type that is an element-only content model."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiNilDefault-02">
+        <param name="testDescription"  
+          value="Use of xsi:nil is permitted in default schema mode, even though it
+                 would not have been permitted in strict schema mode. Annulling a
+                 content type that is a simple type."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <!-- moved this test case to xsiNilDecodeOnly.xml so it runs only in bitAligned mode
+    <testCase name="schemaInformed.undeclared.xsiNilDefault-03">
+        <param name="testDescription" value="Use of xsi:nil with value 'false'"/>
+        <param name="org.w3c.exi.ttf.decodeOnly" value="true" />
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-03.xml" />
+        <param name="org.w3c.exi.ttf.encodedFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-03.xml.exi" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/undeclaredProductions/nillable-01.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+    -->
+    <testCase name="schemaInformed.undeclared.xsiNilDefault-04">
+        <param name="testDescription"  
+          value="Use of xsi:nil with an invalid value 'whichever' in element
+                 grammar."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiNilDefault-05">
+        <param name="testDescription"  
+          value="Use of xsi:nil with an invalid value 'whichever' in type grammar."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-05.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiNilDefault-06">
+        <param name="testDescription"  
+          value="Test the order of xsi:type and xsi:nil attributes."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-06.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.xsiNilDefault-07">
+        <param name="testDescription"  
+          value="Test the order of xsi:type and xsi:nil attributes where 
+                 xsi:nil has an invalid value 'whichever'"/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/xsiNilDefault-07.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+    </testCase>
+
+</testCaseGroup>

@@ -1,0 +1,40 @@
+<!-- This testcases are intended to check how canonical EXI handles whitespaces 
+		https://www.w3.org/TR/exi-c14n/#whitespaceHandling
+-->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="whitespace handling">
+   
+   <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/contentHandling/contentHandling.xsd"/>
+   <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/contentHandling"/>
+   
+   <testCase name="WH_1">
+        <param name="testDescription"  value="normalizing whitepsaces for integer value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/wh_01.xml"/>
+   </testCase>
+   
+   <testCase name="WH_2">
+        <param name="testDescription"  value="preserving whitespaces for string value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/wh_02.xml"/>
+   </testCase>
+   
+   <testCase name="WH_3">
+        <param name="testDescription"  value="normalizing complex whitespaces data"/>
+        <param name="japex.inputFile" value="${test.docFolder}/wh_03.xml"/>
+   </testCase>
+   
+   <testCase name="WH_4">
+        <param name="testDescription"  value="preserving simple whitespaces data provided xml:space=preserve"/>
+        <param name="japex.inputFile" value="${test.docFolder}/wh_04.xml"/>
+   </testCase>
+   
+   <!-- in non strict mode preserve whitespaces -->
+   <testCase name="WH_5">
+   		<param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="testDescription"  value="preserving complex whitespaces data provided xml:space=preserve"/>
+        <param name="japex.inputFile" value="${test.docFolder}/wh_05.xml"/>
+   </testCase>
+   
+</testCaseGroup>

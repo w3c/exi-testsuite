@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    Document   : processClaims.xsl
+    Created on : September 30, 2002, 6:45 PM
+    Author     : jbaker
+    Description:
+        Purpose of transformation follows.
+-->
+
+<xsl:stylesheet version="1.0" 
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  
+  <!-- set output mode as XML -->  
+  <xsl:output method="xml" />
+  
+  <!-- define the key indexes -->
+  <!-- index claims using the Muenchian method for grouping -->
+  <!-- index claims by unique Financial Group and Provider -->
+  <xsl:key name="pf" match="/rootElement/claims/claim"
+    use="concat(@financialGroupId,'.',providerInfo/@renderingProviderId)" />
+  <!-- index claims by unique Financial Group AND Provider AND SUBSCRIBER
+-->
+  <xsl:key name="pf_s" match="/rootElement/claims/claim"
+    use="concat(@financialGroupId,'.',providerInfo/@renderingProviderId,
+        '.',subscribers/subscriberInfo[1]/@subscriberId)" />
+  <!-- index claims by unique Financial Group AND Provider AND Subscriber 
+       AND Patient (where subscriber is not the patient) -->
+  <xsl:key name="pf_s_p"
+match="/rootElement/claims/claim[not(subscribers/subscriberInfo[1]/@patientSubscriberRelation='SELF')]"
+    use="concat(@financialGroupId,'.',providerInfo/@renderingProviderId,'.',subscribers/subscriberInfo[1]/@subscriberId,'.',@patientId)" />
+
+  <!-- index providers by id -->
+  <xsl:key name="pv" match="/rootElement/providers/provider" use="@id" />
+  <!-- index financial groups by id -->
+  <xsl:key name="fg" match="/rootElement/financialGroups/financialGroup"
+use="@id" />
+  <!-- index subscribers by id -->
+  <xsl:key name="sb" match="/rootElement/subscribers/subscriber" use="@id"
+/>
+  <!-- index payers by id -->
+  <xsl:key name="py" match="/rootElement/payers/payer" use="@id" />
+  <!-- index patients by id -->
+  <xsl:key name="pt" match="/rootElement/patients/patient" use="@id" />
+  <!-- index service locations by id -->
+  <xsl:key name="sl" match="/rootElement/serviceLocations" use="@id" />
+  <!-- index service line items by claim id -->
+  <xsl:key name="sli" match="/rootElement/serviceLines/serviceLine"
+use="@patientVisitId" />
+  
+  <!-- template rule matching source root element -->
+  <xsl:template match="/">
+    <xsl:element name="claimFile">
+      <!-- loop over the distinct provider/financial group combinations -->
+      <xsl:for-each select="/rootElement/claims/claim[generate-id(.) = generate-id(key('pf',concat(@financialGroupId,'.',providerInfo/@renderingProviderId)))]">
+        <!-- with each provider/financial group, call
+processBillingInformation -->
+        <xsl:call-template name="processBillingInformation">
+          <xsl:with-param name="financialGroupId" select="@financialGroupId"
+/>
+          <xsl:with-param name="providerId"
+select="providerInfo/@renderingProviderId" />
+        </xsl:call-template>
+      </xsl:for-each>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- processBillingInformation closely models LOOP2000A in HIPAA 837 -->
+  <xsl:template name="processBillingInformation">
+    <xsl:param name="financialGroupId" />
+    <xsl:param name="providerId" />    
+    <xsl:element name="billingInformation">
+      <xsl:copy-of select="key('fg',$financialGroupId)" />
+      <xsl:copy-of select="key('pv',$providerId)" />
+      <!-- query of all the claims for the current financial group/provider
+-->        
+      <xsl:variable name="pf_query" 
+        select="key('pf',concat($financialGroupId,'.',$providerId))" />
+
+      <!-- loop over the distinct subscribers in each financial group -->
+      <xsl:for-each select="$pf_query[generate-id(.) = 
+        generate-id(key('pf_s',
+concat($financialGroupId,'.',$providerId,'.',
+        subscribers/subscriberInfo[1]/@subscriberId)))]">        
+        <xsl:call-template name="processSubscriberInformation">
+          <xsl:with-param name="financialGroupId" select="$financialGroupId"
+/>
+          <xsl:with-param name="providerId" select="$providerId" />
+          <xsl:with-param name="subscriberId"
+select="subscribers/subscriberInfo[1]/@subscriberId" />
+        </xsl:call-template>        
+      </xsl:for-each>
+    </xsl:element>
+  </xsl:template>
+  
+  <!-- processSubscriberInformation closely models LOOP2000B in HIPAA 837
+-->
+  <xsl:template name="processSubscriberInformation">
+    <xsl:param name="financialGroupId" />
+    <xsl:param name="providerId" />
+    <xsl:param name="subscriberId" />    
+    <xsl:element name="subscriberInformation">
+      <xsl:variable name="payerId" select="key('sb',$subscriberId)/@payerId"
+/>
+      <xsl:copy-of select="key('sb',$subscriberId)" />
+      <xsl:copy-of select="key('py',$payerId)" />      
+      <!-- retrieve claims related to subscriber where subscriber is the
+patient -->
+      <xsl:variable name="pf_s_query"
+        select="key('pf_s',concat($financialGroupId,'.', $providerId,'.',$subscriberId))[subscribers/subscriberInfo[1]/@patientSubscriberRelation='SELF']" />
+      <!-- for each claim, call processClaimInformation -->
+      <xsl:for-each select="$pf_s_query">
+        <xsl:call-template name="processClaimInformation">
+          <xsl:with-param name="claim" select="." />
+        </xsl:call-template>
+      </xsl:for-each>      
+      <!-- retrieve claims related to subscriber where subscriber is NOT the
+patient -->
+      <xsl:variable name="pf_s_query2"
+select="key('pf_s',concat($financialGroupId,'.', $providerId,'.',$subscriberId))[not(subscribers/subscriberInfo[1]/@patientSubscriberRelation='SELF')]" />
+      <!-- loop over the distinct patients from claims and call
+processPatientInformation -->
+      <xsl:for-each select="$pf_s_query2[generate-id(.) = generate-id(key('pf_s_p', concat($financialGroupId,'.',$providerId,'.',$subscriberId,'.',@patientId)))]">        
+        <xsl:call-template name="processPatientInformation">
+          <xsl:with-param name="financialGroupId" select="$financialGroupId"
+/>
+          <xsl:with-param name="providerId" select="$providerId" />
+          <xsl:with-param name="subscriberId" select="$subscriberId" />
+          <xsl:with-param name="patientId" select="@patientId" />
+        </xsl:call-template>        
+      </xsl:for-each>
+    </xsl:element>  
+  </xsl:template>
+  
+  <!-- processPatientInformation closely models LOOP2000C in HIPAA 837 -->
+  <xsl:template name="processPatientInformation">
+    <xsl:param name="financialGroupId" />
+    <xsl:param name="providerId" />
+    <xsl:param name="subscriberId" />
+    <xsl:param name="patientId" />    
+    <xsl:element name="patientInformation">
+      <xsl:copy-of select="key('pt',$patientId)" />
+      <xsl:variable name="pf_s_p_query"
+select="key('pf_s_p',concat($financialGroupId,'.',
+        $providerId,'.',$subscriberId,'.',$patientId))" />      
+      <xsl:for-each select="$pf_s_p_query">
+        <xsl:call-template name="processClaimInformation">
+          <xsl:with-param name="claim" select="." />
+        </xsl:call-template>
+      </xsl:for-each>              
+    </xsl:element>    
+  </xsl:template>
+  
+  <!-- processClaimInformation closely models LOOP2300 in HIPAA 837 -->
+  <xsl:template name="processClaimInformation">
+    <xsl:param name="claim" />
+    <xsl:element name="claimInformation">
+      <xsl:copy-of select="$claim" />
+      <!-- insert all the service line items associated with the claim.
+These
+      closely model LOOP2400 in HIPAA 837 -->
+      <xsl:copy-of select="key('sli',$claim/@id)" />
+    </xsl:element>
+  </xsl:template>
+  
+</xsl:stylesheet> 
+ 

@@ -1,0 +1,55 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Blocksize canonical interoperability tests">
+    
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/header"/>
+    
+    <!-- This test case group also consider the scenario where it should take pre-compress alignment 
+    though we have passed compression -->
+    
+    <testCaseGroup
+	    xmlns="http://www.sun.com/japex/testSuite"
+	    xmlns:xi="http://www.w3.org/2001/XInclude"
+	    name="Blocksize canonical interoperability tests">
+	    
+	     <param name="org.w3c.exi.ttf.compression" value="true"/>
+	    
+	    <!-- Omit block size as it has default value -->
+	    <testCase name="blockSize-default">
+	        <param name="org.w3c.exi.ttf.blockSize" value="1000000"/>
+	        <param name="description"  value="default Block size"/>
+	        <param name="japex.inputFile" value="${test.docFolder}/blocksize_test.xml" />
+	    </testCase>
+	    
+	    <testCase name="blockSize-100">
+	        <param name="org.w3c.exi.ttf.blockSize" value="100"/>
+	        <param name="description"  value="Block size = 100 with a document containing 100 values"/>
+	        <param name="japex.inputFile" value="${test.docFolder}/blocksize_test.xml" />
+	    </testCase>
+    
+    </testCaseGroup>
+    
+    <!-- Omit block size as it has default value as no compression is present -->
+    <testCaseGroup
+	    xmlns="http://www.sun.com/japex/testSuite"
+	    xmlns:xi="http://www.w3.org/2001/XInclude"
+	    name="Blocksize canonical interoperability tests">
+	    
+	    <param name="org.w3c.exi.ttf.compression" value="false"/>
+	    
+	    <testCase name="blockSize-default">
+	        <param name="org.w3c.exi.ttf.blockSize" value="1000000"/>
+	        <param name="description"  value="default Block size"/>
+	        <param name="japex.inputFile" value="${test.docFolder}/blocksize_test.xml" />
+	    </testCase>
+	    
+	    <testCase name="blockSize-100">
+	        <param name="org.w3c.exi.ttf.blockSize" value="100"/>
+	        <param name="description"  value="Block size = 100 with a document containing 100 values"/>
+	        <param name="japex.inputFile" value="${test.docFolder}/blocksize_test.xml" />
+	    </testCase>
+    
+    </testCaseGroup>
+    
+</testCaseGroup>

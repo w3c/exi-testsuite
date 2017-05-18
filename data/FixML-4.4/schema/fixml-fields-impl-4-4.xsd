@@ -1,0 +1,1319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 20040109
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xs:include schemaLocation="fixml-fields-base-4-4.xsd"/>
+
+
+<xs:simpleType name="AdvSide_t">
+	<xs:restriction base="AdvSide_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AdvTransType_t">
+	<xs:restriction base="AdvTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CommType_t">
+	<xs:restriction base="CommType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ExecInst_t">
+	<xs:restriction base="ExecInst_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="HandlInst_t">
+	<xs:restriction base="HandlInst_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityIDSource_t">
+	<xs:restriction base="SecurityIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="IOIQltyInd_t">
+	<xs:restriction base="IOIQltyInd_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="IOITransType_t">
+	<xs:restriction base="IOITransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LastCapacity_t">
+	<xs:restriction base="LastCapacity_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OrdStatus_t">
+	<xs:restriction base="OrdStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OrdType_t">
+	<xs:restriction base="OrdType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PossDupFlag_t">
+	<xs:restriction base="PossDupFlag_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Side_t">
+	<xs:restriction base="Side_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TimeInForce_t">
+	<xs:restriction base="TimeInForce_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Urgency_t">
+	<xs:restriction base="Urgency_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SettlType_t">
+	<xs:restriction base="SettlType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SymbolSfx_t">
+	<xs:restriction base="SymbolSfx_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocTransType_t">
+	<xs:restriction base="AllocTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PositionEffect_t">
+	<xs:restriction base="PositionEffect_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ProcessCode_t">
+	<xs:restriction base="ProcessCode_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocStatus_t">
+	<xs:restriction base="AllocStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocRejCode_t">
+	<xs:restriction base="AllocRejCode_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="EmailType_t">
+	<xs:restriction base="EmailType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PossResend_t">
+	<xs:restriction base="PossResend_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CxlRejReason_t">
+	<xs:restriction base="CxlRejReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OrdRejReason_t">
+	<xs:restriction base="OrdRejReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="IOIQualifier_t">
+	<xs:restriction base="IOIQualifier_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ReportToExch_t">
+	<xs:restriction base="ReportToExch_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LocateReqd_t">
+	<xs:restriction base="LocateReqd_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ForexReq_t">
+	<xs:restriction base="ForexReq_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DKReason_t">
+	<xs:restriction base="DKReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="IOINaturalFlag_t">
+	<xs:restriction base="IOINaturalFlag_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MiscFeeType_t">
+	<xs:restriction base="MiscFeeType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ExecType_t">
+	<xs:restriction base="ExecType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SettlInstMode_t">
+	<xs:restriction base="SettlInstMode_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SettlInstTransType_t">
+	<xs:restriction base="SettlInstTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SettlInstSource_t">
+	<xs:restriction base="SettlInstSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityType_t">
+	<xs:restriction base="SecurityType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="StandInstDbType_t">
+	<xs:restriction base="StandInstDbType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocLinkType_t">
+	<xs:restriction base="AllocLinkType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CoveredOrUncovered_t">
+	<xs:restriction base="CoveredOrUncovered_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="NotifyBrokerOfCredit_t">
+	<xs:restriction base="NotifyBrokerOfCredit_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocHandlInst_t">
+	<xs:restriction base="AllocHandlInst_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="RoutingType_t">
+	<xs:restriction base="RoutingType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BenchmarkCurveName_t">
+	<xs:restriction base="BenchmarkCurveName_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="StipulationType_t">
+	<xs:restriction base="StipulationType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="RepoCollateralSecurityType_t">
+	<xs:restriction base="RepoCollateralSecurityType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UnderlyingRepoCollateralSecurityType_t">
+	<xs:restriction base="UnderlyingRepoCollateralSecurityType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegRepoCollateralSecurityType_t">
+	<xs:restriction base="LegRepoCollateralSecurityType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradedFlatSwitch_t">
+	<xs:restriction base="TradedFlatSwitch_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SubscriptionRequestType_t">
+	<xs:restriction base="SubscriptionRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MDUpdateType_t">
+	<xs:restriction base="MDUpdateType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AggregatedBook_t">
+	<xs:restriction base="AggregatedBook_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MDEntryType_t">
+	<xs:restriction base="MDEntryType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TickDirection_t">
+	<xs:restriction base="TickDirection_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteCondition_t">
+	<xs:restriction base="QuoteCondition_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeCondition_t">
+	<xs:restriction base="TradeCondition_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MDUpdateAction_t">
+	<xs:restriction base="MDUpdateAction_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MDReqRejReason_t">
+	<xs:restriction base="MDReqRejReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DeleteReason_t">
+	<xs:restriction base="DeleteReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OpenCloseSettlFlag_t">
+	<xs:restriction base="OpenCloseSettlFlag_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="FinancialStatus_t">
+	<xs:restriction base="FinancialStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CorporateAction_t">
+	<xs:restriction base="CorporateAction_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteStatus_t">
+	<xs:restriction base="QuoteStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteCancelType_t">
+	<xs:restriction base="QuoteCancelType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteRejectReason_t">
+	<xs:restriction base="QuoteRejectReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteResponseLevel_t">
+	<xs:restriction base="QuoteResponseLevel_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteRequestType_t">
+	<xs:restriction base="QuoteRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UnderlyingSecurityIDSource_t">
+	<xs:restriction base="UnderlyingSecurityIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UnderlyingSymbolSfx_t">
+	<xs:restriction base="UnderlyingSymbolSfx_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityRequestType_t">
+	<xs:restriction base="SecurityRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityResponseType_t">
+	<xs:restriction base="SecurityResponseType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UnsolicitedIndicator_t">
+	<xs:restriction base="UnsolicitedIndicator_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityTradingStatus_t">
+	<xs:restriction base="SecurityTradingStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="HaltReason_t">
+	<xs:restriction base="HaltReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="InViewOfCommon_t">
+	<xs:restriction base="InViewOfCommon_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DueToRelated_t">
+	<xs:restriction base="DueToRelated_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Adjustment_t">
+	<xs:restriction base="Adjustment_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradSesMethod_t">
+	<xs:restriction base="TradSesMethod_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradSesMode_t">
+	<xs:restriction base="TradSesMode_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradSesStatus_t">
+	<xs:restriction base="TradSesStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteEntryRejectReason_t">
+	<xs:restriction base="QuoteEntryRejectReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BidRequestTransType_t">
+	<xs:restriction base="BidRequestTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SolicitedFlag_t">
+	<xs:restriction base="SolicitedFlag_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ExecRestatementReason_t">
+	<xs:restriction base="ExecRestatementReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BusinessRejectReason_t">
+	<xs:restriction base="BusinessRejectReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DiscretionInst_t">
+	<xs:restriction base="DiscretionInst_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BidType_t">
+	<xs:restriction base="BidType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BidDescriptorType_t">
+	<xs:restriction base="BidDescriptorType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SideValueInd_t">
+	<xs:restriction base="SideValueInd_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LiquidityIndType_t">
+	<xs:restriction base="LiquidityIndType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ExchangeForPhysical_t">
+	<xs:restriction base="ExchangeForPhysical_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ProgRptReqs_t">
+	<xs:restriction base="ProgRptReqs_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="IncTaxInd_t">
+	<xs:restriction base="IncTaxInd_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BidTradeType_t">
+	<xs:restriction base="BidTradeType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BasisPxType_t">
+	<xs:restriction base="BasisPxType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PriceType_t">
+	<xs:restriction base="PriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="GTBookingInst_t">
+	<xs:restriction base="GTBookingInst_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ListStatusType_t">
+	<xs:restriction base="ListStatusType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="NetGrossInd_t">
+	<xs:restriction base="NetGrossInd_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ListOrderStatus_t">
+	<xs:restriction base="ListOrderStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ListExecInstType_t">
+	<xs:restriction base="ListExecInstType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CxlRejResponseTo_t">
+	<xs:restriction base="CxlRejResponseTo_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MultiLegReportingType_t">
+	<xs:restriction base="MultiLegReportingType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PartyIDSource_t">
+	<xs:restriction base="PartyIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PartyRole_t">
+	<xs:restriction base="PartyRole_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityAltIDSource_t">
+	<xs:restriction base="SecurityAltIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UnderlyingSecurityAltIDSource_t">
+	<xs:restriction base="UnderlyingSecurityAltIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Product_t">
+	<xs:restriction base="Product_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuantityType_t">
+	<xs:restriction base="QuantityType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="RoundingDirection_t">
+	<xs:restriction base="RoundingDirection_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DistribPaymentMethod_t">
+	<xs:restriction base="DistribPaymentMethod_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CancellationRights_t">
+	<xs:restriction base="CancellationRights_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MoneyLaunderingStatus_t">
+	<xs:restriction base="MoneyLaunderingStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ExecPriceType_t">
+	<xs:restriction base="ExecPriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeReportTransType_t">
+	<xs:restriction base="TradeReportTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PaymentMethod_t">
+	<xs:restriction base="PaymentMethod_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TaxAdvantageType_t">
+	<xs:restriction base="TaxAdvantageType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="FundRenewWaiv_t">
+	<xs:restriction base="FundRenewWaiv_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="RegistRejReasonCode_t">
+	<xs:restriction base="RegistRejReasonCode_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="RegistTransType_t">
+	<xs:restriction base="RegistTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ContAmtType_t">
+	<xs:restriction base="ContAmtType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OwnerType_t">
+	<xs:restriction base="OwnerType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OrderCapacity_t">
+	<xs:restriction base="OrderCapacity_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OrderRestrictions_t">
+	<xs:restriction base="OrderRestrictions_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MassCancelRequestType_t">
+	<xs:restriction base="MassCancelRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MassCancelResponse_t">
+	<xs:restriction base="MassCancelResponse_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MassCancelRejectReason_t">
+	<xs:restriction base="MassCancelRejectReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteType_t">
+	<xs:restriction base="QuoteType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="InstrRegistry_t">
+	<xs:restriction base="InstrRegistry_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CashMargin_t">
+	<xs:restriction base="CashMargin_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Scope_t">
+	<xs:restriction base="Scope_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MDImplicitDelete_t">
+	<xs:restriction base="MDImplicitDelete_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CrossType_t">
+	<xs:restriction base="CrossType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityListRequestType_t">
+	<xs:restriction base="SecurityListRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecurityRequestResult_t">
+	<xs:restriction base="SecurityRequestResult_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegPositionEffect_t">
+	<xs:restriction base="LegPositionEffect_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegCoveredOrUncovered_t">
+	<xs:restriction base="LegCoveredOrUncovered_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradSesStatusRejReason_t">
+	<xs:restriction base="TradSesStatusRejReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeRequestType_t">
+	<xs:restriction base="TradeRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PreviouslyReported_t">
+	<xs:restriction base="PreviouslyReported_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MatchStatus_t">
+	<xs:restriction base="MatchStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MatchType_t">
+	<xs:restriction base="MatchType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="OddLot_t">
+	<xs:restriction base="OddLot_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ClearingInstruction_t">
+	<xs:restriction base="ClearingInstruction_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AccountType_t">
+	<xs:restriction base="AccountType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MassStatusReqType_t">
+	<xs:restriction base="MassStatusReqType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UnderlyingInstrRegistry_t">
+	<xs:restriction base="UnderlyingInstrRegistry_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegInstrRegistry_t">
+	<xs:restriction base="LegInstrRegistry_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegSymbolSfx_t">
+	<xs:restriction base="LegSymbolSfx_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegSecurityIDSource_t">
+	<xs:restriction base="LegSecurityIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegSecurityAltIDSource_t">
+	<xs:restriction base="LegSecurityAltIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegProduct_t">
+	<xs:restriction base="LegProduct_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegSecurityType_t">
+	<xs:restriction base="LegSecurityType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegSide_t">
+	<xs:restriction base="LegSide_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocType_t">
+	<xs:restriction base="AllocType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ClearingFeeIndicator_t">
+	<xs:restriction base="ClearingFeeIndicator_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="WorkingIndicator_t">
+	<xs:restriction base="WorkingIndicator_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PriorityIndicator_t">
+	<xs:restriction base="PriorityIndicator_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegalConfirm_t">
+	<xs:restriction base="LegalConfirm_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteRequestRejectReason_t">
+	<xs:restriction base="QuoteRequestRejectReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AcctIDSource_t">
+	<xs:restriction base="AcctIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocAcctIDSource_t">
+	<xs:restriction base="AllocAcctIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BenchmarkPriceType_t">
+	<xs:restriction base="BenchmarkPriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ConfirmStatus_t">
+	<xs:restriction base="ConfirmStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ConfirmTransType_t">
+	<xs:restriction base="ConfirmTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DeliveryForm_t">
+	<xs:restriction base="DeliveryForm_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegBenchmarkCurveName_t">
+	<xs:restriction base="LegBenchmarkCurveName_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegPriceType_t">
+	<xs:restriction base="LegPriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegStipulationType_t">
+	<xs:restriction base="LegStipulationType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegSwapType_t">
+	<xs:restriction base="LegSwapType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuotePriceType_t">
+	<xs:restriction base="QuotePriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteRespType_t">
+	<xs:restriction base="QuoteRespType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QuoteQualifier_t">
+	<xs:restriction base="QuoteQualifier_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="YieldRedemptionPriceType_t">
+	<xs:restriction base="YieldRedemptionPriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosType_t">
+	<xs:restriction base="PosType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosQtyStatus_t">
+	<xs:restriction base="PosQtyStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosAmtType_t">
+	<xs:restriction base="PosAmtType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosTransType_t">
+	<xs:restriction base="PosTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosMaintAction_t">
+	<xs:restriction base="PosMaintAction_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AdjustmentType_t">
+	<xs:restriction base="AdjustmentType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosMaintStatus_t">
+	<xs:restriction base="PosMaintStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosMaintResult_t">
+	<xs:restriction base="PosMaintResult_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosReqType_t">
+	<xs:restriction base="PosReqType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ResponseTransportType_t">
+	<xs:restriction base="ResponseTransportType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosReqResult_t">
+	<xs:restriction base="PosReqResult_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PosReqStatus_t">
+	<xs:restriction base="PosReqStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SettlPriceType_t">
+	<xs:restriction base="SettlPriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UnderlyingSettlPriceType_t">
+	<xs:restriction base="UnderlyingSettlPriceType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LegDatedDate_t">
+	<xs:restriction base="LegDatedDate_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AssignmentMethod_t">
+	<xs:restriction base="AssignmentMethod_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ExerciseMethod_t">
+	<xs:restriction base="ExerciseMethod_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeRequestResult_t">
+	<xs:restriction base="TradeRequestResult_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeRequestStatus_t">
+	<xs:restriction base="TradeRequestStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeReportRejectReason_t">
+	<xs:restriction base="TradeReportRejectReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SideMultiLegReportingType_t">
+	<xs:restriction base="SideMultiLegReportingType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BenchmarkSecurityIDSource_t">
+	<xs:restriction base="BenchmarkSecurityIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TrdRegTimestampType_t">
+	<xs:restriction base="TrdRegTimestampType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ConfirmType_t">
+	<xs:restriction base="ConfirmType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ConfirmRejReason_t">
+	<xs:restriction base="ConfirmRejReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="BookingType_t">
+	<xs:restriction base="BookingType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocSettlInstType_t">
+	<xs:restriction base="AllocSettlInstType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DlvyInstType_t">
+	<xs:restriction base="DlvyInstType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TerminationType_t">
+	<xs:restriction base="TerminationType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SettlInstReqRejCode_t">
+	<xs:restriction base="SettlInstReqRejCode_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocReportType_t">
+	<xs:restriction base="AllocReportType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocCancReplaceReason_t">
+	<xs:restriction base="AllocCancReplaceReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocAccountType_t">
+	<xs:restriction base="AllocAccountType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PartySubIDType_t">
+	<xs:restriction base="PartySubIDType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocIntermedReqType_t">
+	<xs:restriction base="AllocIntermedReqType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ApplQueueResolution_t">
+	<xs:restriction base="ApplQueueResolution_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ApplQueueAction_t">
+	<xs:restriction base="ApplQueueAction_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AvgPxIndicator_t">
+	<xs:restriction base="AvgPxIndicator_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeAllocIndicator_t">
+	<xs:restriction base="TradeAllocIndicator_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ExpirationCycle_t">
+	<xs:restriction base="ExpirationCycle_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TrdType_t">
+	<xs:restriction base="TrdType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PegMoveType_t">
+	<xs:restriction base="PegMoveType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PegOffsetType_t">
+	<xs:restriction base="PegOffsetType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PegLimitType_t">
+	<xs:restriction base="PegLimitType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PegRoundDirection_t">
+	<xs:restriction base="PegRoundDirection_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PegScope_t">
+	<xs:restriction base="PegScope_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DiscretionMoveType_t">
+	<xs:restriction base="DiscretionMoveType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DiscretionOffsetType_t">
+	<xs:restriction base="DiscretionOffsetType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DiscretionLimitType_t">
+	<xs:restriction base="DiscretionLimitType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DiscretionRoundDirection_t">
+	<xs:restriction base="DiscretionRoundDirection_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DiscretionScope_t">
+	<xs:restriction base="DiscretionScope_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TargetStrategy_t">
+	<xs:restriction base="TargetStrategy_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LastLiquidityInd_t">
+	<xs:restriction base="LastLiquidityInd_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="PublishTrdIndicator_t">
+	<xs:restriction base="PublishTrdIndicator_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="ShortSaleReason_t">
+	<xs:restriction base="ShortSaleReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="QtyType_t">
+	<xs:restriction base="QtyType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="SecondaryTrdType_t">
+	<xs:restriction base="SecondaryTrdType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TradeReportType_t">
+	<xs:restriction base="TradeReportType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AllocNoOrdersType_t">
+	<xs:restriction base="AllocNoOrdersType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="EventType_t">
+	<xs:restriction base="EventType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="InstrAttribType_t">
+	<xs:restriction base="InstrAttribType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CPProgram_t">
+	<xs:restriction base="CPProgram_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="MiscFeeBasis_t">
+	<xs:restriction base="MiscFeeBasis_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="LastFragment_t">
+	<xs:restriction base="LastFragment_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollAsgnReason_t">
+	<xs:restriction base="CollAsgnReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollInquiryQualifier_t">
+	<xs:restriction base="CollInquiryQualifier_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollAsgnTransType_t">
+	<xs:restriction base="CollAsgnTransType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollAsgnRespType_t">
+	<xs:restriction base="CollAsgnRespType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollAsgnRejectReason_t">
+	<xs:restriction base="CollAsgnRejectReason_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollStatus_t">
+	<xs:restriction base="CollStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="DeliveryType_t">
+	<xs:restriction base="DeliveryType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UserRequestType_t">
+	<xs:restriction base="UserRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="UserStatus_t">
+	<xs:restriction base="UserStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="StatusValue_t">
+	<xs:restriction base="StatusValue_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="NetworkRequestType_t">
+	<xs:restriction base="NetworkRequestType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="NetworkStatusResponseType_t">
+	<xs:restriction base="NetworkStatusResponseType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="TrdRptStatus_t">
+	<xs:restriction base="TrdRptStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="AffirmStatus_t">
+	<xs:restriction base="AffirmStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollAction_t">
+	<xs:restriction base="CollAction_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollInquiryStatus_t">
+	<xs:restriction base="CollInquiryStatus_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="CollInquiryResult_t">
+	<xs:restriction base="CollInquiryResult_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="YieldType_t">
+	<xs:restriction base="YieldType_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Nested3PartyIDSource_t">
+	<xs:restriction base="Nested3PartyIDSource_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Nested3PartyRole_t">
+	<xs:restriction base="Nested3PartyRole_enum_t"/>
+</xs:simpleType>
+
+
+<xs:simpleType name="Nested3PartySubIDType_t">
+	<xs:restriction base="Nested3PartySubIDType_enum_t"/>
+</xs:simpleType>
+
+
+
+</xs:schema>
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD file for substances and their pharmacological actions in MeSH. pa_substance2006.dtd -->
+<!-- List is by substance. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:complexType name="DescriptorReference">
+    <xs:sequence>
+      <xs:element ref="DescriptorUI"/>
+      <xs:element ref="DescriptorName"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PharmacologicalActionSubstanceSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="Substance"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Substance">
+    <xs:complexType>
+      <xs:sequence maxOccurs="unbounded">
+        <xs:sequence>
+          <xs:element ref="RecordUI"/>
+          <xs:element ref="RecordName"/>
+        </xs:sequence>
+        <xs:element ref="PharmacologicalActionList"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PharmacologicalActionList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="PharmacologicalActionOfSubstance"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PharmacologicalActionOfSubstance" type="DescriptorReferredTo"/>
+  <xs:complexType name="DescriptorReferredTo">
+    <xs:sequence>
+      <xs:element ref="DescriptorReferredTo"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DescriptorReferredTo" type="DescriptorReference"/>
+  <xs:element name="DescriptorUI" type="xs:string"/>
+  <xs:element name="DescriptorName" type="String"/>
+  <xs:element name="RecordUI" type="xs:string"/>
+  <xs:element name="RecordName" type="String"/>
+  <xs:complexType name="String">
+    <xs:sequence>
+      <xs:element ref="String"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="String" type="xs:string"/>
+</xs:schema>

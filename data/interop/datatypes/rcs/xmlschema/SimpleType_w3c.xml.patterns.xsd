@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:xsdt="http://www.w3.org/XML/2004/xml-schema-test-suite/"
+   xmlns:japex="http://www.sun.com/japex/testSuite">
+   <xs:element name="pattern">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="pattern1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-8]{5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern2">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{1,5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern3">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{1,5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern4">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-3]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern5">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[A-Z]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern6">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[A-C]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern7">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[A-C]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern8">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[1-9]{5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern9">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[1-9]{5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern10">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern11">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-8]{5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern12">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-9]{5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern13">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-8]{5}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern14">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[0-3]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern15">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[A-Z]{0,2}"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern16">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="(あ|ｱ)*"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern17">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a|b]"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern18">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[b|c]+"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern19">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a|b]"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern20">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[b|c]+"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern21">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[a|b]"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern22">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[b|c]+"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern23">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="\d{5}(-\d{4})?"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+            <xs:element name="pattern24">
+               <xs:simpleType>
+                  <xs:restriction base="xs:token">
+                     <xs:pattern value="[A-Z]*"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

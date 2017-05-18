@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- -->
+<!-- The US Government's license rights for this deliverable are listed in -->
+<!-- DFARS 252.227-7013 Rights in Technical Data - Noncommercial Items -->
+<!-- (Nov 1995) (Alternate 1 June 1995) and DFARS 252.227-7014 Rights in -->
+<!-- Noncommercial Computer Software and Noncommercial Computer Software -->
+<!-- Documentation (June 1995). -->
+<!-- COMPANY  : Raytheon Company -->
+<!-- COPYRIGHT: Copyright (c) 2005 Raytheon Company -->
+<!-- UNPUBLISHED WORK -->
+<!-- ALL RIGHTS RESERVED -->
+<!-- PROJECT  : Target List Management -->
+<!-- CONTRACT : DAAB07-99-C-E003 -->
+<!-- -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Sharon Blotkamp (Raytheon Company) -->
+<!-- Hand created file by M.T.Williams (Raytheon) -->
+<!-- mtwill JBM-754, 22Mar05, changed targetNamespace, added jtlm to path -->
+<!-- mtwill JRAE-004, 26Apr06, jrae06, changed return type for -->
+<!--                           subscribeForTargetsByAttributeResponse -->
+<!--  -->
+<xs:schema targetNamespace="http://www.firesupport.com/schema/jtlm/operations" 
+           elementFormDefault="qualified" 
+	   attributeFormDefault="unqualified" 
+	   version="Draft" 
+	   xmlns:common="http://www.firesupport.com/schema/jtlm/common" 
+	   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	   xmlns:tlm="http://www.firesupport.com/schema/jtlm" 
+	   xmlns:target="http://www.firesupport.com/schema/jtlm/target">
+
+	<xs:import namespace="http://www.firesupport.com/schema/jtlm/common" 
+	           schemaLocation="Common.xsd"/>
+	<xs:import namespace="http://www.firesupport.com/schema/jtlm/target" 
+	           schemaLocation="Target.xsd"/>
+	<xs:import namespace="http://www.firesupport.com/schema/jtlm" 
+	           schemaLocation="TLM.xsd"/>
+
+	<!--Target List Manager Service Operations-->
+	<!-- .................... -->
+	<!-- .................... -->
+	<xs:element name="publishTargets">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TLMTargetType.  If the tlmTarget element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cotTargetDataList" type="tlm:COTTargetDataListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="publishTargetsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="failedCotTargetIdStatusList" type="tlm:COTTargetIdStatusListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- -->
+	<xs:element name="updateTargets">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TLMTargetType.  If the tlmTarget element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cotTargetDataList" type="tlm:COTTargetDataListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="updateTargetsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="failedCotTargetIdStatusList" type="tlm:COTTargetIdStatusListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!---->
+	<!--  -->
+	<!--MJW- Modified the deleteTargets call to only include a list of targets that the operator wishes to delete and not the same structure that is returned.-->
+	<xs:element name="deleteTargets">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TLMTargetIdentificationType.  If the tlmTargetId element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cotTargetIdList" type="tlm:COTTargetIdListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="deleteTargetsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="failedCotTargetIdStatusList" type="tlm:COTTargetIdStatusListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<!---->
+	<!-- MJW- Modified the getTargets call to only include a list of targets that the operator wishes to get and not the same structure that is returned.-->
+	<xs:element name="getTargets">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TLMTargetIdentificationType.  If the tlmTargetId element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cotTargetIdList" type="tlm:COTTargetIdListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getTargetsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="targetList" type="tlm:COTTargetDataListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<!--  -->
+	<xs:element name="findTargetsByAttribute">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TargetAttributeType.  If the tlm targetAttributes element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="targetAttribute" type="tlm:COTTargetAttributeType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="findTargetsByAttributeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="targetList" type="tlm:COTTargetDataListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<!-- -->
+	<xs:element name="findDuplicateTargets">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TargetSummaryDataType.  If the targetSummaryData element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="target" type="tlm:COTTargetSummaryType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="findDuplicateTargetsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="duplicateTargetList" type="tlm:COTTargetIdStatusListType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<!--  -->
+	<xs:element name="subscribeForTargetsByAttribute">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TargetSubscriptionType.  If the targetSubscription element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="targetSubscription" type="tlm:COTTargetSubscriptionType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="subscribeForTargetsByAttributeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- xs:element name="status" type="tlm:COTStatusType" minOccurs="0"/ -->
+                                <!-- mtwill, 26Apr06, jrae06 - change return type to SubscriptionIdType -->
+				<xs:element name="subscriptionId" type="tlm:SubscriptionIdType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!--  -->
+	<!--  -->
+	<xs:element name="unsubscribeForTargets">
+		<xs:annotation>
+			<xs:documentation>The detail element must be of TargetSubscriptionType.  If the targetSubscription element is not null, it will be used and the data in the CoT detail element will be ignored for this experiment.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="targetSubscription" type="tlm:COTTargetSubscriptionType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="unsubscribeForTargetsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="tlm:COTStatusType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!--  -->
+	<xs:element name="getSubscriptions">
+		<xs:annotation>
+		  <xs:documentation>
+		     Gets current client subscriptions.
+		  </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+	           <xs:sequence>
+		      <xs:element name="subscriberURI" 
+		                  type="tlm:URIType" 
+				  minOccurs="0"/>
+                   </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="getSubscriptionsResponse">
+           <xs:complexType>
+	      <xs:sequence>
+	         <xs:element name="subscriptionList" 
+		             type="tlm:TargetSubscriptionListType" 
+			     minOccurs="0"/>
+              </xs:sequence>
+           </xs:complexType>
+	</xs:element>
+	<!--  -->
+
+
+	<!-- .................... -->
+</xs:schema>

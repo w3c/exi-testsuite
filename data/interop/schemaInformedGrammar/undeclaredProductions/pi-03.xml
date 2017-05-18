@@ -1,0 +1,25 @@
+<!-- =================================================================== -->
+<!-- Tests PI where there's a declared attribute wildcard.               -->
+<!-- =================================================================== -->
+<foo:P xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <foo:P3>
+    <?pi_1 a="A" b="B"?><!-- PI -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <?pi_2 a="A" b="B"?><!-- PI -->
+  </foo:P3>
+  <foo:P3 foo:aA=""><!-- AT(foo:*) -->
+    <?pi_3 a="A" b="B"?><!-- PI -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <?pi_4 a="A" b="B"?><!-- PI -->
+  </foo:P3>
+  <foo:P3 xsi:nil='true' foo:aA=""><!-- AT(xsi:nil), AT(foo:*) -->
+    <?pi_5 a="A" b="B"?><!-- PI -->
+  </foo:P3>
+  <foo:P3 xsi:type='foo:extended_P3' foo:aA=""><!-- AT(xsi:type), AT(foo:*) -->
+    <?pi_6 a="A" b="B"?><!-- PI -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <?pi_7 a="A" b="B"?><!-- PI -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <?pi_8 a="A" b="B"?><!-- PI -->
+  </foo:P3>
+</foo:P>

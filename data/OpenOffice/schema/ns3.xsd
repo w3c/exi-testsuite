@@ -1,0 +1,1664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:ns2="urn:oasis:names:tc:opendocument:xmlns:config:1.0" xmlns:ns3="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns4="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:ns5="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:ns6="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ns7="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:ns8="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:ns9="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" xmlns:ns10="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" xmlns:ns11="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:ns12="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:ns13="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:ns14="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:ns15="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:ns17="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:ns16="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:elements="http://purl.org/dc/elements/1.1/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="elements.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="mathml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/xforms" schemaLocation="xforms.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:animation:1.0" schemaLocation="ns9.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" schemaLocation="ns5.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:config:1.0" schemaLocation="ns2.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" schemaLocation="ns14.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" schemaLocation="ns7.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:form:1.0" schemaLocation="ns4.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" schemaLocation="ns16.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:office:1.0" schemaLocation="ns13.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0" schemaLocation="ns10.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:script:1.0" schemaLocation="ns6.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:smil-compatible:1.0" schemaLocation="ns11.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:style:1.0" schemaLocation="ns8.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" schemaLocation="ns12.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:table:1.0" schemaLocation="ns15.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:text:1.0" schemaLocation="odf.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" schemaLocation="ns1.xsd"/>
+  <xs:element name="gradient">
+    <xs:complexType>
+      <xs:attribute name="name" form="qualified" type="xs:NCName"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attribute name="style" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="linear"/>
+            <xs:enumeration value="axial"/>
+            <xs:enumeration value="radial"/>
+            <xs:enumeration value="ellipsoid"/>
+            <xs:enumeration value="square"/>
+            <xs:enumeration value="rectangular"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="cx" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="cy" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="angle" form="qualified" type="xs:integer"/>
+      <xs:attribute name="border" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="start-color" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="#[0-9a-fA-F]{6}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="end-color" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="#[0-9a-fA-F]{6}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="start-intensity" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="end-intensity" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="name">
+    <xs:attribute name="name" use="required" form="qualified" type="xs:NCName"/>
+  </xs:attributeGroup>
+  <xs:attribute name="display-name" type="xs:string"/>
+  <xs:element name="hatch">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" form="qualified" type="xs:NCName"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attribute name="style" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="single"/>
+            <xs:enumeration value="double"/>
+            <xs:enumeration value="triple"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns3:color"/>
+      <xs:attribute name="distance" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rotation" form="qualified" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fill-image">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" form="qualified" type="xs:NCName"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="xlink:href" use="required"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="marker">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" form="qualified" type="xs:NCName"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attribute ref="ns12:viewBox" use="required"/>
+      <xs:attribute ref="ns12:d" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stroke-dash">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" form="qualified" type="xs:NCName"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attribute name="style" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="rect"/>
+            <xs:enumeration value="round"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="dots1" form="qualified" type="xs:integer"/>
+      <xs:attribute name="dots1-length" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="dots2" form="qualified" type="xs:integer"/>
+      <xs:attribute name="dots2-length" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="distance" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="opacity">
+    <xs:complexType>
+      <xs:attribute name="name" form="qualified" type="xs:NCName"/>
+      <xs:attribute ref="ns3:display-name"/>
+      <xs:attribute name="style" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="linear"/>
+            <xs:enumeration value="axial"/>
+            <xs:enumeration value="radial"/>
+            <xs:enumeration value="ellipsoid"/>
+            <xs:enumeration value="square"/>
+            <xs:enumeration value="rectangular"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="cx" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="cy" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="angle" form="qualified" type="xs:integer"/>
+      <xs:attribute name="border" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="start" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="end" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="style-name">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:NCName">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:length value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="layer-set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:layer"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rect">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns3:corner-radius"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="line">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns12:x1" use="required"/>
+      <xs:attribute ref="ns12:y1" use="required"/>
+      <xs:attribute ref="ns12:x2" use="required"/>
+      <xs:attribute ref="ns12:y2" use="required"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="polyline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="points" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?[0-9]+,-?[0-9]+([ ]+-?[0-9]+,-?[0-9]+)*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns12:viewBox" use="required"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="polygon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="points" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?[0-9]+,-?[0-9]+([ ]+-?[0-9]+,-?[0-9]+)*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns12:viewBox" use="required"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="regular-polygon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="concave" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="false"/>
+            <xs:enumeration value="true"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="sharpness" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="corners" use="required" form="qualified" type="xs:positiveInteger"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="path">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns12:d" use="required"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns12:viewBox" use="required"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="circle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns12:r"/>
+      <xs:attribute ref="ns12:cx"/>
+      <xs:attribute ref="ns12:cy"/>
+      <xs:attribute name="kind" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="full"/>
+            <xs:enumeration value="section"/>
+            <xs:enumeration value="cut"/>
+            <xs:enumeration value="arc"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="start-angle" form="qualified" type="xs:double"/>
+      <xs:attribute name="end-angle" form="qualified" type="xs:double"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ellipse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns12:cx"/>
+      <xs:attribute ref="ns12:cy"/>
+      <xs:attribute name="kind" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="full"/>
+            <xs:enumeration value="section"/>
+            <xs:enumeration value="cut"/>
+            <xs:enumeration value="arc"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="start-angle" form="qualified" type="xs:double"/>
+      <xs:attribute name="end-angle" form="qualified" type="xs:double"/>
+      <xs:attribute ref="ns12:rx"/>
+      <xs:attribute ref="ns12:ry"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="g">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns3:rect"/>
+          <xs:element ref="ns3:line"/>
+          <xs:element ref="ns3:polyline"/>
+          <xs:element ref="ns3:polygon"/>
+          <xs:element ref="ns3:regular-polygon"/>
+          <xs:element ref="ns3:path"/>
+          <xs:element ref="ns3:circle"/>
+          <xs:element ref="ns3:ellipse"/>
+          <xs:element ref="ns3:g"/>
+          <xs:element ref="ns3:page-thumbnail"/>
+          <xs:element ref="ns3:frame"/>
+          <xs:element ref="ns3:measure"/>
+          <xs:element ref="ns3:caption"/>
+          <xs:element ref="ns3:connector"/>
+          <xs:element ref="ns3:control"/>
+          <xs:element ref="ns7:scene"/>
+          <xs:element ref="ns3:custom-shape"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="page-thumbnail">
+    <xs:complexType>
+      <xs:attribute name="page-number" form="qualified" type="xs:positiveInteger"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns10:class"/>
+      <xs:attribute ref="ns10:placeholder"/>
+      <xs:attribute ref="ns10:user-transformed"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="frame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns3:text-box"/>
+          <xs:element ref="ns3:image"/>
+          <xs:element ref="ns3:object"/>
+          <xs:element ref="ns3:object-ole"/>
+          <xs:element ref="ns3:applet"/>
+          <xs:element ref="ns3:floating-frame"/>
+          <xs:element ref="ns3:plugin"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:element minOccurs="0" ref="ns3:image-map"/>
+        <xs:element minOccurs="0" ref="ns12:desc"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="ns3:contour-polygon"/>
+          <xs:element ref="ns3:contour-path"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns8:rel-width"/>
+      <xs:attribute ref="ns8:rel-height"/>
+      <xs:attribute ref="ns10:class"/>
+      <xs:attribute ref="ns10:placeholder"/>
+      <xs:attribute ref="ns10:user-transformed"/>
+      <xs:attribute name="copy-of" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="measure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns12:x1" use="required"/>
+      <xs:attribute ref="ns12:y1" use="required"/>
+      <xs:attribute ref="ns12:x2" use="required"/>
+      <xs:attribute ref="ns12:y2" use="required"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="caption">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute ref="ns3:caption-point-x"/>
+      <xs:attribute ref="ns3:caption-point-y"/>
+      <xs:attribute ref="ns3:corner-radius"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="connector">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="type" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="standard"/>
+            <xs:enumeration value="lines"/>
+            <xs:enumeration value="line"/>
+            <xs:enumeration value="curve"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns12:x1"/>
+      <xs:attribute ref="ns12:y1"/>
+      <xs:attribute name="start-shape" form="qualified" type="xs:IDREF"/>
+      <xs:attribute name="start-glue-point" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute ref="ns12:x2"/>
+      <xs:attribute ref="ns12:y2"/>
+      <xs:attribute name="end-shape" form="qualified" type="xs:IDREF"/>
+      <xs:attribute name="end-glue-point" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="line-skew" form="qualified">
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list>
+                <xs:simpleType>
+                  <xs:union>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                    <xs:simpleType>
+                      <xs:union>
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                        <xs:simpleType>
+                          <xs:restriction base="xs:string">
+                            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:union>
+                    </xs:simpleType>
+                  </xs:union>
+                </xs:simpleType>
+              </xs:list>
+            </xs:simpleType>
+            <xs:minLength value="1"/>
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="control">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+      </xs:sequence>
+      <xs:attribute name="control" use="required" form="qualified" type="xs:IDREF"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="class-names">
+    <xs:simpleType>
+      <xs:list itemType="xs:NCName"/>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="z-index" type="xs:nonNegativeInteger"/>
+  <xs:attribute name="id" type="xs:ID"/>
+  <xs:attribute name="layer" type="xs:string"/>
+  <xs:element name="custom-shape">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:glue-point"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="ns3:enhanced-geometry"/>
+      </xs:sequence>
+      <xs:attribute name="engine" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9a-zA-Z_]+:[0-9a-zA-Z._\-]+"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="data" form="qualified" type="xs:string"/>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns3:z-index"/>
+      <xs:attribute ref="ns3:id"/>
+      <xs:attribute ref="ns3:layer"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute ref="ns3:class-names"/>
+      <xs:attribute ref="ns10:style-name"/>
+      <xs:attribute ref="ns10:class-names"/>
+      <xs:attribute ref="ns3:transform"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns15:end-cell-address"/>
+      <xs:attribute ref="ns15:end-x"/>
+      <xs:attribute ref="ns15:end-y"/>
+      <xs:attribute ref="ns15:table-background"/>
+      <xs:attribute ref="ns17:anchor-type"/>
+      <xs:attribute ref="ns17:anchor-page-number"/>
+      <xs:attribute ref="ns3:text-style-name"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layer">
+    <xs:complexType>
+      <xs:attribute name="name" use="required" form="qualified" type="xs:string"/>
+      <xs:attribute name="protected" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="display" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="always"/>
+            <xs:enumeration value="screen"/>
+            <xs:enumeration value="printer"/>
+            <xs:enumeration value="none"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="a">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ns3:frame"/>
+      </xs:sequence>
+      <xs:attribute ref="xlink:href" use="required"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:actuate1"/>
+      <xs:attribute ref="ns13:target-frame-name"/>
+      <xs:attributeGroup ref="xlink:show1"/>
+      <xs:attribute ref="ns13:name"/>
+      <xs:attribute ref="ns13:server-map"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="page">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:forms"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns3:rect"/>
+          <xs:element ref="ns3:line"/>
+          <xs:element ref="ns3:polyline"/>
+          <xs:element ref="ns3:polygon"/>
+          <xs:element ref="ns3:regular-polygon"/>
+          <xs:element ref="ns3:path"/>
+          <xs:element ref="ns3:circle"/>
+          <xs:element ref="ns3:ellipse"/>
+          <xs:element ref="ns3:g"/>
+          <xs:element ref="ns3:page-thumbnail"/>
+          <xs:element ref="ns3:frame"/>
+          <xs:element ref="ns3:measure"/>
+          <xs:element ref="ns3:caption"/>
+          <xs:element ref="ns3:connector"/>
+          <xs:element ref="ns3:control"/>
+          <xs:element ref="ns7:scene"/>
+          <xs:element ref="ns3:custom-shape"/>
+        </xs:choice>
+        <xs:choice minOccurs="0">
+          <xs:element ref="ns10:animations"/>
+          <xs:element ref="ns9:animate"/>
+          <xs:element ref="ns9:set"/>
+          <xs:element ref="ns9:animateMotion"/>
+          <xs:element ref="ns9:animateColor"/>
+          <xs:element ref="ns9:animateTransform"/>
+          <xs:element ref="ns9:transitionFilter"/>
+          <xs:element ref="ns9:par"/>
+          <xs:element ref="ns9:seq"/>
+          <xs:element ref="ns9:iterate"/>
+          <xs:element ref="ns9:audio"/>
+          <xs:element ref="ns9:command"/>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="ns10:notes"/>
+      </xs:sequence>
+      <xs:attribute ref="ns10:use-header-name"/>
+      <xs:attribute ref="ns10:use-footer-name"/>
+      <xs:attribute ref="ns10:use-date-time-name"/>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns3:style-name"/>
+      <xs:attribute name="master-page-name" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:NCName">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:length value="0"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns10:presentation-page-layout-name"/>
+      <xs:attribute ref="ns3:id"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="glue-point">
+    <xs:complexType>
+      <xs:attribute name="id" use="required" form="qualified" type="xs:nonNegativeInteger"/>
+      <xs:attributeGroup ref="ns12:x1"/>
+      <xs:attributeGroup ref="ns12:y1"/>
+      <xs:attribute name="align" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="top-left"/>
+            <xs:enumeration value="top"/>
+            <xs:enumeration value="top-right"/>
+            <xs:enumeration value="left"/>
+            <xs:enumeration value="center"/>
+            <xs:enumeration value="right"/>
+            <xs:enumeration value="bottom-left"/>
+            <xs:enumeration value="bottom-right"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="text-box">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns17:h"/>
+        <xs:element ref="ns17:p"/>
+        <xs:element ref="ns17:list"/>
+        <xs:element ref="ns17:numbered-paragraph"/>
+        <xs:element ref="ns15:table"/>
+        <xs:element ref="ns3:a"/>
+        <xs:element ref="ns17:section"/>
+        <xs:element ref="ns17:table-of-content"/>
+        <xs:element ref="ns17:illustration-index"/>
+        <xs:element ref="ns17:table-index"/>
+        <xs:element ref="ns17:object-index"/>
+        <xs:element ref="ns17:user-index"/>
+        <xs:element ref="ns17:alphabetical-index"/>
+        <xs:element ref="ns17:bibliography"/>
+        <xs:element ref="ns3:rect"/>
+        <xs:element ref="ns3:line"/>
+        <xs:element ref="ns3:polyline"/>
+        <xs:element ref="ns3:polygon"/>
+        <xs:element ref="ns3:regular-polygon"/>
+        <xs:element ref="ns3:path"/>
+        <xs:element ref="ns3:circle"/>
+        <xs:element ref="ns3:ellipse"/>
+        <xs:element ref="ns3:g"/>
+        <xs:element ref="ns3:page-thumbnail"/>
+        <xs:element ref="ns3:frame"/>
+        <xs:element ref="ns3:measure"/>
+        <xs:element ref="ns3:caption"/>
+        <xs:element ref="ns3:connector"/>
+        <xs:element ref="ns3:control"/>
+        <xs:element ref="ns7:scene"/>
+        <xs:element ref="ns3:custom-shape"/>
+        <xs:element ref="ns17:change"/>
+        <xs:element ref="ns17:change-start"/>
+        <xs:element ref="ns17:change-end"/>
+      </xs:choice>
+      <xs:attribute name="chain-next-name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="ns3:corner-radius"/>
+      <xs:attribute ref="ns1:min-height"/>
+      <xs:attribute ref="ns1:min-width"/>
+      <xs:attribute ref="ns1:max-height"/>
+      <xs:attribute ref="ns1:max-width"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="image">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:binary-data"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ns17:p"/>
+          <xs:element ref="ns17:list"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="filter-name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="object">
+    <xs:complexType>
+      <xs:choice minOccurs="0">
+        <xs:element ref="ns13:document"/>
+        <xs:element ref="mathml:math"/>
+      </xs:choice>
+      <xs:attribute name="notify-on-update-of-ranges" form="qualified" type="xs:string"/>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="object-ole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns13:binary-data"/>
+      </xs:sequence>
+      <xs:attribute name="class-id" form="qualified"/>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="applet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:param"/>
+      </xs:sequence>
+      <xs:attribute name="code" form="qualified"/>
+      <xs:attribute name="object" form="qualified"/>
+      <xs:attribute name="archive" form="qualified"/>
+      <xs:attribute name="may-script" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="floating-frame">
+    <xs:complexType>
+      <xs:attribute name="frame-name" form="qualified" type="xs:string"/>
+      <xs:attribute ref="xlink:href" use="required"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="plugin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:param"/>
+      </xs:sequence>
+      <xs:attribute name="mime-type" form="qualified"/>
+      <xs:attribute ref="xlink:href" use="required"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attributeGroup ref="xlink:show"/>
+      <xs:attributeGroup ref="xlink:actuate"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="image-map">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="ns3:area-rectangle"/>
+        <xs:element ref="ns3:area-circle"/>
+        <xs:element ref="ns3:area-polygon"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contour-polygon">
+    <xs:complexType>
+      <xs:attribute name="recreate-on-edit" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns12:viewBox" use="required"/>
+      <xs:attribute name="points" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?[0-9]+,-?[0-9]+([ ]+-?[0-9]+,-?[0-9]+)*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contour-path">
+    <xs:complexType>
+      <xs:attribute name="recreate-on-edit" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns12:viewBox" use="required"/>
+      <xs:attribute ref="ns12:d" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enhanced-geometry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:equation"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ns3:handle"/>
+      </xs:sequence>
+      <xs:attribute name="type" form="qualified">
+        <xs:simpleType>
+          <xs:union memberTypes="xs:string">
+            <xs:simpleType>
+              <xs:restriction base="xs:token">
+                <xs:enumeration value="non-primitive"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:union>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns12:viewBox"/>
+      <xs:attribute name="mirror-vertical" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="mirror-horizontal" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="text-rotate-angle" form="qualified" type="xs:double"/>
+      <xs:attribute name="extrusion-allowed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="text-path-allowed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="concentric-gradient-fill-allowed" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-brightness" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-depth" form="qualified">
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list>
+                <xs:simpleType>
+                  <xs:union memberTypes="xs:double">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:union>
+                </xs:simpleType>
+              </xs:list>
+            </xs:simpleType>
+            <xs:length value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-diffusion" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-number-of-line-segments" form="qualified" type="xs:integer"/>
+      <xs:attribute name="extrusion-light-face" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-first-light-harsh" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-second-light-harsh" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-first-light-level" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-second-light-level" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-first-light-direction" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="\([ ]*-?([0-9]+(\.[0-9]*)?|\.[0-9]+)([ ]+-?([0-9]+(\.[0-9]*)?|\.[0-9]+)){2}[ ]*\)"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-second-light-direction" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="\([ ]*-?([0-9]+(\.[0-9]*)?|\.[0-9]+)([ ]+-?([0-9]+(\.[0-9]*)?|\.[0-9]+)){2}[ ]*\)"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-metal" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns7:shade-mode"/>
+      <xs:attribute name="extrusion-rotation-angle" form="qualified">
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list>
+                <xs:simpleType>
+                  <xs:union memberTypes="xs:double"/>
+                </xs:simpleType>
+              </xs:list>
+            </xs:simpleType>
+            <xs:length value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-rotation-center" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="\([ ]*-?([0-9]+(\.[0-9]*)?|\.[0-9]+)([ ]+-?([0-9]+(\.[0-9]*)?|\.[0-9]+)){2}[ ]*\)"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-shininess" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-skew" form="qualified">
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list>
+                <xs:simpleType>
+                  <xs:union memberTypes="xs:double"/>
+                </xs:simpleType>
+              </xs:list>
+            </xs:simpleType>
+            <xs:length value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-specularity" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)%"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns7:projection"/>
+      <xs:attribute name="extrusion-viewpoint" form="qualified" type="xs:string"/>
+      <xs:attribute name="extrusion-origin" form="qualified">
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list>
+                <xs:simpleType>
+                  <xs:union memberTypes="xs:double"/>
+                </xs:simpleType>
+              </xs:list>
+            </xs:simpleType>
+            <xs:length value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="extrusion-color" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="enhanced-path" form="qualified" type="xs:string"/>
+      <xs:attribute name="path-stretchpoint-x" form="qualified" type="xs:double"/>
+      <xs:attribute name="path-stretchpoint-y" form="qualified" type="xs:double"/>
+      <xs:attribute name="text-areas" form="qualified" type="xs:string"/>
+      <xs:attribute name="glue-points" form="qualified" type="xs:string"/>
+      <xs:attribute name="glue-point-type" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="none"/>
+            <xs:enumeration value="segments"/>
+            <xs:enumeration value="rectangle"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="glue-point-leaving-directions" form="qualified"/>
+      <xs:attribute name="text-path" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="text-path-mode" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="normal"/>
+            <xs:enumeration value="path"/>
+            <xs:enumeration value="shape"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="text-path-scale" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="path"/>
+            <xs:enumeration value="shape"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="text-path-same-letter-heights" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="modifiers" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="caption-point-x">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="caption-point-y">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="-?([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="corner-radius">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="([0-9]+(\.[0-9]*)?|\.[0-9]+)((cm)|(mm)|(in)|(pt)|(pc)|(px))"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="transform" type="xs:string"/>
+  <xs:attributeGroup name="name1">
+    <xs:attribute name="name" use="optional" form="qualified" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attribute name="text-style-name">
+    <xs:simpleType>
+      <xs:union memberTypes="xs:NCName">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:length value="0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:element name="param">
+    <xs:complexType>
+      <xs:attribute name="name" form="qualified"/>
+      <xs:attribute name="value" form="qualified"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="area-rectangle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns12:desc"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attribute ref="ns13:target-frame-name"/>
+      <xs:attributeGroup ref="xlink:show1"/>
+      <xs:attribute ref="ns13:name"/>
+      <xs:attribute name="nohref" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="nohref"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="area-circle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns12:desc"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attribute ref="ns13:target-frame-name"/>
+      <xs:attributeGroup ref="xlink:show1"/>
+      <xs:attribute ref="ns13:name"/>
+      <xs:attribute name="nohref" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="nohref"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="ns12:cx" use="required"/>
+      <xs:attribute ref="ns12:cy" use="required"/>
+      <xs:attribute ref="ns12:r" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="area-polygon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="ns12:desc"/>
+        <xs:element minOccurs="0" ref="ns13:event-listeners"/>
+      </xs:sequence>
+      <xs:attribute ref="xlink:href"/>
+      <xs:attribute ref="xlink:type"/>
+      <xs:attribute ref="ns13:target-frame-name"/>
+      <xs:attributeGroup ref="xlink:show1"/>
+      <xs:attribute ref="ns13:name"/>
+      <xs:attribute name="nohref" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="nohref"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="ns12:x"/>
+      <xs:attributeGroup ref="ns12:y"/>
+      <xs:attributeGroup ref="ns12:width"/>
+      <xs:attributeGroup ref="ns12:height"/>
+      <xs:attribute ref="ns12:viewBox" use="required"/>
+      <xs:attribute name="points" use="required" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="-?[0-9]+,-?[0-9]+([ ]+-?[0-9]+,-?[0-9]+)*"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="equation">
+    <xs:complexType>
+      <xs:attribute name="name" form="qualified" type="xs:string"/>
+      <xs:attribute name="formula" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="handle">
+    <xs:complexType>
+      <xs:attribute name="handle-mirror-vertical" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="handle-mirror-horizontal" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="handle-switched" form="qualified">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="handle-position" use="required" form="qualified" type="xs:string"/>
+      <xs:attribute name="handle-range-x-minimum" form="qualified" type="xs:string"/>
+      <xs:attribute name="handle-range-x-maximum" form="qualified" type="xs:string"/>
+      <xs:attribute name="handle-range-y-minimum" form="qualified" type="xs:string"/>
+      <xs:attribute name="handle-range-y-maximum" form="qualified" type="xs:string"/>
+      <xs:attribute name="handle-polar" form="qualified" type="xs:string"/>
+      <xs:attribute name="handle-radius-range-minimum" form="qualified" type="xs:string"/>
+      <xs:attribute name="handle-radius-range-maximum" form="qualified" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attribute name="shape-id" type="xs:IDREF"/>
+  <xs:attribute name="color">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="#[0-9a-fA-F]{6}"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+</xs:schema>

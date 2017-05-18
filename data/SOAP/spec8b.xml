@@ -1,0 +1,34 @@
+<?xml version='1.0' ?>
+<env:Envelope xmlns:env="http://www.w3.org/2002/06/soap-envelope"> 
+ <env:Header>
+  <m:reservation xmlns:m="http://travelcompany.example.org/reservation" 
+       env:role="http://www.w3.org/2002/06/soap-envelope/role/next"
+           env:mustUnderstand="true">
+   <m:reference>uuid:093a2da1-q345-739r-ba5d-pqff98fe8j7d</m:reference>
+   <m:dateAndTime>2001-11-30T16:25:00.000-05:00</m:dateAndTime>
+  </m:reservation>
+ </env:Header>
+ <env:Body>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns:x="http://travelcompany.example.org/vocab#">
+   <x:ReservationRequest 
+ rdf:about="http://travelcompany.example.org/reservations?code=FT35ZBQ">
+      <x:passenger>John Q. Public</x:passenger>
+      <x:outbound>
+       <x:TravelRequest>
+        <x:to>LAX</x:to>
+        <x:from>LGA</x:from>
+        <x:date>12-14-01</x:date>
+       </x:TravelRequest>
+      </x:outbound>
+      <x:return>
+       <x:TravelRequest>
+        <x:to>JFK</x:to>
+        <x:from>LAX</x:from>
+        <x:date>12-20-01</x:date>
+       </x:TravelRequest>
+      </x:return>
+    </x:ReservationRequest>
+  </rdf:RDF>
+ </env:Body>
+</env:Envelope>

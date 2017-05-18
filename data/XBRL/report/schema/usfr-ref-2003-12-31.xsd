@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema targetNamespace="http://www.xbrl.org/us/fr/common/ref/2003-12-31" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ref="http://www.xbrl.org/us/fr/common/ref/2003-12-31" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<annotation>
+		<appinfo/>
+	</annotation>
+	<import namespace="http://www.xbrl.org/2003/instance" schemaLocation="xbrl-instance-2003-12-31.xsd"/>
+	<import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="../../linkbases/schema/xbrl-linkbase-2003-12-31.xsd"/>
+	<element name="Name" type="string" substitutionGroup="link:part" id="ref_Name"/>
+	<element name="Number" type="string" substitutionGroup="link:part" id="ref_Number"/>
+	<element name="IssueDate" type="string" substitutionGroup="link:part" id="ref_IssueDate"/>
+	<element name="Chapter" type="string" substitutionGroup="link:part" id="ref_Chapter"/>
+	<element name="Note" type="string" substitutionGroup="link:part" id="ref_Note"/>
+	<element name="Section" type="string" substitutionGroup="link:part" id="ref_Section"/>
+	<element name="Subsection" type="string" substitutionGroup="link:part" id="ref_Subsection"/>
+	<element name="Paragraph" type="string" substitutionGroup="link:part" id="ref_Paragraph"/>
+	<element name="Subparagraph" type="string" substitutionGroup="link:part" id="ref_Subparagraph"/>
+	<element name="Clause" type="string" substitutionGroup="link:part" id="ref_Clause"/>
+	<element name="Subclause" type="string" substitutionGroup="link:part" id="ref_Subclause"/>
+	<element name="Appendix" type="string" substitutionGroup="link:part" id="ref_Appendix"/>
+	<element name="Example" type="string" substitutionGroup="link:part" id="ref_Example"/>
+	<element name="Page" type="string" substitutionGroup="link:part" id="ref_Page"/>
+	<element name="Publisher" type="string" substitutionGroup="link:part" id="ref_Publisher"/>
+	<element name="Exhibit" type="string" substitutionGroup="link:part" id="ref_Exhibit"/>
+	<element name="Article" type="string" substitutionGroup="link:part" id="ref_Article"/>
+	<element name="Sentence" type="string" substitutionGroup="link:part" id="ref_Sentence"/>
+	<element name="URI" type="string" substitutionGroup="link:part" id="ref_URI"/>
+	<element name="URIDate" type="string" substitutionGroup="link:part" id="ref_URIDate"/>
+	<element name="Footnote" type="string" substitutionGroup="link:part" id="ref_Footnote"/>
+</schema>

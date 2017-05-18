@@ -1,0 +1,7 @@
+<!-- =================================================================== -->
+<!-- The event type AT(xsi:type) is available for union types in strict  -->
+<!-- schema mode, even when all the member types are anonymous.          -->
+<!-- =================================================================== -->
+<foo:unionOfIntegerString xmlns:foo='urn:foo' xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  xsi:type='xsd:integer'>12345</foo:unionOfIntegerString>

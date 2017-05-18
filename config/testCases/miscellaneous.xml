@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+      <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+      <param xmlns="http://www.sun.com/japex/testSuite" name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/Miscellaneous/autoschema.xsd"/>
+
+      <testCase name="Miscellaneous/factbook.xml">
+        <param name="japex.inputFile" value="${testsDir}/Miscellaneous/factbook.xml"/>
+      </testCase>
+      <testCase name="Miscellaneous/periodic.xml">
+        <param name="japex.inputFile" value="${testsDir}/Miscellaneous/periodic.xml"/>
+        <param name="org.w3c.exi.ttf.preserve" value="comments"/>
+      </testCase>
+      <testCase name="Miscellaneous/weblog.xml">
+        <param name="japex.inputFile" value="${testsDir}/Miscellaneous/weblog.xml"/>
+      </testCase>
+</testCaseGroup>

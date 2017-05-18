@@ -1,0 +1,27 @@
+<?xml version='1.0' ?>
+<env:Envelope xmlns:env="http://www.w3.org/2002/06/soap-envelope" >
+ <env:Header>
+   <t:transaction
+           xmlns:t="http://thirdparty.example.org/transaction"
+           env:encodingStyle="http://example.com/encoding"
+           env:mustUnderstand="true" >
+               5
+   </t:transaction>
+ </env:Header>  
+ <env:Body>
+  <m:chargeReservation 
+      env:encodingStyle="http://www.w3.org/2002/06/soap-encoding"
+         xmlns:m="http://travelcompany.example.org/">
+   <m:reservation xmlns:m="http://travelcompany.example.org/reservation" 
+       env:role="http://www.w3.org/2002/06/soap-envelope/role/next"
+           env:mustUnderstand="true">
+    <m:reference>uuid:093a2da1-q345-739r-ba5d-pqff98fe8j7d</m:reference>
+   </m:reservation>   <o:creditCard xmlns:o="http://mycompany.example.com/financial">
+     <n:name xmlns:n="http://mycompany.example.com/employees">
+           John Q. Public
+     </n:name>     <o:number>123456789099999</o:number>
+     <o:expiration>2005-02</o:expiration>
+     </o:creditCard>
+  </m:chargeReservation>
+ </env:Body>
+</env:Envelope>

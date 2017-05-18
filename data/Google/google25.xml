@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance" xmlns:xsd="http://www.w3.org/1999/XMLSchema">
+<SOAP-ENV:Body>
+<SOAP-ENV:Fault>
+<faultcode>SOAP-ENV:Server</faultcode>
+<faultstring>Exception from service object: For input string: "13060000000"</faultstring>
+<faultactor>/search/beta2</faultactor>
+<detail>
+<stackTrace>java.lang.NumberFormatException: For input string: &quot;13060000000&quot;
+	at java.lang.NumberFormatException.forInputString(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at java.lang.Integer.parseInt(Unknown Source)
+	at com.google.soap.search.GoogleSearchService.processRES(GoogleSearchService.java:573)
+	at com.google.soap.search.GoogleSearchService.processGSP(GoogleSearchService.java:503)
+	at com.google.soap.search.GoogleSearchService.convertToGoogleSearchResult(GoogleSearchService.java:478)
+	at com.google.soap.search.GoogleSearchService.doGoogleSearch(GoogleSearchService.java:160)
+	at sun.reflect.GeneratedMethodAccessor13.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.soap.server.RPCRouter.invoke(RPCRouter.java:146)
+	at org.apache.soap.providers.RPCJavaProvider.invoke(RPCJavaProvider.java:129)
+	at org.apache.soap.server.http.RPCRouterServlet.doPost(RPCRouterServlet.java:288)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:709)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+	at com.google.gse.HttpConnection.runServlet(HttpConnection.java:436)
+	at com.google.gse.HttpConnection.run(HttpConnection.java:376)
+	at com.google.gse.DispatchQueue$WorkerThread.run(DispatchQueue.java:254)
+</stackTrace>
+</detail>
+</SOAP-ENV:Fault>
+
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+

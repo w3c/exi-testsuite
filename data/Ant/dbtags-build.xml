@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<project name="dbtags" default="main">
+
+  <!-- create this file to store the locations of your dependant jars -->
+  <property file="../build.properties"/>
+  <property name="classpath" value="${servlet.jar}:${jdbc2_0-stdext.jar}"/>
+
+  <property name="checkRequirements.pre" value="checkRequirements.pre"/>
+
+  <target name="checkRequirements.pre">
+    <antcall target="checkRequiredFile">
+       <param name="file" value="${jdbc2_0-stdext.jar}"/>
+       <param name="fail.message" value="a jar file containing the jdbc2_0-stdext classes is required to compile the dbtags taglib. please define the property jdbc2_0-stdext.jar in your build.properties file and ensure that the file exists"/>
+    </antcall>
+  </target>
+
+</project>

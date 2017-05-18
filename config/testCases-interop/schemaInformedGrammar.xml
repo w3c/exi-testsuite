@@ -1,0 +1,15 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-informed grammar interoperability tests">
+
+    <param name="groupId" value="${groupId} | schemaInformed"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>    
+    
+    <xi:include href="schemaInformedDeclaredProductions.xml"/>
+    <xi:include href="schemaInformedUndeclaredProductions.xml"/>
+
+    <xi:include href="schemaInformedGrammar/builtInGrammar/builtInToSchemaInformed.xml"/>
+    <xi:include href="schemaInformedGrammar/builtInGrammar/builtInXsitype.xml"/>
+
+</testCaseGroup>

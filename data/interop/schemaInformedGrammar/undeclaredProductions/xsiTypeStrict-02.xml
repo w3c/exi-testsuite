@@ -1,0 +1,8 @@
+<!-- =================================================================== -->
+<!-- Use of AT(xsi:type) event type in strict schema mode. Switching     -->
+<!-- from simple type to a complex type. The attribute foo:aA is         -->
+<!-- permitted to appear in type foo:extendedDate but not in the         -->
+<!-- original type xsd:date.                                             -->
+<!-- =================================================================== -->
+<foo:AF xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  xsi:type='foo:extendedDate' foo:aA="" >2010-03-17</foo:AF>

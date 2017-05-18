@@ -1,0 +1,73 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn Element Grammar tests">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/element"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#builtinElemGrammars"/>
+
+    <testCase name="builtin.element-01">
+        <param name="testDescription"  value="Root tag"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-01.xml" />
+    </testCase>
+    <testCase name="builtin.element-02">
+        <param name="testDescription"  value="Root tag with a child element"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-02.xml" />
+    </testCase>
+    <testCase name="builtin.element-03">
+        <param name="testDescription"  value="Root tag with a child element"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-03.xml" />
+    </testCase>
+    <testCase name="builtin.element-04">
+        <param name="testDescription"  value="Root tag with a child element"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-04.xml" />
+    </testCase>
+    <testCase name="builtin.element-05">
+        <param name="testDescription"  value="Promotion of a specific SE(qname) within StartTagContent grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-05.xml" />
+    </testCase>
+    <testCase name="builtin.element-06">
+        <param name="testDescription"  value="Promotion of a specific SE(qname) within ElementContent grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-06.xml" />
+    </testCase>
+    <testCase name="builtin.element-07">
+        <param name="testDescription"  value="Promotion of EE within StartTagContent grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-07.xml" />
+    </testCase>
+    <testCase name="builtin.element-08">
+        <param name="testDescription"  value="Promotion of the same SE(qname) within StartTagContent and ElementContent grammars"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-08.xml" />
+    </testCase>
+    <testCase name="builtin.element-09">
+        <param name="testDescription"  value="Simple grammar search (same element qname at different places)"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-09.xml" />
+    </testCase>
+    <testCase name="builtin.element-10">
+        <param name="testDescription"  value="Independent learning between StartTagContent and ElementContent grammars"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-10.xml" />
+    </testCase>
+    <testCase name="builtin.element-11">
+        <param name="testDescription"  value="Progressive StartTagContent grammar learning"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-11.xml" />
+    </testCase>
+    <testCase name="builtin.element-12">
+        <param name="testDescription"  value="Progressive ElementContent grammar learning"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-12.xml" />
+    </testCase>
+    <testCase name="builtin.element-13">
+        <param name="testDescription"  value="Recursive element for StartTagContent grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-13.xml" />
+    </testCase>
+    <testCase name="builtin.element-14">
+        <param name="testDescription"  value="Recursive element for StartTagContent grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-14.xml" />
+    </testCase>
+    <testCase name="builtin.element-15">
+        <param name="testDescription"  value="Recursive element for ElementContent grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-15.xml" />
+    </testCase>
+    <testCase name="builtin.element-16">
+        <param name="testDescription"  value="Recursive element for ElementContent grammar"/>
+        <param name="japex.inputFile" value="${testDocFolder}/element-16.xml" />
+    </testCase>
+</testCaseGroup>
+

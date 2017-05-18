@@ -1,0 +1,41 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid decimal encoding">
+
+    <param name="groupId" value="${groupId} | decimalValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/decimal/decimal.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/decimal"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingDecimal"/>
+
+    <testCase name="decimal.valid-00">
+        <param name="description"  value="Positive Decimal without fraction"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-00.xml" />
+    </testCase>
+    <testCase name="decimal.valid-01">
+        <param name="description"  value="Negative Decimal with fraction"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-01.xml" />
+    </testCase>
+    <testCase name="decimal.valid-02">
+        <param name="description"  value="Decimal with fraction with leading zeros"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-02.xml" />
+    </testCase>
+    <testCase name="decimal.valid-03">
+        <param name="description"  value="Decimal with '0' integral part"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-03.xml" />
+    </testCase>
+    <testCase name="decimal.valid-04">
+        <param name="description"  value="Decimal with '' integral part "/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-04.xml" />
+    </testCase>
+    <testCase name="decimal.valid-05">
+        <param name="description"  value="Big positive decimal value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-05.xml" />
+    </testCase>
+    <testCase name="decimal.valid-06">
+        <param name="description"  value="Big negative decimal value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+    </testCase>
+
+</testCaseGroup>

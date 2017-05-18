@@ -1,0 +1,19 @@
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+      <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+      <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/MAGE-ML/MAGE-ML.xsd"/>
+<!-- temporarily disable dtd preservation until more candidates can preserve them -->
+<!--  <param name="org.w3c.exi.ttf.preserve" value="dtds"/> -->
+
+      <testCase name="MAGE-ML/A-TIGR-1-ArrayDesign.xml">
+        <param name="japex.inputFile" value="${testsDir}/MAGE-ML/A-TIGR-1-ArrayDesign.xml"/>
+      </testCase>
+      <testCase name="MAGE-ML/A-TIGR-1-BioSequence.xml">
+        <param name="japex.inputFile" value="${testsDir}/MAGE-ML/A-TIGR-1-BioSequence.xml"/>
+      </testCase>
+      <testCase name="MAGE-ML/A-TIGR-1-DesignElement.xml">
+        <param name="japex.inputFile" value="${testsDir}/MAGE-ML/A-TIGR-1-DesignElement.xml"/>
+      </testCase>
+      <testCase name="MAGE-ML/Iron_array.xml">
+        <param name="japex.inputFile" value="${testsDir}/MAGE-ML/Iron_array.xml"/>
+      </testCase>
+</testCaseGroup>

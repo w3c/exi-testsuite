@@ -1,0 +1,8 @@
+<!-- =================================================================== -->
+<!-- When xsi:type and/or xsi:nil attributes appear in an element where  -->
+<!-- schema-informed grammars are in effect, they MUST occur before any  -->
+<!-- other attribute events of the same element, with xsi:type placed    -->
+<!-- before xsi:nil when they both occur.                                -->
+<!-- =================================================================== -->
+<foo:F xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  foo:aA='' xsi:nil='true' xsi:type='foo:extended_F'></foo:F>

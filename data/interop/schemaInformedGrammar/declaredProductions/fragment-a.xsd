@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo">
+
+<xsd:import namespace="urn:aoo" schemaLocation="fragment-a_imported_aoo.xsd"/>
+
+<!-- Don't add any more element declarations! -->
+<xsd:element name="C"/><!-- event code 3 -->
+<xsd:element name="D"/><!-- event code 5 -->
+
+</xsd:schema>

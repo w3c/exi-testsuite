@@ -1,0 +1,27 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="BuiltIn Fragment Grammar tests">
+
+    <param name="groupId" value="${groupId} | fragment"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/builtInGrammar/fragments"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#builtinDocGrammars"/>
+    <param name="org.w3c.exi.ttf.fragments" value="true" />
+
+    <testCase name="builtin.fragment-00">
+        <param name="org.w3c.exi.ttf.preserve" value="pis comments" />
+        <param name="testDescription"  value="Schemaless Fragment with PIs and Comments"/>
+        <param name="japex.inputFile" value="${testDocFolder}/fragment.frag" />
+    </testCase>
+    <testCase name="builtin.fragment-01">
+        <param name="testDescription"  value="Schemaless Fragment without PIs and Comments"/>
+        <param name="japex.inputFile" value="${testDocFolder}/fragment.frag" />
+    </testCase>
+    <testCase name="builtin.fragment-02">
+        <param name="org.w3c.exi.ttf.preserve" value="pis comments" />
+        <param name="testDescription"  value="Schemaless Real Fragment Example"/>
+        <param name="japex.inputFile" value="${testDocFolder}/Combined.BBCAsian.frag" />
+    </testCase>
+
+</testCaseGroup>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Revision: FIXML 4.4 Schema Version - 2003,20041218
+    Copyright 2003,2004 FIX Protocol Limited.  All rights reserved.
+
+    This Schema represents FIXML vocabulary based on version 4.4 of the FIX Protocol
+
+    Comments should be posted on the FIX protocol web-site
+    www.fixprotocol.org
+-->
+<xs:schema targetNamespace="http://www.fixprotocol.org/FIXML-4-4" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fixprotocol.org/FIXML-4-4" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="fixml-order-impl-4-4.xsd"/>
+	<xs:include schemaLocation="fixml-crossorders-impl-4-4.xsd"/>
+	<xs:include schemaLocation="fixml-multilegorders-impl-4-4.xsd"/>
+	<xs:include schemaLocation="fixml-listorders-impl-4-4.xsd"/>
+</xs:schema>

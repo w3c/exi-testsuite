@@ -1,0 +1,3180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by Diane m. Howard (The MITRE Corporation) -->
+<xsd:schema xmlns:cc="http://diides.ncr.disa.mil/xmlreg/GEO" xmlns="http://www.gmti.mil/STANAG/4607/NATO" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.gmti.mil/STANAG/4607/NATO" elementFormDefault="qualified" xml:lang="EN">
+	<xsd:annotation>
+		<xsd:appinfo>
+			<xsd:documentation>
+				<SchemaInformation>
+					<FileName>gmti.xsd</FileName>
+					<Purpose>XML Schema (gmti.xsd) for Ground Moving Target Indicator Format (GMTI) data</Purpose>
+					<SchemaVersion>NATO Ground Moving Target Indicator Format schema. GMTI 1.0, 2002-05-01</SchemaVersion>
+					<RevisionDate>11 Sept 2006, draft</RevisionDate>
+					<SchemaSource>Based on Stanag 4607, edition 1, version 1, Ratification draft 1</SchemaSource>
+					<DTDInfo>TBD</DTDInfo>
+					<SponsoringProgramOffice>ESC (ISR SG) - DCGS program office</SponsoringProgramOffice>
+					<OwnershipInformation>
+						<OrganizationName>The MITRE Corporation</OrganizationName>
+						<Address>202 Burlington Road</Address>
+						<Address>Bedford, Massachusetts</Address>
+						<ZipCode>01730</ZipCode>
+						<PublicReleaseStatement>Approved for Public Release; Distribution Unlimited</PublicReleaseStatement>
+						<PublicReleaseCaseNumber>03-0664</PublicReleaseCaseNumber>
+						<CopyrightsNotice> 2003 The MITRE Corporation</CopyrightsNotice>
+						<Developer>Diane M. Howard, The MITRE Corporation</Developer>
+					</OwnershipInformation>
+					<SchemaComments>
+						1.	Schema design in structure is closest to table representation in STANAG 4607 with exceptions.  
+						2.	Abbreviations in the table described in the STANAG will be spelled out.  Parenthesesis, if part of the naming
+						 convention of field names in the STANAG, are not used.   
+						3.	Empty tag elements will be used to capture a grouping of like sub-elements similar to the table
+						 representation.   This element 	nesting will 	not be passed on to the children elements to avoid
+						  redundant prefix names. 
+						4.	Element names (parent and children) follow Camel Case structure for main descriptive names and lower
+						 case for prepositions or conjuctions. 
+						5.  Changes: 
+						BCSStringLength65515.Type to stringLength-65515  (GMTIGlobals.xsd)
+						complexcontent to:simpleContent                                 (GMTI.xsd)
+						__32-4294967295 to:  __0-4294967295                      (GMTIGlobals.xsd)
+						set SegmentSize = 0                                                     (GMTIGlobals.xsd)
+						ExistenceMask.Type changed to:                        		  (GMTIGlobals.xsd)
+						       maxLength="64", pattern value="[0-1]*"
+                                                                                                                       9-11-2006 dhoward
+					</SchemaComments>
+				</SchemaInformation>
+			******************************************************************************************
+			</xsd:documentation>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:import namespace="http://diides.ncr.disa.mil/xmlreg/GEO" schemaLocation="FIPS10-4CountryCodes.xsd"/>
+	<!--	<xsd:include schemaLocation="NATOClassificationSystem.xsd"/>  -->
+	<xsd:include schemaLocation="GMTIGlobals.xsd"/>
+	<xsd:element name="GMTI">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="PacketHeader" type="PacketHeaderType"/>
+				<xsd:sequence maxOccurs="unbounded">
+					<xsd:element name="SegmentHeader" type="SegmentHeaderType"/>
+					<xsd:choice>
+						<xsd:element name="MissionSegment" type="MissionSegmentType" minOccurs="0"/>
+						<xsd:element name="DwellSegment" type="DwellSegmentType" minOccurs="0"/>
+						<xsd:element name="HRRSegment" type="HRRSegmentType" minOccurs="0"/>
+						<xsd:element name="JobDefinitionSegment" type="JobDefinitionSegmentType" minOccurs="0"/>
+						<xsd:element name="FreeTextSegment" type="FreeTextSegmentType" minOccurs="0"/>
+						<xsd:element name="TestandStatusSegment" type="TestAndStatusSegmentType" minOccurs="0"/>
+						<xsd:element name="ProcessingHistorySegment" type="ProcessingHistorySegmentType" minOccurs="0"/>
+						<xsd:element name="PlatformLocationSegment" type="PlatformLocationSegmentType" minOccurs="0"/>
+						<xsd:element name="JobRequestSegment" type="JobRequestSegmentType" minOccurs="0"/>
+						<xsd:element name="JobAcknowledgeSegment" type="JobAcknowledgeSegmentType" minOccurs="0"/>
+						<!--  Ed. Note:  The following elements represent segments for inclusion in future Schema versions -->
+						<!--<xsd:element name="Range-DopplerSegment" type="Range-DopplerSegmentType" minOccurs="0"/> 
+						       <xsd:element name="LowReflectivityIndexSegment" type="LowReflectivityIndexType" minOccurs="0"/> 									<xsd:element name="GroupSegment" type="GroupSegmentType" minOccurs="0"/> 	
+					     		<xsd:element name="AttachedTargetSegment" type="AttachedTargetSegmentType" minOccurs="0"
+					     		<xsd:element name="System-SpecificSegment" type="System-SpecificSegmentType" minOccurs="0"/> -->
+						<!-- *************************    end of future segment elements *************************    -->
+					</xsd:choice>
+				</xsd:sequence>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="PacketHeaderType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Packet Header is sent at the beginning of each packet.  It identifies the format version of the data contained in the packet, the size of the packet, and information pertaining to the platform, security, and the mission.</Definition>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="VersionID" type="VersionID.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The version number and edition of STANAG 4607 to which the packet conforms.  It shall be of the form "mn", where "m" indicates the edition number and "n" indicates the version number of that edition. </Definition>
+						<STANAG4607ReferenceFieldName>Version ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>P1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PacketSize" type="_0-4294967295">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The number of bytes in the entire packet including this header.  The minimum packet size shall be the number of bytes in the Packet Header.</Definition>
+						<STANAG4607ReferenceFieldName>Packet Size</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>P2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Nationality" type="union.NATOPlatformCode.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The nationality of the platform providing the GMTI data.  NATO platforms providing GMTI data shall use the digraph NA.</Definition>
+						<STANAG4607ReferenceFieldName>Nationality</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>P3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FileSecurity">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Classification" type="ClassificationLevels.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The classification level of the file.</Definition>
+									<STANAG4607ReferenceFieldName>File Security - Classification</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>P4</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ClassificationSystem" type="union.ClassificationSystem.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The national or multinational security system to which the security classification in field P4 conforms.  Country codes for national security systems are in accordance with FIPS Publication 10-4.  If this field is all BCS spaces (blank characters), it indicates that no Security Classification System applies to the file.</Definition>
+									<STANAG4607ReferenceFieldName>File Security - Classification System</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>P5</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Code" type="TwoByteFlag.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The additional control and/or handling instructions associated with the GMTI data. A value of 0 (hex 0x00) indicates there are no additional security codes that apply to the GMTI data. Each bit of the field, when set to a binary “1”, indicates that the corresponding security code applies to the data. This field allows multiple security codes to be associated with the GMTI data</Definition>
+									<STANAG4607ReferenceFieldName>File Security - Code</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>P6</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ExerciseIndicator" type="union.ExerciseIndicator.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies whether the data contained in this packet is from a real-world military operation or from an exercise, and whether the data is real (originates from live-fly or other non-simulated operational sources), simulated (originates from target simulator sources), or synthesized (a mix of real and simulated data).</Definition>
+						<STANAG4607ReferenceFieldName>Exercise Indicator</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>P7</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PlatformID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies the platform.  For aircraft the platform ID shall be the tail number.  For a space-based platform the platform ID shall be the satellite name with an appropriate numerical designator.  For other systems, an appropriate unique designator shall be used.  Unused characters shall be filled with the BCS space character (blank).  In all cases, the platform ID is determined by the nation owning the platform, whose responsibility it is to ensure that its platforms are uniquely identified within the set of platforms it owns.</Definition>
+						<STANAG4607ReferenceFieldName>Platform ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>P8</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionID" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Uniquely identifies the mission for the platform.</Definition>
+						<STANAG4607ReferenceFieldName>Mission ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>P9</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="JobID" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A platform-assigned number identifying the specific request or task to which the packet pertains.  The Job ID shall be unique within a mission.  A default Job ID of 0 indicates there is no reference to any specific request or task.</Definition>
+						<STANAG4607ReferenceFieldName>Job ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>P10</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SegmentHeaderType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Segment Header is sent at the beginning of each segment transmitted within a packet.  It identifies the type and size of the segment that follows.</Definition>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SegmentType" type="SegmentType.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The type and content of the data segment which follows this header.  Data segments corresponding to the values 4, 7, 8, 9, and 11 are reserved for future use.</Definition>
+						<STANAG4607ReferenceFieldName>Segment Type</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>S1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SegmentSize" type="SegmentSize.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The number of bytes in this header and the data segment which follows this header, and not to exceed the maximum packet size as designated in field P2, Packet Size, of the Packet Header, minus the size of the Packet Header itself. </Definition>
+						<STANAG4607ReferenceFieldName>Segment Size</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>S2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MissionSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Mission Segment provides information concerning the mission and is sent periodically at least once every two minutes.  It includes information on the mission and flight plans, the type and configuration of the platform, and the reference time.  Note that the Dwell Time (field D6) specified in any associated Dwell Segments is referenced to the Reference Time (fields M5-M7) in the Mission Segment, and will not be resolved as to the day of the mission until the Mission Segment is received from the transmitting platform. </Definition>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="MissionPlan" type="union.BCSStringLength12andBlankPatternof12Spaces.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies the mission which shall be unique for all the missions defined for that platform.  For aircraft or land-based systems, the Mission Number from the Air Tasking Order (ATO) or an equivalent document shall be used. For space-based platforms, the mission identifier or a suitable designator such as “yymmhhnn”, where yy (year), mm (month), and hh (hour) indicate the time the collection mission began and nn is the identifying number of the satellite, shall be used. If there is no Mission Plan to be sent, or if there are unused bytes in the field, the field shall be filled with the BCS space character. </Definition>
+						<STANAG4607ReferenceFieldName>Mission Plan</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>M1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FlightPlan" type="union.BCSStringLength12andBlankPatternof12Spaces.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The unique identification of the flight plan.  If the flight plan is not available from the ATO or an equivalent source, a suitable unique identifier may be inserted in this field. If there is no Flight Plan to be sent, or if there are unused bytes in the field, the field shall be filled with the BCS space character.</Definition>
+						<STANAG4607ReferenceFieldName>Flight Plan</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>M2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PlatformType" type="union.PlatformType.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies the type of platform that originated the data.</Definition>
+						<STANAG4607ReferenceFieldName>Platform Type</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>M3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PlatformConfiguration" type="union.BCSStringLength10andBlankPatternof10Spaces.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Indicates the particular variant of the platform.  . Identifies sensor complements, upgrades, or other identifying information. Examples would be a model number, software release number, clarifications of differences in platform types, or identification of the platform as a test article. A recommended default value is an identification of the software and/or hardware version. If there is no Platform Configuration to be sent, the fields shall be filled with the BCS space character.</Definition>
+						<STANAG4607ReferenceFieldName>Platform Configuration</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>M4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReferenceTime">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Year" type="xsd:gYear">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The year in which the mission originated.  For airborne platforms, this shall be the takeoff time. For spaceborne platforms, this shall be an epoch time, which shall be selected suitable for the collection. For ground-based platforms, a time reference suitable for collection shall be selected.</Definition>
+									<STANAG4607ReferenceFieldName>Reference Time - Year</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>M5</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Month" type="_1-12">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The month of the year in which the mission originated.  For airborne platforms, this shall be the takeoff time. For spaceborne platforms, this shall be an epoch time, which shall be selected suitable for the collection. For ground-based platforms, a time reference suitable for collection shall be selected.</Definition>
+									<STANAG4607ReferenceFieldName>Reference Time - Month</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>M6</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Day" type="_1-31">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The day of the month in which the mission originated, UTC. For airborne platforms, this shall be the day of takeoff. For satellite platforms, this shall be an epoch time, which shall be selected suitable for the collection. For ground-based platforms, a time reference suitable for collection shall be selected.  Note that the Dwell Time fields, D6 in the Dwell Segment and T4 in the Test and Status Segment, are obtained as the count in milliseconds from the time 00:00:00 UTC of this day. (Refer to Para. 5 of Annex B.) The maximum value of field D6 is equivalent to 49 days. Therefore, to prevent the time stamp in field D6 from being repeated, a new mission day must be provided every 49 days or more frequently. 
+</Definition>
+									<STANAG4607ReferenceFieldName>Reference Time - Day</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>M7</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DwellSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>A Dwell Segment is a report on a grouping of zero or more target reports for which the sensor provides a single time, sensor position, reference position on the ground with simple estimates for the observed area at the reported time, and other pertinent data. A Dwell Segment may be associated with a radar dwell but need not be. The Dwell Segment presents data pertinent to MTI targets. Dwell Segments shall be sent for each logical grouping of target reports. A Dwell Segment shall be transmitted even if no targets are observed.</Definition>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ExistenceMask" type="ExistenceMask.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The Existence Mask, the first field of the Dwell Segment, is an encoded eight-byte field that immediately follows the Segment Header fields and precedes all other Dwell Segment fields. Each field of the Dwell Segment, with the exception of the Existence Mask itself, is represented by a reserved bit within the Existence Mask. Each bit of the Existence Mask indicates whether or not the corresponding field of the Dwell Segment is present in the data stream. The most-significant bit (bit 7) of the high-order byte (byte 7) corresponds to the first field (D2) following the Existence Mask of the Dwell Segment, where the high-order byte shall be transmitted first.   A binary level of “1” for a given bit indicates that the corresponding field of the Dwell Segment is present in the data stream and a binary level of “0” indicates that it is not present. Unused bits shall be filled with zeroes. </Definition>
+						<STANAG4607ReferenceFieldName>Existence Mask</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RevisitIndex" type="xsd:unsignedShort">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential count of a revisit of the bounding area for a given job ID, where a Revisit Index of “0” indicates the first revisit.</Definition>
+						<STANAG4607ReferenceFieldName>Revisit Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DwellIndex" type="xsd:unsignedShort">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The temporally sequential count of a dwell within the revisit of a particular bounding area for a given job ID. A dwell index of “0” indicates the first dwell of the revisit. (NOTE: Revisit counts are allowed to “wrap” when the allowable range of revisits is exceeded.)</Definition>
+						<STANAG4607ReferenceFieldName>Dwell Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LastDwellofRevisit">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A flag to indicate that this is the last dwell of the revisit. The Last Dwell of Revisit flag set to “1” indicates there are no additional dwells within that revisit. (NOTE: A Dwell Index, field D3, of “0” and a Last Dwell of Revisit, field D4, of “1” indicates this is the first and only dwell. This allows the concept of a “dwell” to be used by systems that do not utilize multiple dwells or revisits of the radar beam.)</Definition>
+						<STANAG4607ReferenceFieldName>Last Dwell of Revisit</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-1"/>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetReportCount" type="xsd:unsignedShort">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A count of the total number of targets reported during this dwell and sent in this Dwell Segment.</Definition>
+						<STANAG4607ReferenceFieldName>Target Report Count</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DwellTime">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The elapsed time, expressed in milliseconds, from the midnight at the beginning of the day specified in the Reference Time fields of the Mission Segment to the temporal center of the dwell. In this manner, the Dwell Time corresponds to the day's UTC time converted to milliseconds, with the possible addition of multiples of 86400000 for multi-day missions.</Definition>
+						<STANAG4607ReferenceFieldName>Dwell Time</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D6</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-4000000000">
+							<xsd:attribute name="units" use="required" fixed="milliseconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorPosition">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Latitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the sensor at the temporal center of the dwell, expressed as degrees North (positive) or South (negative) of the Equator. </Definition>
+									<STANAG4607ReferenceFieldName>Sensor Position - Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D7</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999999958">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Longitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the sensor at the temporal center of the dwell, expressed as degrees East (positive) from the Prime Meridian. </Definition>
+									<STANAG4607ReferenceFieldName>Sensor Position - Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D8</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999999916">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Altitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The altitude of the sensor at temporal center of the dwell, referenced to its position above the WGS 84 ellipsoid, expressed in decimeters.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Position - Altitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D9</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-10000-2000000000">
+										<xsd:attribute name="units" use="required" fixed="centimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ScaleFactor" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LatitudeScale" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>A factor which modifies the value of the reported target latitude (Delta Latitude, field D32.4) when it is necessary to send the reduced bandwidth version of the Target Report. The Latitude Scale factor and Delta Latitude are used in conjunction with the Dwell Area Center Latitude (field D24) to recover the target latitude as follows:
+
+Latitude 	= [(Delta Lat) x (Lat Scale)] + (Center Lat) = [(D32.4) x (D10)] + (D24)
+
+The Latitude Scale shall be chosen in accordance with the guidance given in the AEDP for STANAG 4607.  Field D10 is Conditional and is always sent with field D11. They are sent if and only if the optional difference fields Delta Latitude (D32.4) and Delta Longitude (D32.5) are sent in the Target Report. 
+</Definition>
+									<STANAG4607ReferenceFieldName>Scale Factor - Latitude Scale</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D10</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999999958">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="LongitudeScale" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>A factor which modifies the value of the reported target longitude (Delta Longitude, field D32.5) when it is necessary to send the reduced bandwidth version of the Target Report. The Longitude Scale factor and Delta Longitude are used in conjunction with the Dwell Area Center Longitude (field D25) to recover the target latitude as follows:
+
+Longitude = [(Delta Long) x (Long Scale)] + (Center Long) = [(D32.5) x (D11)] + (D25)
+
+The Longitude Scale shall be chosen in accordance with the guidance given in the AEDP for STANAG 4607.  Field D11 is Conditional and is always sent with field D10. They are sent if and  only if the optional difference fields Delta Latitude (D32.4)  and Delta Longitude (D32.5) are sent in the Target Report). 
+</Definition>
+									<STANAG4607ReferenceFieldName>Scale Factor - Longitude Scale</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D11</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999999916">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorPositionUncertainty" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AlongTrack" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The estimate of the standard deviation in the estimated horizontal sensor location at the time of the dwell, measured along the sensor track direction (field D15), expressed in centimeters.  Field D12 is Optional. It is always sent with fields D13 and D14.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Position Uncertainty - Along Track</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D12</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-1000000">
+										<xsd:attribute name="units" use="required" fixed="centimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Cross-Track" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The estimate of the standard deviation in the estimated horizontal sensor location at the time of the dwell, measured orthogonal to the track direction (field D15), expressed in centimeters.  Field D13 is Optional. It is always sent with fields D12 and D14. </Definition>
+									<STANAG4607ReferenceFieldName>Sensor Position Uncertainty - Cross-Track</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D13</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-1000000">
+										<xsd:attribute name="units" use="required" fixed="centimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Altitude" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>Standard deviation of the sensor altitude estimate (field D11), expressed in decimeters.  Field D14 is Optional. It is always sent with fields D12 and D13</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Position Uncertainty - Altitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D14</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-20000">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorTrack" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The ground track of the sensor at the time of the dwell, expressed as the angle in degrees (clockwise) from True North.   
+Field D15 is Conditional and is always sent with fields D16 and D17. They are sent only when the sensor system provides these parameters. 
+</Definition>
+						<STANAG4607ReferenceFieldName>Sensor Track</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D15</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-359.9945">
+							<xsd:attribute name="units" use="required" fixed="degrees"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorSpeed" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The ground speed of the sensor at the time of the dwell, expressed as millimeters per second.   Field D16 is Conditional and is always sent with fields D15 and D17. They are sent only when the sensor system provides these parameters.
+</Definition>
+						<STANAG4607ReferenceFieldName>Sensor Speed</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D16</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-8000000">
+							<xsd:attribute name="units" use="required" fixed="millimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorVerticalVelocity" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The velocity of the sensor in the vertical direction, expressed as decimeters per second.  Field D17 is Conditional and is always sent with fields D15 and D16. They are sent only when the sensor system provides these parameters.</Definition>
+						<STANAG4607ReferenceFieldName>Sensor Vertical Velocity</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D17</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:byte">
+							<xsd:attribute name="units" use="required" fixed="decimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorTrackUncertainty" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The standard deviation of the estimate of the sensor track along the ground, expressed in degrees.  Field D18 is Optional. It is always sent with fields D19 and D20.</Definition>
+						<STANAG4607ReferenceFieldName>Sensor Track Uncertainty</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D18</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-45">
+							<xsd:attribute name="units" use="required" fixed="degrees"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorSpeedUncertainty" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The standard deviation of estimate of the sensor speed, expressed in millimeters per second.  Field D19 is Optional. It is always sent with fields D18 and D20.</Definition>
+						<STANAG4607ReferenceFieldName>Sensor Speed Uncertainty</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D19</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="millimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorVerticalVelocityUncertainty" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The standard deviation of estimate of the sensor vertical velocity, expressed in centimeters per second.  Field D20 is Optional. It is always sent with fields D18 and D19.</Definition>
+						<STANAG4607ReferenceFieldName>Sensor Vertical Velocity Uncertainty</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D20</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="centimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PlatformOrientation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Heading" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The heading of the platform at the time of the dwell, expressed as the angle in degrees (clockwise) from True North to the roll axis of the platform.  Field D21 is Conditional and is always sent with fields D22 and D23. They are sent only when the platform provides these parameters.</Definition>
+									<STANAG4607ReferenceFieldName>Platform Orientation - Heading</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D21</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.9945">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Pitch" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The pitch angle of the platform at the time of the dwell, expressed as the angle in degrees of the rotation of the platform about its pitch axis where a positive angle is an upward attitude of the nose of the platform.  Field D22 is Conditional and is always sent with fields D21 and D23. They are sent only when the platform provides these parameters.
+</Definition>
+									<STANAG4607ReferenceFieldName>Platform Orientation - Pitch</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D22</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.9973">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="RollorBankAngle" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The roll angle of the platform at the time of the dwell, expressed as the angle in degrees of the rotation of the platform about its roll axis where a positive angle is the clockwise direction as viewed from the rear of the platform. (NOTE: The term “Platform Bank Angle” is synonymous with the term “Platform Roll Angle”.)</Definition>
+									<STANAG4607ReferenceFieldName>Platform Orientation - Roll</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D23</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.9973">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DwellArea">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CenterLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the center of the dwell area expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Dwell Area - Center Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D24</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="CenterLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the center of the dwell area expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Dwell Area - Center Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D25</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="RangeHalfExtent">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The distance on the earth surface, expressed in kilometers, from the near edge to the center of the dwell area. </Definition>
+									<STANAG4607ReferenceFieldName>Dwell Area - Range Half Extent</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D26</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-255.9928">
+										<xsd:attribute name="units" use="required" fixed="kilometers"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="DwellAngleHalfExtent">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>For dwell based radars, one-half of the 3-dB beamwidth, expressed in degrees as a 16-bit unsigned binary angle. For non-dwell based radars, the angle between the beginning of the dwell to the center of the dwell, as measured from the sensor’s position.</Definition>
+									<STANAG4607ReferenceFieldName>Dwell Area - Dwell Angle Half Extent</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D27</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.9945">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorOrientation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Heading" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The rotation of the sensor broadside face about the local vertical axis of the platform, expressed in degrees clockwise when viewed from above. This is the first of three successive rotations from a hypothetical initial position in which the sensor broadside (normal to the sensor face) is in its normal “rest” position (i.e., along the platform roll axis for forward-looking sensors or along the platform pitch axis for side-looking sensors) and the sensor face is nominally level (i.e., the lateral axis of the face is level, pointing along the roll or pitch axis as applicable, and the yaw axis points along the direction of the local vertical).  Field D28 is Optional. If at least one of fields D28, D29, or D30 is present, then any omitted field shall represent an angle of zero degrees.
+</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Orientation - Heading</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D28</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.9945">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Pitch" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The rotation angle of the sensor normal about the lateral axis of the sensor broadside, which is pointing in the direction defined by the sensor orientation heading angle. It is expressed in degrees, where an angle above the horizontal is positive. This is the second of three successive rotations from the hypothetical initial position of the sensor, as described above.  Field D29 is Optional. If at least one of fields D28, D29, or D30 is present, then any omitted field shall represent an angle of zero degrees.
+</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Orientation - Pitch</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D29</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.9973">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Roll" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The rotation angle of the sensor about the transverse axis of the sensor broadside, which is pointing in the direction defined by the sensor orientation heading angle. It is expressed in degrees, where a clockwise rotation is positive, as seen from behind the face of the sensor. This is the third of three successive rotations from the hypothetical initial position of the sensor, as described above.  Field D30 is Optional. If at least one of fields D28, D29, or D30 is present, then any omitted field shall represent an angle of zero degrees.
+</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Orientation - Roll</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D30</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.9973">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="MinimumDetectableVelocity_MDV" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The minimum velocity component, along the line of sight, which can be detected by the sensor; expressed in decimeters per second.  Field D31 is Optional.</Definition>
+						<STANAG4607ReferenceFieldName>Minimum Detectable Velocity, MDV</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D31</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="decimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetReport" type="TargetReportType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Describes the format for the Target Reports. One Target Report shall be transmitted for each target observed within the dwell. Targets detected within a dwell may be split among multiple Dwell Segments. Targets detected within a dwell but detected by different radar modes or radar processors shall be reported in separate Dwell Segments (e.g., Endo-Clutter, Exo-Clutter, targets associated with HRR, etc.). </Definition>
+						<STANAG4607ReferenceFieldName>Target Reports</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TargetReportType">
+		<xsd:sequence>
+			<xsd:element name="MTIReportIndex" type="xsd:unsignedShort" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential count of this MTI report within the dwell.   Field D32.1 is Conditional and must be sent if an HRR report is provided for targets in this dwell.</Definition>
+						<STANAG4607ReferenceFieldName>MTI Report Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TargetLocation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:choice>
+							<xsd:group ref="HighResolutionCoordinates" minOccurs="0"/>
+							<xsd:group ref="DeltaCoordinates" minOccurs="0"/>
+						</xsd:choice>
+						<xsd:element name="GeodeticHeight" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>
+The height of the reported detection, referenced to its position above the WGS 84 ellipsoid, expressed in meters. This field reports the geodetic height used within the translation from the target’s radar coordinates to the target’s geodetic coordinates.  If this field is not sent, the target height shall be interpreted as being on the earth model described in the Job Definition Segment, fields J27 and J28. It may also be available from alternative local sources, such as the 10o x 10o geoid height data over the WGS84 ellipsoid, with DTED Level 0 terrain elevation data, which is available over the Internet. Field D32.6 is Optional. 
+</Definition>
+									<STANAG4607ReferenceFieldName>Target Location - Geodetic Height</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D32.6</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-1000-10000">
+										<xsd:attribute name="units" use="required" fixed="meters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetVelocityLine-of-SightComponent" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The component of velocity for the reported detection, expressed in meters per second, corrected for platform motion, along the line of sight between the sensor and the reported detection, where the positive direction is away from the sensor.  Field D32.7 is Optional. If field D32.7 is sent, then field D32.8 shall also be sent.</Definition>
+						<STANAG4607ReferenceFieldName>Target Velocity Line-of-Sight Component</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.7</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:short">
+							<xsd:attribute name="units" use="required" fixed="centimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetWrapVelocity" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Half the velocity aliasing period. For most radars this is calculable as the effective PRF (i.e., the product of PRF's on CPI's for which the target was detected) multiplied by the effective sensor wavelength divided by four.  The target wrap velocity permits trackers to un-wrap velocities for targets with line-of sight components large enough to exceed the first velocity period. When the target's wrap velocity is low compared to the target's expected line-of-sight velocity the tracker may consider adding multiples of twice the target wrap velocity to field D32.7.  Field D32.8 is Optional. If field D32.8 is sent, then field D32.7 shall also be sent.</Definition>
+						<STANAG4607ReferenceFieldName>Target Wrap Velocity</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.8</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="centimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetSNR" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Estimated signal-to-noise ratio (SNR) of the target return, expressed in decibels.</Definition>
+						<STANAG4607ReferenceFieldName>Target SNR</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.9</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:byte">
+							<xsd:attribute name="units" use="required" fixed="dB"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetClassification" type="union.TargetClassification.Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>An enumeration field denoting the classification of the target. Classification types shall include wheeled, non-wheeled (i.e., tracked), helicopter, low-slow flyer, rotating antenna, maritime, beacon, and unknown, for both live and simulated targets. If a target can not be classified, it shall be marked as “unknown”. The enumeration table for target classification is shown in Table 2-4.2.  Field D32.10 is Optional.
+</Definition>
+						<STANAG4607ReferenceFieldName>Target Classification</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.10</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TargetClassificationProbability" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The estimated probability that the target classification appearing in field D32.10 is correctly classified.  Field D32.11 is Optional.</Definition>
+						<STANAG4607ReferenceFieldName>Target Classification Probability</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.11</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-100">
+							<xsd:attribute name="units" use="required" fixed="percent"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetMeasurementUncertainty" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SlantRange" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The standard deviation of the estimated slant range of the reported detection, expressed in centimeters.
+Field D32.12 is Conditional. It is sent only if fields D12, D13, and D14 of the Dwell Segment are sent, and shall be sent with fields D32.13, D32.14, and D32.15, if they are available.</Definition>
+									<STANAG4607ReferenceFieldName>Target Measurement Uncertainty - Slant Range</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D32.12</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedShort">
+										<xsd:attribute name="units" use="required" fixed="centimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="CrossRange" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The standard deviation of the position estimate, in the cross-range direction, of the reported detection, expressed in decimeters.  Field D32.13 is Conditional. It is sent only if fields D12, D13, and D14 of the Dwell Segment are sent, and shall be sent with fields D32.12, D32.14, and D32.15, if they are available. </Definition>
+									<STANAG4607ReferenceFieldName>Target Measurement Uncertainty - Cross Range</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D32.13</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedShort">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Height" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The standard deviation of the estimated geodetic height reported in field D32.6, expressed in meters. 
+Field D34.14 is Conditional. It is sent only if fields D12, D13, and D14 of the Dwell Segment and D32.6 of the Target Report are sent, and shall be sent with fields D32.12, D32.13, and D32.15, if they are available.</Definition>
+									<STANAG4607ReferenceFieldName>Target Measurement Uncertainty - Height</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D32.14</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedByte">
+										<xsd:attribute name="units" use="required" fixed="meters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="TargetRadialVelocity" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The standard deviation of the measured line-of-sight velocity component reported in field D32.7, expressed in centimeters per second.  Field D32.15 is Conditional. It is sent only if fields D12, D13, and D14 of the Dwell Segment and D32.7 of the Target Report are sent, and shall be sent with fields D32.12, D32.13, and D32.14, if they are available. 
+</Definition>
+									<STANAG4607ReferenceFieldName>Target Measurement Uncertainty - Target Radial Velocity</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D32.15</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-5000">
+										<xsd:attribute name="units" use="required" fixed="centimeters/sec"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TruthTag" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Application" type="xsd:unsignedByte" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The Application field from the Entity State Protocol Data Unit used to generate the MTI target.  If the MTI Target is the result of more than one Entity State PDU, then the value of the target with the highest instantaneous radar return is passed in this field.  A value of zeroindicates that no information is available regarding the Entity State PDU that was used to generate the MTI Target being passed.  For simulated data, the Truth Tag relates targets back to the truth data, which is represented using Distributed Interactive Simulation (DIS) Entity State PDUs.  Field D32.16 is Conditional and is sent only if the MTI Target in this Report is simulated. It is always sent with field D32.17. </Definition>
+									<STANAG4607ReferenceFieldName>Truth Tag - Application</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D32.16</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Entity" type="xsd:unsignedInt" minOccurs="0">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The Entity field from the Entity State Protocol Data Unit used to generate the MTI target.  It is passed as the same format as the Entity State PDU Identity value.  A value of zero indicates that no information is available regarding the Entity State PDU that was used to generate the MTI Target being passed.   For simulated data, the Truth Tag relates targets back to the truth data, which is represented using Distributed Interactive Simulation (DIS) Entity State PDUs.  Field D32.17 is Conditional and is sent only if the MTI Target in this Report is simulated. It is always sent with field D32.16. </Definition>
+									<STANAG4607ReferenceFieldName>Truth Tag - Entity</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>D32.17</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="HRRSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The HRR Segment provides data on High-Range Resolution (HRR) targets.  It is referenced to the MTI Report Index field of the corresponding Target Report in the Dwell Segment and is sent each time an HRR dwell is processed.</Definition>
+				<STANAG4607ReferenceFieldName>HRR Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RevisitIndex" type="xsd:unsignedShort">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential count of a revisit of the bounding area for a given job ID.</Definition>
+						<STANAG4607ReferenceFieldName>Revisit Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DwellIndex" type="xsd:unsignedShort">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential count of a dwell within the revisit of a particular bounding area for a given job ID. A dwell index of “0” indicates the first dwell of the revisit. (NOTE: Revisit counts are allowed to “wrap” when the allowable range of revisits is exceeded.)</Definition>
+						<STANAG4607ReferenceFieldName>Dwell Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LastDwellofRevisit" type="_0-1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A flag to indicate, when set to “1”,  that this is the last dwell of the revisit. A Dwell Index (field H3) of “0” with the Last Dwell of Revisit flag set to “1” indicates there are no other dwells within that revisit. </Definition>
+						<STANAG4607ReferenceFieldName>Last Dwell of Revisit</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MTIReportIndex" type="xsd:unsignedShort">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential index of the associated MTI Report, field D32.1 of the Dwell Segment.</Definition>
+						<STANAG4607ReferenceFieldName>MTI Report Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NumberofTargetScatterers">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Number of Range Doppler pixels that exceed target scatterer threshold and are reported in this segment.</Definition>
+						<STANAG4607ReferenceFieldName>Number of Target Scatterers</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="NumberofTargetScatterers.type"/>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="MeanClutterPowerRelativetoPeakScatterer">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Mean power of non-target pixels (residual clutter power). Computed after range Doppler chip formation, and expressed as an uncalibrated power in quarter-decibels (dB/4). The value is calculated by: (a) converting the Mean Clutter Power Relative to Peak Scatterer to decibels (dB), with the maximum value constrained to 63.75 dB; (b) multiplying that value by 4; and (c) rounding to the nearest integer.</Definition>
+						<STANAG4607ReferenceFieldName>Mean Clutter Power Relative to Peak Scatterer</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H6</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="-dB/4"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DetectionThresholdRelativetoPeakScatterer">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Detection threshold used to isolate significant target scatterer pixels, expressed as power relative to clutter mean in quarter-decibels (dB/4). The value is calculated by: (a) converting the Detection Threshold Relative to Peak Scatterer to decibels (dB), with the maximum value constrained to 63.75 dB; (b) multiplying that value by 4; and (c) rounding to the nearest integer.</Definition>
+						<STANAG4607ReferenceFieldName>Detection Threshold Relative to Peak Scatterer</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H7</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="-dB/4"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RangeResolution">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>3dB range impulse response of the radar, expressed in centimeters.</Definition>
+						<STANAG4607ReferenceFieldName>Range Resolution</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H8</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="centimeters"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RangeBinSpacing">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Range pixel spacing after over sampling, expressed in centimeters.</Definition>
+						<STANAG4607ReferenceFieldName>Range Bin Spacing</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H9</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_1-255">
+							<xsd:attribute name="units" use="required" fixed="centimeters"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DopplerResolution">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>3dB Doppler resolution of the radar, expressed in Hertz.</Definition>
+						<STANAG4607ReferenceFieldName>Doppler Resolution</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H10</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_.0001-255">
+							<xsd:attribute name="units" use="required" fixed="Hertz"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DopplerBinSpacing">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Doppler pixel spacing after over sampling, expressed in Hertz.</Definition>
+						<STANAG4607ReferenceFieldName>Doppler Bin Spacing</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H11</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_.0001-255">
+							<xsd:attribute name="units" use="required" fixed="Hertz"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CompressionFlag" type="xsd:unsignedByte">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The compression technique used.</Definition>
+						<STANAG4607ReferenceFieldName>Compression Flag</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H12</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RangeWeightingFunctionType" type="_0-2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The spectral weighting used in the range compression process. The default processing value shall be 1, indicating Taylor weighting, with a sidelobe level of 40 dB and an NBAR parameter of 6.</Definition>
+						<STANAG4607ReferenceFieldName>Range Weighting Function Type</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H13</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DopplerWeightingFunctionType" type="_0-2">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The spectral weighting used in the cross-range or Doppler compression process. The default processing value shall be 1, indicating Taylor weighting, with a sidelobe level of 40 dB and an NBAR parameter of 6.</Definition>
+						<STANAG4607ReferenceFieldName>Doppler Weighting Function Type</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H14</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MaximumPixelPower">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Initial power of the peak scatterer, expressed in dB/2. The value is calculated by: (a) converting the Maximum Pixel Power to decibels (dB), with the maximum value constrained to 127.5 dB; (b) multiplying that value by 2; and (c) rounding to the nearest integer.</Definition>
+						<STANAG4607ReferenceFieldName>Maximum Pixel Power</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H15</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="-dB/2"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="HRRScattererRecord" type="HRRScattererRecordType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A Scatterer set is an array of Scatterer records for each target pixel that exceeds the target detection threshold.  A set of HRR Scatterer records will be transmitted for the associated MTI target and will be sent for each HRR dwell processed.</Definition>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H16</STANAG4607ReferenceFieldNumber>
+						<STANAG4607ReferenceFieldName>HRR Scatterer Records</STANAG4607ReferenceFieldName>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="HRRScattererRecordType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<STANAG4607ReferenceFieldName>HRR Scatterer Record</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ScattererMagnitude">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Scatterer's power magnitude, quantized to 1 byte, normalized to peak scatterer, and expressed in quarter-decibels (dB/4).  The value is calculated by: (a) converting the Scatterer Magnitude to decibels (dB), with the maximum value constrained to 63.75 dB; (b) multiplying that value by 4; and (c) rounding to the nearest integer.</Definition>
+						<STANAG4607ReferenceFieldName>Scatterer Magnitude</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H16.1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="-dB/4"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ScattererPhase">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Scatterer's complex phase in degrees, quantized to 1 byte, and expressed as a quantized rotation in units of 2*pi/256</Definition>
+						<STANAG4607ReferenceFieldName>Scatterer Phase</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H16.2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="Quantized rotation"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RangeIndex">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Scatterer's Range index relative to Range-Doppler chip, where increasing index equates to increasing range.</Definition>
+						<STANAG4607ReferenceFieldName>RangeIndex</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H16.3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="Bins"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DopplerIndex">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Scatterer's Doppler index relative to Range-Doppler chip, where increasing index equates to increasing Doppler.</Definition>
+						<STANAG4607ReferenceFieldName>Doppler Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>H16.4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedByte">
+							<xsd:attribute name="units" use="required" fixed="Bins"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--	<xsd:complexType name="Range-DopplerSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+			<Definition>The Range-Doppler Segment is under development and is not included in the Data Format Document at this time.  A preliminary description of the data format for a Range-Doppler Segment is included in the AEDP for STANAG 4607.</Definition>
+				<STANAG4607ReferenceFieldName>Range-Doppler Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:complexType> -->
+	<xsd:complexType name="JobDefinitionSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Job Definition Segment provides the means for the platform to pass information pertaining to the sensor job that will be performed and details of the location parameters (terrain elevation model and geoid model) used in the measurement.  It includes a definition of the geographic area for sensor services, which is defined as a four-corner polygon, with the four points of the polygon chosen to define a convex quadrilateral.  The Job Definition Segment shall be sent before the first revisit of a job and periodically at least once every thirty seconds thereafter.  Note that precision location of a target will not be possible until the information contained in the Job Definition segments has been received from the transmitting platform.</Definition>
+				<STANAG4607ReferenceFieldName>Job Definition Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="JobID" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A platform assigned number identifying the specific request or task to which the dwell pertains.  A value of "255" indicates that it is a No Statement and no sensor type is specified.</Definition>
+						<STANAG4607ReferenceFieldName>Job ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>J1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SensorID">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="union.SensorType.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The type of sensor or the platform.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Id - Type</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J2</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Model" type="BCSStringLength6.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The particular variant of the sensor type.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor Id - Model</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J3</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TargetFilteringFlag" type="TargetFilteringFlag.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A flag field indicating whether or not filtering has been applied to the targets detected within the dwell area and the type of filtering, if any, that has been applied.  A Target Filtering Flag of zero (hex 0x00) indicates that no filtering has been applied to the targets.  If bit 0, the least significant bit, is set to a binary "one", this indicates that area filtering within the intersectin of the Dwell Area and the Bounding Area has been performed.  If bit 1 is set to a binary "one", this indicates that ARea Blanking has been applied.  However, the format does not currently specify the area over which blanking has been applied.  If bit 2 is set to a binary "one", this indicates that Sector Blanking has been applied.  However, the format does not currently specify the sectover over which blanking has been applied.  Bits number 3-7 shall be reserved for future growth.  	
+						</Definition>
+						<STANAG4607ReferenceFieldName>Target Filtering Flag</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>J4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Priority_RadarPriority" type="_1-99">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The priority of this tasking request relative to all other active tasking requests scheduled for execution on the specified platform.</Definition>
+						<STANAG4607ReferenceFieldName>Priority (Radar Priority)</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>J5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BoundingArea">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PointALatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the first corner (Point A) defining the area for sensorservice, expressed as degrees North (positive) or South (negative) of the Equator.  The four corners (J6 through J13) of the bounding area, expressed as lat/long for each corner, are given in 	clockwise order (Points A, B, C, and D) and must form a convex quadrilateral.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point A Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J6</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointALongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the first corner (Point A) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point A Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J7</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointBLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the second corner (Point B) defining the area for sensor service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point B Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J8</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointBLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the second corner (Point B) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.	</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point B Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J9</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointCLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the third corner (Point C) defining the area for sensor service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point C Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J10</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointCLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the third corner (Point C) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point C Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J11</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointDLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the fourth corner (Point D) defining the area for sensor service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point D Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J12</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointDLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the fourth corner (Point D) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point D Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J13</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RadarMode" type="union.RadarModes.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The mode in which the radar will operate for the given job ID.  Radar operatiang modes are system-specific and shall be determined for each system.  Note that radar modes 0-5 are generic modes that will be used in non-platform-specific job requests.  the remaining radar modes are a sampling of platform-specific modes.  They are not comprehesive and shall be expanded as necessary.</Definition>
+						<STANAG4607ReferenceFieldName>Radar Mode</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>J14</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NominalRevisitInterval">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The nominal revisit interval for the job ID, expressed in deciseconds (tenths of seconds).</Definition>
+						<STANAG4607ReferenceFieldName>Nominal Revisit Interval</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>J15</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="deciseconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="NominalSensorPositionUncertainty">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AlongTrack">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal estimate of the standard deviation in the estimated horizontal sensor location, expressed in decimeters.  It is measured along the sensor track direction as defined in the Sensor track field within the Dwell segment.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.  (Note:  The Nominal fields in the Job Definition Segment provide a means for reporting nominal standard deviations and uncertainty values, and are to be used when values are not received from the sensor.  More precise values of these or related estimates may be reported in the appropriate fields in either the Dwell Segment or the Target Report Sub-Segment, when the sensor computes them and the communication bandwidth permits the more frequent reporting.)</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Position Uncertainty - Along Track</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J16</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="union._0-10000_withNoStatement.Type">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="CrossTrack">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal estimate of the standard deviation in the estimated horizontal sensor location, measured orthogonal to the track direction, expressed in decimeters.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Position Uncertainty - Cross-Track</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J17</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="union._0-10000_withNoStatement.Type">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Altitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal estimate of the standard deviation of the measured sensor altitude, expressed in decimeters.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Position Uncertainty - Altitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J18</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="union._0-20000_withNoStatement.Type">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="TrackHeading">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal standard deviation of the estimate of the sensor track heading, expressed in degress.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Position Uncertainty - Track Heading</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J19</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="union._0-45_withNoStatement.Type">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="SensorSpeed">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal standard deviation of the estimate of the sensor speed, expressed in millimeters per second.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Position Uncertainty - Sensor Speed</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J20</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedShort">
+										<xsd:attribute name="units" use="required" fixed="millimeters/sec"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="NominalSensorValue">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SlantRangeStandardDeviation">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal standard deviation of the slant range of the reported detection, expressed in meters.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Value - Slant Range Standard Deviation</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J121</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedShort">
+										<xsd:attribute name="units" use="required" fixed="centimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="CrossRangeStandardDeviation">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal standard deviation of the measured cross angle to the reported detection, expressed in degrees.  A No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Value - Cross Range Standard Deviation</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J22</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-180">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+								<!-- Ed. Note: Clarification in STANAG 4607 needed on ending range value -->
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="TargetVelocityLine-of-SightComponentStandardDeviation">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal standard deviation of the velocity line-of-sight component reported in the TargetVelocityLine-of-SightComponent field within the Targe tReport, expressed in centimeters per second.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Value - Target Velocity Line-of-Sight Component Standard Deviation</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J23</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="union._0-5000_withNoStatement.Type">
+										<xsd:attribute name="units" use="required" fixed="centimeters/sec"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="MDV">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal minimum velocity component along the line-of-sight, which can be detected by the sensor, expressed in decimeters per second.  The No-Statement value is sent when the sensor is unable or unwilling to provide a value.</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Value - MDV</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J24</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedByte">
+										<xsd:attribute name="units" use="required" fixed="decimeters/sec"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="DetectionProbability">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The nominal probability that an unobscured ten square-meter Swerling I target will be detected within the given area of surveillance, where a Swerling I target is made up of many different scattering elements (such as a tracked or wheeled vehicle) and the radar cross section varies from scan to scan.  The No-Statement value is when the sensor is unable or unwilling to provide a value. </Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Value - Detection Probability</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J25</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="union._0-100_withNoStatement.Type">
+										<xsd:attribute name="units" use="required" fixed="percent"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="FalseAlarmDensity">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>
+										 The expected density of False Alarms (FA), expressed in decibels (-10 log10 d, where d is in False Alarms per square meter).  0 represents 1 FA/m2, and 60 represents 10-6 FA/m2 (i.e., 1FA/km2).</Definition>
+									<STANAG4607ReferenceFieldName>Nominal Sensor Value - Probability of False Alarm </STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>J26</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedByte">
+										<xsd:attribute name="units" use="required" fixed="-dB"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TerrainElevationModelUsed" type="union.TerrainElevationModels.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The terrain elevation model used for developing the target reports.</Definition>
+						<STANAG4607ReferenceFieldName>Terrain Elevation Model Used</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>J27</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GeoidModelUsed" type="union.GeoidModelUsed.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The geoid model used for developing the target reports.  The geoid model gives an estimate of mean sea level via a model for the difference between the earth's zero-altitude gravity potential and the WGS 84 ellipsoid.</Definition>
+						<STANAG4607ReferenceFieldName>Geoid Model Used</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>J28</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FreeTextSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Free Text Segment provides a means of sending Basic Character Set (BCS) alphanumeric text messages.  The Free Text Segment shall be sent as required.></Definition>
+				<STANAG4607ReferenceFieldName>Free Text Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="OriginatorID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The originator of the Free Text message.</Definition>
+						<STANAG4607ReferenceFieldName>Originator ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RecipientID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The recipient for which the Free Text message is intended.</Definition>
+						<STANAG4607ReferenceFieldName>Recipient ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FreeText" type="BCSStringLength65515.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The entry of free-text data.</Definition>
+						<STANAG4607ReferenceFieldName>Free Text</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TestAndStatusSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition> The Test and Status Segment provides information pertaining to the health of the sensor.  It is related to a particular job, revisit, and dwell of the sensor, and is sent as required or as requested in the Job Request Segment.</Definition>
+				<STANAG4607ReferenceFieldName>Test and Status Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="JobID" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A platform assigned number identifying the specific request or task to which the dwell pertains.</Definition>
+						<STANAG4607ReferenceFieldName>Job ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>T1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RevisitIndex" type="_1-65535">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential count of a revisit of the bounding area for a given job ID.</Definition>
+						<STANAG4607ReferenceFieldName>Revisit Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>T2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DwellIndex" type="_1-65535">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential count of a dwell within the revisit of a particular bounding area for a given job ID.</Definition>
+						<STANAG4607ReferenceFieldName>Dwell Index</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>T3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DwellTime">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The elapsed time, expressed in milliseconds, from the reference timem specified in the Mission Segment to the beginning of the dwell specified in this segment.</Definition>
+						<STANAG4607ReferenceFieldName>Dwell Time</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>T4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-4000000000">
+							<xsd:attribute name="units" use="required" fixed="milliseconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="HardwareStatus" type="HardwareorModeStatus.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A one-byte flag, where each flag bit indicates the status of a particular hardware parameter, where a binary 0 indicates pass status and a binary 1 indicates fail status of the parameter.  Unused or spare bits shall be sest to binary 0.  Hardware status parameters are as follows (note: a = leftmost, h = rightmost bit): a = Antenna Status, b= RF Electronics Status, c = Processor Status, d = Datalink Status, e = Calibration Mode Status, f = Spare, g = Spare, h = Spare.</Definition>
+						<STANAG4607ReferenceFieldName>Hardware Status</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>T5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ModeStatus" type="HardwareorModeStatus.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A one-byte flag, where each flag bit indicates the status of a particular sensor parameter, and where a binary 0 indicates the parameter is inside the operational limit tests and a binary 1 indicates the parameter is outside the operational limit tests.  Unused or spare bits shall be sest to binary 0.  Mode status parameters are as follows (note: a = leftmost, h = rightmost bit): a = Range Limit Exceeded, b = Azimuth Limit Exceeded, c = Elevation Limit Exceeded, d = Temperature Limit Exceeded, e = Spare, f = Spare, g = Spare, h = Spare.</Definition>
+						<STANAG4607ReferenceFieldName>Mode Status</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>T6</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProcessingHistorySegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Processing History Segment provides information concerning modifications made to the original sensor data.  It references the Nationality, Platform, Mission and Job ID values of the original radar job and describes subsequent processing operations performed on the data from that radar job.  It provides notification that the original data values may have been altered and provides a record of one or more processing operations performed on the original radar data by one or more systems.  If the processing performed by a system is based on data which has been previously processed or modified, the system shall be responsible for maintaining the previous processing history and for adding information pertaining to the current processing which it has applied.  Within the Processing History Segment, the system providing the additional processing shall develop a new Processing Record to provide information pertainining to the processed data which it is sending.  The Processing Record shall include Nationality, Platform, Mission, and Job ID data.  The systems shall also provide a record of the processing which has been performed and shall define a new radar job with which the modified data is associated.  The processing History Segment shall be transmitted every 3 minutes.</Definition>
+				<STANAG4607ReferenceFieldName>Processing History Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ProcessingHistoryCount" type="_1-255">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A count of the number of processing records included in this segment.</Definition>
+						<STANAG4607ReferenceFieldName>Processing History Count</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BasedonNationalityID" type="cc:FIPS10-4CountryCodeType">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Nationality ID for the original radar job as defined in the Nationality field in the Packet Header.</Definition>
+						<STANAG4607ReferenceFieldName>Based on Nationality ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BasedonPlatformID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Platform ID for the original radar job as defined in the Platform ID field in the Packet Header.</Definition>
+						<STANAG4607ReferenceFieldName>Based on Platform ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BasedonMissionID" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Mission ID for the original radar job as defined in the Mission ID field in the Packet Header. </Definition>
+						<STANAG4607ReferenceFieldName>Based on Mission ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BasedonJobID" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Job ID for the original radar job as defined in the Job ID field in the Packet Header.</Definition>
+						<STANAG4607ReferenceFieldName>Based on Job ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProcessingRecord" type="ProcessingRecordType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>One processing record shall be sent for each system that provides processing or modification of the radar data.</Definition>
+						<STANAG4607ReferenceFieldName>Processing Record</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F6</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProcessingRecordType">
+		<xsd:sequence>
+			<xsd:element name="ProcessingHistorySequenceNumber" type="_1-255">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The sequential count of this Processing Record within the Processing Segment.</Definition>
+						<STANAG4607ReferenceFieldName>Processing History Sequence Number</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F6.1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NationalityIDofModifyingSystem" type="cc:FIPS10-4CountryCodeType">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Nationality ID for the modifying system job as defined in the Nationality ID field of the Packet Header. </Definition>
+						<STANAG4607ReferenceFieldName>Nationality ID of Modifying System</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F6.2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PlatformIDofModifyingSystem" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Platform ID for the modifying system job as defined in the Platform ID field of the Packet Header.</Definition>
+						<STANAG4607ReferenceFieldName>Platform ID of Modifying System</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F6.3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MissionIDofModifyingSystem" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Mission ID for the modifying system as defined in the Mission ID field of the Packet Header.</Definition>
+						<STANAG4607ReferenceFieldName>Mission ID of Modifying System</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F6.4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="JobIDofModifyingSystem" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A reference to the Job ID for the modifying system job as defined in the Job ID field of the Packet Header.</Definition>
+						<STANAG4607ReferenceFieldName>Job ID of Modifying System</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F6.5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProcessingPerformed" type="TwoByteFlag.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A two-byte flag field that indicates the additional processing performed on the radar data.  A value of 0 (hex 0x00) indicates no additional processing has been performed.  Each bit, when set to a binary "1", indicates that the corresponding processing functions has been performed.  The bit settings shall only represent the modifications done by the system identified in this processing record.  If a system performs more than one processing operation, this shall be indicated by setting multiple bits in this flag, with one bit set for each processing operation performed.</Definition>
+						<STANAG4607ReferenceFieldName>Processing Performed</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>F6.6</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PlatformLocationSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Platform Location Segment provides information pertaining to the location of the sensor platform during periods when the sensor is not collecting data.  It shall be sent as required during periods in which the sensor is not collecting data, such as enroute to an orbit location or during a turn.</Definition>
+				<STANAG4607ReferenceFieldName>Platform Location Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="LocationTime">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The elapsed time, expressed in milliseconds, from midnight at the beginning of the day specified in the Reference Time fields of the Mission Segment to the time the report is prepared.  In this manner, the Location Time corresponds to the day's UTC time converted to milliseconds, with the possible addition of multiples of 86400000 for multi-day missions.</Definition>
+						<STANAG4607ReferenceFieldName>Location Time</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>L1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-4000000000">
+							<xsd:attribute name="units" use="required" fixed="milliseconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PlatformPosition">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Latitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the platform at the time the report is prepared, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Platform Position - Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>L2</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999999958">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Longitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the platform at the time the report is prepared, expressed as degrees East (positive) from the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Platform Position - Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>L3</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999999916">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Altitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The altitude of the sensor platform at the time the report is prepared, referenced to its position above the WGS 84 ellipsoid, expressed in decimeters.</Definition>
+									<STANAG4607ReferenceFieldName>Platform Position - Altitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>L4</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-10000-8000000">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PlatformTrack">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The ground track of the platform at the time the report is prepared, expressed as the angle in degrees (clockwise) from True North.</Definition>
+						<STANAG4607ReferenceFieldName>Platform Track</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>L5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-359.9945">
+							<xsd:attribute name="units" use="required" fixed="degrees"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PlatformSpeed">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The ground speed of the platform at the time the report is prepared, expressed as millimeters per second.</Definition>
+						<STANAG4607ReferenceFieldName>Platform Speed</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>L6</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-8000000">
+							<xsd:attribute name="units" use="required" fixed="millimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PlatformVerticalVelocity">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The velocity of the platform in the vertical direction, expressed as decimeters per second</Definition>
+						<STANAG4607ReferenceFieldName>PlatformVertical Velocity</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>L7</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:byte">
+							<xsd:attribute name="units" use="required" fixed="decimeters/sec"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="JobRequestSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Job Request Segment provides the means to pass tasking information, such as a Radar or Sensor Service Request (RSR or SSR) or a request for Test/Status of the sensor, to the platform.  It shall be sent as required. </Definition>
+				<STANAG4607ReferenceFieldName>Job Request Segment</STANAG4607ReferenceFieldName>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="RequestorID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies the requestor of the sensor service.</Definition>
+						<STANAG4607ReferenceFieldName>Requestor ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>R1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RequestorTaskID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>An identifier for the tasking message sent by the requesting station.</Definition>
+						<STANAG4607ReferenceFieldName>RequestorTask ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>R2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Priority_RequestorPriority" type="_0-99">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Specifies the priority of the request relative to other request originated by the requesting station.</Definition>
+						<STANAG4607ReferenceFieldName>Priority (Requestor Priority)</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>R3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BoundingArea">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PointALatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the first corner (Point A) defining the requested area for service, expressed as degrees North (positive) or South (negative) of the Equator.  The four corners (R4 through R11) of the bounding area, expressed as lat/long for each corner, are given in clockwise order and must form a convex quadrilateral.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point A Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R4</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointALongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the first corner (Point A) defining the requested area for service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area -  Point A Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R5</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointBLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the second corner (Point B) defining the requested area for service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area -  Point B Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R6</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointBLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the second corner (Point B) defining the requested area for service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point B Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R7</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointCLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the third corner (Point C) defining the requested area for service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point C Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R8</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointCLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the third corner (Point C) defining the requested area for service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point C Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R9</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointDLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the fourth corner (Point D) defining the requested area for service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point D Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R10</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointDLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the fourth corner (Point D) defining the requested area for service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point D Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R11</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RadarMode" type="union.RadarModes.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies the radar mode requested by the requestor.  Note that radar modes are system-specific and shall be determined for each system.  Note that radar modes 0-5 are generic modes that will be used in non-platform-specific job requests.  The remaining radar modes are a sampling of platform-specific modes.  They are not comprehensive and shall be expanded as necessary.</Definition>
+						<STANAG4607ReferenceFieldName>Radar Mode</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>R12</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RadarResolution">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Range">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The radar range resolution requested by the requestor, expressed in centimeters.</Definition>
+									<STANAG4607ReferenceFieldName>Radar Resolution - Range</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R13</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedShort">
+										<xsd:attribute name="units" use="required" fixed="centimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Cross-Range">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The radar cross-range resolution requested by the requestor, expressed in decimeters (tenths of meters).</Definition>
+									<STANAG4607ReferenceFieldName>Radar Resolution - Cross-Range</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R14</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedShort">
+										<xsd:attribute name="units" use="required" fixed="decimeters"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EarliestStartTime">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Year" type="xsd:gYear">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The year for which the service is requested.</Definition>
+									<STANAG4607ReferenceFieldName>Earliest Start Time - Year</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R15</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Month" type="_1-12">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The month of the year for which the service is requested.</Definition>
+									<STANAG4607ReferenceFieldName>Earliest Start Time - Month</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R16</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Day" type="_1-31">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The day of the month for which the service is requested.</Definition>
+									<STANAG4607ReferenceFieldName>Earliest Start Time - Day</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R17</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Hour" type="_0-23">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The hour of the day fo rwhich the service is requested.</Definition>
+									<STANAG4607ReferenceFieldName>Earliest Start Time - Hour</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R18</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Minutes" type="_0-59">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The minute of the hour for which the service is requested.</Definition>
+									<STANAG4607ReferenceFieldName>Earliest Start Time - Minutes</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R19</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Seconds" type="_0-59">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The second of the minute for which the service is requested.</Definition>
+									<STANAG4607ReferenceFieldName>Earliest Start Time - Seconds</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R20</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="AllowedDelay">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The maximum time from the requested start time after which the request is to be abandoned, expressed in seconds.</Definition>
+									<STANAG4607ReferenceFieldName>Earliest Start Time - Allowed Delay</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R21</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:unsignedShort">
+										<xsd:attribute name="units" use="required" fixed="seconds"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Duration">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The time duration for the radar job, measured from the actual start of the radar job, expressed in seconds.</Definition>
+						<STANAG4607ReferenceFieldName>Duration</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>R22</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="seconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RevisitInterval">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The revisit interval for the radar job, expressed in deciseconds (tenths of seconds).</Definition>
+						<STANAG4607ReferenceFieldName>Revisit Interval</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>R23</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="deciseconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SensorID">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="union.SensorType.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The type of sensor or the platform.  A Sensor ID - Type value of "255" indicates that it is a No Statement and no sensor type is specified.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor ID - Type</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R24</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Model" type="BCSStringLength6.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The particular variant of the sensor type.  A Sensor ID - Model value of "None" indicates that it is a No Statement and no sensor model is specified.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor ID - Model</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>R25</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RequestType" type="_0-1">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A flag field indicating that it is an initial request (flag = 0) or the desire of the requestor to cancel (flag = 1) the requested job.</Definition>
+						<STANAG4607ReferenceFieldName>RequestType</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>R26</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="JobAcknowledgeSegmentType">
+		<xsd:annotation>
+			<xsd:appinfo>
+				<Definition>The Job Acknowledge Segment provides the means for the requestor to receive an acknowledgement from the platform concerning the status of their request.  It is sent once to acknowledge the status of a particular job request.</Definition>
+			</xsd:appinfo>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="JobID" type="xsd:unsignedInt">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>A platform assigned number identifying the specific request or task to which the dwell pertains.  The Job ID shall be unique within a mission.  A default Job ID of 0 indicates there is no reference to any specific request or task.</Definition>
+						<STANAG4607ReferenceFieldName>Job ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A1</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RequestorID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies the requestor of the radar service.</Definition>
+						<STANAG4607ReferenceFieldName>Requestor ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RequestorTaskID" type="BCSStringLength10.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifier for the tasking message sent by the requesting station.  Correlates with the Job ID field in the Job Acknowledge Segment.</Definition>
+						<STANAG4607ReferenceFieldName>Requestor Task ID</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SensorID">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="union.SensorType.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The type of sensor or the platform.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor ID - Type</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A4</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="Model" type="BCSStringLength6.Type">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The particular variant of the sensor type.</Definition>
+									<STANAG4607ReferenceFieldName>Sensor ID - Model</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A5</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Priority_RadarPriority" type="_1-99">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The priority of this tasking request relative to all other active tasking requests scheduled for execution on the specified platform.</Definition>
+						<STANAG4607ReferenceFieldName>Priority (Radar Priority)</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A6</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BoundingArea">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PointALatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the first corner (Point A) defining the area for sensor service, expressed as degrees North (positive) or South (negative) of the Equator.  The four corners (A7 through A14) of the bounding area, expressed as lat/long for each corner, are given in clockwise order and must form a convex quadrilateral.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point A Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A7</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointALongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the first corner (Point A) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area -  Point A Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A8</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointBLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the second corner (Point B) defining the area for sensor service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point B Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A9</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointBLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the second corner (Point B) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point B Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A10</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointCLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the third corner (Point C) defining the area for sensor service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point C Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A11</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointCLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the third corner (Point C) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point C Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A12</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointDLatitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The North-South position of the fourth corner (Point D) defining the area for sensor service, expressed as degrees North (positive) or South (negative) of the Equator.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point D Latitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A13</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_-90-89.999989">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PointDLongitude">
+							<xsd:annotation>
+								<xsd:appinfo>
+									<Definition>The East-West position of the fourth corner (Point D) defining the area for sensor service, expressed as degrees East (positive) of the Prime Meridian.</Definition>
+									<STANAG4607ReferenceFieldName>Bounding Area - Point D Longitude</STANAG4607ReferenceFieldName>
+								</xsd:appinfo>
+								<xsd:documentation>
+									<STANAG4607ReferenceFieldNumber>A14</STANAG4607ReferenceFieldNumber>
+								</xsd:documentation>
+							</xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="_0-359.999979">
+										<xsd:attribute name="units" use="required" fixed="degrees"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RadarMode" type="union.RadarModes.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Identifies the mode in which the radar will operate for the given job ID.  Radar operating modes are system -specific and shall be determined for each system.  Note that radar modes 0-5 are generic modes that will be used in non-platform-specific job requests.  The remaining radar modes are a sampling of platform-specific modes.  They are not comprehensive and shall be expanded as necessary.</Definition>
+						<STANAG4607ReferenceFieldName>Radar Mode</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A15</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Duration">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The time duration for the radar job, measured from the actual start of the radar job, expressed in seconds.</Definition>
+						<STANAG4607ReferenceFieldName>Duration</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A16</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="seconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RevisitInterval">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The revisit interval for the radar job, expressed in deciseconds (tenths of seconds).</Definition>
+						<STANAG4607ReferenceFieldName>Revisit Interval</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A17</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:unsignedShort">
+							<xsd:attribute name="units" use="required" fixed="deciseconds"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RequestStatus" type="RequestStatus.Type">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>Specifies the reason for rejection (or acceptance)of the requested service.  If the request is "Approved, With Modifications", it shall be the responsibility of the requestor to examine the Job Definition segment and determine the changes that were made to the request.</Definition>
+						<STANAG4607ReferenceFieldName>Request Status</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>A18</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:group name="HighResolutionCoordinates">
+		<xsd:sequence>
+			<xsd:element name="High-ResolutionLatitude" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The North-South position of the reported detection, expressed as degrees North (positive) or South (negative) of the Equator.  Field D32.2 is Conditional and is always sent with field D32.3. They are sent only when the transmission bandwidth permits the use of 4 bytes each for target latitude and longitude. If fields D32.2 and D32.3 are sent, then fields D32.4 and D32.5 are not sent. </Definition>
+						<STANAG4607ReferenceFieldName>Target Location - High-Resolution Latitude</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.2</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_-90-89.999999958">
+							<xsd:attribute name="units" use="required" fixed="degrees"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="High-ResolutionLongitude" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The East-West position of the reported detection, expressed as degrees East (positive) from the Prime Meridian. 
+Field D32.3 is Conditional and is always sent with field D32.2. They are sent only when the transmission bandwidth permits the use of 4 bytes each for target latitude and longitude. If fields D32.2 and D32.3 are sent, then fields D32.4 and D32.5 are not sent.</Definition>
+						<STANAG4607ReferenceFieldName>Target Location - High-ResolutionLongitude</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.3</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="_0-359.999999916">
+							<xsd:attribute name="units" use="required" fixed="degrees"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="DeltaCoordinates">
+		<xsd:sequence>
+			<xsd:element name="DeltaLatitude" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The North-South position of the reported detection, expressed as degrees North (positive) or South (negative) from the Dwell Area Center Latitude (the Reference Point) sent in Field D24. This field shall be sent when it is necessary to send the reduced bandwidth version of the Target Report. Delta Latitude is used in conjunction with the Latitude Scale factor (field D10) and the Dwell Area Center Latitude (field D24) to recover the target latitude as follows:
+
+Latitude 	= [(Delta Lat) x (Lat Scale)] + (Center Lat) = [(D32.4) x (D10)] + (D24)
+
+Field D32.4 is Conditional and is always sent with fields D32.5, D10, and D11. They shall be used when the transmission bandwidth and the number of targets do not permit the use of 4 bytes each for target latitude and longitude. If fields D32.4, D32.5, D10, and D11 are sent, then fields D32.2 and D32.3 are not sent.</Definition>
+						<STANAG4607ReferenceFieldName>Target Location - Delta Latitude</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.4</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:short"/>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DeltaLongitude" minOccurs="0">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<Definition>The East-West position of the reported detection, expressed as degrees East (positive) from the Dwell Area Center Longitude (the Reference Point) sent in Field D25. This field is sent when it is necessary to send the reduced bandwidth version of the Target Report. Delta Longitude is used in conjunction with the Longitude Scale factor (field D11) and the Dwell Area Center Longitude (field D25) to recover the target latitude as follows:
+
+Longitude 	= [(Delta Long) x (Long Scale)] + (Center Long) = [(D32.5) x (D11)] + (D25)
+
+Field D32.5 is Conditional and is always sent with fields D32.4, D10, and D11. They shall be used when the transmission bandwidth and the number of targets do not permit the use of 4 bytes each for target latitude and longitude. If fields D32.4, D32.5, D10, and D11 are sent, then fields D32.2 and D32.3 are not sent.</Definition>
+						<STANAG4607ReferenceFieldName>Target Location - Delta Longitude</STANAG4607ReferenceFieldName>
+					</xsd:appinfo>
+					<xsd:documentation>
+						<STANAG4607ReferenceFieldNumber>D32.5</STANAG4607ReferenceFieldNumber>
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:short"/>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+</xsd:schema>

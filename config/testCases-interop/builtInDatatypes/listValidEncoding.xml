@@ -1,0 +1,34 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid list encoding">
+
+    <param name="groupId" value="${groupId} | listValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/list/list.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/list"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingList"/>
+
+    <testCase name="list.valid-00">
+        <param name="description"  value="List of bytes"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list-valid-00.xml" />
+    </testCase>
+    <testCase name="list.valid-01">
+        <param name="description"  value="list values without prefix and/or URI"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list-valid-01.xml" />
+    </testCase>
+    <testCase name="list.valid-02">
+        <param name="description"  value="list values with floats"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list-valid-02.xml" />
+    </testCase>
+    <testCase name="list.valid-03">
+        <param name="description"  value="list values with enumerations"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list-valid-03.xml" />
+    </testCase>
+    <testCase name="list.valid-04">
+        <param name="description"  value="list values as NMTOKENS"/>
+        <param name="japex.inputFile" value="${test.docFolder}/list-valid-04.xml" />
+    </testCase>
+
+
+</testCaseGroup>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo" 
+           elementFormDefault="qualified">
+
+<xsd:complexType name="tA">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="A" type="foo:tA" nillable="true"/>
+    <xsd:element name="B" type="foo:tB" />
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="A" type="foo:tA" />
+
+<xsd:complexType name="tB">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="B" type="foo:tB" nillable="true"/>
+    <xsd:element name="A" type="foo:tA" />
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:element name="B" type="foo:tB" />
+
+</xsd:schema>

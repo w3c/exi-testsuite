@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+    <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/DataStore/DataStore.xsd"/>
+
+    <testCase name="DataStore/instance/1000MixedStore.xml">
+	<param name="japex.inputFile" value="${testsDir}/DataStore/instance/1000MixedStore.xml"/>
+    </testCase>
+    <testCase name="DataStore/instance/1000BinaryStore.xml">
+	<param name="japex.inputFile" value="${testsDir}/DataStore/instance/1000BinaryStore.xml"/>
+    </testCase>
+    <testCase name="DataStore/instance/1000BooleanStore.xml">
+	<param name="japex.inputFile" value="${testsDir}/DataStore/instance/1000BooleanStore.xml"/>
+    </testCase>
+    <testCase name="DataStore/instance/100IntegerStore.xml">
+	<param name="japex.inputFile" value="${testsDir}/DataStore/instance/100IntegerStore.xml"/>
+    </testCase>
+    <testCase name="DataStore/instance/1MixedNoBinaryStore.xml">
+	<param name="japex.inputFile" value="${testsDir}/DataStore/instance/1MixedNoBinaryStore.xml"/>
+    </testCase>
+    <testCase name="DataStore/weblog.xml">
+      <param xmlns="http://www.sun.com/japex/testSuite" name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/DataStore/weblog.xsd"/>
+      <param name="japex.inputFile" value="${testsDir}/DataStore/weblog.xml"/>
+    </testCase>
+
+</testCaseGroup>
+

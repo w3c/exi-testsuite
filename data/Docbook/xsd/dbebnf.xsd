@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ...................................................................... -->
+<!-- DocBook EBNF Module V1.2b1 ............................................. -->
+<!-- File dbebnf.dtd ...................................................... -->
+<!--
+  Copyright (C) 2001, 2002 Organization for the Advancement
+  of Structured Information Standards (OASIS).
+  
+  $Id: dbebnf.xsd,v 1.3 2006/09/06 08:15:45 pthorpe Exp $
+  
+  Permission to use, copy, modify and distribute the DocBook EBNF
+  Module and its accompanying documentation for any purpose and
+  without fee is hereby granted in perpetuity, provided that the
+  above copyright notice and this paragraph appear in all copies.
+  The copyright holders make no representation about the
+  suitability of the DTD for any purpose.  It is provided "as is"
+  without expressed or implied warranty.
+  
+  If you modify the DocBook EBNF Module in any way, label your DTD
+  as a variant of DocBook.  See the maintenance documentation for
+  more information.
+  
+  Please direct all questions, bug reports, or suggestions for 
+  changes to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+-->
+<!-- ...................................................................... -->
+<!--
+  This is the driver file for V1.2b1 of the DocBook EBNF Module.
+  Please use the following formal public identifier to identify it:
+  
+  "-//OASIS//DTD DocBook EBNF Module V1.2b1//EN"
+  
+  For example, if your document's top-level element is Book, and
+  you are using DocBook directly, use the FPI in the DOCTYPE
+  declaration:
+  
+  <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook EBNF Module V1.2b1//EN"
+                 "http://www.oasis-open.org/docbook/xml/ebnf/1.2b1/dbebnf.dtd"
+                 [...]>
+  
+  Or, if you have a higher-level driver file that customizes DocBook,
+  use the FPI in the parameter entity declaration:
+  
+  <!ENTITY % DocBookEBNFDTD PUBLIC "-//OASIS//DTD DocBook EBNF Module V1.2b1//EN"
+             "http://www.oasis-open.org/docbook/xml/ebnf/1.2b1/dbebnf.dtd">
+  %DocBookEBNFDTD;
+  
+  See the documentation for detailed information on the parameter
+  entity and module scheme used in DocBook, customizing DocBook and
+  planning for interchange, and changes made since the last release
+  of DocBook.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:include schemaLocation="docbook.xsd"/>
+  <xs:include schemaLocation="dbebnf.xsd"/>
+  <xs:include schemaLocation="dbnotnx.xsd"/>
+  <xs:include schemaLocation="dbpoolx.xsd"/>
+  <xs:include schemaLocation="dbhierx.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="ebnf.inline.hook" abstract="true" substitutionGroup="tech.char.class">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="common.attrib"/>
+      <xs:attributeGroup ref="required-XLink-to-production-ID"/>
+      <xs:attributeGroup ref="role.attrib"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ebnf.block.hook" abstract="true" substitutionGroup="compound.class"/>
+  <xs:element name="productionset" substitutionGroup="ebnf.block.hook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group minOccurs="0" ref="formalobject.title.content"/>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="production"/>
+          <xs:element ref="productionrecap"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="common.attrib"/>
+      <xs:attributeGroup ref="role.attrib"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="production">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="lhs"/>
+        <xs:element ref="rhs"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="constraint"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="idreq.common.attrib"/>
+      <xs:attributeGroup ref="role.attrib"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lhs">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="common.attrib"/>
+      <xs:attributeGroup ref="role.attrib"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rhs">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="nonterminal"/>
+        <xs:element ref="lineannotation"/>
+        <xs:element ref="sbr"/>
+      </xs:choice>
+      <xs:attributeGroup ref="common.attrib"/>
+      <xs:attributeGroup ref="role.attrib"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Allowed to be an xpointer: you can point to non-terminals in -->
+  <!-- other specifications. -->
+  <xs:attributeGroup name="required-XLink-to-production-ID">
+    <xs:attribute name="def" use="required"/>
+  </xs:attributeGroup>
+  <xs:element name="nonterminal" substitutionGroup="ebnf.inline.hook"/>
+  <!-- Must be an IDREF: constraints identified in your spec must be -->
+  <!-- represented in your spec. -->
+  <xs:attributeGroup name="required-IDREF-to-constraintdef-ID">
+    <xs:attribute name="linkend" use="required" type="xs:IDREF"/>
+  </xs:attributeGroup>
+  <xs:element name="constraint">
+    <xs:complexType>
+      <xs:attributeGroup ref="common.attrib"/>
+      <xs:attributeGroup ref="required-IDREF-to-constraintdef-ID"/>
+      <xs:attributeGroup ref="role.attrib"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Must be an IDREF: you can only recap productions in your spec -->
+  <xs:attributeGroup name="required-IDREF-to-production-ID">
+    <xs:attribute name="linkend" use="required" type="xs:IDREF"/>
+  </xs:attributeGroup>
+  <xs:element name="productionrecap">
+    <xs:complexType>
+      <xs:attributeGroup ref="common.attrib"/>
+      <xs:attributeGroup ref="role.attrib"/>
+      <xs:attributeGroup ref="required-IDREF-to-production-ID"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="constraintdef" substitutionGroup="ebnf.block.hook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="title"/>
+        <xs:group ref="admon.mix"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="idreq.common.attrib"/>
+      <xs:attributeGroup ref="role.attrib"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+<!-- End of dbebnf.dtd V1.2b1 ............................................... -->
+<!-- ...................................................................... -->

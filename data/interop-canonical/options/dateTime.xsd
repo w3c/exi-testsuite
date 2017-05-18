@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="date" type="xs:date" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="dateTime" type="xs:dateTime" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="gDay" type="xs:gDay" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="gMonth" type="xs:gMonth" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="gMonthDay" type="xs:gMonthDay" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="gYear" type="xs:gYear" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="gYearMonth" type="xs:gYearMonth" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="time" type="xs:time" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="date" type="xs:date" use="optional"/>
+            <xs:attribute name="dateTime" type="xs:dateTime" use="optional"/>
+            <xs:attribute name="gDay" type="xs:gDay" use="optional"/>
+            <xs:attribute name="gMonth" type="xs:gMonth" use="optional"/>
+            <xs:attribute name="gMonthDay" type="xs:gMonthDay" use="optional"/>
+            <xs:attribute name="gYear" type="xs:gYear" use="optional"/>
+            <xs:attribute name="gYearMonth" type="xs:gYearMonth" use="optional"/>
+            <xs:attribute name="time" type="xs:time" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
+

@@ -1,0 +1,25 @@
+<!-- =================================================================== -->
+<!-- Tests CM where there's a declared attribute wildcard.               -->
+<!-- =================================================================== -->
+<foo:P xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <foo:P3>
+    <!-- CM -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <!-- CM -->
+  </foo:P3>
+  <foo:P3 foo:aA=""><!-- AT(foo:*) -->
+    <!-- CM -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <!-- CM -->
+  </foo:P3>
+  <foo:P3 xsi:nil='true' foo:aA=""><!-- AT(xsi:nil), AT(foo:*) -->
+    <!-- CM -->
+  </foo:P3>
+  <foo:P3 xsi:type='foo:extended_P3' foo:aA=""><!-- AT(xsi:type), AT(foo:*) -->
+    <!-- CM -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <!-- CM -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    <!-- CM -->
+  </foo:P3>
+</foo:P>

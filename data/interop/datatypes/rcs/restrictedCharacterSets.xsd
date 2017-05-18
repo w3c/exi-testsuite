@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="test1">
+        <xs:simpleType>
+            <xs:restriction base="xs:token">
+                <xs:pattern value="[abc&#x3095;&#x00A9;]{1}"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    <!-- non BMP -->
+    <xs:element name="test2">
+        <xs:simpleType>
+            <xs:restriction base="xs:token">
+                <xs:pattern value="[ABC&#x10FFF;]{1}"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    <!-- Social Security number -->
+    <xs:element name="ssn">
+        <xs:simpleType>
+            <xs:restriction base="xs:token">
+                <xs:pattern value="[0-9]{3}-[0-9]{2}-[0-9]{4}"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    <!-- Simple range -->
+    <xs:element name="range1">
+        <xs:simpleType>
+            <xs:restriction base="xs:token">
+                <xs:pattern value="[A-X]"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    <!--
+        Unicode 3.1.0: 03D7 .. 03DA (2 chars)
+        Unicode 3.2.0: 03D7 .. 03DA (4 chars, 03D8 and 03D9)    
+    -->
+    <xs:element name="range2">
+        <xs:simpleType>
+            <xs:restriction base="xs:token">
+                <xs:pattern value="[&#x03D7;-&#x03DA;]"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    <!-- Char Class Lm -->
+    <xs:element name="charClassLm">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:pattern value="\p{Lm}"/>
+                <!-- Unicode 3.1.0 46 Chars -->
+                <!-- Unicode 3.2.0 48 Chars -->
+                <!-- Unicode 6.0.0d2 202 Chars -->
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+
+    <!-- Char Class Nd -->
+    <xs:element name="charClassNd">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:pattern value="\p{Nd}"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+</xs:schema>

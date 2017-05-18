@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo" >
+           
+	<xsd:element name="H1" />
+	<xsd:element name="A" type="xsd:integer" />
+	<xsd:element name="AB" type="xsd:anyType" nillable="true" />
+	
+	<xsd:attribute name="aA" />
+	<xsd:attribute name="aBoolean" type="xsd:boolean"/>
+	   
+	<xsd:element name="H2">
+	  <xsd:complexType>
+	    <xsd:choice>
+	      <xsd:element name="H1"/>
+	      <xsd:any namespace="urn:foo" />
+	    </xsd:choice>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="H3">
+	  <xsd:complexType>
+	    <xsd:choice>
+	      <xsd:any namespace="urn:foo" />
+	    </xsd:choice>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="H5">
+	  <xsd:complexType>
+	  	<xsd:attribute name="aBoolean" type="xsd:boolean"/>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="H6">
+	  <xsd:complexType>
+	  	<xsd:attribute name="aBoolean" type="xsd:boolean" />
+	  	<xsd:anyAttribute namespace="urn:foo"/>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="H7">
+	  <xsd:complexType>
+	  	<xsd:anyAttribute namespace="urn:foo"/>
+	  </xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="H8">
+	  <xsd:complexType>
+	  </xsd:complexType>
+	</xsd:element>
+	
+</xsd:schema>

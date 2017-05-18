@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo:P [
+  <!ENTITY ent SYSTEM "er-entity.xml">
+]>
+<!-- =================================================================== -->
+<!-- Tests ER where there's a declared attribute wildcard.               -->
+<!-- =================================================================== -->
+<foo:P xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <foo:P3>
+    &ent;<!-- ER -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    &ent;<!-- ER -->
+  </foo:P3>
+  <foo:P3 foo:aA=""><!-- AT(foo:*) -->
+    &ent;<!-- ER -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    &ent;<!-- ER -->
+  </foo:P3>
+  <foo:P3 xsi:nil='true' foo:aA=""><!-- AT(xsi:nil), AT(foo:*) -->
+    &ent;<!-- ER -->
+  </foo:P3>
+  <foo:P3 xsi:type='foo:extended_P3' foo:aA=""><!-- AT(xsi:type), AT(foo:*) -->
+    &ent;<!-- ER -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    &ent;<!-- ER -->
+    <foo:AD>a</foo:AD><!-- SE(foo:AD) -->
+    &ent;<!-- ER -->
+  </foo:P3>
+</foo:P>

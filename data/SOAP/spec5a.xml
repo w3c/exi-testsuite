@@ -1,0 +1,21 @@
+<?xml version='1.0' ?>
+<env:Envelope xmlns:env="http://www.w3.org/2002/06/soap-envelope" >
+ <env:Header>
+     <t:transaction
+        xmlns:t="http://thirdparty.example.org/transaction"
+          env:encodingStyle="http://example.com/encoding"
+           env:mustUnderstand="true" >
+               5
+     </t:transaction>
+ </env:Header>  
+ <env:Body>
+     <m:chargeReservationResponse 
+         env:encodingStyle="http://www.w3.org/2002/06/soap-encoding"
+             xmlns:m="http://travelcompany.example.org/">
+       <m:reference>FT35ZBQ</m:reference>
+       <m:viewAt>
+         http://travelcompany.example.org/reservations?code=FT35ZBQ
+       </m:viewAt>
+     </m:chargeReservationResponse>
+ </env:Body>
+</env:Envelope>

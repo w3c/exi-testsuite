@@ -1,0 +1,32 @@
+<!--
+	The testcases are intended to test the decimal data type for canonical EXI.
+	https://www.w3.org/TR/exi-c14n/#dt-decimal
+-->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+				xmlns:xi="http://www.w3.org/2001/XInclude"
+    			name="decimal datatype testcases">
+   
+   <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
+   <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal"/>
+    <testCase name="valid-01">
+        <param name="description"  value="simple decimal value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-01.xml" />
+    </testCase>
+    <testCase name="valid-02">
+        <param name="description"  value="explore sign value if both the integral portion and the fractional portion of the Decimal value are 0 (zero)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-02.xml" />
+    </testCase>  
+    <testCase name="valid-06">
+        <param name="description"  value="large valid negative decimal"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+    </testCase>
+	
+    <testCase name="invalid-01">
+        <param name="description"  value="invalid decimal value using float E notation"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-invalid-01.xml" />
+		<param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>  
+    </testCase>
+
+</testCaseGroup>

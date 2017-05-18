@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- DTD file for Substances with a given Pharmacological Action. pa2006.dtd -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:complexType name="DescriptorReference">
+    <xs:sequence>
+      <xs:element ref="DescriptorUI"/>
+      <xs:element ref="DescriptorName"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PharmacologicalActionSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="PharmacologicalAction"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PharmacologicalAction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DescriptorReferredTo"/>
+        <xs:element ref="PharmacologicalActionSubstanceList"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DescriptorReferredTo" type="DescriptorReference"/>
+  <xs:element name="PharmacologicalActionSubstanceList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="Substance"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Substance">
+    <xs:complexType>
+      <xs:sequence maxOccurs="unbounded">
+        <xs:element ref="RecordUI"/>
+        <xs:element ref="RecordName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecordUI" type="xs:string"/>
+  <xs:element name="RecordName" type="String"/>
+  <xs:element name="DescriptorUI" type="xs:string"/>
+  <xs:element name="DescriptorName" type="String"/>
+  <xs:complexType name="String">
+    <xs:sequence>
+      <xs:element ref="String"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="String" type="xs:string"/>
+</xs:schema>

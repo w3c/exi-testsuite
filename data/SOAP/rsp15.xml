@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <SOAP-ENV:Body>
+  <ns3:echoMapArrayResponse xmlns:ns3="http://soapinterop.org/">
+   <echoMapArrayResult href="#id0"/>
+  </ns3:echoMapArrayResponse>
+  <multiRef id="id0" xsi:type="SOAP-ENC:Array" SOAP-ENC:arrayType="ns6:Map[2]" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns6="http://xml.apache.org/xml-soap">
+   <item href="#id1"/>
+   <item href="#id2"/>
+  </multiRef>
+  <multiRef id="id2" xsi:type="ns11:Map" xmlns:ns11="http://xml.apache.org/xml-soap">
+   <item>
+    <key xsi:type="xsd:string">this is the second map</key>
+    <value xsi:type="xsd:boolean">true</value>
+   </item>
+   <item>
+    <key xsi:type="xsd:string">test</key>
+    <value xsi:type="xsd:float">411.0</value>
+   </item>
+  </multiRef>
+  <multiRef id="id1" xsi:type="ns23:Map" xmlns:ns23="http://xml.apache.org/xml-soap">
+   <item>
+    <key xsi:type="xsd:dateTime">2001-10-05T22:07:18.890Z</key>
+    <value xsi:type="xsd:string">string value</value>
+   </item>
+   <item>
+    <key xsi:type="xsd:string">stringKey</key>
+    <value xsi:type="xsd:int">5</value>
+   </item>
+  </multiRef>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

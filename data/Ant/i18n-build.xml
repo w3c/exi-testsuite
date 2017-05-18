@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<project name="i18n" default="main">
+
+  <property name="compile-examples.post" value="japanese.encoding"/>
+  <property name="disable.examples.html" value="true"/>
+
+  <target name="japanese.encoding">
+    <delete>
+      <fileset dir="${build.examples}/WEB-INF/classes">
+        <include name="**/*_ja.properties"/>
+      </fileset>
+    </delete>
+    <native2ascii encoding="SJIS"
+       src="${examples.src}/src" dest="${build.examples}/WEB-INF/classes"
+       includes="**/*_ja.properties" />
+  </target>
+
+</project>

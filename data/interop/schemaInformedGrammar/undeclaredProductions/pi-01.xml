@@ -1,0 +1,21 @@
+<!-- =================================================================== -->
+<!-- Tests PI where there is no declared attributes or declared          -->
+<!-- attribute wildcard.                                                 -->
+<!-- =================================================================== -->
+<foo:P xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <foo:P1>
+    <?pi_1 a="A" b="B"?><!-- PI -->
+    <foo:AB>a</foo:AB>
+    <?pi_2 a="A" b="B"?><!-- PI -->
+  </foo:P1>
+  <foo:P1 xsi:nil='true'>
+    <?pi_3 a="A" b="B"?><!-- PI -->
+  </foo:P1>
+  <foo:P1 xsi:type='foo:extended_P1'>
+    <?pi_4 a="A" b="B"?><!-- PI -->
+    <foo:AB>a</foo:AB>
+    <?pi_5 a="A" b="B"?><!-- PI -->
+    <foo:AB>a</foo:AB>
+    <?pi_6 a="A" b="B"?><!-- PI -->
+  </foo:P1>
+</foo:P>

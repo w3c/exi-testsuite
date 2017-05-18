@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<!DOCTYPE xsd:schema [
+<!NOTATION A SYSTEM "http://foo.com/A">
+]>
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo" xmlns:goo="urn:goo">
+
+<xsd:notation name="cat" system="http://foo.com/cat"/>
+<xsd:notation name="dog" system="http://foo.com/dog"/>
+<xsd:notation name="pig" system="http://foo.com/pig"/>
+
+<xsd:simpleType name="stringDerived">
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="Tokyo"/>
+    <xsd:enumeration value="Osaka"/>
+    <xsd:enumeration value="Nagoya"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="stringDerived2">
+  <xsd:restriction base="foo:stringDerived"/>
+</xsd:simpleType>
+
+<xsd:simpleType name="idDerived">
+  <xsd:restriction base="xsd:ID">
+    <xsd:enumeration value="Tokyo"/>
+    <xsd:enumeration value="Osaka"/>
+    <xsd:enumeration value="Nagoya"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="anyURIDerived">
+  <xsd:restriction base="xsd:anyURI">
+    <xsd:enumeration value="urn:foo"/>
+    <xsd:enumeration value="urn:goo"/>
+    <xsd:enumeration value="urn:hoo"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="qNameDerived">
+  <xsd:restriction base="xsd:QName">
+    <xsd:enumeration value="foo:A"/>
+    <xsd:enumeration value="goo:A"/>
+    <!-- xsd:enumeration value="hoo:A"/ -->
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="qNameDerived2">
+  <xsd:restriction base="xsd:QName">
+    <xsd:enumeration value="A"/>
+    <xsd:enumeration value="B"/>
+    <xsd:enumeration value="C"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="notationDerived">
+  <xsd:restriction base="xsd:NOTATION">
+    <xsd:enumeration value="foo:cat"/>
+    <xsd:enumeration value="foo:dog"/>
+    <xsd:enumeration value="foo:pig"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="decimalDerived">
+  <xsd:restriction base="xsd:decimal">
+    <xsd:enumeration value="100"/>
+    <xsd:enumeration value="101"/>
+    <xsd:enumeration value="102"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="floatDerived">
+  <xsd:restriction base="xsd:float">
+    <xsd:enumeration value="103.01"/>
+    <xsd:enumeration value="105.01"/>
+    <xsd:enumeration value="107.01"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="doubleDerived">
+  <xsd:restriction base="xsd:double">
+    <xsd:enumeration value="106.01"/>
+    <xsd:enumeration value="108.01"/>
+    <xsd:enumeration value="110.01"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="intDerived">
+  <xsd:restriction base="xsd:int">
+    <xsd:enumeration value="109"/>
+    <xsd:enumeration value="110"/>
+    <xsd:enumeration value="111"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="longDerived">
+  <xsd:restriction base="xsd:long">
+    <xsd:enumeration value="112"/>
+    <xsd:enumeration value="113"/>
+    <xsd:enumeration value="114"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="dateTimeDerived">
+  <xsd:restriction base="xsd:dateTime">
+    <xsd:enumeration value="2003-03-19T13:20:00-05:00"/>
+    <xsd:enumeration value="2003-03-20T13:20:00-05:00"/>
+    <xsd:enumeration value="2003-03-21T13:20:00-05:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="dateDerived">
+  <xsd:restriction base="xsd:date">
+    <xsd:enumeration value="2003-03-19-05:00"/>
+    <xsd:enumeration value="2003-03-21-05:00"/>
+    <xsd:enumeration value="2003-03-23-05:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="timeDerived">
+  <xsd:restriction base="xsd:time">
+    <xsd:enumeration value="13:20:00-05:00"/>
+    <xsd:enumeration value="13:22:00-05:00"/>
+    <xsd:enumeration value="13:24:00-05:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="gYearMonthDerived">
+  <xsd:restriction base="xsd:gYearMonth">
+    <xsd:enumeration value="2003-04-05:00"/>
+    <xsd:enumeration value="2003-06-05:00"/>
+    <xsd:enumeration value="2003-08-05:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="gMonthDayDerived">
+  <xsd:restriction base="xsd:gMonthDay">
+    <xsd:enumeration value="--09-16+09:00"/>
+    <xsd:enumeration value="--09-18+09:00"/>
+    <xsd:enumeration value="--09-20+09:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="gYearDerived">
+  <xsd:restriction base="xsd:gYear">
+    <xsd:enumeration value="1969+09:00"/>
+    <xsd:enumeration value="1971+09:00"/>
+    <xsd:enumeration value="1973+09:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="gMonthDerived">
+  <xsd:restriction base="xsd:gMonth">
+    <xsd:enumeration value="--07+09:00"/>
+    <xsd:enumeration value="--09+09:00"/>
+    <xsd:enumeration value="--11+09:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="gDayDerived">
+  <xsd:restriction base="xsd:gDay">
+    <xsd:enumeration value="---16+09:00"/>
+    <xsd:enumeration value="---18+09:00"/>
+    <xsd:enumeration value="---20+09:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="durationDerived">
+  <xsd:restriction base="xsd:duration">
+    <xsd:enumeration value="P1Y2M3DT10H30M"/>
+    <xsd:enumeration value="P1Y2M4DT10H30M"/>
+    <xsd:enumeration value="P1Y2M5DT10H30M"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="base64BinaryDerived">
+  <xsd:restriction base="xsd:base64Binary">
+    <xsd:enumeration value="YWFhYWE="/><!-- aaaaa -->
+    <!-- xsd:enumeration value="YmJiYmI="/ --><!-- bbbbb -->
+    <xsd:enumeration value="Y2NjY2M="/><!-- ccccc -->
+    <xsd:enumeration value="ZWVlZWU="/><!-- eeeee -->
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="hexBinaryDerived">
+  <xsd:restriction base="xsd:hexBinary">
+    <xsd:enumeration value="6161616161"/><!-- aaaaa -->
+    <!-- xsd:enumeration value="6262626262"/ --><!-- bbbbb -->
+    <xsd:enumeration value="6363636363"/><!-- ccccc -->
+    <xsd:enumeration value="6565656565"/><!-- eeeee -->
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="unionedEnum">
+  <xsd:restriction>
+    <xsd:simpleType>
+      <xsd:union memberTypes="xsd:int xsd:NMTOKEN"/>
+    </xsd:simpleType>
+    <xsd:enumeration value="100"/>
+    <xsd:enumeration value="Tokyo"/>
+    <xsd:enumeration value="101"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="unionOfFloatDateTimeEnum">
+  <xsd:restriction>
+    <xsd:simpleType>
+      <xsd:union memberTypes="xsd:dateTime xsd:float"/>
+    </xsd:simpleType>
+    <xsd:enumeration value="2003-03-19T13:20:00-05:00"/>
+    <xsd:enumeration value="103.01"/>
+    <xsd:enumeration value="2003-03-21T13:20:00-05:00"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="unionOfDoubleDurationEnum">
+  <xsd:restriction>
+    <xsd:simpleType>
+      <xsd:union memberTypes="xsd:duration xsd:double"/>
+    </xsd:simpleType>
+    <xsd:enumeration value="P1Y2M3DT10H30M"/>
+    <xsd:enumeration value="103.01"/>
+    <xsd:enumeration value="P1Y2M5DT10H30M"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="unionOfFloatBase64Enum">
+  <xsd:restriction>
+    <xsd:simpleType>
+      <xsd:union memberTypes="xsd:base64Binary xsd:float"/>
+    </xsd:simpleType>
+    <xsd:enumeration value="YWFhYWE="/><!-- aaaaa -->
+    <xsd:enumeration value="103.01"/>
+    <xsd:enumeration value="Y2NjY2M="/><!-- ccccc -->
+  </xsd:restriction>
+</xsd:simpleType>
+
+<xsd:element name="A" type="xsd:anySimpleType"/>
+
+</xsd:schema>

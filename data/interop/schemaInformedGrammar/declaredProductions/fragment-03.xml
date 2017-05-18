@@ -1,0 +1,24 @@
+<!-- =================================================================== -->
+<!-- There are 3 declarations of the element name "foo:A" all of which   -->
+<!-- use the same type. The same is true for the element name "foo:B".   -->
+<!-- =================================================================== -->
+<foo:A xmlns:foo="urn:foo">
+  <foo:A>
+    <foo:A />
+    <foo:B />
+  </foo:A>
+  <foo:B>
+    <foo:B />
+    <foo:A />
+  </foo:B>
+</foo:A>
+<foo:B xmlns:foo="urn:foo">
+  <foo:B>
+    <foo:B />
+    <foo:A />
+  </foo:B>
+  <foo:A>
+    <foo:A />
+    <foo:B />
+  </foo:A>
+</foo:B>

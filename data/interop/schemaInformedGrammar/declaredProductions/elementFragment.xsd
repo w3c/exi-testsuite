@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<xsd:schema targetNamespace="urn:foo"
+           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns:foo="urn:foo" 
+           elementFormDefault="qualified" attributeFormDefault="qualified">
+
+<xsd:import namespace="urn:aoo" schemaLocation="elementFragment_imported_aoo.xsd"/>
+
+<!-- Don't add any more attribute declarations! -->
+<xsd:attribute name="c" type="xsd:date"/><!-- event code 3 -->
+<xsd:attribute name="d" type="xsd:time"/><!-- event code 5 -->
+
+<xsd:simpleType name="date2">
+  <xsd:restriction base="xsd:date" />
+</xsd:simpleType>
+
+<xsd:simpleType name="time2">
+  <xsd:restriction base="xsd:time" />
+</xsd:simpleType>
+
+<xsd:complexType name="tC">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="C" type="foo:tC2" />
+    <xsd:element name="D" type="foo:tD" />
+  </xsd:sequence>
+  <xsd:attribute name="c" type="foo:date2"/>
+  <xsd:anyAttribute namespace="##any" processContents="lax" />
+</xsd:complexType>
+
+<xsd:complexType name="tC2">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="C" type="foo:tC" />
+    <xsd:element name="D" type="foo:tD" />
+  </xsd:sequence>
+  <xsd:attribute name="c" type="foo:date2"/>
+</xsd:complexType>
+
+<xsd:complexType name="tD">
+  <xsd:sequence minOccurs="0">
+    <xsd:element name="D" type="foo:tD" nillable="true"/>
+    <xsd:element name="C" type="foo:tC2" />
+  </xsd:sequence>
+  <xsd:attribute name="d" type="foo:time2"/>
+</xsd:complexType>
+
+<!-- Don't add any more element declarations! -->
+<xsd:element name="C" type="foo:tC" /><!-- event code 10 -->
+<xsd:element name="D" type="foo:tD" /><!-- event code 12 -->
+
+</xsd:schema>

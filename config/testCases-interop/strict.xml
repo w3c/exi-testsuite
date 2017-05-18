@@ -1,0 +1,12 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Strict grammar interoperability tests">
+
+    <param name="groupId" value="${groupId} | strict"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>  
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+    
+    <xi:include href="schemaValidDatatypes.xml"/>
+    <xi:include href="schemaInformedDeclaredProductions.xml"/>
+</testCaseGroup>

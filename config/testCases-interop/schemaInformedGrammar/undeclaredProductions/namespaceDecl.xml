@@ -1,0 +1,52 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Undeclared Production tests - NS">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/acceptance.xsd"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#addingProductions"/>
+
+    <testCase name="schemaInformed.undeclared.namespaceDecl-01">
+        <param name="testDescription"  
+          value="Tests NS event type. NS events come before xsi:type attribute."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/namespaceDecl-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.namespaceDecl-02">
+        <param name="testDescription"  
+          value="Tests NS event type. Nested elements with namespace declarations."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/namespaceDecl-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.namespaceDecl-03">
+        <param name="testDescription"  
+          value="Tests NS event type. Nested elements with namespace declarations, 
+                 where two or more prefixes are assigned to the same URI."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/namespaceDecl-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.namespaceDecl-04">
+        <param name="testDescription"  
+          value="Tests NS event type. xsi:nil attribute with two corresponding 
+                 namespace declarations."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/namespaceDecl-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+    </testCase>
+
+    <testCase name="schemaInformed.undeclared.namespaceDecl-05">
+        <param name="testDescription"  
+          value="Tests NS event type. xsi:type attribute with two corresponding 
+                 namespace declarations."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/undeclaredProductions/namespaceDecl-05.xml" />
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="prefixes"/>
+    </testCase>
+
+</testCaseGroup>

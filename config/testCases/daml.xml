@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+      <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+  <param xmlns="http://www.sun.com/japex/testSuite" name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/DAML/autoschema.xsd"/>
+
+      <testCase name="DAML/cyc.xml">
+        <param name="japex.inputFile" value="${testsDir}/DAML/cyc.xml"/>
+      </testCase>
+      <testCase name="DAML/wines.daml">
+        <param name="japex.inputFile" value="${testsDir}/DAML/wines.daml"/>
+      </testCase>
+</testCaseGroup>

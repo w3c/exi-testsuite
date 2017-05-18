@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<!-- Created by John Schneider for seismic data provided by ChevronTexaco with a schema -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="seisdata">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="head" type="headtype" />
+                <xs:element name="xcrd" type="xcrdtype" />
+		    <xs:element name="ycrd" type="xcrdtype" />
+		    <xs:element name="zval" type="xcrdtype" />
+		    <xs:element name="cdp" type="xcrdtype" />
+		    <xs:element name="data" type="xcrdtype" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="headtype">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="area" type="xs:string" />
+            <xs:element name="ntrace" type="xs:int" />
+            <xs:element name="nsamp" type="xs:short" />
+            <xs:element name="precision" type="xs:byte" />
+            <xs:element name="zstart" type="xs:float" />
+            <xs:element name="zinc" type="xs:float" />
+            <xs:element name="num_xyzs_fields" type="xs:byte" />
+            <xs:element name="xyzs_field_names" type="xs:string" />
+            <xs:element name="xyzs_field_precisions" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="xcrdtype">
+	  <xs:list itemType="xs:decimal"/>
+    </xs:simpleType>
+
+</xs:schema>

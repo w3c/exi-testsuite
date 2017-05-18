@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSuite name="ParsingPerformance" xmlns="http://www.sun.com/japex/testSuite">
+
+    <param name="japex.classPath" value="dist/classes"/>
+    
+    <param name="japex.warmupIterations" value="0"/>
+    <param name="japex.runIterations" value="1"/>
+
+    <driver name="ExceptionHandling1" normal="true">
+        <param name="japex.driverClass" value="ExceptionHandling1"/>
+        <param name="description" value="Exception Handling class that fails on test1"/>
+    </driver>
+
+    <driver name="ExceptionHandling2">
+        <param name="japex.driverClass" value="ExceptionHandling2"/>
+        <param name="description" value="Exception Handling class that fails on test2"/>
+    </driver>
+    
+    <driver name="ExceptionHandling3">
+        <param name="japex.driverClass" value="ExceptionHandling3"/>
+        <param name="description" value="Exception Handling class that does not fail"/>
+    </driver>
+    
+    <testCase name="test1"/>
+    <testCase name="test2"/>
+    <testCase name="test3"/>
+
+</testSuite>

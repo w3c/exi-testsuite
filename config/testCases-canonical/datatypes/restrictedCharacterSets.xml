@@ -1,0 +1,151 @@
+<!--
+	The testcases are intended to test the Restricted Character Sets data type for canonical EXI.
+	https://www.w3.org/TR/exi-c14n/#dt-RCS
+-->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="RCS datatype testcases">
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/rcs/restrictedCharacterSets.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/rcs"/>
+    <param name="reference" value="https://www.w3.org/TR/exi-c14n/#dt-RCS"/>
+    
+    <!-- Char Class Lm -->
+    <testCase name="restrictedCharacterSets-charClassLm-00">
+        <param name="description"  value="Char Class Lm - Unicode 3.1.0 value - valid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassLm-00.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-charClassLm-00-dev">
+        <param name="description"  value="Char Class Lm - Unicode 3.1.0 value - deviant"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassLm-00-dev.xml" />
+    </testCase>	
+    <!-- <testCase name="restrictedCharacterSets-charClassLm-01">
+        <param name="description"  value="Char Class Lm - Unicode 3.2.0 value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassLm-01.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-charClassLm-02">
+        <param name="description"  value="Char Class Lm - Unicode 6.0.0 value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassLm-02.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-charClassLm-03">
+        <param name="description"  value="Char Class Lm - Invalid value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassLm-03.xml" />
+    </testCase> -->
+    
+    <!-- Char Class Nd -->
+    <testCase name="restrictedCharacterSets-charClassNd-00">
+        <param name="description"  value="Char Class Nd - valid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassNd-00.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-charClassNd-00-dev">
+        <param name="description"  value="Char Class Nd - deviant"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassNd-00-dev.xml" />
+    </testCase>
+    <!-- <testCase name="restrictedCharacterSets-charClassNd-01">
+        <param name="description"  value="Char Class Nd - valid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassNd-01.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-charClassNd-02">
+        <param name="description"  value="Char Class Nd - invalid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-charClassNd-02.xml" />
+    </testCase> -->
+    
+    <!-- Range 1 -->
+    <testCase name="restrictedCharacterSets-range1-00">
+        <param name="description"  value="Simple range - valid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-range1-00.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-range1-01">
+        <param name="description"  value="Simple range - outside ranage value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-range1-01.xml" />
+    </testCase>
+    
+    <!-- Range 2 -->
+    <testCase name="restrictedCharacterSets-range2-00">
+        <param name="description"  value="Unicode range - valid Unicode 3.1.0"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-range2-00.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-range2-01">
+        <param name="description"  value="Unicode range - non valid Uncode 3.1.0"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-range2-01.xml" />
+    </testCase>
+    <!-- <testCase name="restrictedCharacterSets-range2-02">
+        <param name="description"  value="Unicode range - valid Unicode 3.1.0"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-range2-02.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-range2-03">
+        <param name="description"  value="Unicode range - invalid value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-range2-03.xml" />
+    </testCase>  -->   
+    
+    <!-- Social Security number  -->
+    <testCase name="restrictedCharacterSets-ssn-00">
+        <param name="description"  value="SSN - valid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-ssn-00.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-ssn-01">
+        <param name="description"  value="SSN - valid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-ssn-01.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-ssn-02">
+        <param name="description"  value="SSN - invalid"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-ssn-02.xml" />
+    </testCase> -->
+    
+    <!-- Tests...  -->
+    <!-- <testCase name="restrictedCharacterSets-test1-00">
+        <param name="description"  value="Simple Pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-test1-00.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-test1-01">
+        <param name="description"  value="Simple Pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-test1-01.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-test1-02">
+        <param name="description"  value="Simple Pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-test1-02.xml" />
+    </testCase>
+    <testCase name="restrictedCharacterSets-test2-00">
+        <param name="description"  value="Non BMP"/>
+        <param name="japex.inputFile" value="${test.docFolder}/restrictedCharacterSets-test2-00.xml" />
+    </testCase> -->
+    
+    <!-- Schema Test-Suite -->
+    <!-- <testCase name="Additional_w3c.xml.patterns">
+        <param name="description"  value="XML Schema pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xmlschema/Additional_w3c.xml.patterns.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/xmlschema/Additional_w3c.xml.patterns.xsd"/>
+    </testCase>
+    <testCase name="DataTypes_w3c.xml.patterns">
+        <param name="description"  value="XML Schema pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xmlschema/DataTypes_w3c.xml.patterns.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/xmlschema/DataTypes_w3c.xml.patterns.xsd"/>
+    </testCase>
+    <testCase name="ElemDecl.testSet.patterns">
+        <param name="description"  value="XML Schema pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xmlschema/ElemDecl.testSet.patterns.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/xmlschema/ElemDecl.testSet.patterns.xsd"/>
+    </testCase>
+    <testCase name="Element_w3c.xml.patterns">
+        <param name="description"  value="XML Schema pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xmlschema/Element_w3c.xml.patterns.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/xmlschema/Element_w3c.xml.patterns.xsd"/>
+    </testCase>
+    <testCase name="NISTXMLSchemaDatatypes.testSet.patterns">
+        <param name="description"  value="XML Schema pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xmlschema/NISTXMLSchemaDatatypes.testSet.patterns.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/xmlschema/NISTXMLSchemaDatatypes.testSet.patterns.xsd"/>
+    </testCase>
+    <testCase name="SimpleType_w3c.xml.patterns">
+        <param name="description"  value="XML Schema pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xmlschema/SimpleType_w3c.xml.patterns.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/xmlschema/SimpleType_w3c.xml.patterns.xsd"/>
+    </testCase>
+    <testCase name="SType.testSet.patterns">
+        <param name="description"  value="XML Schema pattern"/>
+        <param name="japex.inputFile" value="${test.docFolder}/xmlschema/SType.testSet.patterns.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/xmlschema/SType.testSet.patterns.xsd"/>
+    </testCase> -->
+
+</testCaseGroup>

@@ -1,0 +1,14 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        elementFormDefault="qualified">
+
+
+  <element name='RDF'>
+    <complexType mixed="true">
+      <sequence>
+        <any namespace='##any' minOccurs='0' maxOccurs='unbounded' processContents="lax"/>
+      </sequence>
+      <anyAttribute namespace='##any' processContents="lax"/>
+    </complexType>
+  </element>
+</schema>

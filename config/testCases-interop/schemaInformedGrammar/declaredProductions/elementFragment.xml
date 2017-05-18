@@ -1,0 +1,64 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema-Informed Declared Production tests - element fragment">
+    <param name="schemaInformedDataDir" value="${japex.exi.ttfms.testCasesDir}/interop/schemaInformedGrammar"/>
+
+    <param name="groupId" value="${groupId} | elementFragmentGrammar"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.fragments" value="true" />
+    <param name="reference" value="http://www.w3.org/TR/exi/#informedElementFragGrammar"/>
+
+    <testCase name="schemaInformed.declared.elementFragment-01">
+        <param name="testDescription" 
+          value="Tests AT(qname) and AT(*) event types, and the typed encodings of 
+                 attributed values. The values of AT(foo:c) and AT(foo:d) should be 
+                 represented as strings because not all definitions of each are not 
+                 identical. "/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/elementFragment-01.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/elementFragment.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.elementFragment-02">
+        <param name="testDescription" 
+          value="Tests SE(qname), SE(*) and CH event types. The elements in 
+                 namespace urn:aoo and urn:goo use their specific grammars, while 
+                 the elements in namespace urn:foo use the element fragment grammar. "/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/elementFragment-02.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/elementFragment.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.elementFragment-03">
+        <param name="testDescription" 
+          value="Tests ElementFragmentTypeEmpty grammar. The attributes in namespace 
+                 urn:aoo use their specific datatype representation, while the 
+                 attributes in namespace urn:foo use string representation. "/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/elementFragment-03.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/elementFragment.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.elementFragment-04">
+        <param name="testDescription" 
+          value="Tests xsi:type attribute semantics."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/elementFragment-04.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/elementFragment.xsd"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.elementFragment-05">
+        <param name="testDescription" 
+          value="Tests CM and PI in element fragment grammar."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/elementFragment-05.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/elementFragment.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+    <testCase name="schemaInformed.declared.elementFragment-06">
+        <param name="testDescription" 
+          value="Tests CM and PI in element fragment grammar when xsi:nil='true'."/>
+        <param name="japex.inputFile" value="${schemaInformedDataDir}/declaredProductions/elementFragment-06.xml" />
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${schemaInformedDataDir}/declaredProductions/elementFragment.xsd"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+        <param name="org.w3c.exi.ttf.preserve" value="dtds pis comments"/>
+    </testCase>
+
+</testCaseGroup>

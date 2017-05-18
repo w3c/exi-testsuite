@@ -1,0 +1,63 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid n-bit Integer encoding">
+
+    <param name="groupId" value="${groupId} | nbitIntegerValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger/nbitInteger.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingBoundedUnsigned"/>
+
+    <testCase name="nbitInteger-valid-00">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-00.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-01">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-01.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-02">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-02.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-03">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-03.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-04">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-04.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-05">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-05.xml" />
+    </testCase>
+<!-- These cases require BigInteger arithmetic, which we don't want to require for EXI compliance
+    <testCase name="nbitInteger-valid-06">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-06.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-07">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-07.xml" />
+    </testCase>
+-->
+    <testCase name="nbitInteger-valid-08">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-08.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-09">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-09.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-10">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-10.xml" />
+    </testCase>
+    <testCase name="nbitInteger-valid-11">
+        <param name="description"  value="Valid nbit integer element value"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-11.xml" />
+    </testCase>
+
+</testCaseGroup>

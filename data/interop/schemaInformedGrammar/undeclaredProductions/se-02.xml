@@ -1,0 +1,25 @@
+<!-- =================================================================== -->
+<!-- Tests undeclared SE(*) where there is a declared attribute.         -->
+<!-- =================================================================== -->
+<foo:P xmlns:foo='urn:foo' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <foo:P2>
+    <foo:none/><!-- SE(*) -->
+    <foo:AC>a</foo:AC><!-- SE(foo:AC) -->
+    <foo:AC>a</foo:AC><!-- SE(*) -->
+  </foo:P2>
+  <foo:P2 foo:aA="">
+    <foo:none/><!-- SE(*) -->
+    <foo:AC>a</foo:AC><!-- SE(foo:AC) -->
+    <foo:AC>a</foo:AC><!-- SE(*) -->
+  </foo:P2>
+  <foo:P2 xsi:nil='true' foo:aA="">
+    <foo:AC>a</foo:AC><!-- SE(*) -->
+  </foo:P2>
+  <foo:P2 xsi:type='foo:extended_P2' foo:aA="">
+    <foo:none/><!-- SE(*) -->
+    <foo:AC>a</foo:AC><!-- SE(foo:AC) -->
+    <foo:none/><!-- SE(*) -->
+    <foo:AC>a</foo:AC><!-- SE(foo:AC) -->
+    <foo:AC>a</foo:AC><!-- SE(*) -->
+  </foo:P2>
+</foo:P>

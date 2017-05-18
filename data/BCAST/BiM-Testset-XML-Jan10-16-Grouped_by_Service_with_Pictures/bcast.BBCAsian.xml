@@ -1,0 +1,1236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This data is strictly for non-commercial use only.  See http://backstage.bbc.co.uk/archives/2005/01/terms_of_use.html for details of the terms and conditions.-->
+<ESGMainBCAST xmlns="urn:oma:bcast:esg:2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esg="urn:oma:bcast:esg:2005">
+   <Service id="BBCAsian" type="6" version="1" ServiceProtection="0">
+      <Name>BBC Asian</Name>
+      <Genre>Ethnic</Genre>
+      <PreviewDataIDRef usage="0">urn:bbc:prevBBCAsian</PreviewDataIDRef>
+   </Service>
+   <Access id="BBCAsian_acc" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2
+s=SDP Example
+c=IN IP4 225.224.1.137
+t=0 0 
+m=audio 4004 RTP/AVP  98 
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCAsian</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Access id="BBCAsian_acc_MBMS" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=bcasthost 2890844526 2890842807 IN IP4 192.168.0.2 
+c=IN IP4 225.224.1.3 
+t=0 0 
+m=audio 4004 RTP/AVP 98 
+a=rtpmap:98 AMR/8000 
+a=fmtp:98 octet-align=1</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceIDRef>BBCAsian</ServiceIDRef>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <PurchaseItem id="BBCAsian_1346" version="0">
+      <ServiceIDRef>BBCAsian</ServiceIDRef>
+      <Name>BBCAsian</Name>
+   </PurchaseItem>
+   <PurchaseData id="BBCAsian_23DGE" version="0">
+      <PurchaseItemIDRef>BBCAsian_1346</PurchaseItemIDRef>
+      <PurchaseChannelIDRef>BBC_purchase</PurchaseChannelIDRef>
+      <PriceInfo>
+         <SubscriptionUnit Type="1" Value="244" Unit="3"/>
+         <UnitText>month</UnitText>
+         <Price Currency="EUR" Value="137"/>
+      </PriceInfo>
+   </PurchaseData>
+   <PreviewData id="urn:bbc:prevBBCAsian" version="3">
+      <Picture>
+         <PictureData>/9j/4AAQSkZJRgABAQEASABIAAD/2wBDACgcHiMeGSgjISMtKygwPGRBPDc3PHtYXUlkkYCZlo+A
+jIqgtObDoKrarYqMyP/L2u71////m8H////6/+b9//j/2wBDASstLTw1PHZBQXb4pYyl+Pj4+Pj4
++Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj4+Pj/wAARCABgAEgDASIA
+AhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAwQAAgUBBv/EADAQAAICAQIEBAQFBQAAAAAAAAEC
+AAMRBCESMUFxEyJRYQUjgZEUJEJScjIzYrHB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAGBEB
+AQEBAQAAAAAAAAAAAAAAAAERMUH/2gAMAwEAAhEDEQA/AHbdDUK2K5UgEjBgtPpPFoVzYcnoRmEf
+WP4bBqHGQRmc0uqSuhVYNkdcQKt8PfoUP0xEr6mRirAAg49ZqjW0fuI7iI6plscspyOI/wChFCiJ
+5oaxPlfWSlcvC6lfy47zIzWpZmPQS4pCKc5OPWMYAYM2y7bntBW6hBkL5tsSjhXbPpJF2axhyOBJ
+GD1Nv9p/4mD0g/Kp2l7Tilyf2mU0ZzpklBSinmoP0mbqUCu2AB5jy+k04jqR5j/I/wDIC1Kk2bTm
+oa1769PXgZGc4z1htOvzoLXPdRqValBxcH9RHvJBn6ii5bCGbjI54l005SviYgE+spZfqmPnZh22
+lq6hZXxM+T3gVPCDu2e0kL4KKuTtJKY37RmtuxlNIMadO0JYR4bdjB6Uj8Ou8A0TvG57mM2OAjEH
+kJjX6q04w7HtAe0w+fK/ELqQVXiy46DfEQrvvLAIzcTbDM6GNSFSMKP1dWMzbiyagau7KpuYC1Xq
+I339NhB2WcNwsQ4PtHWq8TDN5jjrKB1NxVedWJ9pJ3wQM4USS6h02n2nRcQNiBMz8RZ/j9oUajFP
+EQCfaQN3XkqBxd8TPdsOVUDEHZqnfqB2gjYzczmUP6Ur4ljk7KuIOxxYxPSAqchTjrOWXEbLzmWu
+KW4D4HKaelbOnr4ueJlKCzY6zRrZlUeX7Ss0xemaHwM7cpJem1XHPf3km5UrIJ3nHduAJk49JzJ5
+mUY5mVcM5JJAKrgJvzEFzMknKAWtckR1G8uCYlU2+I0hI95mrBq28++4MkoquTkbD3khcL33cVQX
+y8/0jEWJl1wfKd5V1AxiaZVkkkgXrrd3CqpLHkIZtBqlDE0nb0IM1vhtdFWj4uNS7jLkHce0qrLX
+b8kWO32EDFrUl8Y5c4/U3h4GFYHmDz+kLqdJZk2HgDnfgB3i1SCxgpB57kdJPQ01qKSFBY+nLEkr
+dot8mxj7STWJr//Z
+</PictureData>
+         <AlternativeText>BBC Asian</AlternativeText>
+      </Picture>
+      <AccessIDRef>BBCAsian_accpre</AccessIDRef>
+   </PreviewData>
+   <Access id="BBCAsian_accpre" version="6">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=prev 10001 1 IN IP4 192.137.1.65
+s=preview
+i=Vorschau
+t=0 0
+a=source-filter:  IN IP4 * 192.168.1.65
+a=flute-tsi:1
+a=flute-ch:1
+m=application 4000 FLUTE/UDP 0
+c=IN IP4 225.6.7.244</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>preview Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:BBCAsiaMirrorsWorldService" version="2">
+      <Name>BBC World Service</Name>
+      <Description>The BBC Asian Network joins the BBC World Service's South Asia feed to take you through the night</Description>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:4910" version="3">
+      <Name>Devotional Sounds</Name>
+      <Description>Devotional music for Muslims, Hindus, Sikhs and Christians</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4908" version="5">
+      <Name>Breakfast</Name>
+      <Description>The best music, news, sports, traffic, travel and weather - all you need to start the day</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Sports</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4902" version="1">
+      <Name>Sonia Deol</Name>
+      <Description>The show in which Asian Britons discuss the big news or social issue of the day via phone, emails, letters and text messaging</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <InteractivityData id="BBCAsianint_d0e87" InteractivityMediaDocumentPointer="BBCAsianintgrp_d0e87" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:4902</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345787800" InteractivityWindowEndTime="3345788000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:4901" version="2">
+      <Name>Lunch</Name>
+      <Description>The latest music and all the day's news</Description>
+      <Genre>Pop</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:4909" version="4">
+      <Name>Navinder Bhogal</Name>
+      <Description>Relax with great music and talk in Hindi/Urdu</Description>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Arts &amp; Media</Genre>
+      <Genre>EDUCATION</Genre>
+   </Content>
+   <Content id="urn:bbc:4903" version="5">
+      <Name>Drive</Name>
+      <Description>News, sport, travel updates and weather, top music, competitions</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>Informative entertainment</Genre>
+      <Genre>Sports</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4905" version="1">
+      <Name>Silver Street</Name>
+      <Description>Asian Network's daily radio drama series</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4907" version="3">
+      <Name>Eid Special</Name>
+      <Description>Kanwal Qazi and Anish Shaikh present this Eid Special</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:4906" version="4">
+      <Name>Adil Ray</Name>
+      <Description>The very latest releases of Brit-Asian music</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+   </Content>
+   <Schedule id="BBCAsian_d0e854" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:BBCAsiaMirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345755400" Presentation_End_Time="3345771600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e273" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2369506835 2694335936 IN IP4 192.168.0.189
+c=IN IP4 225.224.33.16
+m=audio 13698 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e871" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4910">
+         <Presentation_Window Presentation_Start_Time="3345771600" Presentation_End_Time="3345775200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e885" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4908">
+         <Presentation_Window Presentation_Start_Time="3345775200" Presentation_End_Time="3345786000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e899" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4902">
+         <Presentation_Window Presentation_Start_Time="3345786000" Presentation_End_Time="3345796800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e297" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2407348632 2872375487 IN IP4 192.168.0.21
+c=IN IP4 225.224.110.132
+m=audio 44478 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e913" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4901">
+         <Presentation_Window Presentation_Start_Time="3345796800" Presentation_End_Time="3345804000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e927" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4909">
+         <Presentation_Window Presentation_Start_Time="3345804000" Presentation_End_Time="3345811200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e941" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4903">
+         <Presentation_Window Presentation_Start_Time="3345811200" Presentation_End_Time="3345823200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e321" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2010665893 2405960082 IN IP4 192.168.0.198
+c=IN IP4 225.224.102.234
+m=audio 20548 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e955" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4905">
+         <Presentation_Window Presentation_Start_Time="3345823200" Presentation_End_Time="3345823800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e969" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4907">
+         <Presentation_Window Presentation_Start_Time="3345823800" Presentation_End_Time="3345832800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e983" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4906">
+         <Presentation_Window Presentation_Start_Time="3345832800" Presentation_End_Time="3345841800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e345" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2255096435 2631469726 IN IP4 192.168.0.2
+c=IN IP4 225.224.24.77
+m=audio 44436 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:4912" version="5">
+      <Name>Breakfast</Name>
+      <Description>Music, news, sport, traffic, travel and weather - all you need to start the day</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Sports</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4919" version="1">
+      <Name>Silver Street</Name>
+      <Description>Asian Network's daily radio drama series</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4916" version="3">
+      <Name>Gujarati Programme</Name>
+      <Description>The best in music and entertainment in Gujarati</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Schedule id="BBCAsian_d0e1852" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:BBCAsiaMirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345841800" Presentation_End_Time="3345858000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e1869" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4917">
+         <Presentation_Window Presentation_Start_Time="3345858000" Presentation_End_Time="3345861600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e1883" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4912">
+         <Presentation_Window Presentation_Start_Time="3345861600" Presentation_End_Time="3345872400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e456" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2459869384 2712799071 IN IP4 192.168.0.25
+c=IN IP4 225.224.234.55
+m=audio 60430 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e1897" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4915">
+         <Presentation_Window Presentation_Start_Time="3345872400" Presentation_End_Time="3345883200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e1911" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4914">
+         <Presentation_Window Presentation_Start_Time="3345883200" Presentation_End_Time="3345890400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e1925" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4911">
+         <Presentation_Window Presentation_Start_Time="3345890400" Presentation_End_Time="3345897600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e480" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2431304931 2753936766 IN IP4 192.168.0.163
+c=IN IP4 225.224.213.155
+m=audio 3402 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e1939" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4913">
+         <Presentation_Window Presentation_Start_Time="3345897600" Presentation_End_Time="3345909600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e1953" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4919">
+         <Presentation_Window Presentation_Start_Time="3345909600" Presentation_End_Time="3345910200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e1967" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4916">
+         <Presentation_Window Presentation_Start_Time="3345910200" Presentation_End_Time="3345919200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e504" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2270111083 2299667357 IN IP4 192.168.0.173
+c=IN IP4 225.224.4.189
+m=audio 55158 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e1981" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4921">
+         <Presentation_Window Presentation_Start_Time="3345919200" Presentation_End_Time="3345928200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:4930" version="1">
+      <Name>Silver Street</Name>
+      <Description>Asian Network's daily radio drama series</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <InteractivityData id="BBCAsianint_d0e520" InteractivityMediaDocumentPointer="BBCAsianintgrp_d0e520" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:4930</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3345997800" InteractivityWindowEndTime="3345998000"/>
+   </InteractivityData>
+   <Content id="urn:bbc:4929" version="3">
+      <Name>Hindi/Urdu Programme</Name>
+      <Description>The best in music and entertainment in Hindi/Urdu</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Schedule id="BBCAsian_d0e2865" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:BBCAsiaMirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3345928200" Presentation_End_Time="3345944400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e2882" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4918">
+         <Presentation_Window Presentation_Start_Time="3345944400" Presentation_End_Time="3345948000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e573" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2360916137 2362289428 IN IP4 192.168.0.114
+c=IN IP4 225.224.183.58
+m=audio 57598 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e2896" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4927">
+         <Presentation_Window Presentation_Start_Time="3345948000" Presentation_End_Time="3345958800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e2910" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4923">
+         <Presentation_Window Presentation_Start_Time="3345958800" Presentation_End_Time="3345969600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e2924" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4925">
+         <Presentation_Window Presentation_Start_Time="3345969600" Presentation_End_Time="3345976800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e597" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2202651977 2532470702 IN IP4 192.168.0.13
+c=IN IP4 225.224.18.232
+m=audio 46516 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e2938" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4926">
+         <Presentation_Window Presentation_Start_Time="3345976800" Presentation_End_Time="3345984000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e2952" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4928">
+         <Presentation_Window Presentation_Start_Time="3345984000" Presentation_End_Time="3345996000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e2966" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4930">
+         <Presentation_Window Presentation_Start_Time="3345996000" Presentation_End_Time="3345996600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e621" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2426773071 2854675292 IN IP4 192.168.0.220
+c=IN IP4 225.224.104.204
+m=audio 55540 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e2980" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4929">
+         <Presentation_Window Presentation_Start_Time="3345996600" Presentation_End_Time="3346005600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e2994" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4924">
+         <Presentation_Window Presentation_Start_Time="3346005600" Presentation_End_Time="3346014600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:4954" version="1">
+      <Name>Silver Street</Name>
+      <Description>Asian Network's daily radio drama series</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:4952" version="3">
+      <Name>Punjabi Programme</Name>
+      <Description>Music, news and chat in Punjabi</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Schedule id="BBCAsian_d0e3878" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:BBCAsiaMirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3346014600" Presentation_End_Time="3346030800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e690" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2249908447 2349884032 IN IP4 192.168.0.129
+c=IN IP4 225.224.220.2
+m=audio 20328 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e3895" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4955">
+         <Presentation_Window Presentation_Start_Time="3346030800" Presentation_End_Time="3346034400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e3909" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4953">
+         <Presentation_Window Presentation_Start_Time="3346034400" Presentation_End_Time="3346045200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e3923" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4956">
+         <Presentation_Window Presentation_Start_Time="3346045200" Presentation_End_Time="3346056000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e714" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2280075073 2721359252 IN IP4 192.168.0.150
+c=IN IP4 225.224.14.152
+m=audio 36704 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e3937" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4958">
+         <Presentation_Window Presentation_Start_Time="3346056000" Presentation_End_Time="3346063200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e3951" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4949">
+         <Presentation_Window Presentation_Start_Time="3346063200" Presentation_End_Time="3346070400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e3965" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4957">
+         <Presentation_Window Presentation_Start_Time="3346070400" Presentation_End_Time="3346082400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e738" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2104690551 2262619017 IN IP4 192.168.0.63
+c=IN IP4 225.224.223.173
+m=audio 57188 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e3979" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4954">
+         <Presentation_Window Presentation_Start_Time="3346082400" Presentation_End_Time="3346083000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e3993" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4952">
+         <Presentation_Window Presentation_Start_Time="3346083000" Presentation_End_Time="3346092000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e4007" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:4950">
+         <Presentation_Window Presentation_Start_Time="3346092000" Presentation_End_Time="3346101000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e762" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2495651245 2671905517 IN IP4 192.168.0.42
+c=IN IP4 225.224.131.39
+m=audio 35788 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Content id="urn:bbc:8662" version="3">
+      <Name>Devotional Sounds: Islam</Name>
+      <Description>Muslim religious music</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8664" version="5">
+      <Name>Devotional Sounds: Hindu</Name>
+      <Description>Sikh religious music with Ashwini Malhi</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8669" version="1">
+      <Name>Devotional Sounds: Sikh</Name>
+      <Description>Sikh religious music with Ravinder Kundra</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8667" version="2">
+      <Name>Hot Breakfast</Name>
+      <Description>Wake up and enjoy a sizzling start to your weekend</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:8668" version="4">
+      <Name>Film Caf?</Name>
+      <Description>Raj and Pablo chat with the biggest stars from Bollywood and beyond</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Cultural</Genre>
+   </Content>
+   <Content id="urn:bbc:8660" version="5">
+      <Name>The Album Chart</Name>
+      <Description>Countdown the 20 biggest British Asian albums this week with Ravi Sagoo</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Cultural</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8666" version="1">
+      <Name>Sanjeet on Saturday</Name>
+      <Description>The network's own sports and music mix</Description>
+      <Genre>Live</Genre>
+      <Genre>SPORTS</Genre>
+      <Genre>Commented event</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Sports</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <InteractivityData id="BBCAsianint_d0e914" InteractivityMediaDocumentPointer="BBCAsianintgrp_d0e914" version="4" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:8666</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346155000" InteractivityWindowEndTime="3346155200"/>
+   </InteractivityData>
+   <Content id="urn:bbc:8663" version="3">
+      <Name>Sound Selection</Name>
+      <Description>Your music requests with Kanwal Qazi</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:8661" version="4">
+      <Name>Weekend Punjabi</Name>
+      <Description>Music, news and chat in Punjabi with Daljit Neer</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+   </Content>
+   <Content id="urn:bbc:8665" version="5">
+      <Name>Weekend Gujarati</Name>
+      <Description>Music, news and chat in Gujarati with Mira Trivedi</Description>
+      <Genre>Rap/Hip Hop/Reggae</Genre>
+      <Genre>Electronic/Club/Urban/Dance</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+   </Content>
+   <Schedule id="BBCAsian_d0e4902" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:BBCAsiaMirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3346101000" Presentation_End_Time="3346117200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e4919" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8662">
+         <Presentation_Window Presentation_Start_Time="3346117200" Presentation_End_Time="3346120800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e4933" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8664">
+         <Presentation_Window Presentation_Start_Time="3346120800" Presentation_End_Time="3346124400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1026" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2434982299 2741104125 IN IP4 192.168.0.34
+c=IN IP4 225.224.20.243
+m=audio 63780 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e4947" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8669">
+         <Presentation_Window Presentation_Start_Time="3346124400" Presentation_End_Time="3346128000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e4961" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8667">
+         <Presentation_Window Presentation_Start_Time="3346128000" Presentation_End_Time="3346135200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e4975" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8668">
+         <Presentation_Window Presentation_Start_Time="3346135200" Presentation_End_Time="3346146000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1050" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2056182861 2103927611 IN IP4 192.168.0.110
+c=IN IP4 225.224.208.67
+m=audio 18610 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e4989" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8660">
+         <Presentation_Window Presentation_Start_Time="3346146000" Presentation_End_Time="3346153200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e5003" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8666">
+         <Presentation_Window Presentation_Start_Time="3346153200" Presentation_End_Time="3346164000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e5017" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8663">
+         <Presentation_Window Presentation_Start_Time="3346164000" Presentation_End_Time="3346171200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1074" version="2">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2073822021 2273239135 IN IP4 192.168.0.205
+c=IN IP4 225.224.80.130
+m=audio 34850 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e5031" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8661">
+         <Presentation_Window Presentation_Start_Time="3346171200" Presentation_End_Time="3346178400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e5045" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:8665">
+         <Presentation_Window Presentation_Start_Time="3346178400" Presentation_End_Time="3346185600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:9481" version="5">
+      <Name>Devotional Sounds: Hindu</Name>
+      <Description>Hindu religious music with Ashwini Malhi</Description>
+      <Genre>Religion</Genre>
+      <Genre>ENRICHMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9448" version="2">
+      <Name>Hot Breakfast</Name>
+      <Description>Wake up to a sizzling start to your Sunday</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9482" version="4">
+      <Name>Sunday Soundtrack</Name>
+      <Description>The top ten film soundtracks with Ameet Chana</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Cultural</Genre>
+   </Content>
+   <Content id="urn:bbc:9477" version="5">
+      <Name>Breakdown</Name>
+      <Description>A guide to the British Asian music scene with Markie Mark</Description>
+      <Genre>Pop</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9479" version="1">
+      <Name>The Mix</Name>
+      <Description>Two hours of non stop music with Bobby Friction</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+   </Content>
+   <Content id="urn:bbc:9475" version="3">
+      <Name>Silver Street Omnibus</Name>
+      <Description>A chance to catch up with the week's events for the residents of Silver Street, in the Asian Network's drama series</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9476" version="4">
+      <Name>Old Gold</Name>
+      <Description>Your weekly blast from the past with Kanwal Qazi and Zeb Qureshi</Description>
+      <Genre>Classical music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+   </Content>
+   <InteractivityData id="BBCAsianint_d0e1239" InteractivityMediaDocumentPointer="BBCAsianintgrp_d0e1239" version="1" PrelistenIndicator="true">
+      <ContentIDRef>urn:bbc:9476</ContentIDRef>
+      <InteractivityWindow InteractivityWindowStartTime="3346248600" InteractivityWindowEndTime="3346248800"/>
+   </InteractivityData>
+   <Content id="urn:bbc:9478" version="5">
+      <Name>Weekend Mirpuri</Name>
+      <Description>The best in music and entertainment in Mirpuri with Changis Raja</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+   </Content>
+   <Content id="urn:bbc:9483" version="2">
+      <Name>Weekend Bengali</Name>
+      <Description>The best in music and entertainment in Bengali with Anwarul Hoque</Description>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Schedule id="BBCAsian_d0e5987" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:BBCAsiaMirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3346185600" Presentation_End_Time="3346203600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1311" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2400070190 2445068358 IN IP4 192.168.0.29
+c=IN IP4 225.224.59.47
+m=audio 19640 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e6004" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9449">
+         <Presentation_Window Presentation_Start_Time="3346203600" Presentation_End_Time="3346207200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e6018" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9481">
+         <Presentation_Window Presentation_Start_Time="3346207200" Presentation_End_Time="3346210800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e6032" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9480">
+         <Presentation_Window Presentation_Start_Time="3346210800" Presentation_End_Time="3346214400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1335" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2483642578 2873428344 IN IP4 192.168.0.207
+c=IN IP4 225.224.211.100
+m=audio 35778 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e6046" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9448">
+         <Presentation_Window Presentation_Start_Time="3346214400" Presentation_End_Time="3346221600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e6060" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9482">
+         <Presentation_Window Presentation_Start_Time="3346221600" Presentation_End_Time="3346228800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e6074" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9477">
+         <Presentation_Window Presentation_Start_Time="3346228800" Presentation_End_Time="3346236000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1359" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2017059326 2399230956 IN IP4 192.168.0.86
+c=IN IP4 225.224.183.165
+m=audio 7140 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e6088" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9479">
+         <Presentation_Window Presentation_Start_Time="3346236000" Presentation_End_Time="3346243200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e6102" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9475">
+         <Presentation_Window Presentation_Start_Time="3346243200" Presentation_End_Time="3346246800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e6116" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9476">
+         <Presentation_Window Presentation_Start_Time="3346246800" Presentation_End_Time="3346257600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1383" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2104324340 2323776244 IN IP4 192.168.0.162
+c=IN IP4 225.224.25.229
+m=audio 23812 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e6130" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9478">
+         <Presentation_Window Presentation_Start_Time="3346257600" Presentation_End_Time="3346264800"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e6144" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9483">
+         <Presentation_Window Presentation_Start_Time="3346264800" Presentation_End_Time="3346272000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Content id="urn:bbc:9571" version="5">
+      <Name>Breakfast</Name>
+      <Description>Gagan Grewal with music, news, sports, traffic, travel and weather - all you need to start the day</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Weather forecasts</Genre>
+      <Genre>Bulletin</Genre>
+      <Genre>INFORMATION</Genre>
+      <Genre>Sports</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9582" version="1">
+      <Name>Sonia Deol</Name>
+      <Description>Discussion and debate on the big issues</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9604" version="2">
+      <Name>Lunch</Name>
+      <Description>The latest music and all the day's news with Raj and Pablo</Description>
+      <Genre>Pop</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9616" version="5">
+      <Name>Drive</Name>
+      <Description>Nikki Bedi with news, sport, travel updates and weather, top music and competitions</Description>
+      <Genre>Daily news</Genre>
+      <Genre>Magazine</Genre>
+      <Genre>Informative entertainment</Genre>
+      <Genre>Sports</Genre>
+      <Genre>Current affairs</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9617" version="1">
+      <Name>Silver Street</Name>
+      <Description>Asian Network's daily radio drama series</Description>
+      <Genre>General light drama</Genre>
+      <Genre>REPRESENTATION/PLAY</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+   </Content>
+   <Content id="urn:bbc:9626" version="3">
+      <Name>Mirpuri Programme</Name>
+      <Description>Zarina Khan with the best in music and entertainment in Mirpuri</Description>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Documentary</Genre>
+      <Genre>EDUCATION</Genre>
+      <Genre>Periodical/General</Genre>
+      <Genre>STRUCTURED</Genre>
+      <Genre>INFORMATION</Genre>
+   </Content>
+   <Content id="urn:bbc:9627" version="4">
+      <Name>Adil Ray</Name>
+      <Description>Cutting edge Brit-Asian music with live studio performances, interviews and more</Description>
+      <Genre>STUDIO</Genre>
+      <Genre>NON-FICTION</Genre>
+      <Genre>Discussion/Interview/Debate</Genre>
+      <Genre>ENTERTAINMENT</Genre>
+      <Genre>World/Traditional/Ethnic/Folk music</Genre>
+      <Genre>ARTISTIC PERFORMANCE</Genre>
+   </Content>
+   <Schedule id="BBCAsian_d0e6980" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:BBCAsiaMirrorsWorldService">
+         <Presentation_Window Presentation_Start_Time="3346272000" Presentation_End_Time="3346290000"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1605" version="3">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2326065063 2628295897 IN IP4 192.168.0.35
+c=IN IP4 225.224.34.145
+m=audio 57940 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e6997" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9570">
+         <Presentation_Window Presentation_Start_Time="3346290000" Presentation_End_Time="3346293600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e7011" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9571">
+         <Presentation_Window Presentation_Start_Time="3346293600" Presentation_End_Time="3346304400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e7025" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9582">
+         <Presentation_Window Presentation_Start_Time="3346304400" Presentation_End_Time="3346315200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1629" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2444427490 2929153442 IN IP4 192.168.0.15
+c=IN IP4 225.224.144.219
+m=audio 41876 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e7039" version="2" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9604">
+         <Presentation_Window Presentation_Start_Time="3346315200" Presentation_End_Time="3346322400"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e7053" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9603">
+         <Presentation_Window Presentation_Start_Time="3346322400" Presentation_End_Time="3346329600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e7067" version="5" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9616">
+         <Presentation_Window Presentation_Start_Time="3346329600" Presentation_End_Time="3346341600"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1653" version="4">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2319702148 2400711059 IN IP4 192.168.0.215
+c=IN IP4 225.224.20.246
+m=audio 47846 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+   <Schedule id="BBCAsian_d0e7081" version="1" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9617">
+         <Presentation_Window Presentation_Start_Time="3346341600" Presentation_End_Time="3346342200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e7095" version="3" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9626">
+         <Presentation_Window Presentation_Start_Time="3346342200" Presentation_End_Time="3346351200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Schedule id="BBCAsian_d0e7109" version="4" ServiceIDRef="BBCAsian">
+      <ContentIDRef idRef="urn:bbc:9627">
+         <Presentation_Window Presentation_Start_Time="3346351200" Presentation_End_Time="3346360200"/>
+      </ContentIDRef>
+   </Schedule>
+   <Access id="BBCAsianacc_d0e1677" version="1">
+      <AccessType TransmissionMedia="0">
+         <BroadcastTransmission>
+            <SDP>v=0
+o=- 2025024414 2067123413 IN IP4 192.168.0.239
+c=IN IP4 225.224.62.8
+m=audio 7052 RTP/AVP 98
+a=rtpmap:98 AMR/8000
+a=fmtp:98 octet-align=1 	
+</SDP>
+         </BroadcastTransmission>
+      </AccessType>
+      <ServiceClass>TV-Radio Channel</ServiceClass>
+   </Access>
+</ESGMainBCAST>

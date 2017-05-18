@@ -1,0 +1,1834 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Pierre Lamy (Goldman Sachs & Co.) -->
+<!--
+  == Copyright (c) 2002-2003. All rights reserved.
+  == Financial Products Markup Language is subject to the FpML public license.
+  == A copy of this license is available at http://www.fpml.org/documents/license
+  -->
+<xsd:schema targetNamespace="http://www.fpml.org/2003/FpML-4-0"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.fpml.org/2003/FpML-4-0"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+        <xsd:include schemaLocation="fpml-asset-4-0.xsd"/>
+        <xsd:include schemaLocation="fpml-ird-4-0.xsd"/>
+        <xsd:complexType name="AdjustableRelativeOrPeriodicDates">
+                <xsd:choice>
+                        <xsd:element name="adjustableDates" type="AdjustableDates">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">A series of dates that
+                                                shall be subject to adjustment if they would
+                                                otherwise fall on a day that is not a business day
+                                                in the specified business centers, together with the
+                                                convention for adjusting the date.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="relativeDateSequence" type="RelativeDateSequence">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">A series of dates specified
+                                                as some offset to other dates (the anchor dates)
+                                                which can</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="periodicDates">
+                                <xsd:complexType>
+                                        <xsd:sequence>
+                                                <xsd:element name="calculationStartDate" type="AdjustableOrRelativeDate"/>
+                                                <xsd:element name="calculationEndDate"
+                                                  type="AdjustableOrRelativeDate" minOccurs="0"/>
+                                                <xsd:element name="calculationPeriodFrequency" type="CalculationPeriodFrequency">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  frequency at which
+                                                  calculation period end dates
+                                                  occur with the regular part
+                                                  of the calculation period
+                                                  schedule and their roll date convention.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element
+                                                  name="calculationPeriodDatesAdjustments" type="BusinessDayAdjustments">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  business day convention to
+                                                  apply to each calculation
+                                                  period end date if it would
+                                                  otherwise fall on a day that
+                                                  is not a business day in the
+                                                  specified financial business centers.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:sequence>
+                                </xsd:complexType>
+                        </xsd:element>
+                </xsd:choice>
+                <xsd:attribute name="id" type="xsd:ID"/>
+        </xsd:complexType>
+        <xsd:complexType name="DividendConditions">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the conditions governing
+                                the payment of dividends to the receiver of the equity return. With
+                                the exception of the dividend payout ratio, which is defined for
+                                each of the underlying components.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="dividendReinvestment" type="xsd:boolean">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Boolean element that
+                                                defines whether the dividend will be reinvested or not.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="dividendEntitlement" type="DividendEntitlementEnum">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Defines the date on which
+                                                the receiver on the equity return is entitled to the dividend.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="dividendPaymentDate" type="DividendPaymentDate" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies when the dividend
+                                                will be paid to the receiver of the equity return.
+                                                Has the meaning as defined in the ISDA 2002 Equity
+                                                Derivatives Definitions. Is not applicable in the
+                                                case of a dividend reinvestment election.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="dividendPeriodEffectiveDate" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Dividend period has the
+                                                meaning as defined in the ISDA 2002 Equity
+                                                Derivatives Definitions. This element specifies the
+                                                date on which the dividend period will commence. </xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:attribute name="href" type="xsd:IDREF" use="required"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="dividendPeriodEndDate" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Dividend period has the
+                                                meaning as defined in the ISDA 2002 Equity
+                                                Derivatives Definitions. This element specifies the
+                                                date on which the dividend period will end. It
+                                                includes a boolean attribute for defining whether
+                                                this end date is included or excluded from the
+                                                dividend period.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:attribute name="href" type="xsd:IDREF" use="required"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="paymentCurrency">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Currency in which the
+                                                payment relating to the leg amount (equity amount or
+                                                interest amount) or the dividend will be denominated.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:choice minOccurs="0">
+                                                <xsd:element name="currency" type="Currency">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  currency in which an amount
+                                                  is denominated.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="determinationMethod" type="xsd:string">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  method according to which an
+                                                  amount or a date is determined.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:choice>
+                                        <xsd:attribute name="id" type="xsd:ID"/>
+                                        <xsd:attribute name="href" type="xsd:IDREF"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="dividendFxTriggerDate" type="DividendPaymentDate" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the date on which
+                                                the FX rate will be considered in the case of a
+                                                Composite FX swap.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="interestAccrualsMethod" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Defines the way in which
+                                                interests are accrued: the applicable rate (fixed or
+                                                floating reference) and the compounding method.</xsd:documentation>
+                                        <xsd:documentation xml:lang="en">FpML entity</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:complexContent>
+                                                <xsd:extension base="InterestAccrualsMethod">
+                                                  <xsd:sequence minOccurs="0">
+                                                  <xsd:element
+                                                  name="compoundingMethod" type="CompoundingMethodEnum">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">If
+                                                  more that
+                                                  one
+                                                  calculation
+                                                  period
+                                                  contributes
+                                                  to a single
+                                                  payment
+                                                  amount this
+                                                  element
+                                                  specifies
+                                                  whether
+                                                  compounding
+                                                  is
+                                                  applicable,
+                                                  and if so,
+                                                  what
+                                                  compounding
+                                                  method is to
+                                                  be used.
+                                                  This element
+                                                  must only be
+                                                  included
+                                                  when more
+                                                  that one
+                                                  calculation
+                                                  period
+                                                  contributes
+                                                  to a single
+                                                  payment amount.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:sequence>
+                                                </xsd:extension>
+                                        </xsd:complexContent>
+                                </xsd:complexType>
+                        </xsd:element>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:complexType name="DividendPaymentDate">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the date on which the
+                                dividend will be paid/received. This type is also used to specify
+                                the date on which the FX rate will be determined, when applicable.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:choice>
+                        <xsd:element name="dividendDateReference" type="DividendDateReferenceEnum">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Reference to a dividend
+                                                date, either the pay date, the ex date or the record date.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="adjustableDate" type="AdjustableDate">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">A date that shall be
+                                                subject to adjustment if it would otherwise fall on
+                                                a day that is not a business day in the specified
+                                                business centers, together with the convention for
+                                                adjusting the date.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                </xsd:choice>
+        </xsd:complexType>
+        <xsd:complexType name="EquityLeg">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the equity leg of the
+                                equity swap.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:group ref="PayerReceiver.model"/>
+                        <xsd:element name="effectiveDate" type="AdjustableOrRelativeDate">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the effective
+                                                date of the equity leg of the swap. When defined in
+                                                relation to a date specified somewhere else in the
+                                                document (through the relativeDate component), this
+                                                element will typically point to the effective date
+                                                of the other leg of the swap.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="terminationDate" type="AdjustableOrRelativeDate">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the termination
+                                                date of the equity leg of the swap. When defined in
+                                                relation to a date specified somewhere else in the
+                                                document (through the relativeDate component), this
+                                                element will typically point to the termination date
+                                                of the other leg of the swap.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="underlyer" type="Underlyer">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the underlying
+                                                component of the equity swap, which can be either
+                                                one or many and consists in either equity, index or
+                                                convertible bond component, or a combination of these.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="valuation">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the terms of the
+                                                initial price of the equity swap and of the
+                                                subsequent valuations of the equity underlyer.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:complexContent>
+                                                <xsd:extension base="EquitySwapValuation"/>
+                                        </xsd:complexContent>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="notional">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the notional of
+                                                the equity swap. When used in the equity leg, the
+                                                definition will typically combine the actual amount
+                                                (using the notional component defined by the FpML
+                                                industry group) and the determination method. When
+                                                used in the interest leg, the definition will
+                                                typically point to the definition of the equity leg.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:choice>
+                                                <xsd:element name="determinationMethod" type="xsd:string">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  method according to which an
+                                                  amount or a date is determined.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="notionalAmount" type="Money">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  notional amount.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="amountRelativeTo" type="AmountRelativeTo"/>
+                                        </xsd:choice>
+                                        <xsd:attribute name="id" type="xsd:ID"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="equityAmount">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies, in relation to
+                                                each Equity Payment Date, the amount to which the
+                                                Equity Payment Date relates. Unless otherwise
+                                                specified, this term has the meaning defined in the
+                                                ISDA 2002 Equity Derivatives Definitions.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:complexContent>
+                                                <xsd:extension base="LegAmount">
+                                                  <xsd:sequence>
+                                                  <xsd:element name="cashSettlement" type="xsd:boolean"/>
+                                                  </xsd:sequence>
+                                                </xsd:extension>
+                                        </xsd:complexContent>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="return" type="Return">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the conditions
+                                                under which dividend affecting the underlyer will be
+                                                paid to the receiver of the equity amounts.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="notionalAdjustments" type="NotionalAdjustmentEnum">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the conditions
+                                                that govern the adjustment to the number of units of
+                                                the equity swap.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="fxTerms" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the FX conversion
+                                                terms that can be associated with the equity
+                                                component of a swap.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:choice>
+                                                <xsd:element name="quanto">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Determines the
+                                                  currency rate that the
+                                                  seller of the equity amounts
+                                                  will apply at each valuation
+                                                  date for converting the
+                                                  respective amounts into a
+                                                  currency that is different
+                                                  from the currency
+                                                  denomination of the underlyer.</xsd:documentation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  currency conversion rate(s)
+                                                  associated with the quanto.
+                                                  One rate will be defined for
+                                                  each pair of currencies involved.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:sequence>
+                                                  <xsd:element name="referenceCurrency">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the
+                                                  reference
+                                                  currency
+                                                  of
+                                                  the trade.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:simpleContent>
+
+                                                  <xsd:extension base="Currency">
+
+                                                  <xsd:attribute
+                                                  name="id"
+                                                  type="xsd:ID" use="required"/>
+                                                  </xsd:extension>
+                                                  </xsd:simpleContent>
+                                                  </xsd:complexType>
+                                                  </xsd:element>
+                                                  <xsd:element name="fxRate"
+                                                  type="FxRate" maxOccurs="unbounded">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  a
+                                                  currency
+                                                  conversion rate.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:sequence>
+                                                  </xsd:complexType>
+                                                </xsd:element>
+                                                <xsd:element name="compositeFx">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  conditions to be applied for
+                                                  converting into a reference
+                                                  currency when the actual
+                                                  currency rate is not
+                                                  determined upfront.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:sequence>
+                                                  <xsd:element name="referenceCurrency">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the
+                                                  reference
+                                                  currency
+                                                  of
+                                                  the trade.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:simpleContent>
+
+                                                  <xsd:extension base="Currency">
+
+                                                  <xsd:attribute
+                                                  name="id"
+                                                  type="xsd:ID" use="required"/>
+                                                  </xsd:extension>
+                                                  </xsd:simpleContent>
+                                                  </xsd:complexType>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="determinationMethod"
+                                                  type="xsd:string" minOccurs="0">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the
+                                                  method
+                                                  according
+                                                  to
+                                                  which
+                                                  an
+                                                  amount
+                                                  or a
+                                                  date
+                                                  is determined.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="relativeDate"
+                                                  type="RelativeDateOffset" minOccurs="0">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">A
+                                                  date
+                                                  specified
+                                                  as
+                                                  some
+                                                  offset
+                                                  to
+                                                  another
+                                                  date
+                                                  (the
+                                                  anchor date).</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="fxDetermination"
+                                                  type="FxSpotRateSource" minOccurs="0">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the
+                                                  methodology
+                                                  (reference
+                                                  source
+                                                  and,
+                                                  optionnally,
+                                                  fixing
+                                                  time)
+                                                  to
+                                                  be
+                                                  used
+                                                  for
+                                                  determining
+                                                  a
+                                                  currency
+                                                  conversion rate.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:sequence>
+                                                  </xsd:complexType>
+                                                </xsd:element>
+                                        </xsd:choice>
+                                </xsd:complexType>
+                        </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="legIdentifier" type="xsd:ID"/>
+        </xsd:complexType>
+        <xsd:complexType name="EquityPaymentDates">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the equity payment dates
+                                of the swap.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="equityPaymentDatesInterim"
+                                type="AdjustableOrRelativeDates" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation>Specifies the interim payment dates of
+                                                the swap. When defined in relation to a date
+                                                specified somewhere else in the document (through
+                                                the relativeDates component), this element will
+                                                typically refer to the valuation dates and add a lag
+                                                corresponding to the settlement cycle of the underlyer.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="equityPaymentDateFinal" type="AdjustableOrRelativeDate">
+                                <xsd:annotation>
+                                        <xsd:documentation>Specifies the final payment date of the
+                                                swap. When defined in relation to a date specified
+                                                somewhere else in the document (through the
+                                                relativeDate component), this element will typically
+                                                refer to the final valuation date and add a lag
+                                                corresponding to the settlement cycle of the underlyer.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="id" type="xsd:ID"/>
+        </xsd:complexType>
+        <xsd:complexType name="EquitySwap">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type descripting the equity swaps.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexContent>
+                        <xsd:extension base="Product">
+                                <xsd:sequence>
+                                        <xsd:element name="equityLeg" type="EquityLeg" maxOccurs="unbounded">
+                                                <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The equity
+                                                  amounts of the equity swap</xsd:documentation>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="interestLeg" type="InterestLeg"
+                                                minOccurs="0" maxOccurs="unbounded">
+                                                <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The fixed
+                                                  income amounts of the equity swap</xsd:documentation>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="principalExchangeFeatures"
+                                                type="PrincipalExchangeFeatures" minOccurs="0">
+                                                <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">Specifies
+                                                  the principal exchange features of
+                                                  the equity swap.</xsd:documentation>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="additionalPayment"
+                                                type="EquitySwapAdditionalPayment" minOccurs="0" maxOccurs="unbounded">
+                                                <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">Specifies
+                                                  additional payment(s) between the
+                                                  principal parties to the trade. This
+                                                  component extends some of the
+                                                  features of the additionalPayment
+                                                  component developed by the FpML
+                                                  industry group. Appropriate
+                                                  discussions will determine whether
+                                                  it would be appropriate to extend
+                                                  the shared component in order to
+                                                  meet the further requirements of
+                                                  equity swaps.</xsd:documentation>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="earlyTermination"
+                                                type="EquitySwapEarlyTerminationType" minOccurs="0" maxOccurs="unbounded">
+                                                <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">Specifies,
+                                                  for one or for both the parties to
+                                                  the trade, the date from which it
+                                                  can early terminate it.</xsd:documentation>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                </xsd:sequence>
+                        </xsd:extension>
+                </xsd:complexContent>
+        </xsd:complexType>
+        <xsd:complexType name="EquitySwapAdditionalPayment">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the additional payment(s)
+                                between the principal parties to the trade. This component extends
+                                some of the features of the additionalPayment component previously
+                                developed in FpML. Appropriate discussions will determine whether it
+                                would be appropriate to extend the shared component in order to meet
+                                the further requirements of equity swaps.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:group ref="PayerReceiver.model"/>
+                        <xsd:element name="additionalPaymentAmount">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the amount of the
+                                                fee along with, when applicable, the formula that
+                                                supports its determination.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:sequence>
+                                                <xsd:element name="paymentAmount" type="Money" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  currency amount of the payment.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="formula" type="Formula" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies a
+                                                  formula, with its
+                                                  description and components.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:sequence>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="additionalPaymentDate">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the value date of
+                                                the fee payment/receipt.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:choice>
+                                                <xsd:element name="adjustableDate" type="AdjustableDate">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">A
+                                                  date that shall be subject
+                                                  to adjustment if it would
+                                                  otherwise fall on a day that
+                                                  is not a business day in the
+                                                  specified business centers,
+                                                  together with the convention
+                                                  for adjusting the date.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="relativeDate" type="RelativeDateOffset">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">A
+                                                  date specified as some
+                                                  offset to another date (the
+                                                  anchor date).</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:choice>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="paymentType" type="PaymentType" minOccurs="0"/>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:complexType name="Formula">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing a financial formula, with
+                                its description and components.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="formulaDescription" type="xsd:string" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Text description of the formula</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="math" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">An element for containing
+                                                an XML representation of the formula. Defined using
+                                                xsd:any currently for flexibility in choice of
+                                                language (MathML, OpenMath)</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType mixed="true">
+                                        <xsd:sequence>
+                                                <xsd:any namespace="##any" processContents="skip" maxOccurs="unbounded"/>
+                                        </xsd:sequence>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="formulaComponent" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Elements describing the
+                                                components of the formula. The name attribute points
+                                                to a value used in the math element. The href
+                                                attribute points to a value elsewhere in the document</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:sequence>
+                                                <xsd:element name="componentDescription" type="xsd:string">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Text
+                                                  description of the component</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="formula" type="Formula" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Additional
+                                                  formulas required to
+                                                  describe this component</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:sequence>
+                                        <xsd:attribute name="name" type="xsd:normalizedString"/>
+                                        <xsd:attribute name="href" type="xsd:IDREF"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:complexType name="InterestAccrualsMethod">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the method for accruing
+                                interests on dividends. Can be either a fixed rate reference or a
+                                floating rate reference.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:choice>
+                        <xsd:element name="floatingRateCalculation" type="FloatingRateCalculation">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">The floating rate
+                                                calculation definitions</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="fixedRate" type="xsd:decimal">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">The calculation period
+                                                fixed rate. A per annum rate, expressed as a
+                                                decimal. A fixed rate of 5% would be represented as 0.05.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                </xsd:choice>
+        </xsd:complexType>
+        <xsd:complexType name="InterestLeg">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the fixed income leg of
+                                the equity swap.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:group ref="PayerReceiver.model"/>
+                        <xsd:element name="interestLegCalculationPeriodDates">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Component that holds the
+                                                various dates used to specify the interest leg of
+                                                the equity swap. It is used to define the
+                                                InterestPeriodDates identifyer.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:sequence>
+                                                <xsd:element name="effectiveDate" type="AdjustableOrRelativeDate">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  effective date of the equity
+                                                  swap. This global element is
+                                                  valid within the equity
+                                                  swaps namespace. Within the
+                                                  FpML namespace, another
+                                                  effectiveDate global element
+                                                  has been defined, that is
+                                                  different in the sense that
+                                                  it does not propose the
+                                                  choice of refering to
+                                                  another date in the document.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="terminationDate" type="AdjustableOrRelativeDate">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  termination date of the
+                                                  equity swap. This global
+                                                  element is valid within the
+                                                  equity swaps namespace.
+                                                  Within the FpML namespace,
+                                                  another terminationDate
+                                                  global element has been
+                                                  defined, that is different
+                                                  in the sense that it does
+                                                  not propose the choice of
+                                                  refering to another date in
+                                                  the document.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="interestLegResetDates">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  reset dates of the interest
+                                                  leg of the swap.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:sequence>
+                                                  <xsd:element name="calculationPeriodDatesReference">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">A
+                                                  pointer
+                                                  style
+                                                  reference
+                                                  to
+                                                  the
+                                                  associated
+                                                  calculation
+                                                  period
+                                                  dates
+                                                  component
+                                                  defined
+                                                  elsewhere
+                                                  in
+                                                  the document.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+
+                                                  <xsd:attribute
+                                                  name="href"
+                                                  type="xsd:IDREF" use="required"/>
+                                                  </xsd:complexType>
+                                                  </xsd:element>
+                                                  <xsd:choice>
+                                                  <xsd:element
+                                                  name="resetRelativeTo" type="ResetRelativeToEnum">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  whether
+                                                  the
+                                                  reset
+                                                  dates
+                                                  are
+                                                  determined
+                                                  with
+                                                  respect
+                                                  to
+                                                  each
+                                                  adjusted
+                                                  calculation
+                                                  period
+                                                  start
+                                                  date
+                                                  or
+                                                  adjusted
+                                                  calculation
+                                                  period
+                                                  end
+                                                  date.
+                                                  If
+                                                  the
+                                                  reset
+                                                  frequency
+                                                  is
+                                                  specified
+                                                  as
+                                                  daily
+                                                  this
+                                                  element
+                                                  must
+                                                  not
+                                                  be included.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="resetFrequency" type="ResetFrequency">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  frequency
+                                                  at
+                                                  which
+                                                  reset
+                                                  dates
+                                                  occur.
+                                                  In
+                                                  the
+                                                  case
+                                                  of
+                                                  a
+                                                  weekly
+                                                  reset
+                                                  frequency,
+                                                  also
+                                                  specifies
+                                                  the
+                                                  day
+                                                  of
+                                                  the
+                                                  week
+                                                  that
+                                                  the
+                                                  reset
+                                                  occurs.
+                                                  If
+                                                  the
+                                                  reset
+                                                  frequency
+                                                  is
+                                                  greater
+                                                  than
+                                                  the
+                                                  calculation
+                                                  period
+                                                  frequency
+                                                  then
+                                                  this
+                                                  implies
+                                                  that
+                                                  more
+                                                  than
+                                                  one
+                                                  reset
+                                                  date
+                                                  is
+                                                  established
+                                                  for
+                                                  each
+                                                  calculation
+                                                  period
+                                                  and
+                                                  some
+                                                  form
+                                                  of
+                                                  rate
+                                                  averaging
+                                                  is applicable.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:choice>
+                                                  </xsd:sequence>
+                                                  </xsd:complexType>
+                                                </xsd:element>
+                                                <xsd:element name="interestLegPaymentDates" type="AdjustableOrRelativeDates">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  payment dates of the
+                                                  interest leg of the swap.
+                                                  When defined in relation to
+                                                  a date specified somewhere
+                                                  else in the document
+                                                  (through the relativeDates
+                                                  component), this element
+                                                  will typically point to the
+                                                  payment dates of the equity
+                                                  leg of the swap.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:sequence>
+                                        <xsd:attribute name="id" type="xsd:ID" use="required"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="notional">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the notional of
+                                                the equity swap. When used in the equity leg, the
+                                                definition will typically combine the actual amount
+                                                (using the notional component defined by the FpML
+                                                industry group) and the determination method. When
+                                                used in the interest leg, the definition will
+                                                typically point to the definition of the equity leg.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:choice>
+                                                <xsd:element name="determinationMethod" type="xsd:string">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  method according to which an
+                                                  amount or a date is determined.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="notionalAmount" type="Money">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  notional amount.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="amountRelativeTo" type="AmountRelativeTo"/>
+                                        </xsd:choice>
+                                        <xsd:attribute name="id" type="xsd:ID"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="interestAmount" type="LegAmount">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies, in relation to
+                                                each Interest Payment Date, the amount to which the
+                                                Interest Payment Date relates. Unless otherwise
+                                                specified, this term has the meaning defined in the
+                                                ISDA 2000 ISDA Definitions.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="interestCalculation">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the calculation
+                                                method of the interest rate leg of the equity swap.
+                                                Includes the floating or fixed rate calculation
+                                                definitions, along with the determination of the day
+                                                count fraction.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:sequence>
+                                                <xsd:choice>
+                                                  <xsd:element name="floatingRateCalculation" type="FloatingRateCalculation">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  floating rate
+                                                  calculation definitions</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element name="fixedRate" type="xsd:decimal">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  calculation period
+                                                  fixed rate. A per
+                                                  annum rate,
+                                                  expressed as a
+                                                  decimal. A fixed
+                                                  rate of 5% would be
+                                                  represented as 0.05.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                </xsd:choice>
+                                                <xsd:element name="dayCountFraction" type="DayCountFractionEnum">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  day count fraction.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <!--
+              <xsd:complexType>
+                <xsd:simpleContent>
+                  <xsd:extension
+                   base="DayCountFraction">
+                    <xsd:attribute
+                     default="http://www.fpml.org/spec/2000/day-count-fraction-1-0"
+                     name="dayCountFractionScheme"
+                     type="xsd:normalizedString"/>
+                  </xsd:extension>
+                </xsd:simpleContent>
+              </xsd:complexType>
+              -->
+                                                </xsd:element>
+                                        </xsd:sequence>
+                                </xsd:complexType>
+                        </xsd:element>
+                </xsd:sequence>
+                <xsd:attribute name="legIdentifier" type="xsd:ID"/>
+        </xsd:complexType>
+        <xsd:complexType name="LegAmount">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the amount that will paid
+                                or received on each of the payment dates. This type is used to
+                                define both the Equity Amount and the Interest Amount.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="paymentCurrency">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Currency in which the
+                                                payment relating to the leg amount (equity amount or
+                                                interest amount) or the dividend will be denominated.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:choice minOccurs="0">
+                                                <xsd:element name="currency" type="Currency">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  currency in which an amount
+                                                  is denominated.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="determinationMethod" type="xsd:string">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  method according to which an
+                                                  amount or a date is determined.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:choice>
+                                        <xsd:attribute name="id" type="xsd:ID"/>
+                                        <xsd:attribute name="href" type="xsd:IDREF"/>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:choice>
+                                <xsd:element name="referenceAmount">
+                                        <xsd:annotation>
+                                                <xsd:documentation xml:lang="en">Specifies the
+                                                  reference Amount when this term either
+                                                  corresponds to the standard ISDA Definition
+                                                  (either the 2002 Equity Definition for the
+                                                  Equity Amount, or the 2000 Definition for
+                                                  the Interest Amount), or points to a term
+                                                  defined elsewhere in the swap document.</xsd:documentation>
+                                        </xsd:annotation>
+                                        <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                  <xsd:extension base="xsd:string">
+                                                  <xsd:attribute name="href" type="xsd:IDREF"/>
+                                                  </xsd:extension>
+                                                </xsd:simpleContent>
+                                        </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="formula" type="Formula">
+                                        <xsd:annotation>
+                                                <xsd:documentation xml:lang="en">Specifies a
+                                                  formula, with its description and components.</xsd:documentation>
+                                        </xsd:annotation>
+                                </xsd:element>
+                                <xsd:element name="encodedDescription" type="xsd:base64Binary">
+                                        <xsd:annotation>
+                                                <xsd:documentation xml:lang="en">Description of the
+                                                  leg amount when represented through an
+                                                  encoded image.</xsd:documentation>
+                                        </xsd:annotation>
+                                </xsd:element>
+                        </xsd:choice>
+                        <xsd:element name="calculationDates"
+                                type="AdjustableRelativeOrPeriodicDates" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the date ion
+                                                which a calculation or an observation will be
+                                                performed for the purpose of defining the Equity
+                                                Amount, and in accordance to the definition terms of
+                                                this latter.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:complexType name="PrincipalExchangeFeatures">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the principal exchange
+                                features of the equity swap.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="principalExchanges" type="PrincipalExchanges">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">The true/false flags
+                                                indicating whether initial, intermediate or final
+                                                exchanges of principal should occur.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="principalExchangeDescriptions" maxOccurs="unbounded">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies each of the
+                                                characteristics of the principal exchange cashflows,
+                                                in terms of paying/receiving counterparties, amounts
+                                                and dates.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:sequence>
+                                                <xsd:group ref="PayerReceiver.model"/>
+                                                <xsd:element name="principalExchangeAmount">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies the
+                                                  principal echange amount,
+                                                  either by explicitly
+                                                  defining it, or by point to
+                                                  an amount defined somewhere
+                                                  else in the swap document.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:choice>
+                                                  <xsd:element
+                                                  name="amountRelativeTo" type="AmountRelativeTo"/>
+                                                  <xsd:element
+                                                  name="determinationMethod" type="xsd:string">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the
+                                                  method
+                                                  according
+                                                  to
+                                                  which
+                                                  an
+                                                  amount
+                                                  or a
+                                                  date
+                                                  is determined.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="principalAmount" type="Money">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">Principal
+                                                  exchange
+                                                  amount
+                                                  when
+                                                  explictly stated.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:choice>
+                                                  </xsd:complexType>
+                                                </xsd:element>
+                                                <xsd:element name="principalExchangeDate" type="AdjustableOrRelativeDate">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Date on which
+                                                  each of the principal
+                                                  exchanges will take place.
+                                                  This date is either
+                                                  explictly stated, or is
+                                                  defined by reference to
+                                                  another date in the swap
+                                                  document. In this latter
+                                                  case, it will typically
+                                                  refer to one other date of
+                                                  the equity leg: either the
+                                                  effective date (initial
+                                                  exchange), or the last
+                                                  payment date (final exchange).</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:sequence>
+                                </xsd:complexType>
+                        </xsd:element>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:complexType name="RelativeDateSequence">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing a date when this date is
+                                defined in reference to another date through one or several date offsets.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="dateRelativeTo" type="DateRelativeTo"/>
+                        <xsd:element name="dateOffset" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                        <xsd:sequence>
+                                                <xsd:element name="periodMultiplier" type="xsd:integer">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">A
+                                                  time period multiplier, e.g.
+                                                  1, 2 or 3 etc. A negative
+                                                  value can be used when
+                                                  specifying an offset
+                                                  relative to another date,
+                                                  e.g. -2 days. If the period
+                                                  value is T (Term) then
+                                                  periodMultiplier must
+                                                  contain the value 1.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="period" type="PeriodEnum">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">A
+                                                  time period, e.g. a day,
+                                                  week, month, year or term of
+                                                  the stream. If the
+                                                  periodMultiplier value is 0
+                                                  (zero) then period must
+                                                  contain the value D (day).</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="dayType" type="DayTypeEnum" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">In
+                                                  the case of an offset
+                                                  specified as a number of
+                                                  days, this element defines
+                                                  whether consideration is
+                                                  given as to whether a day is
+                                                  a good business day or not.
+                                                  If a day type of business
+                                                  days is specified then
+                                                  non-business days are
+                                                  ignored when calculating the
+                                                  offset. The financial
+                                                  business centers to use for
+                                                  determination of business
+                                                  days are implied by the
+                                                  context in which this
+                                                  element is used. This
+                                                  element must only be
+                                                  included when the offset is
+                                                  specified as a number of
+                                                  days. If the offset is zero
+                                                  days then the dayType
+                                                  element should not be included.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="businessDayConvention" type="BusinessDayConventionEnum">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation xml:lang="en">The
+                                                  convention for adjusting a
+                                                  date if it would otherwise
+                                                  fall on a day that is not a
+                                                  business day.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                                <xsd:element name="sequence" minOccurs="0" type="xsd:integer">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Sequence in
+                                                  which the reference to the
+                                                  time period multiplier
+                                                  should be applied.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                </xsd:element>
+                                        </xsd:sequence>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:choice minOccurs="0">
+                                <xsd:element name="businessCentersReference" type="BusinessCentersReference"/>
+                                <xsd:element name="businessCenters" type="BusinessCenters"/>
+                        </xsd:choice>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:complexType name="Return">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the dividend return
+                                conditions applicable to the swap.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="returnType" type="ReturnTypeEnum">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Defines the type of return
+                                                associated with the equity swap.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="dividendConditions" type="DividendConditions" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the conditions
+                                                governing the payment of the dividends to the
+                                                receiver of the equity return. With the exception of
+                                                the dividend payout ratio, which is defined for each
+                                                of the underlying components.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:complexType name="EquitySwapValuation">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the initial and final
+                                valuation of the equity underlyer.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="initialPrice">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the initial
+                                                reference price of the equity underlyer. This price
+                                                can be expressed either as an actual
+                                                amount/currency, as a determination method, or by
+                                                reference to another value specified in the swap document.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:complexContent>
+                                                <xsd:extension base="Price">
+                                                  <xsd:sequence>
+                                                  <xsd:element
+                                                  name="valuationTimeType"
+                                                  type="TimeTypeEnum" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="de">Tageszeit,
+                                                  zu der die
+                                                  Berechnungsstelle
+                                                  den
+                                                  Basiswert
+                                                  bewertet,
+                                                  zum Beispiel
+                                                  der
+                                                  offizielle Börsenschluss.</xsd:documentation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  time of day
+                                                  at which the
+                                                  calculation
+                                                  agent values
+                                                  the
+                                                  underlying,
+                                                  for example
+                                                  the official
+                                                  closing time
+                                                  of the exchange.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element name="valuationTime"
+                                                  type="BusinessCenterTime" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="de">Genaue
+                                                  Tageszeit,
+                                                  zu der die
+                                                  Bewertungsstelle
+                                                  den
+                                                  Basiswert bewertet.</xsd:documentation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  specific
+                                                  time of day
+                                                  at which the
+                                                  calculation
+                                                  agent values
+                                                  the underlying.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="equityValuationDate" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the
+                                                  valuation
+                                                  date of the
+                                                  equity underlyer.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:choice>
+                                                  <xsd:element
+                                                  name="adjustableDate" type="AdjustableDate">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">A
+                                                  date
+                                                  that
+                                                  shall
+                                                  be
+                                                  subject
+                                                  to
+                                                  adjustment
+                                                  if
+                                                  it
+                                                  would
+                                                  otherwise
+                                                  fall
+                                                  on
+                                                  a
+                                                  day
+                                                  that
+                                                  is
+                                                  not
+                                                  a
+                                                  business
+                                                  day
+                                                  in
+                                                  the
+                                                  specified
+                                                  business
+                                                  centers,
+                                                  together
+                                                  with
+                                                  the
+                                                  convention
+                                                  for
+                                                  adjusting
+                                                  the date.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="relativeDateSequence" type="RelativeDateSequence">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">A
+                                                  series
+                                                  of
+                                                  dates
+                                                  specified
+                                                  as
+                                                  some
+                                                  offset
+                                                  to
+                                                  other
+                                                  dates
+                                                  (the
+                                                  anchor
+                                                  dates)
+                                                  which can</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:choice>
+                                                  <xsd:attribute
+                                                  name="id" type="xsd:ID"/>
+                                                  </xsd:complexType>
+                                                  </xsd:element>
+                                                  </xsd:sequence>
+                                                </xsd:extension>
+                                        </xsd:complexContent>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="equityNotionalReset" type="xsd:boolean">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">The term "Equity Notional
+                                                Reset" is assumed to have the meaning as defined in
+                                                the ISDA 2002 Equity Derivatives Definitions. The
+                                                reference to the ISDA definition is either
+                                                "Applicable" or 'Inapplicable".</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="valuationPriceInterim" minOccurs="0">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the interim
+                                                valuation price of the equity underlyer. This price
+                                                can be expressed either as an actual
+                                                amount/currency, as a determination method, or by
+                                                reference to another value specified in the swap document.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:complexContent>
+                                                <xsd:extension base="Price">
+                                                  <xsd:sequence>
+                                                  <xsd:element
+                                                  name="valuationTimeType" type="TimeTypeEnum">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="de">Tageszeit,
+                                                  zu der die
+                                                  Berechnungsstelle
+                                                  den
+                                                  Basiswert
+                                                  bewertet,
+                                                  zum Beispiel
+                                                  der
+                                                  offizielle Börsenschluss.</xsd:documentation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  time of day
+                                                  at which the
+                                                  calculation
+                                                  agent values
+                                                  the
+                                                  underlying,
+                                                  for example
+                                                  the official
+                                                  closing time
+                                                  of the exchange.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element name="valuationTime"
+                                                  type="BusinessCenterTime" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="de">Genaue
+                                                  Tageszeit,
+                                                  zu der die
+                                                  Bewertungsstelle
+                                                  den
+                                                  Basiswert bewertet.</xsd:documentation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  specific
+                                                  time of day
+                                                  at which the
+                                                  calculation
+                                                  agent values
+                                                  the underlying.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="equityValuationDates" type="AdjustableRelativeOrPeriodicDates">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the interim
+                                                  equity
+                                                  valuation
+                                                  dates of the swap.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:sequence>
+                                                </xsd:extension>
+                                        </xsd:complexContent>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="valuationPriceFinal">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the final
+                                                valuation price of the equity underlyer. This price
+                                                can be expressed either as an actual
+                                                amount/currency, as a determination method, or by
+                                                reference to another value specified in the swap document.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:complexContent>
+                                                <xsd:extension base="Price">
+                                                  <xsd:sequence>
+                                                  <xsd:element
+                                                  name="valuationTimeType"
+                                                  type="TimeTypeEnum" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="de">Tageszeit,
+                                                  zu der die
+                                                  Berechnungsstelle
+                                                  den
+                                                  Basiswert
+                                                  bewertet,
+                                                  zum Beispiel
+                                                  der
+                                                  offizielle Börsenschluss.</xsd:documentation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  time of day
+                                                  at which the
+                                                  calculation
+                                                  agent values
+                                                  the
+                                                  underlying,
+                                                  for example
+                                                  the official
+                                                  closing time
+                                                  of the exchange.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element name="valuationTime"
+                                                  type="BusinessCenterTime" minOccurs="0">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="de">Genaue
+                                                  Tageszeit,
+                                                  zu der die
+                                                  Bewertungsstelle
+                                                  den
+                                                  Basiswert bewertet.</xsd:documentation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">The
+                                                  specific
+                                                  time of day
+                                                  at which the
+                                                  calculation
+                                                  agent values
+                                                  the underlying.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element name="equityValuationDate">
+                                                  <xsd:annotation>
+                                                  <xsd:documentation
+                                                  xml:lang="en">Specifies
+                                                  the
+                                                  valuation
+                                                  date of the
+                                                  equity
+                                                  underlyer.
+                                                  In the few
+                                                  cases where
+                                                  it will be
+                                                  defined in
+                                                  relation to
+                                                  a date
+                                                  specified
+                                                  somewhere
+                                                  else in the
+                                                  document
+                                                  (through the
+                                                  relativeDateSequence
+                                                  component),
+                                                  this element
+                                                  will
+                                                  typically
+                                                  refer to the
+                                                  payment date
+                                                  and
+                                                  substract a
+                                                  day lag
+                                                  corresponding
+                                                  to the
+                                                  settlement
+                                                  cycle of the underlyer.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  <xsd:complexType>
+                                                  <xsd:choice>
+                                                  <xsd:element
+                                                  name="adjustableDate" type="AdjustableDate">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">A
+                                                  date
+                                                  that
+                                                  shall
+                                                  be
+                                                  subject
+                                                  to
+                                                  adjustment
+                                                  if
+                                                  it
+                                                  would
+                                                  otherwise
+                                                  fall
+                                                  on
+                                                  a
+                                                  day
+                                                  that
+                                                  is
+                                                  not
+                                                  a
+                                                  business
+                                                  day
+                                                  in
+                                                  the
+                                                  specified
+                                                  business
+                                                  centers,
+                                                  together
+                                                  with
+                                                  the
+                                                  convention
+                                                  for
+                                                  adjusting
+                                                  the date.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  <xsd:element
+                                                  name="relativeDateSequence" type="RelativeDateSequence">
+                                                  <xsd:annotation>
+
+                                                  <xsd:documentation
+                                                  xml:lang="en">A
+                                                  date
+                                                  specified
+                                                  in
+                                                  relation
+                                                  to
+                                                  some
+                                                  other
+                                                  date
+                                                  defined
+                                                  in
+                                                  the
+                                                  document
+                                                  (the
+                                                  anchor
+                                                  date),
+                                                  where
+                                                  there
+                                                  is
+                                                  the
+                                                  opportunity
+                                                  to
+                                                  specify
+                                                  a
+                                                  combination
+                                                  of
+                                                  offset
+                                                  rules.
+                                                  This
+                                                  component
+                                                  will
+                                                  typically
+                                                  be
+                                                  used
+                                                  for
+                                                  defining
+                                                  the
+                                                  valuation
+                                                  date
+                                                  in
+                                                  relation
+                                                  to
+                                                  the
+                                                  payment
+                                                  date,
+                                                  as
+                                                  both
+                                                  the
+                                                  currency
+                                                  and
+                                                  the
+                                                  exchange
+                                                  holiday
+                                                  calendars
+                                                  need
+                                                  to
+                                                  be considered.</xsd:documentation>
+                                                  </xsd:annotation>
+                                                  </xsd:element>
+                                                  </xsd:choice>
+                                                  <xsd:attribute
+                                                  name="id" type="xsd:ID"/>
+                                                  </xsd:complexType>
+                                                  </xsd:element>
+                                                  </xsd:sequence>
+                                                </xsd:extension>
+                                        </xsd:complexContent>
+                                </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="equityPaymentDates" type="EquityPaymentDates">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the equity
+                                                payment dates of the swap.</xsd:documentation>
+                                </xsd:annotation>
+                        </xsd:element>
+                </xsd:sequence>
+        </xsd:complexType>
+        <xsd:element name="equitySwap" type="EquitySwap" substitutionGroup="product">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">Specifies the structure of the equity swap.</xsd:documentation>
+                </xsd:annotation>
+        </xsd:element>
+        <xsd:complexType name="EquitySwapEarlyTerminationType">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en">A type describing the date from which each
+                                of the party may be allowed to terminate the trade.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:sequence>
+                        <xsd:element name="partyReference" type="PartyReference"/>
+                        <xsd:element name="startingDate">
+                                <xsd:annotation>
+                                        <xsd:documentation xml:lang="en">Specifies the date from
+                                                which the early termination clause can be exercised.</xsd:documentation>
+                                </xsd:annotation>
+                                <xsd:complexType>
+                                        <xsd:choice>
+                                                <xsd:element name="dateRelativeTo" type="DateRelativeTo"/>
+                                                <xsd:element name="adjustableDate" type="AdjustableDate"/>
+                                        </xsd:choice>
+                                </xsd:complexType>
+                        </xsd:element>
+                </xsd:sequence>
+        </xsd:complexType>
+</xsd:schema>

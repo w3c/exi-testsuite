@@ -1,0 +1,19 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="String compact identifiers tests">
+
+    <param name="groupId" value="${groupId} | schemalessCID"/> 
+
+    <param name="org.w3c.exi.ttf.preserve" value="prefixes" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="false" />
+
+    <testCase name="schemaless-cid-00">
+		<param name="testDescription"  value="Strings encoded as compact ids, some of them using prepopulated schemaless entries"/>
+		<param name="japex.inputFile" value="${testDocFolder}/compact-identifiers/compactid-00.xml" />
+	</testCase>
+	<testCase name="schemaless-cid-01">
+		<param name="testDescription"  value="Strings encoded as compact ids, some of them using prepopulated schemaless entries"/>
+		<param name="japex.inputFile" value="${testDocFolder}/compact-identifiers/compactid-01.xml" />
+	</testCase>
+
+</testCaseGroup>

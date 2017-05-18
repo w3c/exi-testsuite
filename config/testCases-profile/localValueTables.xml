@@ -1,0 +1,126 @@
+<testCaseGroup
+    xmlns="http://www.sun.com/japex/testSuite"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Profile interoperability tests ">
+
+    <param name="org.w3c.exi.ttf.useProfile" value="true"/>
+    <param name="org.w3c.exi.ttf.localValuePartitions" value="false"/>
+	
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${japex.exi.ttfms.testCasesDir}/interop-profile/localValueTables/indexed.xsd"/>
+	
+	<param name="reference" value="http://www.w3.org/TR/exi-profile/#valueTableCapping"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-profile/localValueTables"/>
+	
+	<testCase name="nolocalvalues-01">
+        <param name="description"  value="Globally and locally indexable element values (same qname)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-02">
+        <param name="description"  value="Globally and locally indexable attribute values (same qname)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-03">
+        <param name="description"  value="Globally and locally indexable element and attribute values (same qname)"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+	
+	<!-- valuePartitionCapacity tests -->
+	<testCase name="nolocalvalues-11">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="0"/>
+        <param name="description"  value="Test the case of no string indexing"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-12">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="1"/>
+        <param name="description"  value="Value partition capacity test limited to 1 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-13">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="3"/>
+        <param name="description"  value="Value partition capacity test limited to 3 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+		<testCase name="nolocalvalues-14">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="0"/>
+        <param name="description"  value="Test the case of no string indexing"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-15">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="1"/>
+        <param name="description"  value="Value partition capacity test limited to 1 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-16">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="3"/>
+        <param name="description"  value="Value partition capacity test limited to 3 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+    <testCase name="nolocalvalues-17">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="0"/>
+        <param name="description"  value="Test the case of no string indexing"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-18">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="1"/>
+        <param name="description"  value="Value partition capacity test limited to 1 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-19">
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="3"/>
+        <param name="description"  value="Value partition capacity test limited to 3 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+	
+	<!-- valueMaxLength tests -->
+	<testCase name="nolocalvalues-21">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="0"/>
+        <param name="description"  value="Value max length equal to 0"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-22">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="4"/>
+        <param name="description"  value="Value max length equal to 4"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-23">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="0"/>
+        <param name="description"  value="Value max length equal to 0"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-24">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="4"/>
+        <param name="description"  value="Value max length equal to 4"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-25">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="0"/>
+        <param name="description"  value="Value max length equal to 0"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-26">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="4"/>
+        <param name="description"  value="Value max length equal to 4"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+	
+	<!-- valuePartitionCapacity & valueMaxLength tests -->
+	<testCase name="nolocalvalues-21">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="0"/>
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="2"/>
+        <param name="description"  value="Value max length equal to 3, Value partition capacity test limited to 2 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-01.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-22">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="0"/>
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="2"/>
+        <param name="description"  value="Value max length equal to 3, Value partition capacity test limited to 2 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-02.xml" />
+    </testCase>
+	<testCase name="nolocalvalues-23">
+		<param name="org.w3c.exi.ttf.valueMaxLength" value="0"/>
+		<param name="org.w3c.exi.ttf.valuePartitionCapacity" value="2"/>
+        <param name="description"  value="Value max length equal to 3, Value partition capacity test limited to 2 values"/>
+        <param name="japex.inputFile" value="${test.docFolder}/indexed-03.xml" />
+    </testCase>
+	
+</testCaseGroup>

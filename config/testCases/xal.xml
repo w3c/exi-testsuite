@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite">
+      <param name="testsDir" value="${japex.exi.ttfms.testCasesDir}"/>
+
+<!-- temporarily disable dtd preservation until more candidates can preserve them -->
+<!--    <param name="org.w3c.exi.ttf.preserve" value="dtd"/> -->
+
+      <testCase name="XAL/HEBTEntranceEnvelope.probe">
+        <param name="japex.inputFile" value="${testsDir}/XAL/HEBTEntranceEnvelope.probe"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/HebtEntranceTransferMap.probe">
+        <param name="japex.inputFile" value="${testsDir}/XAL/HebtEntranceTransferMap.probe"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/main.xal">
+        <param name="japex.inputFile" value="${testsDir}/XAL/main.xal"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/xdxf.xsd"/>
+      </testCase>
+      <testCase name="XAL/main_lebt-hebt.xal">
+        <param name="japex.inputFile" value="${testsDir}/XAL/main_lebt-hebt.xal"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/xdxf.xsd"/>
+      </testCase>
+      <testCase name="XAL/main_ring.xal">
+        <param name="japex.inputFile" value="${testsDir}/XAL/main_ring.xal"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/xdxf.xsd"/>
+      </testCase>
+      <testCase name="XAL/MebtEntrance-adapt-envelope.probe">
+        <param name="japex.inputFile" value="${testsDir}/XAL/MebtEntrance-adapt-envelope.probe"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/MebtEntrance-particle.probe">
+        <param name="japex.inputFile" value="${testsDir}/XAL/MebtEntrance-particle.probe"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/model.params">
+        <param name="japex.inputFile" value="${testsDir}/XAL/model.params"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/RingInjection-envelope.probe">
+        <param name="japex.inputFile" value="${testsDir}/XAL/RingInjection-envelope.probe"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/RingInjection-TransferMap.probe">
+        <param name="japex.inputFile" value="${testsDir}/XAL/RingInjection-TransferMap.probe"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/sample_twiss_bpm.xml">
+        <param name="japex.inputFile" value="${testsDir}/XAL/sample_twiss_bpm.xml"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/scl_80pct.xal">
+        <param name="japex.inputFile" value="${testsDir}/XAL/scl_80pct.xal"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/scl_80pct.xdxf">
+        <param name="japex.inputFile" value="${testsDir}/XAL/scl_80pct.xdxf"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/sns.xdxf">
+        <param name="japex.inputFile" value="${testsDir}/XAL/sns.xdxf"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/sns_LEBT-HEBT.xdxf">
+        <param name="japex.inputFile" value="${testsDir}/XAL/sns_LEBT-HEBT.xdxf"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/sns_Ring.xdxf">
+        <param name="japex.inputFile" value="${testsDir}/XAL/sns_Ring.xdxf"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+      <testCase name="XAL/timing_pvs.tim">
+        <param name="japex.inputFile" value="${testsDir}/XAL/timing_pvs.tim"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/xdxf.xsd"/>
+      </testCase>
+      <testCase name="XAL/Vacuum.xdxf">
+        <param name="japex.inputFile" value="${testsDir}/XAL/Vacuum.xdxf"/>
+	<param name="org.w3c.exi.ttf.schemaLocation" value="${testsDir}/XAL/autoschema.xsd"/>
+      </testCase>
+</testCaseGroup>

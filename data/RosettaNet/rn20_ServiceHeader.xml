@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ServiceHeader SYSTEM "ServiceHeader_MS_V02_00.dtd">
+<ServiceHeader>
+    <ProcessControl>
+        <ActivityControl>
+            <BusinessActivityIdentifier>QuoteResponse</BusinessActivityIdentifier>
+            <MessageControl>
+                <fromRole>
+                    <GlobalPartnerRoleClassificationCode>Buyer</GlobalPartnerRoleClassificationCode>
+                </fromRole>
+                <fromService>
+                    <GlobalBusinessServiceCode>Buyer Service</GlobalBusinessServiceCode>
+                </fromService>
+                <Manifest>
+                    <numberOfAttachments>
+                        <CountableAmount>0</CountableAmount>
+                    </numberOfAttachments>
+                    <ServiceContentControl>
+                        <ActionIdentity>
+                            <GlobalBusinessActionCode>GlobalBusinessActionCode</GlobalBusinessActionCode>
+                        </ActionIdentity>
+                    </ServiceContentControl>
+                </Manifest>
+                <toRole>
+                    <GlobalPartnerRoleClassificationCode>Seller</GlobalPartnerRoleClassificationCode>
+                </toRole>
+                <toService>
+                    <GlobalBusinessServiceCode>Seller Service</GlobalBusinessServiceCode>
+                </toService>
+            </MessageControl>
+        </ActivityControl>
+        <GlobalUsageCode>Production</GlobalUsageCode>
+        <pipCode>
+            <GlobalProcessIndicatorCode>3A1CUSTOMRESPONSE</GlobalProcessIndicatorCode>
+        </pipCode>
+        <pipInstanceId>
+            <InstanceIdentifier>8MU~SZtTlm40%IjM6jl^E]K7OOCdnH-vvc3pe]\cEQBmyrMJ ZhsDLObJzwVw&gt;712624341-4Z3jjiW\W66}91.DizBW:jLe&amp;rVOMmtvSwLVJG[9\4&gt;6</InstanceIdentifier>
+        </pipInstanceId>
+        <pipVersion>
+            <VersionIdentifier>V02.00</VersionIdentifier>
+        </pipVersion>
+        <KnownInitiatingPartner>
+            <PartnerIdentification>
+                <GlobalBusinessIdentifier>417449089</GlobalBusinessIdentifier>
+            </PartnerIdentification>
+        </KnownInitiatingPartner>
+    </ProcessControl>
+</ServiceHeader>

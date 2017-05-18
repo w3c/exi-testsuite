@@ -1,0 +1,47 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid enumeration encoding">
+
+    <param name="groupId" value="${groupId} | enumerationValid"/> 
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="org.w3c.exi.ttf.schemaLocation"
+        value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/enumeration/enumeration.xsd"/>
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/enumeration"/>
+    <param name="reference" value="http://www.w3.org/TR/exi/#encodingEnumerations"/>
+
+    <testCase name="enumeration.valid-00">
+        <param name="description"  value="enumeration of month day, 8 choices"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration-valid-00.xml" />
+    </testCase>
+    <testCase name="enumeration.valid-01">
+        <param name="description"  value="enumeration of integers, 9 choices"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration-valid-01.xml" />
+    </testCase>
+    <testCase name="enumeration.valid-02">
+        <param name="description"  value="enumeration of floats, 1 choice"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration-valid-02.xml" />
+    </testCase>
+    <testCase name="enumeration.valid-03">
+        <param name="description"  value="enumeration of qnames"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration-valid-03.xml" />
+	<param name="org.w3c.exi.ttf.preserve" value="prefixes" />
+    </testCase>
+    <testCase name="enumeration.valid-04">
+        <param name="description"  value="enumeration of union"/>
+        <param name="japex.inputFile" value="${test.docFolder}/enumeration-valid-04.xml" />
+    </testCase>
+
+    <!-- Enumerated values are not considered for list datatypes -->
+    <testCaseGroup xmlns="http://www.sun.com/japex/testSuite" name="List datatype with enumerated values">
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/enumerationOfList.xsd"/>
+        <testCase name="enumeration.list.valid-00">
+            <param name="description"  value="enumeration of list with a valid value"/>
+            <param name="japex.inputFile" value="${test.docFolder}/enumerationOfList-valid-00.xml" />
+        </testCase>
+        <testCase name="enumeration.list.schemaInvalid-00">
+            <param name="description"  value="enumeration of list with a schema-invalid value"/>
+            <param name="japex.inputFile" value="${test.docFolder}/enumerationOfList-schemaInvalid-00.xml" />
+        </testCase>
+    </testCaseGroup>
+
+</testCaseGroup>

@@ -1,0 +1,17 @@
+<!-- SchemaId used to identify schema info for processing EXI body -->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Schema Information tests">
+
+    <param name="groupId" value="${groupId} | schemaInformed"/>
+
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="testDocFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/header"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${testDocFolder}/schema-included.xsd"/>
+    <param name="org.w3c.exi.ttf.schemaDeviations" value="true" />
+
+    <testCase name="schemaId-test">
+        <param name="testDescription"  value="schema-informed child element"/>
+        <param name="japex.inputFile" value="${testDocFolder}/schemaId-test.xml" />
+    </testCase>
+
+</testCaseGroup>

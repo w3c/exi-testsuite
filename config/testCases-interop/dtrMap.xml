@@ -1,0 +1,174 @@
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" xmlns:xi="http://www.w3.org/2001/XInclude"
+    name="Valid decimal encoding">
+
+    <param name="groupId" value="${groupId} | dtrMap"/> 
+
+    <param name="reference" value="http://www.w3.org/TR/exi/#datatypeRepresentationMap"/>
+    <param name="org.w3c.exi.ttf.useSchemas" value="true"/>
+
+    <testCase name="dtr-01">
+        <param name="description"  value="Decimal mapped to string"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/decimal/decimal.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/decimal"/>
+        <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-06.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}string
+	 			{http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <testCase name="dtr-02">
+        <param name="description"  value="Doubles mapped to decimal"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/float/float.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/float"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="true"/>
+        <param name="japex.inputFile" value="${test.docFolder}/float-valid-08.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}string
+	 			{http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <!-- testCase name="dtr-03">
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/dtr"/>
+        <param name="description"  value="user-defined type mapped to base64Binary"/>
+        <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/dtr.xsd"/>
+        <param name="japex.inputFile" value="${test.docFolder}/dtr-valid-00.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://example.org/ns1}KeyValueType {http://www.w3.org/2009/exi}base64Binary" />
+    </testCase-->
+
+    <testCase name="dtr-04">
+        <param name="description"  value="Bounded integers to string"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger/nbitInteger.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-00.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}string
+	 			{http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <testCase name="dtr-05">
+        <param name="description"  value="Several representation map in the derivation chains"/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger/nbitInteger.xsd"/>
+        <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/nbitInteger"/>
+        <param name="japex.inputFile" value="${test.docFolder}/nbitInteger-valid-00.xml" />
+	    <param name="org.w3c.exi.ttf.datatypeRepresentationMap" value=
+				"{http://www.w3.org/2001/XMLSchema}decimal  {http://www.w3.org/2009/exi}string
+				{http://www.w3.org/2001/XMLSchema}integer {http://www.w3.org/2009/exi}integer
+	 			{http://www.w3.org/2001/XMLSchema}double   {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <testCase name="dtr-06">
+        <param name="description" value="Use DTRM to represent an enumerated value using exi:integer."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/enumerationDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/enumerationToInteger_01.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{urn:foo}stringDerived {http://www.w3.org/2009/exi}integer" />
+    </testCase>
+
+    <testCase name="dtr-07">
+        <param name="description" value="The codec used for an enumerated type is not *generally* affected by DTRM entry attached to its ancestral type. When such an ancestral type has enumerated values, however, it *does* affect the codec used for the enumerated type in question."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/enumerationDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/enumerationToInteger_02.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{urn:foo}stringDerived {http://www.w3.org/2009/exi}integer" />
+    </testCase>
+    
+    <testCase name="dtr-08">
+        <param name="description" value="The codec used for an enumerated type is not affected by DTRM entry attached to its ancestral type."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/enumerationDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/enumerationToInteger_03.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{http://www.w3.org/2001/XMLSchema}string {http://www.w3.org/2009/exi}integer" />
+    </testCase>
+    
+    <testCase name="dtr-09">
+        <param name="description" value="A DTRM entry is pegged at a datatype derived by union."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionToDecimal_01.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{urn:foo}unionType {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <testCase name="dtr-10">
+        <param name="description" value="A DTRM entry is pegged at a base datatype that is an union datatype."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionToDecimal_02.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{urn:foo}unionType {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <testCase name="dtr-11">
+        <param name="description" value="A DTRM entry is pegged at xsd:anySimpleType, which should not affect union datatype encodings."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionToDecimal_03.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{http://www.w3.org/2001/XMLSchema}anySimpleType {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+
+    <testCase name="dtr-12">
+        <param name="description" value="A DTRM entry is pegged at one of the member types of an union datatype."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/unionToDecimal_04.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{http://www.w3.org/2001/XMLSchema}int {http://www.w3.org/2009/exi}decimal" />
+    </testCase>
+    
+    <testCase name="dtr-13">
+        <param name="description" value="A DTRM entry is pegged at a datatype derived by list."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listToString_01.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{urn:foo}listType {http://www.w3.org/2009/exi}string" />
+    </testCase>
+    
+    <testCase name="dtr-14">
+        <param name="description" value="A DTRM entry is pegged at a base datatype that is a list datatype."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listToString_02.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{urn:foo}listType {http://www.w3.org/2009/exi}string" />
+    </testCase>
+
+    <testCase name="dtr-15">
+        <param name="description" value="A DTRM entry is pegged at xsd:anySimpleType, which should not affect list datatype encodings."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listToString_03.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{http://www.w3.org/2001/XMLSchema}anySimpleType {http://www.w3.org/2009/exi}string" />
+    </testCase>
+
+    <testCase name="dtr-16">
+        <param name="description" value="A DTRM entry is pegged at the item type of a list datatype."/>
+        <param name="org.w3c.exi.ttf.schemaLocation"
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listDTRM.xsd"/>
+        <param name="japex.inputFile" 
+              value="${japex.exi.ttfms.testCasesDir}/interop/datatypes/dtrm/listToString_04.xml" />
+        <param name="org.w3c.exi.ttf.datatypeRepresentationMap" 
+          value="{http://www.w3.org/2001/XMLSchema}int {http://www.w3.org/2009/exi}string" />
+    </testCase>
+
+</testCaseGroup>
