@@ -89,10 +89,12 @@
         <antcall target="delegate-native"/>
         <ant dir="candidates/xml" target="${target}"/>
         <ant dir="candidates/canonicalxml" target="${target}"/>
+		<!--
         <ant dir="candidates/xals" target="${target}"/>
         <ant dir="candidates/xebu" target="${target}"/>
         <ant dir="candidates/fastinfoset" target="${target}"/>
         <ant dir="candidates/efficientxml" target="${target}"/>
+		-->
         <ant dir="candidates/exificient" target="${target}"/>
         <ant dir="candidates/openexi" target="${target}"/>
         <!--
