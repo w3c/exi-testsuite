@@ -1,0 +1,26 @@
+<!--
+	The testcases are intended to test the Unsigned Integer data type for canonical EXI.
+	https://www.w3.org/TR/exi-c14n/#dt-unsignedInteger
+
+-->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+               xmlns:xi="http://www.w3.org/2001/XInclude"
+               name="Unsigned Integer datatype testcases">
+   
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/unsignedInteger"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/unsignedInteger.xsd"/>
+
+    <testCase name="unsignedInteger-maxInt-01">
+        <param name="description"  value="EXI processors MUST support Unsigned Integer values less than 2147483648."/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/unsignedInteger-maxInt.xml" />
+    </testCase>
+
+    <testCase name="unsignedInteger-larger_than_maxInt-01">
+        <param name="description"  value=" EXI processors SHOULD support arbitrarily large Unsigned Integer values."/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/unsignedInteger-larger_than_maxInt.xml" />
+    </testCase>
+
+</testCaseGroup>
