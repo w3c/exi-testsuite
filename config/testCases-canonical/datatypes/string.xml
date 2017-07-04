@@ -1,0 +1,56 @@
+<!--
+	The testcases are intended to test the string data type for canonical EXI.
+	https://www.w3.org/TR/exi-c14n/#dt-string
+
+-->
+<testCaseGroup xmlns="http://www.sun.com/japex/testSuite" 
+               xmlns:xi="http://www.w3.org/2001/XInclude"
+               name="String datatype testcases">
+   
+    <param name="org.w3c.exi.ttf.useSchemas" value="true" />
+    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/string"/>
+    <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/string.xsd"/>
+
+    <testCase name="string-unicode-01">
+        <param name="description"  value="Unicode single codepoint"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/string-unicode-01.xml" />
+    </testCase>
+
+    <testCase name="string-unicode-02">
+        <param name="description"  value="Unicode two codepoints that *can* be normalized into a character"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/string-unicode-02.xml" />
+    </testCase>
+
+    <testCase name="string-use_stringTable-01">
+        <param name="description"  value="Use of local value partition"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/string-use_stringTable-01.xml" />
+    </testCase>
+
+    <testCase name="string-use_stringTable-02">
+        <param name="description"  value="Use of global value partition"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/string-use_stringTable-02.xml" />
+    </testCase>
+
+    <testCase name="string-whitespace-preserve-01">
+        <param name="description"  value="whiteSpace facet - preserve"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/string-whitespace-preserve-01.xml" />
+    </testCase>
+
+    <testCase name="string-whitespace-replace-01">
+        <param name="description"  value="whiteSpace facet - replace"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/string-whitespace-replace-01.xml" />
+    </testCase>
+
+    <testCase name="string-whitespace-collapse-01">
+        <param name="description"  value="whiteSpace facet - collapse"/>
+        <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
+        <param name="japex.inputFile" value="${test.docFolder}/string-whitespace-collapse-01.xml" />
+    </testCase>
+
+</testCaseGroup>
