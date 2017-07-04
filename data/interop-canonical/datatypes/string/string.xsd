@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:foo"
+            xmlns:foo="urn:foo">
+
+  <xsd:element name="A" type="xsd:string"/>
+
+  <xsd:element name="B" type="xsd:string"/>
+
+  <xsd:element name="C">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="foo:A" minOccurs="0" maxOccurs="unbounded" />
+        <xsd:element ref="foo:B" minOccurs="0" maxOccurs="unbounded" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="D" type="xsd:normalizedString"/>
+
+  <xsd:element name="E">
+    <xsd:simpleType>
+      <xsd:restriction base="xsd:normalizedString">
+        <xsd:whiteSpace value="collapse"/>
+      </xsd:restriction>
+    </xsd:simpleType>
+  </xsd:element>
+
+</xsd:schema>
