@@ -86,6 +86,8 @@ public class Nagasena extends SAXDriver
   private int m_valuePartitionCapacity;
   private int m_valueMaxLength;
   
+  private boolean m_useUTCTime;
+  
   @Override
   protected void initializeParserFactory(SAXParserFactory spf) throws Exception  {
     super.initializeParserFactory(spf);
@@ -158,6 +160,7 @@ public class Nagasena extends SAXDriver
     }
 
     m_fragmentSupport = testCaseParams.fragments;
+    m_useUTCTime = testCaseParams.utcTime;
     
     final URI baseURI = new File(System.getProperty("user.dir")).toURI().resolve("whatever");
     m_xmlURI = resolveURI(escapeURI(testCaseParams.xmlFile), baseURI);
@@ -233,6 +236,7 @@ public class Nagasena extends SAXDriver
       m_streamEncoder.setValuePartitionCapacity(m_valuePartitionCapacity);
     if (m_valueMaxLength != -1)
       m_streamEncoder.setValueMaxLength(m_valueMaxLength);
+    m_streamEncoder.setUseUTCTime(m_useUTCTime);
     m_saxEncoder = m_streamEncoder.getSAXTransmogrifier();
     
     m_decoder = new EXIReader();
