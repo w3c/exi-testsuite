@@ -28,10 +28,10 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.siemens.ct.exi.EXIFactory;
-import com.siemens.ct.exi.api.sax.SAXFactory;
-import com.siemens.ct.exi.api.sax.SAXHandler;
-import com.siemens.ct.exi.api.sax.SAXEncoder;
+import com.siemens.ct.exi.core.EXIFactory;
+import com.siemens.ct.exi.main.api.sax.SAXFactory;
+import com.siemens.ct.exi.main.api.sax.SAXHandler;
+import com.siemens.ct.exi.main.api.sax.SAXEncoder;
 
 /**
  * @author Daniel.Peintner.EXT@siemens.com
