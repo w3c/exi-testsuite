@@ -11,6 +11,8 @@
     <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/unsignedInteger"/>
     <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/unsignedInteger.xsd"/>
 
+    <param name="reference" value="https://www.w3.org/TR/exi-c14n/#dt-unsignedInteger"/>
+
     <testCase name="unsignedInteger-maxInt-01">
         <param name="description"  value="EXI processors MUST support Unsigned Integer values less than 2147483648."/>
         <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  

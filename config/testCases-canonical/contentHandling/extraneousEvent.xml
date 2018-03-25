@@ -9,7 +9,9 @@
     <param name="org.w3c.exi.ttf.schemaLocation"
         value="${japex.exi.ttfms.testCasesDir}/interop-canonical/contentHandling/contentHandling.xsd"/>
    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/contentHandling"/>
-   
+
+   <param name="reference" value="http://www.w3.org/TR/exi-c14n/#excludeExtraneousEvents"/>
+
    <!-- exclude empty-string CH event -->
    <testCase name="ext_1">
         <param name="testDescription"  value="single empty string event"/>

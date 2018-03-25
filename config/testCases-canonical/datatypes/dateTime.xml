@@ -10,6 +10,8 @@
     <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/dateTime"/>
     <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/dateTime.xsd"/>
 
+    <param name="reference" value="https://www.w3.org/TR/exi-c14n/#dt-dateTime"/>
+
     <testCase name="dateTime-hour-01">
         <param name="description"  value="The hour component MUST NOT be 24"/>
         <param name="japex.inputFile" value="${test.docFolder}/dateTime-hour-01.xml" />
