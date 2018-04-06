@@ -10,6 +10,9 @@
     <param name="org.w3c.exi.ttf.schemaLocation"
         value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal/decimal.xsd"/>
    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/decimal"/>
+
+   <param name="reference" value="http://www.w3.org/TR/exi-c14n/#dt-decimal"/>
+
     <testCase name="valid-01">
         <param name="description"  value="simple decimal value"/>
         <param name="japex.inputFile" value="${test.docFolder}/decimal-valid-01.xml" />

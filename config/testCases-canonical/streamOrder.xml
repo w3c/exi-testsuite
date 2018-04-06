@@ -10,11 +10,13 @@
     <param name="org.w3c.exi.ttf.schemaLocation"
         value="${japex.exi.ttfms.testCasesDir}/interop-canonical/eventSelection/eventSelection.xsd"/>
    <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/"/>
-   
+
+   <param name="reference" value="http://www.w3.org/TR/exi-c14n/#exiStreamOrder"/>
+
    <!-- NS should be ordered lexicographically and for attributes 
    		xsi:type or an xsi:nil attribute MUST occur before other AT events -->
    <testCase name="so_01">
-        <param name="testDescription"  value=" testing NS and Attribute event orders"/>
+        <param name="testDescription"  value="testing NS and Attribute event orders"/>
         <param name="japex.inputFile" value="${test.docFolder}/so_01.xml"/>
    </testCase>
 

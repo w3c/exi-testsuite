@@ -11,6 +11,8 @@
     <param name="test.docFolder" value="${japex.exi.ttfms.testCasesDir}/interop-canonical/datatypes/string"/>
     <param name="org.w3c.exi.ttf.schemaLocation" value="${test.docFolder}/string.xsd"/>
 
+    <param name="reference" value="https://www.w3.org/TR/exi-c14n/#dt-string"/>
+
     <testCase name="string-unicode-01">
         <param name="description"  value="Unicode single codepoint"/>
         <param name="org.w3c.exi.ttf.schemaDeviations" value="false"/>  
